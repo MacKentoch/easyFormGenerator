@@ -16,7 +16,8 @@ Here is a form *YOU* could *generate* in just 1 minute (_I took time to add desc
 ##How to use?
 
 EASY : 
- - clone or download this repository
+ - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
+ - or just download it
  - launch `index.html` in your navigator
  - then you are ready to create forms
 
