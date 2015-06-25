@@ -1,7 +1,7 @@
 #Easy form generator
 
 
->Generate advanced unique boostrap forms without typing a single line of code!
+>Generate advanced and unique boostrap forms without typing a single line of code!
 
 
 ##What is it?
