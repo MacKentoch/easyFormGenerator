@@ -42,7 +42,7 @@ var clientMVC={
 var decorate={
 	templateJS: '/* \n' + 
 				' easyFormGenerator \n' + 
-				' Version 0.1.0 \n' + 				
+				' Version 1.0.1 \n' + 				
 				' Author : Erwan Datin (MacKentoch) \n' + 
 				' License : 2015 MIT \n' + 								
 				'*/ \n' + 
@@ -50,7 +50,7 @@ var decorate={
 
 	templateCSS: '/*! \n' + 
 				' * easyFormGenerator \n' + 
-				' * Version 0.1.0 \n' + 				
+				' * Version 1.0.1 \n' + 				
 				' * Author : Erwan Datin (MacKentoch) \n' + 
 				' * License : 2015 MIT \n' + 								
 				'*/ \n' +
@@ -81,7 +81,8 @@ var paths = {
 						'bower_components/api-check/dist/api-check.min.js',
 						'bower_components/angular-formly/dist/formly.min.js',
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
-						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js'
+						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
+						'bower_components/lodash/lodash.min.js'
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',

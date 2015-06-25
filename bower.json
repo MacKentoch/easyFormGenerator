@@ -1,6 +1,6 @@
 {
   "name": "easyFormGenerator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Erwan DATIN (MacKentoch)"
   ],
@@ -29,6 +29,7 @@
     "api-check": "~7.2.4",
     "angular-formly": "~6.8.2",
     "angular-formly-templates-bootstrap": "~4.3.2",
-    "nya-bootstrap-select": "~2.0.10"
+    "nya-bootstrap-select": "~2.0.10",
+    "lodash": "~3.9.3"
   }
 }
