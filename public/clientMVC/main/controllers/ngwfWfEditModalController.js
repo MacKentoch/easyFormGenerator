@@ -451,14 +451,12 @@ var initOptionModel = {rows:[
 
 
   $scope.selectThisControl = function(controlName){
-    //console.info('selectThisControl starting for : ' + controlName);
     $scope.nyaSelect.selectedControl = 'none';
     resetTemporyConfig();
 
     for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
        if ($scope.nyaSelect.controls[i].id === controlName) {
           $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
-          //console.log('selectThisControl : item found : ' + $scope.nyaSelect.controls[i].id);
        }
     }
   };

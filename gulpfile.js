@@ -13,6 +13,10 @@ var wrap = require("gulp-wrap");
 ///////////////////////////////////////////////////////////////////////
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
+var version = {
+	build: '1.0.2'
+}
+
 var bases ={
  app: './'
 }
@@ -42,16 +46,18 @@ var clientMVC={
 var decorate={
 	templateJS: '/* \n' + 
 				' easyFormGenerator \n' + 
-				' Version 1.0.1 \n' + 				
+				' Version ' +  version.build + ' \n' + 				
 				' Author : Erwan Datin (MacKentoch) \n' + 
-				' License : 2015 MIT \n' + 								
+				' Link: https://github.com/MacKentoch/easyFormGenerator \n' +
+				' License : MIT (2015) \n' + 								
 				'*/ \n' + 
 				';(function(){\n"use strict";\n<%= contents %>\n})();',
 
 	templateCSS: '/*! \n' + 
 				' * easyFormGenerator \n' + 
-				' * Version 1.0.1 \n' + 				
-				' * Author : Erwan Datin (MacKentoch) \n' + 
+				' * Version ' + version.build + ' \n' + 				
+				' * Author : Erwan Datin (MacKentoch) \n' +
+				' Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
 				' * License : 2015 MIT \n' + 								
 				'*/ \n' +
 				'\n<%= contents %>\n' 
