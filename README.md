@@ -15,12 +15,28 @@ Here is a form *YOU* could *generate* in just 1 minute (_I took time to add desc
 
 ##How to use?
 
-EASY : 
+_EASY_ : 
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
  - launch `index.html` in your navigator
  - then you are ready to create forms
 
+_WANT EASIER WAY? OK_ :
+
+- no installation, no clone : just go here : [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index.html)
+
+**NOTE** :
+
+- I'm currently working on `easyFormGenerator` website. 
+
+##the magic behind
+
+`easyFormGenerator` gives you access to [angular formly](https://github.com/formly-js/angular-formly) fire power to create amazing forms. 
+
+*Why angular formly? See yourself how powerfull it is* :
+
+- [angular formly applications/examples](http://angular-formly.com)
+- [angular formly documentation](http://docs.angular-formly.com)
 
 
 ____
