@@ -14,7 +14,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var ngwfApp = angular.module('ngwfApp', [	
-												'angular-loading-bar', 
 												'ngwfApp.controllers',
 												'ngwfApp.services', 
 												'ngwfApp.filters',

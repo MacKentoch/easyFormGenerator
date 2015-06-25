@@ -43,6 +43,9 @@ body {
 .modal-backdrop{
   z-index: -1;
 }
+.navbar-right{
+  margin-right:20px;
+}
 
 textarea, textarea.form-control, input.form-control, 
 input[type=text], input[type=password], input[type=email], 
@@ -59,6 +62,7 @@ select, select.form-control {
   .container 
   {
     width: $container-width;
+    margin-right:20px;
   }
 }
 
@@ -66,6 +70,7 @@ select, select.form-control {
   .container 
   {
     width: $container-width;
+    margin-right:20px;
   }
 }
 
@@ -73,6 +78,7 @@ select, select.form-control {
   .container 
   {
     width: $container-width;
+
   }
 }
 
@@ -137,6 +143,12 @@ a {
 .float-label{
     font-size:10px;
 }
+.socialIcon{
+  &:hover{
+    color:$background-color-grey;  
+  }
+}
+
 input[type="text"].form-control,
 input[type="search"].form-control{
     border:none;
