@@ -1,0 +1,34 @@
+{
+  "name": "easyFormGenerator",
+  "version": "1.0.0",
+  "authors": [
+    "Erwan DATIN (MacKentoch)"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15",
+    "bootstrap": "~3.3.5",
+    "html5shiv": "~3.7.2",
+    "modernizer": "~2.8.2",
+    "respondJS": "~1.4.2",
+    "bootswatch": "3.3.4+1",
+    "textAngular": "~1.4.1",
+    "angular-loading-bar": "~0.7.1",
+    "animate.css": "~3.2.6",
+    "angular-resource": "~1.3.15",
+    "angular-animate": "~1.3.15",
+    "angularjs-toaster": "~0.4.13",
+    "angular-bootstrap": "~0.13.0",
+    "api-check": "~7.2.4",
+    "angular-formly": "~6.8.2",
+    "angular-formly-templates-bootstrap": "~4.3.2",
+    "nya-bootstrap-select": "~2.0.10"
+  }
+}
