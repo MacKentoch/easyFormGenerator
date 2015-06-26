@@ -529,8 +529,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                 {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: "subTitle", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: "input", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: "input", formlySubtype: "password", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
+                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
+                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: "textarea", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: "richEditor", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Radio', name: 'Radio', subtitle: 'Radio', options: [], group: 'Radio', formlyType: "radio", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "" , formlyOptions: []},
@@ -638,8 +638,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                 {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: "subTitle", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: "input", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: "input", formlySubtype: "password", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
+                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
+                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: "textarea", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: "richEditor", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
                                 {id: 'Radio', name: 'Radio', subtitle: 'Radio', options: [], group: 'Radio', formlyType: "radio", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "" , formlyOptions: []},
@@ -727,6 +727,16 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
       //}
 
       $scope.configuration.lines[indexLine].columns[numcolumn].control.edited = true;
+
+      
+      //////////////////////////////////////////
+      // add additionnal particular properties
+      //////////////////////////////////////////
+      //patch UI date
+      if ($scope.configuration.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+        $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = 'dd-MMMM-yyyy';
+      }
+      
   }
 
 

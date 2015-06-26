@@ -195,10 +195,14 @@ function AddOneColumnHeader(formlyModel, configurationModel,lineIndex){
                   );
 }
 
-function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
-    formlyModel.push(
 
-                      {
+function AddDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex){
+  fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+}
+
+function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
+
+    var fieldToPush =                       {
                         className: 'col-xs-12',
                         type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
                         key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
@@ -210,7 +214,16 @@ function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
                           description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
                           options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
                         } 
-                      } 
+                      };
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
+    }     
+
+    formlyModel.push( 
+                      fieldToPush
                     );
 }
 
@@ -375,16 +388,20 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
 }
 
 
-
 function isTemplateOptionDefined(obj){
   return typeof obj.templateOptions !== 'undefined' ? true : false;
 }
 
 function extractTemplateOptionLabel(obj){
 
- console.info('extractTemplateOptionLabel');
- console.dir(obj);
+ //console.info('extractTemplateOptionLabel');
+ //console.dir(obj);
  return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
+}
+
+
+function extractTemplateOptionDatepickerPopup(obj){
+  return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
 }
 
 function extractTemplateOptionRequired(obj){
