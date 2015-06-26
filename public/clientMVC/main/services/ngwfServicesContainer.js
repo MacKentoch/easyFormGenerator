@@ -10,6 +10,7 @@
 angular.module('ngwfApp.services', [	'ngwfApp.services.formFieldManage',
 										'ngwfApp.services.selectOptionManage',
 										'ngwfApp.services.ngwfWfFormsServices',
+										'ngwfApp.services.ngwfEditCtrlControllerModalProxy',
 										function () {
     //verbose
     console.log('--> INIT : Hello services container  \'\'ngwfApp.services\'\' ');

@@ -18,6 +18,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           '$log', 
                                                           'formFieldManage',
                                                           'wfFormsByIdServices',
+                                                          'controllerModalProxy',
                             															function (	$scope, 
                                                                       $filter,
                                                                       $anchorScroll,
@@ -26,7 +27,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       $modal,
                                                                       $log, 
                                                                       formFieldManage, 
-                                                                      wfFormsByIdServices) {
+                                                                      wfFormsByIdServices, 
+                                                                      controllerModalProxy) {
   //verbose
   console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
@@ -88,7 +90,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
    //here to replace with $scope.configuration : initialise configuration with lines 
    $scope.configurationLoaded = {};
    formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
-   formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel);
+   formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
 
   $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
 
@@ -227,7 +229,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   			}
   	}
       //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields);
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
   };
@@ -244,7 +246,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   			}
   	}
       //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields); 
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
   };
@@ -275,7 +277,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 		);
       //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields);
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
   };
@@ -301,7 +303,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   		}
 
     //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields);
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
   	}
@@ -334,7 +336,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   	 $scope.configuration.lines[$scope.configuration.activeLine -1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns; 
   }
      //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields); 
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
 };
@@ -345,7 +347,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   		$scope.configuration.lines[$scope.configuration.activeLine -1].columns.splice($scope.configuration.lines[$scope.configuration.activeLine -1].columns.length -1, 1);
   	}
     //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields);  
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);  
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);  
   };
@@ -521,33 +523,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   //            modal : add control to column
   ////////////////////////////////////////////////////////////
 
-
-  $scope.nyaSelect = {
-                    controls : [
-                                {id: 'empty',  name: 'no control', subtitle: 'no control', group: 'Blank', formlyType: "blank", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Header',  name: 'Header', subtitle: 'no control', group: 'Decoration', formlyType: "header", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: "subTitle", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: "input", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: "input", formlySubtype: "password", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: "textarea", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: "richEditor", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Radio', name: 'Radio', subtitle: 'Radio', options: [], group: 'Radio', formlyType: "radio", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "" , formlyOptions: []},
-                                {id: 'Checkbox', name: 'Checkbox', subtitle: 'Checkbox', group: 'Checkbox', formlyType: "checkbox", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'BasicSelect', name: 'Basic select', subtitle: 'Basic select',options: [], group: 'Select', formlyType: "basicSelect", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'GroupedSelect', name: 'Grouped Select', subtitle: 'Grouped Select',options: [], group: 'Select', formlyType: "groupedSelect", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "",formlyOptions: []}
-                              ],
-
-                      selectedControl : 'none' ,
-                      temporyConfig : {
-                                        selectedControl: "none",
-                                        formlyLabel: "label", 
-                                        formlyRequired: false, 
-                                        formlyDesciption: "",
-                                        formlyOptions: []
-                                      }       
-                    };  
+  $scope.nyaSelect = {};
+  controllerModalProxy.initNyaSelect($scope.nyaSelect);
 
   $scope.animationsEnabled = true;
 
@@ -560,184 +537,21 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                       size: 'lg',
                                       resolve: {
                                         nyaSelect: function () {
-                                          return getNyASelectFromSelectedLineColumn(indexLine, numcolumn);
+                                          return controllerModalProxy.getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
                                         }
                                       }
     });
 
 
     modalInstance.result.then(function (modalAddCtrlModel) {
-        bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel);
-        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields);
-
+        controllerModalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
-
-
-
-  //to make a service from this
-  function returnControlFromAddCtrlModalModel(CtrlModalModel){
-
-    var modelToReturn = {
-          selectedControl:"none",
-          formlyType : "none",
-          formlySubtype: "none",
-          formlyLabel: "",
-          formlyRequired : false,
-          formlyDesciption: "",
-          formlyPlaceholder: "",
-          formlyOptions: []
-
-    };
-
-    for (var i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
-      if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
-        modelToReturn.selectedControl = CtrlModalModel.selectedControl;
-        modelToReturn.formlyType = CtrlModalModel.controls[i].formlyType;
-        modelToReturn.formlySubtype = CtrlModalModel.controls[i].formlySubtype;
-        modelToReturn.formlyLabel = CtrlModalModel.controls[i].formlyLabel;
-        modelToReturn.formlyRequired = CtrlModalModel.controls[i].formlyRequired;
-        modelToReturn.formlyDesciption = CtrlModalModel.controls[i].formlyDesciption;
-        modelToReturn.formlyPlaceholder = CtrlModalModel.controls[i].formlyPlaceholder;
-        modelToReturn.formlyOptions = CtrlModalModel.controls[i].formlyOptions;
-      }
-    }
-
-    return modelToReturn;
-  }
-
-  //to make a service from this function
-  function validKeyUniqueness(thisKey){
-    var isUnique = true;
-    //each lines
-    for (var i = $scope.configuration.lines.length - 1; i >= 0; i--) {
-      //each columns
-      for (var j = $scope.configuration.lines[i].columns.length - 1; j >= 0; j--) {
-        if ($scope.configuration.lines[i].columns[j].control.key === thisKey) {
-          isUnique = false;
-        }
-          
-      }
-      
-    }
-
-    return isUnique;  
-  }
-
-
-  //to make a service from this function
-  function resetNyaSelect(){
-    $scope.nyaSelect = {
-
-                    controls : [
-                                {id: 'empty',  name: 'no control', subtitle: 'no control', group: 'Blank', formlyType: "blank", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Header',  name: 'Header', subtitle: 'no control', group: 'Decoration', formlyType: "header", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: "subTitle", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: "input", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: "input", formlySubtype: "password", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                //{id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "datepicker", formlySubtype: "text", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: "textarea", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: "richEditor", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'Radio', name: 'Radio', subtitle: 'Radio', options: [], group: 'Radio', formlyType: "radio", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "" , formlyOptions: []},
-                                {id: 'Checkbox', name: 'Checkbox', subtitle: 'Checkbox', group: 'Checkbox', formlyType: "checkbox", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'BasicSelect', name: 'Basic select', subtitle: 'Basic select',options: [], group: 'Select', formlyType: "basicSelect", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "", formlyOptions: []},
-                                {id: 'GroupedSelect', name: 'Grouped Select', subtitle: 'Grouped Select',options: [], group: 'Select', formlyType: "groupedSelect", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: "",formlyOptions: []}
-                              ],
-
-                      selectedControl : 'none' ,
-                      temporyConfig : {
-                                        selectedControl: "none",
-                                        formlyLabel: "label", 
-                                        formlyRequired: false, 
-                                        formlyDesciption: "",
-                                        formlyPlaceholder: "",
-                                        formlyOptions : []
-                                      } 
-
-    };
-  }
-  
-  //to make a service from this function
-  function getNyASelectFromSelectedLineColumn(indexLine, numcolumn){
-      resetNyaSelect();
-      
-      //data send to modal controller                                          
-      if (typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
-
-        $scope.nyaSelect.temporyConfig.selectedControl = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.selectedControl : "none";
-        $scope.nyaSelect.temporyConfig.formlyLabel = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.label : "";
-        $scope.nyaSelect.temporyConfig.formlyRequired = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.required : "";
-        $scope.nyaSelect.temporyConfig.formlyDesciption = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.description : "";
-        $scope.nyaSelect.temporyConfig.formlyPlaceholder = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : "";
-        $scope.nyaSelect.temporyConfig.formlyOptions = typeof $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.options : "";
-
-      }
-      return $scope.nyaSelect;
-  }
-  
-  //to make a service from this function
-  function bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel){
-      //$log.info('in controller , select control = ' + modalAddCtrlModel.selectedControl);
-      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.selectedControl = extractedProps.selectedControl;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.type = extractedProps.formlyType;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.subtype = extractedProps.formlySubtype;
-      //reset templateOptions
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions = {
-                                                                                            label: "",
-                                                                                            required: false,
-                                                                                            description: "",
-                                                                                            placeholder: "",
-                                                                                            options: []
-                                                                                          };
-       //then bind templateOptions                                                                                   
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.label = extractedProps.formlyLabel;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.required = extractedProps.formlyRequired;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.description = extractedProps.formlyDesciption;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.options = extractedProps.formlyOptions;
-      
-      //unique key (set only first time) in this model is formly control type + Date.now(); 
-      //if (($scope.configuration.lines[indexLine].columns[numcolumn].control.key === '') || ($scope.configuration.lines[indexLine].columns[numcolumn].control.key === 'none')) {
-       
-
-        var newKey = $scope.configuration.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-        if (validKeyUniqueness(newKey) === true){
-          //console.info('1st attempt : new Key is unique');
-          $scope.configuration.lines[indexLine].columns[numcolumn].control.key = newKey;
-        }else{
-          //console.warn('1st attempt : new Key is not unique');
-          //2nd attempt
-          newKey = $scope.configuration.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-          if (validKeyUniqueness(newKey) === true){
-            //console.info('2nd attempt : new Key is unique');
-            $scope.configuration.lines[indexLine].columns[numcolumn].control.key = newKey;
-          }else{
-            //console.warn('2nd attempt : new Key is not unique');
-            //2nd attempt
-            newKey = $scope.configuration.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-          }
-        }                                                                     
-      //}
-
-      $scope.configuration.lines[indexLine].columns[numcolumn].control.edited = true;
-
-      
-      //////////////////////////////////////////
-      // add additionnal particular properties
-      //////////////////////////////////////////
-      //patch UI date
-      if ($scope.configuration.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-        $scope.configuration.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = 'dd-MMMM-yyyy';
-      }
-      
-  }
 
 
 

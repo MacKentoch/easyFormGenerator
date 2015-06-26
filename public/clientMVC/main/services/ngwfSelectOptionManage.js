@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
+// service to manage select options (used in modal to edit control)
 //
 //  module = "service"  selectOptionManage (manage : selects, radio...)
 //  ------------------------------------------------------

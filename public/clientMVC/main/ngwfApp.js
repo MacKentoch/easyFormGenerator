@@ -150,7 +150,7 @@ ngwfApp.config([	'formlyConfigProvider',
 
   console.log(ngModelAttrs);
   
-  
+
   formlyConfigProvider.setType({
     name: 'datepicker',
     template: '<input class="form-control" ng-model="model[options.key]" is-open="to.isOpen" datepicker-options="to.datepickerOptions" />',
@@ -170,6 +170,7 @@ ngwfApp.config([	'formlyConfigProvider',
         datepickerOptions: {}
       }
     }
+    
   });
 
   function camelize(string) {

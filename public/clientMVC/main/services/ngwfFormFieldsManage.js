@@ -141,9 +141,10 @@ formFieldManage.factory('formFieldManage', [ function(){
               }
             },
 
-            applyConfigurationToformlyModel:function(configurationModel, formlyModel){
+            applyConfigurationToformlyModel:function(configurationModel, formlyModel, formlyDataModel){
               resetFormlyModel(formlyModel);
-
+              //since 1.0.2 : reset data model
+              resetDataModel(formlyDataModel);
 
               //manage header here line0
               var lineNumber = configurationModel.lines.length;
@@ -430,6 +431,12 @@ function extractTemplateOptionDescription(obj){
 /////////////////////////////////////////
 // formly model functions
 /////////////////////////////////////////
+
+function resetDataModel(obj){
+  var emptyDataModel = {};
+  angular.copy(emptyDataModel, obj);
+  return true;
+}
 
 /////////////////////////////////////////
 // custom errors
