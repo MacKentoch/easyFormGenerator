@@ -42,7 +42,8 @@ _WANT EASIER WAY? OK_ :
 ##What is coming next?
 
  - improving / fixing 
- - adding angular datetimepicker to replace input type date
+ - ~~adding angular datetimepicker to replace input type date~~ (-> added in v1.0.3)
+ - a nice website for **Easy form generator** (coming soon)
 
 ____
 ...more details to be added later
