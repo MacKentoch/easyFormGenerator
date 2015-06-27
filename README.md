@@ -39,6 +39,11 @@ _WANT EASIER WAY? OK_ :
 - [angular formly documentation](http://docs.angular-formly.com)
 
 
+##What is coming next?
+
+ - improving / fixing 
+ - adding angular datetimepicker to replace input type date
+
 ____
 ...more details to be added later
 
