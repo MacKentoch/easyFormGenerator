@@ -852,7 +852,7 @@
                                 <div class="col-md-12">
                                     
                                     <div class="form-group">
-                                                                          
+                                                                         
                                       <div class="">
 
                                         <h4 class="text-center">{{nyaSelect.temporyConfig.formlyPlaceholder}}</h4>
@@ -891,7 +891,6 @@
                           </div>
                         </div> 
                 </div>                
-
 
                 <div ng-switch-when="TextInput">
                         <!-- TextInput -->
@@ -1078,11 +1077,10 @@
 
                           </div>
                         </div> 
-
                 </div>   
 
                 <div ng-switch-when="Date">
-                        <!-- TextInput -->
+                        <!-- datetimepicker (input type date not ok in all browsers) -->
                         <div class="panel panel-default">
                             <div class="panel-body">
 
@@ -1102,7 +1100,14 @@
                                       <label for="inputDate" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
                                       
                                       <div class="">
-                                        <input type="date" class="form-control" id="inputDate">
+                                        
+										<div class="input-group" >
+										  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+										  
+										  <input type="text" class="form-control" datepicker-popup="{{nyaSelect.temporyConfig.datepickerPopup}}" ng-model="demodt.dt" is-open="demodt.opened" min-date="demodt.minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" ng-click="demodt.opened = true" />
+										</div>
+
+							            </p>         
                                         <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
                                       </div>
                                     </div>
@@ -1120,6 +1125,23 @@
                                 </div>
                             </div> 
                             <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label greyText editPropertiesLabel">Date format :</label>
+                                      <div class="col-lg-9">
+
+                                        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="nyaSelect.temporyConfig.datepickerPopup" id="dateformatSelect">
+                                          <li class="nya-bs-option" nya-bs-option="dateformat in demodt.formats" value="dateformat">
+                                            <a>{{dateformat}}</a>
+                                          </li>
+                                        </ol>
+
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
 
                             <div class="row">
                                     <div class="form-group">

@@ -15,41 +15,18 @@ ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope',
                                                                     'toaster' ,
                                                                     '$timeout',
                                                                     'selectOptionManage',
+                                                                    'controllerModalProxy',
                                       															function (	$scope, 
                                                                                 $modalInstance, 
                                                                                 nyaSelect, 
                                                                                 toaster,
                                                                                 $timeout,
-                                                                                selectOptionManage
+                                                                                selectOptionManage,
+                                                                                controllerModalProxy
                                                                               ){
   //verbose
   console.log('--> INIT : Hello controller  \'\'ngwfWfEditMODALController\'\' ');
   
-
-  //reminder of nyaSelectInit model :
-  // $scope.nyaSelectInit = {
-  //                   controls : [
-                                // {id: 'empty',  name: 'no control', subtitle: 'no control', group: 'Blank', formlyType: "none", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: "input", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: "input", formlySubtype: "password", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: "input", formlySubtype: "date", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: "textarea", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: "richEditor", formlySubtype: "", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'Radio', name: 'Radio', subtitle: 'Radio', group: 'Radio', formlyType: "radio", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'Checkbox', name: 'Checkbox', subtitle: 'Checkbox', group: 'Checkbox', formlyType: "checkbox", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'BasicSelect', name: 'Basic select', subtitle: 'Basic select', group: 'Select', formlyType: "select", formlySubtype: "none", formlyLabel: "", formlyRequired: false, formlyDesciption: ""},
-                                // {id: 'GroupedSelect', name: 'Grouped Select', subtitle: 'Grouped Select', group: 'Select', formlyType: "select", formlySubtype: "grouped", formlyLabel: "", formlyRequired: false, formlyDesciption: ""}
-  //                             ],
-
-  //                     selectedControl : 'none' ,
-  //                     temporyConfig : {
-  //                                       selectedControl : 'none' ,
-  //                                       formlyLabel: "label", 
-  //                                       formlyRequired: false, 
-  //                                       formlyDesciption: ""
-  //                                     }       
-  //                   };
-
 
 
 var initOptionModel = {rows:[
@@ -382,9 +359,41 @@ var initOptionModel = {rows:[
   };
 
 
+  /////////////////////////////////////////////
+  // init datetimepicker model
+  /////////////////////////////////////////////
+  $scope.demodt ={};
+
+  $scope.today = function() {
+    $scope.demodt.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function () {
+    $scope.demodt.dt = null;
+  };
 
 
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
 
+    $scope.demodt.opened = true;
+  };
+
+  $scope.dateOptions = {
+           formatYear: 'yy',
+           startingDay: 1,
+           showWeeks: true,
+           initDate: null
+  };
+
+  $scope.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  
+  function initDatePicker(){
+    $scope.nyaSelect.temporyConfig.datepickerPopup = $scope.demodt.formats[0];  
+  }
+  
 
 
   /////////////////////////////////////////////
@@ -433,21 +442,6 @@ var initOptionModel = {rows:[
                                       };   
   }
 
-  function applyConfigToSelectedControl(){
-    for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
-      if ($scope.nyaSelect.controls[i].id === $scope.nyaSelect.selectedControl) {
-
-          $scope.nyaSelect.controls[i].formlyLabel = $scope.nyaSelect.temporyConfig.formlyLabel;
-          $scope.nyaSelect.controls[i].formlyRequired = $scope.nyaSelect.temporyConfig.formlyRequired;
-          $scope.nyaSelect.controls[i].formlyDesciption = $scope.nyaSelect.temporyConfig.formlyDesciption;
-          $scope.nyaSelect.controls[i].formlyPlaceholder = $scope.nyaSelect.temporyConfig.formlyPlaceholder;
-          $scope.nyaSelect.controls[i].formlyOptions = $scope.nyaSelect.temporyConfig.formlyOptions;
-        
-       }
-    }
-  }
-
-
 
 
   $scope.selectThisControl = function(controlName){
@@ -458,6 +452,10 @@ var initOptionModel = {rows:[
        if ($scope.nyaSelect.controls[i].id === controlName) {
           $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
        }
+    }
+
+    if ($scope.nyaSelect.selectedControl === 'Date') {
+      initDatePicker();
     }
   };
 
@@ -481,7 +479,7 @@ var initOptionModel = {rows:[
     }  
 
     //save config to control
-    applyConfigToSelectedControl();
+    controllerModalProxy.applyConfigToSelectedControl($scope.nyaSelect);
     //return current model to parent controller :
     $modalInstance.close($scope.nyaSelect);
 

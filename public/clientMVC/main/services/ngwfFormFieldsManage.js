@@ -221,6 +221,8 @@ function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
     //////////////////////////////////////////////                  
     if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
       AddDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
+
+      
     }     
 
     formlyModel.push( 
@@ -257,6 +259,13 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
                                   options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
                               }
                             };
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
+    }                            
+
 
     var controlCol1 =  {
                               className: 'col-xs-6',
@@ -272,7 +281,12 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
                               }
                       };
 
-    
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+    }                                
 
     var FieldGroup = [];
 
@@ -330,6 +344,12 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
                               }
                             };
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
+    }                             
 
     var controlCol1 =  {
                               className: 'col-xs-4',
@@ -344,6 +364,12 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
                               }
                       };
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+    }                       
     var controlCol2 =  {
                               className: 'col-xs-4',
                               type: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
@@ -357,7 +383,12 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)             
                               }
                       };
-    
+    //////////////////////////////////////////////                  
+    //datepicker additionnal particular property  
+    //////////////////////////////////////////////                  
+    if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
+      AddDatepickerPopupProperty(controlCol2, configurationModel,lineIndex);
+    }     
 
     var FieldGroup = [];
 
