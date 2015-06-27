@@ -33,6 +33,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
 
+  $scope.easyFormGeneratorVERSION = 'v1.0.3';
   ///////////////////////////////////////////////////
   // DEBUG model
   ///////////////////////////////////////////////////

@@ -14,7 +14,7 @@ var wrap = require("gulp-wrap");
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.0.2'
+	build: '1.0.3'
 }
 
 var bases ={

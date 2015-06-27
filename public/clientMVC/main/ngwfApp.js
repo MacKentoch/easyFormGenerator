@@ -40,7 +40,6 @@ var ngwfApp = angular.module('ngwfApp', [
 ngwfApp.config([	'formlyConfigProvider', 
 					function(formlyConfigProvider) {
 
-
     formlyConfigProvider.setType(
 	    {
 	  		name: 'richEditor',
