@@ -631,14 +631,17 @@
 															  <div class="panel-body">
 
 																<form ng-submit="vm.onSubmit()">
-																  <formly-form model="vm.model" fields="vm.wfFormFields">
 
-																  <span class="pull-right">
+																  <formly-form id="saveFormlyFom" model="vm.model" fields="vm.wfFormFields">
+
+																   <span class="pull-right">
 																    <button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
 																    <button class="btn btn-primary" type="cancel">{{configuration.cancelButtonText}}</button>
 																   </span>
 
 																  </formly-form>
+
+
 																</form>	
 
 															  </div>
@@ -660,7 +663,7 @@
 										  <div class="panel-body">
 												<!-- formly here -->
 												<form ng-submit="vm.onSubmit()">
-												  <formly-form model="vm.model" fields="vm.wfFormFields">
+												  <formly-form id="previewFormlyForm" model="vm.model" fields="vm.wfFormFields">
 
 												  <span class="pull-right">
 												    <button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
@@ -1104,7 +1107,7 @@
 										<div class="input-group" >
 										  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 										  
-										  <input type="text" class="form-control" datepicker-popup="{{nyaSelect.temporyConfig.datepickerPopup}}" ng-model="demodt.dt" is-open="demodt.opened" min-date="demodt.minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" ng-click="demodt.opened = true" />
+										  <input type="text" class="form-control" datepicker-popup="{{nyaSelect.temporyConfig.datepickerPopup}}" ng-model="demodt.dt" is-open="demodt.opened" min-date="demodt.minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" ng-click="open($event)" />
 										</div>
 
 							            </p>         

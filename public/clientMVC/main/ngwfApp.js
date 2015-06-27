@@ -152,7 +152,7 @@ ngwfApp.config([	'formlyConfigProvider',
 
   formlyConfigProvider.setType({
     name: 'datepicker',
-    template: '<input class="form-control" ng-model="model[options.key]" is-open="to.isOpen" datepicker-options="to.datepickerOptions" />',
+    template: '<input  id="{{id}}" class="form-control" ng-model="model[options.key  || index]" is-open="to.isOpen" datepicker-options="to.datepickerOptions" />',
     wrapper: ['bootstrapLabel', 'bootstrapHasError'],
     defaultOptions: {
       ngModelAttrs: ngModelAttrs,
