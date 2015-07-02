@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngwfApp" ng-controller="ngwfMainController">
+	<head>
+		<title>Easy form generator</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="create amazing forms without coding : form editor based on angular formly">
+		<meta name="author" content="Erwan Datin (MacKentoch)">
+		
+		<!-- IMPORTANT : angular js lib (here for better result with ng-cloak) -->
+		<script type="text/javascript" src="./public/lib/js/angular.min.js"></script>	
+		<!-- Bootstrap core CSS -->
+		<link href="./public/lib/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- <link href="/public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+		
+		<!-- font-awesome -->
+		<link href="./public/lib/css/font-awesome.min.css" rel="stylesheet">
+
+		<!-- animate -->
+		<link href="./public/lib/css/animate.min.css" rel="stylesheet">
+
+		<!-- textAngular -->
+		<link rel='stylesheet' href='./public/css/textAngular.min.css'>		
+		<!-- taoster angular -->
+		<link rel='stylesheet' href='./public/lib/css/toaster.min.css'>		
+		<!-- nya select bootstrap -->
+		<link rel='stylesheet' href='./public/lib/css/nya-bs-select.min.css'>
+		<!-- angular code mirror -->
+		<link rel='stylesheet' href='./public/lib/css/angular-code-mirror.css'>
+
+		<!-- Custom styles for this template -->
+		<link href="./public/css/main.min.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="./public/lib/html5shiv/dist/html5shiv.min.js"></script>
+		  <script src="./public/lib/respondJS/dest/respond.min.js"></script>
+		<![endif]-->		
+	</head>
+	<!-- NOTE : ng-cloak here is not optimal solution : better to use it only where it is needed  -->
+	<body ng-cloak id="topToScrollHere">
+		<div>
+			<!-- navigation 
+			=============================================================-->
+			<header id="pageHeader" >	
+				<div scroll-change-css  class="navbar navbar-default navbar-fixed-top" ng-class="{initNav:!scrollflag.boolNavBarChangeClass}">
+			      <div class="container">
+			        <div class="navbar-header">
+			          <a class="navbar-brand" href="#topToScrollHere" du-smooth-scroll>
+
+			        
+			          	<span class="hidden-navbar-brand" ani-scroll="144">Easy form generator</span>
+
+			          </a>
+			          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			        </div>
+
+			        <div class="navbar-collapse collapse" id="navbar-main">
+
+			          <!-- <div class="hidden-navbar-nav" ani-scroll="144"> -->
+			          	<ul class="nav navbar-nav">
+			          		<li>
+			          			 <li><a href="#goPreview" du-smooth-scroll>preview</a></li>
+			          		</li>
+			          		<li>
+			          			 <li><a href="#goDesignYourform" du-smooth-scroll>design</a></li>
+			          		</li>
+							<li>
+			          			 <li><a href="#goDevideLinesColmumsform" du-smooth-scroll du-scrollspy>layout</a></li>
+			          		</li>
+							<li>
+			          			 <li><a href="#goPageWfEdit" du-smooth-scroll du-scrollspy>practice</a></li>
+			          		</li>
+			          	</ul>	
+
+			          <ul class="nav navbar-nav navbar-right">
+			          
+			          </ul>
+			        </div>
+			      </div>
+			    </div>
+			</header>   		
+
+
+
+			<a scroll-change-css class="back-to-top text-center" du-smooth-scroll="topToScrollHere" style="display: inline;" ng-class="{backToTopVisible:scrollflag.boolBottomButtonChangeClass}">
+				<i class="fa fa-arrow-circle-up"></i>
+			</a>
+
+			<section id="introSection">
+				
+
+				<div id="titleDiv">
+					<div class="">
+						<div class="col-xs-12">
+							<h1 class="text-center">Angular Easy form Generator</h1>
+							<h4 class="text-center">Generate advanced and unique boostrap forms without typing a single line of code!&nbsp;<i class="fa fa-magic"></i></h4>
+							<h6 class="text-center"><a href="http://angular-formly.com">angular formly</a> power in now in your hand</h6>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+				
+					<div id="goPreview"></div>
+					<!-- <section id="youCandoIt"> -->
+					<div id="youCreate">
+						<div class="row">
+							<div class="col-xs-12">
+							<div class="content-container">
+								<h2 class="text-center"><i class="fa fa-quote-left"></i>&nbsp;<strong>YOU</strong> will be able to create :&nbsp;<i class="fa fa-quote-right"></i></h2>
+								<h6 class="text-center">in a matter of minutes!&nbsp;<i class="fa fa-clock-o"></i></h6>
+								<hr/>
+							</div>	
+								<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+									<!-- ani-scroll="190" -->
+									<div id="imageFormPreview" ng-click="openImgCarousel()" ani-view>
+
+										<img src="./public/images/previewform.png" class="img-responsive center-block" alt="angular easy form generator : preview">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- </section> -->
+
+					<div id="goDesignYourform"></div>
+
+					<!-- designYourform -->
+					<div id="designYourform">
+						<div class="row">
+							<div class="col-xs-12">
+							<div class="content-container">
+								<h2 class="text-center"><i class="fa fa-quote-left"></i>&nbsp;<strong>Design</strong> your desired form :&nbsp;<i class="fa fa-quote-right"></i></h2>
+								<h6 class="text-center">Design a mockup — use a tool or grab a piece of paper&nbsp;<i class="fa fa-pencil"></i></h6>
+								<hr/>
+							</div>	
+								<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+									<!-- ani-scroll="770" -->
+									<div id="imageDesignYourForm" ani-scroll="770" ng-click="openImgCarousel()">
+
+										<img src="./public/images/designYourForm.png" class="img-responsive center-block" alt="angular easy form generator : design your form">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+
+					<div id="goDevideLinesColmumsform"></div>
+
+
+					<div id="devideLinesColmumsform">
+						<div class="row">
+							<div class="col-xs-12">
+
+							<div class="content-container">
+
+								<h2 class="text-center"><i class="fa fa-quote-left"></i>&nbsp;<strong>Form layout</strong> as lines and columns :&nbsp;<i class="fa fa-quote-right"></i></h2>
+								<h6 class="text-center">unlimited lines&nbsp;<i class="fa fa-align-justify"></i>&nbsp;— up to 3 columns&nbsp;<i class="fa fa-columns"></i></h6>
+								<hr/>
+
+							</div>
+
+								<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+									<!-- ani-scroll="1750" -->
+									<div id="imageDevideLinesColmumsform" ani-scroll="1750" ng-click="openImgCarousel()">
+
+										<img src="./public/images/divideLinesColumns.png" class="img-responsive center-block" alt="angular easy form generator : lines and columns">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+
+				</div>
+
+
+
+			</div>					
+
+
+			</section>
+
+			<div id="goPageWfEdit"></div>
+			<!-- section worflow edit
+			=============================================================-->
+			<section id="pageWfEdit" ng-controller="ngwfWfEditController as vm">
+
+				<div ng-init="">
+					<div class="container">
+						
+						<section id="preview">
+							<div id="preview-content">
+								<div class="content-container">
+
+							<h2 class="text-center"><i class="fa fa-quote-left"></i>&nbsp;<strong>Now<strong> let's have a try :&nbsp;<i class="fa fa-quote-right"></i></h2>
+							<h6 class="text-center">Discover easy form generator here&nbsp;<i class="fa fa-smile-o"></i></h6>
+							<hr/>									
+
+							      <!-- taoster alert -->
+							      <toaster-container  toaster-options="{
+							                                          'position-class': 'toast-top-full-width', 
+							                                  		  'extendedTimeout':500,
+							                                          'timeOut':500,                          
+							                                          }">
+							      </toaster-container>
+
+								  <tabset justified="true">
+
+								 
+
+								    <tab select="tabJustSelected(2)" active="tab.editTab.active" heading="Edit /Create">
+
+								    	<div class="row">											
+
+											<!-- STEP INDICATOR -->
+											<div class="row stepwizardTopmargin">
+												<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+													
+													<div class="stepwizard">
+													    <div class="row stepwizard-row">
+													        <div class="stepwizard-step col-md-3">
+													            <button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[0], 'btn-default': !configuration.stepIndicators[0]}" >0</button>
+													            <p>lines</p>
+													        </div>
+													        <div class="stepwizard-step col-md-3">
+													            <button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[1], 'btn-default': !configuration.stepIndicators[1], 'disabled': (configuration.configStepCounter < 1)}"  >1</button>
+													            <p>layout</p>
+													        </div>
+													        <div class="stepwizard-step col-md-3">
+													            <button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[2], 'btn-default': !configuration.stepIndicators[2], 'disabled': (configuration.configStepCounter < 2)}" >2</button>
+													            <p>controls</p>
+													        </div>
+													        <div class="stepwizard-step col-md-3">
+													            <button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[3], 'btn-default': !configuration.stepIndicators[3], 'disabled': (configuration.configStepCounter < 3)}" >3</button>
+													            <p>save</p>
+													        </div>
+													    </div>
+													</div>
+												</div>
+											</div>
+
+										
+										</div>
+
+								    	<div class="row">
+
+											<ul class="pager">
+
+											  <li ng-class="{'disabled':stepIndicators[0]}">
+											  	<button class="btn btn-primary customPagerButton" ng-click="previousConfigStep()" >
+											  		<i class="fa fa-arrow-left fa-2x pull-left"></i>
+											  		<span class="pull-right">Prev</span>
+											  	</button>
+											  </li>
+
+											  <li ng-class="{'disabled':stepIndicators[3]}">
+												  <button class="btn btn-primary customPagerButton" ng-click="nextConfigStep()">
+													  <span class="pull-left">Next</span>
+													  <i class="fa fa-arrow-right fa-2x pull-right"></i>
+												  </button>
+											  </li>
+											</ul>
+
+
+								    	  <div class="animate-switch-container" ng-switch on="configuration.listConfigStep[configuration.configStepCounter]">
+
+									    	<div class="animate-switch" ng-switch-when="init">
+									    				   
+										    		<div class="col-md-4" >
+												    		<div id="commandPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+															  </div>
+
+
+															  <div class="panel-body">
+
+															  	<div class="row">
+															  		<div class="col-md-12">
+															  			<span class="addNewLine">Add a new line :</span>&nbsp;
+															   			<button class="btn btn-primary" ng-click="addNewline()"><i class="fa fa-plus fa-1x"></i></button>												  			
+															  		</div>
+															  	</div>
+
+															  </div>
+															</div>
+														</div>
+										    		</div>	    	
+
+										    		<div class="col-md-8">
+											    		<div id="visualPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+															  </div>
+															  <div class="panel-body">
+
+															  		<!-- lines -->
+																	<ul class="list-group">
+																	  <li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	    	<!-- columns -->
+																	    	<div ng-switch on="line.columns.length">
+
+																	    		<div class="row linesList" ng-switch-when="1">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+																    					<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																						<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																						<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																    				</div>
+
+																	    			<div class="col-md-12">	
+																	    				<div class="col-md-12 well">		
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>
+																	    				</div>		
+																	    			</div>
+																	    		</div>
+
+																	    		<div class="row linesList" ng-switch-when="2">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																    					<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																						<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																						<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																    				</div>																    		
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-6 well">
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>
+																	    				</div>
+																	    				<div class="col-md-6 well">		
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button> 
+																	    				</div>								    	
+																	    			</div>
+																	    		</div>	
+
+
+																	    		<div class="row linesList" ng-switch-when="3">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+																    					<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																						<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																						<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																    				</div>																    		
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-4 well">			
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>
+																	    				</div>
+																	    				<div class="col-md-4 well">				
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button>
+																	    				</div>
+																	    				<div class="col-md-4 well">	   
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																	    					</button> 
+																	    				</div>		
+																	    			</div>
+																	    		</div>									    								    		
+
+																	    	</div>
+
+																	  </li>
+																	</ul>
+
+
+															  </div>
+															</div>
+														</div>
+										    		</div>
+											</div>
+
+									    	<div class="animate-switch" ng-switch-when="first">
+									    				
+										    	<div class="col-md-4">
+
+												    <div id="commandPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+															  </div>
+
+															  <div class="panel-body">
+
+															  	<div class="row">
+															  		<div class="col-md-12">
+															  			<h4 class="numberOfcolumsText text-center"><i>– Selected line –</i></h4>
+															  			<h4 class="numberOfcolumsText text-center">number of columns :</h4>
+															  		</div>
+															  	</div>
+
+															   	<div class="row">
+															   		<div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+															   			<button class="btn btn-primary pull-right btnMinusColumns" ng-click="decreaseNumberOfColumns()"><i class="fa fa-minus fa-1x"></i></button>
+															   		</div>
+															   		<div class="col-xs-2 col-sm-2 col-md-2 text-center">
+															   			<span class="numberOfColumnsLabel ">{{configuration.lines[configuration.activeLine -1].columns.length}}</span>
+															   		</div>
+															   		<div class="col-xs-2 col-sm-2 col-md-2">
+															   			<button class="btn btn-primary pull-left btnAddColumns" ng-click="increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
+																	</div>								   										   		
+															   	</div>
+
+															  </div>
+															</div>
+														</div>
+
+										    		</div>	    	
+
+
+										    		<div class="col-md-8">
+
+											    		<div id="visualPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+															  </h3>
+															  </div>
+															  <div class="panel-body">
+
+															  		<!-- lines / columns -->
+																	<ul class="list-group">
+																	  <li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	    	<!-- columns -->
+																	    	<div ng-switch on="line.columns.length">
+
+																	    		<div class="row linesList" ng-switch-when="1">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>
+																    						
+																    				</div>
+
+																	    			<div class="col-md-12">	
+																	    				<div class="col-md-12 well">
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>
+																	    					
+																	    							
+																	    				</div>		
+																	    			</div>
+																	    		</div>
+
+																	    		<div class="row linesList" ng-switch-when="2">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>	
+																    				</div>																    		
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-6 well">
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>					
+																	    				</div>
+																	    				<div class="col-md-6 well">	
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button>		
+																	    				</div>								    	
+																	    			</div>
+																	    		</div>	
+
+
+																	    		<div class="row linesList" ng-switch-when="3">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>
+																    				</div>																    		
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-4 well">			
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>	
+																	    				</div>
+																	    				<div class="col-md-4 well">				
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button>	
+																	    				</div>
+																	    				<div class="col-md-4 well">	   
+																	    					<button class="btn btn-lg btn-block  btn-default disabled">
+																	    							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																	    					</button>	
+																	    				</div>		
+																	    			</div>
+																	    		</div>									    								    		
+																	    	</div>
+
+																	  </li>
+																	</ul>
+
+															  </div>
+															</div>
+														</div>
+
+										    		</div>
+											</div>
+
+									    	<div class="animate-switch" ng-switch-when="second">
+									    				   
+										    		<div class="col-md-4">
+													    <div id="commandPanel">
+																<div  class="panel panel-default">
+																  <div class="panel-heading">
+																    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+																  </div>
+
+																  <div class="panel-body">
+
+																  	<div class="row">
+																  		<div class="col-md-12">
+																  			<h4 class="numberOfcolumsText text-center">– Apply controls to columns –</h4>
+																  		</div>
+																  	</div>
+
+																   	<div class="row">
+
+																   		<div class="col-lg-12" >
+																		   
+																		   	  <hr/>
+
+																		   	  <!-- <p class="numberOfcolumsText text-center"><i class="fa fa-question-circle"></i>&nbsp; <b>How to :</b></p> -->
+
+																		   	  <blockquote>
+																			  	<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Click / Tap on column to open control selection.</p> 
+																			  	<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Select desired control and valid to apply it to column.</p>
+																			</blockquote>												   		
+																   		</div>
+
+
+																   		<!-- <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+																   			<button class="btn btn-primary pull-right btnMinusColumns" ng-click="decreaseNumberOfColumns()"><i class="fa fa-minus fa-1x"></i></button>
+																   		</div>
+																   		<div class="col-xs-2 col-sm-2 col-md-2 text-center">
+																   			<span class="numberOfColumnsLabel ">{{configuration.lines[configuration.activeLine -1].columns.length}}</span>
+																   		</div>
+																   		<div class="col-xs-2 col-sm-2 col-md-2">
+																   			<button class="btn btn-primary pull-left btnAddColumns" ng-click="increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
+																		</div>	 -->							   										   		
+																   	</div>
+
+																  </div>
+																</div>
+														</div>
+										    		</div>	    	
+
+										    		<div class="col-md-8">
+
+											    		<div id="visualPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+															  </h3>
+															  </div>
+															  <div class="panel-body">
+
+															  		<!-- lines / columns -->
+																	<ul class="list-group">
+																	  <li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	    	<!-- columns -->
+																	    	<div ng-switch on="line.columns.length">
+
+																	    		<div class="row linesList" ng-switch-when="1">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>
+																    						
+																    				</div>
+
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-12 well">			
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>	
+																	    				</div>	
+																	    			</div>
+																	    		</div>
+
+																	    		<div class="row linesList" ng-switch-when="2">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>	
+																    				</div>	
+																    				<div class="col-md-12">															    		
+																	    				<div class="col-md-6 well">			
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>	
+																	    				</div>
+																	    				<div class="col-md-6 well">				
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 1)">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button>	
+																	    				</div>
+																	    			</div>	
+																	    		</div>	
+
+																	    		<div class="row linesList" ng-switch-when="3">
+																    				<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																	    					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																	    					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																	    					</button>
+																    				</div>																    		
+																	    			<div class="col-md-12">
+																	    				<div class="col-md-4 well">			
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																	    							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																	    					</button>	
+																	    				</div>
+																	    				<div class="col-md-4 well">				
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 1)">
+																	    							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																	    					</button>	
+																	    				</div>
+																	    				<div class="col-md-4 well">	   
+																	    					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[2].control.edited, 'btn-success': line.columns[2].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 2)">
+																	    							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																	    					</button>	
+																	    				</div>		
+																	    			</div>
+																	    		</div>									    								    		
+
+																	    	</div>
+
+																	  </li>
+																	</ul>
+
+															  </div>
+															</div>
+														</div>
+
+
+
+
+
+										    		</div>
+											</div>	
+
+
+											<div class="animate-switch" ng-switch-when="third">
+									    				   
+										    		<div class="col-md-4">
+												    		<div id="commandPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;Command</h3>
+															  </div>
+															  <div class="panel-body">
+
+
+															    <div class="row">
+															    	<div class="col-xs-12">
+															    		
+																	    <div class="form-group">
+																	      <label for="inputSubmitButtontext" class=" greyText control-label">Customize Submit button Text :</label>
+																	      <div class="">
+																	        <input type="text" class="form-control" id="inputSubmitButtontext" placeholder="Submit button text" ng-model="configuration.submitButtonText">
+																	      </div>
+																	    </div>								
+															    	</div>												    
+															    </div>
+															    <hr/>
+
+															    <div class="row">
+															    	<div class="col-xs-12">
+															    		
+																	    <div class="form-group">
+																	      <label for="inputCancelButtontext" class=" greyText control-label">Customize Cancel button Text :</label>
+																	      <div class="">
+																	        <input type="text" class="form-control" id="inputCancelButtontext" placeholder="Cancel button text" ng-model="configuration.cancelButtonText">
+																	      </div>
+																	    </div>								
+															    	</div>												    
+															    </div>
+															    <hr/>
+
+															    <!-- <div class="row">
+															    	<div class="col-xs-12">
+															    		
+																	    <div class="form-group">
+																	      <label for="inputNameFormtext" class=" greyText control-label">Name to this form :</label>
+																	      <div class="">
+																	        <input type="text" class="form-control" id="inputNameFormtext" placeholder="Enter formName" ng-model="configuration.formName">
+																	      </div>
+																	    </div>								
+															    	</div>												    
+															    </div> -->
+
+															    <button class="btn btn-primary btn-block btn-lg" ng-click="saveThisForm()">save this form</button>
+
+															  </div>
+															</div>
+														</div>
+										    		</div>	    	
+
+										    		<div class="col-md-8">
+											    		<div id="visualPanel">
+															<div  class="panel panel-default">
+															  <div class="panel-heading">
+															    <h3 class="panel-title"><i class="fa fa-thumbs-o-up"></i>&nbsp;Final Step : form preview</h3>
+															  </div>
+															  <div class="panel-body">
+
+																<form ng-submit="vm.onSubmit()">
+
+																  <formly-form id="saveFormlyFom" model="vm.model" fields="vm.wfFormFields">
+
+																   <span class="pull-right">
+																    <button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
+																    <button class="btn btn-primary" type="cancel">{{configuration.cancelButtonText}}</button>
+																   </span>
+
+																  </formly-form>
+
+
+																</form>	
+
+															  </div>
+															</div>
+														</div>
+										    		</div>
+											</div>
+
+										</div>
+
+
+								    	</div>
+								    </tab>	
+
+								    <tab select="tabJustSelected(1)" active="tab.previewTab.active" heading="Preview">
+
+
+										<div class="panel panel-default">
+										  <div class="panel-body">
+												<!-- formly here -->
+												<form ng-submit="vm.onSubmit()">
+												  <formly-form id="previewFormlyForm" model="vm.model" fields="vm.wfFormFields">
+
+												  <span class="pull-right">
+												    <button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
+												    <button class="btn btn-primary" type="cancel">{{configuration.cancelButtonText}}</button>
+												   </span>
+
+												  </formly-form>
+												</form>	
+	    
+										  </div>
+										</div>
+
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<p>DATA MODEL</p>
+												<pre>
+													{{vm.model | json}}
+												</pre>
+											</div>
+										</div>
+	
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<p>FIELDS MODEL (ready to save to database one)</p>
+												<pre>
+													{{vm.wfFormFieldsOnlyNeededProperties | json}}
+												</pre>
+											</div>
+										</div>
+
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<p>YOUR FORM HTML :</p>
+												<small>Anyhow your form is complicated your resulting html form remains unchanged :</small>
+												<code-mirror lang="HTML" model="vm.formHtml"></code-mirror>
+											</div>
+										</div>
+
+										
+
+								    </tab>
+								  </tabset>
+								</div>
+							</div>
+						</section>
+
+						<hr/>
+						<section>
+
+
+
+
+
+							<h6 class="text-right">
+
+								angular - Easy form generator Website : {{easyFormGeneratorWbesiteVERSION}} — by Erwan DATIN (MacKentoch)
+
+								&nbsp;	
+					          	<a class="socialIcon" target="_blank" href="https://github.com/MacKentoch"><span class="text-center"><i class="fa fa-github"></i></span></a>
+					          	&nbsp;
+					          	<a class="socialIcon" target="_blank" href="https://twitter.com/erwan_datin"><span class="text-center"><i class="fa fa-twitter"></i></span></a>
+
+							</h6>
+						</section>
+					</div>
+				</div>
+			</section>
+
+		</div>	
+
+
+		<!-- modal 
+		=============================================================-->
+
+		<!-- As static example, modal html is placed here -->
+		<!-- when executed from a server, it could be (and would be better) from file : public/clientMVC/htmlTemplates/modalWfEdit.html  -->
+		<script type="text/ng-template" id="modalWfEdit.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title greyText">Select a control</h3>
+        </div>
+        <div class="modal-body">
+
+            <hr/>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5 class="greyText"><i class="fa fa-filter"></i>&nbsp; Select a control in the list below :</h5>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                
+                    <ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-model="modelNyaSelect" data-live-search="false">
+                        <li nya-bs-option="option in nyaSelect.controls group by option.group">
+                          <span class="dropdown-header greyText">{{$group}}</span> <!-- group header cannot be searched -->
+                          <a ng-click="selectThisControl(option.id)">
+                            <span>{{ option.name }}</span> 
+                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                          </a>
+                        </li>
+                    </ol>
+
+                </div>
+            </div>
+
+            <hr/>
+
+
+
+            <div ng-switch on="nyaSelect.selectedControl">
+                
+                <div ng-switch-when="none">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h5 class="text-center texteRouge"> <i class="fa fa-arrow-up"></i>&nbsp; Select a control</h5>
+                            </div>                
+                        </div>
+                </div>
+
+
+                <div ng-switch-when="empty">
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h5 class="text-center greyText">Column will be blank</h5>
+                                </div>                
+                            </div>
+                            </div>
+                            </div>
+                </div>                
+
+                <div ng-switch-when="Header">
+                        <!-- TextInput -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+                                                                          
+                                      <div class="">
+
+                                        <h2 class="text-center">{{nyaSelect.temporyConfig.formlyDesciption}}</h2>
+                                        <hr/>
+
+                                      </div>
+
+                                    </div>
+
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Header text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputHeaderTextUpdate" placeholder="Add / edit header text here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>
+
+                <div ng-switch-when="Subtitle">
+                        <!-- TextInput -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+                                                                         
+                                      <div class="">
+
+                                        <h4 class="text-center">{{nyaSelect.temporyConfig.formlyPlaceholder}}</h4>
+                                        <hr/>
+
+                                      </div>
+
+                                    </div>
+
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputSubTitleTextUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Subtitle text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputSubTitleTextUpdate" placeholder="Add / edit subtitle text here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>                
+
+                <div ng-switch-when="TextInput">
+                        <!-- TextInput -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                      <label for="inputText" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+                                      
+                                      <div class="">
+                                        <input type="text" class="form-control" id="inputText" placeholder="{{nyaSelect.temporyConfig.formlyPlaceholder}}">
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                      </div>
+
+                                    </div>
+
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextplaceholderUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputTextplaceholderUpdate" placeholder="Add / edit placeholder text here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>
+
+                <div ng-switch-when="Password">
+                        <!-- password -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <div class="row">    
+
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                    <label for="inputPassword" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+
+                                      <div class="">
+                                        <input type="password" class="form-control" id="inputPassword" placeholder="{{nyaSelect.temporyConfig.formlyPlaceholder}}">
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                      </div>
+
+
+                                    </div>
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div>  
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextplaceholderUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputTextplaceholderUpdate" placeholder="Add / edit placeholder text here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>   
+
+                <div ng-switch-when="Date">
+                        <!-- datetimepicker (input type date not ok in all browsers) -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                      <label for="inputDate" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+                                      
+                                      <div class="">
+                                        
+										<div class="input-group" >
+										  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+										  
+										  <input type="text" class="form-control" datepicker-popup="{{nyaSelect.temporyConfig.datepickerPopup}}" ng-model="demodt.dt" is-open="demodt.opened" min-date="demodt.minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" ng-click="open($event)" />
+										</div>
+
+							            </p>         
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                      </div>
+                                    </div>
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label greyText editPropertiesLabel">Date format :</label>
+                                      <div class="col-lg-9">
+
+                                        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="nyaSelect.temporyConfig.datepickerPopup" id="dateformatSelect">
+                                          <li class="nya-bs-option" nya-bs-option="dateformat in demodt.formats" value="dateformat">
+                                            <a>{{dateformat}}</a>
+                                          </li>
+                                        </ol>
+
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>                         
+
+                <div ng-switch-when="Texarea">
+                        <!-- textarea -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                      <label for="textArea" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+                                      <div class="">
+                                        <textarea class="form-control" ng-model="model[options.key]" rows="3" id="textArea"></textarea> 
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>          
+                                      </div>
+
+                                    </div>                    
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div> 
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div> 
+
+                <div ng-switch-when="RichTextEditor">
+                        <!-- TextInput -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                      <label for="RichTextEditor" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+                                      
+                                      <div class="">
+                                                                            
+                                        <text-angular ng-model="model[options.key]"></text-angular>
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                      </div>
+
+                                    </div>
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>                
+
+                <div ng-switch-when="Radio">
+                        <!-- radios -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>                           
+
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+                                      
+                                      <label for="basicSelect" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+                                      <div class="">
+
+                                        <div class="radio" ng-repeat="radioRow in radioRowCollection.rows">
+                                          <label>
+                                            <input type="radio" name="optionsRadios" id="{{'optionsRadio-' + $index}}" value="$index" checked="">
+                                            {{radioRow.option}}
+                                          </label>
+                                        </div>
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+
+                                      </div>
+                                    </div>                            
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label for="radioRowCollection" class=" control-label greyText editPropertiesLabel">Add new radio :</label>  
+                               </div>
+                            </div>
+
+                            <div class="row">
+                                <div>
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
+                                        <input type="text" class="form-control" id="inputAddNewRadioOption" placeholder="add new radio" ng-model="newOptionRadio.saisie">
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+                                            <button class="btn btn-primary" ng-click="addNewOptionRadio()">add</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label for="radioRowCollection" class=" control-label greyText editPropertiesLabel">Edit/Remove radio :</label>  
+                               </div>
+                            </div>
+                            <div class="row">
+                                   <div class="form-group">
+
+                                    <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        
+                                        <div class="container">
+
+                                            <div ng-show="radioRowCollection.rows.length === 0">
+                                                <h5 class="text-center greyText"><em>- no radio : add new radio values -</em></h5>
+                                            </div>  
+
+
+                                            <table ng-if="radioRowCollection.rows.length > 0" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th st-ratio="20">order</th>
+                                                    <th st-ratio="55">option</th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th st-ratio="20"></th>
+                                                    <th st-ratio="55">
+                                                        <input ng-model="radioFilter" placeholder="search for option" class="input-sm form-control" type="search"/>
+                                                    </th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>  
+                                                    <tr ng-repeat="radioRow in radioRowCollection.rows | filter:radioFilter as radioRow">
+                                                        <td st-ratio="20">{{$index}}</td>
+                                                        <td st-ratio="55">{{radioRow.option}}</td>
+                                                        <td st-ratio="25">
+                                                         
+                                                            <div class="pull-right">
+                                                                <button class="btn btn-primary" ng-click="upThisRadioRow($index)"><i class="fa fa-arrow-up"></i></button>
+                                                                
+                                                                <button class="btn btn-primary" ng-click="downThisRadioRow($index)"><i class="fa fa-arrow-down"></i></button>    
+
+                                                                <button class="btn btn-danger" ng-click="removeRadioRow($index)"><i class="fa fa-trash-o"></i></button>
+                                                             </div>   
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+     
+                                            </table>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+                            <hr/>
+
+
+
+                            <div class="marginTopFivepixels"></div>
+                            
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>
+
+                <div ng-switch-when="Checkbox">
+                        <!-- checkbox -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/> 
+
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    
+                                        <div class="form-group">
+
+                                          <div class="col-md-12">                                
+                                            <div class="checkbox">
+                                              <label>
+                                                <input type="checkbox" id="checkBox"> <span class="blackText">{{nyaSelect.temporyConfig.formlyLabel}}</span><span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span>
+                                              </label>
+                                              
+                                            </div>
+                                            <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                          </div>
+
+                                        </div>                   
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div> 
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>
+
+                <div ng-switch-when="BasicSelect">
+
+                        <!--  basic selects -->
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                      <label for="basicSelect" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+                                      <div class="">
+
+                                        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="modelbasicSelect" id="basicSelect" disabled="basicSelectRowCollection.rows.length === 0">
+                                          <li class="nya-bs-option" nya-bs-option="basicSelectRow in basicSelectRowCollection.rows" value="$index">
+                                            <a>{{basicSelectRow.option}}</a>
+                                          </li>
+                                        </ol>
+
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+
+                                      </div>
+
+                                    </div>
+                                </div>                    
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label for="basicSelectRowCollection" class=" control-label greyText editPropertiesLabel">Add new options :</label>  
+                               </div>
+                            </div>
+
+                            <div class="row">
+                                <div>
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
+                                        <input type="text" class="form-control" id="inputAddNewBasicOption" placeholder="add new option" ng-model="newOptionBasicSelect.saisie">
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+                                            <button class="btn btn-primary" ng-click="addNewOptionBasicSelect()">add</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>                            
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label  class=" control-label greyText editPropertiesLabel">Edit/Remove options :</label>  
+                               </div>
+                            </div>
+                            <div class="row">
+                                   <div class="form-group">
+
+                                    <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="container">
+
+                                            <div ng-if="basicSelectRowCollection.rows.length === 0">
+                                                <h5 class="text-center greyText"><em>- no option : add new options -</em></h5>
+                                            </div>  
+
+                                            <table ng-if="basicSelectRowCollection.rows.length > 0" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th st-ratio="20">order</th>
+                                                    <th st-ratio="55">option</th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th st-ratio="20"></th>
+                                                    <th st-ratio="55">
+                                                        <input ng-model="basicSelectFilter" placeholder="search for option" class="input-sm form-control" type="search"/>
+                                                    </th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="basicSelectRow in basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow">
+                                                    <td st-ratio="20">{{$index}}</td>
+                                                    <td st-ratio="55">{{basicSelectRow.option}}</td>
+                                                    <td st-ratio="25">
+                                                     
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-primary" ng-click="upThisRow($index)"><i class="fa fa-arrow-up"></i></button>
+                                                            
+                                                            <button class="btn btn-primary" ng-click="downThisRow($index)"><i class="fa fa-arrow-down"></i></button>    
+
+                                                            <button class="btn btn-danger" ng-click="removeRow($index)"><i class="fa fa-trash-o"></i></button>
+                                                         </div>   
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+                            <hr/>
+
+
+
+                            <div class="marginTopFivepixels"></div>
+                            
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div>                
+
+
+                <!-- grouped selects -->
+                <div ng-switch-when="GroupedSelect">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+                                      
+                                    
+                                     <label for="select" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+                                      <div class="">
+
+                                       <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="modelGroupedSelect" data-live-search="true" disabled="groupedSelectRowCollection.rows.length === 0">
+
+                                        <li nya-bs-option="groupedSelectRow in groupedSelectRowCollection.rows group by groupedSelectRow.group" value="$index"
+                                        >
+                                          <span class="dropdown-header">{{groupedSelectRow.group}}</span> 
+                                          <a>
+                                            <span>{{groupedSelectRow.option}}</span>
+                                            <span class="glyphicon glyphicon-ok check-mark"></span>
+                                          </a>
+                                        </li>
+
+                                      </ol>
+                                      <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+
+                                      </div>
+                                    </div>
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label for="groupedSelectRowCollection" class=" control-label greyText editPropertiesLabel">Add new options :</label>  
+                               </div>
+                            </div>
+
+                            <div class="row">
+                                <div>
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
+                                        <input type="text" class="form-control" id="inputAddNewGroupedOption" placeholder="add new option" ng-model="newOptionGroupedSelect.saisie">
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+                                            <button class="btn btn-primary" ng-click="addNewOptionGroupedSelect()">add</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> 
+
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label for="groupedSelectRowCollection" class=" control-label greyText editPropertiesLabel">Add new groups :</label>  
+                               </div>
+                            </div>
+
+                            <div class="row">
+                                <div>
+
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
+                                            <input  id="inputAddNewGroupGroupedOption" type="text" class="form-control" ng-model="newGroupGroupedSelect.saisie" id="inputTextLabelUpdateGroupedSelect" placeholder="Add new group">
+                                        </div>
+
+                                        <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+                                            <button class="btn btn-primary" ng-click="addNewGroupToGroupedSelect()">add</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3">                                       
+                                  <label  class=" control-label greyText editPropertiesLabel">Edit/Remove options/groups:</label>  
+                               </div>
+                            </div>
+
+                            <div class="row">
+                                   <div class="form-group">
+
+                                    <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="container">
+
+                                            <div ng-if="groupedSelectRowCollection.rows.length === 0">
+                                                <h5 class="text-center greyText"><em>- no option : add new options -</em></h5>
+                                            </div>  
+
+                                            <table ng-if="groupedSelectRowCollection.rows.length > 0" class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th st-ratio="20">order</th>
+                                                    <th st-ratio="25">group</th>
+                                                    <th st-ratio="30">option</th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th st-ratio="20"></th>
+                                                    <th st-ratio="25"></th>
+                                                    <th st-ratio="30">
+                                                        <input ng-model="groupedSelectFilter" placeholder="search for option" class="input-sm form-control" type="search"/>
+                                                    </th>
+                                                    <th st-ratio="25"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="groupedSelectRow in groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow">
+                                                    <td st-ratio="20">{{$index}}</td>
+                                                    <td st-ratio="25">
+                                                        <div ng-if="groupSelectGroupClick.showList === true">          
+                                                        
+                                                        <div ng-if="GroupedSelectGroups.list.length === 0">
+                                                            <p class="text-left noGroupText">- add new groups -</p>
+                                                        </div>
+
+                                                        <div ng-if="GroupedSelectGroups.list.length > 0">
+                                                            <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect" ng-model="groupedSelectRow.group" id="modelGroupedOptionGroupedChoose"
+                                                            disabled="GroupedSelectGroups.list.length === 0">
+                                                              <li class="nya-bs-option" nya-bs-option="GroupedSelectGroup in GroupedSelectGroups.list" value="GroupedSelectGroup">
+                                                                <a>{{GroupedSelectGroup}}</a>
+                                                              </li>
+                                                            </ol> 
+                                                        </div>
+                                                       
+                                                        </div>
+                                                        <div ng-if="groupSelectGroupClick.showList === false">
+                                                        {{groupedSelectRow.group}}
+                                                        </div>
+                                                    </td>
+                                                    <td st-ratio="30">{{groupedSelectRow.option}}</td>
+                                                    <td st-ratio="25">
+                                                     
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-primary" ng-click="upThisGroupedSelectRow($index)"><i class="fa fa-arrow-up"></i></button>
+                                                            
+                                                            <button class="btn btn-primary" ng-click="downThisGroupedSelectRow($index)"><i class="fa fa-arrow-down"></i></button>  
+
+                                                            <button class="btn btn-warning" ng-click="showGroupListToChoose()"><i class="fa fa-pencil-square-o"></i> </button>
+                                                             
+
+                                                            <button class="btn btn-danger" ng-click="removeGroupedSelectRow($index)"><i class="fa fa-trash-o"></i></button>
+                                                         </div>   
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                   </div>
+                            </div>
+ 
+                            <hr/>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div>                                              
+                </div>   
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-class="{'disabled': nyaSelect.selectedControl === 'none'}" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+
+		</script>
+
+
+		<!-- carousel modal -->
+	    <script type="text/ng-template" id="imgCarouselModelTemplate.html">
+
+			  <div class="modal-header">
+				<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        
+		      </div>
+
+	        <div class="modal-body">
+
+
+	          <div style="height: 625px">
+	            <carousel interval="myInterval">
+	              
+	              <slide ng-repeat="slide in slides" active="slide.active">
+	              
+	                <img ng-src="{{slide.image}}" style="margin:auto;">
+					
+					<div class="carousel-caption">
+	                  <p>{{slide.text}}</p>
+	                </div>
+	              </slide>
+
+	            </carousel>
+	          </div>
+	          
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-warning pull-right" ng-click="cancel()">close</button>
+	        </div>
+	    </script>
+
+
+	    <!-- modal save  result to html -->
+	    <script type="text/ng-template" id="modalSaveResult2Html.html">
+		  
+		  <div class="modal-header">
+			<button type="button" class="close" ng-click="cancelSaveResult2Html()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title"><i class="fa fa-floppy-o"></i>&nbsp;YOUR FORM IN A COMPLETE HTML</h4>
+	      </div>
+
+	   		<div class="modal-body">
+	          <div>
+	          		
+					<small><mark>Select all HTML below</mark> — copy / paste (<kbd><kbd>ctrl</kbd> + <kbd>c</kbd></kbd> <kbd><kbd>ctrl</kbd> + <kbd>v</kbd></kbd>) it to a file then save as <mark>.html</mark>. </small>
+					
+
+					<!-- ng-clip not working here since a static website -->
+					<!--<button class="btn btn-primary btn-block" clip-click-fallback="fallback(copy)" clip-copy="" clip-click="getTextToCopy()" clip-copy-mime-type="text/html" clip-click=""
+					 >Copy!</button>-->
+					 
+
+					 <div class="completeHtmlHowToCopy">
+					<code-mirror  lang="HTML" model="resultToHtml.resultStringToSave"></code-mirror>
+					</div>
+
+	          </div>
+	          
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-warning pull-right" ng-click="cancelSaveResult2Html()">close</button>
+	        </div>
+	    </script>
+
+		<!-- footer 
+		=============================================================-->
+		<footer id="pageFooter">
+			<!-- jquery framework : top 1 priority -->
+			<script type="text/javascript" src="./public/lib/js/jquery.min.js"></script>
+			<!-- bootstrap framework scripts -->
+			<script type="text/javascript" src="./public/lib/js/bootstrap.min.js"></script>
+			<!-- angular ui bootstrap -->
+			<script type="text/javascript" src="./public/lib/js/ui-bootstrap-tpls.min.js"></script>
+
+			<!-- angular app all concatenated here (app, controllers directives, containers ...) -->
+			<script type="text/javascript" src="./public/clientMVC/main/clientMVC.min.js"></script>
+
+			<!-- textAngular Includes -->
+			<script src='./public/lib/js/textAngular-rangy.min.js'></script>
+			<script src='./public/lib/js/textAngular-sanitize.min.js'></script>
+			<script src='./public/lib/js/textAngular.min.js'></script> 
+
+			<!-- lodash -->
+			<script src='./public/lib/js/lodash.min.js'></script> 
+
+			<!-- ngAside -->
+			<!-- <script type="text/javascript" src="./public/lib/js/angular-aside.min.js"></script> -->
+
+			<!-- angular-strap.min.js -->
+			<!-- <script type="text/javascript" src="./public/lib/js/angular-strap.min.js"></script> -->
+			<!-- angular-strap.tpl.min.js -->
+			<!-- <script type="text/javascript" src="./public/lib/js/angular-strap.tpl.min.js"></script> -->
+
+			<!-- angular semantic UI -->
+			<!-- <script type="text/javascript" src="./public/lib/js/angular-semantic-ui.min.js"></script> -->
+
+			<!-- angular-scroll.min -->
+			<script type="text/javascript" src="./public/lib/js/angular-scroll.min.js"></script>			
+
+			<script type="text/javascript" src="./public/lib/js/angular-resource.min.js"></script>
+			<!-- angular animate -->
+			<script type="text/javascript" src="./public/lib/js/angular-animate.min.js"></script>
+			<!-- angular toaster -->
+			<script type="text/javascript" src="./public/lib/js/toaster.min.js"></script>
+			<!-- nya select bootstrap -->		
+			<script type="text/javascript" src="./public/lib/js/nya-bs-select.min.js"></script>
+			<!--  api-check = formly needed : IMPORTANT : always before formly -->
+			<script type="text/javascript" src="./public/lib/js/api-check.min.js"></script> 
+			<!-- angular formly -->
+			<script type="text/javascript" src="./public/lib/js/formly.min.js"></script> 
+			<!-- angular formly template bootstrap -->
+			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script> 
+			<!-- ZeroClipboard -->
+			<script type="text/javascript" src="./public/lib/js/ZeroClipboard.min.js"></script> 
+			<!-- ng-clip -->
+			<script type="text/javascript" src="./public/lib/js/ng-clip.min.js"></script> 
+			<!-- ng-code-mirror -->
+			<script type="text/javascript" src="./public/lib/js/angular-code-mirror.min.js"></script> 
+
+    		<!--scripts app uglified and concated : main.js script + IE10 viewport hack -->
+    		<script type="text/javascript" src="./public/js/app_nav.min.js"></script>
+		</footer>
+
+	</body>
+</html>
+
+
+
+
+
+
+

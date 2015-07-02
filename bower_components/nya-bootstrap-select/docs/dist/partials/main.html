@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li ng-repeat="article in articles" ui-sref-active="active">
+        <a ui-sref="{{article.state}}">{{article.title}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-10">
+    <div ui-view>
+      <div class="loading-container">
+        <img class="loading-icon" src="svg-loaders/grid.svg" alt="Loading..."/>
+      </div>
+    </div>
+  </div>
+</div>

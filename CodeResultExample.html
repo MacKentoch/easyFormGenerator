@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Bootswatch "paper" used in easy form website : feel free to use your own -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- animate -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css" rel="stylesheet">
+    <!-- textAngular -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.1/dist/textAngular.css'>
+    <!-- This is nya select : bootstrap template style  -->    
+    <link href="https://rawgit.com/lordfriend/nya-bootstrap-select/master/dist/css/nya-bs-select.min.css" rel="stylesheet">    
+    <style type="text/css">
+      body {
+        margin: 20px
+      }
+      .formly-field {
+        margin-bottom: 16px;
+      }
+    </style>
+    <title>Your form</title>
+  </head>
+  <body ng-app="demoApp" ng-controller="MainCtrl as vm">
+    <div>
+      <div class="jumbotron text-center">
+        <h1>Congratulation! &nbsp;<i class="fa fa-thumbs-o-up"></i></h1>
+        <p>here is your form you've just created :</p>
+      </div>
+      <hr />
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <!-- here is the simple HTML you need (everything else is decoration) : -->
+            <form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
+              <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+                <button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="vm.form.$invalid">{{vm.submitButtonText}}</button>
+                <button type="button" class="btn btn-default pull-right" ng-click="vm.options.resetModel()">{{vm.cancelButtonText}}</button>
+              </formly-form>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- jquery framework -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+      <!-- bootstrap framework scripts -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!-- angular ui bootstrap -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+      <!-- textAngular Includes -->
+      <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.1/dist/textAngular-rangy.min.js'></script>
+      <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.1/dist/textAngular-sanitize.min.js'></script>
+      <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.1/dist/textAngular.min.js'></script> 
+      <!-- This is nya select : bootstrap template js  -->
+      <script src="https://rawgit.com/lordfriend/nya-bootstrap-select/master/dist/js/nya-bs-select.min.js"></script>
+      <!-- apiCheck is used by formly to validate its api -->
+      <script src="https://rawgit.com/kentcdodds/api-check/master/dist/api-check.min.js"></script>
+      <!-- This is the current state of master for formly core. -->
+      <script src="https://rawgit.com/formly-js/angular-formly/master/dist/formly.js"></script>
+      <!-- This is the current state of master for the bootstrap templates -->
+      <script src="https://rawgit.com/formly-js/angular-formly-templates-bootstrap/master/dist/angular-formly-templates-bootstrap.js"></script>
+      <!-- angular scripts : -->
+      <script type="text/javascript">
+      //////////////////////////////
+      // demo application
+      /////////////////////////////
+      var demoApp = angular.module('demoApp', [ 
+                                              'textAngular',                   
+                                              'formly', 
+                                              'formlyBootstrap',
+                                              'ui.bootstrap',
+                                              'nya.bootstrap.select',
+                                              function () {
+      }]);
+      //////////////////////////////
+      // CONFIG HERE              
+      /////////////////////////////
+      demoApp.config([  'formlyConfigProvider', 
+                        function(formlyConfigProvider) {
+          formlyConfigProvider.setType(
+            {
+              name: 'richEditor',
+              template: '<text-angular class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'
+            }
+          );
+          formlyConfigProvider.setType(
+            {
+              name: 'blank',
+              template: '<div></div>'
+            }
+          );
+          var subTitleTemplate = '<div class="row"><div class=""><h4 class="text-center">{{options.templateOptions.placeholder}}<h4><hr/></div></div>';
+          formlyConfigProvider.setType(
+            {
+              name: 'subTitle',
+              template: subTitleTemplate
+            }
+          );
+        var basicSelectTemplate =   ' <ol   class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ' + 
+                                    '   ng-model="model[options.key || index]"  ' + 
+                                    '   id="{{id}}"  ' + 
+                                    '   disabled="options.templateOptions.options.length === 0"> ' + 
+                                    '   <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> ' + 
+                                    '     <a>{{option.name}}</a> ' + 
+                                    '   </li> ' + 
+                                    ' </ol>     ' ;
+         formlyConfigProvider.setType(
+            {
+              name: 'basicSelect',
+              template: basicSelectTemplate
+            }
+          );
+          var groupedSelectTemplate =   '  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ' +
+                                        '    ng-model="model[options.key || index]" ' +
+                                        '       data-live-search="true" ' +
+                                        '       disabled="options.templateOptions.options.length === 0">' +
+                                        '       <li nya-bs-option="option in  options.templateOptions.options group by option.group"  ' +
+                                        '       >' +
+                                        '         <span class="dropdown-header">{{$group}}</span>' + 
+                                        '         <a>' +
+                                        '           <span>{{option.name}}</span>' +
+                                        '           <span class="glyphicon glyphicon-ok check-mark"></span>' +
+                                        '         </a>' +
+                                        '       </li>' +
+                                        '     </ol>';
+         formlyConfigProvider.setType(
+            {
+              name: 'groupedSelect',
+              template: groupedSelectTemplate
+            }
+          );
+         // angular UI date picker
+         // thx Kent C. Dodds
+        var attributes = [
+          'date-disabled',
+          'custom-class',
+          'show-weeks',
+          'starting-day',
+          'init-date',
+          'min-mode',
+          'max-mode',
+          'format-day',
+          'format-month',
+          'format-year',
+          'format-day-header',
+          'format-day-title',
+          'format-month-title',
+          'year-range',
+          'shortcut-propagation',
+          'datepicker-popup',
+          'show-button-bar',
+          'current-text',
+          'clear-text',
+          'close-text',
+          'close-on-date-selection',
+          'datepicker-append-to-body'
+        ];
+        var bindings = [
+          'datepicker-mode',
+          'min-date',
+          'max-date'
+        ];
+        var ngModelAttrs = {};
+        angular.forEach(attributes, function(attr) {
+          ngModelAttrs[camelize(attr)] = {attribute: attr};
+        });
+        angular.forEach(bindings, function(binding) {
+          ngModelAttrs[camelize(binding)] = {bound: binding};
+        });
+        formlyConfigProvider.setType({
+          name: 'datepicker',
+          template: '<input  id="{{id}}" class="form-control" ng-click="open($event)" ng-model="model[options.key  || index]" is-open="to.isOpen" ng-click="to.isOpen = true" datepicker-options="to.datepickerOptions" />',
+          wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+          controller: ['$scope', function($scope) {
+             $scope.open = function($event) {
+              $event.preventDefault();
+              $event.stopPropagation();
+              $scope.opened = true;
+            };
+           }],
+          defaultOptions: {
+            ngModelAttrs: ngModelAttrs,
+            templateOptions: {
+              addonLeft: {
+                class: 'glyphicon glyphicon-calendar',
+                onClick: function(options, scope) {
+                  options.templateOptions.isOpen = !options.templateOptions.isOpen;
+                }
+              },       
+              onFocus: function($viewValue, $modelValue, scope) {
+                scope.to.isOpen = !scope.to.isOpen;
+              },
+              datepickerOptions: {}
+            }
+          }
+        });
+        function camelize(string) {
+          string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {
+            return chr ? chr.toUpperCase() : '';
+          });
+          // Ensure 1st char is always lowercase
+          return string.replace(/^([A-Z])/, function(match, chr) {
+            return chr ? chr.toLowerCase() : '';
+          });
+        } 
+       }]);   
+      //////////////////////////////////////////
+      // demo controller
+      //////////////////////////////////////////
+      demoApp.controller('MainCtrl', ['$scope',               
+                                      function ($scope, formlyVersion) {
+         console.info('controller loaded');
+         // submit function assignment
+          $scope.vm.onSubmit = onSubmit;
+          /////////////////////////
+          // variable assignment
+          /////////////////////////
+          //data model here :
+          $scope.vm.model = {};
+          //this model is the initial one
+          $scope.vm.initialFieldsModel = [
+              {
+                "template": "<div class=\"row\"><div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\"><h2 class=\"text-center\">Form main title here<h2></div></div><hr/>"
+              },
+              {
+                "className": "col-xs-12",
+                "type": "subTitle",
+                "key": "subTitle-1435697348926",
+                "templateOptions": {
+                  "type": "",
+                  "label": "",
+                  "required": false,
+                  "placeholder": "Subtitle : here fist line of the form",
+                  "description": "",
+                  "options": []
+                }
+              },
+              {
+                "className": "row",
+                "fieldGroup": [
+                  {
+                    "className": "col-xs-4",
+                    "type": "input",
+                    "key": "input-1435697627668",
+                    "templateOptions": {
+                      "type": "",
+                      "label": "A text input :",
+                      "required": true,
+                      "placeholder": "enter some text here",
+                      "description": "This text input will be required",
+                      "options": []
+                    }
+                  },
+                  {
+                    "className": "col-xs-4",
+                    "type": "input",
+                    "key": "input-1435697624234",
+                    "templateOptions": {
+                      "type": "password",
+                      "label": "A password input :",
+                      "required": true,
+                      "placeholder": "enter a password (fake is ok too)",
+                      "description": "This password is required (not blank is a good password)",
+                      "options": []
+                    }
+                  },
+                  {
+                    "className": "col-xs-4",
+                    "type": "datepicker",
+                    "key": "datepicker-1435697618753",
+                    "templateOptions": {
+                      "type": "",
+                      "label": "A date input :",
+                      "required": false,
+                      "placeholder": "",
+                      "description": "This is not required",
+                      "options": [],
+                      "datepickerPopup": ""
+                    }
+                  }
+                ]
+              },
+              {
+                "className": "row",
+                "fieldGroup": [
+                  {
+                    "className": "col-xs-4",
+                    "type": "basicSelect",
+                    "key": "basicSelect-1435697684269",
+                    "templateOptions": {
+                      "type": "",
+                      "label": "",
+                      "required": false,
+                      "placeholder": "",
+                      "description": "A basic select (nya bs select)",
+                      "options": [
+                        {
+                          "name": "option1",
+                          "value": 0,
+                          "group": ""
+                        },
+                        {
+                          "name": "option2",
+                          "value": 1,
+                          "group": ""
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "className": "col-xs-4",
+                    "type": "groupedSelect",
+                    "key": "groupedSelect-1435697705089",
+                    "templateOptions": {
+                      "type": "",
+                      "label": "",
+                      "required": false,
+                      "placeholder": "",
+                      "description": "A grouped select with live search (nya bs select)",
+                      "options": [
+                        {
+                          "name": "option 1",
+                          "value": 0,
+                          "group": "group 1"
+                        },
+                        {
+                          "name": "option 2",
+                          "value": 1,
+                          "group": ""
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "className": "col-xs-4",
+                    "type": "blank",
+                    "key": "blank-1435697447499",
+                    "templateOptions": {
+                      "type": "",
+                      "label": "",
+                      "required": false,
+                      "placeholder": "",
+                      "description": "",
+                      "options": []
+                    }
+                  }
+                ]
+              }
+            ];
+          $scope.vm.buttons = {
+                                "submit" : 'Submit',
+                                "cancel" : 'Cancel'
+          };
+          //////////////////////////////////////////////////////
+          //this model "vm.fields" will be bound to formly 
+          //-> initialisation from $scope.vm.initialFieldsModel                          
+          //////////////////////////////////////////////////////
+          $scope.vm.fields = angular.copy($scope.vm.initialFieldsModel);                        
+          // onSubmit function definition :
+          function onSubmit() {
+            //an alert of the data model
+            alert(JSON.stringify($scope.vm.model), null, 2);
+          }                                                  
+      }]);
+      </script>
+  </body>
+</html>
+

@@ -1,0 +1,40 @@
+{
+  "name": "angular-code-mirror",
+  "version": "0.0.3",
+  "main": "dist/angular-code-mirror.js",
+  "description": "2 way binding code mirror for AngularJS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a8m/angular-code-mirror.git"
+  },
+  "dependencies": {
+    "angular": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.16"
+  },
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "package.json",
+    "lib",
+    "test",
+    "src",
+    "Gruntfile.js",
+    ".gitignore",
+    "README.md",
+    "travis.yml",
+    ".bowercc"
+  ],
+  "homepage": "https://github.com/a8m/angular-code-mirror",
+  "authors": [
+    "Ariel Mashraki <ariel@codeoasis.com>"
+  ],
+  "keywords": [
+    "google-prettify",
+    "code-mirror",
+    "code-prettify",
+    "angular-code-mirror"
+  ],
+  "license": "MIT"
+}

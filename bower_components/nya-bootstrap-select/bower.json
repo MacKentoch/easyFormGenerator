@@ -1,0 +1,31 @@
+{
+  "name": "nya-bootstrap-select",
+  "version": "2.0.10",
+  "main": [
+    "dist/js/nya-bs-select.js",
+    "dist/css/nya-bs-select.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "examples",
+    "src"
+  ],
+  "keywords": [
+    "bootstrap",
+    "bootstrap-select",
+    "dropdown",
+    "angular"
+  ],
+  "dependencies": {
+    "angular": ">=1.2"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.0",
+    "angular-mocks": "*",
+    "angular-ui-router": "~0.2.11"
+  }
+}

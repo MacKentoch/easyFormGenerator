@@ -1,0 +1,66 @@
+<section>
+  <h1 id="getting-started">Getting started</h1>
+<h3 id="different-from-1-x">Different from 1.x</h3>
+<p>Unlike nya-bootstrap-select v1.x which is a wrapper for <a href="https://github.com/silviomoreto/bootstrap-select">Bootstrap-select</a>. This project
+is a totally independent one which only fork most of the features of Bootstrap-select without any code dependency.</p>
+<p>If you are using the 1.x and want migrate to 2.x. follow the <a href="#/main/migrate-instructions">migrate instructions</a>.</p>
+<h2 id="dependencies-and-compatibility-">Dependencies and compatibility:</h2>
+<p>This directive only requires AngularJS v1.2 or later and the css of Bootstrap. No other dependencies.</p>
+<h2 id="installation-">Installation.</h2>
+<p>Install via <a href="http://bower.io">Bower</a>.</p>
+<pre><code class="lang-bash">$ bower <span class="hljs-operator"><span class="hljs-keyword">install</span> nya-bootstrap-<span class="hljs-keyword">select</span> <span class="hljs-comment">--save</span></span>
+</code></pre>
+<p>Load the script and css and other dependencies <strong>jquery and bootstrap script are not required!</strong> .</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"bower_components/bootstrap/dist/css/bootstrap.css"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"bower_components/nya-bootstrap-select/dist/css/nya-bs-select.css"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"bower_components/angular/angular.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>make &#39;nya.bootstrap.select&#39; module as your application dependency.</p>
+<pre><code class="lang-javascript">angular.<span class="hljs-keyword">module</span>(<span class="hljs-symbol">'myApp'</span>, [<span class="hljs-symbol">'nya</span>.bootstrap.select']);
+</code></pre>
+<h2 id="make-your-select-component-">Make your select component.</h2>
+<p>In view file, use <code>nya-bs-select</code> as element, attribute or class to build an bootstrap select component. the <code>ng-model</code> is also required on the element.
+To make your select options, you will need <code>nya-bs-option</code> directive to populate options from an collection, or you can using <code>nya-bs-option</code> as an class
+of <code>&lt;li&gt;</code> element to make static options. If you are using static options, you should also add an value attribute on <code>&lt;li&gt;</code> element to explicitly set to value of each option.</p>
+<example>
+<file name="index.html">
+<pre><code class="lang-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;bg-info&quot;</span>&gt;</span>model1 is </span><span class="hljs-expression"><span>{{</span><span class="hljs-variable">model</span>1<span>}}</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;bg-info&quot;</span>&gt;</span>model2 is </span><span class="hljs-expression"><span>{{</span><span class="hljs-variable">model</span>2<span>}}</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">form</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- options from collection --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ol</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;dynamic-options&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;nya-bs-select&quot;</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;model1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">nya-bs-option</span>=<span class="hljs-value">&quot;option in options&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span></span><span class="hljs-expression"><span>{{</span> <span class="hljs-variable">option</span> <span>}}</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ol</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- options in static --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">ol</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;static-options&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;nya-bs-select&quot;</span> <span class="hljs-attribute">ng-model</span>=<span class="hljs-value">&quot;model2&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;nya-bs-option&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;alpha&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Alpha<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;nya-bs-option&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;bravo&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Bravo<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;nya-bs-option&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">&quot;charlie&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Charlie<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></span>
+</code></pre>
+
+</file>
+<file name="script.js">
+<pre><code class="lang-javascript">  <span class="hljs-variable">$scope</span>.options = [
+    <span class="hljs-string">&#39;Alpha&#39;</span>, <span class="hljs-string">&#39;Bravo&#39;</span>, <span class="hljs-string">&#39;Charlie&#39;</span>, <span class="hljs-string">&#39;Delta&#39;</span>,
+    <span class="hljs-string">&#39;Echo&#39;</span>
+  ];
+</code></pre>
+
+</file>
+</example>
+
+<iframe class="runnable-example-frame" src="examples/getting-started-example-1/index.html"></iframe>
+
+</section>

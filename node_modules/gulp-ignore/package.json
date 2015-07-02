@@ -1,0 +1,69 @@
+{
+  "name": "gulp-ignore",
+  "description": "Include or exclude gulp files from the stream based on a condition",
+  "version": "1.2.1",
+  "homepage": "https://github.com/robrich/gulp-ignore",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/robrich/gulp-ignore.git"
+  },
+  "author": {
+    "name": "Rob Richardson",
+    "url": "http://robrich.org/"
+  },
+  "main": "./index.js",
+  "keywords": [
+    "gulpplugin",
+    "filter",
+    "minimatch",
+    "include",
+    "exclude",
+    "gulp-filter"
+  ],
+  "dependencies": {
+    "through2": "~0.6.2",
+    "gulp-match": "~0.2.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.6",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "test": "mocha && jshint ./index.js ./test/."
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/robrich/gulp-ignore/raw/master/LICENSE"
+    }
+  ],
+  "gitHead": "c830025e59d07777fa7c623c18d729bb0f77e92a",
+  "bugs": {
+    "url": "https://github.com/robrich/gulp-ignore/issues"
+  },
+  "_id": "gulp-ignore@1.2.1",
+  "_shasum": "b81f91d995c555301acdb08366911ac5ad2c2bfc",
+  "_from": "gulp-ignore@>=1.2.1 <2.0.0",
+  "_npmVersion": "1.5.0-alpha-4",
+  "_npmUser": {
+    "name": "robrich",
+    "email": "robrich@robrich.org"
+  },
+  "maintainers": [
+    {
+      "name": "robrich",
+      "email": "robrich@robrich.org"
+    }
+  ],
+  "dist": {
+    "shasum": "b81f91d995c555301acdb08366911ac5ad2c2bfc",
+    "tarball": "http://registry.npmjs.org/gulp-ignore/-/gulp-ignore-1.2.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/gulp-ignore/-/gulp-ignore-1.2.1.tgz",
+  "readme": "ERROR: No README data found!"
+}

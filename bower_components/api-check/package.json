@@ -1,0 +1,65 @@
+{
+  "name": "api-check",
+  "version": "7.2.4",
+  "description": "Validate the api to your functions to help people use them correctly. This is pretty much React's propTypes without React.",
+  "main": "./dist/api-check.js",
+  "dependencies": {},
+  "devDependencies": {
+    "async": "^0.9.0",
+    "babel": "^4.4.6",
+    "babel-loader": "^4.0.0",
+    "chai": "^2.1.0",
+    "chalk": "^1.0.0",
+    "coveralls": "^2.11.2",
+    "ghooks": "^0.2.4",
+    "glob": "^4.3.5",
+    "istanbul": "^0.3.5",
+    "jshint": "^2.6.0",
+    "jshint-loader": "^0.8.2",
+    "json-stringify-safe": "^5.0.0",
+    "lodash-node": "^3.1.0",
+    "mocha": "^2.1.0",
+    "mocha-loader": "^0.7.1",
+    "webpack": "^1.5.3",
+    "wr": "^1.3.1"
+  },
+  "scripts": {
+    "start": "npm run test:watch",
+    "test": "mocha src/index.test.js --compilers js:babel/register",
+    "test:watch": "mocha src/index.test.js --watch --compilers js:babel/register",
+    "watch": "./node_modules/wr/bin/wr -c 0 \"npm run build\" src/apiCheck.js src/apiCheckUtil.js src/checkers.js src/index.js",
+    "dev": "npm run test:watch & npm run watch",
+    "build:dist": "NODE_ENV=development webpack --colors --progress",
+    "build:prod": "NODE_ENV=production webpack --colors --progress",
+    "build": "npm run build:dist & npm run build:prod",
+    "ci": "npm run code-checks && npm run test && npm run coverage && npm run check-coverage && npm run build",
+    "coverage": "npm run code-checks && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- src/index.test.js --compilers js:babel/register",
+    "check-coverage": "./node_modules/istanbul/lib/cli.js check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "only-check": "node other/only-check.js",
+    "console-check": "node other/console-check.js",
+    "code-checks": "npm run only-check && npm run console-check",
+    "release": "git push && npm publish && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/apiCheck.js"
+  },
+  "keywords": [
+    "javascript",
+    "validation",
+    "api",
+    "function"
+  ],
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kent.doddsfamily.us)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kentcdodds/apiCheck.js/issues"
+  },
+  "homepage": "https://github.com/kentcdodds/apiCheck.js",
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run ci"
+    }
+  }
+}
