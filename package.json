@@ -9,13 +9,21 @@
     "type": "git",
     "url": "git+https://github.com/MacKentoch/easyFormGenerator.git"
   },
-  "keywords": ["angular","formly", "form", "angular js", "angular formly", "bootstrap", "form generator"],
+  "keywords": [
+    "angular",
+    "formly",
+    "form",
+    "angular js",
+    "angular formly",
+    "bootstrap",
+    "form generator"
+  ],
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MacKentoch/easyFormGenerator/issues"
   },
-   "devDependencies": {
+  "devDependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
@@ -26,8 +34,11 @@
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.0",
     "gulp-uglify": "^1.2.0",
-    "gulp-wrap": "^0.11.0"
-  }, 
+    "gulp-wrap": "^0.11.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6"
+  },
   "homepage": "https://github.com/MacKentoch/easyFormGenerator#readme"
 }
-
