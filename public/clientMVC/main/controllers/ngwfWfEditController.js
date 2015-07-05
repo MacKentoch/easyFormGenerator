@@ -208,18 +208,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   		$scope.configuration.activeLine = lineNumber;
   	}
   };                
-  //step next line
-   $scope.goNextLineNumber = function(){
-    if ($scope.configuration.activeLine !== $scope.configuration.lines.length) {
-     	$scope.configuration.activeLine ++;
-    }
-  };  
-  //step previous line
-   $scope.goPreviousLineNumber = function(){
-    if ($scope.configuration.activeLine !== 0) {
-     	$scope.configuration.activeLine --;
-    }
-  }; 
 
   $scope.upThisLine = function(indexLine){  	
   	if (indexLine > -1) {
@@ -247,14 +235,11 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
           //manage selected aciveLine
           $scope.configuration.activeLine = 1;
   			}
-  	}
       //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
-
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
   };
 
-//
   $scope.addNewline = function(){
   	var newNumberOfLines = $scope.configuration.lines.push(
 															{
@@ -281,7 +266,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 		);
       //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
   };
 
@@ -307,7 +291,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
     //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
   	}
   };

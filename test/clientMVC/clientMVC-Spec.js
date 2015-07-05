@@ -31,6 +31,9 @@ describe('ngwfWfEditController', function() {
     
     describe('line control - step 0', function(){
 
+      // countConfigurationModelLines
+      
+
       describe('setActiveLineNumber(2) — when $scope.configuration.lines.length = 3', function() {
         it('should equal 2', function() {
 
@@ -128,7 +131,13 @@ describe('ngwfWfEditController', function() {
             expect($scope.configuration.activeLine).toEqual(1);
         });
 
-      });      
+      });  
+
+      // downThisLine
+
+      // upThisLine
+
+      //  
 
 
 
