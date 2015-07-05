@@ -16,21 +16,34 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'bower_components/angular/angular.js',
+
+        'bower_components/jquery/dist/jquery.js',   
+
+        'bower_components/angular-mocks/angular-mocks.js',
         'bower_components/angular-animate/angular-animate.js',
+
+        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+
+        'bower_components/rangy/rangy-core.js',
+        'bower_components/rangy/rangy-selectionsaverestore.js',
+        'bower_components/textAngular/dist/textAngular-sanitize.js',
         'bower_components/textAngular/dist/textAngular.js',
         'bower_components/textAngular/dist/textAngularSetup.js',
+
         'bower_components/angularjs-toaster/toaster.js',
-        'bower_components/jquery/dist/jquery.js',
-        // '',
-        // '',
-        // '',
-        // '',
-        // '',
-        // '',
-        // '',                
+        'bower_components/angular-resource/angular-resource.js',
+
+        'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js',
+
+        'bower_components/api-check/dist/api-check.js',
+        'bower_components/angular-formly/dist/formly.js',
+        'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
+
+        'bower_components/lodash/lodash.js',
+         
         'public/clientMVC/main/**/clientMVC.min.js',
-        'test/**/*Spec.js'
-      
+        'test/**/*.js'
     ],
 
 

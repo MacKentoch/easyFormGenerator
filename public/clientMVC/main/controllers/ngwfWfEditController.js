@@ -33,7 +33,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
 
-  $scope.easyFormGeneratorVERSION = 'v1.0.4';
+  $scope.easyFormGeneratorVERSION = 'v1.0.5';
   ///////////////////////////////////////////////////
   // DEBUG model
   ///////////////////////////////////////////////////
@@ -52,7 +52,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   ///////////////////////
   //formly control
   ///////////////////////
-
+  $scope.vm = this;
   //model filled by form :
   $scope.vm.model = {};
   //form schema : (filled from $scope.configuration in each step)
@@ -93,7 +93,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
    formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
    formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
 
-  $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+   $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
 
    $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
    $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
