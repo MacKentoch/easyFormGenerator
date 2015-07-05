@@ -13,5 +13,5 @@ angular.module('ngwfApp.services', [	'ngwfApp.services.formFieldManage',
 										'ngwfApp.services.ngwfEditCtrlControllerModalProxy',
 										function () {
     //verbose
-    console.log('--> INIT : Hello services container  \'\'ngwfApp.services\'\' ');
+    //console.log('--> INIT : Hello services container  \'\'ngwfApp.services\'\' ');
 }]);

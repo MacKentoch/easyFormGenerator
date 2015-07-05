@@ -49,7 +49,7 @@ var formFieldManage = angular.module('ngwfApp.services.formFieldManage', []);
 formFieldManage.factory('formFieldManage', [ function(){
 
 
-	console.log('--> INIT : Hello service  \'\'formFieldManage\'\' ');
+	//console.log('--> INIT : Hello service  \'\'formFieldManage\'\' ');
 
               //configuration model will contain 1 line, since :
               //   - it is non sense to create a form without a single line (no line = no form at all)
@@ -168,8 +168,8 @@ formFieldManage.factory('formFieldManage', [ function(){
                     AddThreeColumnControl(formlyModel, configurationModel,i);
                   }
 
-                  console.info('applyConfigurationToformlyModel : formlyModelis after bind =');
-                  console.dir(formlyModel);
+                 // console.info('applyConfigurationToformlyModel : formlyModelis after bind =');
+                 // console.dir(formlyModel);
               }
             }
         };

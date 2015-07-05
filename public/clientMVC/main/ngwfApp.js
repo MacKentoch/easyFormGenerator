@@ -28,12 +28,12 @@ var ngwfApp = angular.module('ngwfApp', [
 												'nya.bootstrap.select',
 												function () {
     //verbose init is ok  
-    console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');
+    //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');
 
 }]);
 
 
-
+ngwfApp.value('easyFormGenVersion', 'v1.0.5');
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////
@@ -147,7 +147,7 @@ ngwfApp.config([	'formlyConfigProvider',
     ngModelAttrs[camelize(binding)] = {bound: binding};
   });
 
-  console.log(ngModelAttrs);
+  //console.log(ngModelAttrs);
   
 
   formlyConfigProvider.setType({

@@ -13,5 +13,5 @@ var  filterTemplate = angular.module('ngwfApp.filters.serviceTemplate', []);
 
 filterTemplate.controller('filterTemplate', function ($scope) {
     //verbose
-    console.log('--> INIT : Hello filter  \'\'ngwfApp.filters.filterTemplate\'\' ');
+    //console.log('--> INIT : Hello filter  \'\'ngwfApp.filters.filterTemplate\'\' ');
 });

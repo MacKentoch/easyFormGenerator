@@ -10,5 +10,5 @@
 angular.module('ngwfApp.filters', ['ngwfApp.filters.serviceTemplate'], 
 									function () {
     //verbose
-    console.log('--> INIT : Hello filters container  \'\'ngwfApp.filters\'\' ');
+    //console.log('--> INIT : Hello filters container  \'\'ngwfApp.filters\'\' ');
 });

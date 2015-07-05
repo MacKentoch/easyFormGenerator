@@ -10,5 +10,5 @@
 angular.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRationDirective',
 										function () {
     //verbose
-    console.log('--> INIT : Hello directives container  \'\'ngwfApp.directives\'\' ');
+    //console.log('--> INIT : Hello directives container  \'\'ngwfApp.directives\'\' ');
 }]);

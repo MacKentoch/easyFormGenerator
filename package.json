@@ -40,6 +40,7 @@
     "karma-chrome-launcher": "^0.2.0",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.0",
+    "karma-spec-reporter": "0.0.19",
     "phantomjs": "^1.9.17"
   },
   "homepage": "https://github.com/MacKentoch/easyFormGenerator#readme"

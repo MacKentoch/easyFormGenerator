@@ -11,5 +11,5 @@ var ngwfMainController = angular.module('ngwfApp.controllers.ngwfMainController'
 
 ngwfMainController.controller('ngwfMainController', ['$scope', function ($scope) {
     //verbose
-    console.log('--> INIT : Hello controller  \'\'ngwfMainController\'\' ');
+    //console.log('--> INIT : Hello controller  \'\'ngwfMainController\'\' ');
 }]);

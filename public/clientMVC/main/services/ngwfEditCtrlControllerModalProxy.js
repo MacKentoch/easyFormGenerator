@@ -18,7 +18,7 @@ var ngwfEditCtrlControllerModalProxy = angular.module('ngwfApp.services.ngwfEdit
 
 ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 
-   console.log('--> INIT : Hello service  \'\'controllerModalProxy\'\' ');
+   //console.log('--> INIT : Hello service  \'\'controllerModalProxy\'\' ');
 
    	/////////////////////////////////////////
 	// proxy services
@@ -44,7 +44,7 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				        if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
 				        	nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : "";
 
-				        	console.warn('getNyASelectFromSelectedLineColumn : datepickerPopup= ' + nyaSelectObj.temporyConfig.datepickerPopup);     	
+				        	//console.warn('getNyASelectFromSelectedLineColumn : datepickerPopup= ' + nyaSelectObj.temporyConfig.datepickerPopup);     	
 				        }
 				      }
 				      return nyaSelectObj;
@@ -78,7 +78,7 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				      if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
 				       	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
 
-				       	console.warn('bindConfigurationModelFromModalReturn : datepickerPopup= ' + configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup);     	
+				       	//console.warn('bindConfigurationModelFromModalReturn : datepickerPopup= ' + configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup);     	
 				      }	
 
 				    
@@ -124,7 +124,7 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				          if (nyaSelectObj.controls[i].id ==='Date' ) {
 				          	nyaSelectObj.controls[i].datepickerPopup = nyaSelectObj.temporyConfig.datepickerPopup;
 
-				          	console.warn('applyConfigToSelectedControl : datepickerPopup= ' + nyaSelectObj.controls[i].datepickerPopup);     	
+				          	//console.warn('applyConfigToSelectedControl : datepickerPopup= ' + nyaSelectObj.controls[i].datepickerPopup);     	
 				          }
 				        
 				       }
@@ -209,7 +209,7 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
         //datetpicker format
         if (CtrlModalModel.controls[i].formlyType === 'datepicker') {
 			modelToReturn.datepickerPopup = CtrlModalModel.controls[i].datepickerPopup;   
-			console.warn('returnControlFromAddCtrlModalModel : datepickerPopup= ' + modelToReturn.datepickerPopup);     	
+			//console.warn('returnControlFromAddCtrlModalModel : datepickerPopup= ' + modelToReturn.datepickerPopup);     	
         }
       }
     }

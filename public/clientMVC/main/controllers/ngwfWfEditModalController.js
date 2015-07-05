@@ -25,7 +25,7 @@ ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope',
                                                                                 controllerModalProxy
                                                                               ){
   //verbose
-  console.log('--> INIT : Hello controller  \'\'ngwfWfEditMODALController\'\' ');
+  //console.log('--> INIT : Hello controller  \'\'ngwfWfEditMODALController\'\' ');
   
 
 

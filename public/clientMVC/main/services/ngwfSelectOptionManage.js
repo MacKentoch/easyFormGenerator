@@ -13,7 +13,7 @@ var selectOptionManage = angular.module('ngwfApp.services.selectOptionManage', [
 
 
 selectOptionManage.factory('selectOptionManage', [ function(){
-	console.log('--> INIT : Hello service  \'\'selectOptionManage\'\' ');
+	//console.log('--> INIT : Hello service  \'\'selectOptionManage\'\' ');
 
     return {
             testMe: function() {
@@ -51,7 +51,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
               var checkResult = validOption(selectObj, newOptionText);  
 
-              console.info(checkResult);
+              //console.info(checkResult);
 
               if (checkResult.resultFlag === true){
 
@@ -82,7 +82,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
               var checkResult = validOption(selectObj, newOptionText);  
 
-              console.info(checkResult);
+              //console.info(checkResult);
 
               if (checkResult.resultFlag === true){
 

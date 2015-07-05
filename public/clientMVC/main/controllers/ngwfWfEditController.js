@@ -10,6 +10,7 @@
 var ngwfWfEditController = angular.module('ngwfApp.controllers.ngwfWfEditController', []);
 
 ngwfWfEditController.controller('ngwfWfEditController', [	'$scope', 
+                                                          'easyFormGenVersion',
                                                           '$filter',
                                                           '$anchorScroll',
                             															'toaster', 
@@ -20,6 +21,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           'wfFormsByIdServices',
                                                           'controllerModalProxy',
                             															function (	$scope, 
+                                                                      easyFormGenVersion,
                                                                       $filter,
                                                                       $anchorScroll,
                                   																		toaster,
@@ -30,10 +32,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       wfFormsByIdServices, 
                                                                       controllerModalProxy) {
   //verbose
-  console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
+  //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
 
-  $scope.easyFormGeneratorVERSION = 'v1.0.5';
+  $scope.easyFormGeneratorVERSION = easyFormGenVersion;
   ///////////////////////////////////////////////////
   // DEBUG model
   ///////////////////////////////////////////////////
@@ -114,7 +116,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
       }); 
 
     //data model in console
-    console.dir($scope.vm.model);
+    //console.dir($scope.vm.model);
   }
 
 
@@ -465,18 +467,18 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   $scope.nextConfigStep = function(){
     var configStepCounterMAX = $scope.configuration.listConfigStep.length -1;
 
-    if ($scope.debug.showDebug) {
-    	console.log('configStepCounterMAX : ' + configStepCounterMAX);
-		  console.log('$scope.configuration.configStepCounter' + $scope.configuration.configStepCounter);
-    }
+    // if ($scope.debug.showDebug) {
+    // 	console.log('configStepCounterMAX : ' + configStepCounterMAX);
+		  // console.log('$scope.configuration.configStepCounter' + $scope.configuration.configStepCounter);
+    // }
 
     if ($scope.configuration.configStepCounter !== configStepCounterMAX) {
       	$scope.configuration.configStepCounter ++;
       	//debug
-	    if ($scope.debug.showDebug) {
-	    	console.log('not at configStepCounterMAX / increment configStepCounter to  : ' + $scope.configuration.configStepCounter);
+	    // if ($scope.debug.showDebug) {
+	    // 	console.log('not at configStepCounterMAX / increment configStepCounter to  : ' + $scope.configuration.configStepCounter);
 
-	    }
+	    // }
 
     }    
     setTrueThisStepIndicator($scope.configuration.configStepCounter);

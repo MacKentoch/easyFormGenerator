@@ -12,5 +12,5 @@ angular.module('ngwfApp.controllers', [	'ngwfApp.controllers.ngwfMainController'
 										'ngwfApp.controllers.ngwfWfEditMODALController',							
 										function () {
     //verbose
-    console.log('--> INIT : Hello controllers container  \'\'ngwfApp.controllers\'\' ');
+    //console.log('--> INIT : Hello controllers container  \'\'ngwfApp.controllers\'\' ');
 }]);

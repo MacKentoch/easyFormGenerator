@@ -9,22 +9,32 @@ describe('ngwfWfEditController', function() {
     beforeEach(inject(function(_$rootScope_, _$controller_){
       $rootScope = _$rootScope_;
       $scope = $rootScope.$new();
+
       $controller = _$controller_;
       
-      $controller('ngwfWfEditController', {'$scope': $scope});
+      $controller('ngwfWfEditController', {
+                                            '$scope': $scope, 
+                                          }
+                  );
     }));
 
 
     //check if tests are up to date
-    describe('test easyFormGeneratorVERSION - init', function() {
-      it('is equaled to v1.0.5', function() {
-          expect($scope.easyFormGeneratorVERSION).toEqual('v1.0.5');
-      });
+    describe('Check easyFormGeneratorVERSION', function() {
+
+     it('should be provided a version from app.value', inject(function(easyFormGenVersion) {
+        expect(easyFormGenVersion).toEqual($scope.easyFormGeneratorVERSION);
+      }));
+
     });
 
+ 
     
-    describe('setActiveLineNumber()', function() {
-      it('should be equal 2', function() {
+
+
+
+    describe('setActiveLineNumber(2) — when $scope.configuration.lines.length = 3', function() {
+      it('should equal 2', function() {
 
           //mock countConfigurationModelLines() called by setActiveLineNumber()
           spyOn($scope, 'countConfigurationModelLines').and.callFake(function() {
@@ -36,8 +46,8 @@ describe('ngwfWfEditController', function() {
       });
     });
 
-    describe('setActiveLineNumber()', function() {
-      it('should be equal 1', function() {
+    describe('setActiveLineNumber(2)  — when $scope.configuration.lines.length = 1', function() {
+      it('should equal 1', function() {
 
           //mock countConfigurationModelLines() called by setActiveLineNumber()
           spyOn($scope, 'countConfigurationModelLines').and.callFake(function() {
