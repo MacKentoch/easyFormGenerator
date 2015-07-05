@@ -24,7 +24,8 @@ var bases ={
 
 var scriptFileNames={
 	scripts_with_navbar: 'app_nav.min.js',
-	clientMvcOutput: 'clientMVC.min.js'
+	clientMvcOutput: 'clientMVC.min.js',
+	clientMvcDragAndDropOutput: 'clientMVC.min.js',
 }
 
 var app_main_css={
@@ -41,6 +42,15 @@ var clientMVC={
 	directives: ['public/clientMVC/main/directives/**/*.js'],
 	filters: ['public/clientMVC/main/filters/**/*.js'],
 	services: ['public/clientMVC/main/services/**/*.js'],
+	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
+}
+
+var clientMVC_dragDrop={
+	app: ['public/clientMVC/dragDrop/ngwfApp.js'],
+	controllers: ['public/clientMVC/dragDrop/controllers/**/*.js'],
+	directives: ['public/clientMVC/dragDrop/directives/**/*.js'],
+	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],
+	services: ['public/clientMVC/dragDrop/services/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 }
 
@@ -188,9 +198,9 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  });
 
 
-//==================================================
-//SCRIPTS TASKS : client MVC (angular JS) - dev = no uglyfy
-//==================================================
+//==========================================================
+//SCRIPTS TASKS : client MVC (angular JS) - dev = no uglify
+//==========================================================
 gulp.task('scripts:clientMVC:dev', [], function() {
  gulp.src(		clientMVC.app
  				.concat(clientMVC.controllers)
@@ -200,9 +210,29 @@ gulp.task('scripts:clientMVC:dev', [], function() {
  				{cwd: bases.app})
  .pipe(jshint())
  .pipe(jshint.reporter('default'))
+ //.pipe(uglify())   //uncomment to uglify
  .pipe(concat(scriptFileNames.clientMvcOutput))
  .pipe(wrap(decorate.templateJS))
  .pipe(gulp.dest(bases.app + 'public/clientMVC/main/'));
+});
+
+
+//================================================================================
+//SCRIPTS TASKS : client MVC -drag & drop version (angular JS) - dev = no uglify
+//================================================================================
+gulp.task('scripts:clientMVC_dragDrop:dev', [], function() {
+ gulp.src(		clientMVC_dragDrop.app
+ 				.concat(clientMVC_dragDrop.controllers)
+ 				.concat(clientMVC_dragDrop.directives)
+ 				.concat(clientMVC_dragDrop.filters)
+ 				.concat(clientMVC_dragDrop.services),
+ 				{cwd: bases.app})
+ .pipe(jshint())
+ .pipe(jshint.reporter('default'))
+ //.pipe(uglify())   //uncomment to uglify
+ .pipe(concat(scriptFileNames.clientMvcDragAndDropOutput))
+ .pipe(wrap(decorate.templateJS))
+ .pipe(gulp.dest(bases.app + 'public/clientMVC/dragDrop/'));
 });
 
 //==================================================
@@ -287,6 +317,7 @@ gulp.task('default', [
 						'clean:app:scripts_css', 
 						'build', 
 						'scripts:clientMVC:dev',
+						'scripts:clientMVC_dragDrop:dev',
 						'lib'
 					 ]);
 
