@@ -62,6 +62,16 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
   $scope.vm.wfFormFieldsOnlyNeededProperties = [];  
 
+  $scope.ihm = {
+                  preview : {
+                                formlyModelViewExpanded : true,
+                                formlyFieldsViewExpanded : true,
+                                customizeFormButtonsExpanded : true,
+                                saveThisFormExpanded : true  
+                            }
+
+  };
+
 
   ////////////////////////////
   //init formly control list
