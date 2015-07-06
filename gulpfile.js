@@ -143,7 +143,8 @@ bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],
  packageJSON: ['package.json'],
  readme: ['README.md'],
  //favicon: ['public/favicon.ico'],
- sass_files: ['public/css/**.*scss'],
+ sass_main_files: ['public/css/**.*scss', '!public/css/drag_and_drop_css.scss'],
+ sass_dragAndDrop_files: ['public/css/**.*scss', '!public/css/main_css.scss'],
  js_lib: ['']
 };
  
@@ -197,8 +198,8 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  	.pipe(cssmin())
  	.pipe(gulp.dest(bases.app + 'public/css'));
 
- //sass 
- gulp.src(paths.sass_files, {cwd: bases.app})
+ //sass main 
+ gulp.src(paths.sass_main_files, {cwd: bases.app})
     .pipe(sass().on("error", notify.onError(function (error) {
                  return "Error: " + error.message;
              })) )
@@ -206,8 +207,18 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
     .pipe(cssmin())     
  	.pipe(wrap(decorate.templateCSS))    
     .pipe(gulp.dest(bases.app + 'public/css'));
- });
+ 
 
+ //sass drag_and_drop
+ gulp.src(paths.sass_dragAndDrop_files, {cwd: bases.app})
+    .pipe(sass().on("error", notify.onError(function (error) {
+                 return "Error: " + error.message;
+             })) )
+    .pipe(concat('drag_and_drop.min.css'))
+    .pipe(cssmin())     
+ 	.pipe(wrap(decorate.templateCSS))    
+    .pipe(gulp.dest(bases.app + 'public/css'));
+ });
 
 //==========================================================
 //SCRIPTS TASKS : client MVC (angular JS) - dev = no uglify
@@ -331,4 +342,3 @@ gulp.task('default', [
 						'scripts:clientMVC_dragDrop:dev',
 						'lib'
 					 ]);
-
