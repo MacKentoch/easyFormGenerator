@@ -8,6 +8,7 @@ var cssmin = require('gulp-cssmin');
 var sass = require('gulp-sass');
 var notify = require('gulp-notify') 
 var wrap = require("gulp-wrap");
+var deleteLines = require('gulp-delete-lines');
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -101,14 +102,14 @@ bower_components_map: 	[
 						], 					
 
 bower_components_css: 	[
- 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
- 						'bower_components/bootswatch/paper/bootstrap.min.css',
+ 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
  						'bower_components/font-awesome/css/font-awesome.min.css',
  						'bower_components/angular-loading-bar/build/loading-bar.min.css',
  						'bower_components/animate.css/animate.min.css',
  						'bower_components/angularjs-toaster/toaster.min.css',
  						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
  					],
+bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
 bower_textAngular_css: ['bower_components/textAngular/src/textAngular.css'], 					
 
@@ -238,6 +239,18 @@ gulp.task('lib', ['clean:app:lib'], function(){
 //copy bower -> app/public/lib/	
  gulp.src(paths.bower_components_css, {cwd: bases.app })
  .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+
+//particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
+ gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
+ .pipe(deleteLines({
+      'filters': [
+      	/^@import url/
+      ]
+    }))
+  	.pipe(concat('bootstrap.min.css'))
+ 	.pipe(cssmin())
+ .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+
 
 /////////////////
 //FONTS (boostrap and font-awesome) 
