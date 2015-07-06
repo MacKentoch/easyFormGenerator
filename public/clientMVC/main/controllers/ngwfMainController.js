@@ -27,10 +27,10 @@ ngwfMainController.controller('ngwfMainController', [	'$scope',
    		$scope.scrollflag.boolBottomButtonChangeClass = false;
 
 
-   		//to hide when done (just a desing helper)
-	  	$document.on('scroll', function() {
-	      console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
-	    });
+   		//to hide when done (just a design helper : tell scroll x, y position)
+	  	//$document.on('scroll', function() {
+	         //    console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+	        //});
 
 
 	  	$scope.openImgCarousel = function(){
