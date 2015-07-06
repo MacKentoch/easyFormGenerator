@@ -15,7 +15,7 @@ var deleteLines = require('gulp-delete-lines');
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.0.5'
+	build: '1.1.0'
 }
 
 var bases ={
@@ -26,6 +26,7 @@ var scriptFileNames={
 	scripts_with_navbar: 'app_nav.min.js',
 	clientMvcOutput: 'clientMVC.min.js',
 	clientMvcDragAndDropOutput: 'clientMVC.min.js',
+	ngdagableFileMinName :'ngDraggable.min.js'
 }
 
 var app_main_css={
@@ -99,7 +100,7 @@ var paths = {
 						'bower_components/angular-formly/dist/formly.min.js',
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
-						'bower_components/lodash/lodash.min.js'
+						'bower_components/lodash/lodash.min.js'			
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',
@@ -126,7 +127,8 @@ bower_textAngular_css: ['bower_components/textAngular/src/textAngular.css'],
 bower_components_fonts: [
 							'bower_components/bootstrap/dist/fonts/**/*',
 							'bower_components/font-awesome/fonts/**/*'
-						], 						
+						], 
+bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],												
 
  scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js'],
  css: ['public/css/*.css'],
@@ -179,6 +181,15 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  .pipe(uglify())
  .pipe(concat(scriptFileNames.scripts_with_navbar))
  .pipe(gulp.dest(bases.app + 'public/js/'));
+
+
+ //ngdagable (uglify) : just copy paste to lib directory : contains jshint error so no treatment
+ gulp.src(paths.bower_ng_draggable, {cwd: bases.app})
+ //.pipe(jshint())
+ //.pipe(jshint.reporter('default'))
+ //.pipe(uglify())
+ //.pipe(concat(scriptFileNames.ngdagableFileMinName))
+ .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
  //textAngularcss minify
  gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
