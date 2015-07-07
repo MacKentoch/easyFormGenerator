@@ -100,7 +100,8 @@ var paths = {
 						'bower_components/angular-formly/dist/formly.min.js',
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
-						'bower_components/lodash/lodash.min.js'			
+						'bower_components/lodash/lodash.min.js',
+						'bower_components/ng-sortable/dist/ng-sortable.min.js'			
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',
@@ -118,7 +119,8 @@ bower_components_css: 	[
  						'bower_components/angular-loading-bar/build/loading-bar.min.css',
  						'bower_components/animate.css/animate.min.css',
  						'bower_components/angularjs-toaster/toaster.min.css',
- 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
+ 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
+ 						'bower_components/ng-sortable/dist/ng-sortable.min.css'
  					],
 bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
