@@ -128,7 +128,7 @@ bower_components_fonts: [
 							'bower_components/bootstrap/dist/fonts/**/*',
 							'bower_components/font-awesome/fonts/**/*'
 						], 
-bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],												
+//bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],												
 
  scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js'],
  css: ['public/css/*.css'],
@@ -183,14 +183,6 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  .pipe(concat(scriptFileNames.scripts_with_navbar))
  .pipe(gulp.dest(bases.app + 'public/js/'));
 
-
- //ngdagable (uglify) : just copy paste to lib directory : contains jshint error so no treatment
- gulp.src(paths.bower_ng_draggable, {cwd: bases.app})
- //.pipe(jshint())
- //.pipe(jshint.reporter('default'))
- //.pipe(uglify())
- //.pipe(concat(scriptFileNames.ngdagableFileMinName))
- .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
  //textAngularcss minify
  gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
