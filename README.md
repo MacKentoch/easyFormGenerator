@@ -43,10 +43,10 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 ##What is coming next?
 
  - adding tests
-   - unit test (in progress - already in `branch master`)
+   - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
  - adding drag and drop
-   - coming soon (planning `branch dragdrop`)
+   - coming soon (sand-box on `branch dragdrop`)
  
 
 ____
