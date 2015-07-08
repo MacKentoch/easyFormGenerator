@@ -499,4 +499,11 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   };                            
 
 
+  ////////////////////////////////////////////////////////////
+  //            modal : add control to column
+  ////////////////////////////////////////////////////////////
+    $scope.handleDrop = function(item, bin) {
+    console.info('Item ' + item + ' has been dropped into ' + bin);
+  };
+
 }]);
