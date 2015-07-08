@@ -621,3 +621,41 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 
 
 
+
+
+
+/*=========================================================
+   drag and drop test (will change or be deleted)
+===========================================================*/
+
+%content {
+  font-size: 32px;
+  text-align: center;
+  margin: 0 5px;
+}
+.bin {
+  @extend %content;
+  min-height: 150px;
+  min-width: 150px;
+  float: left;
+  border: 1px solid red;
+  padding: 20px;
+}
+.item {
+  @extend %content;
+  min-height: 150px;
+  min-width: 150px;
+  background: blue;
+  float: right;
+  transition: all 0.2s ease;
+}
+.drag {
+  opacity: 0.5;
+}
+.over {
+  background: red;
+}
+
+
+
+
