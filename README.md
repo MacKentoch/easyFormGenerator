@@ -1,8 +1,9 @@
-#Easy form generator
+#Easy form generator 
 
 
 >Generate advanced and unique boostrap forms without typing a single line of code!
 
+####[— easy form generator website here —](http://mackentoch.github.io/easyFormGenerator/)
 
 ##What is it?
 
@@ -23,11 +24,11 @@ _EASY_ :
 
 _WANT EASIER WAY? OK_ :
 
-- no installation, no clone : just go here : [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index.html)
+- no installation, no clone : just go here : [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.0.4/index.html)
 
-**NOTE** :
+_WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
-- I'm currently working on `easyFormGenerator` website. 
+- learn about it, train, get a static html with your form you've just created : just go here : [easy form generator website](http://mackentoch.github.io/easyFormGenerator/)
 
 ##the magic behind
 
@@ -41,9 +42,12 @@ _WANT EASIER WAY? OK_ :
 
 ##What is coming next?
 
- - improving / fixing 
- - ~~adding angular datetimepicker to replace input type date~~ (-> added in v1.0.3)
- - a nice website for **Easy form generator** (coming soon)
+ - adding tests
+   - unit test (in progress - already in `branch master`)
+   - E2E (coming soon)
+ - adding drag and drop
+   - coming soon (planning `branch dragdrop`)
+ 
 
 ____
 ...more details to be added later

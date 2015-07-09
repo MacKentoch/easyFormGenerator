@@ -26,6 +26,7 @@ var ngwfApp = angular.module('ngwfApp', [
 												'formlyBootstrap',
 												'ui.bootstrap',
 												'nya.bootstrap.select',
+                        'ui.sortable',
 												function () {
     //verbose init is ok  
     //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');

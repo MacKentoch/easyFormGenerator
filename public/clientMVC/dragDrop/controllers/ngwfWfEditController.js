@@ -62,6 +62,21 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
   $scope.vm.wfFormFieldsOnlyNeededProperties = [];  
 
+  $scope.ihm = {
+                  preview : {
+                                formlyModelViewExpanded : true,
+                                formlyFieldsViewExpanded : true,
+                                customizeFormButtonsExpanded : true,
+                                saveThisFormExpanded : true  
+                            }
+
+  };
+
+  ////////////////////////////
+  //drag and drop models
+  ////////////////////////////
+
+
 
   ////////////////////////////
   //init formly control list
@@ -441,69 +456,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 
 
-  ////////////////////////////////////////////////////////////
-  //            step control (Step indicator)
-  ////////////////////////////////////////////////////////////
-  $scope.resetStepCounter = function(){
-  	$scope.configuration.configStepCounter = 0;
-  };
-
-  $scope.nextConfigStep = function(){
-    var configStepCounterMAX = $scope.configuration.listConfigStep.length -1;
-
-    // if ($scope.debug.showDebug) {
-    // 	console.log('configStepCounterMAX : ' + configStepCounterMAX);
-		  // console.log('$scope.configuration.configStepCounter' + $scope.configuration.configStepCounter);
-    // }
-
-    if ($scope.configuration.configStepCounter !== configStepCounterMAX) {
-      	$scope.configuration.configStepCounter ++;
-      	//debug
-	    // if ($scope.debug.showDebug) {
-	    // 	console.log('not at configStepCounterMAX / increment configStepCounter to  : ' + $scope.configuration.configStepCounter);
-
-	    // }
-
-    }    
-    setTrueThisStepIndicator($scope.configuration.configStepCounter);
-  };
-
-
-  $scope.previousConfigStep = function(){
-    var configStepCounterMIN = 0;
-
-    if ($scope.configuration.configStepCounter !== 0) {
-      $scope.configuration.configStepCounter --;
-    }
-    setTrueThisStepIndicator($scope.configuration.configStepCounter);
-  };
-
-
-
-  $scope.stepReachable = function(indexStep){
-    if (indexStep < $scope.configuration.configStepCounter) {
-      return 'disabled';
-    }else{
-      return 'enabled';
-    }
-  };
-
- 
-  function resetAllIndicators(){
-    for (var i = $scope.configuration.stepIndicators.length - 1; i >= 0; i--) {
-      $scope.configuration.stepIndicators[i] = false;
-    }
-  }
-  
-  function setTrueThisStepIndicator(indexIndicator){
-      resetAllIndicators();
-      $scope.configuration.stepIndicators[indexIndicator] = true;    
-  }
-
-
-
-
-
 
   ////////////////////////////////////////////////////////////
   //            modal : add control to column
@@ -546,5 +498,42 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };                            
 
+
+  ////////////////////////////////////////////////////////////
+  //            modal : add control to column
+  ////////////////////////////////////////////////////////////
+    $scope.handleDrop = function(item, bin) {
+    console.info('Item ' + item + ' has been dropped into ' + bin);
+  };
+
+
+  ///////tests
+   $scope.items = [{
+    name: 'item 1'
+  }, {
+    name: 'item 2'
+  }, {
+    name: 'item 3'
+  }, {
+    name: 'item 4'
+  }, {
+    name: 'item 5'
+  }, {
+    name: 'item 6'
+  }, {
+    name: 'item 7'
+  }, {
+    name: 'item 8'
+  }];
+
+  // $scope.sortableOptions = {
+  //   containment: '#sortable-container'
+  // };
+// $scope.dragControlListeners = {
+//     accept: function (sourceItemHandleScope, destSortableScope) {return boolean;},//override to determine drag is allowed or not. default is true.
+//     itemMoved: function (event) {console.log('itemMoved');},
+//     orderChanged: function(event) {},
+//     containment: '#board'//optional param.
+// };
 
 }]);

@@ -8,13 +8,14 @@ var cssmin = require('gulp-cssmin');
 var sass = require('gulp-sass');
 var notify = require('gulp-notify') 
 var wrap = require("gulp-wrap");
+var deleteLines = require('gulp-delete-lines');
 
 
 ///////////////////////////////////////////////////////////////////////
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.0.4'
+	build: '1.1.0'
 }
 
 var bases ={
@@ -23,7 +24,9 @@ var bases ={
 
 var scriptFileNames={
 	scripts_with_navbar: 'app_nav.min.js',
-	clientMvcOutput: 'clientMVC.min.js'
+	clientMvcOutput: 'clientMVC.min.js',
+	clientMvcDragAndDropOutput: 'clientMVC.min.js',
+	ngdagableFileMinName :'ngDraggable.min.js'
 }
 
 var app_main_css={
@@ -40,6 +43,15 @@ var clientMVC={
 	directives: ['public/clientMVC/main/directives/**/*.js'],
 	filters: ['public/clientMVC/main/filters/**/*.js'],
 	services: ['public/clientMVC/main/services/**/*.js'],
+	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
+}
+
+var clientMVC_dragDrop={
+	app: ['public/clientMVC/dragDrop/ngwfApp.js'],
+	controllers: ['public/clientMVC/dragDrop/controllers/**/*.js'],
+	directives: ['public/clientMVC/dragDrop/directives/**/*.js'],
+	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],
+	services: ['public/clientMVC/dragDrop/services/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 }
 
@@ -88,7 +100,8 @@ var paths = {
 						'bower_components/angular-formly/dist/formly.min.js',
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
-						'bower_components/lodash/lodash.min.js'
+						'bower_components/lodash/lodash.min.js',
+						'bower_components/ng-sortable/dist/ng-sortable.min.js'			
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',
@@ -101,21 +114,24 @@ bower_components_map: 	[
 						], 					
 
 bower_components_css: 	[
- 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
- 						'bower_components/bootswatch/paper/bootstrap.min.css',
+ 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
  						'bower_components/font-awesome/css/font-awesome.min.css',
  						'bower_components/angular-loading-bar/build/loading-bar.min.css',
  						'bower_components/animate.css/animate.min.css',
  						'bower_components/angularjs-toaster/toaster.min.css',
- 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
+ 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
+ 						'bower_components/ng-sortable/dist/ng-sortable.min.css',
+ 						'bower_components/ng-sortable/dist/ng-sortable.style.min.css'
  					],
+bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
 bower_textAngular_css: ['bower_components/textAngular/src/textAngular.css'], 					
 
 bower_components_fonts: [
 							'bower_components/bootstrap/dist/fonts/**/*',
 							'bower_components/font-awesome/fonts/**/*'
-						], 						
+						], 
+//bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],												
 
  scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js'],
  css: ['public/css/*.css'],
@@ -130,7 +146,8 @@ bower_components_fonts: [
  packageJSON: ['package.json'],
  readme: ['README.md'],
  //favicon: ['public/favicon.ico'],
- sass_files: ['public/css/**.*scss'],
+ sass_main_files: ['public/css/**.*scss', '!public/css/drag_and_drop_css.scss'],
+ sass_dragAndDrop_files: ['public/css/**.*scss', '!public/css/main_css.scss'],
  js_lib: ['']
 };
  
@@ -169,14 +186,15 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  .pipe(concat(scriptFileNames.scripts_with_navbar))
  .pipe(gulp.dest(bases.app + 'public/js/'));
 
+
  //textAngularcss minify
  gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
  	.pipe(concat('textAngular.min.css'))
  	.pipe(cssmin())
  	.pipe(gulp.dest(bases.app + 'public/css'));
 
- //sass 
- gulp.src(paths.sass_files, {cwd: bases.app})
+ //sass main 
+ gulp.src(paths.sass_main_files, {cwd: bases.app})
     .pipe(sass().on("error", notify.onError(function (error) {
                  return "Error: " + error.message;
              })) )
@@ -184,12 +202,22 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
     .pipe(cssmin())     
  	.pipe(wrap(decorate.templateCSS))    
     .pipe(gulp.dest(bases.app + 'public/css'));
+ 
+
+ //sass drag_and_drop
+ gulp.src(paths.sass_dragAndDrop_files, {cwd: bases.app})
+    .pipe(sass().on("error", notify.onError(function (error) {
+                 return "Error: " + error.message;
+             })) )
+    .pipe(concat('drag_and_drop.min.css'))
+    .pipe(cssmin())     
+ 	.pipe(wrap(decorate.templateCSS))    
+    .pipe(gulp.dest(bases.app + 'public/css'));
  });
 
-
-//==================================================
-//SCRIPTS TASKS : client MVC (angular JS) - dev = no uglyfy
-//==================================================
+//==========================================================
+//SCRIPTS TASKS : client MVC (angular JS) - dev = no uglify
+//==========================================================
 gulp.task('scripts:clientMVC:dev', [], function() {
  gulp.src(		clientMVC.app
  				.concat(clientMVC.controllers)
@@ -199,9 +227,29 @@ gulp.task('scripts:clientMVC:dev', [], function() {
  				{cwd: bases.app})
  .pipe(jshint())
  .pipe(jshint.reporter('default'))
+ //.pipe(uglify())   //uncomment to uglify
  .pipe(concat(scriptFileNames.clientMvcOutput))
  .pipe(wrap(decorate.templateJS))
  .pipe(gulp.dest(bases.app + 'public/clientMVC/main/'));
+});
+
+
+//================================================================================
+//SCRIPTS TASKS : client MVC -drag & drop version (angular JS) - dev = no uglify
+//================================================================================
+gulp.task('scripts:clientMVC_dragDrop:dev', [], function() {
+ gulp.src(		clientMVC_dragDrop.app
+ 				.concat(clientMVC_dragDrop.controllers)
+ 				.concat(clientMVC_dragDrop.directives)
+ 				.concat(clientMVC_dragDrop.filters)
+ 				.concat(clientMVC_dragDrop.services),
+ 				{cwd: bases.app})
+ .pipe(jshint())
+ .pipe(jshint.reporter('default'))
+ //.pipe(uglify())   //uncomment to uglify
+ .pipe(concat(scriptFileNames.clientMvcDragAndDropOutput))
+ .pipe(wrap(decorate.templateJS))
+ .pipe(gulp.dest(bases.app + 'public/clientMVC/dragDrop/'));
 });
 
 //==================================================
@@ -239,6 +287,18 @@ gulp.task('lib', ['clean:app:lib'], function(){
  gulp.src(paths.bower_components_css, {cwd: bases.app })
  .pipe(gulp.dest(bases.app + 'public/lib/css/'));
 
+//particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
+ gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
+ .pipe(deleteLines({
+      'filters': [
+      	/^@import url/
+      ]
+    }))
+  	.pipe(concat('bootstrap.min.css'))
+ 	.pipe(cssmin())
+ .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+
+
 /////////////////
 //FONTS (boostrap and font-awesome) 
 /////////////////
@@ -274,6 +334,6 @@ gulp.task('default', [
 						'clean:app:scripts_css', 
 						'build', 
 						'scripts:clientMVC:dev',
+						'scripts:clientMVC_dragDrop:dev',
 						'lib'
 					 ]);
-
