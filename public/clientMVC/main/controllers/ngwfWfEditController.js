@@ -69,9 +69,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   $scope.vm.wfFormFieldsOnlyNeededProperties = [];  
 
 
-  $scope.vm.model = [].concat(formlyDataModel);
-  $scope.vm.wfFormFields = [].concat(formlyFieldsModel);
-  $scope.vm.wfFormFieldsOnlyNeededProperties = [].concat(formlyFieldsModel);
+  $scope.vm.model = [].concat(formlyDataModel.modelList);
+  $scope.vm.wfFormFields = [].concat(formlyFieldsModel.modelList);
+  $scope.vm.wfFormFieldsOnlyNeededProperties = [].concat(formlyFieldsModel.modelList);
 
   ////////////////////////////
   //init formly control list
@@ -109,6 +109,14 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
    $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
    $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
+
+   //for demo
+   formlyDataModel.refresh($scope.vm.model);
+   formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
+
+   formlyOthers.button.submit = [].concat($scope.previewLoadedForm.submitButtonText);
+   formlyOthers.button.cancel = [].concat($scope.previewLoadedForm.cancelButtonText);
+
   };
 
 
@@ -232,7 +240,12 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
       //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
 
-    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);    
+
+
+    //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   };
 
 
@@ -249,6 +262,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
       //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
+        //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   };
 
   $scope.addNewline = function(){
@@ -277,7 +293,11 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 		);
       //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+        //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);  
   };
 
   //must be remove a line with index of line to delete
@@ -303,6 +323,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
     //re-render formfield 
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+        //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   	}
   };
 
@@ -336,6 +360,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+        //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
 };
 
 
@@ -347,6 +375,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);  
 
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);  
+
+        //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   };
 
 
@@ -544,6 +576,12 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
         
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+            //for demo 
+    formlyDataModel.refresh($scope.vm.model);
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+
+
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });

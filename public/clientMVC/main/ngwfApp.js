@@ -38,10 +38,39 @@ ngwfApp.value('easyFormGenVersion', 'v1.0.5');
 
 
 //formly data model
-ngwfApp.value('formlyDataModel', []);
+ngwfApp.value('formlyDataModel', {
+                                    modelList : [],
+                                    refresh : function(newModelList){
+                                      console.log('refresh formlyDataModel');
+                                      this.modelList = [].concat(newModelList);
+                                      console.dir(this.modelList);
+                                    }
+
+                                  });
 
 //formly fields Model
-ngwfApp.value('formlyFieldsModel', []);
+ngwfApp.value('formlyFieldsModel', {
+                                      modelList : [],
+                                      refresh : function(newModelList){
+                                      console.log('refresh formlyFieldsModel');
+                                      
+                                      this.modelList = [].concat(newModelList);
+                                      console.dir(this.modelList);
+                                      }
+
+                                  });
+
+
+//formly submit button
+ngwfApp.value('formlyOthers', {
+                                  button :{
+                                          submit: 'submit', 
+                                          cancel: 'cancel'
+                                        }
+
+                              }
+              );
+
 
 //////////////////////////////
 // CONFIG HERE (formly...)							

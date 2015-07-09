@@ -76,7 +76,7 @@
 			</header>   		
 
 
-			<section id="demoSection" ng-controller="yourController as demo">
+			<section id="demoSection" ng-controller="yourController as secondVM">
 				<div class="container">
 					<div id="preview">
 						<div id="preview-content">
@@ -101,10 +101,49 @@
 											  	<div class="row">
 											  		<div class="col-md-12">
 											  			<h5>Formly just needs this html code :</h5>
+											  			<code-mirror lang="HTML" model="secondVM.formlyNeededHtml"></code-mirror>
+
+											  		</div>
+											  	</div>
+
+
+
+											  	<div class="row">
+											  		<div class="col-md-12">
+											  			<h5>So it renders :</h5>
+											  			
+
+														<div class="panel panel-default">
+														  <div class="panel-body">
+
+  <form ng-submit="secondVM.onSubmit()" name="secondVM.form" novalidate> 
+    <formly-form model="secondVM.dataModel" fields="secondVM.FieldsModel" options="secondVM.options" form="secondVM.form">
+      <button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="secondVM.form.$invalid">{{secondVM.submitButtonText}}</button>
+      <button type="button" class="btn btn-primary pull-right" ng-click="secondVM.options.resetModel()">{{secondVM.cancelButtonText}}</button>
+    </formly-form>
+  </form>
+
+														  </div>
+														</div>
+
+
+<button class="btn btn-primary btn-lg btn-block" ng-click="secondVM.logThisModel()">refresh to console</button>
+														<div class="well">
+															<p>fields model read in second controller :</p>
+
+															<pre>
+																{{secondVM.FieldsModelToSaveToDatasase}}
+															</pre>
+
+														</div>
 
 
 											  		</div>
 											  	</div>
+
+
+
+
 
 											  </div>
 											</div>
