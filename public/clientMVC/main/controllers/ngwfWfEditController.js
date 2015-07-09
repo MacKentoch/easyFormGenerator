@@ -20,6 +20,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           'formFieldManage',
                                                           'wfFormsByIdServices',
                                                           'controllerModalProxy',
+                                                          'formlyDataModel',
+                                                          'formlyFieldsModel',
                             															function (	$scope, 
                                                                       easyFormGenVersion,
                                                                       $filter,
@@ -30,7 +32,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       $log, 
                                                                       formFieldManage, 
                                                                       wfFormsByIdServices, 
-                                                                      controllerModalProxy) {
+                                                                      controllerModalProxy,
+                                                                      formlyDataModel,
+                                                                      formlyFieldsModel) {
   //verbose
   //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
@@ -55,13 +59,19 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   //formly control
   ///////////////////////
   $scope.vm = this;
+
+
   //model filled by form :
   $scope.vm.model = {};
   //form schema : (filled from $scope.configuration in each step)
   $scope.vm.wfFormFields = [];
-
+  //equal "wfFormFields" but contains only needed properties and can be JSON.stringfy to save to database
   $scope.vm.wfFormFieldsOnlyNeededProperties = [];  
 
+
+  $scope.vm.model = [].concat(formlyDataModel);
+  $scope.vm.wfFormFields = [].concat(formlyFieldsModel);
+  $scope.vm.wfFormFieldsOnlyNeededProperties = [].concat(formlyFieldsModel);
 
   ////////////////////////////
   //init formly control list

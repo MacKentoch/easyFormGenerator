@@ -9,7 +9,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular.module('ngwfApp.controllers', [	'ngwfApp.controllers.ngwfMainController',
 										'ngwfApp.controllers.ngwfWfEditController',
-										'ngwfApp.controllers.ngwfWfEditMODALController',							
+										'ngwfApp.controllers.ngwfWfEditMODALController',
+										'ngwfApp.controllers.yourController',							
 										function () {
     //verbose
     //console.log('--> INIT : Hello controllers container  \'\'ngwfApp.controllers\'\' ');

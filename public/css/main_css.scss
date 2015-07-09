@@ -337,8 +337,23 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     animation: fadeIn 1s;
 }
 
-
-
+/*=========================================================
+   deomSection
+===========================================================*/
+#demoSection{
+  margin:{
+    top:40px;
+ /*    right:2%;
+    left:2%; */
+  }
+  padding:{
+    top:30px;
+    bottom:30px;
+  }
+  background-color: $background-color-grey;//#FFF;//$ebony-clay-color;
+  /* border-top: solid 3px white;
+  border-bottom: solid 3px white; */
+}
 /*=========================================================
    wfEdit
 ===========================================================*/

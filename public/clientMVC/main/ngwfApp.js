@@ -34,6 +34,14 @@ var ngwfApp = angular.module('ngwfApp', [
 
 
 ngwfApp.value('easyFormGenVersion', 'v1.0.5');
+
+
+//formly data model
+ngwfApp.value('formlyDataModel', []);
+
+//formly fields Model
+ngwfApp.value('formlyFieldsModel', []);
+
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////
