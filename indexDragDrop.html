@@ -144,7 +144,7 @@
 															  		<div class="col-md-12">															  											
 
 																<ul data-as-sortable data-ng-model="items">
-																    <li ng-repeat="item in items" data-as-sortable-item>
+																    <li ng-repeat="item in items" id="item.name" draggable item="item" data-as-sortable-item>
 																        <div data-as-sortable-item-handle>
 																             {{item}}
 																        </div>
