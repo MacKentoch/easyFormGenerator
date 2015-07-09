@@ -526,9 +526,14 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
     name: 'item 8'
   }];
 
-  $scope.sortableOptions = {
-    containment: '#sortable-container'
-  };
-
+  // $scope.sortableOptions = {
+  //   containment: '#sortable-container'
+  // };
+// $scope.dragControlListeners = {
+//     accept: function (sourceItemHandleScope, destSortableScope) {return boolean;},//override to determine drag is allowed or not. default is true.
+//     itemMoved: function (event) {console.log('itemMoved');},
+//     orderChanged: function(event) {},
+//     containment: '#board'//optional param.
+// };
 
 }]);

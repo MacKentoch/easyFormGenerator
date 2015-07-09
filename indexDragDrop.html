@@ -34,6 +34,7 @@
 
 		<!-- ng-sortable -->
 		<link href="./public/lib/css/ng-sortable.min.css" rel="stylesheet">
+		<link href="./public/lib/css/ng-sortable.style.min.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		  <script src="./public/lib/html5shiv/dist/html5shiv.min.js"></script>
@@ -140,12 +141,15 @@
 
 
 															  	<div class="row">
-															  		<div class="col-md-12">															  	
-															<ul data-as-sortable="board.dragControlListeners" data-ng-model="items">
-															   <li data-ng-repeat="item in items" data-as-sortable-item>
-															      <div data-as-sortable-item-handle></div>
-															   </li>
-															</ul>															  	
+															  		<div class="col-md-12">															  											
+
+																<ul data-as-sortable data-ng-model="items">
+																    <li ng-repeat="item in items" data-as-sortable-item>
+																        <div data-as-sortable-item-handle>
+																             {{item}}
+																        </div>
+																    </li>
+																</ul>													  	
 
 															</div>
 															</div>
