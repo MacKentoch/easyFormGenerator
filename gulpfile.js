@@ -120,7 +120,8 @@ bower_components_css: 	[
  						'bower_components/animate.css/animate.min.css',
  						'bower_components/angularjs-toaster/toaster.min.css',
  						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
- 						'bower_components/ng-sortable/dist/ng-sortable.min.css'
+ 						'bower_components/ng-sortable/dist/ng-sortable.min.css',
+ 						'bower_components/ng-sortable/dist/ng-sortable.style.min.css'
  					],
 bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
