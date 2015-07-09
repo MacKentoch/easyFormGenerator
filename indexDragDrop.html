@@ -133,9 +133,22 @@
 															  			<div>
 																		    <div class="item" id="item{{ item }}" ng-repeat="item in [1, 2, 3]" draggable item="item">{{ item }}</div>
 																		</div>
+																	
 
 															  		</div>
 															  	</div>
+
+
+															  	<div class="row">
+															  		<div class="col-md-12">															  	
+															<ul data-as-sortable="board.dragControlListeners" data-ng-model="items">
+															   <li data-ng-repeat="item in items" data-as-sortable-item>
+															      <div data-as-sortable-item-handle></div>
+															   </li>
+															</ul>															  	
+
+															</div>
+															</div>
 
 															  </div>
 															</div>
@@ -161,6 +174,8 @@
 															  					<div  class="well">
 																				  <div class="bin" droppable drop="handleDrop" ng-repeat="bin in [1]" bin="bin" id="bin{{ bin }}">{{ bin }}</div>
 																				</div>
+
+
 
 															  			</div>
 
