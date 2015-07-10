@@ -40,6 +40,9 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 - [angular formly documentation](http://docs.angular-formly.com)
 
 
+## What is new?
+ - added `anees` branch to show an example for sharing formly models between multiple controllers
+
 ##What is coming next?
 
  - adding tests
@@ -47,7 +50,8 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
    - E2E (coming soon)
  - adding drag and drop
    - coming soon (sand-box on `branch dragdrop`)
- 
+ - optimization / factorization (coming soon)
+  
 
 ____
 ...more details to be added later
