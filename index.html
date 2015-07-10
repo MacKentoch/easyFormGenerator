@@ -75,95 +75,8 @@
 			    </div>
 			</header>   		
 
-
-			<section id="demoSection" ng-controller="yourController as secondVM">
-				<div class="container">
-					<div id="preview">
-						<div id="preview-content">
-							<div class="content-container">
-
-									<div class="row">
-											
-										<div class="col-md-12">
-										
-
-
-												
-
-											<div  class="panel panel-default">
-											  <div class="panel-heading">
-											    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;Demo showing another controller reading formly models</h3>
-											  </div>
-
-
-											  <div class="panel-body">
-
-											  	<div class="row">
-											  		<div class="col-md-12">
-											  			<h5>Formly just needs this html code :</h5>
-											  			<code-mirror lang="HTML" model="secondVM.formlyNeededHtml"></code-mirror>
-
-											  		</div>
-											  	</div>
-
-
-
-											  	<div class="row">
-											  		<div class="col-md-12">
-											  			<h5>So it renders :</h5>
-											  			
-
-														<div class="panel panel-default">
-														  <div class="panel-body">
-
-  <form ng-submit="secondVM.onSubmit()" name="secondVM.form" novalidate> 
-    <formly-form model="secondVM.dataModel" fields="secondVM.FieldsModel" options="secondVM.options" form="secondVM.form">
-      <button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="secondVM.form.$invalid">{{secondVM.submitButtonText}}</button>
-      <button type="button" class="btn btn-primary pull-right" ng-click="secondVM.options.resetModel()">{{secondVM.cancelButtonText}}</button>
-    </formly-form>
-  </form>
-
-														  </div>
-														</div>
-
-
-<button class="btn btn-primary btn-lg btn-block" ng-click="secondVM.logThisModel()">refresh to console</button>
-														<div class="well">
-															<p>fields model read in second controller :</p>
-
-															<pre>
-																{{secondVM.FieldsModelToSaveToDatasase}}
-															</pre>
-
-														</div>
-
-
-											  		</div>
-											  	</div>
-
-
-
-
-
-											  </div>
-											</div>
-
-
-
-
-										</div>
-
-									</div>
-
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</section>
-
 	
-			<!-- section worflow edit
+			<!-- section edit
 			=============================================================-->
 			<section id="pageWfEdit" ng-controller="ngwfWfEditController as vm">
 				<div ng-init="">
@@ -749,8 +662,10 @@
 
 
 										<div class="panel panel-default">
+
 										  <div class="panel-body">
 												<!-- formly here -->
+
 												<form ng-submit="vm.onSubmit()">
 												  <formly-form id="previewFormlyForm" model="vm.model" fields="vm.wfFormFields">
 
@@ -789,13 +704,110 @@
 							</div>
 						</section>
 
-						<hr/>
-						<section>
-							<h6 class="text-right">Easy form generator : {{easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6>
-						</section>
 					</div>
 				</div>
 			</section>
+
+			<section id="demoSection" ng-controller="yourController as secondVM">
+				<div class="container">
+					<div id="preview">
+						<div id="preview-content">
+							<div class="content-container">
+
+									<div class="row">
+											
+										<div class="col-md-12">
+										
+
+
+												
+
+											<div  class="panel panel-default">
+											  <div class="panel-heading">
+											    <h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;Demo showing another controller reading formly models</h3>
+											  </div>
+
+
+											  <div class="panel-body">
+
+											  	<div class="row">
+											  		<div class="col-md-12">
+											  			<h5>Formly just needs this html code :</h5>
+											  			<code-mirror lang="HTML" model="secondVM.formlyNeededHtml"></code-mirror>
+
+											  		</div>
+											  	</div>
+
+
+
+											  	<div class="row">
+											  		<div class="col-md-12">
+											  			<h5>So it renders :</h5>
+											  			
+
+														<div class="panel panel-default">
+														  <div class="panel-body">
+
+
+
+
+															  <form ng-submit="secondVM.onSubmit()" name="secondVM.form" novalidate> 
+															    <formly-form model="secondVM.dataModel.modelList" fields="secondVM.FieldsModel.modelList" options="secondVM.options" form="secondVM.form">
+																  <span class="pull-right"> 	
+																      <button type="submit" class="btn btn-primary submit-button" ng-disabled="secondVM.form.$invalid">{{secondVM.submitButtonText.button.submit}}</button>
+																      <button type="button" class="btn btn-primary" ng-click="secondVM.options.resetModel()">{{secondVM.cancelButtonText.button.cancel}}</button>
+															      </span>	
+															    </formly-form>
+															  </form>
+
+
+
+														  </div>
+														</div>
+
+														<div class="well">
+															<p>fields model read in second controller :</p>
+
+															<pre>
+																{{secondVM.FieldsModelToSaveToDatabase.modelList | json}}
+															</pre>
+
+															<p>buttons :</p>
+															<pre>
+																{{secondVM.submitButtonText | json}}
+															</pre>
+														</div>
+
+
+											  		</div>
+											  	</div>
+
+
+
+
+
+											  </div>
+											</div>
+
+
+
+
+										</div>
+
+									</div>
+
+							</div>
+						</div>
+					</div>
+
+						<hr/>
+						<section>
+							<h6 class="text-right">Easy form generator : {{easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6>
+						</section>					
+
+				</div>
+			</section>
+
 
 		</div>	
 

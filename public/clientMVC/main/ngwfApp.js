@@ -38,34 +38,42 @@ ngwfApp.value('easyFormGenVersion', 'v1.0.5');
 
 
 //formly data model
-ngwfApp.value('formlyDataModel', {
-                                    modelList : [],
-                                    refresh : function(newModelList){
-                                      console.log('refresh formlyDataModel');
-                                      this.modelList = [].concat(newModelList);
-                                      console.dir(this.modelList);
-                                    }
+ngwfApp.value('formlyDataModel', { 
+                                          modelList : [],
 
+                                          refresh : function(newModelList){
+                                                  this.modelList = angular.copy(newModelList);
+                                          }      
                                   });
 
 //formly fields Model
-ngwfApp.value('formlyFieldsModel', {
-                                      modelList : [],
-                                      refresh : function(newModelList){
-                                      console.log('refresh formlyFieldsModel');
-                                      
-                                      this.modelList = [].concat(newModelList);
-                                      console.dir(this.modelList);
-                                      }
+ngwfApp.value('formlyFieldsModelToSaveDataBase', {
+                                            modelList : [],
 
+                                            refresh : function(newModelList){
+                                                  this.modelList = angular.copy(newModelList);
+                                            }
                                   });
+//formly fields Model
+ngwfApp.value('formlyFieldsModel', {
+                                            modelList : [],
 
+                                            refresh : function(newModelList){
+                                                  this.modelList = angular.copy(newModelList);
+                                            }
+                                  });
 
 //formly submit button
 ngwfApp.value('formlyOthers', {
                                   button :{
-                                          submit: 'submit', 
-                                          cancel: 'cancel'
+                                          submit: 'submit',
+                                          updateSubmitText : function(newText){
+                                            this.submit = newText;
+                                          }, 
+                                          cancel: 'cancel',
+                                          updateCancelText : function(newText){
+                                            this.cancel = newText;
+                                          },                                           
                                         }
 
                               }

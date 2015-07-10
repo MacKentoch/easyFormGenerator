@@ -22,6 +22,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           'controllerModalProxy',
                                                           'formlyDataModel',
                                                           'formlyFieldsModel',
+                                                          'formlyFieldsModelToSaveDataBase',
+                                                          'formlyOthers',
                             															function (	$scope, 
                                                                       easyFormGenVersion,
                                                                       $filter,
@@ -34,7 +36,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       wfFormsByIdServices, 
                                                                       controllerModalProxy,
                                                                       formlyDataModel,
-                                                                      formlyFieldsModel) {
+                                                                      formlyFieldsModel,
+                                                                      formlyFieldsModelToSaveDataBase,
+                                                                      formlyOthers) {
   //verbose
   //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
@@ -69,9 +73,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   $scope.vm.wfFormFieldsOnlyNeededProperties = [];  
 
 
-  $scope.vm.model = [].concat(formlyDataModel.modelList);
-  $scope.vm.wfFormFields = [].concat(formlyFieldsModel.modelList);
-  $scope.vm.wfFormFieldsOnlyNeededProperties = [].concat(formlyFieldsModel.modelList);
 
   ////////////////////////////
   //init formly control list
@@ -113,9 +114,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
    //for demo
    formlyDataModel.refresh($scope.vm.model);
    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
+   formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
 
-   formlyOthers.button.submit = [].concat($scope.previewLoadedForm.submitButtonText);
-   formlyOthers.button.cancel = [].concat($scope.previewLoadedForm.cancelButtonText);
+   formlyOthers.button.updateSubmitText($scope.previewLoadedForm.submitButtonText);
+   formlyOthers.button.updateCancelText($scope.previewLoadedForm.cancelButtonText);
 
   };
 
@@ -245,7 +247,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
     //for demo 
     formlyDataModel.refresh($scope.vm.model);
-    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   };
 
 
@@ -265,6 +268,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         //for demo 
     formlyDataModel.refresh($scope.vm.model);
     formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
   };
 
   $scope.addNewline = function(){
@@ -297,7 +301,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
         //for demo 
     formlyDataModel.refresh($scope.vm.model);
-    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);  
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   };
 
   //must be remove a line with index of line to delete
@@ -326,7 +331,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
         //for demo 
     formlyDataModel.refresh($scope.vm.model);
-    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
   	}
   };
 
@@ -364,6 +370,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         //for demo 
     formlyDataModel.refresh($scope.vm.model);
     formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
 };
 
 
@@ -379,6 +386,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         //for demo 
     formlyDataModel.refresh($scope.vm.model);
     formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
   };
 
 
@@ -402,27 +410,29 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   ////////////////////////////////////////////////////////////
 
   $scope.saveThisForm = function(){
-    if (typeof $scope.configuration.formName === 'undefined') {
-    toaster.pop({
-            type: 'warning',
-            timeout:2000,
-            title: 'Form name is undefined',
-            body: 'Form has not been saved.',                
-            showCloseButton: true
-      });
-      return false;
-    }
+    //unlocked case no form name entered since it is a demo
+    // if (typeof $scope.configuration.formName === 'undefined') {
+    // toaster.pop({
+    //         type: 'warning',
+    //         timeout:2000,
+    //         title: 'Form name is undefined',
+    //         body: 'Form has not been saved.',                
+    //         showCloseButton: true
+    //   });
+    //   return false;
+    // }
 
-    if ($scope.configuration.formName === '') {
-    toaster.pop({
-            type: 'warning',
-            timeout:2000,
-            title: 'Form name is required',
-            body: 'Form has not been saved.',                
-            showCloseButton: true
-      });
-      return false;
-    }
+    //unlocked case no form name entered since it is a demo
+    // if ($scope.configuration.formName === '') {
+    // toaster.pop({
+    //         type: 'warning',
+    //         timeout:2000,
+    //         title: 'Form name is required',
+    //         body: 'Form has not been saved.',                
+    //         showCloseButton: true
+    //   });
+    //   return false;
+    // }
 
   toaster.pop({
           type: 'wait',
@@ -476,6 +486,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             body: '',                
             showCloseButton: true
       }); 
+
+    formlyOthers.button.updateSubmitText($scope.configuration.submitButtonText);
+    formlyOthers.button.updateCancelText($scope.configuration.submitButtonText);
+
     return true;
   };
 
@@ -579,7 +593,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
             //for demo 
     formlyDataModel.refresh($scope.vm.model);
-    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
+    formlyFieldsModel.refresh($scope.vm.wfFormFieldsOnlyNeededProperties);
+    formlyFieldsModelToSaveDataBase.refresh($scope.vm.wfFormFieldsOnlyNeededProperties); 
 
 
     }, function () {
