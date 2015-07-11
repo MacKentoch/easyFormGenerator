@@ -1,13 +1,13 @@
 var gulp = require('gulp');
-var ignore = require('gulp-ignore');
+//var ignore = require('gulp-ignore');
 var del    = require('del');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
 var sass = require('gulp-sass');
-var notify = require('gulp-notify') 
-var wrap = require("gulp-wrap");
+var notify = require('gulp-notify');
+var wrap = require('gulp-wrap');
 var deleteLines = require('gulp-delete-lines');
 
 
@@ -16,18 +16,18 @@ var deleteLines = require('gulp-delete-lines');
 ///////////////////////////////////////////////////////////////////////
 var version = {
 	build: '1.1.0'
-}
+};
 
 var bases ={
  app: './'
-}
+};
 
 var scriptFileNames={
 	scripts_with_navbar: 'app_nav.min.js',
 	clientMvcOutput: 'clientMVC.min.js',
 	clientMvcDragAndDropOutput: 'clientMVC.min.js',
 	ngdagableFileMinName :'ngDraggable.min.js'
-}
+};
 
 var app_main_css={
 	css_result: 'main_css.min.css',
@@ -35,7 +35,7 @@ var app_main_css={
 	sass_variables: 'main_var.scss',
 	sass_mixins: 'main_mixins.scss',
 	sass_functions: 'main_function.scss'
-}
+};
 
 var clientMVC={
 	app: ['public/clientMVC/main/ngwfApp.js'],
@@ -44,7 +44,7 @@ var clientMVC={
 	filters: ['public/clientMVC/main/filters/**/*.js'],
 	services: ['public/clientMVC/main/services/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
-}
+};
 
 var clientMVC_dragDrop={
 	app: ['public/clientMVC/dragDrop/ngwfApp.js'],
@@ -53,7 +53,7 @@ var clientMVC_dragDrop={
 	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],
 	services: ['public/clientMVC/dragDrop/services/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
-}
+};
 
 var decorate={
 	templateJS: '/* \n' + 
@@ -74,7 +74,7 @@ var decorate={
 				'*/ \n' +
 				'\n<%= contents %>\n' 
 			
-}
+};
 
 var paths = {
  //scripts for header
@@ -195,9 +195,8 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
 
  //sass main 
  gulp.src(paths.sass_main_files, {cwd: bases.app})
-    .pipe(sass().on("error", notify.onError(function (error) {
-                 return "Error: " + error.message;
-             })) )
+
+	.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
     .pipe(concat('main.min.css'))
     .pipe(cssmin())     
  	.pipe(wrap(decorate.templateCSS))    
@@ -206,9 +205,7 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
 
  //sass drag_and_drop
  gulp.src(paths.sass_dragAndDrop_files, {cwd: bases.app})
-    .pipe(sass().on("error", notify.onError(function (error) {
-                 return "Error: " + error.message;
-             })) )
+	.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
     .pipe(concat('drag_and_drop.min.css'))
     .pipe(cssmin())     
  	.pipe(wrap(decorate.templateCSS))    
@@ -278,7 +275,7 @@ gulp.task('lib', ['clean:app:lib'], function(){
 
  // APP : chrome needs map, so jquery map copy here
  gulp.src(paths.bower_components_map, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/js/'))
+ .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
 /////////////////
 //HEADER css  
