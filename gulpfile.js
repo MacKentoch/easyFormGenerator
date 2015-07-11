@@ -8,13 +8,14 @@ var cssmin = require('gulp-cssmin');
 var sass = require('gulp-sass');
 var notify = require('gulp-notify') 
 var wrap = require("gulp-wrap");
+var deleteLines = require('gulp-delete-lines');
 
 
 ///////////////////////////////////////////////////////////////////////
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.1.0'
+	build: '1.1.1'
 }
 
 var bases ={
@@ -116,6 +117,7 @@ bower_components_css: 	[
  						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
  						'bower_components/angular-code-mirror/dist/css/angular-code-mirror.css'
  					],
+bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'],  					
 
 bower_textAngular_css: ['bower_components/textAngular/src/textAngular.css'], 					
 
@@ -249,6 +251,17 @@ gulp.task('lib', ['clean:app:lib'], function(){
 /////////////////
 //copy bower -> app/public/lib/	
  gulp.src(paths.bower_components_css, {cwd: bases.app })
+ .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+
+ //particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
+ gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
+ .pipe(deleteLines({
+      'filters': [
+      	/^@import url/
+      ]
+    }))
+  	.pipe(concat('bootstrap.min.css'))
+ 	.pipe(cssmin())
  .pipe(gulp.dest(bases.app + 'public/lib/css/'));
 
 /////////////////
