@@ -101,7 +101,8 @@ var paths = {
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
 						'bower_components/lodash/lodash.min.js',
-						'bower_components/ng-sortable/dist/ng-sortable.min.js'			
+						'bower_components/ng-sortable/dist/ng-sortable.min.js',
+						'vendor/js/angular-drag-and-drop-lists.min.js'		
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',
@@ -184,14 +185,16 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
  .pipe(jshint.reporter('default'))
  .pipe(uglify())
  .pipe(concat(scriptFileNames.scripts_with_navbar))
- .pipe(gulp.dest(bases.app + 'public/js/'));
+ .pipe(gulp.dest(bases.app + 'public/js/')
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
 
  //textAngularcss minify
  gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
  	.pipe(concat('textAngular.min.css'))
  	.pipe(cssmin())
- 	.pipe(gulp.dest(bases.app + 'public/css'));
+ 	.pipe(gulp.dest(bases.app + 'public/css')
+ 	.on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
  //sass main 
  gulp.src(paths.sass_main_files, {cwd: bases.app})
@@ -227,6 +230,7 @@ gulp.task('scripts:clientMVC:dev', [], function() {
  //.pipe(uglify())   //uncomment to uglify
  .pipe(concat(scriptFileNames.clientMvcOutput))
  .pipe(wrap(decorate.templateJS))
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
  .pipe(gulp.dest(bases.app + 'public/clientMVC/main/'));
 });
 
@@ -246,6 +250,7 @@ gulp.task('scripts:clientMVC_dragDrop:dev', [], function() {
  //.pipe(uglify())   //uncomment to uglify
  .pipe(concat(scriptFileNames.clientMvcDragAndDropOutput))
  .pipe(wrap(decorate.templateJS))
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
  .pipe(gulp.dest(bases.app + 'public/clientMVC/dragDrop/'));
 });
 
@@ -264,6 +269,7 @@ gulp.task('lib', ['clean:app:lib'], function(){
  				.concat(paths.bower_html5shiv)
  				.concat(paths.bower_respondJS), 
  			{cwd: bases.app}) 
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
  .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
 /////////////////
@@ -271,7 +277,8 @@ gulp.task('lib', ['clean:app:lib'], function(){
 /////////////////
 //copy bower APP -> app/public/lib/js	
  gulp.src(paths.bower_components_js, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/js/'));
+ .pipe(gulp.dest(bases.app + 'public/lib/js/')
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
  // APP : chrome needs map, so jquery map copy here
  gulp.src(paths.bower_components_map, {cwd: bases.app })
@@ -282,7 +289,8 @@ gulp.task('lib', ['clean:app:lib'], function(){
 /////////////////
 //copy bower -> app/public/lib/	
  gulp.src(paths.bower_components_css, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+ .pipe(gulp.dest(bases.app + 'public/lib/css/')
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
 //particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
  gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
@@ -293,7 +301,8 @@ gulp.task('lib', ['clean:app:lib'], function(){
     }))
   	.pipe(concat('bootstrap.min.css'))
  	.pipe(cssmin())
- .pipe(gulp.dest(bases.app + 'public/lib/css/'));
+ .pipe(gulp.dest(bases.app + 'public/lib/css/')
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
 
 /////////////////
@@ -301,8 +310,8 @@ gulp.task('lib', ['clean:app:lib'], function(){
 /////////////////
 //copy bower -> app/public/lib/fonts
  gulp.src(paths.bower_components_fonts, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/fonts/'));
-
+ .pipe(gulp.dest(bases.app + 'public/lib/fonts/')
+ .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 });
 
 
