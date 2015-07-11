@@ -21,8 +21,8 @@ ngwfMainController.controller('ngwfMainController', [	'$scope',
     //verbose
     console.log('--> INIT : Hello controller  \'\'ngwfMainController\'\' ');
       	
-      	//navbar model (ie : css on scroll)
-      	$scope.scrollflag = {};
+      //navbar model (ie : css on scroll)
+      $scope.scrollflag = {};
    		$scope.scrollflag.boolNavBarChangeClass = false;
    		$scope.scrollflag.boolBottomButtonChangeClass = false;
 

@@ -40,8 +40,8 @@ ngwfScrollCssDirective.directive('scrollChangeCss',[function(){
 		    	//bottom button appear on scroll (to go back top)
 		    	//////////////////////////////////////////////////
 		        var navHeightForBottomButton = windowHeight - 300;
-		        console.info('navHeightForBottomButton = ' + navHeightForBottomButton);
-		        console.info('-> $(window).scrollTop()= ' + $(window).scrollTop() );
+		        //console.info('navHeightForBottomButton = ' + navHeightForBottomButton);
+		        //console.info('-> $(window).scrollTop()= ' + $(window).scrollTop() );
 
 		        if ($(window).scrollTop() > navHeightForBottomButton) {
 		  			scope.scrollflag.boolBottomButtonChangeClass = true;
