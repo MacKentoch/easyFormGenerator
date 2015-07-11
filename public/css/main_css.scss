@@ -438,7 +438,11 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 }
 
 
-
+#imageFormPreview{
+  &:hover{
+    cursor:pointer;
+  }
+}
 
 #imageFormPreview.ng-hide{
   display: block!important;
@@ -495,6 +499,12 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 //     visibility: visible;
 // }
 
+#imageDesignYourForm{
+  &:hover{
+    cursor:pointer;
+  }
+}
+
 #imageDesignYourForm.ng-hide{
   display: block!important;
   visibility: hidden;
@@ -549,6 +559,11 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 //     -webkit-animation: zoomIn 0.5s;
 //     visibility: visible;
 // }
+#imageDevideLinesColmumsform{
+  &:hover{
+    cursor:pointer;
+  }
+}
 
 #imageDevideLinesColmumsform.ng-hide{
   display: block!important;
@@ -597,6 +612,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
+  cursor:pointer;
 }
 .carousel-control.right {
   left: auto;
@@ -607,6 +623,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   background-image: none;
   background-repeat: none;
   filter: none;
+ 
 }
 .carousel-control.left {
   right: auto;
@@ -616,7 +633,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   background-image: none;
   background-image: none;
   background-repeat: none;
-  filter: none;
+  filter: none; 
 }
 .carousel-indicators {
   bottom:30px;
@@ -965,6 +982,7 @@ visibility: hidden;
 a.back-to-top.text-center.backToTopVisible:hover {
   cursor: pointer;
 }
+
 
 
 
