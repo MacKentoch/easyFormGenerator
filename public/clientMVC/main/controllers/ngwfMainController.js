@@ -28,9 +28,9 @@ ngwfMainController.controller('ngwfMainController', [	'$scope',
 
 
    		//to hide when done (just a design helper : tell scroll x, y position)
-	  	//$document.on('scroll', function() {
-	         //    console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
-	        //});
+	  	$document.on('scroll', function() {
+	            console.log('Document scrolled to ', $document.scrollLeft(), $document.scrollTop());
+	    });
 
 
 	  	$scope.openImgCarousel = function(){
