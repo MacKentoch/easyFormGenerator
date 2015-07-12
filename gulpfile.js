@@ -15,7 +15,7 @@ var deleteLines = require('gulp-delete-lines');
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.1.1'
+	build: '1.1.2'
 }
 
 var bases ={
