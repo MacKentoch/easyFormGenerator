@@ -370,16 +370,27 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  #titleDiv{
   // margin-left: -5px;
   // margin-right:-5px;
-  margin-top: 0px;
-  margin-bottom: 0px;      
+  /* margin-top: 0px;
+  margin-bottom: 20px;      
    border:solid 1 px #2C3E50;
   -moz-box-shadow: 0px 0px 10px 5px #ddd;
   -webkit-box-shadow: 0px 10px 5px 0px #ddd;
   -o-box-shadow: 0px 0px 10px 5px #ddd;
-  box-shadow: 0px 0px 10px 5px #ddd;
+  box-shadow: 0px 0px 10px 5px #ddd; */
   filter:progid:DXImageTransform.Microsoft.Shadow(color=#ddd, Direction=NaN, Strength=10); 
 }
 
+#backgroundLogo{
+  
+    background:url('../images/easyFormGeneratorLogo.png') no-repeat center center;
+    height: 290px;
+  
+
+}
+
+.titleSubText{
+    padding-top: 270px;
+}
 
 .hidden-navbar-brand.ng-hide{
   display: block!important;
