@@ -11,24 +11,11 @@
  */
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
-        var htmlTemplate   = ['<div class="{{styleParam.ApplycssClass}}">', 
-                            '  <div id="visualPanel">', 
-                            '    <div  class="panel panel-default">', 
-                            '      <div class="panel-heading">', 
-                            '        <h3 class="panel-title">', 
-                            '          <i class="{{currentFontAwesome}}"></i>&nbsp;', 
-                            '          {{currentTitle}}', 
-                            '        </h3>', 
-                            '      </div>', 
-                            '      <div class="panel-body">', 
-                            '         <div class="row">', 
-                            '            <div class="col-md-12" ng-transclude>', 
-                            '            </div>', 
-                            '            </div>', 
-                            '      </div>', 
-                            '    </div>', 
-                            '  </div>', 
-                            '</div>'].join(' ');
+        var htmlTemplate   = [
+                                '<div class="{{styleParam.ApplycssClass}}">', 
+                                ' <h4>{{currentTitle}}</h4>', 
+                                ' <div transclude></div>',   
+                                '</div>'].join(' ');
 
         return {
             scope:  {
