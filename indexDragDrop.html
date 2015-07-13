@@ -125,7 +125,7 @@
 							                          dd-drop-zone-verbose-mode="{{easyFormDragDropProperties.dropZoneConfig.verboseMode}}"
 							                          dd-drop-zone-current-index="{{$index}}">
 							                      
-							                        <div class="dropzone box box-yellow">
+							                        <div 	class="dropzone box box-yellow">
 							                             
 							                          <ul dnd-list="containers"
 							                              dnd-allowed-types="['containerType']"
@@ -141,8 +141,14 @@
 							                                  dnd-disable-if="$parent.$index == 0"   
 							                                  dnd-copied="logEvent('Container copied', event)">
 
-							                                  <div class="container-element box box-blue">
-							                                      <h3>Container</h3>
+							                                  <div 	class="container-element box box-blue"
+												                        			dd-decor-container
+												                        			dd-container-properties=""
+												                        			dd-container-verbose-mode="true"
+												                        			dd-container-current-index="{{$index}}"
+							                                  >
+							                                      <!-- <h3>Container</h3> -->
+							                                      <!-- TO FIX : $parent.$index is now $parent.$parent.$index -->
 							                                      <ul dnd-list="items"
 							                                          dnd-allowed-types="['itemType']"
 							                                          dnd-horizontal-list="true"
@@ -161,6 +167,9 @@
 							                                              {{item.label}}
 							                                          </li>
 							                                      </ul>
+
+
+
 							                                      <div class="clearfix"></div>
 							                                  </div>
 							                              </li>

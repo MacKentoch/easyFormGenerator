@@ -12,9 +12,9 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div class="{{styleParam.ApplycssClass}}">', 
+                                '<div class="{{}}">', 
                                 ' <h4>{{currentTitle}}</h4>', 
-                                ' <div transclude></div>',   
+                                ' <div ng-transclude></div>',   
                                 '</div>'].join(' ');
 
         return {
@@ -51,22 +51,24 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
-                if (typeof currentIndex !== 'undefined') {
-                    if (currentIndex !== '') {
+                // if (typeof currentIndex !== 'undefined') {
+                //     if (currentIndex !== '') {
 
-                        //if (currentIndex >= '0') {
-                            //apply title 
-                            if (typeof $scope.styleParam.title !== 'undefined') {
-                                $scope.currentTitle = $scope.styleParam.title;
-                            }
+                //         //if (currentIndex >= '0') {
+                //             //apply title 
+                //             if (typeof $scope.styleParam.title !== 'undefined') {
+                //                 $scope.currentTitle = $scope.styleParam.title;
+                //             }
 
-                            //apply font-awesome icon
-                            if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
-                                $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
-                            }     
-                        //}
-                    }                    
-                }
+                //             //apply font-awesome icon
+                //             if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
+                //                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
+                //             }     
+                //         //}
+                //     }                    
+                // }
+
+                $scope.currentTitle = 'test Title';
                           
             }
         };
