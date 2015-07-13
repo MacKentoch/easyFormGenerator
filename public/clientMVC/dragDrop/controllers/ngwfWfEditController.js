@@ -500,40 +500,150 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 
   ////////////////////////////////////////////////////////////
-  //            modal : add control to column
+  //   drag and drop : may move from this controller
   ////////////////////////////////////////////////////////////
-    $scope.handleDrop = function(item, bin) {
-    console.info('Item ' + item + ' has been dropped into ' + bin);
-  };
+ 
 
 
-  ///////tests
-   $scope.items = [{
-    name: 'item 1'
-  }, {
-    name: 'item 2'
-  }, {
-    name: 'item 3'
-  }, {
-    name: 'item 4'
-  }, {
-    name: 'item 5'
-  }, {
-    name: 'item 6'
-  }, {
-    name: 'item 7'
-  }, {
-    name: 'item 8'
-  }];
+        $scope.dragoverCallback = function(event, index, external, type) {
+            $scope.logListEvent('dragged over', event, index, external, type);
+            return (index >= 0);
+        };
 
-  // $scope.sortableOptions = {
-  //   containment: '#sortable-container'
-  // };
-// $scope.dragControlListeners = {
-//     accept: function (sourceItemHandleScope, destSortableScope) {return boolean;},//override to determine drag is allowed or not. default is true.
-//     itemMoved: function (event) {console.log('itemMoved');},
-//     orderChanged: function(event) {},
-//     containment: '#board'//optional param.
-// };
 
+        //specific Container dragoverCallback event
+        $scope.dragoverCallbackContainer = function(parentparentIndex, parentIndex, index){
+            //prevent container in layout column to be drag to control select contianer 
+            if (index === 0) {
+                return false;
+            }
+            return true;
+        };
+
+
+      
+      $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
+        //prevent item from first container to disapear when dropped on other container
+        if (parentParentIndex > 0) {
+            $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
+        }
+        
+      };
+
+
+      $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
+
+            //prevent items in layout column to be drag to control select  
+            if (parentIndex === 0) {
+                return false;
+            }
+            
+            return true;
+        };
+
+
+        $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+            $scope.logListEvent('dropped at', event, index, external, type);
+            
+            if (external) {
+                if (allowedType === 'itemType' && !item.label) return false;
+                if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
+            }
+
+            return item;
+        };
+
+
+        $scope.logEvent = function(message, event) {
+            // console.log(message, '(triggered by the following', event.type, 'event)');
+            // console.log(event);
+        };
+
+        $scope.logListEvent = function(action, event, index, external, type) {
+            var message = external ? 'External ' : '';
+            message += type + ' element is ' + action + ' position ' + index;
+            $scope.logEvent(message, event);
+        };
+
+
+        $scope.model = [];
+
+        $scope.containerProperties = {
+                                        decoration :    [
+                                                            {
+                                                                WhenIndex: 0,
+                                                                ApplycssClass: 'col-md-4' 
+                                                            },
+                                                            {
+                                                                WhenIndex: 1,
+                                                                ApplycssClass: 'col-md-8', 
+                                                            }
+                                                        ],
+                                        container : [
+                                                        {
+                                                            WhenIndex : 0,
+                                                            Role : 'control selection',
+                                                            isDraggable : false
+                                                        },
+                                                        {
+                                                            WhenIndex : 1,
+                                                            Role : 'form layout',
+                                                            isDraggable : true
+                                                        }
+                                                    ]                
+        };
+
+        //init  model
+        $scope.model = [].concat([
+                                  [
+                                    [
+                                      {
+                                        'label': 'label1',
+                                        'control': 'label'
+                                      }
+                                    ],
+                                    [
+                                      {
+                                        'label': 'textinput 1',
+                                        'control': 'textinput'
+                                      }
+                                    ]
+                                  ],
+                                  [
+                                    [
+                                      {
+                                        'label': 'label 2',
+                                        'control': 'label'
+                                      },
+                                      // {
+                                      //   'label': 'label 3',
+                                      //   'control': 'label'
+                                      // },
+                                      {
+                                        'label': 'textbox 1',
+                                        'control': 'textinput'
+                                      }
+                                    ],
+                                    [
+                                      // {
+                                      //   'label': 'textinput2',
+                                      //   'control': 'textbox'
+                                      // },
+                                      {
+                                        'label': 'textbox 1',
+                                        'control': 'textbox'
+                                      }
+                                    ]
+                                  ]
+                                ]
+                                );
+
+
+
+        $scope.$watch('model', function(model) {
+            $scope.modelAsJson = angular.toJson(model, true);
+        }, true);
+
+
+ 
 }]);
