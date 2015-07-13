@@ -24,10 +24,16 @@ var bases ={
 
 var scriptFileNames={
 	scripts_with_navbar: 'app_nav.min.js',
+	angularDragAndDrop : 'angular-drag-and-drop-lists.min.js',
 	clientMvcOutput: 'clientMVC.min.js',
 	clientMvcDragAndDropOutput: 'clientMVC.min.js',
 	ngdagableFileMinName :'ngDraggable.min.js'
 };
+
+// var angularDragDropFile = {
+// 	scriptSource: 'public/js/angular-drag-and-drop-lists.min.js',
+// 	scriptDest: 'public/js/angular-drag-and-drop-lists.min.js'
+// };
 
 var app_main_css={
 	css_result: 'main_css.min.css',
@@ -132,9 +138,9 @@ bower_components_fonts: [
 							'bower_components/bootstrap/dist/fonts/**/*',
 							'bower_components/font-awesome/fonts/**/*'
 						], 
-//bower_ng_draggable: ['bower_components/ngDraggable/ngDraggable.js'],												
+											
 
- scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js'],
+ scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js', '!public/js/angular-drag-and-drop-lists.min.js'],
  css: ['public/css/*.css'],
  images: ['public/images/**/*'],
  app_js: ['app.js', 'db.js'],
@@ -165,6 +171,7 @@ bower_components_fonts: [
 gulp.task('clean:app:scripts_css', function (cb) {
   del([
     'public/js/' + scriptFileNames.scripts_with_navbar,
+    'public/js/' + scriptFileNames.angularDragAndDrop,
     'public/css/' + app_main_css.css_result	
   ], cb);
 });

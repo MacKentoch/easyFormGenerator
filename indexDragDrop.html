@@ -131,9 +131,12 @@
 															  	<div class="row">
 															  		<div class="col-md-12">
 															  			
+															  			
 															  			<div>
 																		    <div class="item" id="item{{ item }}" ng-repeat="item in [1, 2, 3]" draggable item="item">{{ item }}</div>
 																		</div>
+
+
 																	
 
 															  		</div>
@@ -143,10 +146,40 @@
 															  	<div class="row">
 															  		<div class="col-md-12">															  											
 
-																<ul data-as-sortable data-ng-model="items">
-																    <li ng-repeat="item in items" id="item.name" draggable item="item" data-as-sortable-item>
-																        <div data-as-sortable-item-handle>
-																             {{item}}
+																<h3>test</h3>
+																
+																<ul dnd-list="containers"
+																    dnd-allowed-types="['containerType']"
+																    dnd-external-sources="true"
+																    dnd-dragover="dragoverCallback(event, index, external, type)"
+																    dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
+																    <li ng-repeat="items in containers"
+																        dnd-draggable="items"
+																        dnd-type="'containerType'"
+																        dnd-effect-allowed="copyMove"
+																        dnd-dragstart="logEvent('Started to drag a container', event)"
+																        dnd-moved="containers.splice($index, 1); logEvent('Container moved', event)"
+																        dnd-copied="logEvent('Container copied', event)">
+																        <div class="container-element box box-blue">
+																            <h3>Container</h3>
+																            <ul dnd-list="items"
+																                dnd-allowed-types="['itemType']"
+																                dnd-horizontal-list="true"
+																                dnd-external-sources="true"
+																                dnd-dragover="dragoverCallback(event, index, external, type)"
+																                dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+																                class="itemlist">
+																                <li ng-repeat="item in items"
+																                    dnd-draggable="item"
+																                    dnd-type="'itemType'"
+																                    dnd-effect-allowed="copyMove"
+																                    dnd-dragstart="logEvent('Started to drag an item', event)"
+																                    dnd-moved="items.splice($index, 1); logEvent('Item moved', event)"
+																                    dnd-copied="logEvent('Item copied', event)">
+																                    {{item.label}}
+																                </li>
+																            </ul>
+																            <div class="clearfix"></div>
 																        </div>
 																    </li>
 																</ul>													  	
