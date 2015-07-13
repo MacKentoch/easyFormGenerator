@@ -120,10 +120,10 @@
 
 							              <div ng-repeat="containers in model">
 
-							                    <div  dd-decor-container 
-							                          dd-container-properties="containerProperties.decoration[$index]"
-							                          dd-verbose-mode="true"
-							                          dd-current-index="{{$index}}">
+							                    <div  dd-decor-drop-zone
+							                          dd-drop-zone-properties="easyFormDragDropProperties.dropZoneConfig.decoration[$index]"
+							                          dd-drop-zone-verbose-mode="{{easyFormDragDropProperties.dropZoneConfig.verboseMode}}"
+							                          dd-drop-zone-current-index="{{$index}}">
 							                      
 							                        <div class="dropzone box box-yellow">
 							                             
