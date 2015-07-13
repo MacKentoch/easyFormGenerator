@@ -49,7 +49,7 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
    - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
  - adding drag and drop
-   - coming soon (sand-box on `branch dragdrop`)
+   - coming soon (**preview available** in drag and drop sand-box in `dragdrop branch`)
  - optimization / factorization (coming soon)
   
 
