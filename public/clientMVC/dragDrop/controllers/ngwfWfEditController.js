@@ -572,11 +572,15 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                         decoration :    [
                                                             {
                                                                 WhenIndex: 0,
-                                                                ApplycssClass: 'col-md-4' 
+                                                                ApplycssClass: 'col-md-4', 
+                                                                fontAwesomeIcon: 'fa fa-level-up',
+                                                                title: 'Drag control from here : '
                                                             },
                                                             {
                                                                 WhenIndex: 1,
                                                                 ApplycssClass: 'col-md-8', 
+                                                                fontAwesomeIcon: 'fa fa-level-down',
+                                                                title: 'Drop control into here : '
                                                             }
                                                         ],
                                         container : [
@@ -645,5 +649,5 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         }, true);
 
 
- 
+
 }]);
