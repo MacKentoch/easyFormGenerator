@@ -2,10 +2,11 @@
  * 
  * ddDecorContainer directive :
  *
- * - apply configuration to drop zone
- *   - column role (control selection or drop zone as form layout)
- *   - apply title
- *   - apply font-awesome icon
+ * WHAT IS IT USED FOR? : 
+ *
+ * - apply configuration to containers (or lines in layoutor group controls in control selection)
+ *   - apply title (ONLY if group controls (left drop zone - index 0): text inputs group, lists...)
+ *   - expand Bool (ONLY if group controls (left drop zone - index 0): text inputs group, lists...)
  * 
  */
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
@@ -32,8 +33,8 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         return {
             scope:  {
                         'styleParam': '=ddContainerProperties',
-                         'verboseMode' : '@ddVerboseMode',
-                         'currentIndex' : '@ddCurrentIndex'
+                         'verboseMode' : '@ddContainerVerboseMode',
+                         'currentIndex' : '@ddContainerCurrentIndex'
                     },
             restrict: 'A', 
             template: htmlTemplate,
@@ -52,8 +53,10 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     if (verbose === 'true' || verbose === '1') {
                        console.dir(
                             {
+                                whoAmI : 'I am verbose from ddDecorContainer link',
                                 verbodeMode : verbose,
-                                containerIndex : $scope.$parent.$index,
+                                ParentParentIndex : $scope.$parent.$parent.$index,
+                                ParentIndex : $scope.$parent.$index,
                                 currentIndex: currentIndex,
                                 styleParam : $scope.styleParam
                             }
