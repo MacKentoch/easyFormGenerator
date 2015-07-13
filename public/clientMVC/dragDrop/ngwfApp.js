@@ -26,7 +26,7 @@ var ngwfApp = angular.module('ngwfApp', [
 												'formlyBootstrap',
 												'ui.bootstrap',
 												'nya.bootstrap.select',
-                        'ui.sortable',
+                        'dndLists',
 												function () {
     //verbose init is ok  
     //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');
@@ -34,7 +34,7 @@ var ngwfApp = angular.module('ngwfApp', [
 }]);
 
 
-ngwfApp.value('easyFormGenVersion', 'v1.1.0');
+ngwfApp.value('easyFormGenVersion', 'v1.1.1');
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////
