@@ -15,7 +15,7 @@ var deleteLines = require('gulp-delete-lines');
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.1.0'
+	build: '1.1.1'
 };
 
 var bases ={
@@ -30,10 +30,6 @@ var scriptFileNames={
 	ngdagableFileMinName :'ngDraggable.min.js'
 };
 
-// var angularDragDropFile = {
-// 	scriptSource: 'public/js/angular-drag-and-drop-lists.min.js',
-// 	scriptDest: 'public/js/angular-drag-and-drop-lists.min.js'
-// };
 
 var app_main_css={
 	css_result: 'main_css.min.css',
@@ -107,7 +103,6 @@ var paths = {
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
 						'bower_components/lodash/lodash.min.js',
-						'bower_components/ng-sortable/dist/ng-sortable.min.js',
 						'vendor/js/angular-drag-and-drop-lists.min.js'		
  					],
 bower_components_map: 	[
@@ -126,9 +121,7 @@ bower_components_css: 	[
  						'bower_components/angular-loading-bar/build/loading-bar.min.css',
  						'bower_components/animate.css/animate.min.css',
  						'bower_components/angularjs-toaster/toaster.min.css',
- 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
- 						'bower_components/ng-sortable/dist/ng-sortable.min.css',
- 						'bower_components/ng-sortable/dist/ng-sortable.style.min.css'
+ 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
  					],
 bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
