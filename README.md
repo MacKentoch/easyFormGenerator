@@ -41,7 +41,7 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 
 ## What is new?
- - added `anees` branch to show an example for sharing formly models between multiple controllers
+ - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
 
 ##What is coming next?
 
