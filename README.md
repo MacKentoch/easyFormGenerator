@@ -43,13 +43,18 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 ## What is new?
  - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
 
+ - `drag and drop` alternative
+   - under heavy developments (**preview available** [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.1.1/indexDragDrop.html))
+   - `dragdrop branch` merged into `master branch` (*`dragdrop` branch now deleted*)
+     - see `indexDragDrop.html` for `drag and drop` version
+     - see `index.html` for current version `step guided generator`
+
 ##What is coming next?
 
  - adding tests
    - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
- - adding `drag and drop` alternative
-   - under heavy developments (**preview available** [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.1.1/indexDragDrop.html))
+ - developing `drag and drop` alternative
  - optimization / factorization (coming soon)
   
 
