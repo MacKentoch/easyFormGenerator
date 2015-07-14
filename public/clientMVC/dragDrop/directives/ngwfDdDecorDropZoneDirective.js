@@ -72,8 +72,6 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
 
                 if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
-
-                        //if (currentIndex >= '0') {
                             //apply title 
                             if (typeof $scope.styleParam.title !== 'undefined') {
                                 $scope.currentTitle = $scope.styleParam.title;
@@ -83,7 +81,6 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
                                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
                             }     
-                        //}
                     }                    
                 }
                           

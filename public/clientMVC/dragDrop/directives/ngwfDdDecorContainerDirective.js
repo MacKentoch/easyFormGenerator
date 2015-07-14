@@ -50,32 +50,38 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
-                // if (typeof currentIndex !== 'undefined') {
-                //     if (currentIndex !== '') {
 
-                //         //if (currentIndex >= '0') {
-                //             //apply title 
-                //             if (typeof $scope.styleParam.title !== 'undefined') {
-                //                 $scope.currentTitle = $scope.styleParam.title;
-                //             }
+                console.log('checkpoint 1');
 
-                //             //apply font-awesome icon
-                //             if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
-                //                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
-                //             }     
-                //         //}
-                //     }                    
-                // }
+                if (typeof currentIndex !== 'undefined') {
+                    if (currentIndex !== '') {
 
-                $scope.currentTitle = 'test Title';
-                          
+                        console.log('checkpoint 2');
 
-                //prevent transclusion creating child scope  
+                        if (currentIndex === '0') {
+                            //apply title 
+                            console.log('checkpoint 3');
+                            if (typeof $scope.styleParam.title !== 'undefined') {
+                                console.log('checkpoint 4');
+                                $scope.currentTitle = $scope.styleParam.title;
+                            }
+
+                            //apply font-awesome icon
+                            if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
+                                $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
+                            }     
+                        }
+                    }                    
+                }
+
+                //prevent transclusion creating child scope 
                 //want to know more about what I'm saying : check this nice tip on the subject :
                 //http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
                 transclude($scope.$parent, function(clone, $scope){
                     element.append(clone);
-                });          
+                });   
+
+
             }
         };
     }]);

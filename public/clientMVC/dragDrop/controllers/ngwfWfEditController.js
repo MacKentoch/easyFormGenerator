@@ -523,14 +523,14 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
       
       $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
-           console.info('dndItemMoved'); 
-           console.dir(
-                {
-                    _I_am : 'dndItemMoved',
-                    _ParentParentIndex : parentParentIndex,
-                    _ParentIndex : parentIndex,
-                    _index: itemIndex
-                });
+           // console.info('dndItemMoved'); 
+           // console.dir(
+           //      {
+           //          _I_am : 'dndItemMoved',
+           //          _ParentParentIndex : parentParentIndex,
+           //          _ParentIndex : parentIndex,
+           //          _index: itemIndex
+           //      });
 
         //prevent item from first container to disapear when dropped on other container
         if (parentParentIndex > 0) {
@@ -541,15 +541,15 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 
       $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
-           console.info('dragoverCallbackItems'); 
-           console.dir(
-                {
-                    _I_am : 'dragoverCallbackItems',
-                    external : external,
-                    _ParentParentIndex : ParentParentIndex,
-                    _ParentIndex : parentIndex,
-                    _index: index
-                });
+           // console.info('dragoverCallbackItems'); 
+           // console.dir(
+           //      {
+           //          _I_am : 'dragoverCallbackItems',
+           //          external : external,
+           //          _ParentParentIndex : ParentParentIndex,
+           //          _ParentIndex : parentIndex,
+           //          _index: index
+           //      });
 
             //prevent items in layout column to be drag to control select  
             if (parentIndex === 0) {
@@ -602,20 +602,18 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                 title: 'Drop control into here : '
                                                             }
                                                         ],
-                                        verboseMode : true                                                        
+                                        verboseMode : false                                                        
                   },
                   containerConfig : {
                                         decoration :    [
                                                             {
                                                                 WhenIndex: 0,
                                                                 ApplycssClass: 'col-md-12', 
-                                                                fontAwesomeIcon: 'fa fa-level-up',
                                                                 title: 'Headers : '
                                                             },
                                                             {
                                                                 WhenIndex: 1,
                                                                 ApplycssClass: 'col-md-12', 
-                                                                fontAwesomeIcon: 'fa fa-level-down',
                                                                 title: 'Text inputs : '
                                                             }
                                                         ],
