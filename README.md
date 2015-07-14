@@ -48,8 +48,8 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
  - adding tests
    - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
- - adding drag and drop
-   - coming soon (**preview available** in drag and drop sand-box in `dragdrop branch`)
+ - adding `drag and drop` alternative
+   - under heavy developments (**preview available** [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.1.1/indexDragDrop.html))
  - optimization / factorization (coming soon)
   
 
