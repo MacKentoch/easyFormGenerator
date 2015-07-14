@@ -523,6 +523,15 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
       
       $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
+           console.info('dndItemMoved'); 
+           console.dir(
+                {
+                    _I_am : 'dndItemMoved',
+                    _ParentParentIndex : parentParentIndex,
+                    _ParentIndex : parentIndex,
+                    _index: itemIndex
+                });
+
         //prevent item from first container to disapear when dropped on other container
         if (parentParentIndex > 0) {
             $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
@@ -532,6 +541,15 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 
       $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
+           console.info('dragoverCallbackItems'); 
+           console.dir(
+                {
+                    _I_am : 'dragoverCallbackItems',
+                    external : external,
+                    _ParentParentIndex : ParentParentIndex,
+                    _ParentIndex : parentIndex,
+                    _index: index
+                });
 
             //prevent items in layout column to be drag to control select  
             if (parentIndex === 0) {

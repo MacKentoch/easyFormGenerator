@@ -14,7 +14,6 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
                                 '<div class="{{}}">', 
                                 ' <h4>{{currentTitle}}</h4>', 
-                                ' <div ng-transclude></div>',   
                                 '</div>'].join(' ');
 
         return {
@@ -27,7 +26,7 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
             template: htmlTemplate,
             transclude: true,
 
-            link: function($scope) {    
+            link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
                 var currentIndex = $scope.currentIndex;
@@ -70,6 +69,13 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
 
                 $scope.currentTitle = 'test Title';
                           
+
+                //prevent transclusion creating child scope  
+                //want to know more about what I'm saying : check this nice tip on the subject :
+                //http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
+                transclude($scope.$parent, function(clone, $scope){
+                    element.append(clone);
+                });          
             }
         };
     }]);
