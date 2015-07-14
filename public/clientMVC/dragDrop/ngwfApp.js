@@ -1,17 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 
-//  ------------------------------------------------------
-//      Application module
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application Name (could be per view)
-//
-//  All angular modules loaded here (injected)
-//
-// TIP : remove console.log verbose on production
-//
-//
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ * this is the drag and drop version of easy form generator
+ *
+ * This version is not finished and is under heavy developments - do not use as production -
+ * 
+ * 
+ */
 
 var ngwfApp = angular.module('ngwfApp', [	
 												'ngwfApp.controllers',
