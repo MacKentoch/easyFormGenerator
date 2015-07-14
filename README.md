@@ -24,7 +24,7 @@ _EASY_ :
 
 _WANT EASIER WAY? OK_ :
 
-- no installation, no clone : just go here : [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.0.4/index.html)
+- no installation, no clone : just go here : [v1.0.5 — rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.0.5/index.html)
 
 _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
@@ -40,14 +40,18 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 - [angular formly documentation](http://docs.angular-formly.com)
 
 
+## What is new?
+ - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
+
 ##What is coming next?
 
  - adding tests
-   - unit test (in progress - already in `branch master`)
+   - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
  - adding drag and drop
-   - coming soon (planning `branch dragdrop`)
- 
+   - coming soon (**preview available** in drag and drop sand-box in `dragdrop branch`)
+ - optimization / factorization (coming soon)
+  
 
 ____
 ...more details to be added later
