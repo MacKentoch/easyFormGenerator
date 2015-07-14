@@ -33,7 +33,7 @@ var ngwfApp = angular.module('ngwfApp', [
 }]);
 
 
-ngwfApp.value('easyFormGenVersion', 'v1.1.0');
+ngwfApp.value('easyFormGenVersion', 'v1.0.6');
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////
