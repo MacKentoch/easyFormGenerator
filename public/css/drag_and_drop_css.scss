@@ -625,7 +625,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 
 
 /*=========================================================
-   drag and drop test (will change or be deleted)
+   specific drag and drop test (will change or be deleted)
 ===========================================================*/
 /***************************** Required styles *****************************/
 
@@ -695,11 +695,18 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 /***************************** Element type specific styles *****************************/
 
 .advancedDemo .dropzone .itemlist {
-    min-height: 120px !important;
+    min-height: 88px !important;
+}
+
+
+.effect1ForDragDropItem{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
 }
 
 .advancedDemo .dropzone .itemlist > li {
-    background-color: #337ab7;
+    background-color: #0d87e9;
     border: none;
     border-radius: .25em;
     color: #fff;
@@ -710,6 +717,8 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     padding: 3px;
     text-align: center;
     width: 180px;
+    @extend .effect1ForDragDropItem;
+
 }
 
 .advancedDemo .dropzone .container-element {

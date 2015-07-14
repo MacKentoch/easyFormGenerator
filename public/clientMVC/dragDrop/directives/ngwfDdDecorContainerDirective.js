@@ -13,7 +13,7 @@ var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDec
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
                                 '<div class="{{}}">', 
-                                ' <h4>{{currentTitle}}</h4>', 
+                                ' <h5>{{currentTitle}}</h5>', 
                                 '</div>'].join(' ');
 
         return {
