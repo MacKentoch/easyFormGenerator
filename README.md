@@ -24,7 +24,7 @@ _EASY_ :
 
 _WANT EASIER WAY? OK_ :
 
-- no installation, no clone : just go here : [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.0.4/index.html)
+- no installation, no clone : just go here : [v1.0.5 — rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.0.5/index.html)
 
 _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
