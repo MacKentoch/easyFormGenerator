@@ -12,10 +12,11 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div><span>- collapse -</span>',
-                                '  <div class="{{}}">', 
+                                '<div ng-click="collapseFct()"><span>- collapse -</span>',
                                 '   <h5>{{currentTitle}}</h5>', 
-                                '  </div>',
+                                '</div>',
+                                '<div collapse="isCollapsed">', 
+                                '   <div ng-transclude>', 
                                 '</div>'].join(' ');
 
         return {
@@ -23,18 +24,24 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                         'styleParam': '=ddContainerProperties',
                          'verboseMode' : '@ddContainerVerboseMode',
                          'currentIndex' : '@ddContainerCurrentIndex',
-                         'isCollpase' : '=ddContainerIsCollpase',
-                         'collapseFunction' : '&ddContainerCollapseFunction'
                     },
             restrict: 'A', 
             template: htmlTemplate,
             transclude: true,
+            controller: function($scope, $element, $attrs, $transclude) {
 
+                            $scope.collapseFct = function(){
+                                $scope.isCollapsed = !$scope.isCollapsed;
+                                console.info('collasped : ' + $scope.isCollapsed);
+                            };
+
+                        },
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
                 var currentIndex = $scope.currentIndex;
-                
+                $scope.isCollapsed = false;
+
 
                 //verbose mode : just for dev
                 if (verboseModeActive !== '') {
@@ -76,26 +83,18 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
-                element.bind('click', function(){
-                    console.info('click in directive');
-                    $scope.collapseFunction($scope.isCollpase);
-                });
-
-
                 //prevent transclusion creating child scope 
                 //want to know more about what I'm saying : check this nice tip on the subject :
                 //http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
                 transclude($scope.$parent, function(contentClone){
                     //element.append(contentClone);
 
-                    angular.forEach(contentClone, function(node){
-                        if (isDestinationContainer(node)) {
-                            element.append(node);
-                        }
-                    });
+                    // angular.forEach(contentClone, function(node){
+                    //     if (isDestinationContainer(node)) {
+                    //         element.append(node);
+                    //     }
+                    // });
                 });   
-
-
             }
         };
 
@@ -112,3 +111,4 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         }
 
     }]);
+
