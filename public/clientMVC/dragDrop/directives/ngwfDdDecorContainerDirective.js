@@ -74,11 +74,6 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                                 $scope.currentTitle = $scope.styleParam.title;
                             } 
 
-                            // var isCollapsed = $scope.isCollapsed;
-                            // $scope.returnCollapse = $scope.isCollapsed;
-                            // console.info('isCollapse : ' + isCollapsed);
-                            //var isCollapsed = $scope.collapse;
-
                         }
                     }                    
                 }
