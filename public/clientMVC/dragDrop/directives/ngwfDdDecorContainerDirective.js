@@ -12,11 +12,11 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div ng-click="collapseFct()"><span>- collapse -</span>',
+                                '<div ng-click="collapseFct()"><span>- click me to collapse -</span>',
                                 '   <h5>{{currentTitle}}</h5>', 
                                 '</div>',
                                 '<div collapse="isCollapsed">', 
-                                '   <div ng-transclude>', 
+                                '   <div id="ddDecorContainerWillTranscludeHere" ng-transclude>', 
                                 '</div>'].join(' ');
 
         return {
@@ -78,6 +78,8 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
+                //TODO : find div with "ddDecorContainerWillTranscludeHere" then manual append trnasclusion in it
+
                 //prevent transclusion creating child scope 
                 //want to know more about what I'm saying : check this nice tip on the subject :
                 //http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
@@ -92,6 +94,8 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                 });   
             }
         };
+
+    
 
         function isDestinationContainer(node){
             var yesItIs = false;
