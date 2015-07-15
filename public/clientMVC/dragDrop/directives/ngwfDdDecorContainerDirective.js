@@ -51,18 +51,13 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                 }
 
 
-                console.log('checkpoint 1');
-
                 if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
 
-                        console.log('checkpoint 2');
-
                         if (currentIndex === '0') {
                             //apply title 
-                            console.log('checkpoint 3');
                             if (typeof $scope.styleParam.title !== 'undefined') {
-                                console.log('checkpoint 4');
+
                                 $scope.currentTitle = $scope.styleParam.title;
                             }
 
