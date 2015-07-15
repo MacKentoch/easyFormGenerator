@@ -146,9 +146,8 @@
 												                        			dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
 												                        			dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
 												                        			dd-container-current-index="{{$parent.$index}}"
+												                        			dd-container-is-collapse = "easyFormDragDropProperties.containerConfig.collapse[$index]"
 							                                  >
-							                                      <!-- <h3>Container</h3> -->
-							                                      <!-- TO FIX : $parent.$index is now $parent.$parent.$index -->
 							                                      <ul dnd-list="items"
 							                                          dnd-allowed-types="['itemType']"
 							                                          dnd-horizontal-list="true"

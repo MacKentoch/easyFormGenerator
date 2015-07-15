@@ -617,7 +617,18 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                 title: 'Text inputs : '
                                                             }
                                                         ],
-                                        verboseMode : true                                                        
+                                        verboseMode : true, 
+                                        collapseEnabled : true,
+                                        collapseCtrl: [
+                                                          {
+                                                              atIndex : 0,
+                                                              collapse : false
+                                                          },
+                                                          {
+                                                              atIndex : 0,
+                                                              collapse : false
+                                                          }
+                                                      ]                                                       
                   }
         };
 

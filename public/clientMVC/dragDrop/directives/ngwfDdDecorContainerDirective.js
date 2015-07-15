@@ -12,7 +12,8 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div class="{{}}">', 
+                                '<div ng-click="styleParam.collapse = !styleParam.collapse">- collapse -<div>',
+                                '<div collapse="styleParam.collapse" class="{{}}">', 
                                 ' <h5>{{currentTitle}}</h5>', 
                                 '</div>'].join(' ');
 
@@ -51,23 +52,27 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                 }
 
 
-                if (typeof currentIndex !== 'undefined') {
+                 if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
 
+                        //specific 1st column
                         if (currentIndex === '0') {
                             //apply title 
+
                             if (typeof $scope.styleParam.title !== 'undefined') {
 
                                 $scope.currentTitle = $scope.styleParam.title;
-                            }
+                            } 
 
-                            //apply font-awesome icon
-                            if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
-                                $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
-                            }     
+                            // var isCollapsed = $scope.isCollapsed;
+                            // $scope.returnCollapse = $scope.isCollapsed;
+                            // console.info('isCollapse : ' + isCollapsed);
+
                         }
                     }                    
                 }
+
+
 
                 //prevent transclusion creating child scope 
                 //want to know more about what I'm saying : check this nice tip on the subject :
