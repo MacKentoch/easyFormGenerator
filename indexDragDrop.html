@@ -146,10 +146,12 @@
 												                        			dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
 												                        			dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
 												                        			dd-container-current-index="{{$parent.$index}}"
-												                        			dd-container-is-collapse = "easyFormDragDropProperties.containerConfig.collapse[$index]"
+												                        			dd-container-is-collpase="easyFormDragDropProperties.containerConfig.collapseCtrl[$parent.$index].collapse" 
+												                        			dd-container-collapse-function="easyFormDragDropProperties.containerConfig.collapseFunction()"
+
 							                                  >
 
-							                                  	<div dd-decor-include-container-here collapse="styleParam.collapse">
+							                                  	<div dd-decor-include-container-here collapse="easyFormDragDropProperties.containerConfig.collapseCtrl[$parent.$index].collapse">
 							                                  		
 
 							                                  	

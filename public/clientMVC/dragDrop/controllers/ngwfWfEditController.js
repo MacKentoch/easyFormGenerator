@@ -622,13 +622,17 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                         collapseCtrl: [
                                                           {
                                                               atIndex : 0,
-                                                              collapse : false
+                                                              collapse : true
                                                           },
                                                           {
-                                                              atIndex : 0,
-                                                              collapse : false
+                                                              atIndex : 1,
+                                                              collapse : true
                                                           }
-                                                      ]                                                       
+                                                      ],
+                                         collapseFunction : function(toCollapse){
+                                                              console.info('collapsing');
+                                                              toCollapse  = !toCollapse;
+                                                            }                                                                    
                   }
         };
 

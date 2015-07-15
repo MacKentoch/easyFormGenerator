@@ -12,17 +12,19 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div ng-click="styleParam.collapse = !styleParam.collapse">- collapse -<div>',
-                                '<div class="{{}}">', 
-                                ' <h5>{{currentTitle}}</h5>', 
-                                '</div>',
-                                ''].join(' ');
+                                '<div><span>- collapse -</span>',
+                                '  <div class="{{}}">', 
+                                '   <h5>{{currentTitle}}</h5>', 
+                                '  </div>',
+                                '</div>'].join(' ');
 
         return {
             scope:  {
                         'styleParam': '=ddContainerProperties',
                          'verboseMode' : '@ddContainerVerboseMode',
-                         'currentIndex' : '@ddContainerCurrentIndex'
+                         'currentIndex' : '@ddContainerCurrentIndex',
+                         'isCollpase' : '=ddContainerIsCollpase',
+                         'collapseFunction' : '&ddContainerCollapseFunction'
                     },
             restrict: 'A', 
             template: htmlTemplate,
@@ -74,6 +76,10 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
+                element.bind('click', function(){
+                    console.info('click in directive');
+                    $scope.collapseFunction($scope.isCollpase);
+                });
 
 
                 //prevent transclusion creating child scope 
@@ -95,11 +101,11 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
 
         function isDestinationContainer(node){
             var yesItIs = false;
-            console.dir(node);
+            
             if (node.tagName &&  (
                     node.hasAttribute('dd-decor-include-container-here') ||
                     node.tagName.toLowerCase() === 'dd-decor-include-container-here')) {
-                console.info('found!!!');
+                
                 yesItIs = true;
             }
             return yesItIs;
