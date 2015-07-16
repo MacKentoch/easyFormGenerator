@@ -28,7 +28,7 @@ var ngwfApp = angular.module('ngwfApp', [
 }]);
 
 
-ngwfApp.value('easyFormGenVersion', 'v1.1.1');
+ngwfApp.value('easyFormGenVersion', 'v1.1.2');
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////

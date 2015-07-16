@@ -645,34 +645,34 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                   }
         };
 
-        $scope.containerProperties = {
-                                        decoration :    [
-                                                            {
-                                                                WhenIndex: 0,
-                                                                ApplycssClass: 'col-md-4', 
-                                                                fontAwesomeIcon: 'fa fa-level-up',
-                                                                title: 'Drag control from here : '
-                                                            },
-                                                            {
-                                                                WhenIndex: 1,
-                                                                ApplycssClass: 'col-md-8', 
-                                                                fontAwesomeIcon: 'fa fa-level-down',
-                                                                title: 'Drop control into here : '
-                                                            }
-                                                        ],
-                                        container : [
-                                                        {
-                                                            WhenIndex : 0,
-                                                            Role : 'control selection',
-                                                            isDraggable : false
-                                                        },
-                                                        {
-                                                            WhenIndex : 1,
-                                                            Role : 'form layout',
-                                                            isDraggable : true
-                                                        }
-                                                    ]                
-        };
+        // $scope.containerProperties = {
+        //                                 decoration :    [
+        //                                                     {
+        //                                                         WhenIndex: 0,
+        //                                                         ApplycssClass: 'col-md-4', 
+        //                                                         fontAwesomeIcon: 'fa fa-level-up',
+        //                                                         title: 'Drag control from here : '
+        //                                                     },
+        //                                                     {
+        //                                                         WhenIndex: 1,
+        //                                                         ApplycssClass: 'col-md-8', 
+        //                                                         fontAwesomeIcon: 'fa fa-level-down',
+        //                                                         title: 'Drop control into here : '
+        //                                                     }
+        //                                                 ],
+        //                                 container : [
+        //                                                 {
+        //                                                     WhenIndex : 0,
+        //                                                     Role : 'control selection',
+        //                                                     isDraggable : false
+        //                                                 },
+        //                                                 {
+        //                                                     WhenIndex : 1,
+        //                                                     Role : 'form layout',
+        //                                                     isDraggable : true
+        //                                                 }
+        //                                             ]                
+        // };
 
         //init  model
         $scope.model = [].concat([
