@@ -609,7 +609,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
                   dropZoneCommand : {
                                       insertNewLine : function(){
-                                                $scope.model[1].push({});
+                                                $scope.model[1].push([]);
                                       }  
                   },
 
