@@ -12,8 +12,8 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
-                                '<div ng-click="collapseFct()"><span>- click me to collapse -</span>',
-                                '   <h5>{{currentTitle}}</h5>', 
+                                '<div ng-click="collapseFct()">',
+                                '   <h6><span class="glyphicon {{currentIconClass()}}"></span>&nbsp;{{currentTitle}}</h6>', 
                                 '</div>',
                                 '<div collapse="isCollapsed">', 
                                 '   <div id="ddDecorContainerWillTranscludeHere"></div>', 
@@ -33,6 +33,20 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                             $scope.collapseFct = function(){
                                 $scope.isCollapsed = !$scope.isCollapsed;
                                 console.info('collasped : ' + $scope.isCollapsed);
+                            };
+
+                            $scope.icons = {
+                                closedClass : 'glyphicon-eye-open',
+                                opened : 'glyphicon-eye-close'
+                            };
+
+
+                            $scope.currentIconClass =  function(){
+                                    if ($scope.isCollapsed) {
+                                        return $scope.icons.closedClass;
+                                    }else{
+                                        return $scope.icons.opened;
+                                    }
                             };
 
                         },
