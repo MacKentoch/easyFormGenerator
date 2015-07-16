@@ -44,7 +44,7 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
  - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
 
  - `drag and drop` alternative
-   - under heavy developments (**preview available** [rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v1.1.1/indexDragDrop.html))
+   - under heavy developments (**preview UPDATED** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/indexDragDrop.html))
    - `dragdrop branch` merged into `master branch` (*`dragdrop` branch now deleted*)
      - see `indexDragDrop.html` for `drag and drop` version
      - see `index.html` for current version `step guided generator`
