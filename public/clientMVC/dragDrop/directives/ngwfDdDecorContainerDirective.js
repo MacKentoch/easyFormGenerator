@@ -13,7 +13,7 @@ var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDec
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
                                 '<div ng-click="collapseFct()">',
-                                '   <h6 ng-show="config.isEnabled" class="isCollapsableZone"><span class="{{currentIconClass()}}"></span>&nbsp;{{currentTitle}}</h6>', 
+                                '   <h6 ng-show="config.isEnabled" class="isCollapsableZone"><button class="btn btn-primary btn-xs"><span class="{{currentIconClass()}}"></span></button>&nbsp;{{currentTitle}}</h6>', 
                                 '</div>',
                                 '<div collapse="isCollapsed">', 
                                 '   <div id="ddDecorContainerWillTranscludeHere"></div>', 
