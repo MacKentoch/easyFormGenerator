@@ -123,7 +123,8 @@
 							                    <div  dd-decor-drop-zone
 							                          dd-drop-zone-properties="easyFormDragDropProperties.dropZoneConfig.decoration[$index]"
 							                          dd-drop-zone-verbose-mode="{{easyFormDragDropProperties.dropZoneConfig.verboseMode}}"
-							                          dd-drop-zone-current-index="{{$index}}">
+							                          dd-drop-zone-current-index="{{$index}}"
+							                          dd-drop-zone-add-new-line="easyFormDragDropProperties.dropZoneCommand.insertNewLine()">
 							                      
 							                        <div 	class="dropzone box box-yellow">
 							                             
@@ -146,6 +147,7 @@
 												                        			dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
 												                        			dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
 												                        			dd-container-current-index="{{$parent.$index}}" 
+
 							                                  >
 
 							                                  	<div dd-decor-include-container-here>

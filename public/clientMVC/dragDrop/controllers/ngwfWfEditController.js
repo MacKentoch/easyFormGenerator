@@ -539,7 +539,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         
       };
 
-
       $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
            // console.info('dragoverCallbackItems'); 
            // console.dir(
@@ -586,6 +585,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
         $scope.model = [];
 
+
         $scope.easyFormDragDropProperties = {
                   dropZoneConfig : {
                                         decoration :    [
@@ -602,8 +602,17 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                 title: 'Drop control into here : '
                                                             }
                                                         ],
-                                        verboseMode : false                                                        
+                                        verboseMode : false
+
+
                   },
+
+                  dropZoneCommand : {
+                                      insertNewLine : function(){
+                                                $scope.model[1].push({});
+                                      }  
+                  },
+
                   containerConfig : {
                                         decoration :    [
                                                             {

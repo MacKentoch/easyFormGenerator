@@ -24,8 +24,12 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             '        <h3 class="panel-title">', 
                             '          <i class="{{currentFontAwesome}}"></i>&nbsp;', 
                             '          {{currentTitle}}', 
-                            '           <hr/>',
-                            '          <button class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-plus"></span>&nbsp;add new line</button>',
+                            //'           <hr/>',
+                            '           <div ng-show="headerConfig.HeaderButtonVisible">',
+                            '             <button class="btn btn-primary btn-xs buttonHeaderAddNewLine center-block" ng-click="addNewLineFct();">',
+                            '               <span class="glyphicon glyphicon-plus"></span>&nbsp;add new line',
+                            '             </button>',
+                            '           </div>',
                             '        </h3>', 
                             '      </div>', 
                             '      <div class="panel-body">', 
@@ -42,7 +46,8 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
             scope:  {
                         'styleParam': '=ddDropZoneProperties',
                          'verboseMode' : '@ddDropZoneVerboseMode',
-                         'currentIndex' : '@ddDropZoneCurrentIndex'
+                         'currentIndex' : '@ddDropZoneCurrentIndex',
+                         'addNewLineFct' : '&ddDropZoneAddNewLine'
                     },
             restrict: 'A', 
             template: htmlTemplate,
@@ -53,7 +58,9 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                 var verboseModeActive = $scope.verboseMode;
                 var currentIndex = $scope.currentIndex;
                 
-
+                $scope.headerConfig = {
+                    HeaderButtonVisible : false,
+                };
                 //verbose mode : just for dev
                 if (verboseModeActive !== '') {
                     var verbose = angular.lowercase(verboseModeActive);
@@ -72,6 +79,7 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                     }                    
                 }
 
+
                 if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
                             //apply title 
@@ -82,7 +90,11 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             //apply font-awesome icon
                             if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
                                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
-                            }     
+                            } 
+
+                            if (currentIndex === '1') {
+                                $scope.headerConfig.HeaderButtonVisible = true;
+                            }
                     }                    
                 }
                           
