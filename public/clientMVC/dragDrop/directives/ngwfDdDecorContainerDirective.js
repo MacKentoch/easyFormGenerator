@@ -13,7 +13,7 @@ var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDec
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
                                 '<div ng-click="collapseFct()">',
-                                '   <h6><span class="glyphicon {{currentIconClass()}}"></span>&nbsp;{{currentTitle}}</h6>', 
+                                '   <h6 ng-show="config.isEnabled" class="isCollapsableZone"><span class="{{currentIconClass()}}"></span>&nbsp;{{currentTitle}}</h6>', 
                                 '</div>',
                                 '<div collapse="isCollapsed">', 
                                 '   <div id="ddDecorContainerWillTranscludeHere"></div>', 
@@ -29,17 +29,22 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
             template: htmlTemplate,
             transclude: true,
             controller: function($scope, $element, $attrs, $transclude) {
+                            $scope.config = {   
+                                                isEnabled : false
+                                            };
 
                             $scope.collapseFct = function(){
-                                $scope.isCollapsed = !$scope.isCollapsed;
-                                console.info('collasped : ' + $scope.isCollapsed);
+                                //won't collapse if not control selection columns
+                                if ($scope.config.isEnabled) {
+                                    $scope.isCollapsed = !$scope.isCollapsed;
+                                }
+
                             };
 
                             $scope.icons = {
-                                closedClass : 'glyphicon-eye-open',
-                                opened : 'glyphicon-eye-close'
+                                closedClass : 'glyphicon glyphicon-eye-open',
+                                opened : 'glyphicon glyphicon-eye-close'
                             };
-
 
                             $scope.currentIconClass =  function(){
                                     if ($scope.isCollapsed) {
@@ -75,6 +80,8 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                     }                    
                 }
 
+                //no header (no title, no collapse....)
+                $scope.config.isEnabled = false;
 
                  if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
@@ -86,6 +93,7 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                             if (typeof $scope.styleParam.title !== 'undefined') {
 
                                 $scope.currentTitle = $scope.styleParam.title;
+                                $scope.config.isEnabled = true;
                             } 
 
                         }
