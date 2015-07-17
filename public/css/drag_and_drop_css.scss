@@ -660,6 +660,8 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  */
 .advancedDemo .dropzone li {
     display: block;
+
+
 }
 
 /**
@@ -686,10 +688,19 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  */
 .advancedDemo .dropzone .dndPlaceholder {
     background-color: #ddd !important;
-    min-height: 75px;
+    min-height: 95px;
     display: block;
     position: relative;
-    border:dashed;
+    // border:{
+    //   width:2px;
+    //   color:#F1F1F1;
+    //   style:dashed;
+    // }
+-moz-box-shadow: inset 0px 0px 5px 0px #343434;
+-webkit-box-shadow: inset 0px 0px 5px 0px #343434;
+-o-box-shadow: inset 0px 0px 5px 0px #343434;
+box-shadow: inset 0px 0px 5px 0px #343434;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=NaN, Strength=5);  
 }
 
 /***************************** Element type specific styles *****************************/
@@ -703,6 +714,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
+  min-height: 75px;        
 }
 
 .advancedDemo .dropzone .itemlist > li {
