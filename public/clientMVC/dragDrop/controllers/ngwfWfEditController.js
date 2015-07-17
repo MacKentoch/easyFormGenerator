@@ -582,6 +582,11 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             $scope.logEvent(message, event);
         };
 
+        $scope.removeThisLine = function(lineIndex){
+          console.info('will remove line line at index : ' + lineIndex);
+          //TODO : now remove line
+
+        };
 
         $scope.model = [];
 
@@ -637,42 +642,10 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                               atIndex : 1,
                                                               collapse : true
                                                           }
-                                                      ],
-                                         collapseFunction : function(toCollapse){
-                                                              console.info('collapsing');
-                                                              toCollapse  = !toCollapse;
-                                                            }                                                                    
+                                                      ]                                                                  
                   }
         };
 
-        // $scope.containerProperties = {
-        //                                 decoration :    [
-        //                                                     {
-        //                                                         WhenIndex: 0,
-        //                                                         ApplycssClass: 'col-md-4', 
-        //                                                         fontAwesomeIcon: 'fa fa-level-up',
-        //                                                         title: 'Drag control from here : '
-        //                                                     },
-        //                                                     {
-        //                                                         WhenIndex: 1,
-        //                                                         ApplycssClass: 'col-md-8', 
-        //                                                         fontAwesomeIcon: 'fa fa-level-down',
-        //                                                         title: 'Drop control into here : '
-        //                                                     }
-        //                                                 ],
-        //                                 container : [
-        //                                                 {
-        //                                                     WhenIndex : 0,
-        //                                                     Role : 'control selection',
-        //                                                     isDraggable : false
-        //                                                 },
-        //                                                 {
-        //                                                     WhenIndex : 1,
-        //                                                     Role : 'form layout',
-        //                                                     isDraggable : true
-        //                                                 }
-        //                                             ]                
-        // };
 
         //init  model
         $scope.model = [].concat([
