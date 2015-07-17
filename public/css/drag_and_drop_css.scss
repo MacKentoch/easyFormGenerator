@@ -708,6 +708,9 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=NaN, St
     min-height: 88px !important;
 }
 
+ul.itemlist.ng-scope{
+  border:none;
+}
 
 .effect1ForDragDropItem{
   -webkit-box-shadow: 0 10px 6px -6px #777;

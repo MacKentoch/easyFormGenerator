@@ -13,7 +13,7 @@ var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLin
 ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
         var htmlTemplate   = [
                                 '<div>',
-                                '  <button ng-click="console.info(\'removeLine form directive\');removeMe();" ng-show="parentIndex === \'1\'" type="button" class="btn btn-danger btn-xs pull-right buttonCloseLine">',
+                                '  <button ng-show="parentIndex === \'1\'" type="button" ng-click="removeMe();" class="btn btn-danger btn-xs pull-right buttonCloseLine">',
                                 '    <span aria-hidden="true">&times;</span></button>',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
                                 '</div>'].join(' ');
