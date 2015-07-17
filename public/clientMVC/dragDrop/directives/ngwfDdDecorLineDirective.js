@@ -12,9 +12,9 @@
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
 ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
         var htmlTemplate   = [
-                                '<div>',
-                                '  <button ng-show="parentIndex === \'1\'" type="button" ng-click="removeMe();" class="btn btn-danger btn-xs pull-right buttonCloseLine">',
-                                '    <span aria-hidden="true">&times;</span></button>',
+                                '<div>  <button ng-show="parentIndex === \'1\'" type="button"  class="btn btn-danger pull-right buttonCloseLine" ng-click="removeMe();">',
+                                '    <span aria-hidden="true">&times;</span></button></div>',
+                                '<div >',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
                                 '</div>'].join(' ');
 
@@ -26,9 +26,10 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                          'parentIndex':     '@ddLineParentIndex',
                          'removeLine' :     '&ddRemoveLine'
                     },
-            restrict: 'A', 
+            restrict: 'A',
             template: htmlTemplate,
             transclude: true,
+
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
@@ -40,10 +41,10 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
 
 
                 //verbose mode : just for dev
-                //if (verboseModeActive !== '') {
+                if (verboseModeActive !== '') {
                     var verbose = angular.lowercase(verboseModeActive);
 
-                   // if (verbose === 'true' || verbose === '1') {
+                    if (verbose === 'true' || verbose === '1') {
                        console.dir(
                             {
                                 whoAmI : 'I am verbose from ddDecorLine directive link',
@@ -54,10 +55,11 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                                 ///styleParam : $scope.styleParam
                             }
                         );
-                   // }                    
-               // }
+                    }                    
+                }
 
                $scope.removeMe= function(){
+            
                 $scope.removeLine(currentIndex);
                };
 
@@ -67,7 +69,7 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 transclude($scope.$parent, function(contentClone){
 
                     //transclusion will append content to '<div id="lineDirectiveTranscludeHere"></div>'
-                    var childDiv = angular.element(element.children()[0]); 
+                    var childDiv = angular.element(element.children()[1]); 
                     childDiv.append(contentClone);
                 });   
             }

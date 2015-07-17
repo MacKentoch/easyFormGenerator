@@ -12,6 +12,7 @@
 var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
 ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
         var htmlTemplate   = [
+                                //'<div>',
                                 '<div ng-click="collapseFct()">',
                                 '   <h6 ng-show="config.isEnabled" class="isCollapsableZone"><button class="btn btn-primary btn-xs"><span class="{{currentIconClass()}}"></span></button>&nbsp;{{currentTitle}}</h6>', 
                                 '</div>',
@@ -79,6 +80,7 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                         );
                     }                    
                 }
+
 
                 //no header (no title, no collapse....)
                 $scope.config.isEnabled = false;
