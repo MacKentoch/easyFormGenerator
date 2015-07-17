@@ -10,7 +10,7 @@
 angular.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRationDirective',
 																				'ngwfApp.directives.ngwfDdDecorDropZoneDirective',
 																				'ngwfApp.directives.ngwfDdDecorContainerDirective',
-																				//'ngwfApp.directives.ddDecorIncludeContainerHere',
+																				'ngwfApp.directives.ngwfDdDecorLineDirective',
 										function () {
     //verbose
     //console.log('--> INIT : Hello directives container  \'\'ngwfApp.directives\'\' ');
