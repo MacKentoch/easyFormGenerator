@@ -21,6 +21,7 @@ var ngwfApp = angular.module('ngwfApp', [
 												'ui.bootstrap',
 												'nya.bootstrap.select',
                         'dndLists',
+                        'mgcrea.ngStrap.affix',
 												function () {
     //verbose init is ok  
     //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');

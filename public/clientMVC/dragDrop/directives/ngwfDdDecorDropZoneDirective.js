@@ -18,7 +18,7 @@
 var ngwfDdDecorDropZoneDirective = angular.module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', []);
 ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
         var htmlTemplate   = ['<div class="{{styleParam.ApplycssClass}}">', 
-                            '  <div id="visualPanel">', 
+                            '  <div id="visualPanel">',
                             '    <div  class="panel panel-default">', 
                             '      <div class="panel-heading">', 
                             '        <h3 class="panel-title">', 
@@ -39,7 +39,7 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             '            </div>', 
                             '      </div>', 
                             '    </div>', 
-                            '  </div>', 
+                            '   </div>',
                             '</div>'].join(' ');
 
         return {
@@ -60,6 +60,8 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                 
                 $scope.headerConfig = {
                     HeaderButtonVisible : false,
+                    affixAttr: 'bs-affix',
+                    affixEnabled : false
                 };
                 //verbose mode : just for dev
                 if (verboseModeActive !== '') {
@@ -92,8 +94,14 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
                             } 
 
+                            //show add new line button
                             if (currentIndex === '1') {
                                 $scope.headerConfig.HeaderButtonVisible = true;
+                            }
+
+                            //affix control selection column
+                            if (currentIndex === '0') {
+                             $scope.headerConfig.affixEnabled = true;
                             }
                     }                    
                 }

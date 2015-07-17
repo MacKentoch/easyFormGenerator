@@ -103,7 +103,10 @@ var paths = {
 						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
 						'bower_components/lodash/lodash.min.js',
-						'vendor/js/angular-drag-and-drop-lists.min.js'		
+						'vendor/js/angular-drag-and-drop-lists.min.js',
+						'bower_components/angular-strap/dist/angular-strap.min.js',
+						'bower_components/angular-strap/dist/angular-strap.tpl.min.js'
+
  					],
 bower_components_map: 	[
 							'bower_components/jquery/dist/jquery.min.map',
@@ -112,7 +115,8 @@ bower_components_map: 	[
 							'bower_components/angular-animate/angular-animate.min.js.map',
 							'bower_components/angular-formly/dist/formly.min.js.map',
 							'bower_components/api-check/dist/api-check.min.js.map',
-							'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map'
+							'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map',
+							'bower_components/angular-strap/dist/angular-strap.min.js.map'
 						], 					
 
 bower_components_css: 	[
