@@ -12,11 +12,12 @@
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
 ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
         var htmlTemplate   = [
-                                '<div>  <button ng-show="parentIndex === \'1\'" type="button"  class="btn btn-danger pull-right buttonCloseLine" ng-click="removeMe();">',
-                                '    <span aria-hidden="true">&times;</span></button></div>',
-                                '<div >',
+                                '<div ng-dblclick="removeMe();"> ',
+                                //' <button ng-click="removeMe();" ng-show="parentIndex === \'1\'" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
+                                //'   <span aria-hidden="true">&times;</span></button>',
+                                '</div>',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
-                                '</div>'].join(' ');
+                                ].join(' ');
 
         return {
             scope:  {
@@ -59,8 +60,12 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 }
 
                $scope.removeMe= function(){
-            
-                $scope.removeLine(currentIndex);
+                console.info('remove click');
+                if ($scope.parentIndex === '1') {
+                    console.info('should remove at index ; ' + $scope.currentIndex);
+                    $scope.removeLine(currentIndex);
+                }
+                
                };
 
                 //prevent transclusion creating child scope 
@@ -69,7 +74,7 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 transclude($scope.$parent, function(contentClone){
 
                     //transclusion will append content to '<div id="lineDirectiveTranscludeHere"></div>'
-                    var childDiv = angular.element(element.children()[1]); 
+                    var childDiv = angular.element(element.children()[0]); 
                     childDiv.append(contentClone);
                 });   
             }
