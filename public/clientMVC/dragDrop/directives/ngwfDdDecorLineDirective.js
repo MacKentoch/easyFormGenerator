@@ -90,13 +90,24 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                              * NOTE : trick in calling parent controller function with input param when directive with isolate scope
                              * see : https://thinkster.io/egghead/isolate-scope-am
                              *
-                             * Here :
+                             * Here should be:
                              * 
                              *-> in html :                     dd-remove-line="removeThisLine(indexToDelete)
                              *-> in controller :               $scope.removeThisLine = function(lineIndex){
                              *-> so in directive call it  :    $scope.removeLine({indexToDelete: currentIndex});
+                             *
+                             *
+                             *
+                             *
+                             * BUT in this case (repeats, ul> li.... complicated) 
+                             *  => works better (if shaking a lot of line in a row it won't mess up)
+                             *
+                             *-> in html :                     dd-remove-line="removeThisLine($index)
+                             *-> in controller :               $scope.removeThisLine = function(lineIndex){
+                             *-> so in directive call it  :    $scope.removeLine();
                              */                            
-                            $scope.removeLine({indexToDelete: currentIndex});
+                            //$scope.removeLine({indexToDelete: currentIndex});
+                            $scope.removeLine();
 
                         }
 
