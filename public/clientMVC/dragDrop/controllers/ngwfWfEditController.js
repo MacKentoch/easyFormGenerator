@@ -584,8 +584,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
         $scope.removeThisLine = function(lineIndex){
           console.info('will remove line line at index : ' + lineIndex);
-          //TODO : now remove line
 
+          //TODO : now remove line
+          $scope.model[1].splice(lineIndex,1);
         };
 
         $scope.model = [];

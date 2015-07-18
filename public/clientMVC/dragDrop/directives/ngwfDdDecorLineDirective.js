@@ -64,19 +64,29 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                $scope.removeMe= function(){
                 
                 if ($scope.parentIndex === '1') {
-                    //1st dbl click : make it shake so ready to delete
-                    if ($scope.readyToDelete === false) {
-                        //make line shaking and ask another shacking to delete it
-                        angular.element(element).removeClass('confirmLineDelete');
-                        angular.element(element).addClass('confirmLineDelete');
-                        $scope.readyToDelete = true;
-                    }else{
+
+                    //2nd dbl click : if is shaking so it is confirmation to delete
+                    if (angular.element(element).hasClass('confirmLineDelete')){
+
+                        console.info('2nd dbl click');
                         //confirm delete :
                         //angular.element(element).removeClass('confirmLineDelete');
                         $scope.removeLine(currentIndex);
                     }
-                }
-               };
+
+
+                    //1st dbl click : make it shake so ready to delete
+                    if ($scope.readyToDelete === false) {
+                        console.info('1st dbl click');
+                        //make line shaking and ask another shacking to delete it
+                        angular.element(element).removeClass('confirmLineDelete');
+                        angular.element(element).addClass('confirmLineDelete');
+                        $scope.readyToDelete = true;
+                    }
+                    //$scope.$apply();
+               }
+           };
+
 
                $scope.cancelDelete = function(){
                 //stop shaking : cancel delete
