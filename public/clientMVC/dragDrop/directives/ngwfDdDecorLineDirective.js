@@ -10,9 +10,9 @@
  * 
  */
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
-ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
+ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout){
         var htmlTemplate   = [
-                                '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe();" ng-click="cancelDelete();"> ',
+                                '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe($event);" ng-click="cancelDelete($event);"> ',
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
@@ -37,7 +37,6 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 var currentIndex = $scope.currentIndex;
                 var parentIndex = $scope.parentIndex;
 
-                //$scope.readyToDelete = false;
                 $scope.deleteLine = {};
                 $scope.deleteLine.readyToDelete = false;
                 $scope.deleteLine.dblClickCount = 0;
@@ -58,40 +57,47 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                                 ParentParentIndex : $scope.$parent.$parent.$index,
                                 ParentIndex : parentIndex,
                                 currentIndex: currentIndex,
-                                ///styleParam : $scope.styleParam
                             }
                         );
                     }                    
                 }
 
-               $scope.removeMe= function(){
-                
-                if ($scope.parentIndex === '1') {
+               $scope.removeMe= function(event){
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                    //2nd dbl click : if is shaking so it is confirmation to delete
-                    if ($scope.deleteLine.dblClickCount === 1){
+                    if ($scope.parentIndex === '1') {
 
-                        $scope.deleteLine.dblClickCount = 0;
-                        console.info('2nd dbl click');
-                        $scope.removeLine(currentIndex);
-                    }
+                        //2nd dbl click : if is shaking so it is confirmation to delete
+                        if ($scope.deleteLine.dblClickCount === 1){
 
-                    //1st dbl click : make it shake so ready to delete
-                    if ($scope.deleteLine.dblClickCount === 0) {
+                            $scope.deleteLine.dblClickCount = 0;
+                            console.info('2nd dbl click');
+                            $scope.removeLine(currentIndex);
+                        }
+
+                        //1st dbl click : make it shake so ready to delete
+                        if ($scope.deleteLine.dblClickCount === 0) {
+                            
+                            $scope.deleteLine.dblClickCount = $scope.deleteLine.dblClickCount + 1;
+                            console.info('1st dbl click');
+                            $scope.deleteLine.readyToDelete = true;
+
+                        }
                         
-                        $scope.deleteLine.dblClickCount = $scope.deleteLine.dblClickCount + 1;
-                        console.info('1st dbl click');
-                        $scope.deleteLine.readyToDelete = true;
-
                     }
-                    
-               }
-           };
+                };
 
+            //need to timeout single click content otherwise prevent double click
+               $scope.cancelDelete = function(event){
 
-               $scope.cancelDelete = function(){
+                $timeout(function(){
+                    $scope.deleteLine.dblClickCount = 0;
+                    $scope.deleteLine.readyToDelete = false;  
+                      
+                }, 3000);
                 //stop shaking : cancel delete
-                $scope.deleteLine.readyToDelete = false;
+                
                 //angular.element(element).removeClass('confirmLineDelete');
                };
 
