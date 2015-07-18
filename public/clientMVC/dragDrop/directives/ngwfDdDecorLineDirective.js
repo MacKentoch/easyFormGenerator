@@ -12,7 +12,7 @@
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
 ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
         var htmlTemplate   = [
-                                '<div ng-dblclick="removeMe();"> ',
+                                '<div ng-dblclick="removeMe();" ng-click="cancelDelete();"> ',
                                 ' <button ng-show="readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
@@ -64,16 +64,26 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                $scope.removeMe= function(){
                 
                 if ($scope.parentIndex === '1') {
-                    console.info('should remove at index ; ' + $scope.currentIndex);
-
-                    //make line shaking and ask another shacking to delete it
-                    angular.element(element).addClass('confirmLineDelete');
-                    $scope.readyToDelete = true;
-
-                    $scope.removeLine(currentIndex);
+                    //1st dbl click : make it shake so ready to delete
+                    if ($scope.readyToDelete === false) {
+                        //make line shaking and ask another shacking to delete it
+                        angular.element(element).removeClass('confirmLineDelete');
+                        angular.element(element).addClass('confirmLineDelete');
+                        $scope.readyToDelete = true;
+                    }else{
+                        //confirm delete :
+                        //angular.element(element).removeClass('confirmLineDelete');
+                        $scope.removeLine(currentIndex);
+                    }
                 }
-                
                };
+
+               $scope.cancelDelete = function(){
+                //stop shaking : cancel delete
+                $scope.readyToDelete = false;
+                angular.element(element).removeClass('confirmLineDelete');
+               };
+
 
                 //prevent transclusion creating child scope 
                 //want to know more about what I'm saying : check this nice tip on the subject :
