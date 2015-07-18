@@ -4,13 +4,22 @@
  *
  * WHAT IS IT USED FOR? : 
  *
- * decorate a fomr line :
- *  - add a close button
+ * decorate a form line :
+ *  - double click will make it shake for 2 second (ready to delete state)
+ *  - double click again will delete this line
+ *  - no click within 2seconds : line will stop shaking 
  * 
  * 
  */
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
 ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout){
+
+
+        /**
+         * trick in calling parent controller function with input param whne directive with isolate scope
+         * see : https://thinkster.io/egghead/isolate-scope-am
+         * 
+         */
         var htmlTemplate   = [
                                 '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe($event);" ng-click="cancelDelete($event);"> ',
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
@@ -45,7 +54,9 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                 $scope.isCollapsed = false;
 
 
-                //verbose mode : just for dev
+                /**
+                 * verbose mode : just for dev 
+                 */
                 if (verboseModeActive !== '') {
                     var verbose = angular.lowercase(verboseModeActive);
 
@@ -62,6 +73,12 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                     }                    
                 }
 
+                /**
+                 * removeMe is function related to twice double click sequence to delete a line
+                 *
+                 *  - addClass / remove/class ; will make line in a shake movement
+                 *  - call "removeLine function to delete the line (if it was rwice double clicked)
+                 */
                $scope.removeMe= function(event){
                     event.preventDefault();
                     event.stopPropagation();
@@ -76,7 +93,7 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
 
                             //element.removeClass('confirmLineDelete');
 
-                            console.info('2nd dbl click, will delete index : ' + currentIndex);
+                            //console.info('2nd dbl click, will delete index : ' + currentIndex);
                             var indexToDelete = currentIndex;
                             $scope.removeLine(indexToDelete);
 
@@ -84,36 +101,37 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
 
                         //1st dbl click : make it shake so ready to delete
                         if ($scope.deleteLine.dblClickCount === 0) {
-                            
                             $scope.deleteLine.dblClickCount = $scope.deleteLine.dblClickCount + 1;
                             $scope.deleteLine.readyToDelete = true;
-
-                            console.info('1st dbl click');
-
                         }
                         
                     }
                 };
 
-            //need to timeout single click content otherwise prevent double click
-               $scope.cancelDelete = function(event){
 
-                $timeout(function(){
-                    $scope.deleteLine.dblClickCount = 0;
-                    $scope.deleteLine.readyToDelete = false;  
-                      
-                }, 2000);
-                //stop shaking : cancel delete
-                
-                //angular.element(element).removeClass('confirmLineDelete');
-               };
+                /**
+                 * signle event will ever occur
+                 *
+                 * to prevent it to interfere with double click sequence 
+                 * -> set a time out (shaking line to delete will automaticallly end shaking after timeout : 2 seconds)
+                 */
+                $scope.cancelDelete = function(event){
+                    $timeout(function(){
+                        $scope.deleteLine.dblClickCount = 0;
+                        $scope.deleteLine.readyToDelete = false;  
+                          
+                    }, 2000);
+                };
 
 
-                //prevent transclusion creating child scope 
-                //want to know more about what I'm saying : check this nice tip on the subject :
-                //http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
+                /**
+                 * prevent transclusion creating child scope  
+                 *
+                 *
+                 * NOTE :if you want to know more about what I'm saying : check this nice tip on the subject : 
+                 * http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
+                 */
                 transclude($scope.$parent, function(contentClone){
-
                     //transclusion will append content to '<div id="lineDirectiveTranscludeHere"></div>'
                     var childDiv = angular.element(element.children()[0]); 
                     childDiv.append(contentClone);
