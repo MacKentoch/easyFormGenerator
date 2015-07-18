@@ -12,8 +12,8 @@
 var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
 ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
         var htmlTemplate   = [
-                                '<div ng-dblclick="removeMe();" ng-click="cancelDelete();"> ',
-                                ' <button ng-show="readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
+                                '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe();" ng-click="cancelDelete();"> ',
+                                ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
@@ -37,7 +37,10 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 var currentIndex = $scope.currentIndex;
                 var parentIndex = $scope.parentIndex;
 
-                $scope.readyToDelete = false;
+                //$scope.readyToDelete = false;
+                $scope.deleteLine = {};
+                $scope.deleteLine.readyToDelete = false;
+                $scope.deleteLine.dblClickCount = 0;
 
         
                 $scope.isCollapsed = false;
@@ -66,32 +69,30 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', [function(){
                 if ($scope.parentIndex === '1') {
 
                     //2nd dbl click : if is shaking so it is confirmation to delete
-                    if (angular.element(element).hasClass('confirmLineDelete')){
+                    if ($scope.deleteLine.dblClickCount === 1){
 
+                        $scope.deleteLine.dblClickCount = 0;
                         console.info('2nd dbl click');
-                        //confirm delete :
-                        //angular.element(element).removeClass('confirmLineDelete');
                         $scope.removeLine(currentIndex);
                     }
 
-
                     //1st dbl click : make it shake so ready to delete
-                    if ($scope.readyToDelete === false) {
+                    if ($scope.deleteLine.dblClickCount === 0) {
+                        
+                        $scope.deleteLine.dblClickCount = $scope.deleteLine.dblClickCount + 1;
                         console.info('1st dbl click');
-                        //make line shaking and ask another shacking to delete it
-                        angular.element(element).removeClass('confirmLineDelete');
-                        angular.element(element).addClass('confirmLineDelete');
-                        $scope.readyToDelete = true;
+                        $scope.deleteLine.readyToDelete = true;
+
                     }
-                    //$scope.$apply();
+                    
                }
            };
 
 
                $scope.cancelDelete = function(){
                 //stop shaking : cancel delete
-                $scope.readyToDelete = false;
-                angular.element(element).removeClass('confirmLineDelete');
+                $scope.deleteLine.readyToDelete = false;
+                //angular.element(element).removeClass('confirmLineDelete');
                };
 
 
