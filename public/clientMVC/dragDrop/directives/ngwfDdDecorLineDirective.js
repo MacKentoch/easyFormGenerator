@@ -15,11 +15,6 @@ var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLin
 ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout){
 
 
-        /**
-         * trick in calling parent controller function with input param whne directive with isolate scope
-         * see : https://thinkster.io/egghead/isolate-scope-am
-         * 
-         */
         var htmlTemplate   = [
                                 '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe($event);" ng-click="cancelDelete($event);"> ',
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
@@ -91,11 +86,17 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                             $scope.deleteLine.dblClickCount = 0;
                             $scope.deleteLine.readyToDelete = false;
 
-                            //element.removeClass('confirmLineDelete');
-
-                            //console.info('2nd dbl click, will delete index : ' + currentIndex);
-                            var indexToDelete = currentIndex;
-                            $scope.removeLine(indexToDelete);
+                            /**
+                             * NOTE : trick in calling parent controller function with input param when directive with isolate scope
+                             * see : https://thinkster.io/egghead/isolate-scope-am
+                             *
+                             * Here :
+                             * 
+                             *-> in html :                     dd-remove-line="removeThisLine(indexToDelete)
+                             *-> in controller :               $scope.removeThisLine = function(lineIndex){
+                             *-> so in directive call it  :    $scope.removeLine({indexToDelete: currentIndex});
+                             */                            
+                            $scope.removeLine({indexToDelete: currentIndex});
 
                         }
 
@@ -116,7 +117,11 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                  * -> set a time out (shaking line to delete will automaticallly end shaking after timeout : 2 seconds)
                  */
                 $scope.cancelDelete = function(event){
+                    //event.preventDefault();
+                    //event.stopPropagation();
+                    
                     $timeout(function(){
+                    
                         $scope.deleteLine.dblClickCount = 0;
                         $scope.deleteLine.readyToDelete = false;  
                           
