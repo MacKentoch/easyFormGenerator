@@ -66,8 +66,9 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                     element.removeClass('col-md-6');
                     element.removeClass('col-md-4');
 
-                    console.info('directive (watch) : item css class :');
-                    console.dir(newValue);
+                    //console.info('directive (watch) : item css class :');
+                    //console.dir(newValue);
+                    //
                     /**
                      * add class
                      */

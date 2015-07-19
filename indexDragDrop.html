@@ -187,7 +187,7 @@
 							                                              dnd-draggable="item"
 							                                              dnd-type="'itemType'"
 							                                              dnd-effect-allowed="copyMove"
-							                                              dnd-dragstart="logEvent('Started to drag an item', event)"
+							                                              dnd-dragstart="dragItemStart($index, $parent.$index, $parent.$parent.$index);logEvent('Started to drag an item', event)"
 							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);  logEvent('Item moved', event)"
 							                                              dnd-copied="logEvent('Item copied', event)"
 
