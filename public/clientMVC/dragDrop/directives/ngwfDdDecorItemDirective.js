@@ -18,7 +18,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                                 //'   col-md-6 : (lineItemsCount === 2),',
                                 //'   col-md-12 : (lineItemsCount === 1)',
                                 //'}>',
-                                '<div class="{{cssClass}}">',
+                                '<div>',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
                                 ].join(' ');
@@ -45,8 +45,19 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
 
                 var listClass = ['col-md-12','col-md-6','col-md-4'];
 
+                /**
+                 * reset css class
+                 */
+                element.removeClass('col-md-12');
+                element.removeClass('col-md-6');
+                element.removeClass('col-md-4');
+
                 console.info('directive : item css class :');
                 console.dir($scope.cssClass);
+                /**
+                 * add class
+                 */
+                element.addClass($scope.cssClass);
 
                 /**
                  * verbose mode : just for dev 
