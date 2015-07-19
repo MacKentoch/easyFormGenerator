@@ -132,7 +132,15 @@
 							                              dnd-allowed-types="['containerType']"
 							                              dnd-external-sources="true"
 							                              dnd-dragover="dragoverCallback(event, index, external, type);dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
-							                              dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
+							                              dnd-drop="dropCallback(event, index, item, external, type, 'containerType')"
+							                              
+
+
+							                              class="row"
+							                              
+
+
+							                              >
 							                              <li ng-repeat="items in containers"
 							                                  dnd-draggable="items"
 							                                  dnd-type="'containerType'"
@@ -140,7 +148,8 @@
 							                                  dnd-dragstart="logEvent('Started to drag a container', event)"
 							                                  dnd-moved="containers.splice($index, 1); logEvent('Container moved', event)"
 							                                  dnd-disable-if="$parent.$index == 0"   
-							                                  dnd-copied="logEvent('Container copied', event)">
+							                                  dnd-copied="logEvent('Container copied', event)"
+							                                  >
 
 							                                  <div 	class="container-element box box-blue"
 												                        			dd-decor-container
@@ -160,6 +169,7 @@
 							                                          dd-line-current-index="{{$index}}"
 							                                          dd-line-parent-index="{{$parent.$index}}"
 							                                          dd-remove-line="removeThisLine($index)"
+							                                          
 							                                  		>
 							                                  			
 							                                      <ul dnd-list="items"
@@ -170,15 +180,21 @@
 							                                          dnd-dragover="dragoverCallback(event, index, external, type); dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
 							                                          dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
 							                                          class="itemlist"
-							                                          							                                          >
+							                                          
+							                                          >
 							                                          <li ng-repeat="item in items"
 							                                              dnd-draggable="item"
 							                                              dnd-type="'itemType'"
 							                                              dnd-effect-allowed="copyMove"
 							                                              dnd-dragstart="logEvent('Started to drag an item', event)"
 							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);  logEvent('Item moved', event)"
-							                                              dnd-copied="logEvent('Item copied', event)">
-							                                              {{item.label}}
+							                                              dnd-copied="logEvent('Item copied', event)"
+							                                              class="col-md-4">
+
+							                                              <div id="itemContent" class="col-md-12">
+							                                             	 {{item.label}} 	
+							                                              </div>
+							                                             
 							                                          </li>
 							                                      </ul>
 							                                      </div>

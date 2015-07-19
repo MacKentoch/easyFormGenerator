@@ -722,8 +722,24 @@ ul.itemlist.ng-scope{
 }
 
 .advancedDemo .dropzone .itemlist > li {
+    // background-color: #0d87e9;
+     border: none;
+    // border-radius: .25em;
+    // color: #fff;
+    // float: left;
+    // font-weight: 700;
+    // height: 75px;
+    // // margin: 5px;
+    // // padding: 3px;
+    // text-align: center;
+    // // width: 180px;
+    // @extend .effect1ForDragDropItem;
+
+}
+
+#itemContent{
     background-color: #0d87e9;
-    border: none;
+    border: 1px solid #0d87e9;
     border-radius: .25em;
     color: #fff;
     float: left;
@@ -732,9 +748,8 @@ ul.itemlist.ng-scope{
     margin: 5px;
     padding: 3px;
     text-align: center;
-    width: 180px;
+    width: 100%;
     @extend .effect1ForDragDropItem;
-
 }
 
 .advancedDemo .dropzone .container-element {
