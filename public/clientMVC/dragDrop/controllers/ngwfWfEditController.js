@@ -630,7 +630,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                 title: 'Text inputs : '
                                                             }
                                                         ],
-                                        verboseMode : true, 
+                                        verboseMode : false, 
                                         collapseEnabled : true,
                                         collapseCtrl: [
                                                           {
@@ -642,7 +642,28 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                               collapse : true
                                                           }
                                                       ]                                                                  
-                  }
+                  },
+                  itemConfig : {
+                                        decoration :    [
+                                                            {
+                                                                WhenNbItem: 0,
+                                                                ApplycssClass: 'col-md-12', 
+                                                            },
+                                                            {
+                                                                WhenNbItem: 1,
+                                                                ApplycssClass: 'col-md-12', 
+                                                            },                                                            
+                                                            {
+                                                                WhenNbItem: 2,
+                                                                ApplycssClass: 'col-md-6', 
+                                                            },
+                                                            {
+                                                                WhenNbItem: 3,
+                                                                ApplycssClass: 'col-md-4', 
+                                                            }                                                            
+                                                        ],
+                                        verboseMode : true, 
+                                    }                  
         };
 
 

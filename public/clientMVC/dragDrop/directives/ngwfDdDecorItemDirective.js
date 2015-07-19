@@ -66,7 +66,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 }
 
                 /**
-                 * apply css class to item depending number of items in the same line
+                 * form column : apply css class to item depending number of items in the same line
                  */
                if ($scope.parentParentIndex === '1') {
                     /**
@@ -86,14 +86,14 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                             element.addClass(listClass[0]);
                             console.info('added class : ' + listClass[0]);        
                         }                        
-                    }
-
-
-
-                        
-                
-                        
-                }                
+                    }          
+                }
+                /**
+                 * control column : apply css class to item
+                 */
+                if ($scope.parentParentIndex === '0') {
+                   element.addClass(listClass[0]);  
+                }
 
                 /**
                  * removeMe is function related to twice double click sequence to delete a line
