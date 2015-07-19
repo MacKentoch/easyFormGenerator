@@ -540,15 +540,22 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
       };
 
       $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
-           // console.info('dragoverCallbackItems'); 
-           // console.dir(
-           //      {
-           //          _I_am : 'dragoverCallbackItems',
-           //          external : external,
-           //          _ParentParentIndex : ParentParentIndex,
-           //          _ParentIndex : parentIndex,
-           //          _index: index
-           //      });
+           console.info('dragoverCallbackItems'); 
+           console.dir(
+                {
+                    _I_am : 'dragoverCallbackItems',
+                    external : external,
+                    _ParentParentIndex : ParentParentIndex,
+                    _ParentIndex : parentIndex,
+                    _index: index
+                });
+
+          console.info('\n\n\n');
+          console.warn('draggin control');
+
+          //got line here : 
+          //TODO apply css to all item depending nb of item
+          console.dir($scope.model[parentIndex][index]);
 
             //prevent items in layout column to be drag to control select  
             if (parentIndex === 0) {
@@ -557,6 +564,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             
             return true;
         };
+
 
 
         $scope.dropCallback = function(event, index, item, external, type, allowedType) {
