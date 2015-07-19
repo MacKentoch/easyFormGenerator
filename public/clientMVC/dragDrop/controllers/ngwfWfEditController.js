@@ -679,7 +679,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                 ApplyCssClass: 'col-md-4', 
                                                             }                                                            
                                                         ],
-                                        verboseMode : true, 
+                                        verboseMode : false, 
                                     }                  
         };
 

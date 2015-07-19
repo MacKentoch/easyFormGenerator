@@ -18,7 +18,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                                 //'   col-md-6 : (lineItemsCount === 2),',
                                 //'   col-md-12 : (lineItemsCount === 1)',
                                 //'}>',
-                                '<div>',
+                                '<div class="{{cssClass}}">',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
                                 ].join(' ');
@@ -26,11 +26,12 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
         return {
             scope:  {
 
-                         'verboseMode' :    '@ddItemVerboseMode',
-                         'currentIndex' :   '@ddItemCurrentIndex',
-                         'parentIndex':     '@ddItemParentIndex',
-                         'parentParentIndex': '@ddItemParentParentIndex', 
-                         'lineItemsCount' : '=ddItemsCount'
+                         'verboseMode' :        '@ddItemVerboseMode',
+                         'currentIndex' :       '@ddItemCurrentIndex',
+                         'parentIndex':         '@ddItemParentIndex',
+                         'parentParentIndex':   '@ddItemParentParentIndex', 
+                         'lineItemsCount' :     '@ddItemsCount',
+                         'cssClass':            '@ddItemCssClass'
                     },
             restrict: 'A',
             template: htmlTemplate,
@@ -43,6 +44,9 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 var parentIndex = $scope.parentIndex;
 
                 var listClass = ['col-md-12','col-md-6','col-md-4'];
+
+                console.info('directive : item css class :');
+                console.dir($scope.cssClass);
 
                 /**
                  * verbose mode : just for dev 
@@ -68,32 +72,34 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 /**
                  * form column : apply css class to item depending number of items in the same line
                  */
-               if ($scope.parentParentIndex === '1') {
-                    /**
-                     * cleaning classes before adding
-                     */
-                    for (var i = listClass.length - 1; i >= 0; i--) {
-                        element.removeClass(listClass[i]);    
-                    }
-                    console.info('should add class : ' + listClass[$scope.lineItemsCount]);
+               // if ($scope.parentParentIndex === '1') {
+               //      /**
+               //       * cleaning classes before adding
+               //       */
+               //      for (var i = listClass.length - 1; i >= 0; i--) {
+               //          element.removeClass(listClass[i]);    
+               //      }
+               //      console.info('should add class : ' + listClass[$scope.lineItemsCount]);
 
-                    if (typeof $scope.lineItemsCount !== 'undefined') {
-                        console.info('should add class since not undefined : ' + listClass[$scope.lineItemsCount]);
-                        if ($scope.lineItemsCount > 0) {
-                            element.addClass(listClass[$scope.lineItemsCount - 1]);    
-                            console.info('added class : ' + listClass[$scope.lineItemsCount - 1]);    
-                        }else{
-                            element.addClass(listClass[0]);
-                            console.info('added class : ' + listClass[0]);        
-                        }                        
-                    }          
-                }
+               //      if (typeof $scope.lineItemsCount !== 'undefined') {
+               //          console.info('should add class since not undefined : ' + listClass[$scope.lineItemsCount]);
+               //          if ($scope.lineItemsCount > 0) {
+               //              element.addClass(listClass[$scope.lineItemsCount - 1]);    
+               //              console.info('added class : ' + listClass[$scope.lineItemsCount - 1]);    
+               //          }else{
+               //              element.addClass(listClass[0]);
+               //              console.info('added class : ' + listClass[0]);        
+               //          }                        
+               //      }          
+               //  }
                 /**
                  * control column : apply css class to item
                  */
                 if ($scope.parentParentIndex === '0') {
                    element.addClass(listClass[0]);  
                 }
+
+
 
                 /**
                  * removeMe is function related to twice double click sequence to delete a line
