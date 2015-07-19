@@ -1,13 +1,22 @@
 /**
+ *  -----------------------------------------------------------------------
+ *  application module of the drag and drop version of easy form generator
+ *  -----------------------------------------------------------------------
  *
- * this is the drag and drop version of easy form generator
+ *  This version is not finished and is under heavy developments
+ *  
+ *   
+ *     - do not use as production -
  *
- * This version is not finished and is under heavy developments - do not use as production -
  * 
- * 
- */
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 
-var ngwfApp = angular.module('ngwfApp', [	
+var ngwfApp = angular.module('ngwfApp', [
+                        'ngwfApp.providers',	
 												'ngwfApp.controllers',
 												'ngwfApp.services', 
 												'ngwfApp.filters',
@@ -23,13 +32,12 @@ var ngwfApp = angular.module('ngwfApp', [
                         'dndLists',
                         'mgcrea.ngStrap.affix',
 												function () {
-    //verbose init is ok  
-    //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');
-
 }]);
 
 
 ngwfApp.value('easyFormGenVersion', 'v1.1.2');
+
+
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////

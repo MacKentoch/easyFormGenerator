@@ -54,6 +54,7 @@ var clientMVC_dragDrop={
 	directives: ['public/clientMVC/dragDrop/directives/**/*.js'],
 	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],
 	services: ['public/clientMVC/dragDrop/services/**/*.js'],
+	providers: ['public/clientMVC/dragDrop/providers/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 };
 
@@ -247,7 +248,8 @@ gulp.task('scripts:clientMVC_dragDrop:dev', [], function() {
  				.concat(clientMVC_dragDrop.controllers)
  				.concat(clientMVC_dragDrop.directives)
  				.concat(clientMVC_dragDrop.filters)
- 				.concat(clientMVC_dragDrop.services),
+ 				.concat(clientMVC_dragDrop.services)
+ 				.concat(clientMVC_dragDrop.providers),
  				{cwd: bases.app})
  .pipe(jshint())
  .pipe(jshint.reporter('default'))

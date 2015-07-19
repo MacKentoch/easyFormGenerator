@@ -20,6 +20,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           'formFieldManage',
                                                           'wfFormsByIdServices',
                                                           'controllerModalProxy',
+                                                          'dragDropItemDecorationService',
                             															function (	$scope, 
                                                                       easyFormGenVersion,
                                                                       $filter,
@@ -30,7 +31,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       $log, 
                                                                       formFieldManage, 
                                                                       wfFormsByIdServices, 
-                                                                      controllerModalProxy) {
+                                                                      controllerModalProxy,
+                                                                      dragDropItemDecorationService) {
   //verbose
   //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
@@ -661,12 +663,11 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             * UPDATE CSS CLASS TO ALL ITEM IN LINE
             */          
            var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
-           //console.info('numberOfItems = ' + numberOfItems);
-           $scope.applyCssClassWholeLine(parentIndex, realIndex, numberOfItems);
-
+            dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
            /**
             * 
             * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
+            * 
             */
             if (numberOfItems === 1) {
               item.cssClass = 'col-md-12';
@@ -789,52 +790,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                     }                  
         };
 
-        /**
-         * applyCssClassWholeLine : add/update css to all items in same line
-         * @param  {integer} indexColumn [column index : should be 1 = form column]
-         * @param  {integer} indexLine   [lien index]
-         * @param  {integer} numberItems [number of items so that guess css class to apply all items]
-         * 
-         */
-        $scope.applyCssClassWholeLine = function(indexColumn, indexLine, numberItems){
-          if (typeof numberItems !== 'undefined') {
 
-            if (indexColumn === 1) {
-
-              //console.info('indexColumn === 1');
-              
-              if (numberItems === 1) {
-                //console.info('numberItems === 1');
-                for (var i = $scope.model[indexColumn][indexLine].length - 1; i >= 0; i--) {
-                  $scope.model[indexColumn][indexLine][i].cssClass = 'col-md-12';//$scope.easyFormDragDropProperties.itemConfig.decoration[1].ApplyCssClass;
-                  //console.info('add col-md-12 class');
-                }
-                
-              }
-
-              if (numberItems === 2) {
-                console.info('numberItems === 2');
-                for (var j = $scope.model[indexColumn][indexLine].length - 1; j >= 0; j--) {
-                  $scope.model[indexColumn][indexLine][j].cssClass = 'col-md-6';//$scope.easyFormDragDropProperties.itemConfig.decoration[2].ApplyCssClass;
-                  //console.info('add col-md-6 class');
-                }
-              }
-
-              if (numberItems === 3) {
-                console.info('numberItems === 3');
-                for (var k = $scope.model[indexColumn][indexLine].length - 1; k >= 0; k--) {
-                  $scope.model[indexColumn][indexLine][k].cssClass = 'col-md-4';//$scope.easyFormDragDropProperties.itemConfig.decoration[3].ApplyCssClass;
-                  //console.info('add col-md-4 class');
-                }
-              }
-
-            } 
-            return true;
-          }else{
-            return false;
-          }
-
-        };
 
          // function is_int(value){ 
          //    if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
