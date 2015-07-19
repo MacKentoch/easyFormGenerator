@@ -662,28 +662,19 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             * 
             * UPDATE CSS CLASS TO ALL ITEM IN LINE
             */          
+           
+
+           dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+           
            var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
             dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
            /**
             * 
             * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
             * 
-            */
-            if (numberOfItems === 1) {
-              item.cssClass = 'col-md-12';
-            }
-
-            if (numberOfItems === 2) {
-              item.cssClass = 'col-md-6';
-            }
-
-            if (numberOfItems === 3) {
-              item.cssClass = 'col-md-4';
-            }            
-
-
-
-
+            */           
+            item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
+          
 
 
             if (external) {
@@ -791,15 +782,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         };
 
 
-
-         // function is_int(value){ 
-         //    if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
-         //        return true;
-         //    } else { 
-         //        return false;
-         //    } 
-         //  }
-
         //init  model
         $scope.model = [].concat([
                                   [
@@ -852,9 +834,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
 
 
-        $scope.$watch('model', function(model) {
-            $scope.modelAsJson = angular.toJson(model, true);
-        }, true);
+        // $scope.$watch('model', function(model) {
+        //     $scope.modelAsJson = angular.toJson(model, true);
+        // }, true);
 
 
 

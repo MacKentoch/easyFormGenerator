@@ -78,7 +78,41 @@ dragDropItemDecorationService.factory('dragDropItemDecorationService',
 
 
 	Service.updateCssClassWholeColumn = function(model, indexColumn){
-		return true;
+
+	  if (typeof indexColumn !== 'undefined' &&
+	  	  typeof model !== 'undefined') {
+
+	   	/**
+	   	 * iterates through rows
+	   	 */
+	   	for (var cpt = model[indexColumn].length - 1; cpt >= 0; cpt--) {
+		   	/**
+		   	 * iterates through items
+		   	 */
+	      for (var i = model[indexColumn][cpt].length - 1; i >= 0; i--) {
+	          model[indexColumn][cpt][i].cssClass = getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
+
+	          console.info('debug updateCssClassWholeColumn');
+	          console.dir({
+	          							indexColumn : indexColumn,
+	          							indexLine : cpt,
+	          							indexItem : i,
+	          							cssClassApplied : getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length)
+	          });
+	      }
+
+	      console.info('model is finally :');
+	      console.dir(model);
+
+	   	}	
+
+
+
+	    return true;
+		}else{
+			return false;
+		}
+
 	};
 
 
