@@ -45,19 +45,37 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
 
                 var listClass = ['col-md-12','col-md-6','col-md-4'];
 
-                /**
-                 * reset css class
-                 */
-                element.removeClass('col-md-12');
-                element.removeClass('col-md-6');
-                element.removeClass('col-md-4');
 
-                console.info('directive : item css class :');
-                console.dir($scope.cssClass);
-                /**
-                 * add class
-                 */
-                element.addClass($scope.cssClass);
+                // element.removeClass('col-md-12');
+                // element.removeClass('col-md-6');
+                // element.removeClass('col-md-4');
+
+                // console.info('directive : item css class :');
+                // console.dir($scope.cssClass);
+                // /**
+                //  * add class
+                //  */
+                // element.addClass($scope.cssClass);
+
+
+                $scope.$watch('cssClass', function(newValue, oldValue) {
+                    /**
+                     * reset css class
+                     */
+                    element.removeClass('col-md-12');
+                    element.removeClass('col-md-6');
+                    element.removeClass('col-md-4');
+
+                    console.info('directive (watch) : item css class :');
+                    console.dir(newValue);
+                    /**
+                     * add class
+                     */
+                    element.addClass(newValue);
+
+
+                });
+
 
                 /**
                  * verbose mode : just for dev 

@@ -178,7 +178,7 @@
 							                                          dnd-external-sources="true"
 							                                          dnd-disable-if="items.length > 2"
 							                                          dnd-dragover="dragoverCallback(event, index, external, type); dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
-							                                          dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+							                                          dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType')"
 
 							                                          class="itemlist"
 							                                          
@@ -198,7 +198,7 @@
 									                                          dd-item-parent-index="{{$parent.$index}}"
 									                                          dd-item-parent-parent-index = "{{$parent.$parent.$index}}"
 									                                          dd-items-count="items.length"	
-									                                          dd-item-css-class="{{item.ccsClass}}" 							                                                           
+									                                          dd-item-css-class="{{item.cssClass}}" 							                                                           
 							                                              >
 
 							                                              <div 
