@@ -179,6 +179,7 @@
 							                                          dnd-disable-if="items.length > 2"
 							                                          dnd-dragover="dragoverCallback(event, index, external, type); dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
 							                                          dnd-drop="dropCallback(event, index, item, external, type, 'itemType')"
+
 							                                          class="itemlist"
 							                                          
 							                                          >
@@ -189,9 +190,13 @@
 							                                              dnd-dragstart="logEvent('Started to drag an item', event)"
 							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);  logEvent('Item moved', event)"
 							                                              dnd-copied="logEvent('Item copied', event)"
-							                                              class="col-md-4">
+							                                              class="col-md-4"
+							                                              >
 
-							                                              <div id="itemContent" class="col-md-12">
+							                                              <div 
+							                                              		id="itemContent" 
+							                                              		class="col-md-12"
+							                                              		dd-decor-item>
 							                                             	 {{item.label}} 	
 							                                              </div>
 							                                             

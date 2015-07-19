@@ -14,9 +14,9 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
 
         var htmlTemplate   = [
                                 '<div ng-class="{"> ',
-                                '   col-md-4 : deleteLine.readyToDelete',
-                                '   col-md-6 : deleteLine.readyToDelete',
-                                '   col-md-12 : deleteLine.readyToDelete',
+                                '   col-md-4 : lineItemsCount === 3',
+                                '   col-md-6 : lineItemsCount === 2',
+                                '   col-md-12 : lineItemsCount === 1',
                                 '}',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
