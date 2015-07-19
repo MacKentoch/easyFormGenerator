@@ -651,6 +651,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     min-height: 42px;
     margin: 0px;
     padding-left: 0px;
+
 }
 
 /**
@@ -697,11 +698,11 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     //   color:#F1F1F1;
     //   style:dashed;
     // }
--moz-box-shadow: inset 0px 0px 5px 0px #343434;
--webkit-box-shadow: inset 0px 0px 5px 0px #343434;
--o-box-shadow: inset 0px 0px 5px 0px #343434;
-box-shadow: inset 0px 0px 5px 0px #343434;
-filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=NaN, Strength=5);  
+  -moz-box-shadow: inset 0px 0px 5px 0px #343434;
+  -webkit-box-shadow: inset 0px 0px 5px 0px #343434;
+  -o-box-shadow: inset 0px 0px 5px 0px #343434;
+  box-shadow: inset 0px 0px 5px 0px #343434;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#343434, Direction=NaN, Strength=5);  
 }
 
 /***************************** Element type specific styles *****************************/
@@ -722,19 +723,20 @@ ul.itemlist.ng-scope{
 }
 
 .advancedDemo .dropzone .itemlist > li {
-    // background-color: #0d87e9;
+     //background-color: #0d87e9;
      border: none;
-    // border-radius: .25em;
+     //width: 75px;
+     min-width: 180px;
+     border-radius: .25em;
     // color: #fff;
-    // float: left;
-    // font-weight: 700;
-    // height: 75px;
-    // // margin: 5px;
-    // // padding: 3px;
+     float: left;
+     font-weight: 700;
+     height: 75px;
+    // margin: 5px;
+    //padding: 5px;
     // text-align: center;
     // // width: 180px;
     // @extend .effect1ForDragDropItem;
-
 }
 
 #itemContent{
