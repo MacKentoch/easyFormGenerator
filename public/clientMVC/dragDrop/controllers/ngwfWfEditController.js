@@ -550,12 +550,21 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                     _index: index
                 });
 
-          console.info('\n\n\n');
+          console.info('\n\n\n----------------');
           console.warn('draggin control');
 
           //got line here : 
           //TODO apply css to all item depending nb of item
           console.dir($scope.model[parentIndex][index]);
+
+          var numberOfItems = $scope.model[parentIndex][index].length + 1;
+          console.info('numberOfItems = ' + numberOfItems);
+
+          $scope.applyCssClassWholeLine(parentIndex, index, numberOfItems);
+
+          console.dir($scope.model[parentIndex][index]);
+          
+          console.info('----------------\n\n\n');
 
             //prevent items in layout column to be drag to control select  
             if (parentIndex === 0) {
@@ -655,25 +664,78 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                         decoration :    [
                                                             {
                                                                 WhenNbItem: 0,
-                                                                ApplycssClass: 'col-md-12', 
+                                                                ApplyCssClass: 'col-md-12', 
                                                             },
                                                             {
                                                                 WhenNbItem: 1,
-                                                                ApplycssClass: 'col-md-12', 
+                                                                ApplyCssClass: 'col-md-12', 
                                                             },                                                            
                                                             {
                                                                 WhenNbItem: 2,
-                                                                ApplycssClass: 'col-md-6', 
+                                                                ApplyCssClass: 'col-md-6', 
                                                             },
                                                             {
                                                                 WhenNbItem: 3,
-                                                                ApplycssClass: 'col-md-4', 
+                                                                ApplyCssClass: 'col-md-4', 
                                                             }                                                            
                                                         ],
                                         verboseMode : true, 
                                     }                  
         };
 
+        /**
+         * applyCssClassWholeLine : add/update css to all items in same line
+         * @param  {integer} indexColumn [column index : should be 1 = form column]
+         * @param  {integer} indexLine   [lien index]
+         * @param  {integer} numberItems [number of items so that guess css class to apply all items]
+         * 
+         */
+        $scope.applyCssClassWholeLine = function(indexColumn, indexLine, numberItems){
+          if (typeof numberItems !== 'undefined') {
+
+            if (indexColumn === 1) {
+
+              console.info('indexColumn === 1');
+              
+              if (numberItems === 1) {
+                console.info('numberItems === 1');
+                for (var i = $scope.model[indexColumn][indexLine].length - 1; i >= 0; i--) {
+                  $scope.model[indexColumn][indexLine][i].ccsClass = $scope.easyFormDragDropProperties.itemConfig.decoration[1].ApplyCssClass;
+                }
+                
+              }
+
+              if (numberItems === 2) {
+                console.info('numberItems === 2');
+                for (var j = $scope.model[indexColumn][indexLine].length - 1; j >= 0; j--) {
+                  $scope.model[indexColumn][indexLine][j].ccsClass = $scope.easyFormDragDropProperties.itemConfig.decoration[2].ApplyCssClass;
+                }
+              }
+
+              if (numberItems === 3) {
+                console.info('numberItems === 3');
+                for (var k = $scope.model[indexColumn][indexLine].length - 1; k >= 0; k--) {
+                  $scope.model[indexColumn][indexLine][k].ccsClass = $scope.easyFormDragDropProperties.itemConfig.decoration[3].ApplyCssClass;
+                }
+              }
+
+            } 
+
+            return true;
+          
+          }else{
+            return false;
+          }
+
+        };
+
+         // function is_int(value){ 
+         //    if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
+         //        return true;
+         //    } else { 
+         //        return false;
+         //    } 
+         //  }
 
         //init  model
         $scope.model = [].concat([
@@ -681,13 +743,15 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                     [
                                       {
                                         'label': 'label1',
-                                        'control': 'label'
+                                        'control': 'label',
+                                        'ccsClass': 'col-md-12'
                                       }
                                     ],
                                     [
                                       {
                                         'label': 'textinput 1',
-                                        'control': 'textinput'
+                                        'control': 'textinput',
+                                        'ccsClass': 'col-md-12'
                                       }
                                     ]
                                   ],
@@ -695,7 +759,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                     [
                                       {
                                         'label': 'label 2',
-                                        'control': 'label'
+                                        'control': 'label',
+                                        'ccsClass': 'col-md-6'
                                       },
                                       // {
                                       //   'label': 'label 3',
@@ -703,7 +768,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                       // },
                                       {
                                         'label': 'textbox 1',
-                                        'control': 'textinput'
+                                        'control': 'textinput',
+                                        'ccsClass': 'col-md-6'
                                       }
                                     ],
                                     [
@@ -713,7 +779,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                       // },
                                       {
                                         'label': 'textbox 1',
-                                        'control': 'textbox'
+                                        'control': 'textbox',
+                                        'ccsClass': 'col-md-12'
                                       }
                                     ]
                                   ]
