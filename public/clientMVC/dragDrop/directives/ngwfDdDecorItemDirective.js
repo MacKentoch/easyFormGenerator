@@ -13,11 +13,12 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
 
 
         var htmlTemplate   = [
-                                '<div ng-class="{"> ',
-                                '   col-md-4 : lineItemsCount === 3',
-                                '   col-md-6 : lineItemsCount === 2',
-                                '   col-md-12 : lineItemsCount === 1',
-                                '}',
+                                //'<div ng-class="{ ',
+                                //'   col-md-4 : (lineItemsCount === 3),',
+                                //'   col-md-6 : (lineItemsCount === 2),',
+                                //'   col-md-12 : (lineItemsCount === 1)',
+                                //'}>',
+                                '<div>',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
                                 ].join(' ');
@@ -25,10 +26,10 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
         return {
             scope:  {
 
-                         'verboseMode' :    '@ddLineVerboseMode',
-                         'currentIndex' :   '@ddLineCurrentIndex',
-                         'parentIndex':     '@ddLineParentIndex',
-                         'lineItemsCount' : '=lineItemsCount'
+                         'verboseMode' :    '@ddItemVerboseMode',
+                         'currentIndex' :   '@ddItemCurrentIndex',
+                         'parentIndex':     '@ddItemParentIndex',
+                         'lineItemsCount' : '=ddItemsCount'
                     },
             restrict: 'A',
             template: htmlTemplate,
@@ -40,7 +41,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 var currentIndex = $scope.currentIndex;
                 var parentIndex = $scope.parentIndex;
 
-
+                var listClass = ['col-md-12','col-md-6','col-md-4'];
 
                 /**
                  * verbose mode : just for dev 
@@ -61,6 +62,36 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                         );
                     }                    
                 }
+
+                /**
+                 * apply css class to item depending number of items in the same line
+                 */
+               if ($scope.parentIndex === '1') {
+                    /**
+                     * cleaning classes before adding
+                     */
+                    for (var i = listClass.length - 1; i >= 0; i--) {
+                        element.removeClass(listClass[i]);    
+                    }
+                    console.info('should add class : ' + listClass[$scope.lineItemsCount]);
+
+                    if (typeof $scope.lineItemsCount !== 'undefined') {
+                        console.info('should add class since not undefined : ' + listClass[$scope.lineItemsCount]);
+                        if ($scope.lineItemsCount > 0) {
+                            element.addClass(listClass[$scope.lineItemsCount]);    
+                            console.info('added class : ' + listClass[$scope.lineItemsCount]);    
+                        }else{
+                            element.addClass(listClass[0]);
+                            console.info('added class : ' + listClass[0]);        
+                        }                        
+                    }
+
+
+
+                        
+                
+                        
+                }                
 
                 /**
                  * removeMe is function related to twice double click sequence to delete a line

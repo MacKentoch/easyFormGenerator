@@ -195,8 +195,13 @@
 
 							                                              <div 
 							                                              		id="itemContent" 
-							                                              		class="col-md-12"
-							                                              		dd-decor-item>
+							                                              		
+							                                              		dd-decor-item
+											                                          dd-item-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
+											                                          dd-item-current-index="{{$index}}"
+											                                          dd-item-parent-index="{{$parent.$index}}"
+											                                          dd-items-count="items.length"
+							                                              		>
 							                                             	 {{item.label}} 	
 							                                              </div>
 							                                             
