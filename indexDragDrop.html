@@ -190,17 +190,21 @@
 							                                              dnd-dragstart="logEvent('Started to drag an item', event)"
 							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);  logEvent('Item moved', event)"
 							                                              dnd-copied="logEvent('Item copied', event)"
-							                                              class="col-md-4"
+							                                              
+
+
+							                                              		dd-decor-item
+											                                          dd-item-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
+											                                          dd-item-current-index="{{$index}}"
+											                                          dd-item-parent-index="{{$parent.$index}}"
+											                                          dd-item-parent-parent-index = "{{$parent.$parent.$index}}"
+											                                          dd-items-count="items.length"							                                              
 							                                              >
 
 							                                              <div 
 							                                              		id="itemContent" 
 							                                              		
-							                                              		dd-decor-item
-											                                          dd-item-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
-											                                          dd-item-current-index="{{$index}}"
-											                                          dd-item-parent-index="{{$parent.$index}}"
-											                                          dd-items-count="items.length"
+
 							                                              		>
 							                                             	 {{item.label}} 	
 							                                              </div>

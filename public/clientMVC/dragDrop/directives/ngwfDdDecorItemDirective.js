@@ -29,6 +29,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                          'verboseMode' :    '@ddItemVerboseMode',
                          'currentIndex' :   '@ddItemCurrentIndex',
                          'parentIndex':     '@ddItemParentIndex',
+                         'parentParentIndex': '@ddItemParentParentIndex', 
                          'lineItemsCount' : '=ddItemsCount'
                     },
             restrict: 'A',
@@ -56,6 +57,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                                 verbodeMode : verbose,
                                 ParentParentIndex : $scope.$parent.$parent.$index,
                                 ParentIndex : parentIndex,
+                                parentParentIndex : $scope.parentParentIndex,
                                 currentIndex: currentIndex,
                                 lineItemsCount: $scope.lineItemsCount
                             }
@@ -66,7 +68,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 /**
                  * apply css class to item depending number of items in the same line
                  */
-               if ($scope.parentIndex === '1') {
+               if ($scope.parentParentIndex === '1') {
                     /**
                      * cleaning classes before adding
                      */
@@ -78,8 +80,8 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                     if (typeof $scope.lineItemsCount !== 'undefined') {
                         console.info('should add class since not undefined : ' + listClass[$scope.lineItemsCount]);
                         if ($scope.lineItemsCount > 0) {
-                            element.addClass(listClass[$scope.lineItemsCount]);    
-                            console.info('added class : ' + listClass[$scope.lineItemsCount]);    
+                            element.addClass(listClass[$scope.lineItemsCount - 1]);    
+                            console.info('added class : ' + listClass[$scope.lineItemsCount - 1]);    
                         }else{
                             element.addClass(listClass[0]);
                             console.info('added class : ' + listClass[0]);        
