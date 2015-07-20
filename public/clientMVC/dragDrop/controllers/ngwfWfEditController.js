@@ -538,16 +538,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         if (parentParentIndex > 0) {
             $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
 
+            //refresh all css items on column 1 (form)
             dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
-           //NOTE : length + 1 since current intem is not in the model right now :
-            // var numberOfItems = $scope.model[parentIndex][itemIndex].length;
-            // dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, itemIndex, numberOfItems, 1);
-
-
-           //  dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
-           // //NOTE : length + 1 since current intem is not in the model right now :
-           //  var numberOfItems = $scope.model[parentIndex][itemIndex].length;
-           //  dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, itemIndex, numberOfItems, 1);
         }
         
       };
@@ -605,7 +597,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                 }); 
 
 
-           $scope.model[1][parentIndex][index].cssClass = 'col-md-4';
+           //$scope.model[1][parentIndex][index].cssClass = 'col-md-4';
 
         };
 
@@ -709,7 +701,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         };
 
         $scope.removeThisLine = function(lineIndex){
-          console.info('will remove line line at index : ' + lineIndex);
+          //console.info('will remove line line at index : ' + lineIndex);
           $scope.model[1].splice(lineIndex,1);
         };
 
