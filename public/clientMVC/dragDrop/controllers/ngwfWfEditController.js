@@ -537,6 +537,17 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         //prevent item from first container to disapear when dropped on other container
         if (parentParentIndex > 0) {
             $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
+
+            dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+           //NOTE : length + 1 since current intem is not in the model right now :
+            // var numberOfItems = $scope.model[parentIndex][itemIndex].length;
+            // dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, itemIndex, numberOfItems, 1);
+
+
+           //  dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+           // //NOTE : length + 1 since current intem is not in the model right now :
+           //  var numberOfItems = $scope.model[parentIndex][itemIndex].length;
+           //  dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, itemIndex, numberOfItems, 1);
         }
         
       };
@@ -665,7 +676,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
            
 
            dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
-           
+           //NOTE : length + 1 since current intem is not in the model right now :
            var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
             dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
            /**
