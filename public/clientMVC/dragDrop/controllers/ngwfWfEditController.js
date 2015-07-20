@@ -585,7 +585,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                     item: $scope.model[1][parentIndex][index]
                 }); 
 
-           item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(0);
+           //TODO : to update since can bug display when just drag and drop in same row
+           //item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(3);
 
            return item;
            //$scope.model[1][parentIndex][index].cssClass = 'col-md-4';
