@@ -554,23 +554,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
            //          _ParentIndex : parentIndex,
            //          _index: index
            //      });
-
-          //console.info('\n\n\n----------------');
-          //console.warn('draggin control');
-
-          //got line here : 
-          //TODO apply css to all item depending nb of item
-          //console.dir($scope.model[parentIndex][index]);
-
-          //var numberOfItems = $scope.model[parentIndex][index].length + 1;
-          //console.info('numberOfItems = ' + numberOfItems);
-
-          //$scope.applyCssClassWholeLine(parentIndex, index, numberOfItems);
-
-          //console.dir($scope.model[parentIndex][index]);
-          
-         // console.info('----------------\n\n\n');
-
+           
             //prevent items in layout column to be drag to control select  
             if (parentIndex === 0) {
                 return false;
@@ -579,12 +563,17 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
             return true;
         };
 
+
+        $scope.disableItemDropIf = function(){
+
+        };
+
         /**
          * dragStart 
          * manage css class on item being drag
          *      [description]
          */
-        $scope.dragItemStart = function(index, parentIndex,  parentParentIndex){
+        $scope.dragItemStart = function(item, index, parentIndex,  parentParentIndex){
            console.info('dragItemStart'); 
            console.dir(
                 {
@@ -596,7 +585,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                     item: $scope.model[1][parentIndex][index]
                 }); 
 
+           item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(0);
 
+           return item;
            //$scope.model[1][parentIndex][index].cssClass = 'col-md-4';
 
         };
@@ -663,11 +654,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
 
            /**
             * 
-            * UPDATE CSS CLASS TO ALL ITEM IN LINE
+            * UPDATE CSS CLASS TO ALL ITEMS IN SAME ROW
             */          
-           
-
-           dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
            //NOTE : length + 1 since current intem is not in the model right now :
            var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
             dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
@@ -762,24 +750,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                       ]                                                                  
                   },
                   itemConfig : {
-                                        decoration :    [
-                                                            {
-                                                                WhenNbItem: 0,
-                                                                ApplyCssClass: 'col-md-12', 
-                                                            },
-                                                            {
-                                                                WhenNbItem: 1,
-                                                                ApplyCssClass: 'col-md-12', 
-                                                            },                                                            
-                                                            {
-                                                                WhenNbItem: 2,
-                                                                ApplyCssClass: 'col-md-6', 
-                                                            },
-                                                            {
-                                                                WhenNbItem: 3,
-                                                                ApplyCssClass: 'col-md-4', 
-                                                            }                                                            
-                                                        ],
                                         verboseMode : false, 
                                     }                  
         };

@@ -55,25 +55,13 @@ dragDropItemDecorationService.factory('dragDropItemDecorationService',
 
         for (var i = model[indexColumn][indexLine].length - 1; i >= 0; i--) {
 	          model[indexColumn][indexLine][i].cssClass = getItemCssDependingNumberItemsInRow(numberItems);
-
-	          // console.info('debug service');
-	          // console.dir({
-	          // 							indexColumn : indexColumn,
-	          // 							indexLine : indexLine,
-	          // 							indexItem : i,
-	          // 							cssClassApplied : getItemCssDependingNumberItemsInRow(numberItems)
-	          // });
 	      }
 
 	    } 
 	    return true;
-
 	  }else{
-
 	    return false;
-
 	  }
-
 	};
 
 
@@ -91,22 +79,8 @@ dragDropItemDecorationService.factory('dragDropItemDecorationService',
 		   	 */
 	      for (var i = model[indexColumn][cpt].length - 1; i >= 0; i--) {
 	          model[indexColumn][cpt][i].cssClass = getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
-
-	          //console.info('debug updateCssClassWholeColumn');
-	          //console.dir({
-	          //							indexColumn : indexColumn,
-	          //							indexLine : cpt,
-	          //							indexItem : i,
-	          //							cssClassApplied : getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length)
-	          //});
 	      }
-
-	      //console.info('model is finally :');
-	      //console.dir(model);
-
 	   	}	
-
-
 
 	    return true;
 		}else{
