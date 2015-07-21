@@ -17,7 +17,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
     return {
             testMe: function() {
-                return "selectOptionManage is here.";
+                return 'selectOptionManage is here.';
             },
 
             initModel: function(selectObj){
@@ -37,7 +37,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
             //test if not empty string (= full space string is not conidered as valid)
             isOptionValidFormat: function(textValue){
-              if (textValue !== "") {
+              if (textValue !== '') {
                 return true;
               }
               return false;                    
@@ -46,7 +46,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
             addNewOptionRadio: function(selectObj, newOptionText){
               var fullResponse = {
                                     resultFlag : false,
-                                    details : ""
+                                    details : ''
                                   };
 
               var checkResult = validOption(selectObj, newOptionText);  
@@ -62,7 +62,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
                   selectObj.rows.push(newOption);
                   fullResponse.resultFlag = true;
-                  fullResponse.details = "";
+                  fullResponse.details = '';
                   return fullResponse;
               }else{
 
@@ -77,7 +77,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
             addNewOptionBasicSelect: function(selectObj, newOptionText){
               var fullResponse = {
                                     resultFlag : false,
-                                    details : ""
+                                    details : ''
                                   };
 
               var checkResult = validOption(selectObj, newOptionText);  
@@ -93,7 +93,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
                   selectObj.rows.push(newOption);
                   fullResponse.resultFlag = true;
-                  fullResponse.details = "";
+                  fullResponse.details = '';
                   return fullResponse;
               }else{
 
@@ -107,7 +107,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
             addNewOptionGroupedSelect: function(selectObj, newOptionText, newOptionGroup){
               var fullResponse = {
                                     resultFlag : false,
-                                    details : ""
+                                    details : ''
                                   };
 
               // if (typeof newOptionGroup === "undefined") {
@@ -137,7 +137,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 
                   selectObj.rows.push(newOption);
                   fullResponse.resultFlag = true;
-                  fullResponse.details = "";
+                  fullResponse.details = '';
                   return fullResponse;
               }else{
 
@@ -151,17 +151,17 @@ selectOptionManage.factory('selectOptionManage', [ function(){
             removeOption:  function(selectObj, AtIndex) {
               var fullResponse = {
                                   resultFlag : false,
-                                  details : ""
+                                  details : ''
                                 };
 
               if (AtIndex !== -1) {
                   selectObj.rows.splice(AtIndex, 1);
                   fullResponse.resultFlag = true;
-                  fullResponse.details= "";
+                  fullResponse.details= '';
                   return fullResponse;
               }else{
                   fullResponse.resultFlag = false;
-                  fullResponse.details= "Option index not valid";
+                  fullResponse.details= 'Option index not valid';
                   return fullResponse;
               }
             },
@@ -169,7 +169,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
             upthisOption : function(selectObj, indexOption){
               var fullResponse = {
                                   resultFlag : false,
-                                  details : ""
+                                  details : ''
                                 };  
 
               if (indexOption > -1) {
@@ -182,22 +182,22 @@ selectOptionManage.factory('selectOptionManage', [ function(){
                     selectObj.rows.splice((indexOption - 1), 0, currentOption); 
 
                     fullResponse.resultFlag = true;
-                    fullResponse.details = "";
+                    fullResponse.details = '';
                     return fullResponse;
                   }else{
                     fullResponse.resultFlag = false;
-                    fullResponse.details = "Can't retreive option from option index";
+                    fullResponse.details = 'Can\'t retreive option from option index';
                     return fullResponse;
                   }
                 }else{
                     fullResponse.resultFlag = true;
-                    fullResponse.details = "";
+                    fullResponse.details = '';
                     return fullResponse;
                 }  
 
               }else{
                 fullResponse.resultFlag = false;
-                fullResponse.details = "Option index not valid";
+                fullResponse.details = 'Option index not valid';
                 return fullResponse;
               }
           },
@@ -205,7 +205,7 @@ selectOptionManage.factory('selectOptionManage', [ function(){
           downthisOption : function(selectObj, indexOption){
               var fullResponse = {
                                   resultFlag : false,
-                                  details : ""
+                                  details : ''
                                 };
 
               if (indexOption > -1) {
@@ -223,26 +223,26 @@ selectOptionManage.factory('selectOptionManage', [ function(){
                     selectObj.rows.splice((indexOption + 1), 0, currentOption);  
 
                     fullResponse.resultFlag = true;
-                    fullResponse.details = "";
+                    fullResponse.details = '';
                     return fullResponse;  
 
                   }else{
                     fullResponse.resultFlag = false;
-                    fullResponse.details = "Can't retreive option from option index";
+                    fullResponse.details = 'Can\'t retreive option from option index';
                     return fullResponse;
                   }
                 }else{
 
                   
                     fullResponse.resultFlag = true;
-                    fullResponse.details = "";
+                    fullResponse.details = '';
                   return fullResponse;
                 }
 
 
               }else{
                 fullResponse.resultFlag = false;
-                fullResponse.details = "Option index not valid";
+                fullResponse.details = 'Option index not valid';
                 return fullResponse;
               }
 
@@ -260,59 +260,39 @@ selectOptionManage.factory('selectOptionManage', [ function(){
 function validOption(selectObj, newOptionText){
     var fullResponse = {
                           resultFlag : false,
-                          details : ""
+                          details : ''
                         };
 
     if (typeof newOptionText === 'undefined') {
         fullResponse.resultFlag = false;
-        fullResponse.details = "Entered option is empty";
+        fullResponse.details = 'Entered option is empty';
         return fullResponse;
     }
 
-    if (newOptionText !== "") {
+    if (newOptionText !== '') {
           for (var i = selectObj.rows.length - 1; i >= 0; i--) {
             if (selectObj.rows[i].option === newOptionText) {
               fullResponse.resultFlag = false;
-              fullResponse.details = "Entered option is not unique";
+              fullResponse.details = 'Entered option is not unique';
               return fullResponse;
             }
           }
           fullResponse.resultFlag = true;
-          fullResponse.details = "";
+          fullResponse.details = '';
           return fullResponse;
     }
     fullResponse.resultFlag = false;     
-    fullResponse.details = "Entered option is empty";
+    fullResponse.details = 'Entered option is empty';
     return fullResponse;
 }
 
 function resetModel(selectObj){
   var zeroModel = { 
-                      rows:
-                      [
-                      ]
+                      rows:[]
                     };
-
-  
   angular.copy(zeroModel, selectObj);
 }
 
-// //model like :
-// var initFortest = {rows:[
-//                                       {"order":0, option:"option 1"},
-//                                       {"order":1, option:"option 1"},
-//                                       {"order":2, option:"option 2"},
-//                                       {"order":3, option:"option 3"},
-//                                       {"order":4, option:"option 4"},
-//                                       {"order":5, option:"option 5"},
-//                                       {"order":6, option:"option 6"},
-//                                       {"order":7, option:"option 7"},
-//                                       {"order":8, option:"option 8"},
-//                                       {"order":9, option:"option 9"},
-//                                       {"order":10, option:"option 10"},
-//                                       {"order":11, option:"option 11"}
-//                                     ]
-//                   };
 
 }]);
 

@@ -21,6 +21,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           'wfFormsByIdServices',
                                                           'controllerModalProxy',
                                                           'dragDropItemDecorationService',
+                                                          'dragDropConfig',
                             															function (	$scope, 
                                                                       easyFormGenVersion,
                                                                       $filter,
@@ -32,7 +33,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                                       formFieldManage, 
                                                                       wfFormsByIdServices, 
                                                                       controllerModalProxy,
-                                                                      dragDropItemDecorationService) {
+                                                                      dragDropItemDecorationService,
+                                                                      dragDropConfig) {
   //verbose
   //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
 
@@ -685,8 +687,9 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   };
 
 
-
-
+  var test = dragDropConfig.getListControls();
+  console.info('test dragDropConfig.getListControls();');
+  console.dir(test);
 
   $scope.model = [];
 
