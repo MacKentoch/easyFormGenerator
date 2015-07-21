@@ -501,322 +501,315 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
   };                            
 
 
+
+
+
+
   ////////////////////////////////////////////////////////////
   //   drag and drop : may move from this controller
   ////////////////////////////////////////////////////////////
  
-
-
-        $scope.dragoverCallback = function(event, index, external, type) {
-            $scope.logListEvent('dragged over', event, index, external, type);
-            return (index >= 0);
-        };
-
-
-        //specific Container dragoverCallback event
-        $scope.dragoverCallbackContainer = function(parentparentIndex, parentIndex, index){
-            //prevent container in layout column to be drag to control select contianer 
-            if (index === 0) {
-                return false;
-            }
-            return true;
-        };
+  //specific Container dragoverCallback event
+  $scope.dragoverCallbackContainer = function(parentparentIndex, parentIndex, index){
+      //prevent container in layout column to be drag to control select contianer 
+      if (index === 0) {
+          return false;
+      }
+      return true;
+  };
 
 
       
-      $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
-           // console.info('dndItemMoved'); 
-           // console.dir(
-           //      {
-           //          _I_am : 'dndItemMoved',
-           //          _ParentParentIndex : parentParentIndex,
-           //          _ParentIndex : parentIndex,
-           //          _index: itemIndex
-           //      });
+  $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
+       // console.info('dndItemMoved'); 
+       // console.dir(
+       //      {
+       //          _I_am : 'dndItemMoved',
+       //          _ParentParentIndex : parentParentIndex,
+       //          _ParentIndex : parentIndex,
+       //          _index: itemIndex
+       //      });
 
-        //prevent item from first container to disapear when dropped on other container
-        if (parentParentIndex > 0) {
-            $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
+    //prevent item from first container to disapear when dropped on other container
+    if (parentParentIndex > 0) {
+      
+        console.info('dndItemMoved');
+        $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
 
-            //refresh all css items on column 1 (form)
-            dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+        //refresh all css items on column 1 (form)
+        dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+    }
+    
+  };
+
+  $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
+       // console.info('dragoverCallbackItems'); 
+       // console.dir(
+       //      {
+       //          _I_am : 'dragoverCallbackItems',
+       //          external : external,
+       //          _ParentParentIndex : ParentParentIndex,
+       //          _ParentIndex : parentIndex,
+       //          _index: index
+       //      });
+       
+       console.info('dragoverCallbackItems');
+        //prevent items in layout column to be drag to control select  
+        if (parentIndex === 0) {
+            return false;
         }
-        
-      };
-
-      $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
-           // console.info('dragoverCallbackItems'); 
-           // console.dir(
-           //      {
-           //          _I_am : 'dragoverCallbackItems',
-           //          external : external,
-           //          _ParentParentIndex : ParentParentIndex,
-           //          _ParentIndex : parentIndex,
-           //          _index: index
-           //      });
-           
-            //prevent items in layout column to be drag to control select  
-            if (parentIndex === 0) {
-                return false;
-            }
-            /**
-             * apply css to all items on the row like if new item were already in (explains why "length + 1")
-             * 
-             */
-            var numberOfItems = $scope.model[parentIndex][index].length + 1;
-            dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, index, numberOfItems, 1);
-            return true;
-        };
-
-
-        $scope.disableItemDropIf = function(){
-
-        };
 
         /**
-         * dragStart 
-         * manage css class on item being drag
-         *      [description]
+         * apply css to all items on the row like if new item were already in (explains why "length + 1")
          */
-        $scope.dragItemStart = function(item, index, parentIndex,  parentParentIndex){
-           console.info('dragItemStart'); 
-           console.dir(
-                {
-                    _I_am : 'dragItemStart',
-                    index : index,
-                    parentIndex : parentIndex,
-                    parentParentIndex: parentParentIndex,
-                    model : $scope.model,
-                    item: $scope.model[1][parentIndex][index]
-                }); 
+        var numberOfItems = $scope.model[parentIndex][index].length + 1;
+        dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, index, numberOfItems, 1);
+        return true;
 
-           //TODO : to update since can bug display when just drag and drop in same row
-           //item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(3);
-
-           return item;
-           //$scope.model[1][parentIndex][index].cssClass = 'col-md-4';
-
-        };
+    };
 
 
+  /**
+   * disableItemDropIf prevent dropping on condition
+   *
+   * TODO : to replace in html : dnd-disable-if="items.length > 2"
+   */
+  $scope.disableItemDropIf = function(){
 
-        $scope.dropCallback = function(event, index, item, external, type, allowedType) {
-            //$scope.logListEvent('dropped at', event, index, external, type);
-           // console.info('dropCallback'); 
-           // console.dir(
-           //      {
-           //          _I_am : 'dropCallback',
-           //          event : event,
-           //          index : index,
-           //          item : item,
-           //          external: external,
-           //          type:type,
-           //          allowedType:allowedType,
-           //          model : $scope.model
-           //      });            
-
-            if (external) {
-                if (allowedType === 'itemType' && !item.label) return false;
-                if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
-            }
-
-            return item;
-        };
+  };
 
 
-        /**
-         * [dropCallbackItems description]
-         * @param  {[type]} event                   [description]
-         * @param  {[type]} index                   [description]
-         * @param  {[type]} realIndex               [description]
-         * @param  {[type]} parentIndex             [description]
-         * @param  {[type]} parentParentIndex       [description]
-         * @param  {[type]} parentParentParentIndex [description]
-         * @param  {[type]} item                    [description]
-         * @param  {[type]} external                [description]
-         * @param  {[type]} type                    [description]
-         * @param  {[type]} allowedType             [description]
-         * @return {[type]}                         [description]
-         */
-        $scope.dropCallbackItems = function(event, index, realIndex,parentIndex, parentParentIndex, parentParentParentIndex, item, external, type, allowedType){
-           
-           // console.info('dropCallbackItems'); 
-           // console.dir(
-           //      {
-           //          _I_am : 'dropCallback',
-           //          event : event,
-           //          index : index,
-           //          realIndex: realIndex,
-           //          parentIndex: parentIndex,
-           //          parentParentIndex: parentParentIndex,
-           //          parentParentParentIndex: parentParentParentIndex,
-           //          item : item,
-           //          external: external,
-           //          type:type,
-           //          allowedType:allowedType,
-           //          model : $scope.model,
-           //          line: $scope.model[parentIndex][realIndex]
-           //      });            
+  $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+      //$scope.logListEvent('dropped at', event, index, external, type);
+     // console.info('dropCallback'); 
+     // console.dir(
+     //      {
+     //          _I_am : 'dropCallback',
+     //          event : event,
+     //          index : index,
+     //          item : item,
+     //          external: external,
+     //          type:type,
+     //          allowedType:allowedType,
+     //          model : $scope.model
+     //      });            
 
-           /**
-            * 
-            * UPDATE CSS CLASS TO ALL ITEMS IN SAME ROW
-            */          
-           //NOTE : length + 1 since current intem is not in the model right now :
-           var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
-            dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
-           /**
-            * 
-            * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
-            * 
-            */           
-            item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
-          
+      if (external) {
+          if (allowedType === 'itemType' && !item.label) return false;
+          if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
+      }
+
+      return item;
+  };
 
 
-            if (external) {
-                if (allowedType === 'itemType' && !item.label) return false;
-                if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
-            }
+  /**
+   * [dropCallbackItems description]
+   * @param  {[type]} event                   [description]
+   * @param  {[type]} index                   [description]
+   * @param  {[type]} realIndex               [description]
+   * @param  {[type]} parentIndex             [description]
+   * @param  {[type]} parentParentIndex       [description]
+   * @param  {[type]} parentParentParentIndex [description]
+   * @param  {[type]} item                    [description]
+   * @param  {[type]} external                [description]
+   * @param  {[type]} type                    [description]
+   * @param  {[type]} allowedType             [description]
+   * @return {[type]}                         [description]
+   */
+  $scope.dropCallbackItems = function(event, index, realIndex,parentIndex, parentParentIndex, parentParentParentIndex, item, external, type, allowedType){
+     
+     console.info('dropCallbackItems');
+     // console.info('dropCallbackItems'); 
+     // console.dir(
+     //      {
+     //          _I_am : 'dropCallback',
+     //          event : event,
+     //          index : index,
+     //          realIndex: realIndex,
+     //          parentIndex: parentIndex,
+     //          parentParentIndex: parentParentIndex,
+     //          parentParentParentIndex: parentParentParentIndex,
+     //          item : item,
+     //          external: external,
+     //          type:type,
+     //          allowedType:allowedType,
+     //          model : $scope.model,
+     //          line: $scope.model[parentIndex][realIndex]
+     //      });            
 
-            return item;
-        };
+     /**
+      * 
+      * UPDATE CSS CLASS TO ALL ITEMS IN SAME ROW
+      */          
+     //NOTE : length + 1 since current intem is not in the model right now :
+     var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
+      dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
+     /**
+      * 
+      * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
+      * 
+      */           
+      item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
+    
+      if (external) {
+          if (allowedType === 'itemType' && !item.label) return false;
+          if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
+      }
 
-
-        $scope.logEvent = function(message, event) {
-            // console.log(message, '(triggered by the following', event.type, 'event)');
-            // console.log(event);
-        };
-
-        $scope.logListEvent = function(action, event, index, external, type) {
-            var message = external ? 'External ' : '';
-            message += type + ' element is ' + action + ' position ' + index;
-            $scope.logEvent(message, event);
-        };
-
-        $scope.removeThisLine = function(lineIndex){
-          //console.info('will remove line line at index : ' + lineIndex);
-          $scope.model[1].splice(lineIndex,1);
-        };
-
-        $scope.model = [];
-
-
-        $scope.easyFormDragDropProperties = {
-                  dropZoneConfig : {
-                                        decoration :    [
-                                                            {
-                                                                WhenIndex: 0,
-                                                                ApplycssClass: 'col-md-4', 
-                                                                fontAwesomeIcon: 'fa fa-level-up',
-                                                                title: 'Drag control from here : '
-                                                            },
-                                                            {
-                                                                WhenIndex: 1,
-                                                                ApplycssClass: 'col-md-8', 
-                                                                fontAwesomeIcon: 'fa fa-level-down',
-                                                                title: 'Drop control into here : '
-                                                            }
-                                                        ],
-                                        verboseMode : false
-
-
-                  },
-
-                  dropZoneCommand : {
-                                      insertNewLine : function(){
-                                                $scope.model[1].push([]);
-                                      }  
-                  },
-
-                  containerConfig : {
-                                        decoration :    [
-                                                            {
-                                                                WhenIndex: 0,
-                                                                ApplycssClass: 'col-md-12', 
-                                                                title: 'Headers : '
-                                                            },
-                                                            {
-                                                                WhenIndex: 1,
-                                                                ApplycssClass: 'col-md-12', 
-                                                                title: 'Text inputs : '
-                                                            }
-                                                        ],
-                                        verboseMode : false, 
-                                        collapseEnabled : true,
-                                        collapseCtrl: [
-                                                          {
-                                                              atIndex : 0,
-                                                              collapse : true
-                                                          },
-                                                          {
-                                                              atIndex : 1,
-                                                              collapse : true
-                                                          }
-                                                      ]                                                                  
-                  },
-                  itemConfig : {
-                                        verboseMode : false, 
-                                    }                  
-        };
+      return item;
+  };
 
 
-        //init  model
-        $scope.model = [].concat([
-                                  [
-                                    [
-                                      {
-                                        'label': 'label1',
-                                        'control': 'label',
-                                        'cssClass': 'col-md-12'
-                                      }
-                                    ],
-                                    [
-                                      {
-                                        'label': 'textinput 1',
-                                        'control': 'textinput',
-                                        'cssClass': 'col-md-12'
-                                      }
-                                    ]
-                                  ],
-                                  [
-                                    [
-                                      {
-                                        'label': 'label 2',
-                                        'control': 'label',
-                                        cssClass: 'col-md-6'
-                                      },
-                                      // {
-                                      //   'label': 'label 3',
-                                      //   'control': 'label'
-                                      // },
-                                      {
-                                        'label': 'textbox 1',
-                                        'control': 'textinput',
-                                        cssClass: 'col-md-6'
-                                      }
-                                    ],
-                                    [
-                                      // {
-                                      //   'label': 'textinput2',
-                                      //   'control': 'textbox'
-                                      // },
-                                      {
-                                        'label': 'textbox 1',
-                                        'control': 'textbox',
-                                        cssClass: 'col-md-12'
-                                      }
-                                    ]
-                                  ]
-                                ]
-                                );
+  /**
+   * logEvent (was used in pair with logListEvent) - no more used
+   */
+  $scope.logEvent = function(message, event) {
+      // console.log(message, '(triggered by the following', event.type, 'event)');
+      // console.log(event);
+  };
+  /**
+   * logListEvent - no more used
+   */
+  $scope.logListEvent = function(action, event, index, external, type) {
+      var message = external ? 'External ' : '';
+      message += type + ' element is ' + action + ' position ' + index;
+      $scope.logEvent(message, event);
+  };
+
+  /**
+   * removeThisLine event line deleted
+   */
+  $scope.removeThisLine = function(lineIndex){
+    $scope.model[1].splice(lineIndex,1);
+  };
 
 
 
-        // $scope.$watch('model', function(model) {
-        //     $scope.modelAsJson = angular.toJson(model, true);
-        // }, true);
 
+
+  $scope.model = [];
+
+
+  /**
+   * easyFormDragDropProperties 
+   *
+   * configuration properties
+   *
+   * May move into a provider next
+   */
+  $scope.easyFormDragDropProperties = {
+            dropZoneConfig : {
+                                  decoration :    [
+                                                      {
+                                                          WhenIndex: 0,
+                                                          ApplycssClass: 'col-md-4', 
+                                                          fontAwesomeIcon: 'fa fa-level-up',
+                                                          title: 'Drag control from here : '
+                                                      },
+                                                      {
+                                                          WhenIndex: 1,
+                                                          ApplycssClass: 'col-md-8', 
+                                                          fontAwesomeIcon: 'fa fa-level-down',
+                                                          title: 'Drop control into here : '
+                                                      }
+                                                  ],
+                                  verboseMode : false
+
+
+            },
+
+            dropZoneCommand : {
+                                insertNewLine : function(){
+                                          $scope.model[1].push([]);
+                                }  
+            },
+
+            containerConfig : {
+                                  decoration :    [
+                                                      {
+                                                          WhenIndex: 0,
+                                                          ApplycssClass: 'col-md-12', 
+                                                          title: 'Headers : '
+                                                      },
+                                                      {
+                                                          WhenIndex: 1,
+                                                          ApplycssClass: 'col-md-12', 
+                                                          title: 'Text inputs : '
+                                                      }
+                                                  ],
+                                  verboseMode : false, 
+                                  collapseEnabled : true,
+                                  collapseCtrl: [
+                                                    {
+                                                        atIndex : 0,
+                                                        collapse : true
+                                                    },
+                                                    {
+                                                        atIndex : 1,
+                                                        collapse : true
+                                                    }
+                                                ]                                                                  
+            },
+            itemConfig : {
+                                  verboseMode : false, 
+                              }                  
+  };
+
+  /**
+   * Model just for dev
+   *
+   * next may move in a provider
+   */
+  //init  model
+  $scope.model = [].concat([
+                            [
+                              [
+                                {
+                                  'label': 'label1',
+                                  'control': 'label',
+                                  'cssClass': 'col-md-12'
+                                }
+                              ],
+                              [
+                                {
+                                  'label': 'textinput 1',
+                                  'control': 'textinput',
+                                  'cssClass': 'col-md-12'
+                                }
+                              ]
+                            ],
+                            [
+                              [
+                                {
+                                  'label': 'label 2',
+                                  'control': 'label',
+                                  cssClass: 'col-md-6'
+                                },
+                                // {
+                                //   'label': 'label 3',
+                                //   'control': 'label'
+                                // },
+                                {
+                                  'label': 'textbox 1',
+                                  'control': 'textinput',
+                                  cssClass: 'col-md-6'
+                                }
+                              ],
+                              [
+                                // {
+                                //   'label': 'textinput2',
+                                //   'control': 'textbox'
+                                // },
+                                {
+                                  'label': 'textbox 1',
+                                  'control': 'textbox',
+                                  cssClass: 'col-md-12'
+                                }
+                              ]
+                            ]
+                          ]
+                          );
 
 
 }]);

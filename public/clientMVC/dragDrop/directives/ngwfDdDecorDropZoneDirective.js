@@ -24,7 +24,6 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             '        <h3 class="panel-title">', 
                             '          <i class="{{currentFontAwesome}}"></i>&nbsp;', 
                             '          {{currentTitle}}', 
-                            //'           <hr/>',
                             '           <div ng-show="headerConfig.HeaderButtonVisible">',
                             '             <button class="btn btn-primary btn-xs buttonHeaderAddNewLine center-block" ng-click="addNewLineFct();">',
                             '               <span class="glyphicon glyphicon-plus"></span>&nbsp;add new line',

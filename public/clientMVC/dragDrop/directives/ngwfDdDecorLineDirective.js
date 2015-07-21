@@ -18,7 +18,6 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
         var htmlTemplate   = [
                                 '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe($event);" ng-click="cancelDelete($event);"> ',
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
-                                //'   <span class="glyphicon glyphicon-repeat gly-spin" aria-hidden="true"></span></button>',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',

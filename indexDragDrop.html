@@ -131,7 +131,7 @@
 							                          <ul dnd-list="containers"
 							                              dnd-allowed-types="['containerType']"
 							                              dnd-external-sources="true"
-							                              dnd-dragover="dragoverCallback(event, index, external, type);dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
+							                              dnd-dragover="dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
 							                              dnd-drop="dropCallback(event, index, item, external, type, 'containerType')"
 							                              
 
@@ -145,10 +145,10 @@
 							                                  dnd-draggable="items"
 							                                  dnd-type="'containerType'"
 							                                  dnd-effect-allowed="copyMove"
-							                                  dnd-dragstart="logEvent('Started to drag a container', event)"
-							                                  dnd-moved="containers.splice($index, 1); logEvent('Container moved', event)"
+							                                  dnd-dragstart=""
+							                                  dnd-moved="containers.splice($index, 1);"
 							                                  dnd-disable-if="$parent.$index == 0"   
-							                                  dnd-copied="logEvent('Container copied', event)"
+							                                  dnd-copied=""
 							                                  >
 
 							                                  <div 	class="container-element box box-blue"
@@ -156,9 +156,6 @@
 												                        			dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
 												                        			dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
 												                        			dd-container-current-index="{{$parent.$index}}" 
-
-
-
 							                                  >
 
 							                                  	<div dd-decor-include-container-here>
@@ -169,7 +166,6 @@
 							                                          dd-line-current-index="{{$index}}"
 							                                          dd-line-parent-index="{{$parent.$index}}"
 							                                          dd-remove-line="removeThisLine($index)"
-							                                          
 							                                  		>
 							                                  			
 							                                      <ul dnd-list="items"
@@ -177,28 +173,25 @@
 							                                          dnd-horizontal-list="true"
 							                                          dnd-external-sources="true"
 							                                          dnd-disable-if="items.length > 2"
-							                                          dnd-dragover="dragoverCallback(event, index, external, type); dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
+							                                          dnd-dragover="dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
 							                                          dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType')"
-
 							                                          class="itemlist"
-							                                          
 							                                          >
 							                                          <li ng-repeat="item in items"
 							                                              dnd-draggable="item"
 							                                              dnd-type="'itemType'"
 							                                              dnd-effect-allowed="copyMove"
-							                                              dnd-dragstart="dragItemStart(item, $index, $parent.$index, $parent.$parent.$index);logEvent('Started to drag an item', event)"
-							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);  logEvent('Item moved', event)"
-							                                              dnd-copied="logEvent('Item copied', event)"
+							                                              dnd-dragstart=""
+							                                              dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);"
+							                                              dnd-copied=""
 
-					                                              		
 																														dd-decor-item
 									                                          dd-item-verbose-mode="{{easyFormDragDropProperties.itemConfig.verboseMode}}"
 									                                          dd-item-current-index="{{$index}}"
 									                                          dd-item-parent-index="{{$parent.$index}}"
 									                                          dd-item-parent-parent-index = "{{$parent.$parent.$index}}"
 									                                          dd-items-count="items.length"	
-									                                          dd-item-css-class="{{item.cssClass}}" 							                                                           
+									                                          dd-item-css-class="{{item.cssClass}}"                    
 							                                              >
 
 							                                              <div 
