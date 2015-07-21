@@ -41,7 +41,7 @@ ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
                 var listClass = ['col-md-12','col-md-6','col-md-4'];
 
 
-                $scope.$watch('cssClass', function(newValue, oldValue) {
+                $scope.$watch('cssClass', function(newValue) {
                     /**
                      * reset css class
                      */

@@ -718,7 +718,7 @@ ul.itemlist.ng-scope{
   -webkit-box-shadow: 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777;
-  min-height: 75px;        
+  min-height: 115px;        
 }
 
 .advancedDemo .dropzone .itemlist > li {
@@ -730,7 +730,7 @@ ul.itemlist.ng-scope{
     // color: #fff;
      float: left;
      font-weight: 700;
-     height: 75px;
+     height: 135px;
     // margin: 5px;
     //padding: 5px;
     // text-align: center;
@@ -739,13 +739,13 @@ ul.itemlist.ng-scope{
 }
 
 #itemContent{
-    background-color: #0d87e9;
-    border: 5px solid #0d87e9;
+    background-color: #fff;//#0d87e9;
+    border: 2px outset #0d87e9;
     border-radius: .25em;
     color: #fff;
     float: left;
     font-weight: 700;
-    height: 75px;
+    height: 115px;
     margin: 5px;
     padding: 3px;
     text-align: center;

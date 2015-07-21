@@ -770,15 +770,17 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                               [
                                 {
                                   'label': [  
-                                              // '<div class="row>',
-                                              // '<div class="col-xs-1 col-sm-1 col-md-1 vertical-line">',
-                                              // ' <div class=""></<div>',
-                                              // '</div>',
-
-                                              '<div class="col-md-10 col-md-offset-1 previewControlinItem">',
-                                              ' <input type="text" class="form-control" placeholder="simple input">',
-                                              '</div>',
-                                              '</div>'
+                                            '<div class="col-md-12">',
+                                            '<div class="form-group">',
+                                            '  <label for="inputText" class="control-label textControlLabel pull-left">',
+                                            '   title <span class="textControlLabel ng-scope">*</span>',
+                                            '  </label>',
+                                            '  <div class="">',
+                                            '    <input type="text" class="form-control" id="inputText" placeholder="basic input">',
+                                            '    <p class="help-block pull-left">Description</p>',
+                                            '  </div>',
+                                            '</div>',
+                                            '</div>'
                                             ].join(''),
                                   //'label': '<p>label 3</p>',           
                                   'control': 'label',
@@ -787,12 +789,22 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                               ],
                               [
                                 {
-                                  // 'label': [ 
-                                  //             ' <div class="col-md-10 col-md-offset-1">', 
-                                  //             ' <input type="text" class="form-control placeholder="a simple input">',
-                                  //             ' </div>'
-                                  //           ].join(''),
-                                  'label': '<p>textinput 2</p>',
+        
+                                  'label': [
+                                            '<div class="col-md-12">',
+                                            '<div class="form-group">',
+                                            '  <label for="inputText" class="control-label textControlLabel ng-binding pull-left">',
+                                            '   title <span class="textControlLabel ng-scope">*</span>',
+                                            '  </label>',
+                                            '  <div class="">',
+                                            '    <input type="password" class="form-control" id="inputText" placeholder="password input">',
+                                            '    <p class="help-block ng-binding pull-left">Description</p>',
+                                            '  </div>',
+                                            '</div>',
+                                            '</div>'
+
+                                            ].join(''),
+
                                   'control': 'textinput',
                                   'cssClass': 'col-md-12'
                                 }

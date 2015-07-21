@@ -108,7 +108,8 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                              */                            
                             //$scope.removeLine({indexToDelete: currentIndex});
                             $scope.removeLine();
-
+                            console.warn('force timer destruction after delete!');
+                            $timeout.cancel(timer);
                         }
 
                         //1st dbl click : make it shake so ready to delete
@@ -127,17 +128,44 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                  * to prevent it to interfere with double click sequence 
                  * -> set a time out (shaking line to delete will automaticallly end shaking after timeout : 2 seconds)
                  */
+                
+                var timer;
+
                 $scope.cancelDelete = function(event){
                     //event.preventDefault();
                     //event.stopPropagation();
                     
-                    $timeout(function(){
+                        timer = $timeout(function(){
                     
                         $scope.deleteLine.dblClickCount = 0;
                         $scope.deleteLine.readyToDelete = false;  
                           
-                    }, 2000);
+                    }, 500);
+
+
+                    /**
+                     * debug
+                     */
+                    // timer.then(
+                    //     function() {
+                    //         console.log( 'Timer resolved!', Date.now() );
+                    //     },
+                    //     function() {
+                    //         console.log( 'Timer rejected!', Date.now() );
+                    //     }
+                    // );
+
                 };
+
+
+                /**
+                 * timer destruction to prevent from bad UI experience
+                 */
+                $scope.$on('$destroy', function(){
+                        console.warn('timer destruction!');
+                        $timeout.cancel(timer);
+                    }
+                );                
 
 
                 /**
