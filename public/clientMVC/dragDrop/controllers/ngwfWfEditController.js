@@ -770,8 +770,8 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                               [
                                 {
                                   'label': [ 
-                                              ' <div class="col-md-10 col-md-offset-1">', 
-                                              ' <input type="text" class="form-control placeholder="a simple input">',
+                                              ' <div class="col-md-10 col-md-offset-1 previewControlinItem">', 
+                                              ' <input type="text" class="form-control" placeholder="simple input">',
                                               ' </div>'
                                             ].join(''),
                                   //'label': '<p>label 3</p>',           

@@ -1,4 +1,4 @@
-@import "main_var.scss";
+@import "drag_and_drop_var";
 @import "main_mixins.scss";
 //@import "main_fontions.scss";
 
@@ -740,7 +740,7 @@ ul.itemlist.ng-scope{
 
 #itemContent{
     background-color: #0d87e9;
-    border: 1px solid #0d87e9;
+    border: 5px solid #0d87e9;
     border-radius: .25em;
     color: #fff;
     float: left;
@@ -839,6 +839,22 @@ ul.itemlist.ng-scope{
 .shake {
   -webkit-animation-name: shake;
   animation-name: shake;
+}
+
+.previewControlinItem{
+  margin:{
+    top:2%;
+  }
+  background-color: #fff;
+  padding:{
+    top: 5px;
+    bottom:5px;
+    left: 10px;
+    right: 10px;
+  }
+  border-radius: 5px;
+  color: #F1F1F1;
+  font-size: 18px;
 }
 
 

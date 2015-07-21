@@ -9,6 +9,4 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular.module('ngwfApp.filters', ['ngwfApp.filters.trustThis'], 
 									function () {
-    //verbose
-    //console.log('--> INIT : Hello filters container  \'\'ngwfApp.filters\'\' ');
 });
