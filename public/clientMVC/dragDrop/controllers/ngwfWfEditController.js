@@ -769,14 +769,24 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                             [
                               [
                                 {
-                                  'label': 'label1',
+                                  'label': [ 
+                                              ' <div class="col-md-10 col-md-offset-1">', 
+                                              ' <input type="text" class="form-control placeholder="a simple input">',
+                                              ' </div>'
+                                            ].join(''),
+                                  //'label': '<p>label 3</p>',           
                                   'control': 'label',
                                   'cssClass': 'col-md-12'
                                 }
                               ],
                               [
                                 {
-                                  'label': 'textinput 1',
+                                  // 'label': [ 
+                                  //             ' <div class="col-md-10 col-md-offset-1">', 
+                                  //             ' <input type="text" class="form-control placeholder="a simple input">',
+                                  //             ' </div>'
+                                  //           ].join(''),
+                                  'label': '<p>textinput 2</p>',
                                   'control': 'textinput',
                                   'cssClass': 'col-md-12'
                                 }
@@ -785,7 +795,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                             [
                               [
                                 {
-                                  'label': 'label 2',
+                                  'label': '<p>label 2</p>',
                                   'control': 'label',
                                   cssClass: 'col-md-6'
                                 },
@@ -794,7 +804,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                 //   'control': 'label'
                                 // },
                                 {
-                                  'label': 'textbox 1',
+                                  'label': '<p>textbox 1</p>',
                                   'control': 'textinput',
                                   cssClass: 'col-md-6'
                                 }
@@ -805,7 +815,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                 //   'control': 'textbox'
                                 // },
                                 {
-                                  'label': 'textbox 1',
+                                  'label': '<p>textbox 1</p>',
                                   'control': 'textbox',
                                   cssClass: 'col-md-12'
                                 }

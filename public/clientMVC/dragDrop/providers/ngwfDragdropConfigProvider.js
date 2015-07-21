@@ -221,6 +221,7 @@ dragDropConfigProvider.provider('dragDropConfig', [function(){
   this.setListItemCssClass = function(fromConfig){
               _listDragDropItemCssClasses = [].concat(fromConfig);
             };
+            
 
 
   this.$get = [function(){

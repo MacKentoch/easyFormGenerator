@@ -9,9 +9,10 @@
 //
 //  This module is a filter -> it must be injected in filters container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var  filterTemplate = angular.module('ngwfApp.filters.serviceTemplate', []);
+var  ngwftrustThisFilter = angular.module('ngwfApp.filters.trustThis', []);
 
-filterTemplate.controller('filterTemplate', function ($scope) {
-    //verbose
-    //console.log('--> INIT : Hello filter  \'\'ngwfApp.filters.filterTemplate\'\' ');
-});
+ngwftrustThisFilter.filter('trustThis', ['$sce',function($sce) {
+  return function(value, type) {
+    					return $sce.trustAs(type || 'html', value);
+  				};
+}]);

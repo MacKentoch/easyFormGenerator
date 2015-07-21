@@ -196,9 +196,9 @@
 
 							                                              <div 
 																																	id="itemContent" 
-
 							                                              		>
-							                                             	 {{item.label}} 	
+							                                              	<span ng-bind-html="item.label | trustThis"></span>	
+							                                             	 	
 							                                              </div>
 							                                             
 							                                          </li>
