@@ -672,6 +672,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  */
 .advancedDemo .dropzone .dndDragging {
     opacity: 0.7;
+    border: 2px dotted #000;
 }
 
 /**
@@ -689,7 +690,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  */
 .advancedDemo .dropzone .dndPlaceholder {
     background-color: #ddd !important;
-    min-height: 95px;
+    min-height: 155px;
     display: block;
     position: relative;
     // border:{
@@ -707,7 +708,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 /***************************** Element type specific styles *****************************/
 
 .advancedDemo .dropzone .itemlist {
-    min-height: 88px !important;
+    min-height: 115px !important;
 }
 
 ul.itemlist.ng-scope{
@@ -729,7 +730,7 @@ ul.itemlist.ng-scope{
      border-radius: .25em;
     // color: #fff;
      float: left;
-     font-weight: 700;
+     font-weight: 700; 
      height: 135px;
     // margin: 5px;
     //padding: 5px;
