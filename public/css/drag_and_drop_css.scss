@@ -624,8 +624,6 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 
 
 
-
-
 /*=========================================================
    specific drag and drop test (will change or be deleted)
 ===========================================================*/
@@ -753,6 +751,13 @@ ul.itemlist.ng-scope{
     width: 100%;
     cursor: all-scroll;
     @extend .effect1ForDragDropItem;
+}
+.dragItemtextarea{
+  height:60px;
+}
+textarea {
+    border:1px dotted #CFCFCF!important;
+    height:50px!important;
 }
 
 .advancedDemo .dropzone .container-element {
