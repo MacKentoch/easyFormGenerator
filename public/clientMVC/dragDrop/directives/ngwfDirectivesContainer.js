@@ -12,8 +12,8 @@ angular.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRationDirective
 																				'ngwfApp.directives.ngwfDdDecorContainerDirective',
 																				'ngwfApp.directives.ngwfDdDecorLineDirective',
 																				'ngwfApp.directives.ngwfDdDecorItemDirective',
+																				'ngwfApp.directives.ngwfDdNoEditableControlDirective',
 										function () {
-    //verbose
-    //console.log('--> INIT : Hello directives container  \'\'ngwfApp.directives\'\' ');
+
 }]);
 

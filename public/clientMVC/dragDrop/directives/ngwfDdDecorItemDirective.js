@@ -8,8 +8,8 @@
  * 
  * 
  */
-var ngwfDdDecorItemDirective = angular.module('ngwfApp.directives.ngwfDdDecorItemDirective', []);
-ngwfDdDecorItemDirective.directive('ddDecorItem', [function(){
+angular.module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
+        .directive('ddDecorItem', [function(){
 
 
         var htmlTemplate   = [
