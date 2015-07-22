@@ -9,22 +9,25 @@
  *  (should lead to bas use experience with drag and drop)
  * 
  */
-angular.module('ngwfApp.directives.ngwfDdNoEditableControlDirective', []).directive('ddNoEditableControl', [function(){
+angular
+	.module('ngwfApp.directives.ngwfDdNoEditableControlDirective', [])
+	.directive('ddNoEditableControl', [function(){
 
 	console.info('ddNoEditableControl loaded');
 
 	return {
-	    scope:  {},
+	    
 	    restrict: 'A',
-	    require: '^ddDecorItem',
+	    //require: '^ddDecorItem',
 
-
-	    link: function($scope, element, attrs, ctrl, transclude) {    
+	    link: function($scope, element) {    
 	        
-				element.on('click', function(){
+				element.bind('click', function(event){
+					event.preventDefault();
 					console.dir('click on control not available.');
-					return false;
 				});
+
+				//$compile(element.contents())($scope);
 
 	    }
 		};

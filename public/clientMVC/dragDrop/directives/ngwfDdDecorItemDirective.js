@@ -8,15 +8,17 @@
  * 
  * 
  */
-angular.module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
-        .directive('ddDecorItem', [function(){
-
+angular
+    .module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
+    .directive('ddDecorItem', [function(){
 
         var htmlTemplate   = [
                                 '<div>',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
                                 ].join(' ');
+                                
+        console.info('ddDecorItem loaded');
 
         return {
             scope:  {

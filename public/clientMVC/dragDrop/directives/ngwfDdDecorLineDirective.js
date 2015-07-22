@@ -11,8 +11,9 @@
  * 
  * 
  */
-var ngwfDdDecorLineDirective = angular.module('ngwfApp.directives.ngwfDdDecorLineDirective', []);
-ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout){
+angular
+    .module('ngwfApp.directives.ngwfDdDecorLineDirective', [])
+    .directive('ddDecorLine', ['$timeout', function($timeout){
 
 
         var htmlTemplate   = [
@@ -23,6 +24,8 @@ ngwfDdDecorLineDirective.directive('ddDecorLine', ['$timeout', function($timeout
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
                                 ].join(' ');
 
+        console.info('ddDecorLine loaded');
+        
         return {
             scope:  {
 

@@ -15,8 +15,10 @@
  * 
  * MIT : Erwan DATIN
  */
-var ngwfDdDecorDropZoneDirective = angular.module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', []);
-ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
+angular
+    .module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', [])
+    .directive('ddDecorDropZone', [function(){
+
         var htmlTemplate   = ['<div class="{{styleParam.ApplycssClass}}">', 
                             '  <div id="visualPanel">',
                             '    <div  class="panel panel-default">', 
@@ -41,6 +43,8 @@ ngwfDdDecorDropZoneDirective.directive('ddDecorDropZone', [function(){
                             '   </div>',
                             '</div>'].join(' ');
 
+        console.info('ddDecorDropZone loaded');
+        
         return {
             scope:  {
                         'styleParam': '=ddDropZoneProperties',

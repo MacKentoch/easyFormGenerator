@@ -9,8 +9,10 @@
  *   - expand Bool (ONLY if group controls (left drop zone - index 0): text inputs group, lists...)
  * 
  */
-var ngwfDdDecorContainerDirective = angular.module('ngwfApp.directives.ngwfDdDecorContainerDirective', []);
-ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
+angular
+    .module('ngwfApp.directives.ngwfDdDecorContainerDirective', [])
+    .directive('ddDecorContainer', [function(){
+
         var htmlTemplate   = [
                                 //'<div>',
                                 '<div ng-click="collapseFct()">',
@@ -19,6 +21,8 @@ ngwfDdDecorContainerDirective.directive('ddDecorContainer', [function(){
                                 '<div collapse="isCollapsed">', 
                                 '   <div id="ddDecorContainerWillTranscludeHere"></div>', 
                                 '</div>'].join(' ');
+
+        console.info('ddDecorContainer loaded');
 
         return {
             scope:  {
