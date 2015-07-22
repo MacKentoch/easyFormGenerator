@@ -744,7 +744,12 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                                           WhenIndex: 2,
                                                           ApplycssClass : 'col-md-12',
                                                           title : 'textarea'
-                                                      }
+                                                      },
+                                                      {
+                                                          WhenIndex: 3,
+                                                          ApplycssClass : 'col-md-12',
+                                                          title : 'radio'
+                                                      }                                                      
 
                                                   ],
                                   verboseMode : false, 
@@ -846,6 +851,7 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                   'cssClass': 'col-md-12'
                                 }
                               ],
+                              //texareas
                               [
 
                                 {
@@ -864,6 +870,39 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
                                   'cssClass': 'col-md-12'          
                                 }
 
+                              ],
+                              //radios
+                              [
+                                {
+                                  'label' : [
+                                              '<div class="col-md-12">',        
+                                              '  <div class="form-group">',
+                                              '    <label for="vertRadio" class="control-label textControlLabel pull-left">title<span class="textControlLabel">*</span></label>',
+                                              '    <div class="interligne"></div>',
+                                              '    <div class="pull-left">',
+
+                                              '      <div class="radio">',
+                                              '        <label class="">',
+                                              '          <input type="radio" name="optionsRadios" id="optionsRadio-0" value="verticalRadio0" checked="">',
+                                              '          option1',
+                                              '        </label>',
+                                              '      </div><div class="radio">',
+                                              '        <label class="">',
+                                              '          <input type="radio" name="optionsRadios" id="optionsRadio-1" value="verticalRadio1" checked="">',
+                                              '          option2',
+                                              '        </label>',
+                                              '      </div>',
+                                              '      <p class="help-block pull-left">description</p>',
+
+                                              '    </div>',
+
+
+                                              '  </div>',                            
+                                              '</div>'
+                                            ].join(''),
+                                  'control': 'verticalradio',
+                                  'cssClass': 'col-md-12'            
+                                }
                               ]
                             ],
                             //column template :
