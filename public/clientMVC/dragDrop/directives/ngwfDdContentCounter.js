@@ -26,38 +26,45 @@ angular
     		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
     		link: function($scope, element) {
     			
-    			
-    			if (element[0].children.length > 0) {
-    				 			console.dir(
-	    									{
-	    										elementObj : element[0],
-	    										elementClassName : element[0].className,
-	    										elementChidrenCount : element[0].children.length
-	    									}
-    									);
-    			}
-   
 
-    			//check child count change
+       			//check child count change
     			$scope.$watch(
 				    function () { return element[0].children.length; },
 				    function (newValue, oldValue) {
 				      if (newValue !== oldValue) {
 
-				        console.warn('child count change detected : oldValue = ' + oldValue + ' - newValue = ' + newValue);
+				        // console.warn(
+						      //   						[
+							     //    							'child count change detected : oldValue = ', 
+							     //    							oldValue,
+							     //    							' - newValue = ', 
+							     //    							newValue
+						      //   						].concat('')
+				        // 							);
 				        
 				        var newRealCount= 0;
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
-				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i])) newRealCount++;
+
+
+				        	console.warn(element[0].children[i]);
+
+				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].elementClassName)) newRealCount++;
 				        }
 				        $scope.contentRealCount = newRealCount;
 								//todo : update modelRealItemsCount
 
-				        console.dir(
-				        							{
-				        								'realcount' : 
-				        							}
-				        					);
+    							console.warn('contentRealCount');
+    				 			console.dir(
+	    									{
+	    										elementObj : element[0],
+	    										elementClassName : element[0].className,
+	    										elementChidrenCount : element[0].children.length,
+	    										elementChidrenZero : element[0].children[0],
+	    										'realcount' : $scope.contentRealCount
+	    									}
+    									);
+
+
 
 				        //dragDropItemCounterService.update(columnIndex, LineIndex, counter);
 				      }

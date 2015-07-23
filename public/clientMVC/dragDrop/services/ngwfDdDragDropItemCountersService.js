@@ -33,6 +33,8 @@ angular
 		Service.isHtmlElementToCount = function(htmlvalue){
 																			var isHtmlToCount = true;
 																			angular.forEach(_itemsNotToCount, function(value){
+																				console.info('htmlvalue = '+ htmlvalue);
+
 																				isHtmlToCount = htmlvalue.indexOf(value) > -1 ? false : true;
 																			});
 																			console.info('isHtmlTocout in dragDropItemCounterService : ' + isHtmlToCount);

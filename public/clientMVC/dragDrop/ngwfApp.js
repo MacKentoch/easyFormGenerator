@@ -163,7 +163,7 @@ angular
        $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
-        console.log('controller does a good job!');
+        //console.log('controller does a good job!');
         $scope.opened = true;
       };
      
@@ -205,9 +205,9 @@ angular
                                                 placeholder :         'dndPlaceholder',
                                                 itemBeingDragged :    'dndDraggingSource'    
                                               });
-    console.info('config dragDropConfigProvider');
-    console.dir({
-      valueSet : dragDropConfigProvider.getItemsNotTocount()
-    });
+    // console.info('config dragDropConfigProvider');
+    // console.dir({
+    //   valueSet : dragDropConfigProvider.getItemsNotTocount()
+    // });
   
 }]);
