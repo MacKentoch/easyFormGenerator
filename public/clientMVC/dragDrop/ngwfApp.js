@@ -196,4 +196,18 @@ angular
     });
   } 
 
- }]);   
+ }])
+
+
+.config(['dragDropConfigProvider',
+  function(dragDropConfigProvider) {
+    dragDropConfigProvider.setItemsNotTocount({
+                                                placeholder :         'dndPlaceholder',
+                                                itemBeingDragged :    'dndDraggingSource'    
+                                              });
+    console.info('config dragDropConfigProvider');
+    console.dir({
+      valueSet : dragDropConfigProvider.getItemsNotTocount()
+    });
+  
+}]);

@@ -766,6 +766,32 @@ angular
                               }                  
   };
 
+
+  $scope.easyFormDragDropItemCounters = [
+                                          //1st column
+                                          [
+                                            //line1 
+                                            {
+
+                                            },
+                                            {
+
+                                            }
+
+
+                                          ],
+                                          //2nd column
+                                          [
+                                            {
+
+                                            },
+
+                                            {
+
+                                            }
+                                          ]
+                                      ];
+
   /**
    * Model just for dev
    *

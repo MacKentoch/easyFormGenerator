@@ -176,6 +176,10 @@
 							                                          dnd-dragover="dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
 							                                          dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType')"
 							                                          class="itemlist"
+
+							                                          dd-content-counter
+							                                          dd-value-when-placeholder="dndPlaceholder"
+							                                          dd-value-when-dragging="dndDraggingSource"
 							                                          >
 							                                          <li ng-repeat="item in items"
 							                                              dnd-draggable="item"

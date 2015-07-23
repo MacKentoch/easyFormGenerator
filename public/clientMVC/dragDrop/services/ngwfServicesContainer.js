@@ -22,5 +22,6 @@ angular.module('ngwfApp.services',
 								'ngwfApp.services.ngwfWfFormsServices',
 								'ngwfApp.services.ngwfEditCtrlControllerModalProxy',
 								'ngwfApp.services.dragDropItemDecorationService',
+								'ngwfApp.services.dragDropItemCountersService',
 								function () {
 }]);

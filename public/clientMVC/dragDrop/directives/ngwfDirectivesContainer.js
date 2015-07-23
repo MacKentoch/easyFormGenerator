@@ -13,6 +13,7 @@ angular.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRationDirective
 																				'ngwfApp.directives.ngwfDdDecorLineDirective',
 																				'ngwfApp.directives.ngwfDdDecorItemDirective',
 																				'ngwfApp.directives.ngwfDdNoEditableControlDirective',
+																				'ngwfApp.directives.ngwfDdContentCounterDirective',
 										function () {
 
 }]);

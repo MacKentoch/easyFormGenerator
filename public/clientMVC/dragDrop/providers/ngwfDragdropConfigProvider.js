@@ -213,22 +213,28 @@ angular
 
     };                                               
 
-
+  var _itemsNotToCountFoReal = {
+                                  placeholder :         '',
+                                  itemBeingDragged :    ''
+                                };
   /**
    * setListItemCssClass : to use in app.config
    * -> if need to overrides/modify "_defaultDragDropItemCssClasses"
    */
   this.setListItemCssClass = function(fromConfig){
               _listDragDropItemCssClasses = [].concat(fromConfig);
+            };            
+  this.getItemsNotTocount = function(){
+              return _itemsNotToCountFoReal;
+            };          
+  this.setItemsNotTocount = function(fromConfig){
+              _itemsNotToCountFoReal = angular.copy(fromConfig);
             };
-            
-
 
   this.$get = [function(){
 
           
           var Service = {};
-
 
           Service.getListItemCssClass = function(){                                               
                             return _listDragDropItemCssClasses;
@@ -236,6 +242,11 @@ angular
 
           Service.getListControls = function(){
                             return _initListControls;
+                          };
+          //when counting items in a line : need to skip placeholder and hidden dragging source
+          //to get the right css to apply visible items                
+          Service.getItemsNotToCount = function(){
+                            return _itemsNotToCountFoReal;
                           };                
                            
           return Service;
