@@ -32,6 +32,7 @@ angular
 												'nya.bootstrap.select',
                         'dndLists',
                         'mgcrea.ngStrap.affix',
+                        'ngTouch',
 												function () {
 }])
 

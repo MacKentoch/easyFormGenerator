@@ -35,9 +35,6 @@ angular
                                                                       controllerModalProxy,
                                                                       dragDropItemDecorationService,
                                                                       dragDropConfig) {
-  //verbose
-  //console.log('--> INIT : Hello controller  \'\'ngwfWfEditController\'\' ');
-
 
   $scope.easyFormGeneratorVERSION = easyFormGenVersion;
   ///////////////////////////////////////////////////
@@ -560,7 +557,6 @@ angular
         if (parentIndex === 0) {
             return false;
         }
-
         /**
          * apply css to all items on the row like if new item were already in (explains why "length + 1")
          */
