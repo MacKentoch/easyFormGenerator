@@ -9,10 +9,9 @@
 //
 //  This module is a service -> it must be injected in services container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var selectOptionManage = angular.module('ngwfApp.services.selectOptionManage', []);
-
-
-selectOptionManage.factory('selectOptionManage', [ function(){
+angular
+  .module('ngwfApp.services.selectOptionManage', [])
+  .factory('selectOptionManage', [ function(){
 	//console.log('--> INIT : Hello service  \'\'selectOptionManage\'\' ');
 
     return {

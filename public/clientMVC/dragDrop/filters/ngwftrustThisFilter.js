@@ -12,9 +12,10 @@
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
-var  ngwftrustThisFilter = angular.module('ngwfApp.filters.trustThis', []);
+angular
+	.module('ngwfApp.filters.trustThis', [])
+	.filter('trustThis', ['$sce',function($sce) {
 
-ngwftrustThisFilter.filter('trustThis', ['$sce',function($sce) {
   return function(value, type) {
     					return $sce.trustAs(type || 'html', value);
   				};

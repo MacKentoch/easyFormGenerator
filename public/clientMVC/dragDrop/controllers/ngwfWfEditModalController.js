@@ -7,9 +7,10 @@
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfWfEditMODALController = angular.module('ngwfApp.controllers.ngwfWfEditMODALController', []);
 
-ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope', 
+angular
+  .module('ngwfApp.controllers.ngwfWfEditMODALController', [])
+  .controller('ngwfWfEditMODALController', [	'$scope', 
                                                                     '$modalInstance',
                                       															'nyaSelect',
                                                                     'toaster' ,

@@ -13,10 +13,9 @@
 //
 //  This module is a service -> it must be injected in services container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfEditCtrlControllerModalProxy = angular.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', []);
-
-
-ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
+angular
+	.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
+	.factory('controllerModalProxy', [function(){
 
    //console.log('--> INIT : Hello service  \'\'controllerModalProxy\'\' ');
 

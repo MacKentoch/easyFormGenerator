@@ -10,8 +10,9 @@
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
-var dragDropItemDecorationService = angular.module('ngwfApp.services.dragDropItemDecorationService', []);
-dragDropItemDecorationService.factory('dragDropItemDecorationService', 
+angular
+	.module('ngwfApp.services.dragDropItemDecorationService', [])
+	.factory('dragDropItemDecorationService', 
 																			[
 																				'dragDropConfig',  
 																				function(dragDropConfig){

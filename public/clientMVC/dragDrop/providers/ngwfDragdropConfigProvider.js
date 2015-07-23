@@ -14,9 +14,9 @@
  * ——————————————————————————————————————————————
  */
 
-var dragDropConfigProvider = angular.module('ngwfApp.providers.dragDropConfigProvider', []);
-
-dragDropConfigProvider.provider('dragDropConfig', [function(){
+angular
+  .module('ngwfApp.providers.dragDropConfigProvider', [])
+  .provider('dragDropConfig', [function(){
 
   /**
    * default drag drop item classes

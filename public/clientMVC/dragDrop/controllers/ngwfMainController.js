@@ -7,9 +7,8 @@
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfMainController = angular.module('ngwfApp.controllers.ngwfMainController', []);
+angular
+	.module('ngwfApp.controllers.ngwfMainController', [])
+	.controller('ngwfMainController', ['$scope', function ($scope) {
 
-ngwfMainController.controller('ngwfMainController', ['$scope', function ($scope) {
-    //verbose
-    //console.log('--> INIT : Hello controller  \'\'ngwfMainController\'\' ');
 }]);

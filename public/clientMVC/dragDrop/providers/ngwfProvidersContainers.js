@@ -19,5 +19,4 @@ angular.module('ngwfApp.providers', [
 																			'ngwfApp.providers.dragDropConfigProvider'
 																		], 
 																		function () {
-
 });

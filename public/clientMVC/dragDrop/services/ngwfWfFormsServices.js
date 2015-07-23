@@ -9,10 +9,9 @@
 //
 //  This module is a service -> it must be injected in services container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfWfFormsServices = angular.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource']);
-
-
-ngwfWfFormsServices.factory('wfFormsByIdServices', ['$resource', function($resource){
+angular
+	.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource'])
+	.factory('wfFormsByIdServices', ['$resource', function($resource){
     return $resource('/api/wfedit/:id', {id: '@id'}, {
 
     });

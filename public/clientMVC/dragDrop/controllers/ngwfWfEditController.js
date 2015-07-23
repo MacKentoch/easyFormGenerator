@@ -7,9 +7,9 @@
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfWfEditController = angular.module('ngwfApp.controllers.ngwfWfEditController', []);
-
-ngwfWfEditController.controller('ngwfWfEditController', [	'$scope', 
+angular
+  .module('ngwfApp.controllers.ngwfWfEditController', [])
+  .controller('ngwfWfEditController', [	'$scope', 
                                                           'easyFormGenVersion',
                                                           '$filter',
                                                           '$anchorScroll',

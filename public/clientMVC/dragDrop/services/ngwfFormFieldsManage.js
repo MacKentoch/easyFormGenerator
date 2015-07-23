@@ -43,10 +43,9 @@
 //NOTE : if you want to manage more columns templates (right now only manage up to 3 columns), just inspire from existing code
 
 
-var formFieldManage = angular.module('ngwfApp.services.formFieldManage', []);
-
-
-formFieldManage.factory('formFieldManage', [ function(){
+angular
+  .module('ngwfApp.services.formFieldManage', [])
+  .factory('formFieldManage', [ function(){
 
 
 	//console.log('--> INIT : Hello service  \'\'formFieldManage\'\' ');

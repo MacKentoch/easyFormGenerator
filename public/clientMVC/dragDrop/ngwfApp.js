@@ -15,7 +15,8 @@
  * ——————————————————————————————————————————————
 **/
 
-var ngwfApp = angular.module('ngwfApp', [
+angular
+  .module('ngwfApp', [
                         'ngwfApp.providers',	
 												'ngwfApp.controllers',
 												'ngwfApp.services', 
@@ -32,16 +33,15 @@ var ngwfApp = angular.module('ngwfApp', [
                         'dndLists',
                         'mgcrea.ngStrap.affix',
 												function () {
-}]);
+}])
 
-
-ngwfApp.value('easyFormGenVersion', 'v1.1.2');
+  .value('easyFormGenVersion', 'v1.1.2')
 
 
 //////////////////////////////
 // CONFIG HERE (formly...)							
 /////////////////////////////
-ngwfApp.config([	'formlyConfigProvider', 
+  .config([	'formlyConfigProvider', 
 					function(formlyConfigProvider) {
 
     formlyConfigProvider.setType(
@@ -172,7 +172,7 @@ ngwfApp.config([	'formlyConfigProvider',
       templateOptions: {
         addonLeft: {
           class: 'glyphicon glyphicon-calendar',
-          onClick: function(options, scope) {
+          onClick: function(options) {
             options.templateOptions.isOpen = !options.templateOptions.isOpen;
           }
         },       
