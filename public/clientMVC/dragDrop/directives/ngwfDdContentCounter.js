@@ -3,7 +3,7 @@
  *  directive : ngwfDdContentCounterDirective
  *  ------------------------------------------------------
  *
- *  return real item count(does not count placeholder and hidden item being dragged)
+ *  return real item count (hidden item being dragged that stay on the line)
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -52,11 +52,8 @@ angular
 				        	}else{
 				        		listClassForThisRow.push( {item: i, isReal : false} );
 				        	} 
-
 				        }
-
 				        $scope.contentRealCount = newRealCount;
-
 				        /**
 				         * a timer otherwise won't refresh everytime
 				         */
