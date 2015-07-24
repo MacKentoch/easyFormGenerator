@@ -12,9 +12,9 @@
 **/
 angular
     .module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
-    .directive('ddDecorItem', [
+    .directive('ddDecorItem', [ 'dragDropConfig',
 
-    function(){
+    function( dragDropConfig ){
 
         var htmlTemplate   = [
                                 '<div>',
@@ -47,6 +47,15 @@ angular
                 /**
                  * init css class
                  */
+
+
+                //test
+
+                var listCss = dragDropConfig.getDistinctItemCssClass();
+                console.dir({listCss: listCss});
+
+
+
                 element.removeClass('col-md-12');
                 element.removeClass('col-md-6');
                 element.removeClass('col-md-4');

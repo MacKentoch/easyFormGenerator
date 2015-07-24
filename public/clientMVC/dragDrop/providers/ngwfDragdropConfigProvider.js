@@ -284,17 +284,26 @@ angular
 
                                                 var cssClassRef = valueRef.cssClass;
 
-                                                angular.forEach(distinctCssClass, function(valueProc){
-                                                  var cssClassProc = valueProc.cssClass;
+                                                if (distinctCssClass.length === 0){
+                                                  distinctCssClass.push(cssClassRef);
+                                                } else {
+                                                  var canAdd = true;
 
-                                                  if (cssClassRef !== cssClassProc)  distinctCssClass.push(cssClassRef);
-                                                  
-                                                });
+                                                  angular.forEach(distinctCssClass, function(valueProc){
+                                                    var cssClassProc = valueProc;
+
+                                                    if (cssClassRef === cssClassProc) {
+                                                      canAdd = false;
+                                                    }
+
+                                                  });
+
+                                                  if (canAdd) distinctCssClass.push(cssClassRef);
+                                                }
 
                                               });
-
                                               return distinctCssClass;
-                                            }                 
+                                            };               
           return Service;
         } 
       ];
