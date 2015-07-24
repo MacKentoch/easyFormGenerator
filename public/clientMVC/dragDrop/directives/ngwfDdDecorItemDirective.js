@@ -37,23 +37,35 @@ angular
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
-                var currentIndex = $scope.currentIndex;
-                var parentIndex = $scope.parentIndex;
-
-                var listClass = ['col-md-12','col-md-6','col-md-4'];
+                var currentIndex =      $scope.currentIndex;
+                var parentIndex =       $scope.parentIndex;
+                //TODO : to factorize (place in provider-> method to get all those class)
+                var listClass =         ['col-md-12','col-md-6','col-md-4'];
 
 
                 $scope.$watch('cssClass', function(newValue) {
                     /**
                      * reset css class
                      */
+                    
+                    console.info(
+                                    [
+                                        'ddDecorItem : cssClass change detected',
+                                        'adding class : ',
+                                        newValue
+                                    ]
+                                );
+
+                    //TODO : to factorize (place in provider-> method to get all those class)
                     element.removeClass('col-md-12');
                     element.removeClass('col-md-6');
                     element.removeClass('col-md-4');
+                    
                     /**
                      * add class
                      */
                     element.addClass(newValue);
+                    
                 });
 
                 /**
@@ -82,6 +94,7 @@ angular
                  */
                 if ($scope.parentParentIndex === '0') {
                    element.addClass(listClass[0]);  
+
                 }
 
 

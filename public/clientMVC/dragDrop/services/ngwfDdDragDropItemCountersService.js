@@ -59,11 +59,11 @@ angular
 																		};	
 																	
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
-																	  if (typeof fullModel !== 'undefined' &&
-																	  	  typeof listCssToApply !== 'undefined' &&
-																	  	  typeof columIndex !== 'undefined' &&
-																	  	  typeof lineIndex !== 'undefined' &&
-																	  	  typeof realCount !== 'undefined') {
+																	  if (typeof fullModel 			!== 		'undefined' &&
+																	  	  typeof listCssToApply !== 		'undefined' &&
+																	  	  typeof columIndex 		!== 		'undefined' &&
+																	  	  typeof lineIndex 			!== 		'undefined' &&
+																	  	  typeof realCount 			!== 		'undefined') {
 
 																					for (var i = fullModel[columIndex][lineIndex].length - 1; i >= 0; i--) {
 																						
@@ -72,6 +72,7 @@ angular
 																								 listCssToApply[j].isReal === true){
 
 																								fullModel[columIndex][lineIndex][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
+																							
 																								console.warn([
 																																'css apply :',
 																																fullModel[columIndex][lineIndex][i].cssClass,
