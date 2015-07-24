@@ -10,31 +10,31 @@
 angular
   .module('ngwfApp.controllers.ngwfWfEditController', [])
   .controller('ngwfWfEditController', [	'$scope', 
-                                                          'easyFormGenVersion',
-                                                          '$filter',
-                                                          '$anchorScroll',
-                            															'toaster', 
-                            															'$timeout',
-                                                          '$modal',
-                                                          '$log', 
-                                                          'formFieldManage',
-                                                          'wfFormsByIdServices',
-                                                          'controllerModalProxy',
-                                                          'dragDropItemDecorationService',
-                                                          'dragDropConfig',
-                            															function (	$scope, 
-                                                                      easyFormGenVersion,
-                                                                      $filter,
-                                                                      $anchorScroll,
-                                  																		toaster,
-                                  																		$timeout, 
-                                                                      $modal,
-                                                                      $log, 
-                                                                      formFieldManage, 
-                                                                      wfFormsByIdServices, 
-                                                                      controllerModalProxy,
-                                                                      dragDropItemDecorationService,
-                                                                      dragDropConfig) {
+                                        'easyFormGenVersion',
+                                        '$filter',
+                                        '$anchorScroll',
+          															'toaster', 
+          															'$timeout',
+                                        '$modal',
+                                        '$log', 
+                                        'formFieldManage',
+                                        'wfFormsByIdServices',
+                                        'controllerModalProxy',
+                                        'dragDropItemDecorationService',
+                                        'dragDropConfig',
+  function (	$scope, 
+              easyFormGenVersion,
+              $filter,
+              $anchorScroll,
+							toaster,
+							$timeout, 
+              $modal,
+              $log, 
+              formFieldManage, 
+              wfFormsByIdServices, 
+              controllerModalProxy,
+              dragDropItemDecorationService,
+              dragDropConfig) {
 
   $scope.easyFormGeneratorVERSION = easyFormGenVersion;
   ///////////////////////////////////////////////////
@@ -654,6 +654,9 @@ angular
           if (allowedType === 'itemType' && !item.label) return false;
           if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
       }
+      
+      //froce css refresh
+      //$scope.command.forceRefresh = true;
 
       return item;
   };
@@ -787,6 +790,9 @@ angular
                                             }
                                           ]
                                       ];
+
+  //force item css refresh (used in drop event)
+  $scope.command = {forceRefresh : false};  
 
   /**
    * Model just for dev

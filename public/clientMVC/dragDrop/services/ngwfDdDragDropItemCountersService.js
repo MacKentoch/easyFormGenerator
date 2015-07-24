@@ -21,22 +21,7 @@ angular
 		var _itemsNotToCount = angular.copy(dragDropConfig.getItemsNotToCount());
 
 		var Service = {};
-
-
-		// function getItemCssDependingNumberItemsInRow(numberOfItems){
-		//   if(typeof numberOfItems !== 'undefined'){
-		//     var classToReturn = '';
-		//     for (var i = _listItemClass.length - 1; i >= 0; i--) {
-		//       if (_listItemClass[i].numberItemPerRow === numberOfItems) {
-		//         classToReturn = _listItemClass[i].cssClass;  
-		//       }
-		//     }
-		//     return classToReturn;
-		//   }else{
-		//     return '';
-		//   } 		
-		// } 
-
+		
 
 		Service.getItemsNotToCount = function(){
 																		  return _itemsNotToCount;

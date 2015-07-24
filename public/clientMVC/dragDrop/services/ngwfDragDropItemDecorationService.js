@@ -23,26 +23,12 @@ angular
 
 	var Service = {};
 
-	function getItemCssDependingNumberItemsInRow(numberOfItems){
-	  if(typeof numberOfItems !== 'undefined'){
-	    var classToReturn = '';
-	    for (var i = _listItemClass.length - 1; i >= 0; i--) {
-	      if (_listItemClass[i].numberItemPerRow === numberOfItems) {
-	        classToReturn = _listItemClass[i].cssClass;  
-	      }
-	    }
-	    return classToReturn;
-	  }else{
-	    return '';
-	  } 		
-	} 
-
 	Service.getListClass = function(){
 		return _listItemClass;
 	};
 
   Service.getCssClassWhenNumberItemsInRowIs = function(thisNumber){
-  	return getItemCssDependingNumberItemsInRow(thisNumber);
+  	return dragDropConfig.getItemCssDependingNumberItemsInRow(thisNumber);
 	}; 
 
 	Service.applyCssClassWholeLine = function(model, indexColumn, indexLine, numberItems, restrictToThisIndexColumn){
@@ -55,7 +41,7 @@ angular
 	    if (indexColumn === restrictToThisIndexColumn) {
 
         for (var i = model[indexColumn][indexLine].length - 1; i >= 0; i--) {
-	          model[indexColumn][indexLine][i].cssClass = getItemCssDependingNumberItemsInRow(numberItems);
+	          model[indexColumn][indexLine][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(numberItems);
 	      }
 
 	    } 
@@ -79,7 +65,7 @@ angular
 		   	 * iterates through items
 		   	 */
 	      for (var i = model[indexColumn][cpt].length - 1; i >= 0; i--) {
-	          model[indexColumn][cpt][i].cssClass = getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
+	          model[indexColumn][cpt][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
 	      }
 	   	}	
 
