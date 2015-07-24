@@ -1,13 +1,15 @@
 /**
- * 
- * ngwfDdContentCounterDirective directive :
+ *  ------------------------------------------------------
+ *  directive : ngwfDdContentCounterDirective
+ *  ------------------------------------------------------
  *
- * WHAT IS IT USED FOR? : 
- *
- * return real item count(does not count placeholder and hidden item being dragged)
+ *  return real item count(does not count placeholder and hidden item being dragged)
  * 
- * 
- */
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 angular
     .module('ngwfApp.directives.ngwfDdContentCounterDirective', [])
     .directive('ddContentCounter', ['dragDropItemCounterService', '$timeout',
@@ -31,7 +33,9 @@ angular
     			
     			var timer;
 
-       		//check child count change
+       		/**
+       		 * watch children length change : to update css item class
+       		 */
     			$scope.$watch(
 				    function () { return element[0].children.length; },
 				    function (newValue, oldValue) {
@@ -41,8 +45,7 @@ angular
 				        var listClassForThisRow = [];
 
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
-				        	//console.info('element is countabale' + dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList));
-
+				        	
 				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)){
 				        		newRealCount++;
 				        		listClassForThisRow.push( {item: i, isReal : true} );
@@ -54,12 +57,9 @@ angular
 
 				        $scope.contentRealCount = newRealCount;
 
-				        // dragDropItemCounterService.updateLineItemCss(	$scope.fullModel, 
-				        // 																							listClassForThisRow, 
-				        // 																							$scope.parentIndex, 
-				        // 																							$scope.currentIndex, 
-				        // 																							newRealCount
-				        // 																						);
+				        /**
+				         * a timer otherwise won't refresh everytime
+				         */
 				        timer = $timeout(function(){
 					        dragDropItemCounterService.updateLineItemCss(	$scope.fullModel, 
 					        																							listClassForThisRow, 
@@ -81,62 +81,6 @@ angular
                   $timeout.cancel(timer);
               }
           ); 
-
-       		//check forcerefresh
-    			$scope.$watch(
-				    function () { return $scope.forceRefresh; },
-				    function (newValue, oldValue) {
-				      if (newValue !== oldValue &&
-				      	  newValue === true) {
-
-				      	$scope.forceRefresh = false;
-
-				        var newRealCount= 0;
-				        var listClassForThisRow = [];
-
-				        for (var i = element[0].children.length - 1; i >= 0; i--) {
-				        	
-				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)){
-				        		newRealCount++;
-				        		listClassForThisRow.push({item: i, isReal : true});
-				        	}else{
-				        		listClassForThisRow.push({item: i, isReal : false});
-				        	} 
-
-				        }
-
-				        $scope.contentRealCount = newRealCount;
-
-				        dragDropItemCounterService.updateLineItemCss($scope.fullModel, listClassForThisRow, $scope.parentIndex, $scope.currentIndex, newRealCount);
-
-				        // for (var cpt = 0; cpt < element[0].children.length; cpt++) {
-				        // 	 var child = angular.element(element.children()[cpt]); 
-
-		          //       child.removeClass('col-md-12');
-		          //       child.removeClass('col-md-6');
-		          //       child.removeClass('col-md-4');
-
-
-            //         timer = $timeout(function(){
-	 		        //         if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
-			         //        	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);	
-			         //        }  
-            //         }, 500);
-		          //       // if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
-		          //       // 	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
-
-		          //       // }
-		                
-				        // }
-				        
-				      }
-				    }
-				  );
-
-
-
-
-				
 		  
     		}
     	};

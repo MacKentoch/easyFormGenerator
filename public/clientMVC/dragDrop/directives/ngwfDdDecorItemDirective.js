@@ -1,13 +1,15 @@
 /**
- * 
- * ngwfDdDecorItemDirective directive :
+ *  ------------------------------------------------------
+ *  directive : ngwfDdDecorItemDirective
+ *  ------------------------------------------------------
  *
- * WHAT IS IT USED FOR? : 
- *
- * decorate an item / control :
+ *  decorate an item / control
  * 
- * 
- */
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 angular
     .module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
     .directive('ddDecorItem', [
@@ -33,7 +35,6 @@ angular
             restrict:   'A',
             template:   htmlTemplate,
             transclude: true,
-
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
@@ -44,53 +45,43 @@ angular
 
 
                 /**
-                 * init class
+                 * init css class
                  */
                 element.removeClass('col-md-12');
                 element.removeClass('col-md-6');
                 element.removeClass('col-md-4');
-                
-                /**
-                 * add class
-                 */
+
                 element.addClass($scope.cssClass);                
 
+
+                /**
+                 * update css class
+                 */
                 $scope.$watch('cssClass', function(newValue, oldValue) {
-                    /**
-                     * reset css class
-                     */
-                    
-                    // console.info(
-                    //                 [
-                    //                     'ddDecorItem : cssClass change detected',
-                    //                     'adding class : ',
-                    //                     newValue
-                    //                 ]
-                    //             );
                     if(newValue !== oldValue){
-                        console.warn([
-                                        '-from ddDecorItem-',
-                                        'css apply :',
-                                        newValue,
-                                        'to column index',
-                                        $scope.parentParentIndex,
-                                        'and line index',
-                                        parentIndex,
-                                        'itemIndex',
-                                        currentIndex,
-                                        'innerText',
-                                        element[0].innerText
-                                    ].join(' ')
-                                    );
+                        /**
+                         * just for debug 
+                         */
+                        // console.warn([
+                        //                 '-from ddDecorItem-',
+                        //                 'css apply :',
+                        //                 newValue,
+                        //                 'to column index',
+                        //                 $scope.parentParentIndex,
+                        //                 'and line index',
+                        //                 parentIndex,
+                        //                 'itemIndex',
+                        //                 currentIndex,
+                        //                 'innerText',
+                        //                 element[0].innerText
+                        //             ].join(' ')
+                        //             );
                         
                         //TODO : to factorize (place in provider-> method to get all those class)
                         element.removeClass('col-md-12');
                         element.removeClass('col-md-6');
                         element.removeClass('col-md-4');
-                        
-                        /**
-                         * add class
-                         */
+
                         element.addClass(newValue);
                     }
                     
@@ -124,8 +115,6 @@ angular
                    element.addClass(listClass[0]);  
 
                 }
-
-
 
                 /**
                  * prevent transclusion creating child scope  

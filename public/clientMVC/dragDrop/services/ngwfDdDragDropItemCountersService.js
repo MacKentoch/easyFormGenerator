@@ -22,13 +22,13 @@ angular
 		var Service = {};
 		
 		Service.getItemsNotToCount = function(){
-																		  return _itemsNotToCount;
-																		}; 
-
+																	return _itemsNotToCount;
+																	}; 
 
 		Service.getModelItemsRealCounter = function(){
-																		  return _modelItemRealCounter;
-																		};
+																		  	return _modelItemRealCounter;
+																				};
+
 		Service.isHtmlElementToCount = function(htmlvalue){
 																			var isToCount = true;
 																			if (htmlvalue.length > 0) {
@@ -42,22 +42,23 @@ angular
 																					}
 
 																				});
-
-																				console.info(
-																											[
+																				/**
+																				 * just for debug
+																				 */
+																				// console.info(
+																				// 							[
 																												
-																												'isHtmlElementToCount',
-																												'-htmlvalue-',
-																												htmlvalue,
-																												'isToCount',
-																												isToCount,
-																											].join(' ')
-																										);
+																				// 								'isHtmlElementToCount',
+																				// 								'-htmlvalue-',
+																				// 								htmlvalue,
+																				// 								'isToCount',
+																				// 								isToCount,
+																				// 							].join(' ')
+																				// 						);
 																			}
 																			
 																			return isToCount;	
-																		};	
-																	
+																		};																	
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
 																	  if (typeof fullModel 			!== 		'undefined' &&
 																	  	  typeof listCssToApply !== 		'undefined' &&
@@ -72,20 +73,21 @@ angular
 																								 listCssToApply[j].isReal === true){
 
 																								fullModel[columIndex][lineIndex][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
-
-																								console.warn([
-																																'-from updateLineItemCss-',
-																																'css apply :',
-																																fullModel[columIndex][lineIndex][i].cssClass,
-																																'to columIndex: ',
-																																columIndex,
-																																'and lineIndex',
-																																lineIndex,
-																																'itemIndex',
-																																i
-																															].join(' ')
-																															);
-
+																								/**
+																								 * juste for debug
+																								 */
+																								// console.warn([
+																								// 								'-from updateLineItemCss-',
+																								// 								'css apply :',
+																								// 								fullModel[columIndex][lineIndex][i].cssClass,
+																								// 								'to columIndex: ',
+																								// 								columIndex,
+																								// 								'and lineIndex',
+																								// 								lineIndex,
+																								// 								'itemIndex',
+																								// 								i
+																								// 							].join(' ')
+																								// 							);
 																							} 	
 																						}
 
@@ -93,7 +95,7 @@ angular
 																					return true;
 																				}
 																			};
-
+		
 		return Service;
 
 }]);
