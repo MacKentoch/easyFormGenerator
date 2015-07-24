@@ -35,6 +35,8 @@ angular
 
 				        var newRealCount= 0;
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
+				        	console.info('element is countabale' + dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList));
+
 				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)) newRealCount++;
 				        }
 				        $scope.contentRealCount = newRealCount;

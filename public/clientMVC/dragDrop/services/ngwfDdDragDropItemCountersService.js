@@ -31,17 +31,20 @@ angular
 																		  return _modelItemRealCounter;
 																		};
 		Service.isHtmlElementToCount = function(htmlvalue){
+																			var isToCount = true;
 																			if (htmlvalue.length > 0) {
 																				angular.forEach(_itemsNotToCount, function(value){
 
 																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
-																						if (htmlvalue[classes] === value) return false;
+																						if (htmlvalue[classes] === value){
+																							isToCount = isToCount & false;
+																						}
 																					}
 																				});
-																					
+
 																			}
 																			
-																			return true;	
+																			return isToCount;	
 																		};
 		Service.updateModelItemRealCounter = function(columIndex, lineIndex, countValue){
 																					//todo : update _modelItemRealCounter
