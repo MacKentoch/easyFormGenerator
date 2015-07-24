@@ -19,7 +19,10 @@ angular
     	return {
     		 scope: {
     		 	valueWhenPlaceholder: 	'@ddValueWhenPlaceholder',
-    		 	valueWhendragging: 			'@ddValueWhenDragging'
+    		 	valueWhendragging: 			'@ddValueWhenDragging',
+    		 	fullModel : 						'=ddFullModel',
+					currentIndex :       		'@ddContentCounterCurrentIndex',
+          parentIndex :         	'@ddContentCounterParentIndex',
     		 }, 
     		
     		restrict: 'A', 
@@ -34,18 +37,32 @@ angular
 				      if (newValue !== oldValue) {
 
 				        var newRealCount= 0;
+				        var listClassForThisRow = [];
+
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
 				        	console.info('element is countabale' + dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList));
 
-				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)) newRealCount++;
+				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)){
+				        		newRealCount++;
+				        		listClassForThisRow.push({item: i, isReal : true});
+				        	}else{
+				        		listClassForThisRow.push({item: i, isReal : false});
+				        	} 
+
 				        }
+    							console.dir(
+    									{
+    										ddContentCounterTitleLog : 'ddContentCounter',
+    										index : $scope.currentIndex,
+    										parentIndex : $scope.parentIndex,
+    										realCount : newRealCount
+    									}
+    								);
+
 				        $scope.contentRealCount = newRealCount;
 								//todo : update modelRealItemsCount
-								//
-								console.info('counter : ' + newRealCount);
-
-
-				        //dragDropItemCounterService.update(columnIndex, LineIndex, counter);
+								//console.info('counter : ' + newRealCount);
+				        dragDropItemCounterService.updateLineItemCss($scope.ddFullModel, listClassForThisRow, columIndex, lineIndex, $scope.contentRealCount);
 				      }
 				    }
 				  );

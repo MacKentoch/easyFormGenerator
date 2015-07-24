@@ -180,6 +180,9 @@
 							                                          dd-content-counter
 							                                          dd-value-when-placeholder="dndPlaceholder"
 							                                          dd-value-when-dragging="dndDraggingSource"
+							                                          dd-full-model = "model"
+							                                          dd-content-counter-current-index="{{$index}}"
+							                                          dd-content-counter-parent-index="{{$parent.$index}}"
 							                                          >
 							                                          <li ng-repeat="item in items"
 							                                              dnd-draggable="item"
