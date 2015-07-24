@@ -19,7 +19,7 @@ angular
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
                                 ].join(' ');
-                                
+                             
         return {
             scope:  {
 
@@ -30,8 +30,8 @@ angular
                          'lineItemsCount' :     '@ddItemsCount',
                          'cssClass':            '@ddItemCssClass'
                     },
-            restrict: 'A',
-            template: htmlTemplate,
+            restrict:   'A',
+            template:   htmlTemplate,
             transclude: true,
 
             link: function($scope, element, attrs, ctrl, transclude) {    
@@ -48,14 +48,26 @@ angular
                      * reset css class
                      */
                     
-                    console.info(
-                                    [
-                                        'ddDecorItem : cssClass change detected',
-                                        'adding class : ',
-                                        newValue
-                                    ]
-                                );
+                    // console.info(
+                    //                 [
+                    //                     'ddDecorItem : cssClass change detected',
+                    //                     'adding class : ',
+                    //                     newValue
+                    //                 ]
+                    //             );
 
+                    console.warn([
+                                    '-from ddDecorItem-',
+                                    'css apply :',
+                                    newValue,
+                                    'to column index',
+                                    $scope.parentParentIndex,
+                                    'and line index',
+                                    parentIndex,
+                                    'itemIndex',
+                                    currentIndex
+                                ].join(' ')
+                                );
                     //TODO : to factorize (place in provider-> method to get all those class)
                     element.removeClass('col-md-12');
                     element.removeClass('col-md-6');

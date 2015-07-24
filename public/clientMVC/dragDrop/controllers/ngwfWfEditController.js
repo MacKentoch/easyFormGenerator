@@ -654,8 +654,7 @@ angular
           if (allowedType === 'itemType' && !item.label) return false;
           if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
       }
-      
-      //froce css refresh
+    
       //$scope.command.forceRefresh = true;
 
       return item;

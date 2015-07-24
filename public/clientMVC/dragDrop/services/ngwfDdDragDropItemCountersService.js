@@ -12,16 +12,23 @@
 **/
 angular
 	.module('ngwfApp.services.dragDropItemCountersService', [])
-	.factory('dragDropItemCounterService', ['dragDropConfig',  
+	.factory('dragDropItemCounterService', ['dragDropConfig', 
 	
 	function(dragDropConfig){
 
 		//var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
 		var _modelItemRealCounter = [];
 		var _itemsNotToCount = angular.copy(dragDropConfig.getItemsNotToCount());
+		var _listClassMustHave = [
+															'col-md-12',
+															'col-md-6',
+															'col-md-4',
+															'dndPlaceholder'
+														];														
 
 		var Service = {};
 		
+
 
 		Service.getItemsNotToCount = function(){
 																		  return _itemsNotToCount;
@@ -34,6 +41,7 @@ angular
 		Service.isHtmlElementToCount = function(htmlvalue){
 																			var isToCount = true;
 																			if (htmlvalue.length > 0) {
+
 																				angular.forEach(_itemsNotToCount, function(value){
 
 																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
@@ -41,7 +49,20 @@ angular
 																							isToCount = isToCount & false;
 																						}
 																					}
+
 																				});
+
+																				var hasMustHaveClass = false;
+																				angular.forEach(_listClassMustHave, function(valueMustHave){
+																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
+																						if (htmlvalue[classes] === valueMustHave){
+																							hasMustHaveClass = hasMustHaveClass | true;
+																						}
+																					}
+
+																				});																				
+
+																				isToCount = isToCount & hasMustHaveClass;
 
 																				console.info(
 																											[
@@ -50,7 +71,9 @@ angular
 																												'-htmlvalue-',
 																												htmlvalue,
 																												'isToCount',
-																												isToCount
+																												isToCount,
+																												'hasMustHaveClass',
+																												hasMustHaveClass
 																											].join(' ')
 																										);
 																			}
@@ -72,8 +95,9 @@ angular
 																								 listCssToApply[j].isReal === true){
 
 																								fullModel[columIndex][lineIndex][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
-																							
+
 																								console.warn([
+																																'-from updateLineItemCss-',
 																																'css apply :',
 																																fullModel[columIndex][lineIndex][i].cssClass,
 																																'to columIndex: ',
@@ -85,32 +109,29 @@ angular
 																															].join(' ')
 																															);
 
-																																								
-																							}else{
-																								fullModel[columIndex][lineIndex][i].cssClass = '';
 																							} 	
 																						}
 
 																					}
-																					console.info(
-																												[
+																					// console.info(
+																					// 							[
 																													
-																													'updateLineItemCss',
-																													'at column',
-																													columIndex,
-																													'at line',
-																													lineIndex,
-																													'real item count',
-																													realCount
-																												].join(' ')
-																											);
+																					// 								'updateLineItemCss',
+																					// 								'at column',
+																					// 								columIndex,
+																					// 								'at line',
+																					// 								lineIndex,
+																					// 								'real item count',
+																					// 								realCount
+																					// 							].join(' ')
+																					// 						);
 
-																					console.dir({
-																													here :'updateLineItemCss',
-																													realCount : realCount,
-																													line : fullModel[columIndex][lineIndex]
+																					// console.dir({
+																					// 								here :'updateLineItemCss',
+																					// 								realCount : realCount,
+																					// 								line : fullModel[columIndex][lineIndex]
 
-																											});
+																					// 						});
 																					
 																					return true;
 																				}

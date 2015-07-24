@@ -12,7 +12,7 @@ angular
     .module('ngwfApp.directives.ngwfDdContentCounterDirective', [])
     .directive('ddContentCounter', ['dragDropItemCounterService',
 
-    function(	dragDropItemCounterService){
+    function(	dragDropItemCounterService ){
 
   
     	return {
@@ -28,6 +28,7 @@ angular
     		restrict: 'A', 
     		
     		link: function($scope, element) {
+    			
     			
 
        		//check child count change
@@ -59,32 +60,36 @@ angular
 				        																							$scope.currentIndex, 
 				        																							newRealCount
 				        																						);
+		        //     /**
+          //        * force refresh css class
+          //        *
+          //        * childDiv = angular.element(element.children()[0]); 
+          //        * 
+          //        */
+				      //   for (var cpt = 0; cpt < element[0].children.length; cpt++) {
+				      //   	 var child = angular.element(element.children()[cpt]); 
+										// /**
+										//  * RESET PREVIOUS CSS
+										//  */
+		        //         child.removeClass('col-md-12');
+		        //         child.removeClass('col-md-6');
+		        //         child.removeClass('col-md-4');
 
-
-		            /**
-                 * force refresh css class
-                 *
-                 * childDiv = angular.element(element.children()[0]); 
-                 * 
-                 */
-				        for (var cpt = 0; cpt < element[0].children.length; cpt++) {
-				        	 var child = angular.element(element.children()[cpt]); 
-										/**
-										 * RESET PREVIOUS CSS
-										 */
-		                child.removeClass('col-md-12');
-		                child.removeClass('col-md-6');
-		                child.removeClass('col-md-4');
-		                /**
-		                 * add class
-		                 */
-		                // console.dir($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
-		                if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
-		                	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
-		                	
-		                }
+		        //         /**
+		        //          * add class
+		        //          */
+		        //         // console.dir($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
 		                
-				        }
+  
+          //           timer = $timeout(function(){
+	 		      //           if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
+			       //          	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);	
+			       //          }  
+          //           }, 500);
+
+
+		                
+				      //   }
 				        
 				      }
 				    }
@@ -105,8 +110,7 @@ angular
 				        var listClassForThisRow = [];
 
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
-				        	//console.info('element is countabale' + dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList));
-
+				        	
 				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)){
 				        		newRealCount++;
 				        		listClassForThisRow.push({item: i, isReal : true});
@@ -120,35 +124,39 @@ angular
 
 				        dragDropItemCounterService.updateLineItemCss($scope.fullModel, listClassForThisRow, $scope.parentIndex, $scope.currentIndex, newRealCount);
 
+				        // for (var cpt = 0; cpt < element[0].children.length; cpt++) {
+				        // 	 var child = angular.element(element.children()[cpt]); 
 
-		            /**
-                 * force refresh css class
-                 *
-                 * childDiv = angular.element(element.children()[0]); 
-                 * 
-                 */
-				        for (var cpt = 0; cpt < element[0].children.length; cpt++) {
-				        	 var child = angular.element(element.children()[cpt]); 
-										/**
-										 * RESET PREVIOUS CSS
-										 */
-		                child.removeClass('col-md-12');
-		                child.removeClass('col-md-6');
-		                child.removeClass('col-md-4');
-		                /**
-		                 * add class
-		                 */
-		                // console.dir($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
-		                if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
-		                	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
+		          //       child.removeClass('col-md-12');
+		          //       child.removeClass('col-md-6');
+		          //       child.removeClass('col-md-4');
 
-		                }
+
+            //         timer = $timeout(function(){
+	 		        //         if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
+			         //        	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);	
+			         //        }  
+            //         }, 500);
+		          //       // if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
+		          //       // 	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
+
+		          //       // }
 		                
-				        }
+				        // }
 				        
 				      }
 				    }
 				  );
+
+
+          /**
+           * timer destruction to prevent from bad UI experience
+           */
+          $scope.$on('$destroy', function(){
+                  console.warn('timer destruction!');
+                  $timeout.cancel(timer);
+              }
+          ); 
 
 				
 		  
