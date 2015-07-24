@@ -14,8 +14,7 @@ angular
 
     function(dragDropItemCounterService){
 
-    	console.info('directive ddContentCounter loaded');
-
+  
     	return {
     		 scope: {
     		 	valueWhenPlaceholder: 	'@ddValueWhenPlaceholder',
@@ -54,6 +53,7 @@ angular
 				        $scope.contentRealCount = newRealCount;
 
 				        dragDropItemCounterService.updateLineItemCss($scope.fullModel, listClassForThisRow, $scope.parentIndex, $scope.currentIndex, newRealCount);
+				        //$scope.$apply();
 				      }
 				    }
 				  );

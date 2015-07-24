@@ -85,8 +85,6 @@ angular
 																	
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
 
-																					console.dir(fullModel);
-																					//listCssToApply : {item: i, isReal : true}
 																					for (var i = fullModel[columIndex][lineIndex].length - 1; i >= 0; i--) {
 																						
 																						for (var j = 0; j < listCssToApply.length; j++) {
@@ -105,6 +103,7 @@ angular
 
 																					console.dir({
 																													here :'updateLineItemCss',
+																													realCount : realCount,
 																													line : fullModel[columIndex][lineIndex]
 																												});
 																					

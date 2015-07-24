@@ -536,7 +536,7 @@ angular
         $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
 
         //refresh all css items on column 1 (form)
-        dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
+        //dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
     }
     
   };
@@ -560,8 +560,8 @@ angular
         /**
          * apply css to all items on the row like if new item were already in (explains why "length + 1")
          */
-        var numberOfItems = $scope.model[parentIndex][index].length + 1;
-        dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, index, numberOfItems, 1);
+        //var numberOfItems = $scope.model[parentIndex][index].length + 1;
+        //dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, index, numberOfItems, 1);
         return true;
 
     };
@@ -641,14 +641,14 @@ angular
       * UPDATE CSS CLASS TO ALL ITEMS IN SAME ROW
       */          
      //NOTE : length + 1 since current intem is not in the model right now :
-     var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
-      dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
+     //var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
+     // dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
      /**
       * 
       * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
       * 
       */           
-      item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
+      //item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
     
       if (external) {
           if (allowedType === 'itemType' && !item.label) return false;
@@ -682,10 +682,6 @@ angular
     $scope.model[1].splice(lineIndex,1);
   };
 
-
-  var test = dragDropConfig.getListControls();
-  console.info('test dragDropConfig.getListControls();');
-  console.dir(test);
 
   $scope.model = [];
 
