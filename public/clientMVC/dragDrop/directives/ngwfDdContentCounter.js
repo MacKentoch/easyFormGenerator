@@ -50,19 +50,10 @@ angular
 				        	} 
 
 				        }
-    							console.dir(
-    									{
-    										ddContentCounterTitleLog : 'ddContentCounter',
-    										index : $scope.currentIndex,
-    										parentIndex : $scope.parentIndex,
-    										realCount : newRealCount
-    									}
-    								);
 
 				        $scope.contentRealCount = newRealCount;
-								//todo : update modelRealItemsCount
-								//console.info('counter : ' + newRealCount);
-				        dragDropItemCounterService.updateLineItemCss($scope.ddFullModel, listClassForThisRow, columIndex, lineIndex, $scope.contentRealCount);
+
+				        dragDropItemCounterService.updateLineItemCss($scope.fullModel, listClassForThisRow, $scope.parentIndex, $scope.currentIndex, newRealCount);
 				      }
 				    }
 				  );

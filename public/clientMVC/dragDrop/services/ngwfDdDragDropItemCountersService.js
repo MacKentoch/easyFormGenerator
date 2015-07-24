@@ -16,10 +16,26 @@ angular
 	
 	function(dragDropConfig){
 
+		var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
 		var _modelItemRealCounter = [];
 		var _itemsNotToCount = angular.copy(dragDropConfig.getItemsNotToCount());
 
 		var Service = {};
+
+
+		function getItemCssDependingNumberItemsInRow(numberOfItems){
+		  if(typeof numberOfItems !== 'undefined'){
+		    var classToReturn = '';
+		    for (var i = _listItemClass.length - 1; i >= 0; i--) {
+		      if (_listItemClass[i].numberItemPerRow === numberOfItems) {
+		        classToReturn = _listItemClass[i].cssClass;  
+		      }
+		    }
+		    return classToReturn;
+		  }else{
+		    return '';
+		  } 		
+		} 
 
 
 		Service.getItemsNotToCount = function(){
@@ -67,9 +83,31 @@ angular
 		//   }
 		// };			
 																	
-		Service.updateLineItemCss = function(fullModel, listCssToApply,columIndex, lineIndex, countValue){
-																					//todo : update _modelItemRealCounter
-																					//
+		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
+
+																					console.dir(fullModel);
+																					//listCssToApply : {item: i, isReal : true}
+																					for (var i = fullModel[columIndex][lineIndex].length - 1; i >= 0; i--) {
+																						
+																						for (var j = 0; j < listCssToApply.length; j++) {
+																							if(listCssToApply[j].item === i &&
+																								 listCssToApply[j].isReal === true){
+
+																								fullModel[columIndex][lineIndex][i].cssClass = getItemCssDependingNumberItemsInRow(realCount);
+
+																																								
+																							}else{
+																								fullModel[columIndex][lineIndex][i].cssClass = '';
+																							} 	
+																						}
+
+																					}
+
+																					console.dir({
+																													here :'updateLineItemCss',
+																													line : fullModel[columIndex][lineIndex]
+																												});
+																					
 																					return true;
 																				};
 
