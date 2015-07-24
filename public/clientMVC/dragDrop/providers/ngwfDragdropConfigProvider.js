@@ -214,7 +214,7 @@ angular
     };                                               
 
   var _itemsNotToCountFoReal = {
-                                  placeholder :         '',
+                                  //placeholder :         '',
                                   itemBeingDragged :    ''
                                 };
   /**

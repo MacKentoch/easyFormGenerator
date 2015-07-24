@@ -13,8 +13,9 @@
  */
 angular
     .module('ngwfApp.directives.ngwfDdDecorLineDirective', [])
-    .directive('ddDecorLine', ['$timeout', function($timeout){
+    .directive('ddDecorLine', ['$timeout', 
 
+    function($timeout){
 
         var htmlTemplate   = [
                                 '<div ng-class="{confirmLineDelete : deleteLine.readyToDelete}" ng-dblclick="removeMe($event);" ng-click="cancelDelete($event);"> ',
@@ -23,8 +24,6 @@ angular
                                 '</div>',
                                 '  <div id="lineDirectiveTranscludeHere"></<div>',
                                 ].join(' ');
-
-        console.info('ddDecorLine loaded');
         
         return {
             scope:  {

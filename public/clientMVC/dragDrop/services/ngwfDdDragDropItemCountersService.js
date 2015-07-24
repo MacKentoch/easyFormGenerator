@@ -58,32 +58,27 @@ angular
 																					}
 																				});
 
+																				console.info(
+																											[
+																												'\n\n',
+																												'isHtmlElementToCount',
+																												'-htmlvalue-',
+																												htmlvalue,
+																												'isToCount',
+																												isToCount
+																											].join(' ')
+																										);
 																			}
 																			
 																			return isToCount;	
-																		};
-
-		// Service.applyCssClassWholeLine = function(model, indexColumn, indexLine, numberItems, restrictToThisIndexColumn){
-		//   if (typeof numberItems !== 'undefined' &&
-		//   	  typeof indexLine !== 'undefined' &&
-		//   	  typeof indexColumn !== 'undefined' &&
-		//   	  typeof model !== 'undefined' &&
-		//   	  typeof restrictToThisIndexColumn !== 'undefined') {
-
-		//     if (indexColumn === restrictToThisIndexColumn) {
-
-	 //        for (var i = model[indexColumn][indexLine].length - 1; i >= 0; i--) {
-		//           model[indexColumn][indexLine][i].cssClass = getItemCssDependingNumberItemsInRow(numberItems);
-		//       }
-
-		//     } 
-		//     return true;
-		//   }else{
-		//     return false;
-		//   }
-		// };			
+																		};	
 																	
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
+																	  if (typeof fullModel !== 'undefined' &&
+																	  	  typeof listCssToApply !== 'undefined' &&
+																	  	  typeof columIndex !== 'undefined' &&
+																	  	  typeof lineIndex !== 'undefined' &&
+																	  	  typeof realCount !== 'undefined') {
 
 																					for (var i = fullModel[columIndex][lineIndex].length - 1; i >= 0; i--) {
 																						
@@ -100,15 +95,29 @@ angular
 																						}
 
 																					}
+																					console.info(
+																												[
+																													'\n\n',
+																													'updateLineItemCss',
+																													'at column',
+																													columIndex,
+																													'at line',
+																													lineIndex,
+																													'real item count',
+																													realCount
+																												].join(' ')
+																											);
 
 																					console.dir({
 																													here :'updateLineItemCss',
 																													realCount : realCount,
 																													line : fullModel[columIndex][lineIndex]
-																												});
+
+																											});
 																					
 																					return true;
-																				};
+																				}
+																			};
 
 		return Service;
 

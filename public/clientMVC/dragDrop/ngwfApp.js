@@ -202,7 +202,7 @@ angular
 .config(['dragDropConfigProvider',
   function(dragDropConfigProvider) {
     dragDropConfigProvider.setItemsNotTocount({
-                                                placeholder :         'dndPlaceholder',
+                                                //placeholder :         '',
                                                 itemBeingDragged :    'dndDraggingSource'    
                                               });
     // console.info('config dragDropConfigProvider');

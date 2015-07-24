@@ -10,7 +10,9 @@
  */
 angular
     .module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
-    .directive('ddDecorItem', [function(){
+    .directive('ddDecorItem', [
+
+    function(){
 
         var htmlTemplate   = [
                                 '<div>',
@@ -18,8 +20,6 @@ angular
                                 '</div>',
                                 ].join(' ');
                                 
-        console.info('ddDecorItem loaded');
-
         return {
             scope:  {
 

@@ -532,7 +532,7 @@ angular
     //prevent item from first container to disapear when dropped on other container
     if (parentParentIndex > 0) {
       
-        console.info('dndItemMoved');
+        //console.info('dndItemMoved');
         $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
 
         //refresh all css items on column 1 (form)
@@ -552,7 +552,7 @@ angular
        //          _index: index
        //      });
        
-       console.info('dragoverCallbackItems');
+       //console.info('dragoverCallbackItems');
         //prevent items in layout column to be drag to control select  
         if (parentIndex === 0) {
             return false;
@@ -617,7 +617,7 @@ angular
    */
   $scope.dropCallbackItems = function(event, index, realIndex,parentIndex, parentParentIndex, parentParentParentIndex, item, external, type, allowedType){
      
-     console.info('dropCallbackItems');
+     //console.info('dropCallbackItems');
      // console.info('dropCallbackItems'); 
      // console.dir(
      //      {

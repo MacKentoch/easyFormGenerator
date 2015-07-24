@@ -11,7 +11,10 @@
  */
 angular
     .module('ngwfApp.directives.ngwfDdDecorContainerDirective', [])
-    .directive('ddDecorContainer', [function(){
+    .directive('ddDecorContainer', [
+
+
+    function(){
 
         var htmlTemplate   = [
                                 //'<div>',
@@ -21,8 +24,6 @@ angular
                                 '<div collapse="isCollapsed">', 
                                 '   <div id="ddDecorContainerWillTranscludeHere"></div>', 
                                 '</div>'].join(' ');
-
-        console.info('ddDecorContainer loaded');
 
         return {
             scope:  {

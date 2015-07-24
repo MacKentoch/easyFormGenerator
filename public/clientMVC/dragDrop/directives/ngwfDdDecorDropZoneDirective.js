@@ -17,7 +17,10 @@
  */
 angular
     .module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', [])
-    .directive('ddDecorDropZone', [function(){
+    .directive('ddDecorDropZone', [
+
+
+    function(){
 
         var htmlTemplate   = ['<div class="{{styleParam.ApplycssClass}}">', 
                             '  <div id="visualPanel">',
@@ -43,7 +46,6 @@ angular
                             '   </div>',
                             '</div>'].join(' ');
 
-        console.info('ddDecorDropZone loaded');
         
         return {
             scope:  {

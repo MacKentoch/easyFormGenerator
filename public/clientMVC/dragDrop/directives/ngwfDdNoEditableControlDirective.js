@@ -11,26 +11,27 @@
  */
 angular
 	.module('ngwfApp.directives.ngwfDdNoEditableControlDirective', [])
-	.directive('ddNoEditableControl', [function(){
+	.directive('ddNoEditableControl', [
 
-	console.info('ddNoEditableControl loaded');
+	function(){
 
-	return {
-	    
-	    restrict: 'A',
-	    //require: '^ddDecorItem',
 
-	    link: function($scope, element) {    
-	        
-				element.bind('click', function(event){
-					event.preventDefault();
-					console.dir('click on control not available.');
-				});
+		return {
+		    
+		    restrict: 'A',
+		    //require: '^ddDecorItem',
 
-				//$compile(element.contents())($scope);
+		    link: function($scope, element) {    
+		        
+					element.bind('click', function(event){
+						event.preventDefault();
+						console.dir('click on control not available.');
+					});
 
-	    }
-		};
+					//$compile(element.contents())($scope);
+
+		    }
+			};
 
 }]);
 
