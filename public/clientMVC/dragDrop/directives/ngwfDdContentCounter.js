@@ -45,24 +45,33 @@ angular
 				        var newRealCount= 0;
 				        for (var i = element[0].children.length - 1; i >= 0; i--) {
 
+    							// console.warn('contentRealCount');
+    				 		// 	console.dir(
+	    						// 			{
+	    						// 				elementObj : element[0],
+	    						// 				elementClassName : element[0].className,
+	    						// 				elementChidrenCount : element[0].children.length,
+	    						// 				elementChidrenZero : element[0].children[0],
+	    						// 				'realcount' : $scope.contentRealCount
+	    						// 			}
+    							// 		);
 
-				        	console.warn(element[0].children[i]);
+    							console.info(
+    														[
+    															'children', 
+    															i, 
+    															'classList', 
+    															element[0].children[i].classList
+    														].join(' ')
+    													);
 
-				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].elementClassName)) newRealCount++;
+				       
+				        	if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)) newRealCount++;
 				        }
 				        $scope.contentRealCount = newRealCount;
 								//todo : update modelRealItemsCount
 
-    							console.warn('contentRealCount');
-    				 			console.dir(
-	    									{
-	    										elementObj : element[0],
-	    										elementClassName : element[0].className,
-	    										elementChidrenCount : element[0].children.length,
-	    										elementChidrenZero : element[0].children[0],
-	    										'realcount' : $scope.contentRealCount
-	    									}
-    									);
+
 
 
 

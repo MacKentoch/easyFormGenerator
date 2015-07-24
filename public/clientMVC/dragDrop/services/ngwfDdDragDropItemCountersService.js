@@ -32,12 +32,20 @@ angular
 																		};
 		Service.isHtmlElementToCount = function(htmlvalue){
 																			var isHtmlToCount = true;
-																			angular.forEach(_itemsNotToCount, function(value){
-																				console.info('htmlvalue = '+ htmlvalue);
 
-																				isHtmlToCount = htmlvalue.indexOf(value) > -1 ? false : true;
-																			});
-																			console.info('isHtmlTocout in dragDropItemCounterService : ' + isHtmlToCount);
+																			if (htmlvalue.length > 0) {
+																				angular.forEach(_itemsNotToCount, function(value){
+																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
+																						isHtmlToCount = htmlvalue[classes].indexOf(value) > -1 ? false : true;
+																					}
+																				});	
+																			}
+
+																			
+																			if (!isHtmlToCount) {
+																				console.info('isHtmlTocout in dragDropItemCounterService : ' + isHtmlToCount);
+																			}
+																			
 																			return isHtmlToCount;	
 																		};
 		Service.updateModelItemRealCounter = function(columIndex, lineIndex, countValue){
