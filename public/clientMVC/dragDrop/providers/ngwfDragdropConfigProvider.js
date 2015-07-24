@@ -247,7 +247,21 @@ angular
           //to get the right css to apply visible items                
           Service.getItemsNotToCount = function(){
                             return _itemsNotToCountFoReal;
-                          };                
+                          }; 
+          //return css class to apply depending numberOfItems (in line) as input param                
+          Service.getItemCssDependingNumberItemsInRow =  function(numberOfItems){
+                          if(typeof numberOfItems !== 'undefined'){
+                            var classToReturn = '';
+                            for (var i = _listDragDropItemCssClasses.length - 1; i >= 0; i--) {
+                              if (_listDragDropItemCssClasses[i].numberItemPerRow === numberOfItems) {
+                                classToReturn = _listDragDropItemCssClasses[i].cssClass;  
+                              }
+                            }
+                            return classToReturn;
+                          }else{
+                            return '';
+                          }     
+                        };                                          
                            
           return Service;
         } 

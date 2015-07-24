@@ -16,26 +16,26 @@ angular
 	
 	function(dragDropConfig){
 
-		var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
+		//var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
 		var _modelItemRealCounter = [];
 		var _itemsNotToCount = angular.copy(dragDropConfig.getItemsNotToCount());
 
 		var Service = {};
 
 
-		function getItemCssDependingNumberItemsInRow(numberOfItems){
-		  if(typeof numberOfItems !== 'undefined'){
-		    var classToReturn = '';
-		    for (var i = _listItemClass.length - 1; i >= 0; i--) {
-		      if (_listItemClass[i].numberItemPerRow === numberOfItems) {
-		        classToReturn = _listItemClass[i].cssClass;  
-		      }
-		    }
-		    return classToReturn;
-		  }else{
-		    return '';
-		  } 		
-		} 
+		// function getItemCssDependingNumberItemsInRow(numberOfItems){
+		//   if(typeof numberOfItems !== 'undefined'){
+		//     var classToReturn = '';
+		//     for (var i = _listItemClass.length - 1; i >= 0; i--) {
+		//       if (_listItemClass[i].numberItemPerRow === numberOfItems) {
+		//         classToReturn = _listItemClass[i].cssClass;  
+		//       }
+		//     }
+		//     return classToReturn;
+		//   }else{
+		//     return '';
+		//   } 		
+		// } 
 
 
 		Service.getItemsNotToCount = function(){
@@ -60,7 +60,7 @@ angular
 
 																				console.info(
 																											[
-																												'\n\n',
+																												
 																												'isHtmlElementToCount',
 																												'-htmlvalue-',
 																												htmlvalue,
@@ -86,7 +86,18 @@ angular
 																							if(listCssToApply[j].item === i &&
 																								 listCssToApply[j].isReal === true){
 
-																								fullModel[columIndex][lineIndex][i].cssClass = getItemCssDependingNumberItemsInRow(realCount);
+																								fullModel[columIndex][lineIndex][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
+																								console.warn([
+																																'css apply :',
+																																fullModel[columIndex][lineIndex][i].cssClass,
+																																'to columIndex: ',
+																																columIndex,
+																																'and lineIndex',
+																																lineIndex,
+																																'itemIndex',
+																																i
+																															].join(' ')
+																															);
 
 																																								
 																							}else{
@@ -97,7 +108,7 @@ angular
 																					}
 																					console.info(
 																												[
-																													'\n\n',
+																													
 																													'updateLineItemCss',
 																													'at column',
 																													columIndex,
