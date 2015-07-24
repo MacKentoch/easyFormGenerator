@@ -43,7 +43,19 @@ angular
                 var listClass =         ['col-md-12','col-md-6','col-md-4'];
 
 
-                $scope.$watch('cssClass', function(newValue) {
+                /**
+                 * init class
+                 */
+                element.removeClass('col-md-12');
+                element.removeClass('col-md-6');
+                element.removeClass('col-md-4');
+                
+                /**
+                 * add class
+                 */
+                element.addClass($scope.cssClass);                
+
+                $scope.$watch('cssClass', function(newValue, oldValue) {
                     /**
                      * reset css class
                      */
@@ -55,28 +67,29 @@ angular
                     //                     newValue
                     //                 ]
                     //             );
-
-                    console.warn([
-                                    '-from ddDecorItem-',
-                                    'css apply :',
-                                    newValue,
-                                    'to column index',
-                                    $scope.parentParentIndex,
-                                    'and line index',
-                                    parentIndex,
-                                    'itemIndex',
-                                    currentIndex
-                                ].join(' ')
-                                );
-                    //TODO : to factorize (place in provider-> method to get all those class)
-                    element.removeClass('col-md-12');
-                    element.removeClass('col-md-6');
-                    element.removeClass('col-md-4');
-                    
-                    /**
-                     * add class
-                     */
-                    element.addClass(newValue);
+                    if(newValue !== oldValue){
+                        console.warn([
+                                        '-from ddDecorItem-',
+                                        'css apply :',
+                                        newValue,
+                                        'to column index',
+                                        $scope.parentParentIndex,
+                                        'and line index',
+                                        parentIndex,
+                                        'itemIndex',
+                                        currentIndex
+                                    ].join(' ')
+                                    );
+                        //TODO : to factorize (place in provider-> method to get all those class)
+                        element.removeClass('col-md-12');
+                        element.removeClass('col-md-6');
+                        element.removeClass('col-md-4');
+                        
+                        /**
+                         * add class
+                         */
+                        element.addClass(newValue);
+                    }
                     
                 });
 

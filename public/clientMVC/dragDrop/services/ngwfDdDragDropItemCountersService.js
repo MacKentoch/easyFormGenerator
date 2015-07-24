@@ -52,17 +52,17 @@ angular
 
 																				});
 
-																				var hasMustHaveClass = false;
-																				angular.forEach(_listClassMustHave, function(valueMustHave){
-																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
-																						if (htmlvalue[classes] === valueMustHave){
-																							hasMustHaveClass = hasMustHaveClass | true;
-																						}
-																					}
+																				 var hasMustHaveClass = false;
+																				// angular.forEach(_listClassMustHave, function(valueMustHave){
+																				// 	for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
+																				// 		if (htmlvalue[classes] === valueMustHave){
+																				// 			hasMustHaveClass = hasMustHaveClass | true;
+																				// 		}
+																				// 	}
 
-																				});																				
+																				// });																				
 
-																				isToCount = isToCount & hasMustHaveClass;
+																				// isToCount = isToCount & hasMustHaveClass;
 
 																				console.info(
 																											[
