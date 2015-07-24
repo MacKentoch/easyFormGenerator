@@ -67,38 +67,7 @@ angular
 					        																							$scope.currentIndex, 
 					        																							newRealCount
 					        																						);				        	
-				        }, 200);
-
-		        //     /**
-          //        * force refresh css class
-          //        *
-          //        * childDiv = angular.element(element.children()[0]); 
-          //        * 
-          //        */
-				      //   for (var cpt = 0; cpt < element[0].children.length; cpt++) {
-				      //   	 var child = angular.element(element.children()[cpt]); 
-										// /**
-										//  * RESET PREVIOUS CSS
-										//  */
-		        //         child.removeClass('col-md-12');
-		        //         child.removeClass('col-md-6');
-		        //         child.removeClass('col-md-4');
-
-		        //         /**
-		        //          * add class
-		        //          */
-		        //         // console.dir($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);
-		                
-  
-          //           timer = $timeout(function(){
-	 		      //           if (typeof $scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt] !== 'undefined') {
-			       //          	child.addClass($scope.fullModel[$scope.parentIndex][$scope.currentIndex][cpt].cssClass);	
-			       //          }  
-          //           }, 500);
-
-
-		                
-				      //   }
+				        }, 20);
 				        
 				      }
 				    }

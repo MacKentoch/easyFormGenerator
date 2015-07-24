@@ -16,20 +16,11 @@ angular
 	
 	function(dragDropConfig){
 
-		//var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
 		var _modelItemRealCounter = [];
 		var _itemsNotToCount = angular.copy(dragDropConfig.getItemsNotToCount());
-		var _listClassMustHave = [
-															'col-md-12',
-															'col-md-6',
-															'col-md-4',
-															'dndPlaceholder'
-														];														
 
 		var Service = {};
 		
-
-
 		Service.getItemsNotToCount = function(){
 																		  return _itemsNotToCount;
 																		}; 
@@ -52,18 +43,6 @@ angular
 
 																				});
 
-																				// var hasMustHaveClass = false;
-																				// angular.forEach(_listClassMustHave, function(valueMustHave){
-																				// 	for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
-																				// 		if (htmlvalue[classes] === valueMustHave){
-																				// 			hasMustHaveClass = hasMustHaveClass | true;
-																				// 		}
-																				// 	}
-
-																				// });																				
-
-																				// isToCount = isToCount & hasMustHaveClass;
-
 																				console.info(
 																											[
 																												
@@ -72,8 +51,6 @@ angular
 																												htmlvalue,
 																												'isToCount',
 																												isToCount,
-																												//'hasMustHaveClass',
-																												//hasMustHaveClass
 																											].join(' ')
 																										);
 																			}
@@ -112,27 +89,7 @@ angular
 																							} 	
 																						}
 
-																					}
-																					// console.info(
-																					// 							[
-																													
-																					// 								'updateLineItemCss',
-																					// 								'at column',
-																					// 								columIndex,
-																					// 								'at line',
-																					// 								lineIndex,
-																					// 								'real item count',
-																					// 								realCount
-																					// 							].join(' ')
-																					// 						);
-
-																					// console.dir({
-																					// 								here :'updateLineItemCss',
-																					// 								realCount : realCount,
-																					// 								line : fullModel[columIndex][lineIndex]
-
-																					// 						});
-																					
+																					}																					
 																					return true;
 																				}
 																			};
