@@ -10,9 +10,9 @@
  */
 angular
     .module('ngwfApp.directives.ngwfDdContentCounterDirective', [])
-    .directive('ddContentCounter', ['dragDropItemCounterService',
+    .directive('ddContentCounter', ['dragDropItemCounterService', '$timeout',
 
-    function(	dragDropItemCounterService ){
+    function(	dragDropItemCounterService, $timeout ){
 
   
     	return {
@@ -29,7 +29,7 @@ angular
     		
     		link: function($scope, element) {
     			
-    			
+    			var timer;
 
        		//check child count change
     			$scope.$watch(
@@ -54,12 +54,21 @@ angular
 
 				        $scope.contentRealCount = newRealCount;
 
-				        dragDropItemCounterService.updateLineItemCss(	$scope.fullModel, 
-				        																							listClassForThisRow, 
-				        																							$scope.parentIndex, 
-				        																							$scope.currentIndex, 
-				        																							newRealCount
-				        																						);
+				        // dragDropItemCounterService.updateLineItemCss(	$scope.fullModel, 
+				        // 																							listClassForThisRow, 
+				        // 																							$scope.parentIndex, 
+				        // 																							$scope.currentIndex, 
+				        // 																							newRealCount
+				        // 																						);
+				        timer = $timeout(function(){
+					        dragDropItemCounterService.updateLineItemCss(	$scope.fullModel, 
+					        																							listClassForThisRow, 
+					        																							$scope.parentIndex, 
+					        																							$scope.currentIndex, 
+					        																							newRealCount
+					        																						);				        	
+				        }, 200);
+
 		        //     /**
           //        * force refresh css class
           //        *
@@ -95,7 +104,14 @@ angular
 				    }
 				  );
 
-
+          /**
+           * timer destruction to prevent from bad UI experience
+           */
+          $scope.$on('$destroy', function(){
+                  console.warn('ddContentCounter timer destruction!');
+                  $timeout.cancel(timer);
+              }
+          ); 
 
        		//check forcerefresh
     			$scope.$watch(
@@ -149,14 +165,7 @@ angular
 				  );
 
 
-          /**
-           * timer destruction to prevent from bad UI experience
-           */
-          $scope.$on('$destroy', function(){
-                  console.warn('timer destruction!');
-                  $timeout.cancel(timer);
-              }
-          ); 
+
 
 				
 		  
