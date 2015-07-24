@@ -80,6 +80,7 @@ angular
                                         currentIndex
                                     ].join(' ')
                                     );
+                        console.dir(element);
                         //TODO : to factorize (place in provider-> method to get all those class)
                         element.removeClass('col-md-12');
                         element.removeClass('col-md-6');
