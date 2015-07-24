@@ -17,9 +17,7 @@ angular
 	
 	function(dragDropConfig){
 
-
 		var _listItemClass = [].concat(dragDropConfig.getListItemCssClass());
-
 
 		var Service = {};
 
@@ -74,6 +72,6 @@ angular
 			}
 		};
 
-	return Service;
+		return Service;
 
 }]);
