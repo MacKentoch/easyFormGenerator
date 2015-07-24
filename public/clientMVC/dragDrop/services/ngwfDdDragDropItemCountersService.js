@@ -31,22 +31,17 @@ angular
 																		  return _modelItemRealCounter;
 																		};
 		Service.isHtmlElementToCount = function(htmlvalue){
-																			var isHtmlToCount = true;
-
 																			if (htmlvalue.length > 0) {
 																				angular.forEach(_itemsNotToCount, function(value){
-																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
-																						isHtmlToCount = htmlvalue[classes].indexOf(value) > -1 ? false : true;
-																					}
-																				});	
-																			}
 
-																			
-																			if (!isHtmlToCount) {
-																				console.info('isHtmlTocout in dragDropItemCounterService : ' + isHtmlToCount);
+																					for (var classes = htmlvalue.length - 1; classes >= 0; classes--) {
+																						if (htmlvalue[classes] === value) return false;
+																					}
+																				});
+																					
 																			}
 																			
-																			return isHtmlToCount;	
+																			return true;	
 																		};
 		Service.updateModelItemRealCounter = function(columIndex, lineIndex, countValue){
 																					//todo : update _modelItemRealCounter
