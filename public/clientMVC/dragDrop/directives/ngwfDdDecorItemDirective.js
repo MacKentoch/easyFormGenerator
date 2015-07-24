@@ -20,7 +20,7 @@ angular
                                 '<div>',
                                 ' <div id="itemDirectiveTranscludeHere"></div>',
                                 '</div>',
-                                ].join(' ');
+                                ].join(' ');                                
                              
         return {
             scope:  {
@@ -38,28 +38,17 @@ angular
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
                 var verboseModeActive = $scope.verboseMode;
-                var currentIndex =      $scope.currentIndex;
-                var parentIndex =       $scope.parentIndex;
-                //TODO : to factorize (place in provider-> method to get all those class)
-                var listClass =         ['col-md-12','col-md-6','col-md-4'];
+                var currentIndex      = $scope.currentIndex;
+                var parentIndex       = $scope.parentIndex;
+                var listClass         = dragDropConfig.getDistinctItemCssClass();
 
 
                 /**
                  * init css class
                  */
-
-
-                //test
-
-                var listCss = dragDropConfig.getDistinctItemCssClass();
-                console.dir({listCss: listCss});
-
-
-
-                element.removeClass('col-md-12');
-                element.removeClass('col-md-6');
-                element.removeClass('col-md-4');
-
+                angular.forEach(listClass, function(css){
+                    element.removeClass(css);
+                });
                 element.addClass($scope.cssClass);                
 
 
@@ -86,12 +75,13 @@ angular
                         //             ].join(' ')
                         //             );
                         
-                        //TODO : to factorize (place in provider-> method to get all those class)
-                        element.removeClass('col-md-12');
-                        element.removeClass('col-md-6');
-                        element.removeClass('col-md-4');
-
-                        element.addClass(newValue);
+                        /**
+                         * update css class
+                         */
+                        angular.forEach(listClass, function(css){
+                            element.removeClass(css);
+                        });
+                        element.addClass(newValue); 
                     }
                     
                 });
@@ -133,7 +123,9 @@ angular
                  * http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
                  */
                 transclude($scope.$parent, function(contentClone){
-                    //transclusion will append content to '<div id="itemDirectiveTranscludeHere"></div>'
+                    /**
+                     * transclusion will append content to '<div id="itemDirectiveTranscludeHere"></div>' 
+                     */
                     var childDiv = angular.element(element.children()[0]); 
                     childDiv.append(contentClone);
                 });   
