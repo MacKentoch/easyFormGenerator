@@ -16,12 +16,20 @@ angular
 
 	function (formlyConfigProvider) {
 		/**
-		 * Add rich textbox control
+		 * Add rich text editor control
+		 *
+		 * using textAngular
 		 */
+		var richTexEditorTemplate =	[
+																	'<text-angular name="{{id}}" ', 
+																	'              class="richTextAngular" ',
+																	'              ng-model="model[options.key || index]">', 
+																	'</text-angular>'
+																].join(' ');
 		formlyConfigProvider.setType(
 		  {
-				name: 'richEditor',
-				template: '<text-angular name="{{id}}" class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'
+				name     	: 'richEditor',
+				template 	: richTexEditorTemplate
 		  }
 		);
 		/**
@@ -29,31 +37,37 @@ angular
 		 */
 		formlyConfigProvider.setType(
 		 	{
-				name: 'blank',
-				template: '<div></div>'
+				name  		: 'blank',
+				template 	: '<div></div>'
 		  }
 		);
-
-
 		/**
 		 * Add subTitle control
 		 *
 		 * define a template 1st
 		 */
-		var subTitleTemplate = '<div class="row"><div class=""><h4 class="text-center">{{options.templateOptions.placeholder}}<h4><hr/></div></div>';
+		var subTitleTemplate =	[
+															'<div class="row">', 
+															'  <div class="">', 
+															'    <h4 class="text-center">{{options.templateOptions.placeholder}}<h4>', 
+															'    <hr/>',
+															'  </div>',
+															'</div>'
+														].join(' ');
+
 		formlyConfigProvider.setType(
 		 	{
-				name: 'subTitle',
-				template: subTitleTemplate
+				name 			: 'subTitle',
+				template 	: subTitleTemplate
 		  }
 		);
-
-
 		/**
 		 * Add basic Select control
+		 *
+		 * using nya-bs-select
 		 */
 		var basicSelectTemplate =	[
-																' <ol 	class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ', 
+																' <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ', 
 																'		ng-model="model[options.key || index]"  ', 
 																'		id="{{id}}"  ', 
 																'		disabled="options.templateOptions.options.length === 0"> ',
@@ -63,34 +77,36 @@ angular
 																' </ol> '
 															].join(''); 	
 
-
-
 		formlyConfigProvider.setType(
 		 	{
-				name: 'basicSelect',
-				template: basicSelectTemplate
+				name 			: 'basicSelect',
+				template 	: basicSelectTemplate
 		  }
 		);
 
-
-     var groupedSelectTemplate =   '  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ' +
-   								 '		ng-model="model[options.key || index]" ' +
-   								 '       data-live-search="true" ' +
-   								 '       disabled="options.templateOptions.options.length === 0">' +
-                                 '       <li nya-bs-option="option in  options.templateOptions.options group by option.group"  ' +
-                                 '       >' +
-                                 '         <span class="dropdown-header">{{$group}}</span>' + 
-                                 '         <a>' +
-                                 '           <span>{{option.name}}</span>' +
-                                 '           <span class="glyphicon glyphicon-ok check-mark"></span>' +
-                                 '         </a>' +
-                                 '       </li>' +
-                                 '     </ol>';
-
+		/**
+		 * Add Grouped Select control
+		 *
+		 * using nya-bs-select
+		 */
+     var groupedSelectTemplate =	[
+																		'  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ',
+																		'		   ng-model="model[options.key || index]" ',
+																		'      data-live-search="true" ',
+																		'      disabled="options.templateOptions.options.length === 0">',
+																		'      <li nya-bs-option="option in  options.templateOptions.options group by option.group">  ',
+																		'        <span class="dropdown-header">{{$group}}</span>',
+																		'        <a>',
+																		'          <span>{{option.name}}</span>',
+																		'          <span class="glyphicon glyphicon-ok check-mark"></span>',
+																		'        </a>',
+																		'      </li>',
+																		'  </ol>'
+     															].join(' ');
    formlyConfigProvider.setType(
 	   	{
-	  		name: 'groupedSelect',
-	  		template: groupedSelectTemplate
+	  		name   		: 'groupedSelect',
+	  		template 	: groupedSelectTemplate
 	    }
     );
 
