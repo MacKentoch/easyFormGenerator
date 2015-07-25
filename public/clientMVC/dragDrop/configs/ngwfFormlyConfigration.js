@@ -16,7 +16,7 @@ angular
 						'EasyFormGenFormlyBindingModelsProvider',
 
 	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider) {
-
+		
 		/**
 		 * Add blanck control
 		 *

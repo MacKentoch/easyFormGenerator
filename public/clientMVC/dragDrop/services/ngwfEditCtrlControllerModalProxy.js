@@ -15,7 +15,7 @@ angular
 	.factory('controllerModalProxy', [	'EasyFormGenFormlyBindingModels',
 
 	function( EasyFormGenFormlyBindingModels ){
-
+		
 		var Service = {};
 
 

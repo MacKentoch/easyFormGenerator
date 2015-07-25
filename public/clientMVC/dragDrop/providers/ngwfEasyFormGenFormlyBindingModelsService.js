@@ -37,7 +37,7 @@ angular
 
 		this.addEasyFormControlToList = function(controlDeclaration){
 			if (typeof controlDeclaration !== 'undefined'){
-				_easyFormListControls.push(controlDeclaration);
+				_easyFormListControls.controls.push(controlDeclaration);
 			}
 		};
 
