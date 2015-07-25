@@ -3,7 +3,7 @@
  *  configuration ngwfDragAndDropConfig
  *  ------------------------------------------------------
  *
- * 
+ * configuration related to drag and drop
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.configs.ngwfDragAndDropConfig', [])
+	.module('ngwfApp')
 	.config(['dragDropConfigProvider',
 
 	function (dragDropConfigProvider) {
