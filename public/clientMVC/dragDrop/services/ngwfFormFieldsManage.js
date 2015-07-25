@@ -188,49 +188,64 @@ angular
        * NOTE : text header is stored in "description" in templateOtion model
        */
       var headerTemplateCol0 =  {
-                                  className: 'col-xs-6',
-                                  template : '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+                                  className   : 'col-xs-6',
+                                  template    :   [
+                                                    '<div class="row">',
+                                                    '  <div class="">',
+                                                    '    <h2 class="text-center">', 
+                                                         extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control), 
+                                                    '    <h2>',
+                                                    '    <hr/>',
+                                                    '  </div>',
+                                                    '</div>'
+                                                  ].join('')
                                 };
 
       var headerTemplateCol1 =  {
-                                  className: 'col-xs-6',
-                                 template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+                                  className   : 'col-xs-6',
+                                  template    :   [
+                                                    '<div class="row">',
+                                                    '  <div class="">',
+                                                    '    <h2 class="text-center">', 
+                                                         extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control), 
+                                                    '    <h2>',
+                                                    '    <hr/>',
+                                                    '  </div>',
+                                                    '</div>'
+                                                  ].join('')
                                 };
 
-    
-
       var controlCol0 =     {
-                                className: 'col-xs-6',
-                                type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-                                key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+                                className : 'col-xs-6',
+                                type      : typeof configurationModel.lines[lineIndex].columns[0].control.type  !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+                                key       : typeof configurationModel.lines[lineIndex].columns[0].control.key   !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
                                 templateOptions: {
-                                    type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-                                    label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-                                    required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                                    type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                                    label       : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                                    required    : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                                     placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                                     description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                    options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
+                                    options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
                                 }
                               };
-      //////////////////////////////////////////////                  
-      //datepicker additionnal particular property  
-      //////////////////////////////////////////////                  
+      /**
+       * datepicker additionnal particular property   
+       */                
       if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
         AddDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
       }                            
 
-
       var controlCol1 =  {
-                                className: 'col-xs-6',
-                                type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-                                key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+                                className : 'col-xs-6',
+                                type      : typeof configurationModel.lines[lineIndex].columns[1].control.type  !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+                                key       : typeof configurationModel.lines[lineIndex].columns[1].control.key   !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
                                 templateOptions: {
-                                    type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-                                    label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-                                    required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+                                    type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+                                    label       : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+                                    required    : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
                                     placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
                                     description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                    options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
+                                    options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
                                 }
                         };
 
@@ -254,8 +269,6 @@ angular
       }else{
         FieldGroup.push(controlCol1);
       }    
-
-
 
       formlyModel.push(
                          {
@@ -371,6 +384,7 @@ angular
                             }
                         );
     }
+
 
 
     function isTemplateOptionDefined(obj){
