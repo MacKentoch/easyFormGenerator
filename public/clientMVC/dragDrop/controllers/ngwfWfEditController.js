@@ -193,8 +193,12 @@ angular
   // configuration model (contains array of lines which contains array of columns)
   ///////////////////////////////////////////////////////////////////////////////////
   $scope.configuration = {};
-  formFieldManage.initConfigurationEditFromScratch($scope.configuration);
-  
+  formFieldManage.initConfigurationEditFromScratch($scope.configuration , true);
+
+  console.info( [
+                  'debug formFieldManage.initConfigurationEditFromScratch'
+                ].join(' '));
+  console.dir($scope.configuration);
 
   //init number of configuration lines
   $scope.resetToZeroModel = function(){
