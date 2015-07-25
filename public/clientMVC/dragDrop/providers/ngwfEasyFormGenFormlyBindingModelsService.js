@@ -12,7 +12,7 @@
 **/
 angular
 	.module('ngwfApp.providers.EasyFormGenFormlyBindingModels', [])
-	.provider('EasyFormGenFormlyBindingModels', ['', 
+	.provider('EasyFormGenFormlyBindingModels', [ 
 
 	function(){
 		
