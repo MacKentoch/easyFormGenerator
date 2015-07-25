@@ -15,7 +15,7 @@ var deleteLines = require('gulp-delete-lines');
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.1.1'
+	build: '1.1.2'
 };
 
 var bases ={
@@ -60,20 +60,20 @@ var clientMVC_dragDrop={
 };
 
 var decorate={
-	templateJS: '/* \n' + 
-				' easyFormGenerator \n' + 
-				' Version ' +  version.build + ' \n' + 				
-				' Author : Erwan Datin (MacKentoch) \n' + 
-				' Link: https://github.com/MacKentoch/easyFormGenerator \n' +
-				' License : MIT (2015) \n' + 								
-				'*/ \n' + 
-				';(function(){\n"use strict";\n<%= contents %>\n})();',
+	templateJS: '/** \n' + 
+				' *easyFormGenerator \n' + 
+				' *Version ' +  version.build + ' \n' + 				
+				' *Author : Erwan Datin (MacKentoch) \n' + 
+				' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
+				' *License : MIT (2015) \n' + 								
+				'**/ \n' + 
+				';(function(){\n\'use strict\';\n<%= contents %>\n})();',
 
 	templateCSS: '/*! \n' + 
 				' * easyFormGenerator \n' + 
 				' * Version ' + version.build + ' \n' + 				
 				' * Author : Erwan Datin (MacKentoch) \n' +
-				' Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
+				' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
 				' * License : 2015 MIT \n' + 								
 				'*/ \n' +
 				'\n<%= contents %>\n' 
