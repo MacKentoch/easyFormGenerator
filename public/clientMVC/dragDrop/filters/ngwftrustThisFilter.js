@@ -14,7 +14,9 @@
 **/
 angular
 	.module('ngwfApp.filters.trustThis', [])
-	.filter('trustThis', ['$sce',function($sce) {
+	.filter('trustThis', ['$sce',
+
+	function($sce) {
 
   return function(value, type) {
     					return $sce.trustAs(type || 'html', value);
