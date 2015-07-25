@@ -109,6 +109,7 @@ angular
    //here to replace with $scope.configuration : initialise configuration with lines 
    $scope.configurationLoaded = {};
    formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
+
    formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
 
    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
@@ -193,8 +194,13 @@ angular
   // configuration model (contains array of lines which contains array of columns)
   ///////////////////////////////////////////////////////////////////////////////////
   $scope.configuration = {};
+  /**
+   * formFieldManage.initConfigurationEditFromScratch(_OBJECT TO INIT_, _BOOL ADD STEP WAY PROPERTIES_)
+   *
+   * TODO : as it is drag and drop way : fix so that _BOOL ADD STEP WAY PROPERTIES_ = false works
+   */
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , true);
-
+  //will leave when this controller is re-written for drag and drop
   console.info( [
                   'debug formFieldManage.initConfigurationEditFromScratch'
                 ].join(' '));

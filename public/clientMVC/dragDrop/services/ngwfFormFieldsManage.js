@@ -54,28 +54,11 @@ angular
     };
 
 
-    Service.bindConfigurationLines = function(configurationModel, lines){
+    Service.bindConfigurationLines = function(configurationModel, lines, addStepWayProperties){
               
               if( Object.prototype.toString.call(lines) === '[object Array]' ) {
-                var configurationModelResult = {
-                                          activeLine: 1,   
-                                          listConfigStep: [
-                                                          'init',
-                                                          'first',
-                                                          'second',
-                                                          'third'
-                                                        ],
-                                          stepIndicators:  [
-                                                                  true,
-                                                                  false,
-                                                                  false,
-                                                                  false
-                                                            ], 
-                                          configStepCounter: 0, 
-                                          submitButtonText : 'submit',
-                                          cancelButtonText: 'cancel',
-                                          lines: []
-                                        };
+                var configurationModelResult = EasyFormGenFormlyBindingModels.getEasyFormReloadConfigurationModel(addStepWayProperties);
+
                 configurationModelResult.lines = [].concat(lines);  
                 angular.copy(configurationModelResult, configurationModel);                                         
 
@@ -436,15 +419,15 @@ angular
     }
 
     function getMessageObject(messageTitle, messageBody){
-      var messageObj = {
-                          noError : false,
-                          title: '',
-                          Message: ''  
-      };
+      var messageObj =  {
+                          noError   : false,
+                          title     : '',
+                          Message   : ''  
+                        };
 
-      messageObj.noError = true;
-      messageObj.title = messageTitle;
-      messageObj.Message = messageBody;
+      messageObj.noError    = true;
+      messageObj.title      = messageTitle;
+      messageObj.Message    = messageBody;
       return messageObj;
     }
   

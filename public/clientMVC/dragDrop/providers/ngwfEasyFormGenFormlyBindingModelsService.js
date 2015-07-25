@@ -36,7 +36,10 @@ angular
 
 		/**
 		 * formly field model (back model = configuration model)
-		 * at initial state
+		 * at initial state (1 line empty)
+		 *
+		 * If need a configuration before loading from database 
+		 * or loading from saved object better use _easyFormReloadConfigurationModel 
 		 */
 		var _easyFormInitialStateConfigurationModel =  {                                
 	    /**
@@ -86,7 +89,24 @@ angular
 	                        false
 	                      ], 
 	    configStepCounter : 0,     	
-    };		
+    };	
+
+
+    var _easyFormReloadConfigurationModel =  {                                
+	    /**
+	     * commun all easy form generator ways	
+	     *
+	     * this model when loading as initial state 
+	     * -> when then loading a previous configuration
+	     * i.e. : loading from database
+	     *
+	     * If need a model for intitial state (without loadin data)
+	     * better use _easyFormInitialStateConfigurationModel
+	     */
+	    submitButtonText 	: 'submit',
+	    cancelButtonText 	: 'cancel',
+	    lines : []
+    };
 
 
 		this.getEasyFormListControls = function(){
@@ -99,9 +119,6 @@ angular
 			}
 		};
 
-
-
-
 		
 		this.$get =	[
 
@@ -111,9 +128,15 @@ angular
 				Service.getEasyFormListControls = function(){
 					return _easyFormListControls;
 				};
-
+				/**
+				 * getEasyFormInitialStateConfigurationModel : get configuration model 
+				 * (back model equivalent to formly field model) at "initial state = 1 empty line"
+				 * 
+				 * @param  bool addStepWayProperties  : add or not properties specefic to easy form generator step way
+				 * @return object  configuration model
+				 */
 				Service.getEasyFormInitialStateConfigurationModel = function(addStepWayProperties){
-					var initialConfigurationModel = _easyFormInitialStateConfigurationModel;
+					var initialConfigurationModel = angular.copy(_easyFormInitialStateConfigurationModel);
 					if (typeof addStepWayProperties !== 'undefined') {
 						if (addStepWayProperties) {
 							/**
@@ -122,9 +145,28 @@ angular
 							angular.extend(initialConfigurationModel, _easyFormInitialStateConfigurationModelAddOnForStepWay);
 						}
 					}
-					return _easyFormInitialStateConfigurationModel;
+					return initialConfigurationModel;
 				};
-
+				/**
+				 * getEasyFormInitialStateConfigurationModel : get configuration model 
+				 * (back model equivalent to formly field model) at "initial state = 0 line"
+				 * => good model to load a previous saved into it (just load lines and buttons names then)
+				 * 
+				 * @param  bool addStepWayProperties  : add or not properties specefic to easy form generator step way
+				 * @return object  configuration model
+				 */
+				Service.getEasyFormReloadConfigurationModel = function(addStepWayProperties){
+					var initialConfigurationModel = angular.copy(_easyFormReloadConfigurationModel);
+					if (typeof addStepWayProperties !== 'undefined') {
+						if (addStepWayProperties) {
+							/**
+							 * add properties specific to step way
+							 */
+							angular.extend(initialConfigurationModel, _easyFormInitialStateConfigurationModelAddOnForStepWay);
+						}
+					}
+					return initialConfigurationModel;
+				};
 
 				return Service;
 
