@@ -13,7 +13,8 @@
 **/
 
 angular
-	.module('ngwfApp.providers', [	'ngwfApp.providers.dragDropConfigProvider', 
+	.module('ngwfApp.providers', [	'ngwfApp.providers.dragDropConfigProvider',
+																	'ngwfApp.providers.EasyFormGenFormlyBindingModels', 
 	function () {
 	
 	}]);

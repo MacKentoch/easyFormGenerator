@@ -12,28 +12,16 @@
 **/
 angular
 	.module('ngwfApp')
-	.config(['formlyConfigProvider',
+	.config([	'formlyConfigProvider',
+						'EasyFormGenFormlyBindingModelsProvider',
 
-	function (formlyConfigProvider) {
-		/**
-		 * Add rich text editor control
-		 *
-		 * using textAngular
-		 */
-		var richTexEditorTemplate =	[
-																	'<text-angular name="{{id}}" ', 
-																	'              class="richTextAngular" ',
-																	'              ng-model="model[options.key || index]">', 
-																	'</text-angular>'
-																].join(' ');
-		formlyConfigProvider.setType(
-		  {
-				name     	: 'richEditor',
-				template 	: richTexEditorTemplate
-		  }
-		);
+	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider) {
+
 		/**
 		 * Add blanck control
+		 *
+		 * 1- in formlyConfigProvider
+		 * 2- in EasyFormGenFormlyBindingModelsProvider
 		 */
 		formlyConfigProvider.setType(
 		 	{
@@ -41,10 +29,50 @@ angular
 				template 	: '<div></div>'
 		  }
 		);
+
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+						id 								: 'empty',  
+						name 							: 'no control', 
+						subtitle 					: 'no control', 
+						group 						: 'Blank', 
+						formlyType 				: 'blank', 
+						formlySubtype 		: '', 
+						formlyLabel 			: '', 
+						formlyRequired 		: false, 
+						formlyDesciption 	: '', 
+						formlyOptions 		: []
+				}
+		);
+
+		/**
+		 * Add header
+		 *
+		 * note : formly header template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 */
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Header',  
+					name 							: 'Header', 
+					subtitle 					: 'no control', 
+					group 						: 'Decoration', 
+					formlyType 				: 'header', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);
+
 		/**
 		 * Add subTitle control
 		 *
-		 * define a template 1st
+		 * 1- in formlyConfigProvider
+		 * 2- in EasyFormGenFormlyBindingModelsProvider
 		 */
 		var subTitleTemplate =	[
 															'<div class="row">', 
@@ -61,59 +89,71 @@ angular
 				template 	: subTitleTemplate
 		  }
 		);
-		/**
-		 * Add basic Select control
-		 *
-		 * using nya-bs-select
-		 */
-		var basicSelectTemplate =	[
-																' <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ', 
-																'		ng-model="model[options.key || index]"  ', 
-																'		id="{{id}}"  ', 
-																'		disabled="options.templateOptions.options.length === 0"> ',
-																'   <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> ',
-																'     <a>{{option.name}}</a> ',
-																'   </li> ',
-																' </ol> '
-															].join(''); 	
 
-		formlyConfigProvider.setType(
-		 	{
-				name 			: 'basicSelect',
-				template 	: basicSelectTemplate
-		  }
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Subtitle',  
+					name 							: 'Subtitle', 
+					subtitle 					: 'no control', 
+					group 						: 'Decoration', 
+					formlyType 				: 'subTitle', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
 		);
 
 		/**
-		 * Add Grouped Select control
+		 * Add text input (basic)
 		 *
-		 * using nya-bs-select
+		 * note : formly template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
 		 */
-    var groupedSelectTemplate =	[
-																		'  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ',
-																		'		   ng-model="model[options.key || index]" ',
-																		'      data-live-search="true" ',
-																		'      disabled="options.templateOptions.options.length === 0">',
-																		'      <li nya-bs-option="option in  options.templateOptions.options group by option.group">  ',
-																		'        <span class="dropdown-header">{{$group}}</span>',
-																		'        <a>',
-																		'          <span>{{option.name}}</span>',
-																		'          <span class="glyphicon glyphicon-ok check-mark"></span>',
-																		'        </a>',
-																		'      </li>',
-																		'  </ol>'
-     															].join(' ');
-		formlyConfigProvider.setType(
-			{
-				name   		: 'groupedSelect',
-				template 	: groupedSelectTemplate
-			}
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'TextInput',  
+					name 							: 'Text input', 
+					subtitle 					: 'Text input', 
+					group 						: 'input', 
+					formlyType 				: 'input', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);
+
+		/**
+		 * Add text input (Password)
+		 *
+		 * note : formly template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 */
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Password',  
+					name 							: 'Password', 
+					subtitle 					: 'Password', 
+					group 						: 'input', 
+					formlyType 				: 'input', 
+					formlySubtype 		: 'password', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []}
 		);
 
 		/**
 		 * Add angular UI date picker
 		 *
-		 * thx Kent C. Dodds (since it was a huge config)
+		 * thx Kent C. Dodds for formly config template (since it was a huge config)
 		 */
 		var attributes =	[
 												'date-disabled',
@@ -206,6 +246,204 @@ angular
 										    								}
 		  }
 		});
+
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Date',  
+					name 							: 'Date', 
+					subtitle 					: 'Date', 
+					group 						: 'input', 
+					formlyType 				: 'datepicker', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: [], 
+					datepickerPopup 	: 'dd-MMMM-yyyy'
+				}
+		);
+
+		/**
+		 * Add textarea
+		 *
+		 * note : formly template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 */
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Texarea', 
+					name 							: 'Textarea', 
+					subtitle 					: 'Textarea', 
+					group 						: 'Textarea', 
+					formlyType 				: 'textarea', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);		
+
+		/**
+		 * Add rich text editor control
+		 *
+		 */
+		var richTexEditorTemplate =	[
+																	'<text-angular name="{{id}}" ', 
+																	'              class="richTextAngular" ',
+																	'              ng-model="model[options.key || index]">', 
+																	'</text-angular>'
+																].join(' ');
+		formlyConfigProvider.setType(
+		  {
+				name     	: 'richEditor',
+				template 	: richTexEditorTemplate
+		  }
+		);
+
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'RichTextEditor', 
+					name 							: 'RichTextEditor', 
+					subtitle 					: 'RichTextEditor', 
+					group 						: 'Textarea', 
+					formlyType 				: 'richEditor', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);
+
+		/**
+		 * Add textarea
+		 *
+		 * note : formly template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 */
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Radio', 
+					name 							: 'Radio', 
+					subtitle 					: 'Radio', 
+					options 					: [], 
+					group 						: 'Radio', 
+					formlyType 				: 'radio', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '' , 
+					formlyOptions 		: []
+				}
+		);		
+
+		/**
+		 * Add checkbox
+		 *
+		 * note : formly template already exists
+		 * no need to create a custom one
+		 *
+		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 */
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'Checkbox', 
+					name 							: 'Checkbox', 
+					subtitle 					: 'Checkbox', 
+					group 						: 'Checkbox', 
+					formlyType 				: 'checkbox', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);
+
+		/**
+		 * Add basic Select control
+		 *
+		 * using nya-bs-select
+		 */
+		var basicSelectTemplate =	[
+																' <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ', 
+																'		ng-model="model[options.key || index]"  ', 
+																'		id="{{id}}"  ', 
+																'		disabled="options.templateOptions.options.length === 0"> ',
+																'   <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> ',
+																'     <a>{{option.name}}</a> ',
+																'   </li> ',
+																' </ol> '
+															].join(''); 	
+
+		formlyConfigProvider.setType(
+		 	{
+				name 			: 'basicSelect',
+				template 	: basicSelectTemplate
+		  }
+		);
+
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'BasicSelect', 
+					name 							: 'Basic select', 
+					subtitle 					: 'Basic select',
+					options 					: [], 
+					group 						: 'Select', 
+					formlyType 				: 'basicSelect', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []
+				}
+		);		
+
+		/**
+		 * Add Grouped Select control
+		 *
+		 * using nya-bs-select
+		 */
+    var groupedSelectTemplate =	[
+																		'  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ',
+																		'		   ng-model="model[options.key || index]" ',
+																		'      data-live-search="true" ',
+																		'      disabled="options.templateOptions.options.length === 0">',
+																		'      <li nya-bs-option="option in  options.templateOptions.options group by option.group">  ',
+																		'        <span class="dropdown-header">{{$group}}</span>',
+																		'        <a>',
+																		'          <span>{{option.name}}</span>',
+																		'          <span class="glyphicon glyphicon-ok check-mark"></span>',
+																		'        </a>',
+																		'      </li>',
+																		'  </ol>'
+     															].join(' ');
+		formlyConfigProvider.setType(
+			{
+				name   		: 'groupedSelect',
+				template 	: groupedSelectTemplate
+			}
+		);
+
+		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
+				{
+					id 								: 'GroupedSelect', 
+					name 							: 'Grouped Select', 
+					subtitle 					: 'Grouped Select',
+					options 					: [], 
+					group 						: 'Select', 
+					formlyType 				: 'groupedSelect', 
+					formlySubtype 		: '', 
+					formlyLabel 			: '', 
+					formlyRequired 		: false, 
+					formlyDesciption 	: '', 
+					formlyOptions 		: []}
+		);			
 
  
 	}]);

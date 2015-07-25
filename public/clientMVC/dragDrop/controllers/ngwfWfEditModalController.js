@@ -11,24 +11,22 @@
 angular
   .module('ngwfApp.controllers.ngwfWfEditMODALController', [])
   .controller('ngwfWfEditMODALController', [	'$scope', 
-                                                                    '$modalInstance',
-                                      															'nyaSelect',
-                                                                    'toaster' ,
-                                                                    '$timeout',
-                                                                    'selectOptionManage',
-                                                                    'controllerModalProxy',
-                                      															function (	$scope, 
-                                                                                $modalInstance, 
-                                                                                nyaSelect, 
-                                                                                toaster,
-                                                                                $timeout,
-                                                                                selectOptionManage,
-                                                                                controllerModalProxy
-                                                                              ){
-  //verbose
-  //console.log('--> INIT : Hello controller  \'\'ngwfWfEditMODALController\'\' ');
-  
+                                              '$modalInstance',
+                                              'nyaSelect',
+                                              'toaster' ,
+                                              '$timeout',
+                                              'selectOptionManage',
+                                              'controllerModalProxy',
+  function (	$scope, 
+              $modalInstance, 
+              nyaSelect, 
+              toaster,
+              $timeout,
+              selectOptionManage,
+              controllerModalProxy
+            ){
 
+  
 
 var initOptionModel = {rows:[
                             ]
@@ -39,7 +37,7 @@ var initOptionModel = {rows:[
   ///////////////////////////////////////////
 
   $scope.radioRowCollection = initOptionModel;
-  $scope.newOptionRadio = {saisie: ""};
+  $scope.newOptionRadio = {saisie: ''};
 
 
   function bindRadioFromNYA(){

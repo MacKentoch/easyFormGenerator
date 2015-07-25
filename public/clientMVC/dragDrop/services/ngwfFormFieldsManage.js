@@ -47,9 +47,6 @@ angular
   .module('ngwfApp.services.formFieldManage', [])
   .factory('formFieldManage', [ function(){
 
-
-	//console.log('--> INIT : Hello service  \'\'formFieldManage\'\' ');
-
               //configuration model will contain 1 line, since :
               //   - it is non sense to create a form without a single line (no line = no form at all)
               //   -> so it is non sense to force user to add a first line

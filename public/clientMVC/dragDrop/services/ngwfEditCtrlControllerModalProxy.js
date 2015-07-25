@@ -12,44 +12,16 @@
 **/
 angular
 	.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
-	.factory('controllerModalProxy', [
+	.factory('controllerModalProxy', [	'EasyFormGenFormlyBindingModels',
 
-	function(){
+	function( EasyFormGenFormlyBindingModels ){
 
 		var Service = {};
 
 
 	  function resetNyaSelect(nyaSelectObj){
 
-	  	//TODO : to make a provider to make it configurable
-	    var newNyaSelectObj = {
-
-	                    controls : [
-	                                {id: 'empty',  name: 'no control', subtitle: 'no control', group: 'Blank', formlyType: 'blank', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'Header',  name: 'Header', subtitle: 'no control', group: 'Decoration', formlyType: 'header', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: 'subTitle', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'TextInput',  name: 'Text input', subtitle: 'Text input', group: 'input', formlyType: 'input', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'Password',  name: 'Password', subtitle: 'Password', group: 'input', formlyType: 'input', formlySubtype: 'password', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'Date',  name: 'Date', subtitle: 'Date', group: 'input', formlyType: 'datepicker', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [], datepickerPopup: 'dd-MMMM-yyyy'},
-	                                {id: 'Texarea', name: 'Textarea', subtitle: 'Textarea', group: 'Textarea', formlyType: 'textarea', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'RichTextEditor', name: 'RichTextEditor', subtitle: 'RichTextEditor', group: 'Textarea', formlyType: 'richEditor', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'Radio', name: 'Radio', subtitle: 'Radio', options: [], group: 'Radio', formlyType: 'radio', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '' , formlyOptions: []},
-	                                {id: 'Checkbox', name: 'Checkbox', subtitle: 'Checkbox', group: 'Checkbox', formlyType: 'checkbox', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'BasicSelect', name: 'Basic select', subtitle: 'Basic select',options: [], group: 'Select', formlyType: 'basicSelect', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []},
-	                                {id: 'GroupedSelect', name: 'Grouped Select', subtitle: 'Grouped Select',options: [], group: 'Select', formlyType: 'groupedSelect', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: []}
-	                              ],
-
-	                      selectedControl : 'none' ,
-	                      temporyConfig : {
-	                                        selectedControl		: 'none',
-	                                        formlyLabel				: 'label', 
-	                                        formlyRequired		: false, 
-	                                        formlyDesciption	: '',
-	                                        formlyPlaceholder	: '',
-	                                        formlyOptions 		: []
-	                                      } 
-
-	    };
+	    var newNyaSelectObj = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 
 	  	angular.copy(newNyaSelectObj, nyaSelectObj);
 	    return true;
@@ -58,7 +30,7 @@ angular
 	  function returnControlFromAddCtrlModalModel(CtrlModalModel){
 
 	    var modelToReturn = {
-	          selectedControl		:'none',
+	          selectedControl		: 'none',
 	          formlyType 				: 'none',
 	          formlySubtype			: 'none',
 	          formlyLabel				: '',
