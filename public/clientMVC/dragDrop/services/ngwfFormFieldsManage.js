@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  MOST IMPORTANT service (ok... It is a factory...^^)
+//  MOST IMPORTANT service (ok... It is a factory)
 //////////////////////////////////////////////////////////
 //
 //
@@ -45,13 +45,15 @@
 
 angular
   .module('ngwfApp.services.formFieldManage', [])
-  .factory('formFieldManage', [ function(){
+  .factory('formFieldManage', [ 
 
-              //configuration model will contain 1 line, since :
-              //   - it is non sense to create a form without a single line (no line = no form at all)
-              //   -> so it is non sense to force user to add a first line
-              //
-              // PLEASE NOTE columns array contains objects that look like formly fields one
+  function(){
+
+  //configuration model will contain 1 line, since :
+  //   - it is non sense to create a form without a single line (no line = no form at all)
+  //   -> so it is non sense to force user to add a first line
+  //
+  // PLEASE NOTE columns array contains objects that look like formly fields one
 
     return {
 
@@ -74,8 +76,8 @@ angular
                                                                 false
                                                           ], 
                                         configStepCounter: 0, 
-                                        submitButtonText : "submit",
-                                        cancelButtonText: "cancel",
+                                        submitButtonText : 'submit',
+                                        cancelButtonText: 'cancel',
 
                                         lines: [
                                                 {
@@ -124,8 +126,8 @@ angular
                                                                   false
                                                             ], 
                                           configStepCounter: 0, 
-                                          submitButtonText : "submit",
-                                          cancelButtonText: "cancel",
+                                          submitButtonText : 'submit',
+                                          cancelButtonText: 'cancel',
                                           lines: []
                                         };
                 configurationModelResult.lines = [].concat(lines);  
@@ -149,7 +151,7 @@ angular
                   //1 column line control
                   if (configurationModel.lines[i].columns.length === 1) {
                     //test if template control = header
-                    if (configurationModel.lines[i].columns[0].control.type === "header") {
+                    if (configurationModel.lines[i].columns[0].control.type === 'header') {
                       AddOneColumnHeader(formlyModel, configurationModel, i);
                     }else{
                       AddOneColumnControl(formlyModel, configurationModel, i);  
@@ -286,13 +288,13 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
 
     var FieldGroup = [];
 
-    if (configurationModel.lines[lineIndex].columns[0].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
       FieldGroup.push(headerTemplateCol0);
     }else{
       FieldGroup.push(controlCol0);
     }
      
-    if (configurationModel.lines[lineIndex].columns[1].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
       FieldGroup.push(headerTemplateCol1);
     }else{
       FieldGroup.push(controlCol1);
@@ -388,19 +390,19 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
 
     var FieldGroup = [];
 
-    if (configurationModel.lines[lineIndex].columns[0].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
       FieldGroup.push(headerTemplateCol0);
     }else{
       FieldGroup.push(controlCol0);
     }
      
-    if (configurationModel.lines[lineIndex].columns[1].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
       FieldGroup.push(headerTemplateCol1);
     }else{
       FieldGroup.push(controlCol1);
     }    
 
-    if (configurationModel.lines[lineIndex].columns[2].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
       FieldGroup.push(headerTemplateCol2);
     }else{
       FieldGroup.push(controlCol2);
