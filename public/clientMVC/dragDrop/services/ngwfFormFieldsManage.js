@@ -53,54 +53,71 @@ angular
       angular.copy(configurationModelInit, configurationModel);
     };
 
-
+    /**
+     * Get an configuration empty (no init line) then empty it with lines array provided in param
+     * @param   object - configurationModel   [configuration model]
+     * @param   array -  lines                [an array : lines to apply to an empty configuration model]
+     * @param   bool -   addStepWayProperties [description]
+     * @return {object message}               [give details on how it happened to caller]
+     */
     Service.bindConfigurationLines = function(configurationModel, lines, addStepWayProperties){
               
-              if( Object.prototype.toString.call(lines) === '[object Array]' ) {
-                var configurationModelResult = EasyFormGenFormlyBindingModels.getEasyFormReloadConfigurationModel(addStepWayProperties);
+      if( Object.prototype.toString.call(lines) === '[object Array]' ) {
+        var configurationModelResult = EasyFormGenFormlyBindingModels.getEasyFormReloadConfigurationModel(addStepWayProperties);
 
-                configurationModelResult.lines = [].concat(lines);  
-                angular.copy(configurationModelResult, configurationModel);                                         
+        configurationModelResult.lines = [].concat(lines);  
+        angular.copy(configurationModelResult, configurationModel);                                         
 
-                return getMessageObject('configuration model is bound','lines are bound to configuration model.');
-              }else{
-                return getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
-              }
+        return getMessageObject('configuration model is bound','lines are bound to configuration model.');
+      }else{
+        return getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
+      }
     };
-
+    /**
+     * applyConfigurationToformlyModel : 
+     *  - bind configuration model into formly field model
+     *  - reset dataModel (formlyfield may have changed so previous dataModel would be false)
+     * @param  configurationModel 
+     * @param  formlyModel        
+     * @param  formlyDataModel    
+     */
     Service.applyConfigurationToformlyModel = function(configurationModel, formlyModel, formlyDataModel){
-              resetFormlyModel(formlyModel);
-              //since 1.0.2 : reset data model
-              resetDataModel(formlyDataModel);
+      resetFormlyModel(formlyModel);
+      resetDataModel(formlyDataModel);
 
-              //manage header here line0
-              var lineNumber = configurationModel.lines.length;
-              for (var i = 0; i < lineNumber; i++) {
+      //manage header here line0
+      var lineNumber = configurationModel.lines.length;
+      for (var i = 0; i < lineNumber; i++) {
 
-                  //1 column line control
-                  if (configurationModel.lines[i].columns.length === 1) {
-                    //test if template control = header
-                    if (configurationModel.lines[i].columns[0].control.type === 'header') {
-                      AddOneColumnHeader(formlyModel, configurationModel, i);
-                    }else{
-                      AddOneColumnControl(formlyModel, configurationModel, i);  
-                    }          
-                  }
-
-                  if (configurationModel.lines[i].columns.length === 2) {
-                    AddTwoColumnControl(formlyModel, configurationModel,i);
-                  }
-
-                  if (configurationModel.lines[i].columns.length === 3) {
-                    AddThreeColumnControl(formlyModel, configurationModel,i);
-                  }
-
-                 // console.info('applyConfigurationToformlyModel : formlyModelis after bind =');
-                 // console.dir(formlyModel);
-              }
+          /**
+           * 1 column line control
+           */
+          if (configurationModel.lines[i].columns.length === 1) {
+            /**
+             * test if template control = header
+             * header is not a control in formly but a simple template
+             */
+            if (configurationModel.lines[i].columns[0].control.type === 'header') {
+              AddOneColumnHeader(formlyModel, configurationModel, i);
+            }else{
+              AddOneColumnControl(formlyModel, configurationModel, i);  
+            }          
+          }
+          /**
+           * 2 columns line control
+           */
+          if (configurationModel.lines[i].columns.length === 2) {
+            AddTwoColumnControl(formlyModel, configurationModel,i);
+          }
+          /**
+           * 3 columns line control
+           */
+          if (configurationModel.lines[i].columns.length === 3) {
+            AddThreeColumnControl(formlyModel, configurationModel,i);
+          }
+      }
     };
         
-
     return Service;
 
 
@@ -398,23 +415,23 @@ angular
     // custom errors
     /////////////////////////////////////////
 
-    var messageObj = {
-                          noError : false,
-                          title: '',
-                          Message: ''  
-    };
+    var messageObj =  {
+                          noError   : false,
+                          title     : '',
+                          Message   : ''  
+                      };
 
     function getErrorObject(errorTitle, errorMessage){
 
-      var messageObj = {
-                            noError : false,
-                            title: '',
-                            Message: ''  
-      };
+      var messageObj =  {
+                          noError   : false,
+                          title     : '',
+                          Message   : ''  
+                        };
 
-      messageObj.noError = false;
-      messageObj.title = errorTitle;
-      messageObj.Message = errorMessage;
+      messageObj.noError  = false;
+      messageObj.title    = errorTitle;
+      messageObj.Message  = errorMessage;
       return messageObj;
     }
 
