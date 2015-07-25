@@ -101,16 +101,18 @@ angular
               AddOneColumnHeader(formlyModel, configurationModel, i);
             }else{
               AddOneColumnControl(formlyModel, configurationModel, i);  
-            }          
+            }
           }
           /**
            * 2 columns line control
+           * header, datepicker are particular cases, manganed inside AddTwoColumnControl()
            */
           if (configurationModel.lines[i].columns.length === 2) {
             AddTwoColumnControl(formlyModel, configurationModel,i);
           }
           /**
            * 3 columns line control
+           * header, datepicker are particular cases, manganed inside AddThreeColumnControl()
            */
           if (configurationModel.lines[i].columns.length === 3) {
             AddThreeColumnControl(formlyModel, configurationModel,i);
@@ -128,9 +130,19 @@ angular
     }
 
     function AddOneColumnHeader(formlyModel, configurationModel,lineIndex){
-      //text header is stored in "description" in templateOtion model
-      var headerTemplateCol0 = '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2></div></div><hr/>';
-
+      /**
+       * NOTE : text header is stored in "description" in templateOtion model
+       */
+      var headerTemplateCol0 =  [
+                                  '<div class="row">',
+                                  '  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">',
+                                  '    <h2 class="text-center">', 
+                                       extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control), 
+                                  '    <h2>',
+                                  '  </div>',
+                                  '</div>',
+                                  '<hr/>'
+                                ].join('');
       formlyModel.push(
                         {
                           template: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? headerTemplateCol0 : '<div></div>') : '<div></div>'
@@ -145,113 +157,112 @@ angular
 
     function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
 
-        var fieldToPush =                       {
-                            className: 'col-xs-12',
-                            type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-                            key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-                            templateOptions: {
-                              type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-                              label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-                              required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-                              placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-                              description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                              options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-                            } 
-                          };
-        //////////////////////////////////////////////                  
-        //datepicker additionnal particular property  
-        //////////////////////////////////////////////                  
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-          AddDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
+      var fieldToPush = {
+                          className : 'col-xs-12',
+                          type      : typeof configurationModel.lines[lineIndex].columns[0].control.type  !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+                          key       : typeof configurationModel.lines[lineIndex].columns[0].control.key   !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+                          
+                          templateOptions: {
+                                type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                                label       : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                                required    : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                                placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+                                description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+                                options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+                          } 
+                        };
+      /**
+       * datepicker additionnal particular property   
+       */
+      if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+        AddDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
+      }     
 
-          
-        }     
-
-        formlyModel.push( 
-                          fieldToPush
-                        );
+      formlyModel.push( 
+                        fieldToPush
+                      );
     }
 
     function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
-
-
-        //text header is stored in "description" in templateOtion model
-        var headerTemplateCol0 =  {
-                                    className: 'col-xs-6',
-                                    template : '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
-                                  };
-
-        var headerTemplateCol1 =  {
-                                    className: 'col-xs-6',
-                                   template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
-                                  };
-
-      
-
-        var controlCol0 =     {
+      /**
+       * NOTE : text header is stored in "description" in templateOtion model
+       */
+      var headerTemplateCol0 =  {
                                   className: 'col-xs-6',
-                                  type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-                                  key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-                                  templateOptions: {
-                                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-                                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-                                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-                                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-                                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
-                                  }
+                                  template : '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
                                 };
-        //////////////////////////////////////////////                  
-        //datepicker additionnal particular property  
-        //////////////////////////////////////////////                  
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-          AddDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
-        }                            
 
-
-        var controlCol1 =  {
+      var headerTemplateCol1 =  {
                                   className: 'col-xs-6',
-                                  type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-                                  key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-                                  templateOptions: {
-                                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-                                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-                                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
-                                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
-                                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
-                                  }
-                          };
+                                 template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+                                };
 
-        //////////////////////////////////////////////                  
-        //datepicker additionnal particular property  
-        //////////////////////////////////////////////                  
-        if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-          AddDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
-        }                                
+    
 
-        var FieldGroup = [];
-
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
-          FieldGroup.push(headerTemplateCol0);
-        }else{
-          FieldGroup.push(controlCol0);
-        }
-         
-        if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
-          FieldGroup.push(headerTemplateCol1);
-        }else{
-          FieldGroup.push(controlCol1);
-        }    
+      var controlCol0 =     {
+                                className: 'col-xs-6',
+                                type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+                                key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+                                templateOptions: {
+                                    type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                                    label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                                    required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                                    placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+                                    description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+                                    options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
+                                }
+                              };
+      //////////////////////////////////////////////                  
+      //datepicker additionnal particular property  
+      //////////////////////////////////////////////                  
+      if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+        AddDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
+      }                            
 
 
+      var controlCol1 =  {
+                                className: 'col-xs-6',
+                                type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+                                key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+                                templateOptions: {
+                                    type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+                                    label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+                                    required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+                                    placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+                                    description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+                                    options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
+                                }
+                        };
 
-        formlyModel.push(
-                           {
-                              className: 'row', 
-                              fieldGroup: FieldGroup
-                            }
-                        );
+      //////////////////////////////////////////////                  
+      //datepicker additionnal particular property  
+      //////////////////////////////////////////////                  
+      if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+        AddDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+      }                                
+
+      var FieldGroup = [];
+
+      if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+        FieldGroup.push(headerTemplateCol0);
+      }else{
+        FieldGroup.push(controlCol0);
+      }
+       
+      if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+        FieldGroup.push(headerTemplateCol1);
+      }else{
+        FieldGroup.push(controlCol1);
+      }    
+
+
+
+      formlyModel.push(
+                         {
+                            className: 'row', 
+                            fieldGroup: FieldGroup
+                          }
+                      );
     }
 
     function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
