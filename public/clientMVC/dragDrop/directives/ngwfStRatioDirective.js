@@ -1,17 +1,20 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// module = "directive" 
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.directives.directiveNAME" = container directives module
-//
-//  This module is a directive -> it must be injected in directives container
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *  ------------------------------------------------------
+ *  directive : stRatio
+ *  ------------------------------------------------------
+ *
+ * adapt element's width % 
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 angular
 	.module('ngwfApp.directives.ngwfStRationDirective', [])
-	.directive('stRatio',[function(){
+	.directive('stRatio',[
 
-	console.log('--> INIT : Hello directive  \'\'stRatio\'\' ');
+  function(){
 
         return {
         	restrict: 'A',

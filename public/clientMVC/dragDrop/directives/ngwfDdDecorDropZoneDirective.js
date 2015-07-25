@@ -1,20 +1,19 @@
 /**
- * 
- * ddDecorDropZone directive :
+ *  ------------------------------------------------------
+ *  directive : ddDecorDropZone
+ *  ------------------------------------------------------
  *
- * 
- * WHAT IS IT USED FOR? : 
- * 
  * apply configuration to drop zone (or columns = top level containers)
  *   - column role (control selection or drop zone as form layout)
  *   - apply title
  *   - apply font-awesome icon
  *   - OPTIONAL (DEV USE) : add 'dd-verbose-mode' attribute set to true or 1 to have versbose in console
- *
- *
  * 
- * MIT : Erwan DATIN
- */
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 angular
     .module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', [])
     .directive('ddDecorDropZone', [
@@ -49,38 +48,40 @@ angular
         
         return {
             scope:  {
-                        'styleParam': '=ddDropZoneProperties',
-                         'verboseMode' : '@ddDropZoneVerboseMode',
-                         'currentIndex' : '@ddDropZoneCurrentIndex',
-                         'addNewLineFct' : '&ddDropZoneAddNewLine'
+                         'styleParam'       : '=ddDropZoneProperties',
+                         'verboseMode'      : '@ddDropZoneVerboseMode',
+                         'currentIndex'     : '@ddDropZoneCurrentIndex',
+                         'addNewLineFct'    : '&ddDropZoneAddNewLine'
                     },
-            restrict: 'A', 
-            template: htmlTemplate,
+            restrict:   'A', 
+            template:   htmlTemplate,
             transclude: true,
 
             link: function($scope) {    
                 
-                var verboseModeActive = $scope.verboseMode;
-                var currentIndex = $scope.currentIndex;
+                var verboseModeActive   = $scope.verboseMode;
+                var currentIndex        = $scope.currentIndex;
                 
                 $scope.headerConfig = {
                     HeaderButtonVisible : false,
-                    affixAttr: 'bs-affix',
-                    affixEnabled : false
+                    affixAttr           : 'bs-affix',
+                    affixEnabled        : false
                 };
-                //verbose mode : just for dev
+                /**
+                 * verbose mode : just for dev
+                 */
                 if (verboseModeActive !== '') {
                     var verbose = angular.lowercase(verboseModeActive);
 
                     if (verbose === 'true' || verbose === '1') {
                        console.dir(
                             {
-                                whoAmI : 'I am verbose from ddDecorDropZone link',
-                                verbodeMode : verbose,
-                                ParentParentIndex : $scope.$parent.$parent.$index,
-                                ParentIndex : $scope.$parent.$index,
-                                currentIndex: currentIndex,
-                                styleParam : $scope.styleParam
+                                whoAmI              : 'I am verbose from ddDecorDropZone link',
+                                verbodeMode         : verbose,
+                                ParentParentIndex   : $scope.$parent.$parent.$index,
+                                ParentIndex         : $scope.$parent.$index,
+                                currentIndex        : currentIndex,
+                                styleParam          : $scope.styleParam
                             }
                         );
                     }                    
@@ -89,25 +90,27 @@ angular
 
                 if (typeof currentIndex !== 'undefined') {
                     if (currentIndex !== '') {
-                            //apply title 
+                            /**
+                             * apply title
+                             */
                             if (typeof $scope.styleParam.title !== 'undefined') {
                                 $scope.currentTitle = $scope.styleParam.title;
                             }
 
-                            //apply font-awesome icon
+                            /**
+                             * apply font-awesome
+                             */
                             if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') {
                                 $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
                             } 
 
-                            //show add new line button
+                            /**
+                             * show add new line button
+                             */
                             if (currentIndex === '1') {
                                 $scope.headerConfig.HeaderButtonVisible = true;
                             }
 
-                            //affix control selection column
-                            if (currentIndex === '0') {
-                             $scope.headerConfig.affixEnabled = true;
-                            }
                     }                    
                 }
                           

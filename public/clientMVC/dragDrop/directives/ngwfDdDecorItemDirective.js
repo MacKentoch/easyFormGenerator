@@ -95,13 +95,13 @@ angular
                     if (verbose === 'true' || verbose === '1') {
                        console.dir(
                             {
-                                whoAmI : 'I am verbose from ddDecorItem directive link',
-                                verbodeMode : verbose,
-                                ParentParentIndex : $scope.$parent.$parent.$index,
-                                ParentIndex : parentIndex,
-                                parentParentIndex : $scope.parentParentIndex,
-                                currentIndex: currentIndex,
-                                lineItemsCount: $scope.lineItemsCount
+                                whoAmI              : 'I am verbose from ddDecorItem directive link',
+                                verbodeMode         : verbose,
+                                ParentParentIndex   : $scope.$parent.$parent.$index,
+                                ParentIndex         : parentIndex,
+                                parentParentIndex   : $scope.parentParentIndex,
+                                currentIndex        : currentIndex,
+                                lineItemsCount      : $scope.lineItemsCount
                             }
                         );
                     }                    

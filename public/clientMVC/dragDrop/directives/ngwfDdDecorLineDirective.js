@@ -1,16 +1,18 @@
 /**
- * 
- * ngwfDdDecorLineDirective directive :
- *
- * WHAT IS IT USED FOR? : 
+ *  ------------------------------------------------------
+ *  directive : ngwfDdDecorLineDirective
+ *  ------------------------------------------------------
  *
  * decorate a form line :
  *  - double click will make it shake for 2 second (ready to delete state)
  *  - double click again will delete this line
  *  - no click within 2seconds : line will stop shaking 
  * 
- * 
- */
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 angular
     .module('ngwfApp.directives.ngwfDdDecorLineDirective', [])
     .directive('ddDecorLine', ['$timeout', 
@@ -28,20 +30,20 @@ angular
         return {
             scope:  {
 
-                         'verboseMode' :    '@ddLineVerboseMode',
-                         'currentIndex' :   '@ddLineCurrentIndex',
-                         'parentIndex':     '@ddLineParentIndex',
-                         'removeLine' :     '&ddRemoveLine'
+                         'verboseMode'  :    '@ddLineVerboseMode',
+                         'currentIndex' :    '@ddLineCurrentIndex',
+                         'parentIndex'  :    '@ddLineParentIndex',
+                         'removeLine'   :    '&ddRemoveLine'
                     },
-            restrict: 'A',
-            template: htmlTemplate,
+            restrict:   'A',
+            template:   htmlTemplate,
             transclude: true,
 
             link: function($scope, element, attrs, ctrl, transclude) {    
                 
-                var verboseModeActive = $scope.verboseMode;
-                var currentIndex = $scope.currentIndex;
-                var parentIndex = $scope.parentIndex;
+                var verboseModeActive   = $scope.verboseMode;
+                var currentIndex        = $scope.currentIndex;
+                var parentIndex         = $scope.parentIndex;
 
                 $scope.deleteLine = {};
                 $scope.deleteLine.readyToDelete = false;
@@ -60,11 +62,11 @@ angular
                     if (verbose === 'true' || verbose === '1') {
                        console.dir(
                             {
-                                whoAmI : 'I am verbose from ddDecorLine directive link',
-                                verbodeMode : verbose,
-                                ParentParentIndex : $scope.$parent.$parent.$index,
-                                ParentIndex : parentIndex,
-                                currentIndex: currentIndex,
+                                whoAmI              : 'I am verbose from ddDecorLine directive link',
+                                verbodeMode         : verbose,
+                                ParentParentIndex   : $scope.$parent.$parent.$index,
+                                ParentIndex         : parentIndex,
+                                currentIndex        : currentIndex,
                             }
                         );
                     }                    
@@ -82,7 +84,9 @@ angular
 
                     if ($scope.parentIndex === '1') {
 
-                        //2nd dbl click : if is shaking so it is confirmation to delete
+                        /**
+                         * 2nd dbl click : if is shaking so it is confirmation to delete
+                         */
                         if ($scope.deleteLine.dblClickCount === 1){
 
                             $scope.deleteLine.dblClickCount = 0;
@@ -110,7 +114,7 @@ angular
                              */                            
                             //$scope.removeLine({indexToDelete: currentIndex});
                             $scope.removeLine();
-                            console.warn('force timer destruction after delete!');
+                            //console.warn('force timer destruction after delete!');
                             $timeout.cancel(timer);
                         }
 
@@ -164,7 +168,7 @@ angular
                  * timer destruction to prevent from bad UI experience
                  */
                 $scope.$on('$destroy', function(){
-                        console.warn('timer destruction!');
+                        //console.warn('timer destruction!');
                         $timeout.cancel(timer);
                     }
                 );                
