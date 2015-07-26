@@ -238,7 +238,9 @@ angular
 				_formlyControlTemplates.className.push(cssClassToAdd);
 			}
 		};
-
+		/**
+		 * setFormlyControlTemplate : ovverrides ControlTemplate
+		 */
 		this.setFormlyControlTemplate  = function(newFormlyControlTemplate){
 			/**
 			 * test object param has minimum waited properties
@@ -252,6 +254,9 @@ angular
 			return true;
 		};
 
+		/**
+		 * TODO : add an extend properties method to _formlyControlTemplates
+		 */
 		
 		this.$get =	[
 
@@ -302,7 +307,15 @@ angular
 				};
 
 
-
+				/**
+				 *
+				 *
+				 * 
+				 * TODO : helpers to improve "formfielMange Service"
+				 *
+				 * - objective it to replace Add N ColumnControl methods
+				 * 
+				 */
 
 				/**
 				 * getRawHeaderTemplates : return full headerTemplates object
@@ -310,6 +323,9 @@ angular
 				 * better use getHeaderTemplateForNcolumnLine to return a particular header template
 				 */
 				Service.getRawHeaderTemplates = function(){
+					/**
+					 * 
+					 */
 					return _headerTemplates;
 				};
 				/**
