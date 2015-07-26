@@ -9,30 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular
 	.module('ngwfApp.controllers.ngwfMainController', [])
-	.controller('ngwfMainController', ['$scope', 'EasyFormGenFormlyBindingModels',
-		function ($scope, EasyFormGenFormlyBindingModels) {
+	.controller('ngwfMainController', [
+		function () {
 			
-			/**
-			 * debug test
-			 */
-			
-			//var hreserRaw = EasyFormGenFormlyBindingModels.getRawHeaderTemplates();
-
-			var headerTemple2col = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(2, 'text for my header');
-
-			var controlRaw = EasyFormGenFormlyBindingModels.getRawFormlyControlTemplates();
-
-			var controlTempale2ColDatepicker = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(2, 'datepicker');
-
-			console.info('debug EasyFormGenFormlyBindingModels header and controls template');
-			console.dir(
-									{
-										//hreserRaw : hreserRaw,
-										headerTemple2col : headerTemple2col,
-										controlRaw: controlRaw,
-										controlTempale2ColDatepicker : controlTempale2ColDatepicker	
-									}
-								);
-			console.info('');
-
 		}]);

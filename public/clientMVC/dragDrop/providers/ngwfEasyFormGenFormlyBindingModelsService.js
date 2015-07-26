@@ -142,7 +142,13 @@ angular
 		var _particularControlProperties = 	[
 																					{
 																						controlType 	: 'datepicker',
-																						properties 		: ['templateOptions.datepickerPopup']
+																						properties 		: [	
+																															{	
+																																isRoot  					: false, 
+																																isTemplateOptions : true, 
+																																value 						: 'datepickerPopup'
+																															}
+																														]
 																					}
 																				];
 
@@ -385,30 +391,36 @@ angular
 					if (typeof nbColInLines !== 'undefined') {
 
 						if (nbColInLines === parseInt(nbColInLines, 10)) {
-							if (nbColInLines <=  _headerTemplates.cssClass.length) {
+							if (nbColInLines <=  _formlyControlTemplates.className.length) {
 
 								var controlToReturn = angular.copy(_formlyControlTemplates);
-								controlToReturn.className = _formlyControlTemplates[nbColInLines - 1];			                          
+								controlToReturn.className = _formlyControlTemplates.className[nbColInLines - 1];
 
 								/**
 								 * controlType may require another particular property
 								 */
-								_particularControlProperties.forEach(function(controlProp){
+								if (typeof controlType !== 'undefined') {
 
-									if (controlProp.controlType === controlType) {
-										/**
-										 * add all properties this controlType has
-										 * 
-										 * NOTE : dot expression an dbracket expression to access object property
-										 * http://www.ecma-international.org/ecma-262/5.1/#sec-11.2.1
-										 */										
-										controlProp.properties.forEach(function(aPropToAdd){
-											controlToReturn[aPropToAdd] = '';	
-										});
+									_particularControlProperties.forEach(function(controlProp){
 
-									}	
-										
-								});
+										if (controlProp.controlType === controlType) {
+											/**
+											 * add all properties this controlType has
+											 * 
+											 * NOTE : dot expression and bracket expression to access object property
+											 * http://www.ecma-international.org/ecma-262/5.1/#sec-11.2.1
+											 */										
+											controlProp.properties.forEach(function(aPropToAdd){
+
+												if (aPropToAdd.isRoot) controlToReturn[aPropToAdd.value] = '';
+												if (aPropToAdd.isTemplateOptions) controlToReturn.templateOptions[aPropToAdd.value] = '';
+												
+											});
+
+										}	
+											
+									});
+								}
 
 					    	return controlToReturn;
 				    	}
