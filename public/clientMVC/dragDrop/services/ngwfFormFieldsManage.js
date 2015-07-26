@@ -285,20 +285,40 @@ angular
       /**
        * iterates through controls
        */
-      configurationModel.lines[lineIndex].columns.forEach(function(aControl){
+      var numberOfColumns = configurationModel.lines[lineIndex].columns.length;
 
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+      configurationModel.lines[lineIndex].columns.forEach(function(column){
+        var controlTemplate = {};
+
+        if (column.control.type === 'header') {
           /**
            * header is not a control just a template
+           *
+           * getHeaderTemplateForNcolumnLine()
            */
-          var headerTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(nbColInLines, textContent)
+          var headerTextContent = column.control;
+          controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
 
         }else{
           /**
-           * controls 
+           * controls : getFormlyControlTemplateForNcolumnLine()
+           *
+           * @PARAM numberOfColumns       : integer to deduce cssClss to apply
+           * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
            */
+          controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
 
         }
+
+        FieldGroup.push(controlTemplate);
+
+        var FieldGroup = [];
+        formlyModel.push(
+                           {
+                              className: 'row', 
+                              fieldGroup: FieldGroup
+                            }
+                        );        
 
       });
 
