@@ -108,6 +108,37 @@ angular
 	    lines : []
     };
 
+    var _headerTemplates = 	{
+    													cssClass 		: ['col-md-12', 'col-md-6', 'col-md-4'],
+    													textContent : '',
+    													html 				: [
+		                                          '<div class="row">',
+		                                          '  <div class="">',
+		                                          '    <h2 class="text-center">', 
+		                                               this.textContent,
+		                                          '    <h2>',
+		                                          '    <hr/>',
+		                                          '  </div>',
+		                                          '</div>'
+		                                         ].join()
+    												};
+
+    var _formlyControlTemplates =	{
+		                               className : ['col-xs-12', 'col-xs-6', 'col-xs-4'],
+		                                type      : '',
+		                                key       : '',
+		                                templateOptions: {
+		                                    type        : '',
+		                                    label       : '',
+		                                    required    : '',
+		                                    placeholder : '',
+		                                    description : '',
+		                                    options     : ''    
+		                                }
+		                              };
+
+
+
 
 		this.getEasyFormListControls = function(){
 			return _easyFormListControls;
@@ -117,6 +148,48 @@ angular
 			if (typeof controlDeclaration !== 'undefined'){
 				_easyFormListControls.controls.push(controlDeclaration);
 			}
+		};
+
+
+
+
+		this.addHeaderTemplateCssClass = function(cssClassToAdd){
+			if (typeof cssClassToAdd !== 'undefined') {
+				_headerTemplates.cssClass.push(cssClassToAdd);
+			}
+		};
+
+		this.setHeaderTemplates  = function(newHeaderTemplate){
+			/**
+			 * test object param has waited properties
+			 */
+			if (('cssClass' 		in _headerTemplates) &&
+					('textContent' 	in _headerTemplates) &&
+					('html' 				in _headerTemplates)) {
+				_headerTemplates = angular.copy(newHeaderTemplate);
+			}
+			return true;
+		};
+
+
+
+
+		this.addHeaderTemplateCssClass = function(cssClassToAdd){
+			if (typeof cssClassToAdd !== 'undefined') {
+				_headerTemplates.cssClass.push(cssClassToAdd);
+			}
+		};
+
+		this.setHeaderTemplates  = function(newHeaderTemplate){
+			/**
+			 * test object param has waited properties
+			 */
+			if (('cssClass' 		in _headerTemplates) &&
+					('textContent' 	in _headerTemplates) &&
+					('html' 				in _headerTemplates)) {
+				_headerTemplates = angular.copy(newHeaderTemplate);
+			}
+			return true;
 		};
 
 		
@@ -166,6 +239,35 @@ angular
 						}
 					}
 					return initialConfigurationModel;
+				};
+				/**
+				 * getRawHeaderTemplates : return full headerTemplates object
+				 *
+				 * better use getHeaderTemplateForNcolumnLine to return a particular header template
+				 */
+				Service.getRawHeaderTemplates = function(){
+					return _headerTemplates;
+				};
+				/**
+				 * [getHeaderTemplateForNcolumnLine : return a particular header template depending n columns in lines
+				 * @param   nbColInLines : an integer reflecting numbers of column template
+				 * @param   textContent  : header's text
+				 * @return  an headerTemplate object
+				 */
+				Service.getHeaderTemplateForNcolumnLine = function(nbColInLines, textContent){
+					if (typeof nbColInLines !== 'undefined' &&
+							typeof textContent 	!== 'undefined') {
+
+						if (nbColInLines === parseInt(nbColInLines, 10)) {
+
+							var headerToReturn = 	{
+				    													cssClass 		: _headerTemplates.cssClass[nbColInLines],
+				    													textContent : textContent,
+				    													html 				: _headerTemplates.html
+				    												};
+				    	return headerToReturn;
+						}
+					}
 				};
 
 				return Service;
