@@ -18,13 +18,14 @@ angular
 		
 		/**
 		 * define all controls easy form genearator will manage
-		 *
-		 *  
 		 */
 		var _easyFormListControls =	{
 												/**
 												 * easyFormGenerator (no drag drop version) need this array in 
 												 * the modal when adding control to row. 
+												 *
+												 * drag drop version need this in control editor
+												 * 
 												 * works in, pair with formlyProvider in case of special 
 												 * control like 'RichTextEditor'
 												 */

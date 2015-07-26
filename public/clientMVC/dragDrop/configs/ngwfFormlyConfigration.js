@@ -14,8 +14,9 @@ angular
 	.module('ngwfApp')
 	.config([	'formlyConfigProvider',
 						'EasyFormGenFormlyBindingModelsProvider',
+						'dragDropConfigProvider',
 
-	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider) {
+	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, dragDropConfigProvider) {
 		
 
 		/**
@@ -66,6 +67,25 @@ angular
 					formlyRequired 		: false, 
 					formlyDesciption 	: '', 
 					formlyOptions 		: []
+				}
+		);
+		/**
+		 * drag and drop control template
+		 */
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+          label 	: [  
+			                  '<div class="col-md-12">',
+			                  '    <div class="form-group">',                                          
+			                  '      <div class="">',
+			                  '        <h2 class="text-center">Header</h2>',
+			                  '        <hr/>',
+			                  '      </div>',
+			                  '    </div>',
+			                  '</div>'
+	                   ].join(''),          
+          control : 'header',
+          cssClass: 'col-md-12'
 				}
 		);
 

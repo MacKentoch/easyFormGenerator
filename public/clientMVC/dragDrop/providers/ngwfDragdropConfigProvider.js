@@ -105,7 +105,139 @@ angular
           itemConfig    :   {
                               verboseMode : false, 
                             }                  
-        };                                               
+                                  };  
+      /**
+       * drag and drop presentation model
+       *
+       * conatain all draggaable items 
+       */
+      var _dragDropPresentationModel = [
+                              [
+                                {
+                                  'label': [  
+                                          '<div class="col-md-12">',
+                                          '    <div class="form-group">',                                          
+                                          '      <div class="">',
+                                          '        <h2 class="text-center">Header</h2>',
+                                          '        <hr/>',
+                                          '      </div>',
+                                          '    </div>',
+                                          '</div>'
+                                            ].join(''),          
+                                  'control': 'header',
+                                  'cssClass': 'col-md-12'
+                                },
+                                {
+                                    'label': [  
+                                            '<div class="col-md-12">',
+                                            '    <div class="form-group">',                                          
+                                            '      <div class="">',
+                                            '        <h4 class="text-center">SubTitle</h4>',
+                                            '        <hr/>',
+                                            '      </div>',
+                                            '    </div>',
+                                            '</div>'
+                                              ].join(''),
+                                    //'label': '<p>label 3</p>',           
+                                    'control': 'subtitle',
+                                    'cssClass': 'col-md-12'
+                                  }
+                              ],
+                              [
+
+                                {
+                                  'label': [  
+                                            '<div class="col-md-12">',
+                                            '<div class="form-group">',
+                                            '  <label for="inputText" class="control-label textControlLabel pull-left">',
+                                            '   title <span class="textControlLabel ng-scope">*</span>',
+                                            '  </label>',
+                                            '  <div class="">',
+                                            '    <input type="text"  class="form-control" id="inputText" placeholder="basic input">',
+                                            '    <p class="help-block pull-left">Description</p>',
+                                            '  </div>',
+                                            '</div>',
+                                            '</div>'
+                                            ].join(''),
+                                  //'label': '<p>label 3</p>',           
+                                  'control': 'basicinput',
+                                  'cssClass': 'col-md-12'
+                                },                              
+                                {
+        
+                                  'label': [
+                                            '<div class="col-md-12">',
+                                            '<div class="form-group">',
+                                            '  <label for="inputText" class="control-label textControlLabel ng-binding pull-left">',
+                                            '   title <span class="textControlLabel ng-scope">*</span>',
+                                            '  </label>',
+                                            '  <div class="">',
+                                            '    <input type="password" class="form-control" id="inputText" placeholder="password input">',
+                                            '    <p class="help-block ng-binding pull-left">Description</p>',
+                                            '  </div>',
+                                            '</div>',
+                                            '</div>'
+
+                                            ].join(''),
+
+                                  'control': 'password',
+                                  'cssClass': 'col-md-12'
+                                }
+                              ],
+                              //texareas
+                              [
+
+                                {
+                                  'label': [
+                                              '<div class="col-md-12">',
+                                              '    <div class="form-group">', 
+                                              '      <label for="textArea" class="control-label textControlLabel pull-left">title<span class="textControlLabel">*</span></label>', 
+                                              '      <div class="">',
+                                              '        <textarea class="form-control dragItemtextarea" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
+                                              '        <p class="help-block pull-left">description</p>',          
+                                              '      </div>',
+                                              '    </div>',                    
+                                              '</div>'                                  
+                                            ].join(''),
+                                  'control': 'textarea',
+                                  'cssClass': 'col-md-12'          
+                                }
+
+                              ],
+                              //radios
+                              [
+                                {
+                                  'label' : [
+                                              '<div class="col-md-12">',        
+                                              '  <div class="form-group">',
+                                              '    <label for="vertRadio" class="control-label textControlLabel pull-left">title<span class="textControlLabel">*</span></label>',
+                                              '    <div class="interligne"></div>',
+                                              '    <div class="pull-left">',
+
+                                              '      <div class="radio">',
+                                              '        <label class="">',
+                                              '          <input type="radio" name="optionsRadios" id="optionsRadio-0" value="verticalRadio0" checked="">',
+                                              '          option1',
+                                              '        </label>',
+                                              '      </div><div class="radio">',
+                                              '        <label class="">',
+                                              '          <input type="radio" name="optionsRadios"  id="optionsRadio-1" value="verticalRadio1" checked="">',
+                                              '          option2',
+                                              '        </label>',
+                                              '      </div>',
+                                              '      <p class="help-block pull-left">description</p>',
+
+                                              '    </div>',
+
+
+                                              '  </div>',                            
+                                              '</div>'
+                                            ].join(''),
+                                  'control': 'verticalradio',
+                                  'cssClass': 'col-md-12'            
+                                }
+                              ]
+                            ];
 
       var _itemsNotToCountFoReal = {
                                       //placeholder :         '',
@@ -126,6 +258,12 @@ angular
       this.setItemsNotTocount = function(fromConfig){
                                 _itemsNotToCountFoReal = angular.copy(fromConfig);
                                 };
+
+      this.addControlTodragDropPresentationModel = function(controlToAdd){
+                                                    if (typeof controlToAdd !== 'undefined') {
+                                                      _dragDropPresentationModel.push(controlToAdd);
+                                                    }
+                                                    };
 
       this.$get = [
 

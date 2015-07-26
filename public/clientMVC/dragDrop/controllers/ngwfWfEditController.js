@@ -573,8 +573,7 @@ angular
                                           '      </div>',
                                           '    </div>',
                                           '</div>'
-                                            ].join(''),
-                                  //'label': '<p>label 3</p>',           
+                                            ].join(''),          
                                   'control': 'header',
                                   'cssClass': 'col-md-12'
                                 },
@@ -589,7 +588,7 @@ angular
                                             '    </div>',
                                             '</div>'
                                               ].join(''),
-                                    //'label': '<p>label 3</p>',           
+                                               
                                     'control': 'subtitle',
                                     'cssClass': 'col-md-12'
                                   }
@@ -689,6 +688,9 @@ angular
                                 }
                               ]
                             ],
+
+
+
                             //column template :
                             [
                               //1st line
