@@ -131,9 +131,6 @@ angular
             body: 'data :' + $filter('json')($scope.vm.model, 4),                
             showCloseButton: true
       }); 
-
-    //data model in console
-    //console.dir($scope.vm.model);
   }
 
 
@@ -143,51 +140,6 @@ angular
  $scope.MaxNumberOfColumns = 3;
  $scope.MinNumberOfColumns = 1;
 
-
-  ///////////////////////////////////////////////////
-  // a column model template (to get an idea)
-  ///////////////////////////////////////////////////
- //reference column object : addinding new column to configuration.line model = adding this object
- $scope.columnTemplate = {
-                            numColumn: -1,
-                            exist:true, 
-                            control: {
-                                        type:'none',
-                                        key: 'none',
-                                        subtype: 'none',
-                                        // templateOptions: {
-                                        //                     label: 'none',
-                                        //                     placeholder: 'none',
-                                        //                     required: false,
-                                        //                     description: 'Descriptive text'
-                                        //                   }
-                                      }                                         
-	                       };
-
-  ///////////////////////////////////////////////////
-  // a line model template (to get an idea)
-  ///////////////////////////////////////////////////
- //reference line object : addinding new line to configuration model = adding this object
- $scope.lineTemplate = {
-                        line:-1, 
-                        activeColumn : 1,
-                        columns: [
-                                        {  
-                                            numColumn: 1,
-                                            exist:true, 
-                                            control: {
-                                                        type:'none',
-                                                        key: 'none',
-                                                        // templateOptions: {
-                                                        //                     label: 'none',
-                                                        //                     placeholder: 'none',
-                                                        //                     required: false,
-                                                        //                     description: 'Descriptive text'
-                                                        //                   }
-                                                      }
-                                          }
-                                  ]
- 						};
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -407,60 +359,63 @@ angular
       });
       return false;
     }
-
-  toaster.pop({
-          type: 'wait',
-          timeout:10000,
-          title: 'Form is being saved',
-          body: 'Wait.',                
-          showCloseButton: true
-    });
-
-    var wfForm = new wfFormsByIdServices();
-    var formSavingIsOK = true;
-
-    wfForm.formName = $scope.configuration.formName;
-    wfForm.submitButtonText = $scope.configuration.submitButtonText;
-    wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
-
-    wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
-
-    // save to database here 
-    // wfForm.$save()
-    //             .then(function(res)  {    formSavingIsOK = true;    })
-    //             .catch(function(req) { 
-    //                                   toaster.clear();
-    //                                   formSavingIsOK = false; 
-    //                                   toaster.pop({
-    //                                           type: 'error',
-    //                                           timeout:2000,
-    //                                           title: 'Error while saving form',
-    //                                           body: 'Sorry, an Error occured while saving form.',                
-    //                                           showCloseButton: true
-    //                                     });
-    //             })
-    //             .finally(function()  { 
-    //                                   if (formSavingIsOK === true) {
-    //                                     toaster.clear();  
-    //                                     toaster.pop({
-    //                                             type: 'success',
-    //                                             timeout:2000,
-    //                                             title: 'Form is successfully saved',
-    //                                             body: '',                
-    //                                             showCloseButton: true
-    //                                       });                                         
-    //                                   }
-    //              });
-
-    toaster.clear();  
+    /**
+     * [type description]
+     * @type {String}
+     */
     toaster.pop({
-            type: 'info',
-            timeout:2000,
-            title: 'Form would be saved if it were not a static example',
-            body: '',                
+            type: 'wait',
+            timeout:10000,
+            title: 'Form is being saved',
+            body: 'Wait.',                
             showCloseButton: true
-      }); 
-    return true;
+      });
+
+      var wfForm = new wfFormsByIdServices();
+      var formSavingIsOK = true;
+
+      wfForm.formName = $scope.configuration.formName;
+      wfForm.submitButtonText = $scope.configuration.submitButtonText;
+      wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+
+      wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+
+      // save to database here 
+      // wfForm.$save()
+      //             .then(function(res)  {    formSavingIsOK = true;    })
+      //             .catch(function(req) { 
+      //                                   toaster.clear();
+      //                                   formSavingIsOK = false; 
+      //                                   toaster.pop({
+      //                                           type: 'error',
+      //                                           timeout:2000,
+      //                                           title: 'Error while saving form',
+      //                                           body: 'Sorry, an Error occured while saving form.',                
+      //                                           showCloseButton: true
+      //                                     });
+      //             })
+      //             .finally(function()  { 
+      //                                   if (formSavingIsOK === true) {
+      //                                     toaster.clear();  
+      //                                     toaster.pop({
+      //                                             type: 'success',
+      //                                             timeout:2000,
+      //                                             title: 'Form is successfully saved',
+      //                                             body: '',                
+      //                                             showCloseButton: true
+      //                                       });                                         
+      //                                   }
+      //              });
+
+      toaster.clear();  
+      toaster.pop({
+              type: 'info',
+              timeout:2000,
+              title: 'Form would be saved if it were not a static example',
+              body: '',                
+              showCloseButton: true
+        }); 
+      return true;
   };
 
 
@@ -504,7 +459,6 @@ angular
 
 
 
-
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };                            
@@ -530,50 +484,21 @@ angular
 
       
   $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
-       // console.info('dndItemMoved'); 
-       // console.dir(
-       //      {
-       //          _I_am : 'dndItemMoved',
-       //          _ParentParentIndex : parentParentIndex,
-       //          _ParentIndex : parentIndex,
-       //          _index: itemIndex
-       //      });
 
     //prevent item from first container to disapear when dropped on other container
     if (parentParentIndex > 0) {
       
-        //console.info('dndItemMoved');
         $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
-
-        //refresh all css items on column 1 (form)
-        //dragDropItemDecorationService.updateCssClassWholeColumn($scope.model, 1);
     }
     
   };
 
   $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
-       // console.info('dragoverCallbackItems'); 
-       // console.dir(
-       //      {
-       //          _I_am : 'dragoverCallbackItems',
-       //          external : external,
-       //          _ParentParentIndex : ParentParentIndex,
-       //          _ParentIndex : parentIndex,
-       //          _index: index
-       //      });
-       
-       //console.info('dragoverCallbackItems');
         //prevent items in layout column to be drag to control select  
         if (parentIndex === 0) {
             return false;
         }
-        /**
-         * apply css to all items on the row like if new item were already in (explains why "length + 1")
-         */
-        //var numberOfItems = $scope.model[parentIndex][index].length + 1;
-        //dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, index, numberOfItems, 1);
         return true;
-
     };
 
 
@@ -588,20 +513,7 @@ angular
 
 
   $scope.dropCallback = function(event, index, item, external, type, allowedType) {
-      //$scope.logListEvent('dropped at', event, index, external, type);
-     // console.info('dropCallback'); 
-     // console.dir(
-     //      {
-     //          _I_am : 'dropCallback',
-     //          event : event,
-     //          index : index,
-     //          item : item,
-     //          external: external,
-     //          type:type,
-     //          allowedType:allowedType,
-     //          model : $scope.model
-     //      });            
-
+          
       if (external) {
           if (allowedType === 'itemType' && !item.label) return false;
           if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
@@ -626,66 +538,16 @@ angular
    * @return {[type]}                         [description]
    */
   $scope.dropCallbackItems = function(event, index, realIndex,parentIndex, parentParentIndex, parentParentParentIndex, item, external, type, allowedType){
-     
-     //console.info('dropCallbackItems');
-     // console.info('dropCallbackItems'); 
-     // console.dir(
-     //      {
-     //          _I_am : 'dropCallback',
-     //          event : event,
-     //          index : index,
-     //          realIndex: realIndex,
-     //          parentIndex: parentIndex,
-     //          parentParentIndex: parentParentIndex,
-     //          parentParentParentIndex: parentParentParentIndex,
-     //          item : item,
-     //          external: external,
-     //          type:type,
-     //          allowedType:allowedType,
-     //          model : $scope.model,
-     //          line: $scope.model[parentIndex][realIndex]
-     //      });            
-
-     /**
-      * 
-      * UPDATE CSS CLASS TO ALL ITEMS IN SAME ROW
-      */          
-     //NOTE : length + 1 since current intem is not in the model right now :
-     //var numberOfItems = $scope.model[parentIndex][realIndex].length + 1;
-     // dragDropItemDecorationService.applyCssClassWholeLine($scope.model, parentIndex, realIndex, numberOfItems, 1);
-     /**
-      * 
-      * UPDATE CSS CLASS ITEM BEFORE RETURNING IT
-      * 
-      */           
-      //item.cssClass = dragDropItemDecorationService.getCssClassWhenNumberItemsInRowIs(numberOfItems);
     
       if (external) {
           if (allowedType === 'itemType' && !item.label) return false;
           if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
       }
     
-      //$scope.command.forceRefresh = true;
-
       return item;
   };
 
 
-  /**
-   * logEvent (was used in pair with logListEvent) - no more used
-   */
-  $scope.logEvent = function(message, event) {
-      // console.log(message, '(triggered by the following', event.type, 'event)');
-      // console.log(event);
-  };
-  /**
-   * logListEvent - no more used
-   */
-  $scope.logListEvent = function(action, event, index, external, type) {
-      var message = external ? 'External ' : '';
-      message += type + ' element is ' + action + ' position ' + index;
-      $scope.logEvent(message, event);
-  };
 
   /**
    * removeThisLine event line deleted

@@ -89,34 +89,40 @@ angular
       var lineNumber = configurationModel.lines.length;
       for (var i = 0; i < lineNumber; i++) {
 
-          /**
-           * 1 column line control
-           */
-          if (configurationModel.lines[i].columns.length === 1) {
-            /**
-             * test if template control = header
-             * header is not a control in formly but a simple template
-             */
-            if (configurationModel.lines[i].columns[0].control.type === 'header') {
-              AddOneColumnHeader(formlyModel, configurationModel, i);
-            }else{
-              AddOneColumnControl(formlyModel, configurationModel, i);  
-            }
-          }
-          /**
-           * 2 columns line control
-           * header, datepicker are particular cases, manganed inside AddTwoColumnControl()
-           */
-          if (configurationModel.lines[i].columns.length === 2) {
-            AddTwoColumnControl(formlyModel, configurationModel,i);
-          }
-          /**
-           * 3 columns line control
-           * header, datepicker are particular cases, manganed inside AddThreeColumnControl()
-           */
-          if (configurationModel.lines[i].columns.length === 3) {
-            AddThreeColumnControl(formlyModel, configurationModel,i);
-          }
+
+        /**
+         * TO TEST
+         */
+        AddNColumnControl(formlyModel, configurationModel, i);
+
+          // /**
+          //  * 1 column line control
+          //  */
+          // if (configurationModel.lines[i].columns.length === 1) {
+          //   /**
+          //    * test if template control = header
+          //    * header is not a control in formly but a simple template
+          //    */
+          //   if (configurationModel.lines[i].columns[0].control.type === 'header') {
+          //     AddOneColumnHeader(formlyModel, configurationModel, i);
+          //   }else{
+          //     AddOneColumnControl(formlyModel, configurationModel, i);  
+          //   }
+          // }
+          // *
+          //  * 2 columns line control
+          //  * header, datepicker are particular cases, manganed inside AddTwoColumnControl()
+           
+          // if (configurationModel.lines[i].columns.length === 2) {
+          //   AddTwoColumnControl(formlyModel, configurationModel,i);
+          // }
+          // /**
+          //  * 3 columns line control
+          //  * header, datepicker are particular cases, manganed inside AddThreeColumnControl()
+          //  */
+          // if (configurationModel.lines[i].columns.length === 3) {
+          //   AddThreeColumnControl(formlyModel, configurationModel,i);
+          // }
       }
     };
         
@@ -128,6 +134,52 @@ angular
       var resetformly = [];
       angular.copy(resetformly, formlyModel);
     }
+
+    /**
+     * New auuto adpat  add N column controls
+     */
+    function AddNColumnControl(formlyModel, configurationModel,lineIndex){
+      /**
+       * iterates through controls
+       */
+      var numberOfColumns = configurationModel.lines[lineIndex].columns.length;
+
+      configurationModel.lines[lineIndex].columns.forEach(function(column){
+        var controlTemplate = {};
+
+        if (column.control.type === 'header') {
+          /**
+           * header is not a control just a template
+           *
+           * getHeaderTemplateForNcolumnLine()
+           */
+          var headerTextContent = column.control;
+          controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
+
+        }else{
+          /**
+           * controls : getFormlyControlTemplateForNcolumnLine()
+           *
+           * @PARAM numberOfColumns       : integer to deduce cssClss to apply
+           * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
+           */
+          controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
+
+        }
+
+        FieldGroup.push(controlTemplate);
+
+        var FieldGroup = [];
+        formlyModel.push(
+                           {
+                              className: 'row', 
+                              fieldGroup: FieldGroup
+                            }
+                        );        
+
+      });
+
+    }    
 
     function AddOneColumnHeader(formlyModel, configurationModel,lineIndex){
       /**
@@ -278,51 +330,7 @@ angular
                       );
     }
 
-    /**
-     * New auuto adpat  add N column controls
-     */
-    function AddNColumnControl(formlyModel, configurationModel,lineIndex){
-      /**
-       * iterates through controls
-       */
-      var numberOfColumns = configurationModel.lines[lineIndex].columns.length;
 
-      configurationModel.lines[lineIndex].columns.forEach(function(column){
-        var controlTemplate = {};
-
-        if (column.control.type === 'header') {
-          /**
-           * header is not a control just a template
-           *
-           * getHeaderTemplateForNcolumnLine()
-           */
-          var headerTextContent = column.control;
-          controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
-
-        }else{
-          /**
-           * controls : getFormlyControlTemplateForNcolumnLine()
-           *
-           * @PARAM numberOfColumns       : integer to deduce cssClss to apply
-           * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
-           */
-          controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
-
-        }
-
-        FieldGroup.push(controlTemplate);
-
-        var FieldGroup = [];
-        formlyModel.push(
-                           {
-                              className: 'row', 
-                              fieldGroup: FieldGroup
-                            }
-                        );        
-
-      });
-
-    }
 
     function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
 
