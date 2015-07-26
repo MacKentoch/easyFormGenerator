@@ -17,13 +17,6 @@ angular
 
 	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider) {
 		
-		/**
-		 * for dev only : debug and test
-		 */
-		console.info('getHeaderTemplates');
-		console.dir(EasyFormGenFormlyBindingModelsProvider.getHeaderTemplates());
-
-
 
 		/**
 		 * Add blanck control

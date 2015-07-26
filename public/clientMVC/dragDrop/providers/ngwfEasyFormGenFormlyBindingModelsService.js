@@ -235,7 +235,7 @@ angular
 
 		this.addformlyControlTemplatesCssClass = function(cssClassToAdd){
 			if (typeof cssClassToAdd !== 'undefined') {
-				_formlyControlTemplates.cssClass.push(cssClassToAdd);
+				_formlyControlTemplates.className.push(cssClassToAdd);
 			}
 		};
 
@@ -243,7 +243,7 @@ angular
 			/**
 			 * test object param has minimum waited properties
 			 */
-			if (('cssClass'					in newFormlyControlTemplate) &&
+			if (('className'					in newFormlyControlTemplate) &&
 					('type' 						in newFormlyControlTemplate) &&
 					('key' 							in newFormlyControlTemplate) &&
 					('templateOptions') in newFormlyControlTemplate) {
