@@ -12,7 +12,7 @@
 **/
 angular
 	.module('ngwfApp.providers.EasyFormGenFormlyBindingModels', [])
-	.provider('EasyFormGenFormlyBindingModels', [ 
+	.provider('EasyFormGenFormlyBindingModels', [
 
 	function(){ 
 		
@@ -124,7 +124,7 @@ angular
     												};
 
     var _formlyControlTemplates =	{
-		                               className : ['col-xs-12', 'col-xs-6', 'col-xs-4'],
+		                                className : ['col-xs-12', 'col-xs-6', 'col-xs-4'],
 		                                type      : '',
 		                                key       : '',
 		                                templateOptions: {
@@ -137,10 +137,67 @@ angular
 		                                }
 		                              };
 
+		var _particularControlProperties = 	[
+																					{
+																						controlType 	: 'datepicker',
+																						properties 		: ['templateOptions.datepickerPopup']
+																					}
+																				];
+
+
+
+		this.getAllParticularControlProperties = function(){
+			/**
+			 * 
+			 */
+			return _particularControlProperties;
+		};
+
+		this.addParticularControlProperties = function(newParticularControlProperty){
+			/**
+			 * test object param has waited properties
+			 */
+			if (('controlType' 	in newParticularControlProperty) &&
+					('properties' 	in newParticularControlProperty)) {
+				/**
+				 * test controlType does not already exists
+				 *
+				 * here will update properties (correponding controlType) if already exists
+				 */
+				var isAnUpdate = false;
+				if ( _particularControlProperties.length > 0 ) {
+
+					_particularControlProperties.forEach(function(controlProp){
+
+						if (controlProp.controlType === newParticularControlProperty.controlType) {
+							controlProp.properties = [].concat(newParticularControlProperty.properties);
+							isAnUpdate = true;
+						}	
+							
+					});
+				}
+				/**
+				 * it is no update so ; add newParticularControlProperty
+				 */
+				if (!isAnUpdate) {
+
+					_particularControlProperties.push(newParticularControlProperty);
+
+				}
+				
+			}
+
+			return _particularControlProperties;			
+		};
+
+
 
 
 
 		this.getEasyFormListControls = function(){
+			/**
+			 * 
+			 */
 			return _easyFormListControls;
 		};
 
@@ -152,6 +209,12 @@ angular
 
 
 
+		this.getHeaderTemplates = function(){
+			/**
+			 * 
+			 */
+			return _headerTemplates;
+		};
 
 		this.addHeaderTemplateCssClass = function(cssClassToAdd){
 			if (typeof cssClassToAdd !== 'undefined') {
@@ -159,35 +222,32 @@ angular
 			}
 		};
 
-		this.setHeaderTemplates  = function(newHeaderTemplate){
+
+
+
+
+		this.getFormlyControlTemplate = function(){
 			/**
-			 * test object param has waited properties
+			 * 
 			 */
-			if (('cssClass' 		in _headerTemplates) &&
-					('textContent' 	in _headerTemplates) &&
-					('html' 				in _headerTemplates)) {
-				_headerTemplates = angular.copy(newHeaderTemplate);
-			}
-			return true;
+			return _formlyControlTemplates;
 		};
 
-
-
-
-		this.addHeaderTemplateCssClass = function(cssClassToAdd){
+		this.addformlyControlTemplatesCssClass = function(cssClassToAdd){
 			if (typeof cssClassToAdd !== 'undefined') {
-				_headerTemplates.cssClass.push(cssClassToAdd);
+				_formlyControlTemplates.cssClass.push(cssClassToAdd);
 			}
 		};
 
-		this.setHeaderTemplates  = function(newHeaderTemplate){
+		this.setFormlyControlTemplate  = function(newFormlyControlTemplate){
 			/**
-			 * test object param has waited properties
+			 * test object param has minimum waited properties
 			 */
-			if (('cssClass' 		in _headerTemplates) &&
-					('textContent' 	in _headerTemplates) &&
-					('html' 				in _headerTemplates)) {
-				_headerTemplates = angular.copy(newHeaderTemplate);
+			if (('cssClass'					in newFormlyControlTemplate) &&
+					('type' 						in newFormlyControlTemplate) &&
+					('key' 							in newFormlyControlTemplate) &&
+					('templateOptions') in newFormlyControlTemplate) {
+				_formlyControlTemplates = angular.copy(newFormlyControlTemplate);
 			}
 			return true;
 		};
@@ -240,6 +300,10 @@ angular
 					}
 					return initialConfigurationModel;
 				};
+
+
+
+
 				/**
 				 * getRawHeaderTemplates : return full headerTemplates object
 				 *
@@ -269,6 +333,40 @@ angular
 						}
 					}
 				};
+
+
+
+
+
+				/**
+				 * getRawFormlyControlTemplates : return full generic control templates object
+				 *
+				 * better use getFormlyControlTemplateForNcolumnLine to return a particular control template
+				 */
+				Service.getRawFormlyControlTemplates = function(){
+					return _formlyControlTemplates;
+				};
+				/**
+				 * [getFormlyControlTemplateForNcolumnLine : return a particular control template depending n columns in lines
+				 * @param   nbColInLines : an integer reflecting numbers of column template
+				 * @return  an empty generic control template object
+				 */
+				Service.getFormlyControlTemplateForNcolumnLine = function(nbColInLines){
+					if (typeof nbColInLines !== 'undefined') {
+
+						if (nbColInLines === parseInt(nbColInLines, 10)) {
+
+							var controlToReturn = 	{
+					    													cssClass 				: _formlyControlTemplates.cssClass[nbColInLines],
+					    													type 						: '',
+					    													key  						: '',
+					    													templateOptions : {} 
+				    													};
+
+				    	return controlToReturn;
+						}
+					}
+				};				
 
 				return Service;
 
