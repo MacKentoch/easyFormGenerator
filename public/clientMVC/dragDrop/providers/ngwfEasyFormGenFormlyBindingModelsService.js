@@ -111,16 +111,18 @@ angular
     var _headerTemplates = 	{
     													cssClass 		: ['col-md-12', 'col-md-6', 'col-md-4'],
     													textContent : '',
-    													html 				: [
+    													html_part1 	: [
 		                                          '<div class="row">',
 		                                          '  <div class="">',
-		                                          '    <h2 class="text-center">', 
-		                                               this.textContent,
+		                                          '    <h2 class="text-center">'
+		                                         ].join(''),
+		                          html_part2  : this.textContent,
+		                          html_part3 	:  [ 
 		                                          '    <h2>',
 		                                          '    <hr/>',
 		                                          '  </div>',
 		                                          '</div>'
-		                                         ].join()
+		                                         ].join(''),
     												};
 
     var _formlyControlTemplates =	{
@@ -245,7 +247,7 @@ angular
 			/**
 			 * test object param has minimum waited properties
 			 */
-			if (('className'					in newFormlyControlTemplate) &&
+			if (('className'				in newFormlyControlTemplate) &&
 					('type' 						in newFormlyControlTemplate) &&
 					('key' 							in newFormlyControlTemplate) &&
 					('templateOptions') in newFormlyControlTemplate) {
@@ -340,12 +342,24 @@ angular
 
 						if (nbColInLines === parseInt(nbColInLines, 10)) {
 
-							var headerToReturn = 	{
-				    													cssClass 		: _headerTemplates.cssClass[nbColInLines],
-				    													textContent : textContent,
-				    													html 				: _headerTemplates.html
-				    												};
-				    	return headerToReturn;
+							if (nbColInLines <=  _headerTemplates.cssClass.length) {
+							
+					    	var headerToReturn = {};
+					    	headerToReturn.className = _headerTemplates.cssClass[nbColInLines - 1];
+					    	/**
+					    	 * header html property depends this property dont forget to set it before reading html property
+					    	 */
+					    	_headerTemplates.textContent = textContent;
+
+					    	headerToReturn.template = [
+					    															_headerTemplates.html_part1,
+					    															textContent,
+					    															_headerTemplates.html_part3
+					    														].join('');
+
+					    	return headerToReturn;
+				    	}
+
 						}
 					}
 				};
@@ -367,23 +381,41 @@ angular
 				 * @param   nbColInLines : an integer reflecting numbers of column template
 				 * @return  an empty generic control template object
 				 */
-				Service.getFormlyControlTemplateForNcolumnLine = function(nbColInLines){
+				Service.getFormlyControlTemplateForNcolumnLine = function(nbColInLines, controlType){
 					if (typeof nbColInLines !== 'undefined') {
 
 						if (nbColInLines === parseInt(nbColInLines, 10)) {
+							if (nbColInLines <=  _headerTemplates.cssClass.length) {
 
-							var controlToReturn = 	{
-					    													cssClass 				: _formlyControlTemplates.cssClass[nbColInLines],
-					    													type 						: '',
-					    													key  						: '',
-					    													templateOptions : {} 
-				    													};
+								var controlToReturn = angular.copy(_formlyControlTemplates);
+								controlToReturn.className = _formlyControlTemplates[nbColInLines - 1];			                          
 
-				    	return controlToReturn;
+								/**
+								 * controlType may require another particular property
+								 */
+								_particularControlProperties.forEach(function(controlProp){
+
+									if (controlProp.controlType === controlType) {
+										/**
+										 * add all properties this controlType has
+										 * 
+										 * NOTE : dot expression an dbracket expression to access object property
+										 * http://www.ecma-international.org/ecma-262/5.1/#sec-11.2.1
+										 */										
+										controlProp.properties.forEach(function(aPropToAdd){
+											controlToReturn[aPropToAdd] = '';	
+										});
+
+									}	
+										
+								});
+
+					    	return controlToReturn;
+				    	}
 						}
 					}
-				};				
-
+				};
+	
 				return Service;
 
 			}
