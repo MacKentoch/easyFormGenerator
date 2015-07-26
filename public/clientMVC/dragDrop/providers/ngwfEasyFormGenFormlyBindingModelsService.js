@@ -397,7 +397,7 @@ angular
 								controlToReturn.className = _formlyControlTemplates.className[nbColInLines - 1];
 
 								/**
-								 * controlType may require another particular property
+								 * check controlType: it may require another particular property
 								 */
 								if (typeof controlType !== 'undefined') {
 

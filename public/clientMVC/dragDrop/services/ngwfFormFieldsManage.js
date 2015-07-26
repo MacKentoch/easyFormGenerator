@@ -278,6 +278,32 @@ angular
                       );
     }
 
+    /**
+     * New auuto adpat  add N column controls
+     */
+    function AddNColumnControl(formlyModel, configurationModel,lineIndex){
+      /**
+       * iterates through controls
+       */
+      configurationModel.lines[lineIndex].columns.forEach(function(aControl){
+
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+          /**
+           * header is not a control just a template
+           */
+          var headerTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(nbColInLines, textContent)
+
+        }else{
+          /**
+           * controls 
+           */
+
+        }
+
+      });
+
+    }
+
     function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
 
         //text header is stored in "description" in templateOtion model
