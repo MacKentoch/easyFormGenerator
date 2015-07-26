@@ -18,10 +18,17 @@ angular
 		
 		/**
 		 * define all controls easy form genearator will manage
+		 *
+		 *  
 		 */
 		var _easyFormListControls =	{
-
-	                    controls : [],
+												/**
+												 * easyFormGenerator (no drag drop version) need this array in 
+												 * the modal when adding control to row. 
+												 * works in, pair with formlyProvider in case of special 
+												 * control like 'RichTextEditor'
+												 */
+	                    	controls : [],
 
 	                      selectedControl : 'none' ,
 	                      temporyConfig : {

@@ -42,175 +42,69 @@ angular
                                                 numberItemPerRow: 3
                                             }
                                         ]; 
-      /**
-       * _initListControls  : default list of control to present as integratable to form.
+
+      /** easyFormDragDropProperties 
        *
-       * easyFormGenerator (no drag drop version) need this object in the modal when adding control to row. 
-       *
-       * works in, pair with formlyProvider in case of special control like 'RichTextEditor' 
+       * drag and drop appearance configuration properties
        */
-      var _initListControls = {
+      var _dragDropConfigModel =  {
+          dropZoneConfig : {
+                                decoration :  [
+                                                {
+                                                  WhenIndex: 0,
+                                                  ApplycssClass: 'col-md-4', 
+                                                  fontAwesomeIcon: 'fa fa-level-up',
+                                                  title: 'Drag control from here : '
+                                                },
+                                                {
+                                                  WhenIndex: 1,
+                                                  ApplycssClass: 'col-md-8', 
+                                                  fontAwesomeIcon: 'fa fa-level-down',
+                                                  title: 'Drop control into here : '
+                                                }
+                                              ],
+                                verboseMode : false
+                            },
+          containerConfig : {
+                                decoration :    [
+                                                  {
+                                                    WhenIndex: 0,
+                                                    ApplycssClass: 'col-md-12', 
+                                                    title: 'Headers : '
+                                                  },
+                                                  {
+                                                    WhenIndex: 1,
+                                                    ApplycssClass: 'col-md-12', 
+                                                    title: 'Text inputs : '
+                                                  },
+                                                  {
+                                                    WhenIndex: 2,
+                                                    ApplycssClass : 'col-md-12',
+                                                    title : 'textarea'
+                                                  },
+                                                  {
+                                                    WhenIndex: 3,
+                                                    ApplycssClass : 'col-md-12',
+                                                    title : 'radio'
+                                                  }                                                      
+                                                ],
 
-                        controls : [
-                                    {
-                                        id: 'empty',  
-                                        name: 'no control', 
-                                        subtitle: 'no control', 
-                                        group: 'Blank', 
-                                        formlyType: 'blank', 
-                                        formlySubtype: '', 
-                                        formlyLabel: '', 
-                                        formlyRequired: false, 
-                                        formlyDesciption: '', 
-                                        formlyOptions: []
-                                      },
-                                    {
-                                      id: 'Header',  
-                                      name: 'Header', 
-                                      subtitle: 'no control', 
-                                      group: 'Decoration', 
-                                      formlyType: 'header"', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'Subtitle',  
-                                      name: 'Subtitle', 
-                                      subtitle: 'no control', 
-                                      group: 'Decoration', 
-                                      formlyType: 'subTitle', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'TextInput',  
-                                      name: 'Text input', 
-                                      subtitle: 'Text input', 
-                                      group: 'input', 
-                                      formlyType: 'input', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'Password',  
-                                      name: 'Password', 
-                                      subtitle: 'Password', 
-                                      group: 'input', 
-                                      formlyType: 'input', 
-                                      formlySubtype: 'password', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'Date',  
-                                      name: 'Date', 
-                                      subtitle: 'Date', 
-                                      group: 'input', 
-                                      formlyType: 'datepicker', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: [], 
-                                      datepickerPopup: 'dd-MMMM-yyyy'
-                                    },
-                                    {
-                                      id: 'Texarea', 
-                                      name: 'Textarea', 
-                                      subtitle: 'Textarea', 
-                                      group: 'Textarea', 
-                                      formlyType: 'textarea', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'RichTextEditor', 
-                                      name: 'RichTextEditor', 
-                                      subtitle: 'RichTextEditor', 
-                                      group: 'Textarea', 
-                                      formlyType: 'richEditor', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'Radio', 
-                                      name: 'Radio', 
-                                      subtitle: 'Radio', 
-                                      options: [], 
-                                      group: 'Radio', 
-                                      formlyType: 'radio', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'Checkbox', 
-                                      name: 'Checkbox', 
-                                      subtitle: 'Checkbox', 
-                                      group: 'Checkbox', 
-                                      formlyType: 'checkbox', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'BasicSelect', 
-                                      name: 'Basic select', 
-                                      subtitle: 'Basic select',
-                                      options: [], 
-                                      group: 'Select', 
-                                      formlyType: 'basicSelect', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '', 
-                                      formlyOptions: []
-                                    },
-                                    {
-                                      id: 'GroupedSelect', 
-                                      name: 'Grouped Select', 
-                                      subtitle: 'Grouped Select',
-                                      options: [], 
-                                      group: 'Select', 
-                                      formlyType: 'groupedSelect', 
-                                      formlySubtype: '', 
-                                      formlyLabel: '', 
-                                      formlyRequired: false, 
-                                      formlyDesciption: '',
-                                      formlyOptions: []
-                                    }
-                                  ],
-
-                          selectedControl : 'none' ,
-                          temporyConfig : {
-                                            selectedControl: 'none',
-                                            formlyLabel: 'label', 
-                                            formlyRequired: false, 
-                                            formlyDesciption: '',
-                                            formlyPlaceholder: '',
-                                            formlyOptions : []
-                                          } 
+                                verboseMode     : false, 
+                                collapseEnabled : true,
+                                collapseCtrl    : [
+                                                    {
+                                                      atIndex : 0,
+                                                      collapse : true
+                                                    },
+                                                    {
+                                                      atIndex : 1,
+                                                      collapse : true
+                                                    }
+                                                  ]                                                                  
+                            },
+          itemConfig    :   {
+                              verboseMode : false, 
+                            }                  
         };                                               
 
       var _itemsNotToCountFoReal = {
@@ -243,13 +137,9 @@ angular
                                         return _listDragDropItemCssClasses;
                                         };
 
-          Service.getListControls = function(){
-                                    return _initListControls;
-                                    
-
-
-
-                                    };
+          // Service.getListControls = function(){
+          //                           return _initListControls;
+          //                           };
           
           /**
            * when counting items in a line : need to skip placeholder and hidden dragging source
@@ -303,7 +193,12 @@ angular
 
                                               });
                                               return distinctCssClass;
-                                            };               
+                                            };
+          Service.getDragDropConfigModel = function(){
+
+                                              return _dragDropConfigModel;
+                                          };
+
           return Service;
         } 
       ];

@@ -150,7 +150,7 @@ angular
 					formlyDesciption 	: '', 
 					formlyOptions 		: []}
 		);
-
+		
 		/**
 		 * Add angular UI date picker
 		 *

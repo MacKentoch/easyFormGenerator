@@ -219,34 +219,7 @@ angular
     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
   };
 
-  $scope.addNewline = function(){
-  	var newNumberOfLines = $scope.configuration.lines.push(
-															{
-											                    line:-1, 
-											                    activeColumn : 1,
-											                    columns: [
-											                                    {  
-											                                        numColumn: 1,
-											                                        exist:true, 
-											                                        control: {
-											                                                    type:'none',
-											                                                    key: 'none',
-											                                                    // templateOptions: {
-											                                                    //                     label: 'none',
-											                                                    //                     placeholder: 'none',
-											                                                    //                     required: false,
-											                                                    //                     description: 'Descriptive text'
-											                                                    //                   }
-											                                                  }
-											                                      }
-											                              ]
-																}
 
-		);
-      //re-render formfield 
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
-  };
 
   //must be remove a line with index of line to delete
   $scope.removeThisLine = function(index){
@@ -559,111 +532,27 @@ angular
 
   $scope.model = [];
 
+  function addNewline(){
+    /**
+     * re-render formfield
+     */
+    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+  }
+
+
+  $scope.insertNewLine = function(){
+                          addNewline();
+                          $scope.model[1].push([]);
+                          };
+
 
   /**
-   * easyFormDragDropProperties 
+   * easyFormDragDropProperties : configure drag and drop apearance
    *
-   * configuration properties
-   *
-   * May move into a provider next
+   * — see dragDropConfig provider —
    */
-  $scope.easyFormDragDropProperties = {
-            dropZoneConfig : {
-                                  decoration :    [
-                                                      {
-                                                          WhenIndex: 0,
-                                                          ApplycssClass: 'col-md-4', 
-                                                          fontAwesomeIcon: 'fa fa-level-up',
-                                                          title: 'Drag control from here : '
-                                                      },
-                                                      {
-                                                          WhenIndex: 1,
-                                                          ApplycssClass: 'col-md-8', 
-                                                          fontAwesomeIcon: 'fa fa-level-down',
-                                                          title: 'Drop control into here : '
-                                                      }
-                                                  ],
-                                  verboseMode : false
-
-
-            },
-
-            dropZoneCommand : {
-                                insertNewLine : function(){
-                                          $scope.model[1].push([]);
-                                }  
-            },
-
-            containerConfig : {
-                                  decoration :    [
-                                                      {
-                                                          WhenIndex: 0,
-                                                          ApplycssClass: 'col-md-12', 
-                                                          title: 'Headers : '
-                                                      },
-                                                      {
-                                                          WhenIndex: 1,
-                                                          ApplycssClass: 'col-md-12', 
-                                                          title: 'Text inputs : '
-                                                      },
-                                                      {
-                                                          WhenIndex: 2,
-                                                          ApplycssClass : 'col-md-12',
-                                                          title : 'textarea'
-                                                      },
-                                                      {
-                                                          WhenIndex: 3,
-                                                          ApplycssClass : 'col-md-12',
-                                                          title : 'radio'
-                                                      }                                                      
-
-                                                  ],
-                                  verboseMode : false, 
-                                  collapseEnabled : true,
-                                  collapseCtrl: [
-                                                    {
-                                                        atIndex : 0,
-                                                        collapse : true
-                                                    },
-                                                    {
-                                                        atIndex : 1,
-                                                        collapse : true
-                                                    }
-                                                ]                                                                  
-            },
-            itemConfig : {
-                                  verboseMode : false, 
-                              }                  
-  };
-
-
-  $scope.easyFormDragDropItemCounters = [
-                                          //1st column
-                                          [
-                                            //line1 
-                                            {
-
-                                            },
-                                            {
-
-                                            }
-
-
-                                          ],
-                                          //2nd column
-                                          [
-                                            {
-
-                                            },
-
-                                            {
-
-                                            }
-                                          ]
-                                      ];
-
-  //force item css refresh (used in drop event)
-  $scope.command = {forceRefresh : false};  
+  $scope.easyFormDragDropProperties = dragDropConfig.getDragDropConfigModel();
 
   /**
    * Model just for dev
