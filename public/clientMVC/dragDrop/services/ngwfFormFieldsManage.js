@@ -166,7 +166,14 @@ angular
           controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
 
         }
-
+    
+       /**
+        * test before push : it could be an empty column added
+        * which means : column.control.type = 'none'
+        * (so we dont affect configurationModel it is just visual)
+        */
+       if (typeof controlTemplate !== 'undefined' &&
+           column.control.type !== 'none' ) {
         FieldGroup.push(controlTemplate);
 
         var FieldGroup = [];
@@ -175,7 +182,11 @@ angular
                               className: 'row', 
                               fieldGroup: FieldGroup
                             }
-                        );        
+                        );          
+
+        }
+
+      
 
       });
 

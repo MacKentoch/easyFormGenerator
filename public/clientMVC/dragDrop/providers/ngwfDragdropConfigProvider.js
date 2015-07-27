@@ -63,7 +63,7 @@ angular
                                                   title: 'Drop control into here : '
                                                 }
                                               ],
-                                verboseMode : true
+                                verboseMode : false
                             },
           containerConfig : {
                                 decoration :    [
