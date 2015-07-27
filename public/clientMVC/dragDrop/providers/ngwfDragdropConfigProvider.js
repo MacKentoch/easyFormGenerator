@@ -282,12 +282,19 @@ angular
                                 };
 
       
-      this.addControlTodragDropPresentationModel = function(controlToAdd, groupToAdd){
+      this.addControlToDragDropPresentationModel = function(controlToAdd, groupToAdd){
                                                       if (typeof controlToAdd !== 'undefined' &&
                                                           typeof groupToAdd   !== 'undefined') {
                                                         addToGroupControl(controlToAdd, groupToAdd);
                                                       }
                                                     };
+
+      this.getDragDropPresentationModel = function(){
+                                            /**
+                                             * 
+                                             */
+                                            return _dragDropPresentationModel;
+                                          };
 
       this.$get = [
 
@@ -368,6 +375,14 @@ angular
         } 
       ];
 
+      /**
+       * addToGroupControl : add control to _dragDropPresentationModel
+       * @param {[type]} thisControl : control to add
+       * @param {[type]} thisGroup   : groupId wher this control should be added
+       *
+       * NOTE : if _dragDropPresentationModel wrong initialized it will create list of group conforming to 
+       * configModel
+       */
       function addToGroupControl(thisControl, thisGroup){
         /**
          * search group if already exists

@@ -560,6 +560,10 @@ angular
    * next may move in a provider
    */
   //init  model
+  //
+  $scope.dragDropModel = [].concat(dragDropConfig.getDragDropPresentationModel());
+
+
   $scope.model = [].concat([
                             [
                               [

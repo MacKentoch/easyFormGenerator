@@ -53,8 +53,9 @@ angular
 		 * @PARAM 1 : control template object (drag an drop)
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 * 						(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 *
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
           label 	: [  
 			                  '<div class="col-md-12">',
@@ -70,7 +71,7 @@ angular
 				{
 					addToGroupCtrl : 'blank'
 				}
-		);		
+		);	
 
 		/**
 		 * Add header
@@ -103,7 +104,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
           label 	: [  
 			                  '<div class="col-md-12">',
@@ -167,7 +168,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 * 						(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
         {
           'label' 	: [  
 			                  '<div class="col-md-12">',
@@ -217,7 +218,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 	      {
 	        'label' 	: [  
 			                  '<div class="col-md-12">',
@@ -270,7 +271,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
         {
 
           'label' 	: [
@@ -416,7 +417,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
 									label 	: [
 															'<div class="row">',
@@ -479,7 +480,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
         {
           'label' 	: [
                         '<div class="col-md-12">',
@@ -540,7 +541,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */	
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
 					label 	: [
 											'<div class="col-md-12">', 
@@ -597,7 +598,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
         {
           'label' 	: [
                         '<div class="col-md-12">',        
@@ -659,7 +660,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
 
 					label 	: [
@@ -733,7 +734,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
 					label 	: [
 											'<div class="col-md-12">',
@@ -815,7 +816,7 @@ angular
 		 * @PARAM 2 : object to indicates in which group of control it will be inserted
 		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
-		dragDropConfigProvider.addControlTodragDropPresentationModel(
+		dragDropConfigProvider.addControlToDragDropPresentationModel(
 				{
 					label 	: [
 											'<div class="col-md-12">', 
