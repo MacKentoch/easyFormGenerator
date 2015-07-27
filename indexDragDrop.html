@@ -107,6 +107,24 @@
 												  <p>This is currently in development.</p>
 												  <p>It may change so I can't tell you this will look like the same when released.</p>
 												  <p><a class="btn btn-primary btn-lg" href="https://github.com/MacKentoch/easyFormGenerator"><i class="fa fa-github"></i>&nbsp;go github</a></p>
+
+												  <!-- <hr>
+
+												  <pre style="font-size:7px">
+												  {{dragDropModel | json}}
+												  </pre>
+
+
+												  <pre>
+												  {{model | json}}
+												  </pre>
+
+
+													<pre style="font-size:7px">
+												  {{easyFormDragDropProperties.dropZoneConfig.decoration | json}}
+												  </pre> -->
+
+
 												</div>
 
 								    		</div>
@@ -118,7 +136,7 @@
 
 							            <div class="row advancedDemo">
 
-							              <div ng-repeat="containers in model">
+							              <div ng-repeat="containers in dragDropModel">
 
 							                    <div  dd-decor-drop-zone
 							                          dd-drop-zone-properties="easyFormDragDropProperties.dropZoneConfig.decoration[$index]"
@@ -180,7 +198,7 @@
 							                                          dd-content-counter
 							                                          dd-value-when-placeholder="dndPlaceholder"
 							                                          dd-value-when-dragging="dndDraggingSource"
-							                                          dd-full-model = "model"
+							                                          dd-full-model = "dragDropModel"
 							                                          dd-content-counter-current-index="{{$index}}"
 							                                          dd-content-counter-parent-index="{{$parent.$index}}"
 							                                          dd-content-counter-force-css-refresh = "command.forceRefresh"
