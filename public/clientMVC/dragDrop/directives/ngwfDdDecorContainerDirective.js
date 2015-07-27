@@ -29,9 +29,9 @@ angular
 
         return {
             scope:  {
-                        'styleParam'    :   '=ddContainerProperties',
-                         'verboseMode'  :   '@ddContainerVerboseMode',
-                         'currentIndex' :   '@ddContainerCurrentIndex',
+                         'styleParam'    : '=ddContainerProperties',
+                         'verboseMode'   : '@ddContainerVerboseMode',
+                         'currentIndex'  : '@ddContainerCurrentIndex',
                     },
             restrict:   'A', 
             template:   htmlTemplate,

@@ -174,7 +174,7 @@ h1.content-title{
     font-family: 'Open Sans', sans-serif!important;
 }
 
-/*paper them bootstrap*/
+/*paper theme bootstrap*/
 .form-control {
   font-family:$font-family-roboto;
   display: block;
@@ -223,7 +223,41 @@ fieldset[disabled] .form-control {
 textarea.form-control {
   height: auto;
 }
-/* animation ng-repeat in mailbox 
+
+.fakeControl[disabled]{
+  background-color:#fff;
+  opacity: 1;
+}
+.fakeControl[disabled]{
+  cursor: all-scroll;
+}
+
+.radio input[type=radio]{
+  &.fakeCheck{
+    cursor: all-scroll; 
+  }
+}
+
+.checkbox input[type=checkbox]{
+  &.fakeCheck{
+    cursor: all-scroll; 
+  }
+}
+
+// .checkbox label{
+//   &.fakeCheck{
+//    cursor: all-scroll;  
+//   }
+// }
+
+label{ 
+  &.fakeCheck{
+    cursor: all-scroll; 
+  }
+}
+
+
+/* animation ng-repeat 
 easy customize animation from here : http://www.nganimate.org/angularjs/ng-repeat/yo-yo-css3-keyframes-animation*/
 .animate-enter{ 
     -webkit-animation: enter 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
