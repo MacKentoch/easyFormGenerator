@@ -396,7 +396,26 @@ angular
 					formlyDesciption 	: '', 
 					formlyOptions 		: []
 				}
-		);		
+		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+          {
+            'label' 	: [
+                          '<div class="col-md-12">',
+                          '    <div class="form-group">', 
+                          '      <label for="textArea" class="control-label ',
+                          '							textControlLabel pull-left">title<span class="textControlLabel">*</span></label>', 
+                          '      <div class="">',
+                          '        <textarea class="form-control dragItemtextarea" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
+                          '        <p class="help-block pull-left">description</p>',          
+                          '      </div>',
+                          '    </div>',                    
+                          '</div>'                                  
+                      	].join(''),
+            'control'	: 'Texarea',
+            'cssClass': 'col-md-12'          
+					}
+		);				
 
 		/**
 		 * Add rich text editor control
@@ -430,8 +449,32 @@ angular
 				}
 		);
 
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+					label 	: [
+											'<div class="col-md-12">', 
+											'    <div class="form-group">', 
+											'      <label for="RichTextEditor" ',
+											'							class="control-label ',
+											'							textControlLabel">',
+											'					{{nyaSelect.temporyConfig.formlyLabel}}',
+											'					<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span>',
+											'			 </label>',
+											'      <div class="">',
+											'        <text-angular ng-model="model[options.key]"></text-angular>',
+											'        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>',
+											'      </div>',
+											'    </div>',
+											'</div>'
+										].join(''),
+			    control	: 'RichTextEditor',
+			    cssClass: 'col-md-12'
+
+				}
+		);
+
 		/**
-		 * Add textarea
+		 * Add radio
 		 *
 		 * note : formly template already exists
 		 * no need to create a custom one
@@ -452,7 +495,36 @@ angular
 					formlyDesciption 	: '' , 
 					formlyOptions 		: []
 				}
-		);		
+		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+        {
+          'label' 	: [
+                        '<div class="col-md-12">',        
+                        '  <div class="form-group">',
+                        '    <label for="vertRadio" class="control-label textControlLabel pull-left">title<span class="textControlLabel">*</span></label>',
+                        '    <div class="interligne"></div>',
+                        '    <div class="pull-left">',
+                        '      <div class="radio">',
+                        '        <label class="">',
+                        '          <input type="radio" name="optionsRadios" id="optionsRadio-0" value="verticalRadio0" checked="">',
+                        '          option1',
+                        '        </label>',
+                        '      </div><div class="radio">',
+                        '        <label class="">',
+                        '          <input type="radio" name="optionsRadios"  id="optionsRadio-1" value="verticalRadio1" checked="">',
+                        '          option2',
+                        '        </label>',
+                        '      </div>',
+                        '      <p class="help-block pull-left">description</p>',
+                        '    </div>',
+                        '  </div>',                            
+                        '</div>'
+                      ].join(''),
+          'control'	: 'Radio',
+          'cssClass': 'col-md-12'            
+        }
+		);				
 
 		/**
 		 * Add checkbox
@@ -474,6 +546,31 @@ angular
 					formlyRequired 		: false, 
 					formlyDesciption 	: '', 
 					formlyOptions 		: []
+				}
+		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+
+					label 	: [
+											'<div class="col-md-12">',
+											'  <div class="form-group">',
+											'    <div class="col-md-12">',                                
+											'      <div class="checkbox">',
+											'        <label>',
+											'          <input type="checkbox" id="checkBox">',
+											'					<span class="blackText">',
+											'						{{nyaSelect.temporyConfig.formlyLabel}}</span>',
+											'						<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span>',
+											'        </label>',
+											'      </div>',
+											'      <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>',
+											'    </div>',
+											'  </div> ',                  
+											'</div>' 
+										].join(''),
+				  control	: 'Checkbox',
+				  cssClass: 'col-md-12' 
 				}
 		);
 
