@@ -84,7 +84,7 @@ angular
 			                  '    </div>',
 			                  '</div>'
 	                   ].join(''),          
-          control : 'header',
+          control : 'Header',
           cssClass: 'col-md-12'
 				}
 		);
@@ -138,7 +138,7 @@ angular
 			                  '    </div>',
 			                  '</div>'
 	                    ].join(''),
-          'control'	: 'subtitle',
+          'control'	: 'Subtitle',
           'cssClass': 'col-md-12'
         }
 		);		
@@ -181,8 +181,8 @@ angular
 		                  '</div>',
 		                  '</div>'
                   	].join(''),
-        //'label': '<p>label 3</p>',           
-        'control'	: 'basicinput',
+
+        'control'	: 'TextInput',
         'cssClass': 'col-md-12'
       }
 		);			
@@ -212,21 +212,21 @@ angular
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
         {
 
-          'label': [
-	                    '<div class="col-md-12">',
-	                    '<div class="form-group">',
-	                    '  <label for="inputText" class="control-label textControlLabel ng-binding pull-left">',
-	                    '   title <span class="textControlLabel ng-scope">*</span>',
-	                    '  </label>',
-	                    '  <div class="">',
-	                    '    <input type="password" class="form-control" id="inputText" placeholder="password input">',
-	                    '    <p class="help-block ng-binding pull-left">Description</p>',
-	                    '  </div>',
-	                    '</div>',
-	                    '</div>'
-                    ].join(''),
+          'label' 	: [
+		                    '<div class="col-md-12">',
+		                    '<div class="form-group">',
+		                    '  <label for="inputPass" class="control-label textControlLabel ng-binding pull-left">',
+		                    '   title <span class="textControlLabel ng-scope">*</span>',
+		                    '  </label>',
+		                    '  <div class="">',
+		                    '    <input type="password" class="form-control" id="inputPass" placeholder="password input">',
+		                    '    <p class="help-block ng-binding pull-left">Description</p>',
+		                    '  </div>',
+		                    '</div>',
+		                    '</div>'
+	                    ].join(''),
 
-          'control': 'password',
+          'control'	: 'Password',
           'cssClass': 'col-md-12'
         }   
 
@@ -342,6 +342,36 @@ angular
 					formlyDesciption 	: '', 
 					formlyOptions 		: [], 
 					datepickerPopup 	: 'dd-MMMM-yyyy'
+				}
+		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+									label 	: [
+															'<div class="row">',
+															'    <div class="col-md-12">',        
+															'        <div class="form-group">',
+															'          <label for="inputDate" class="control-label textControlLabel">',
+															'							{{nyaSelect.temporyConfig.formlyLabel}}',
+															'							<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span>','</label>',
+															'          <div class="">',    
+															'						<div class="input-group" >',
+															'						  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>',
+															'						  <input type="text" class="form-control"',
+															' 									datepicker-popup="{{nyaSelect.temporyConfig.datepickerPopup}}"', 
+															'										ng-model="demodt.dt" is-open="demodt.opened" ',
+															'										min-date="demodt.minDate" max-date="\'2099-12-31\'" ',
+															'										datepicker-options="dateOptions" date-disabled="disabled(date, mode)"',
+															'  									close-text="Close" ng-click="open($event)" />',
+															'						</div>',
+															'            </p>',         
+															'            <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>',
+															'          </div>',
+															'        </div>',
+															'    </div>'
+														].join(''),
+				          control	: 'Date',
+				          cssClass: 'col-md-12'
 				}
 		);
 
