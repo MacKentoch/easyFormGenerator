@@ -68,25 +68,47 @@ angular
           containerConfig : {
                                 decoration :    [
                                                   {
-                                                    WhenIndex: 0,
-                                                    ApplycssClass: 'col-md-12', 
-                                                    title: 'Headers : '
+                                                    WhenIndex     : 0,
+                                                    ApplycssClass : 'col-md-12', 
+                                                    title         : 'Blank : ',
+                                                    groupId       : 'blank' 
+                                                  },                                
+                                                  {
+                                                    WhenIndex     : 1,
+                                                    ApplycssClass : 'col-md-12', 
+                                                    title         : 'Headers : ',
+                                                    groupId       : 'headers' 
                                                   },
                                                   {
-                                                    WhenIndex: 1,
-                                                    ApplycssClass: 'col-md-12', 
-                                                    title: 'Text inputs : '
+                                                    WhenIndex     : 2,
+                                                    ApplycssClass : 'col-md-12', 
+                                                    title         : 'Text inputs : ',
+                                                    groupId       : 'inputs' 
                                                   },
                                                   {
-                                                    WhenIndex: 2,
+                                                    WhenIndex     : 3,
                                                     ApplycssClass : 'col-md-12',
-                                                    title : 'textarea'
+                                                    title         : 'Textareas : ',
+                                                    groupId       : 'textareas' 
                                                   },
                                                   {
-                                                    WhenIndex: 3,
+                                                    WhenIndex     : 4,
                                                     ApplycssClass : 'col-md-12',
-                                                    title : 'radio'
-                                                  }                                                      
+                                                    title         : 'Radios : ',
+                                                    groupId       : 'radios' 
+                                                  },
+                                                  {
+                                                    WhenIndex     : 5,
+                                                    ApplycssClass : 'col-md-12',
+                                                    title         : 'Checkboxes : ',
+                                                    groupId       : 'checkboxes' 
+                                                  },
+                                                  {
+                                                    WhenIndex     : 6,
+                                                    ApplycssClass : 'col-md-12',
+                                                    title         : 'Selects : ',
+                                                    groupId       : 'selects' 
+                                                  } 
                                                 ],
 
                                 verboseMode     : false, 
@@ -259,8 +281,11 @@ angular
                                 _itemsNotToCountFoReal = angular.copy(fromConfig);
                                 };
 
-      this.addControlTodragDropPresentationModel = function(controlToAdd){
+      this.addControlTodragDropPresentationModel = function(controlToAdd, groupToAdd){
                                                     if (typeof controlToAdd !== 'undefined') {
+                                                      /**
+                                                       * TODO manage groupToAdd 
+                                                       */
                                                       _dragDropPresentationModel.push(controlToAdd);
                                                     }
                                                     };

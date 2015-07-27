@@ -48,12 +48,38 @@ angular
 		);
 
 		/**
+		 * drag and drop control template
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 * 						(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+          label 	: [  
+			                  '<div class="col-md-12">',
+			                  '    <div class="form-group">',                                          
+			                  '      <div class="">',
+			                  '      </div>',
+			                  '    </div>',
+			                  '</div>'
+	                   ].join(''),          
+          control : 'empty',
+          cssClass: 'col-md-12'
+				},
+				{
+					addToGroupCtrl : 'blank'
+				}
+		);		
+
+		/**
 		 * Add header
 		 *
 		 * note : formly header template already exists
 		 * no need to create a custom one
 		 *
 		 * just declare in EasyFormGenFormlyBindingModelsProvider
+		 * 
 		 */
 		EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
 				{
@@ -70,7 +96,12 @@ angular
 				}
 		);
 		/**
-		 * drag and drop control template
+		 * drag and drop header control template
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
 		 */
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
@@ -86,7 +117,10 @@ angular
 	                   ].join(''),          
           control : 'Header',
           cssClass: 'col-md-12'
-				}
+				},
+				{
+					addToGroupCtrl : 'headers'
+				}				
 		);
 
 		/**
@@ -125,7 +159,14 @@ angular
 					formlyOptions 		: []
 				}
 		);
-	
+		/**
+		 * drag and drop subtitles control template
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 * 						(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
         {
           'label' 	: [  
@@ -140,7 +181,10 @@ angular
 	                    ].join(''),
           'control'	: 'Subtitle',
           'cssClass': 'col-md-12'
-        }
+        },
+				{
+					addToGroupCtrl : 'headers'
+				}        
 		);		
 
 		/**
@@ -165,26 +209,36 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop text input (basic) control template
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
-      {
-        'label' 	: [  
-		                  '<div class="col-md-12">',
-		                  '<div class="form-group">',
-		                  '  <label for="inputText" class="control-label textControlLabel pull-left">',
-		                  '   title <span class="textControlLabel ng-scope">*</span>',
-		                  '  </label>',
-		                  '  <div class="">',
-		                  '    <input type="text"  class="form-control" id="inputText" placeholder="basic input">',
-		                  '    <p class="help-block pull-left">Description</p>',
-		                  '  </div>',
-		                  '</div>',
-		                  '</div>'
-                  	].join(''),
+	      {
+	        'label' 	: [  
+			                  '<div class="col-md-12">',
+			                  '<div class="form-group">',
+			                  '  <label for="inputText" class="control-label textControlLabel pull-left">',
+			                  '   title <span class="textControlLabel ng-scope">*</span>',
+			                  '  </label>',
+			                  '  <div class="">',
+			                  '    <input type="text"  class="form-control" id="inputText" placeholder="basic input">',
+			                  '    <p class="help-block pull-left">Description</p>',
+			                  '  </div>',
+			                  '</div>',
+			                  '</div>'
+	                  	].join(''),
 
-        'control'	: 'TextInput',
-        'cssClass': 'col-md-12'
-      }
+	        'control'	: 'TextInput',
+	        'cssClass': 'col-md-12'
+	      },
+				{
+					addToGroupCtrl : 'inputs'
+				}  	      
 		);			
 
 		/**
@@ -208,7 +262,14 @@ angular
 					formlyDesciption 	: '', 
 					formlyOptions 		: []}
 		);
-
+		/**
+		 * drag and drop text input — password —control template
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
         {
 
@@ -228,7 +289,10 @@ angular
 
           'control'	: 'Password',
           'cssClass': 'col-md-12'
-        }   
+        },
+				{
+					addToGroupCtrl : 'inputs'
+				} 
 
 		);		
 		
@@ -344,7 +408,14 @@ angular
 					datepickerPopup 	: 'dd-MMMM-yyyy'
 				}
 		);
-
+		/**
+		 * drag and drop text input — date — control template (using angular UI datepicker)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
 									label 	: [
@@ -372,7 +443,10 @@ angular
 														].join(''),
 				          control	: 'Date',
 				          cssClass: 'col-md-12'
-				}
+				},
+				{
+					addToGroupCtrl : 'inputs'
+				} 				
 		);
 
 		/**
@@ -397,28 +471,38 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop textarea control template
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
-          {
-            'label' 	: [
-                          '<div class="col-md-12">',
-                          '    <div class="form-group">', 
-                          '      <label for="textArea" class="control-label ',
-                          '							textControlLabel pull-left">title<span class="textControlLabel">*</span></label>', 
-                          '      <div class="">',
-                          '        <textarea class="form-control dragItemtextarea" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
-                          '        <p class="help-block pull-left">description</p>',          
-                          '      </div>',
-                          '    </div>',                    
-                          '</div>'                                  
-                      	].join(''),
-            'control'	: 'Texarea',
-            'cssClass': 'col-md-12'          
-					}
+        {
+          'label' 	: [
+                        '<div class="col-md-12">',
+                        '    <div class="form-group">', 
+                        '      <label for="textArea" class="control-label ',
+                        '							textControlLabel pull-left">title<span class="textControlLabel">*</span></label>', 
+                        '      <div class="">',
+                        '        <textarea class="form-control dragItemtextarea" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
+                        '        <p class="help-block pull-left">description</p>',          
+                        '      </div>',
+                        '    </div>',                    
+                        '</div>'                                  
+                    	].join(''),
+          'control'	: 'Texarea',
+          'cssClass': 'col-md-12'          
+				},
+				{
+					addToGroupCtrl : 'textareas'
+				}					
 		);				
 
 		/**
-		 * Add rich text editor control
+		 * Add rich text editor control (using textAngular)
 		 *
 		 */
 		var richTexEditorTemplate =	[
@@ -448,7 +532,14 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop rich text editor control template (using textAngular)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */	
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
 					label 	: [
@@ -469,8 +560,10 @@ angular
 										].join(''),
 			    control	: 'RichTextEditor',
 			    cssClass: 'col-md-12'
-
-				}
+				},
+				{
+					addToGroupCtrl : 'textareas'
+				}				
 		);
 
 		/**
@@ -496,7 +589,14 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop radio control template (using textAngular)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
         {
           'label' 	: [
@@ -523,7 +623,10 @@ angular
                       ].join(''),
           'control'	: 'Radio',
           'cssClass': 'col-md-12'            
-        }
+        },
+				{
+					addToGroupCtrl : 'radios'
+				}	
 		);				
 
 		/**
@@ -548,7 +651,14 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop checkbox control template (using textAngular)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
 
@@ -571,7 +681,10 @@ angular
 										].join(''),
 				  control	: 'Checkbox',
 				  cssClass: 'col-md-12' 
-				}
+				},
+				{
+					addToGroupCtrl : 'checkboxes'
+				}					
 		);
 
 		/**
@@ -612,7 +725,14 @@ angular
 					formlyOptions 		: []
 				}
 		);	
-
+		/**
+		 * drag and drop basic select control template (using textAngular)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
 					label 	: [
@@ -640,7 +760,10 @@ angular
 										].join(''),
 				  control	: 'BasicSelect',
 				  cssClass: 'col-md-12' 	
-				}
+				},
+				{
+					addToGroupCtrl : 'selects'
+				}					
 		);	
 
 		/**
@@ -684,7 +807,14 @@ angular
 					formlyOptions 		: []
 				}
 		);
-
+		/**
+		 * drag and drop grouped select control template (using textAngular)
+		 *
+		 *
+		 * @PARAM 1 : control template object (drag an drop)
+		 * @PARAM 2 : object to indicates in which group of control it will be inserted
+		 *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
+		 */
 		dragDropConfigProvider.addControlTodragDropPresentationModel(
 				{
 					label 	: [
@@ -715,7 +845,10 @@ angular
 										].join(''),
 					control	: 'GroupedSelect',
 					cssClass: 'col-md-12' 
-				}
+				},
+				{
+					addToGroupCtrl : 'selects'
+				}				
 		);			
 
  
