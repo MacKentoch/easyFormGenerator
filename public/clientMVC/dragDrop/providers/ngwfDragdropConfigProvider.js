@@ -136,7 +136,10 @@ angular
       var _dragDropPresentationModel = [
                                           //1 column here is control selection column
                                           [],
-                                          []
+                                          [
+                                            //empty 1st line at initialisation
+                                            []
+                                          ]
                                        ];
 
       var _itemsNotToCountFoReal = {

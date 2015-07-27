@@ -461,7 +461,7 @@ angular
     //prevent item from first container to disapear when dropped on other container
     if (parentParentIndex > 0) {
       
-        $scope.model[parentParentIndex][parentIndex].splice(itemIndex, 1);
+        $scope.dragDropModel[parentParentIndex][parentIndex].splice(itemIndex, 1);
     }
     
   };
@@ -526,7 +526,7 @@ angular
    * removeThisLine event line deleted
    */
   $scope.removeThisLine = function(lineIndex){
-    $scope.model[1].splice(lineIndex,1);
+    $scope.dragDropModel[1].splice(lineIndex,1);
   };
 
 
@@ -535,15 +535,17 @@ angular
   function addNewline(){
     /**
      * re-render formfield
+     *
+     * TODO : to fix
      */
-    formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-    $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+    //formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+    //$scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
   }
 
 
   $scope.insertNewLine = function(){
                           addNewline();
-                          $scope.model[1].push([]);
+                          $scope.dragDropModel[1].push([]);
                           };
 
 
