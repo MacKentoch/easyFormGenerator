@@ -681,7 +681,41 @@ angular
 					formlyLabel 			: '', 
 					formlyRequired 		: false, 
 					formlyDesciption 	: '', 
-					formlyOptions 		: []}
+					formlyOptions 		: []
+				}
+		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+				{
+					label 	: [
+											'<div class="col-md-12">', 
+											'    <div class="form-group">',
+											'     <label for="select" ', 
+											'		 				class="control-label textControlLabel">', 
+											'				{{nyaSelect.temporyConfig.formlyLabel}}',
+											'				<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span>',
+											'			</label>',
+											'      <div class="">',
+											'       <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"', 
+											'			 			ng-model="modelGroupedSelect" data-live-search="true" ',
+											'						disabled="groupedSelectRowCollection.rows.length === 0">',
+											'        <li nya-bs-option="groupedSelectRow in groupedSelectRowCollection.rows group by groupedSelectRow.group"', 
+											'				value="$index">',
+											'          <span class="dropdown-header">{{groupedSelectRow.group}}</span>', 
+											'          <a>',
+											'            <span>{{groupedSelectRow.option}}</span>',
+											'            <span class="glyphicon glyphicon-ok check-mark"></span>',
+											'          </a>',
+											'        </li>',
+											'      </ol>',
+											'      <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>',
+											'      </div>',
+											'    </div>',
+											'</div>'  
+										].join(''),
+					control	: 'GroupedSelect',
+					cssClass: 'col-md-12' 
+				}
 		);			
 
  
