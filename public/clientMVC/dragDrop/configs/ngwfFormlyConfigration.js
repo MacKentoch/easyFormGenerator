@@ -125,6 +125,23 @@ angular
 					formlyOptions 		: []
 				}
 		);
+	
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+        {
+          'label' 	: [  
+			                  '<div class="col-md-12">',
+			                  '    <div class="form-group">',                                          
+			                  '      <div class="">',
+			                  '        <h4 class="text-center">SubTitle</h4>',
+			                  '        <hr/>',
+			                  '      </div>',
+			                  '    </div>',
+			                  '</div>'
+	                    ].join(''),
+          'control'	: 'subtitle',
+          'cssClass': 'col-md-12'
+        }
+		);		
 
 		/**
 		 * Add text input (basic)
@@ -149,6 +166,27 @@ angular
 				}
 		);
 
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+      {
+        'label' 	: [  
+		                  '<div class="col-md-12">',
+		                  '<div class="form-group">',
+		                  '  <label for="inputText" class="control-label textControlLabel pull-left">',
+		                  '   title <span class="textControlLabel ng-scope">*</span>',
+		                  '  </label>',
+		                  '  <div class="">',
+		                  '    <input type="text"  class="form-control" id="inputText" placeholder="basic input">',
+		                  '    <p class="help-block pull-left">Description</p>',
+		                  '  </div>',
+		                  '</div>',
+		                  '</div>'
+                  	].join(''),
+        //'label': '<p>label 3</p>',           
+        'control'	: 'basicinput',
+        'cssClass': 'col-md-12'
+      }
+		);			
+
 		/**
 		 * Add text input (Password)
 		 *
@@ -170,6 +208,29 @@ angular
 					formlyDesciption 	: '', 
 					formlyOptions 		: []}
 		);
+
+		dragDropConfigProvider.addControlTodragDropPresentationModel(
+        {
+
+          'label': [
+	                    '<div class="col-md-12">',
+	                    '<div class="form-group">',
+	                    '  <label for="inputText" class="control-label textControlLabel ng-binding pull-left">',
+	                    '   title <span class="textControlLabel ng-scope">*</span>',
+	                    '  </label>',
+	                    '  <div class="">',
+	                    '    <input type="password" class="form-control" id="inputText" placeholder="password input">',
+	                    '    <p class="help-block ng-binding pull-left">Description</p>',
+	                    '  </div>',
+	                    '</div>',
+	                    '</div>'
+                    ].join(''),
+
+          'control': 'password',
+          'cssClass': 'col-md-12'
+        }   
+
+		);		
 		
 		/**
 		 * Add angular UI date picker
