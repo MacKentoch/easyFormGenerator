@@ -30,7 +30,7 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 - learn about it, train, get a static html with your form you've just created : just go here : [easy form generator website](http://mackentoch.github.io/easyFormGenerator/)
 
-##the magic behind
+##the :sparkles: (magic) behind
 
 `easyFormGenerator` gives you access to [angular formly](https://github.com/formly-js/angular-formly) fire power to create amazing forms. 
 
@@ -52,7 +52,7 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 ##What is coming next?
 
-- developing `drag and drop` alternative (I'm not joking when I tell you under heavy developments :muscle:)
+- developing `drag and drop` alternative (I'm not joking when I tell you under :muscle: (heavy) developements )
  - adding tests
    - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
