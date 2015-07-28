@@ -29,10 +29,11 @@ angular
 
         return {
             scope:  {
-                         'styleParam'    : '=ddContainerProperties',
-                         'verboseMode'   : '@ddContainerVerboseMode',
-                         'currentIndex'  : '@ddContainerCurrentIndex',
-                         'collpaseAll'   : '&ddCollapseAll'
+                         'styleParam'           : '=ddContainerProperties',
+                         'isStillCollapsed'     : '=ddContainerIsCollpased',
+                         'verboseMode'          : '@ddContainerVerboseMode',
+                         'currentIndex'         : '@ddContainerCurrentIndex',
+                         'collpaseAll'          : '&ddCollapseAll'
                     },
             restrict:   'A', 
             template:   htmlTemplate,
@@ -42,12 +43,13 @@ angular
                                                 isEnabled : false
                                             };
 
-                            $scope.isCollapsed = $scope.styleParam.WhenIndex;
+                            //$scope.isCollapsed = $scope.styleParam.WhenIndex;
                             $scope.collapseFct = function(){
                                
                                 $scope.collpaseAll({exceptThisOne: $scope.styleParam.WhenIndex}); 
 
                                 $scope.isCollapsed = !$scope.isCollapsed;
+                                $scope.isStillCollapsed = $scope.isCollapsed;
 
                             };
  
@@ -96,16 +98,13 @@ angular
                 }
                /**
                  * forceCollapse when : 
-                 *  dragDropConfigModel.containerConfig.decoration.isCollapsed changed
+                 *  dragDropConfigModel.containerConfig.decoration.isCollapsed changed (here bound to $scope.isStillCollapsed)
                  */
-                console.warn($scope.styleParam.isCollapsed);
+                $scope.$watch(function(){return $scope.isStillCollapsed;}, function(newVal, oldVal){
 
-                $scope.$watch(function(){return $scope.styleParam.isCollapsed;}, function(newVal, oldVal){
-
-                    //if (newVal !== oldVal) {
-                        console.warn('watched a collapsed at ' + $scope.styleParam.WhenIndex + '\nto new  value : ' +newVal + '\n from oldValue : ' + oldVal);
+                    if (newVal !== oldVal) {
                         $scope.isCollapsed = newVal;    
-                    //}
+                    }
                         
                 });                
                 /**

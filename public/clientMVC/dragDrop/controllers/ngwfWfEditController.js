@@ -116,41 +116,16 @@ angular
 
 
   /**
-   * collapse group of draggable controls
+   * collapse all other group of draggable controls : when a group control expands
    */
-  
   $scope.collapseAllGroupControl = function(allExceptThisGroupIndex){
     
-    console.warn('allExceptThisGroupIndex ' + allExceptThisGroupIndex);
-
-    //console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
-
     angular.forEach($scope.easyFormDragDropProperties.containerConfig.decoration, function(value){
       if (value.WhenIndex !== allExceptThisGroupIndex) {
-        //if (!value.isCollapsed) {
           dragDropConfig.setDragDropConfigContainerDecorationCollapse($scope.easyFormDragDropProperties, value.WhenIndex, true);
-
-          console.info( 
-                        [
-                          'this index : ',
-                          value.WhenIndex,
-                          ' is set to collapse = true'
-                        ].join(''));
-        //}
-        
       }
-
-      // console.info(
-      //               [
-      //                 'index : ',
-      //                 value.WhenIndex,
-      //                 '\nkey : ',
-      //                 key
-      //               ].join(''));
     });
-
-    console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
-
+    
   };
 
 
