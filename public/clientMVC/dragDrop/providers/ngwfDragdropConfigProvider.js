@@ -252,6 +252,20 @@ angular
                                                */
                                               return _dragDropConfigModel;
                                             };
+
+          Service.setDragDropConfigContainerDecorationCollapse = function(indexValue, isCollapsedBool){
+                                                                    if (typeof indexValue       !== 'undefined' &&
+                                                                        typeof isCollapsedBool  !== 'undefined') {
+
+                                                                      if (indexValue === parseInt(indexValue, 10)) {
+                                                                        _dragDropConfigModel.containerConfig.decoration[indexValue].isCollapsed = isCollapsedBool;
+                                                                      }
+
+                                                                    }
+
+
+                                                                  };
+
           Service.getDragDropPresentationModel = function(){
                                                   /**
                                                    * 

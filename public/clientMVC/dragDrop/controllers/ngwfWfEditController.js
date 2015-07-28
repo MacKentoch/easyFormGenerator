@@ -115,16 +115,35 @@ angular
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
 
 
-  console.warn('getDragDropConfigModel');
-  console.dir(dragDropConfig.getDragDropConfigModel());
   /**
    * collapse group of draggable controls
    */
-  //$scope.forceCollapse = false;
-  $scope.collapseAllGroupControl = function(){
-    //$scope.isCollapse = true;
+  
+  $scope.collapseAllGroupControl = function(allExceptThisGroupIndex){
+    
     console.warn('collapse all!');
-    //$scope.forceCollapse = true;
+
+    console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
+
+    angular.forEach(dragDropConfig.getDragDropConfigModel().containerConfig.decoration, function(value){
+      if (value.WhenIndex !== allExceptThisGroupIndex) {
+        if (!value.isCollapsed) {
+          dragDropConfig.setDragDropConfigContainerDecorationCollapse(value.WhenIndex, true);
+        }
+        
+      }
+
+      // console.info(
+      //               [
+      //                 'index : ',
+      //                 value.WhenIndex,
+      //                 '\nkey : ',
+      //                 key
+      //               ].join(''));
+    });
+
+    console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
+
   };
 
 

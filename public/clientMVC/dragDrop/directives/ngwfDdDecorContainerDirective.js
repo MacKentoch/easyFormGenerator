@@ -42,10 +42,11 @@ angular
                                                 isEnabled : false
                                             };
 
+                            $scope.isCollapsed = $scope.styleParam.WhenIndex;
                             $scope.collapseFct = function(){
                                
-                                $scope.collpaseAll($scope.styleParam.WhenIndex);
-                                    
+                                $scope.collpaseAll($scope.styleParam.WhenIndex); 
+
                                 $scope.isCollapsed = !$scope.isCollapsed;
 
                             };
@@ -55,10 +56,10 @@ angular
                              */
                             $scope.$watch(function(){return $scope.styleParam.isCollapsed;}, function(newVal, oldVal){
 
-                                if (newVal !== oldVal) {
-                                    
-                                    $scope.isCollapsed = true;    
-                                }
+                                //if (newVal !== oldVal) {
+                                    console.warn('watched a collapsed at ' + $scope.styleParam.WhenIndex + '\nto new  value : ' +newVal + '\n from oldValue : ' + oldVal);
+                                    $scope.isCollapsed = newVal;    
+                                //}
                                     
                             });
                             /**
