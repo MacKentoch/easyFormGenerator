@@ -118,7 +118,7 @@ angular
                                                   } 
                                                 ],
 
-                                verboseMode     : false, 
+                                verboseMode     : true, 
                                 collapseEnabled : true,
                                 collapseCtrl    : [
                                                     {

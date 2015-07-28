@@ -103,7 +103,11 @@ angular
                 $scope.$watch(function(){return $scope.isStillCollapsed;}, function(newVal, oldVal){
 
                     if (newVal !== oldVal) {
-                        $scope.isCollapsed = newVal;    
+
+                        if ($scope.$parent.$parent.$index === 0) {
+                            $scope.isCollapsed = newVal;    
+                        }
+
                     }
                         
                 });                
