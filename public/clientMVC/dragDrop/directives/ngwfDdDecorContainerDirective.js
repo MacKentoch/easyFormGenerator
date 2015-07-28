@@ -32,8 +32,7 @@ angular
                          'styleParam'    : '=ddContainerProperties',
                          'verboseMode'   : '@ddContainerVerboseMode',
                          'currentIndex'  : '@ddContainerCurrentIndex',
-                         'collpaseAll'   : '&ddCollapseAll',
-                         'forceCollapse' : '=ddForceCollapse'
+                         'collpaseAll'   : '&ddCollapseAll'
                     },
             restrict:   'A', 
             template:   htmlTemplate,
@@ -44,33 +43,24 @@ angular
                                             };
 
                             $scope.collapseFct = function(){
-                                /**
-                                 * won't collapse if not control selection columns 
-                                 */
-                                if ($scope.config.isEnabled) {
-                                    /**
-                                     * save previous state since we'll force collpase all 
-                                     */
-                                    var previousCollapseState = angular.copy($scope.isCollapsed);
+                               
+                                $scope.collpaseAll($scope.styleParam.WhenIndex);
                                     
-                                    $scope.collpaseAll();
-                                    /**
-                                     * retore previous collpase state
-                                     */
-                                    $scope.isCollapsed = previousCollapseState;
-                                    /**
-                                     * go on normal collpase
-                                     */
-                                    $scope.isCollapsed = !$scope.isCollapsed;
-                                }
+                                $scope.isCollapsed = !$scope.isCollapsed;
+
                             };
                             /**
-                             * forceCollapse
+                             * forceCollapse when : 
+                             *  dragDropConfigModel.containerConfig.decoration.isCollapsed changed
                              */
-                            // $scope.$watch(function(){return $scope.forceCollapse;}, function(newVal, oldVal){
-                            //     console.info('collapse detected');
-                            //     $scope.isCollapsed = true;
-                            // });
+                            $scope.$watch(function(){return $scope.styleParam.isCollapsed;}, function(newVal, oldVal){
+
+                                if (newVal !== oldVal) {
+                                    
+                                    $scope.isCollapsed = true;    
+                                }
+                                    
+                            });
                             /**
                              *  TODO (low priority) : make icon css configurable (provider)
                              */
@@ -108,7 +98,8 @@ angular
                                 ParentParentIndex   :   $scope.$parent.$parent.$index,
                                 ParentIndex         :   $scope.$parent.$index,
                                 currentIndex        :   currentIndex,
-                                styleParam          :   $scope.styleParam
+                                styleParam          :   $scope.styleParam,
+                                columnindex         :   $scope.$parent.$parent.$parent.$parent.$index
                             }
                         );
                     }                    

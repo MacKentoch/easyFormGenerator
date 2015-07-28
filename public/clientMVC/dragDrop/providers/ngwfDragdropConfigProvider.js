@@ -71,43 +71,50 @@ angular
                                                     WhenIndex     : 0,
                                                     ApplycssClass : 'col-md-12', 
                                                     title         : 'Blank : ',
-                                                    groupId       : 'blank' 
+                                                    groupId       : 'blank',
+                                                    isCollapsed   : true 
                                                   },                                
                                                   {
                                                     WhenIndex     : 1,
                                                     ApplycssClass : 'col-md-12', 
                                                     title         : 'Headers : ',
-                                                    groupId       : 'headers' 
+                                                    groupId       : 'headers',
+                                                    isCollapsed   : true 
                                                   },
                                                   {
                                                     WhenIndex     : 2,
                                                     ApplycssClass : 'col-md-12', 
                                                     title         : 'Text inputs : ',
-                                                    groupId       : 'inputs' 
+                                                    groupId       : 'inputs' ,
+                                                    isCollapsed   : true
                                                   },
                                                   {
                                                     WhenIndex     : 3,
                                                     ApplycssClass : 'col-md-12',
                                                     title         : 'Textareas : ',
-                                                    groupId       : 'textareas' 
+                                                    groupId       : 'textareas',
+                                                    isCollapsed   : true 
                                                   },
                                                   {
                                                     WhenIndex     : 4,
                                                     ApplycssClass : 'col-md-12',
                                                     title         : 'Radios : ',
-                                                    groupId       : 'radios' 
+                                                    groupId       : 'radios',
+                                                    isCollapsed   : true 
                                                   },
                                                   {
                                                     WhenIndex     : 5,
                                                     ApplycssClass : 'col-md-12',
                                                     title         : 'Checkboxes : ',
-                                                    groupId       : 'checkboxes' 
+                                                    groupId       : 'checkboxes',
+                                                    isCollapsed   : true 
                                                   },
                                                   {
                                                     WhenIndex     : 6,
                                                     ApplycssClass : 'col-md-12',
                                                     title         : 'Selects : ',
-                                                    groupId       : 'selects' 
+                                                    groupId       : 'selects',
+                                                    isCollapsed   : true 
                                                   } 
                                                 ],
 

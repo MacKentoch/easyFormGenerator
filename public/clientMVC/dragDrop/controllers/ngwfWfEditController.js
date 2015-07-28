@@ -115,16 +115,16 @@ angular
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
 
 
-
-
+  console.warn('getDragDropConfigModel');
+  console.dir(dragDropConfig.getDragDropConfigModel());
   /**
    * collapse group of draggable controls
    */
-  
+  //$scope.forceCollapse = false;
   $scope.collapseAllGroupControl = function(){
     //$scope.isCollapse = true;
     console.warn('collapse all!');
-    $scope.forceCollapse = true;
+    //$scope.forceCollapse = true;
   };
 
 
