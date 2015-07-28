@@ -121,15 +121,22 @@ angular
   
   $scope.collapseAllGroupControl = function(allExceptThisGroupIndex){
     
-    console.warn('collapse all!');
+    console.warn('allExceptThisGroupIndex ' + allExceptThisGroupIndex);
 
-    console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
+    //console.dir(dragDropConfig.getDragDropConfigModel().containerConfig.decoration);
 
-    angular.forEach(dragDropConfig.getDragDropConfigModel().containerConfig.decoration, function(value){
+    angular.forEach($scope.easyFormDragDropProperties.containerConfig.decoration, function(value){
       if (value.WhenIndex !== allExceptThisGroupIndex) {
-        if (!value.isCollapsed) {
-          dragDropConfig.setDragDropConfigContainerDecorationCollapse(value.WhenIndex, true);
-        }
+        //if (!value.isCollapsed) {
+          dragDropConfig.setDragDropConfigContainerDecorationCollapse($scope.easyFormDragDropProperties, value.WhenIndex, true);
+
+          console.info( 
+                        [
+                          'this index : ',
+                          value.WhenIndex,
+                          ' is set to collapse = true'
+                        ].join(''));
+        //}
         
       }
 

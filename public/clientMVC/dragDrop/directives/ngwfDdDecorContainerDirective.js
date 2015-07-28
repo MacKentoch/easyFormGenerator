@@ -45,23 +45,12 @@ angular
                             $scope.isCollapsed = $scope.styleParam.WhenIndex;
                             $scope.collapseFct = function(){
                                
-                                $scope.collpaseAll($scope.styleParam.WhenIndex); 
+                                $scope.collpaseAll({exceptThisOne: $scope.styleParam.WhenIndex}); 
 
                                 $scope.isCollapsed = !$scope.isCollapsed;
 
                             };
-                            /**
-                             * forceCollapse when : 
-                             *  dragDropConfigModel.containerConfig.decoration.isCollapsed changed
-                             */
-                            $scope.$watch(function(){return $scope.styleParam.isCollapsed;}, function(newVal, oldVal){
-
-                                //if (newVal !== oldVal) {
-                                    console.warn('watched a collapsed at ' + $scope.styleParam.WhenIndex + '\nto new  value : ' +newVal + '\n from oldValue : ' + oldVal);
-                                    $scope.isCollapsed = newVal;    
-                                //}
-                                    
-                            });
+ 
                             /**
                              *  TODO (low priority) : make icon css configurable (provider)
                              */
@@ -105,6 +94,20 @@ angular
                         );
                     }                    
                 }
+               /**
+                 * forceCollapse when : 
+                 *  dragDropConfigModel.containerConfig.decoration.isCollapsed changed
+                 */
+                console.warn($scope.styleParam.isCollapsed);
+
+                $scope.$watch(function(){return $scope.styleParam.isCollapsed;}, function(newVal, oldVal){
+
+                    //if (newVal !== oldVal) {
+                        console.warn('watched a collapsed at ' + $scope.styleParam.WhenIndex + '\nto new  value : ' +newVal + '\n from oldValue : ' + oldVal);
+                        $scope.isCollapsed = newVal;    
+                    //}
+                        
+                });                
                 /**
                  * no header (no title, no collapse....) 
                  */

@@ -25,9 +25,9 @@ angular
 
 		    link: function($scope, element) {    
 		        
-					element.bind('click', function(event){
+					element.on('click', function(event){
 						event.preventDefault();
-						//console.dir('click on control not available.');
+						
 					});
 
 		    }
