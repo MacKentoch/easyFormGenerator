@@ -32,6 +32,8 @@ angular
                          'styleParam'    : '=ddContainerProperties',
                          'verboseMode'   : '@ddContainerVerboseMode',
                          'currentIndex'  : '@ddContainerCurrentIndex',
+                         'collpaseAll'   : '&ddCollapseAll',
+                         'forceCollapse' : '=ddForceCollapse'
                     },
             restrict:   'A', 
             template:   htmlTemplate,
@@ -46,9 +48,29 @@ angular
                                  * won't collapse if not control selection columns 
                                  */
                                 if ($scope.config.isEnabled) {
+                                    /**
+                                     * save previous state since we'll force collpase all 
+                                     */
+                                    var previousCollapseState = angular.copy($scope.isCollapsed);
+                                    
+                                    $scope.collpaseAll();
+                                    /**
+                                     * retore previous collpase state
+                                     */
+                                    $scope.isCollapsed = previousCollapseState;
+                                    /**
+                                     * go on normal collpase
+                                     */
                                     $scope.isCollapsed = !$scope.isCollapsed;
                                 }
                             };
+                            /**
+                             * forceCollapse
+                             */
+                            // $scope.$watch(function(){return $scope.forceCollapse;}, function(newVal, oldVal){
+                            //     console.info('collapse detected');
+                            //     $scope.isCollapsed = true;
+                            // });
                             /**
                              *  TODO (low priority) : make icon css configurable (provider)
                              */
@@ -109,11 +131,14 @@ angular
 
                                 $scope.currentTitle     = $scope.styleParam.title;
                                 $scope.config.isEnabled = true;
+                                $scope.isCollapsed      = true;
                             } 
 
                         }
                     }                    
                 }
+
+
                 /**
                  * prevent transclusion creating child scope 
                  * want to know more about what I'm talking about : check this nice tip on the subject :

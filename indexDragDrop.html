@@ -108,30 +108,13 @@
 												  <p>It may change so I can't tell you this will look like the same when released.</p>
 												  <p><a class="btn btn-primary btn-lg" href="https://github.com/MacKentoch/easyFormGenerator"><i class="fa fa-github"></i>&nbsp;go github</a></p>
 
-												  <!-- <hr>
-
-												  <pre style="font-size:7px">
-												  {{dragDropModel | json}}
-												  </pre>
-
-
-												  <pre>
-												  {{model | json}}
-												  </pre>
-
-
-													<pre style="font-size:7px">
-												  {{easyFormDragDropProperties.dropZoneConfig.decoration | json}}
-												  </pre> -->
-
-
 												</div>
 
 								    		</div>
 
-								    	  <div class="animate-switch-container" ng-switch on="configuration.listConfigStep[configuration.configStepCounter]">
+								    	  <!-- <div class="animate-switch-container" ng-switch on="configuration.listConfigStep[configuration.configStepCounter]"> -->
 
-									    	<div class="animate-switch" ng-switch-when="init">
+									    	<div>
 									    				   
 
 							            <div class="row advancedDemo">
@@ -174,6 +157,8 @@
 												                        			dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
 												                        			dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
 												                        			dd-container-current-index="{{$parent.$index}}" 
+												                        			dd-collapse-all="collapseAllGroupControl()"
+												                        			dd-force-collapse="forceCollapse"
 							                                  >
 
 							                                  	<div dd-decor-include-container-here>
@@ -250,10 +235,10 @@
 							            </div>
 
 
-											</div>
+												</div>
 
 
-										</div>
+										<!-- </div> -->
 
 								    	</div>
 								    </tab>	
