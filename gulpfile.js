@@ -67,7 +67,7 @@ var decorate={
 				' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
 				' *License : MIT (2015) \n' + 								
 				'**/ \n' + 
-				';(function(){\n\'use strict\';\n<%= contents %>\n})();',
+				';(function(){\n\'use strict\';\n<%= contents %>\n})(this);',
 
 	templateCSS: '/*! \n' + 
 				' * easyFormGenerator \n' + 
