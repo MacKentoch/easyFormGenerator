@@ -58,24 +58,6 @@ angular
                 $scope.$watch('cssClass', function(newValue, oldValue) {
                     if(newValue !== oldValue){
                         /**
-                         * just for debug 
-                         */
-                        // console.warn([
-                        //                 '-from ddDecorItem-',
-                        //                 'css apply :',
-                        //                 newValue,
-                        //                 'to column index',
-                        //                 $scope.parentParentIndex,
-                        //                 'and line index',
-                        //                 parentIndex,
-                        //                 'itemIndex',
-                        //                 currentIndex,
-                        //                 'innerText',
-                        //                 element[0].innerText
-                        //             ].join(' ')
-                        //             );
-                        
-                        /**
                          * update css class
                          */
                         angular.forEach(listClass, function(css){

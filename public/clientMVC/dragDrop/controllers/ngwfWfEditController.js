@@ -22,6 +22,7 @@ angular
                                         'controllerModalProxy',
                                         'dragDropItemDecorationService',
                                         'dragDropConfig',
+                                        'ddModelConfModelProxyService',
   function (	$scope, 
               easyFormGenVersion,
               $filter,
@@ -34,7 +35,8 @@ angular
               wfFormsByIdServices, 
               controllerModalProxy,
               dragDropItemDecorationService,
-              dragDropConfig) {
+              dragDropConfig,
+              ddModelConfModelProxyService) {
 
   /**
    * versionning
@@ -477,6 +479,30 @@ angular
           if (allowedType === 'itemType'      && !item.label)             return false;
           if (allowedType === 'containerType' && !angular.isArray(item))  return false; 
       }
+
+      /**
+      * TODO : update configuration model
+      */
+
+      /**
+      * set a timeout befire binding
+      * since ddModel may not be called when already full updated
+      */
+      var timerRefreshDDToConfig = $timeout(function(){
+        
+        ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel({}, {});
+
+      }, 200);
+
+
+      /**
+      * timerRefreshDDToConfig timer destruction
+      */
+      $scope.$on('$destroy', function(){
+            $timeout.cancel(timerRefreshDDToConfig);
+        }
+      );
+      
 
       return item;
   };

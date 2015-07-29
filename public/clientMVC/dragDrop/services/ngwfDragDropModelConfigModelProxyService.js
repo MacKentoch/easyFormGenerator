@@ -13,11 +13,24 @@
 
 angular
 	.module('ngwfApp.services.dragDropModelConfigModelProxyService', [])
-	.factory('dragDropModelConfigModelProxyService', ['', 
+	.factory('ddModelConfModelProxyService', [	
 		function(){
+
+
+
 			var Service = {};
 
+			/**
+			 * refreshAllConfigurationFromDragAndDropModel 
+			 * @param 	configModel [description]
+			 * @param 	ddModel     [description]
+			 */
+			Service.refreshAllConfigurationFromDragAndDropModel = function(configModel, ddModel){
+				
 
+
+				return true;
+			};
 
 
 
