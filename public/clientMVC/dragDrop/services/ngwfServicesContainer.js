@@ -23,5 +23,6 @@ angular.module('ngwfApp.services',
 								'ngwfApp.services.ngwfEditCtrlControllerModalProxy',
 								'ngwfApp.services.dragDropItemDecorationService',
 								'ngwfApp.services.dragDropItemCountersService',
+								'ngwfApp.services.dragDropModelConfigModelProxyService',
 								function () {
 }]);

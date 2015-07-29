@@ -13,7 +13,7 @@
 
 angular
 	.module('ngwfApp.services.dragDropModelConfigModelProxyService', [])
-	.factory('name', ['', 
+	.factory('dragDropModelConfigModelProxyService', ['', 
 		function(){
 			var Service = {};
 
