@@ -442,9 +442,9 @@ angular
 
 
 
-  $scope.toggleAnimation = function () {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
-  };                            
+  // $scope.toggleAnimation = function () {
+  //   $scope.animationsEnabled = !$scope.animationsEnabled;
+  // };                            
 
 
 
@@ -470,6 +470,17 @@ angular
       }
       return true;
   };
+
+  $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+          
+      if (external) {
+          if (allowedType === 'itemType'      && !item.label)             return false;
+          if (allowedType === 'containerType' && !angular.isArray(item))  return false; 
+      }
+
+      return item;
+  };
+
 
 
       
@@ -498,16 +509,6 @@ angular
 
   };
 
-
-  $scope.dropCallback = function(event, index, item, external, type, allowedType) {
-          
-      if (external) {
-          if (allowedType === 'itemType' && !item.label) return false;
-          if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
-      }
-
-      return item;
-  };
 
 
   /**

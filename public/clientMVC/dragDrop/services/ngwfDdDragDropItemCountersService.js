@@ -42,19 +42,6 @@ angular
 																					}
 
 																				});
-																				/**
-																				 * just for debug
-																				 */
-																				// console.info(
-																				// 							[
-																												
-																				// 								'isHtmlElementToCount',
-																				// 								'-htmlvalue-',
-																				// 								htmlvalue,
-																				// 								'isToCount',
-																				// 								isToCount,
-																				// 							].join(' ')
-																				// 						);
 																			}
 																			
 																			return isToCount;	
@@ -73,21 +60,6 @@ angular
 																								 listCssToApply[j].isReal === true){
 
 																								fullModel[columIndex][lineIndex][i].cssClass = dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
-																								/**
-																								 * juste for debug
-																								 */
-																								// console.warn([
-																								// 								'-from updateLineItemCss-',
-																								// 								'css apply :',
-																								// 								fullModel[columIndex][lineIndex][i].cssClass,
-																								// 								'to columIndex: ',
-																								// 								columIndex,
-																								// 								'and lineIndex',
-																								// 								lineIndex,
-																								// 								'itemIndex',
-																								// 								i
-																								// 							].join(' ')
-																								// 							);
 																							} 	
 																						}
 
