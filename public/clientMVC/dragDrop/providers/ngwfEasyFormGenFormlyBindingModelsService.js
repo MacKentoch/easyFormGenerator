@@ -42,20 +42,9 @@ angular
 	                                      } 
 		};
 
-		/**
-		 * formly field model (back model = configuration model)
-		 * at initial state (1 line empty)
-		 *
-		 * If need a configuration before loading from database 
-		 * or loading from saved object better use _easyFormReloadConfigurationModel 
-		 */
-		var _easyFormInitialStateConfigurationModel =  {                                
-	    /**
-	     * commun all easy form generator ways	
-	     */
-	    submitButtonText 	: 'submit',
-	    cancelButtonText 	: 'cancel',
-	    lines : [
+
+		var _easyFormEmptyConfigurationLineModel =                                 
+			[
 	            {
 	              line 					: 1,                                       
 	              activeColumn 	: 1,
@@ -76,7 +65,21 @@ angular
 	                                  }
 	                               ]
 	             }                                 
-	        ]
+	        ];
+		/**
+		 * formly field model (back model = configuration model)
+		 * at initial state (1 line empty)
+		 *
+		 * If need a configuration before loading from database 
+		 * or loading from saved object better use _easyFormReloadConfigurationModel 
+		 */
+		var _easyFormInitialStateConfigurationModel =  {                                
+	    /**
+	     * commun all easy form generator ways	
+	     */
+	    submitButtonText 	: 'submit',
+	    cancelButtonText 	: 'cancel',
+	    lines : [].concat(_easyFormEmptyConfigurationLineModel)
     };
 
     var _easyFormInitialStateConfigurationModelAddOnForStepWay = {
@@ -320,6 +323,14 @@ angular
 						}
 					}
 					return initialConfigurationModel;
+				};
+
+				/**
+				 * getEasyFormEmptyConfigurationLineModel to get "empty line model template"
+				 * NOTE : "empty line" means no control in this line
+				 */
+				Service.getEasyFormEmptyConfigurationLineModel = function(){
+					return _easyFormEmptyConfigurationLineModel;
 				};
 
 
