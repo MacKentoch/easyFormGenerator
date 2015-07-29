@@ -115,6 +115,7 @@ angular
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
 
 
+
   /**
    * collapse all other group of draggable controls : when a group control expands
    */
@@ -129,49 +130,7 @@ angular
   };
 
 
-
-
-
-
-  ////////////////////////////
-  //init formly control list
-  ////////////////////////////
-
-  //needed for select : list all existing forms
-  $scope.loadExistingFormsList = loadExistingFormsAsList();
-
-
-  function loadExistingFormsAsList(){
-    //If it were not a static html, it should call server to retrieve data from database :
-    // $scope.formlyList = wfFormsByIdServices.query();
-    
-  }
-
-  //load on init
-  loadExistingFormsAsList();
-
-
-  $scope.previewLoadedForm = {fieldsModel:[]};
-  $scope.configurationLoaded = {};
-
-  $scope.previewExistingform = function(formlyform){
-
-   var configlines = JSON.parse(formlyform.formlyField);
-   //here to replace with $scope.configuration : initialise configuration with lines 
-   $scope.configurationLoaded = {};
-   formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
-
-   formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
-
-   $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
-
-   $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
-   $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
-  };
-
-
   $scope.vm.onSubmit = onSubmit;
-  
   
   function onSubmit() {
   
@@ -183,6 +142,44 @@ angular
             showCloseButton: true
       }); 
   }
+
+
+
+  // /**
+  //  * init formly control list
+  //  */
+  // //needed for select : list all existing forms
+  // $scope.loadExistingFormsList = loadExistingFormsAsList();
+
+
+  // function loadExistingFormsAsList(){
+  //   //If it were not a static html, it should call server to retrieve data from database :
+  //   // $scope.formlyList = wfFormsByIdServices.query();  
+  // }
+
+  // //load on init
+  // loadExistingFormsAsList();
+
+  // $scope.previewLoadedForm = {fieldsModel:[]};
+  // $scope.configurationLoaded = {};
+
+  // $scope.previewExistingform = function(formlyform){
+
+  //  var configlines = JSON.parse(formlyform.formlyField);
+  //  //here to replace with $scope.configuration : initialise configuration with lines 
+  //  $scope.configurationLoaded = {};
+  //  formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
+
+  //  formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
+
+  //  $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+  //  $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
+  //  $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
+  // };
+
+
+
 
 
 
@@ -198,9 +195,9 @@ angular
 
 
 
-  ////////////////////////////////////////////////////////////
-  //            line control (STEP 0)
-  ////////////////////////////////////////////////////////////
+
+
+
 
   //return count configuration lines
   $scope.countConfigurationModelLines = function(){
@@ -273,9 +270,9 @@ angular
   	}
   };
 
-  ////////////////////////////////////////////////////////////
-  //            columns control (STEP 1)
-  ////////////////////////////////////////////////////////////
+
+
+
 
   $scope.increaseNumberOfColumns = function(){
 
@@ -287,12 +284,6 @@ angular
           														                            control: {
           														                                        type:'none',
           														                                        key: 'none'
-          														                                        // templateOptions: {
-          														                                        //                     label: 'none',
-          														                                        //                     placeholder: 'none',
-          														                                        //                     required: false,
-          														                                        //                     description: 'Descriptive text'
-          														                                        //                   }
           														                                      }                                         
           																				 }																				
   																				);
@@ -318,10 +309,6 @@ angular
 
 
 
-
-  ////////////////////////////////////////////////////////////
-  //            components control (STEP 2)
-  ////////////////////////////////////////////////////////////
 
 
 
@@ -464,9 +451,16 @@ angular
 
 
 
-  ////////////////////////////////////////////////////////////
-  //   drag and drop : may move from this controller
-  ////////////////////////////////////////////////////////////
+
+  /**
+   *
+   * 
+   *   drag and drop : may move from this controller
+   *
+   *
+   * 
+   */
+
  
   //specific Container dragoverCallback event
   $scope.dragoverCallbackContainer = function(parentparentIndex, parentIndex, index){
@@ -480,13 +474,10 @@ angular
 
       
   $scope.dndItemMoved = function(parentParentIndex, parentIndex, itemIndex){
-
     //prevent item from first container to disapear when dropped on other container
     if (parentParentIndex > 0) {
-      
         $scope.dragDropModel[parentParentIndex][parentIndex].splice(itemIndex, 1);
     }
-    
   };
 
   $scope.dragoverCallbackItems = function(ParentParentIndex, parentIndex, index, external){
