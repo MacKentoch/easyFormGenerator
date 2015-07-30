@@ -491,6 +491,7 @@ angular
       var timerRefreshDDToConfig = $timeout(function(){
         
         ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel($scope.configuration, $scope.dragDropModel);
+        console.info('result when bound : ');
         console.dir( { 
                         message     :   [
                                           'line drop :\n',

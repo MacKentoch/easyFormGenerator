@@ -39,11 +39,14 @@ angular
 				
 				angular.forEach(ddModel[1], function(lineValue, keyValue){
 					console.info(	[
-													'lineValue',
+													'lineValue : ',
 													lineValue,
-													'keyValue',
+													'\nkeyValue : ',
 													keyValue
 												].join(''));
+
+					console.info('value details : ');
+					console.dir(lineValue);
 					/**
 					 * add empty line 1st
 					 */
@@ -52,8 +55,8 @@ angular
 					 * add controls to this lien from drag and drop model ("ddModel")
 					 */
 					
-					console.dir(ddModel[1][keyValue]);
-					if(lineValue !== '') configModel.lines[keyValue].controls = [].concat(ddModel[1][keyValue]);
+					
+					if(lineValue !== '') configModel.lines[keyValue].controls = [].concat(lineValue);
 
 					/**
 					 * for dev only :to comment or delete 
