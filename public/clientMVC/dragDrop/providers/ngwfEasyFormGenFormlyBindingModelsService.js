@@ -43,8 +43,7 @@ angular
 		};
 
 
-		var _easyFormEmptyConfigurationLineModel =                                 
-			
+		var _easyFormEmptyConfigurationLineModel =                                 			
 	            {
 	              line 					: 1,                                       
 	              activeColumn 	: 1,
