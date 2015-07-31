@@ -14,8 +14,8 @@
 angular
 	.module('ngwfApp.services.dragDropModelConfigModelProxyService', [])
 	.factory('ddModelConfModelProxyService', [	'EasyFormGenFormlyBindingModels',
-																							'$parse',
-		function( EasyFormGenFormlyBindingModels, $parse ){
+
+		function( EasyFormGenFormlyBindingModels){
 
 
 
@@ -60,8 +60,12 @@ angular
 													}
 												);
 
-						//console.info('at keyValue' + keyValue);
-						//console.dir(configModel.lines[keyValue]);
+						/**
+						 * EasyFormGenFormlyBindingModels._easyFormListControls gives detailed control
+						 * that can be bound to configuration model like done by 
+						 * 
+						 * controllerModalProxy.bindConfigurationModelFromModalReturn
+						 */
 
 
 						if(lineValue[i] !== '') configModel.lines[keyValue].columns.push(lineValue[i]);

@@ -261,7 +261,8 @@ angular
 					formlyLabel 			: '', 
 					formlyRequired 		: false, 
 					formlyDesciption 	: '', 
-					formlyOptions 		: []}
+					formlyOptions 		: []
+				}
 		);
 		/**
 		 * drag and drop text input — password —control template

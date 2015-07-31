@@ -28,7 +28,37 @@ angular
 												 * 
 												 * works in, pair with formlyProvider in case of special 
 												 * control like 'RichTextEditor'
+												 *
 												 */
+												//constrol array should be like :
+												//	controls: [				
+												// 	{
+												// 		id 								: 'TextInput',  
+												// 		name 							: 'Text input', 
+												// 		subtitle 					: 'Text input', 
+												// 		group 						: 'input', 
+												// 		formlyType 				: 'input', 
+												// 		formlySubtype 		: '', 
+												// 		formlyLabel 			: '', 
+												// 		formlyRequired 		: false, 
+												// 		formlyDesciption 	: '', 
+												// 		formlyOptions 		: []
+												// 	},	
+												// {
+												// 		id 								: 'Password',  
+												// 		name 							: 'Password', 
+												// 		subtitle 					: 'Password', 
+												// 		group 						: 'input', 
+												// 		formlyType 				: 'input', 
+												// 		formlySubtype 		: 'password', 
+												// 		formlyLabel 			: '', 
+												// 		formlyRequired 		: false, 
+												// 		formlyDesciption 	: '', 
+												// 		formlyOptions 		: []
+												// }
+												// 											
+												// 																						
+												//	] 													
 	                    	controls : [],
 
 	                      selectedControl : 'none' ,
