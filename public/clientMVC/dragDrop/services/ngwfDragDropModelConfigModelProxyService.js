@@ -14,7 +14,8 @@
 angular
 	.module('ngwfApp.services.dragDropModelConfigModelProxyService', [])
 	.factory('ddModelConfModelProxyService', [	'EasyFormGenFormlyBindingModels',
-		function( EasyFormGenFormlyBindingModels ){
+																							'$parse',
+		function( EasyFormGenFormlyBindingModels, $parse ){
 
 
 
@@ -39,15 +40,15 @@ angular
 				
 				angular.forEach(ddModel[1], function(lineValue, keyValue){
 
-					console.info(	[
-													'lineValue : ',
-													lineValue,
-													'\nkeyValue : ',
-													keyValue
-												].join(''));
+					// console.info(	[
+					// 								'lineValue : ',
+					// 								lineValue,
+					// 								'\nkeyValue : ',
+					// 								keyValue
+					// 							].join(''));
 
-					console.info('line value details : ');
-					console.dir(lineValue);
+					// console.info('line value details at key : ' + keyValue);
+					// console.dir(lineValue);
 					
 					/**
 					 * add empty line 1st 
@@ -60,22 +61,37 @@ angular
 					 * and add them if control exists
 					 */
 					
-					angular.forEach(lineValue , function(colValue, colKeyValue){
-						console.info(	[
-								'colValue : ',
-								colKeyValue,
+					for (var i = lineValue.length - 1; i >= 0; i--) {
+
+						console.info(	
+							[
+								'at line :',
+								keyValue,
+								'\ncolValue : ',
+								lineValue[i],
 								'\nkeyValue : ',
-								keyValue
+								'\nconfigModel at this line'
 							].join(''));
 
-						console.info('col value details : ');
-						console.dir(colValue);
+						console.info('at keyValue' + keyValue);
+						console.dir(configModel.lines[keyValue]);
+
+						var GetActiveCol = $parse('lines[' + keyValue + '][' + i + '].activeColumn');
 						
-						/**
-					 	* add controls to this line/col from drag and drop model ("ddModel")
-					 	*/
-						//if(colValue !== '') configModel.lines[keyValue].columns[colKeyValue].control = [].concat(colKeyValue);
-					});
+
+						console.dir(GetActiveCol(configModel));
+						console.dir(lineValue[i]);
+					
+					
+
+						if(lineValue[i] !== '') configModel.lines[keyValue].columns.push(lineValue[i]);
+					}
+											
+					// 	/**
+					//  	* add controls to this line/col from drag and drop model ("ddModel")
+					 	
+					// 	if(colValue !== '') configModel.lines[keyValue].columns[colKeyValue].control = [].concat(colKeyValue);
+					// });
 
 
 
