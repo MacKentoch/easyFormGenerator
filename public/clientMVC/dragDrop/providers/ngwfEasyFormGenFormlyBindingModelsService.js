@@ -44,7 +44,7 @@ angular
 
 
 		var _easyFormEmptyConfigurationLineModel =                                 
-			[
+			
 	            {
 	              line 					: 1,                                       
 	              activeColumn 	: 1,
@@ -65,7 +65,7 @@ angular
 	                                  }
 	                               ]
 	             }                                 
-	        ];
+	        ;
 		/**
 		 * formly field model (back model = configuration model)
 		 * at initial state (1 line empty)

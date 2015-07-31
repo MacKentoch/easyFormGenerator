@@ -61,6 +61,9 @@ angular
 					 * and add them if control exists
 					 */
 					
+					 console.info('config model : ');
+					 console.dir(configModel);
+
 					for (var i = lineValue.length - 1; i >= 0; i--) {
 
 						console.info(	
@@ -76,13 +79,13 @@ angular
 						console.info('at keyValue' + keyValue);
 						console.dir(configModel.lines[keyValue]);
 
-						var GetActiveCol = $parse('lines[' + keyValue + '][' + i + '].activeColumn');
+						var GetActiveCol = $parse('lines[' + keyValue + '].activeColumn');
 						
 
 						console.dir(GetActiveCol(configModel));
 						console.dir(lineValue[i]);
 					
-					
+
 
 						if(lineValue[i] !== '') configModel.lines[keyValue].columns.push(lineValue[i]);
 					}
