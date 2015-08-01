@@ -64,7 +64,7 @@ angular
 	                      selectedControl : 'none' ,
 	                      temporyConfig : {
 	                                        selectedControl		: 'none',
-	                                        formlyLabel				: 'label', 
+	                                        formlyLabel				: 'label',  
 	                                        formlyRequired		: false, 
 	                                        formlyDesciption	: '',
 	                                        formlyPlaceholder	: '',

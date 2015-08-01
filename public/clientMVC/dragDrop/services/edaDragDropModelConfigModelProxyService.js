@@ -41,59 +41,8 @@ angular
 			 * bind formly detailed model to configuration control model
 			 */
 			function returnConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailCtrlModel, configurationCtrlModel){
-				      
-	     
+				
 
-	      // var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
-	      // /**
-	      //  * templateOptions
-	      //  */
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
-	      //                                                                                   label				: '',
-	      //                                                                                   required		: false,
-	      //                                                                                   description	: '',
-	      //                                                                                   placeholder	: '',
-	      //                                                                                   options			: []
-	      //                                                                                 };
-	      //  /**
-	      //   * then bind template option
-	      //   */
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
-
-	      // /**
-	      //  * add additionnal — particular — properties :
-	      //  * 
-	      //  * -> datepicker : datepickerPopup
-	      //  */
-	      // if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-	      //  	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
-	      // }	
-
-	      // /**
-	      //  * unique key (set only first time) in this model is formly control type + Date.now(); 
-	      //  */
-	      // var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-	      // if (validKeyUniqueness(newKey, configurationObj) === true){
-	      //   configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-	      // }else{
-	      //   newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-	      //   if (validKeyUniqueness(newKey, configurationObj) === true){
-	      //     configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-	      //   }else{
-	      //     newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-	      //   }
-	      // }                                                                     
-
-	      // configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
 
 			}
 
@@ -128,15 +77,19 @@ angular
 					 * iterate through columns
 					 * and add them if control exists
 					 */
+					
+
 					for (var i = lineValue.length - 1; i >= 0; i--) {
 
 						console.dir(	
 													{
-														'at line :' 		: keyValue,
-														'linevalue : ' 	: lineValue,
-														'colIndex'			: i,
-														'colValue : ' 	: lineValue[i],
+														'at line :' 					: keyValue,
+														'linevalue : ' 				: lineValue,
+														'Nb column in line'		: lineValue.length,
+														'colIndex'						: i,
+														'colValue : ' 				: lineValue[i],
 														'formlyDetailedModel' : getFormlyDetailedContorlModelFromDragDropObject(lineValue[i]),
+														'control config model': EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, getFormlyDetailedContorlModelFromDragDropObject(lineValue[i]).formlyType)
 														//'configModelCtrl' : controllerModalProxy.
 													}
 												);
@@ -147,9 +100,46 @@ angular
 						 * 
 						 * controllerModalProxy.bindConfigurationModelFromModalReturn
 						 */
+						 if (lineValue[i]) {
+						/**
+						 * define getters / setters
+						 * for both models
+						 */
+			    	var getterControlType = $parse('control.type');
+			    	var setterControlType = getterControlType.assign;
 
 
-						if(lineValue[i] !== '') configModel.lines[keyValue].columns.push(lineValue[i]);
+			    	/**
+			    	 * push an emty control model but relative to dradrop ::model control type
+			    	 * (if datepicker so additionnal properties are added)
+			    	 */
+			    	configModel.lines[keyValue].push(
+			    			{
+			    				control : EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, getFormlyDetailedContorlModelFromDragDropObject(lineValue[i]).formlyType)
+			    			}
+			    	);
+			    	
+
+			      // var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
+
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
+			      // if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+			      //  	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
+			      // }	
+			      // }                                                                     
+
+			      // configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+
+						 }
+
+						//if(lineValue[i] !== '') configModel.lines[keyValue].columns.push(lineValue[i]);
 					}
 										
 
