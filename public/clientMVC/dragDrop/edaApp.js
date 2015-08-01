@@ -16,12 +16,12 @@
 **/
 
 angular
-  .module('ngwfApp', [
-                        'ngwfApp.providers',	
-												'ngwfApp.controllers',
-												'ngwfApp.services', 
-												'ngwfApp.filters',
-												'ngwfApp.directives',
+  .module('edaApp', [
+                        'edaApp.providers',	
+												'edaApp.controllers',
+												'edaApp.services', 
+												'edaApp.filters',
+												'edaApp.directives',
 												'textAngular',
 												'textAngularSetup',
 												'ngAnimate',
