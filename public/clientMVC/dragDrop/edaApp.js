@@ -36,4 +36,4 @@ angular
                         function(){}
 	                     ])
 
-  .value('easyFormGenVersion', 'v1.1.2');
+  .value('easyFormGenVersion', 'v1.1.3');

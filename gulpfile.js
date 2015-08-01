@@ -14,7 +14,7 @@ var deleteLines = require('gulp-delete-lines');
 // CONFIG
 ///////////////////////////////////////////////////////////////////////
 var version = {
-	build: '1.1.2'
+	build: '1.1.3'
 };
 
 var bases ={
@@ -48,112 +48,118 @@ var clientMVC={
 };
 
 var clientMVC_dragDrop={
-	app: ['public/clientMVC/dragDrop/edaApp.js'],
-	controllers: ['public/clientMVC/dragDrop/controllers/**/*.js'],
-	directives: ['public/clientMVC/dragDrop/directives/**/*.js'],
-	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],
-	services: ['public/clientMVC/dragDrop/services/**/*.js'],
-	providers: ['public/clientMVC/dragDrop/providers/**/*.js'],
-	configs: ['public/clientMVC/dragDrop/configs/**/*.js'],	
+	app 					: ['public/clientMVC/dragDrop/edaApp.js'],
+	controllers 	: ['public/clientMVC/dragDrop/controllers/**/*.js'],
+	directives 		: ['public/clientMVC/dragDrop/directives/**/*.js'],
+	filters 			: ['public/clientMVC/dragDrop/filters/**/*.js'],
+	services 			: ['public/clientMVC/dragDrop/services/**/*.js'],
+	providers 		: ['public/clientMVC/dragDrop/providers/**/*.js'],
+	configs 			: ['public/clientMVC/dragDrop/configs/**/*.js'],	
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 };
 
 var decorate={
-	templateJS: '/** \n' + 
-				' *easyFormGenerator \n' + 
-				' *Version ' +  version.build + ' \n' + 				
-				' *Author : Erwan Datin (MacKentoch) \n' + 
-				' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
-				' *License : MIT (2015) \n' + 								
-				'**/ \n' + 
-				';(function(){\n\'use strict\';\n<%= contents %>\n})(this);',
+	templateJS: [
+								'/** \n' , 
+								' *easyFormGenerator \n',
+								' *Version ' +  version.build + ' \n',
+								' *Author : Erwan Datin (MacKentoch) \n', 
+								' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
+								' *License : MIT (2015) \n',
+								'**/ \n',
+								';(function(){\n\'use strict\';\n<%= contents %>\n})(this);'
+							].join(' '),
 
-	templateCSS: '/*! \n' + 
-				' * easyFormGenerator \n' + 
-				' * Version ' + version.build + ' \n' + 				
-				' * Author : Erwan Datin (MacKentoch) \n' +
-				' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
-				' * License : 2015 MIT \n' + 								
-				'*/ \n' +
-				'\n<%= contents %>\n' 
+	templateCSS: 	[
+									'/*! \n' + 
+									' * easyFormGenerator \n' + 
+									' * Version ' + version.build + ' \n' + 				
+									' * Author : Erwan Datin (MacKentoch) \n' +
+									' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
+									' * License : 2015 MIT \n' + 								
+									'*/ \n' +
+									'\n<%= contents %>\n'
+								].join('') 
 			
 };
 
 var paths = {
- //scripts for header
- bower_angularjs: ['bower_components/angular/angular.min.js'],
+ bower_angularjs 			: 		['bower_components/angular/angular.min.js'],
  bower_angular_loadingbarjs: ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
+ bower_html5shiv 			: 		['bower_components/html5shiv/dist/html5shiv.min.js'],
+ bower_respondJS 			: 		['bower_components/respondJS/dest/respond.min.js'],
+ bower_components_js 	: 		[
+								 						'bower_components/jquery/dist/jquery.min.js',   //jquery always first
+								 						'bower_components/bootstrap/dist/js/bootstrap.min.js',						
+								 						'bower_components/modernizer/modernizr.js',
+														'bower_components/textAngular/dist/textAngular-rangy.min.js',
+														'bower_components/textAngular/dist/textAngular-sanitize.min.js',
+														'bower_components/textAngular/dist/textAngular.min.js',
+														'bower_components/angular-resource/angular-resource.min.js',
+														'bower_components/angular-animate/angular-animate.min.js',
+														'bower_components/angularjs-toaster/toaster.min.js',
+														'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+														'bower_components/api-check/dist/api-check.min.js',
+														'bower_components/angular-formly/dist/formly.min.js',
+														'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
+														'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
+														'bower_components/lodash/lodash.min.js',
+														'vendor/js/angular-drag-and-drop-lists.min.js',
+														'bower_components/angular-strap/dist/angular-strap.min.js',
+														'bower_components/angular-strap/dist/angular-strap.tpl.min.js'
+								 					],
+bower_components_map: 		[
+														'bower_components/jquery/dist/jquery.min.map',
+														'bower_components/angular/angular.min.js.map',
+														'bower_components/angular-resource/angular-resource.min.js.map',
+														'bower_components/angular-animate/angular-animate.min.js.map',
+														'bower_components/angular-formly/dist/formly.min.js.map',
+														'bower_components/api-check/dist/api-check.min.js.map',
+														'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map',
+														'bower_components/angular-strap/dist/angular-strap.min.js.map'
+													], 					
 
- bower_html5shiv: ['bower_components/html5shiv/dist/html5shiv.min.js'],
- bower_respondJS: ['bower_components/respondJS/dest/respond.min.js'],
-
- //scripts for footer
- bower_components_js: 	[
- 						'bower_components/jquery/dist/jquery.min.js',   //jquery always first
- 						'bower_components/bootstrap/dist/js/bootstrap.min.js',						
- 						'bower_components/modernizer/modernizr.js',
-						'bower_components/textAngular/dist/textAngular-rangy.min.js',
-						'bower_components/textAngular/dist/textAngular-sanitize.min.js',
-						'bower_components/textAngular/dist/textAngular.min.js',
-						'bower_components/angular-resource/angular-resource.min.js',
-						'bower_components/angular-animate/angular-animate.min.js',
-						'bower_components/angularjs-toaster/toaster.min.js',
-						'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-						'bower_components/api-check/dist/api-check.min.js',
-						'bower_components/angular-formly/dist/formly.min.js',
-						'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
-						'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
-						'bower_components/lodash/lodash.min.js',
-						'vendor/js/angular-drag-and-drop-lists.min.js',
-						'bower_components/angular-strap/dist/angular-strap.min.js',
-						'bower_components/angular-strap/dist/angular-strap.tpl.min.js'
-
- 					],
-bower_components_map: 	[
-							'bower_components/jquery/dist/jquery.min.map',
-							'bower_components/angular/angular.min.js.map',
-							'bower_components/angular-resource/angular-resource.min.js.map',
-							'bower_components/angular-animate/angular-animate.min.js.map',
-							'bower_components/angular-formly/dist/formly.min.js.map',
-							'bower_components/api-check/dist/api-check.min.js.map',
-							'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map',
-							'bower_components/angular-strap/dist/angular-strap.min.js.map'
-						], 					
-
-bower_components_css: 	[
- 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
- 						'bower_components/font-awesome/css/font-awesome.min.css',
- 						'bower_components/angular-loading-bar/build/loading-bar.min.css',
- 						'bower_components/animate.css/animate.min.css',
- 						'bower_components/angularjs-toaster/toaster.min.css',
- 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
- 					],
+bower_components_css: 		[
+								 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
+								 						'bower_components/font-awesome/css/font-awesome.min.css',
+								 						'bower_components/angular-loading-bar/build/loading-bar.min.css',
+								 						'bower_components/animate.css/animate.min.css',
+								 						'bower_components/angularjs-toaster/toaster.min.css',
+								 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
+								 					],
 bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
 
-bower_textAngular_css: ['bower_components/textAngular/src/textAngular.css'], 					
-
-bower_components_fonts: [
-							'bower_components/bootstrap/dist/fonts/**/*',
-							'bower_components/font-awesome/fonts/**/*'
-						], 
-											
-
- scriptsWithNav: ['public/js/**/*.js', '!public/js/main_noNavigationBar.js', '!public/js/angular-drag-and-drop-lists.min.js'],
- css: ['public/css/*.css'],
- images: ['public/images/**/*'],
- app_js: ['app.js', 'db.js'],
- bin_js: ['bin/www'],
- models_js: ['models/**/*.js'],
- passport_js: ['passport/**/*.js'],
- controllers_js:['controllers/**/*.js'],
- router_js: ['router/**/*.js'],
- views_ejs: ['views/**/*.ejs'],
- packageJSON: ['package.json'],
- readme: ['README.md'],
- //favicon: ['public/favicon.ico'],
- sass_main_files: ['public/css/**.*scss', '!public/css/drag_and_drop_css.scss'],
- sass_dragAndDrop_files: ['public/css/**.*scss', '!public/css/main_css.scss'],
- js_lib: ['']
+bower_textAngular_css: 		[
+														'bower_components/textAngular/src/textAngular.css'
+													], 					
+bower_components_fonts: 	[
+														'bower_components/bootstrap/dist/fonts/**/*',
+														'bower_components/font-awesome/fonts/**/*'
+													], 
+ scriptsWithNav: 					[
+						 								'public/js/**/*.js', 
+						 								'!public/js/main_noNavigationBar.js', 
+						 								'!public/js/angular-drag-and-drop-lists.min.js'
+				 									],
+ css 										: ['public/css/*.css'],
+ images 								: ['public/images/**/*'],
+ app_js 								: ['app.js', 'db.js'],
+ bin_js 								: ['bin/www'],
+ models_js 							: ['models/**/*.js'],
+ passport_js 						: ['passport/**/*.js'],
+ controllers_js					: ['controllers/**/*.js'],
+ router_js 							: ['router/**/*.js'],
+ views_ejs 							: ['views/**/*.ejs'],
+ packageJSON 						: ['package.json'],
+ readme 								: ['README.md'],
+ sass_main_files				: [
+ 														'public/css/**.*scss', 
+ 														'!public/css/drag_and_drop_css.scss'
+ 													],
+ sass_dragAndDrop_files	: [	
+ 														'public/css/**.*scss', 
+ 														'!public/css/main_css.scss'],
+ js_lib 								: ['']
 };
  
 
