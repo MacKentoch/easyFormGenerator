@@ -415,7 +415,7 @@ angular
   $scope.nyaSelect = {};
   controllerModalProxy.initNyaSelect($scope.nyaSelect);
 
-  $scope.animationsEnabled = true;
+  $scope.animationsEnabled = true; 
 
   $scope.showModalAddCtrlToColumn = function (size, indexLine, numcolumn) {
 

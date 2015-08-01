@@ -14,10 +14,26 @@
 angular
 	.module('edaApp.services.dragDropModelConfigModelProxyService', [])
 	.factory('ddModelConfModelProxyService', [	'EasyFormGenFormlyBindingModels',
+																							'controllerModalProxy',
+																							'$parse',
+		function( EasyFormGenFormlyBindingModels, controllerModalProxy, $parse){
 
-		function( EasyFormGenFormlyBindingModels){
 
+			/**
+			 * return a control model 
+			 * (more formly detailed : see controls property in EasyFormGenFormlyBindingModels._easyFormListControls)
+			 */
+			function getFormlyDetailedContorlModelFromDragDropObject(dragDrapCtrlModel){
+				var controlModel = {};
+				var listControl = EasyFormGenFormlyBindingModels.getEasyFormListControls();
+				var controlsListGetter = $parse('controls');
 
+				angular.forEach(controlsListGetter(listControl), function(ctrlListValue, ctrlListId){
+					if (ctrlListValue.id === dragDrapCtrlModel.control)  controlModel = ctrlListValue;
+				});
+
+				return controlModel;
+			}
 
 			var Service = {};
 
@@ -56,10 +72,11 @@ angular
 														'at line :' 		: keyValue,
 														'linevalue : ' 	: lineValue,
 														'colIndex'			: i,
-														'colValue : ' 	: lineValue[i]
+														'colValue : ' 	: lineValue[i],
+														'formlyDetailedModel' : getFormlyDetailedContorlModelFromDragDropObject(lineValue[i])
 													}
 												);
-
+						
 						/**
 						 * EasyFormGenFormlyBindingModels._easyFormListControls gives detailed control
 						 * that can be bound to configuration model like done by 
