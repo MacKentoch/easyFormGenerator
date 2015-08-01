@@ -15,7 +15,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-    .module('ngwfApp.directives.ngwfDdDecorDropZoneDirective', [])
+    .module('edaApp.directives.edaDdDecorDropZoneDirective', [])
     .directive('ddDecorDropZone', [
 
 

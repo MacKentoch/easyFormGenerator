@@ -1,25 +1,20 @@
 /**
  *  ------------------------------------------------------
- *  configuration ngwfDragAndDropConfig
+ *  module = "providers" container
  *  ------------------------------------------------------
+ *      Syntax (convention) :
+ *          "edaApp" = application
+ *          "edaApp.providers" = container services module
  *
- * configuration related to drag and drop
- * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
+
 angular
-	.module('ngwfApp')
-	.config(['dragDropConfigProvider',
-
-	function (dragDropConfigProvider) {
-
-    dragDropConfigProvider.setItemsNotTocount({
-                                                //placeholder :         '',
-                                                itemBeingDragged :    'dndDraggingSource'    
-                                              });
- 
+	.module('edaApp.providers', [	'edaApp.providers.dragDropConfigProvider',
+																'edaApp.providers.EasyFormGenFormlyBindingModels', 
+	function () {
+	
 	}]);
-

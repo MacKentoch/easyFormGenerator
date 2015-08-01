@@ -14,7 +14,7 @@
  * ——————————————————————————————————————————————
  */
 angular
-  .module('ngwfApp.providers.dragDropConfigProvider', [])
+  .module('edaApp.providers.dragDropConfigProvider', [])
   .provider('dragDropConfig', [
 
     function(){

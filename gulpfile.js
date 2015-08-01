@@ -1,13 +1,12 @@
-var gulp = require('gulp');
-//var ignore = require('gulp-ignore');
-var del    = require('del');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var cssmin = require('gulp-cssmin');
-var sass = require('gulp-sass');
-var notify = require('gulp-notify');
-var wrap = require('gulp-wrap');
+var gulp 				= require('gulp');
+var del    			= require('del');
+var jshint 			= require('gulp-jshint');
+var concat 			= require('gulp-concat');
+var uglify 			= require('gulp-uglify');
+var cssmin 			= require('gulp-cssmin');
+var sass 				= require('gulp-sass');
+var notify 			= require('gulp-notify');
+var wrap 				= require('gulp-wrap');
 var deleteLines = require('gulp-delete-lines');
 
 
@@ -23,28 +22,28 @@ var bases ={
 };
 
 var scriptFileNames={
-	scripts_with_navbar: 'app_nav.min.js',
-	angularDragAndDrop : 'angular-drag-and-drop-lists.min.js',
-	clientMvcOutput: 'clientMVC.min.js',
-	clientMvcDragAndDropOutput: 'clientMVC.min.js',
-	ngdagableFileMinName :'ngDraggable.min.js'
+	scripts_with_navbar 				: 'app_nav.min.js',
+	angularDragAndDrop					: 'angular-drag-and-drop-lists.min.js',
+	clientMvcOutput 						: 'clientMVC.min.js',
+	clientMvcDragAndDropOutput 	: 'clientMVC.min.js',
+	ngdagableFileMinName 				: 'ngDraggable.min.js'
 };
 
 
 var app_main_css={
-	css_result: 'main_css.min.css',
-	sass_main: 'main_css.scss',
-	sass_variables: 'main_var.scss',
-	sass_mixins: 'main_mixins.scss',
-	sass_functions: 'main_function.scss'
+	css_result 			: 'main_css.min.css',
+	sass_main 			: 'main_css.scss',
+	sass_variables 	: 'main_var.scss',
+	sass_mixins 		: 'main_mixins.scss',
+	sass_functions 	: 'main_function.scss'
 };
 
 var clientMVC={
-	app: ['public/clientMVC/main/ngwfApp.js'],
-	controllers: ['public/clientMVC/main/controllers/**/*.js'],
-	directives: ['public/clientMVC/main/directives/**/*.js'],
-	filters: ['public/clientMVC/main/filters/**/*.js'],
-	services: ['public/clientMVC/main/services/**/*.js'],
+	app 					: ['public/clientMVC/main/ngwfApp.js'],
+	controllers 	: ['public/clientMVC/main/controllers/**/*.js'],
+	directives 		: ['public/clientMVC/main/directives/**/*.js'],
+	filters 			: ['public/clientMVC/main/filters/**/*.js'],
+	services 			: ['public/clientMVC/main/services/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 };
 

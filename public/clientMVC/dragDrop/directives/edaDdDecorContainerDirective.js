@@ -13,7 +13,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-    .module('ngwfApp.directives.ngwfDdDecorContainerDirective', [])
+    .module('edaApp.directives.edaDdDecorContainerDirective', [])
     .directive('ddDecorContainer', [
 
     function(){

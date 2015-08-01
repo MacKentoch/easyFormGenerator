@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.services.dragDropItemCountersService', [])
+	.module('edaApp.services.dragDropItemCountersService', [])
 	.factory('dragDropItemCounterService', ['dragDropConfig', 
 	
 	function(dragDropConfig){

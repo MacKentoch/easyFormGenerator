@@ -1,6 +1,6 @@
 /**
  *  ------------------------------------------------------
- *  directive : ngwfDdDecorItemDirective
+ *  directive : edaDdDecorItemDirective
  *  ------------------------------------------------------
  *
  *  decorate an item / control
@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-    .module('ngwfApp.directives.ngwfDdDecorItemDirective', [])
+    .module('edaApp.directives.edaDdDecorItemDirective', [])
     .directive('ddDecorItem', [ 'dragDropConfig',
 
     function( dragDropConfig ){

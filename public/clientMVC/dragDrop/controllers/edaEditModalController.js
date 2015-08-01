@@ -2,21 +2,21 @@
 //  module = "controllers"  for view "wfEdit"
 //  ------------------------------------------------------
 //      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.controllers.viewNameController" = controller module
+//          "edaApp" = application
+//          "edaApp.controllers.viewNameController" = controller module
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 angular
-  .module('ngwfApp.controllers.ngwfWfEditMODALController', [])
-  .controller('ngwfWfEditMODALController', [	'$scope', 
-                                              '$modalInstance',
-                                              'nyaSelect',
-                                              'toaster' ,
-                                              '$timeout',
-                                              'selectOptionManage',
-                                              'controllerModalProxy',
+  .module('edaApp.controllers.edaEditMODALController', [])
+  .controller('edaEditMODALController', [	'$scope', 
+                                          '$modalInstance',
+                                          'nyaSelect',
+                                          'toaster' ,
+                                          '$timeout',
+                                          'selectOptionManage',
+                                          'controllerModalProxy',
   function (	$scope, 
               $modalInstance, 
               nyaSelect, 
@@ -44,10 +44,11 @@ var initOptionModel = {rows:[
     if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
       for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
 
-            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-                      "order": i,
-                      "group": ""
-                    };
+            var newOption = { 
+                              'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+                              'order': i,
+                              'group': ''
+                            };
             $scope.radioRowCollection.rows.push(newOption);
       }    
     }
@@ -60,9 +61,10 @@ var initOptionModel = {rows:[
     if ($scope.radioRowCollection.rows.length > 0) {
 
       for (var i = 0; i <= $scope.radioRowCollection.rows.length - 1; i++){
-            var newOption = {"name": $scope.radioRowCollection.rows[i].option,
-                      "value": i,
-                      "group": ""
+            var newOption = {
+                              'name': $scope.radioRowCollection.rows[i].option,
+                              'value': i,
+                              'group': ''
                     };
             $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
         }       

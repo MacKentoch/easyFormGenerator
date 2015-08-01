@@ -1,15 +1,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// module = "controllers"  for view "ngwfMainController"
+// module = "controllers"  for view "edaMainController"
 //  ------------------------------------------------------
 //      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.controllers.ngwfMainController" = controller module
+//          "edaApp" = application
+//          "edaApp.controllers.edaMainController" = controller module
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular
-	.module('ngwfApp.controllers.ngwfMainController', [])
-	.controller('ngwfMainController', [
+	.module('edaApp.controllers.edaMainController', [])
+	.controller('edaMainController', [
 		function () {
 			
 		}]);

@@ -34,7 +34,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-  .module('ngwfApp.services.formFieldManage', [])
+  .module('edaApp.services.formFieldManage', [])
   .factory('formFieldManage', [ 'EasyFormGenFormlyBindingModels', 
 
   function( EasyFormGenFormlyBindingModels ){

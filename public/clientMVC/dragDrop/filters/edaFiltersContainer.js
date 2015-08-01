@@ -4,8 +4,8 @@
  *  ------------------------------------------------------
  *
  *      Syntax (convention) :
- *          "ngwfApp" = application
- *          "ngwfApp.filters" = container filters module
+ *          "edaApp" = application
+ *          "edaApp.filters" = container filters module
  *           
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -13,7 +13,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.filters', ['ngwfApp.filters.trustThis', 
+	.module('edaApp.filters', ['edaApp.filters.trustThis', 
 	
 	function () {
 

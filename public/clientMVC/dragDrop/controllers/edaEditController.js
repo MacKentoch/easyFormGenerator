@@ -2,14 +2,14 @@
 //  module = "controllers"  for view "edit/manage forms"
 //  ------------------------------------------------------
 //      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.controllers.viewNameController" = controller module
+//          "edaApp" = application
+//          "edaApp.controllers.viewNameController" = controller module
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular
-  .module('ngwfApp.controllers.ngwfWfEditController', [])
-  .controller('ngwfWfEditController', [	'$scope', 
+  .module('edaApp.controllers.edaWfEditController', [])
+  .controller('edaEditController', [	'$scope', 
                                         'easyFormGenVersion',
                                         '$filter',
                                         '$anchorScroll',
@@ -18,7 +18,7 @@ angular
                                         '$modal',
                                         '$log', 
                                         'formFieldManage',
-                                        'wfFormsByIdServices',
+                                        'formsByIdService',
                                         'controllerModalProxy',
                                         'dragDropItemDecorationService',
                                         'dragDropConfig',
@@ -32,7 +32,7 @@ angular
               $modal,
               $log, 
               formFieldManage, 
-              wfFormsByIdServices, 
+              formsByIdService, 
               controllerModalProxy,
               dragDropItemDecorationService,
               dragDropConfig,
@@ -156,7 +156,7 @@ angular
 
   // function loadExistingFormsAsList(){
   //   //If it were not a static html, it should call server to retrieve data from database :
-  //   // $scope.formlyList = wfFormsByIdServices.query();  
+  //   // $scope.formlyList = formsByIdService.query();  
   // }
 
   // //load on init
@@ -359,7 +359,7 @@ angular
             showCloseButton: true
       });
 
-      var wfForm = new wfFormsByIdServices();
+      var wfForm = new formsByIdService();
       var formSavingIsOK = true;
 
       wfForm.formName = $scope.configuration.formName;
@@ -422,7 +422,7 @@ angular
     var modalInstance = $modal.open({
                                       animation: $scope.animationsEnabled,
                                       templateUrl: 'modalWfEdit.html', 
-                                      controller: 'ngwfWfEditMODALController',
+                                      controller: 'edaEditMODALController',
                                       size: 'lg',
                                       resolve: {
                                         nyaSelect: function () {

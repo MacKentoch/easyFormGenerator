@@ -13,7 +13,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.filters.trustThis', [])
+	.module('edaApp.filters.trustThis', [])
 	.filter('trustThis', ['$sce',
 
 	function($sce) {

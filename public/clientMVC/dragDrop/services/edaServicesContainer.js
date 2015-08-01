@@ -3,8 +3,8 @@
  *  module = "services" container
  *  ------------------------------------------------------
  *      Syntax (convention) :
- *          "ngwfApp" = application
- *          "ngwfApp.services" = container services module
+ *          "edaApp" = application
+ *          "edaApp.services" = container services module
  *
  *  This module is a container -> it must be injected in the application -> so it will inject all services injected here
  *
@@ -15,14 +15,14 @@
  * ——————————————————————————————————————————————
 **/
 
-angular.module('ngwfApp.services', 
+angular.module('edaApp.services', 
 							[	
-								'ngwfApp.services.formFieldManage',
-								'ngwfApp.services.selectOptionManage',
-								'ngwfApp.services.ngwfWfFormsServices',
-								'ngwfApp.services.ngwfEditCtrlControllerModalProxy',
-								'ngwfApp.services.dragDropItemDecorationService',
-								'ngwfApp.services.dragDropItemCountersService',
-								'ngwfApp.services.dragDropModelConfigModelProxyService',
+								'edaApp.services.formFieldManage',
+								'edaApp.services.selectOptionManage',
+								'edaApp.services.edaWfFormsServices',
+								'edaApp.services.edaEditCtrlControllerModalProxy',
+								'edaApp.services.dragDropItemDecorationService',
+								'edaApp.services.dragDropItemCountersService',
+								'edaApp.services.dragDropModelConfigModelProxyService',
 								function () {
 }]);

@@ -1,6 +1,6 @@
 /**
  *  ------------------------------------------------------
- *  directive : ngwfDdContentCounterDirective
+ *  directive : edaDdContentCounterDirective
  *  ------------------------------------------------------
  *
  *  return real item count (hidden item being dragged that stay on the line)
@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-    .module('ngwfApp.directives.ngwfDdContentCounterDirective', [])
+    .module('edaApp.directives.edaDdContentCounterDirective', [])
     .directive('ddContentCounter', ['dragDropItemCounterService', '$timeout',
 
     function(	dragDropItemCounterService, $timeout ){

@@ -1,9 +1,9 @@
 /**
  *  ------------------------------------------------------
- *  directive : stRatio
+ *  configuration edaDragAndDropConfig
  *  ------------------------------------------------------
  *
- * adapt element's width % 
+ * configuration related to drag and drop
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -11,19 +11,15 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.directives.ngwfStRationDirective', [])
-	.directive('stRatio',[
+	.module('edaApp')
+	.config(['dragDropConfigProvider',
 
-  function(){
+	function (dragDropConfigProvider) {
 
-        return {
-        	restrict: 'A',
+    dragDropConfigProvider.setItemsNotTocount({
+                                                //placeholder :         '',
+                                                itemBeingDragged :    'dndDraggingSource'    
+                                              });
+ 
+	}]);
 
-          link:function(scope, element, attr){
-            var ratio=+(attr.stRatio);
-            
-            element.css('width',ratio+'%');
-            
-          }
-        };
-}]);

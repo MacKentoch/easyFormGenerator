@@ -4,8 +4,8 @@
  *  ------------------------------------------------------
  *
  *      Syntax (convention) :
- *          "ngwfApp" = application
- *          "ngwfApp.directives" = container directives module
+ *          "edaApp" = application
+ *          "edaApp.directives" = container directives module
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -13,13 +13,13 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRationDirective',
-																	'ngwfApp.directives.ngwfDdDecorDropZoneDirective',
-																	'ngwfApp.directives.ngwfDdDecorContainerDirective',
-																	'ngwfApp.directives.ngwfDdDecorLineDirective',
-																	'ngwfApp.directives.ngwfDdDecorItemDirective',
-																	'ngwfApp.directives.ngwfDdNoEditableControlDirective',
-																	'ngwfApp.directives.ngwfDdContentCounterDirective',
+	.module('edaApp.directives', [	'edaApp.directives.edaStRationDirective',
+																	'edaApp.directives.edaDdDecorDropZoneDirective',
+																	'edaApp.directives.edaDdDecorContainerDirective',
+																	'edaApp.directives.edaDdDecorLineDirective',
+																	'edaApp.directives.edaDdDecorItemDirective',
+																	'edaApp.directives.edaDdNoEditableControlDirective',
+																	'edaApp.directives.edaDdContentCounterDirective',
 	function () {
 
 }]);

@@ -4,13 +4,13 @@
 //  module = "service"  selectOptionManage (manage : selects, radio...)
 //  ------------------------------------------------------
 //      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.services.serviceNAME" = container services module
+//          "edaApp" = application
+//          "edaApp.services.serviceNAME" = container services module
 //
 //  This module is a service -> it must be injected in services container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular
-  .module('ngwfApp.services.selectOptionManage', [])
+  .module('edaApp.services.selectOptionManage', [])
   .factory('selectOptionManage', [ function(){
 	//console.log('--> INIT : Hello service  \'\'selectOptionManage\'\' ');
 

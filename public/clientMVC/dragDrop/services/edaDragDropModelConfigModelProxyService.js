@@ -12,7 +12,7 @@
 **/
 
 angular
-	.module('ngwfApp.services.dragDropModelConfigModelProxyService', [])
+	.module('edaApp.services.dragDropModelConfigModelProxyService', [])
 	.factory('ddModelConfModelProxyService', [	'EasyFormGenFormlyBindingModels',
 
 		function( EasyFormGenFormlyBindingModels){

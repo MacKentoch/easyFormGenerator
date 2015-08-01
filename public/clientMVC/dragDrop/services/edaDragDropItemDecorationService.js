@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.services.dragDropItemDecorationService', [])
+	.module('edaApp.services.dragDropItemDecorationService', [])
 	.factory('dragDropItemDecorationService', 
 																			['dragDropConfig',  
 	

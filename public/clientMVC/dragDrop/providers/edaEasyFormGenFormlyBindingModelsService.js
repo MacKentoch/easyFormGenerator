@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.providers.EasyFormGenFormlyBindingModels', [])
+	.module('edaApp.providers.EasyFormGenFormlyBindingModels', [])
 	.provider('EasyFormGenFormlyBindingModels', [
 
 	function(){ 

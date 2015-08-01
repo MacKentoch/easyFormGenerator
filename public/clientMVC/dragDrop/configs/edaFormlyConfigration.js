@@ -1,6 +1,6 @@
 /**
  *  ------------------------------------------------------
- *  configuration ngwfFormlyConfig
+ *  configuration edaFormlyConfig
  *  ------------------------------------------------------
  *
  *  formly configuration
@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp')
+	.module('edaApp')
 	.config([	'formlyConfigProvider',
 						'EasyFormGenFormlyBindingModelsProvider',
 						'dragDropConfigProvider',

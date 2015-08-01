@@ -11,7 +11,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
+	.module('edaApp.services.edaEditCtrlControllerModalProxy', [])
 	.factory('controllerModalProxy', [	'EasyFormGenFormlyBindingModels',
 
 	function( EasyFormGenFormlyBindingModels ){

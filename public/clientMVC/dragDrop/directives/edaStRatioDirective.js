@@ -1,20 +1,29 @@
 /**
  *  ------------------------------------------------------
- *  module = "providers" container
+ *  directive : stRatio
  *  ------------------------------------------------------
- *      Syntax (convention) :
- *          "ngwfApp" = application
- *          "ngwfApp.providers" = container services module
  *
+ * adapt element's width % 
+ * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
-
 angular
-	.module('ngwfApp.providers', [	'ngwfApp.providers.dragDropConfigProvider',
-																	'ngwfApp.providers.EasyFormGenFormlyBindingModels', 
-	function () {
-	
-	}]);
+	.module('edaApp.directives.edaStRationDirective', [])
+	.directive('stRatio',[
+
+  function(){
+
+        return {
+        	restrict: 'A',
+
+          link:function(scope, element, attr){
+            var ratio=+(attr.stRatio);
+            
+            element.css('width',ratio+'%');
+            
+          }
+        };
+}]);
