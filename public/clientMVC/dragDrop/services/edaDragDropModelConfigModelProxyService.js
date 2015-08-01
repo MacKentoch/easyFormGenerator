@@ -81,9 +81,13 @@ angular
 				
 
 				/**
+				 *
+				 * 
 				 * TODO :properties should be served by provider 
 				 *
 				 * more configurable without pain
+				 *
+				 * 
 				 */
 
 
@@ -129,24 +133,7 @@ angular
 					$parse('control.templateOptions.datepickerPopup')
 						.assign(configurationCtrlModel, $parse('datepickerPopup')(formlyDetailCtrlModel));
 
-			  }
-			      
-
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 				= extractedProps.selectedControl;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.type 										= extractedProps.formlyType;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.subtype 								= extractedProps.formlySubtype;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
-			      // configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
-			     	
-
-				console.dir({
-					title 									: 'debug : bindConfigCtrlModelFromFormlyDetailedCtrlModel'	,
-					formlyDetailCtrlModel 	: formlyDetailCtrlModel,
-					configurationCtrlModel 	: configurationCtrlModel
-				});			    
+			  }    
 
 			}
 
@@ -166,64 +153,78 @@ angular
 					 * add empty line 1st 
 					 * if line is empty -> it will be enough
 					 */
-					var newLineLength = configModel.lines.push(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel());
-					
+					configModel.lines.push(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel());
+					$parse('lines[' + keyValue + '].line').assign(configModel, keyValue);
 
 					/**
 					 * iterate through columns
 					 * and add them if control exists
 					 */
+					
+					//configModel.lines[newLineLength - 1].columns = [];
+
 					angular.forEach(lineValue, function(colValue, colIndex){
 
-						configModel.lines[newLineLength - 1].columns = [];
-
-
-						console.warn('fixing binding at line : ' + keyValue + 'column : ' + colIndex);
-						console.dir(	
-													{
-														'at line :' 					: keyValue,
-														'linevalue : ' 				: lineValue,
-														'Nb column in line'		: lineValue.length,
-														'colIndex'						: colIndex,
-														'colValue : ' 				: lineValue[colIndex],
-														'formlyDetailedModel' : getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]),
-														'control config model': EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType)
-														//'configModelCtrl' : controllerModalProxy.
-													}
-												);
+						
 						 if (lineValue[colIndex]) {
 				    	/**
 				    	 * push an emty control model but relative to dradrop ::model control type
 				    	 * (if datepicker so additionnal properties are added)
-				    	 */
-				    	var columnsLength = configModel.lines[keyValue].columns.push(
-				    			{
-				    				control : EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
-				    																																													getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
-				    																																												)
-				    			}
-				    	);
+				    	 */ 	
+				    	// var columnsLength = configModel.lines[keyValue].columns.push(
+				    	// 		{
+				    	// 			control : EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
+				    	// 																																												getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
+				    	// 																																											)
+				    	// 		}
+				    	// );
+
+							var controlToBind = 
+									{
+				    				control : EasyFormGenFormlyBindingModels
+				    											.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
+				    																																getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
+				    																															)
+				    			};
+
+				    	console.dir({
+				    		title : 'configModel_before_bind', 
+				    		atLine : keyValue,
+				    		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
+								configModelALLLINE : angular.copy(configModel.lines)
+				    	});
 				    	/**
 				    	 * bind dragdrop control properties to configuration model
 				    	 */
+				    	//var controlToBind = angular.copy(configModel.lines[keyValue].columns[colIndex]);
 				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]), 
-				    																									configModel.lines[keyValue].columns[columnsLength - 1], 
+				    																									controlToBind, 
 				    																									configModel);
+
+				    	configModel.lines[keyValue].columns.push(controlToBind);
+
+				    	console.dir({
+				    		title : 'configModel_after_bind', 
+				    		atLine : keyValue,
+				    		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
+				    		configModelALLLINE : angular.copy(configModel.lines)
+				    	});
 						}
 
 					});
 
 
-					console.dir({
-						title 			: 'this line modified configuration model',
-						configurationModel : angular.copy(configModel)
-					});
+					// console.dir({
+					// 	title 			: 'this line modified configuration model',
+					// 	configurationModel : angular.copy(configModel)
+					// });
 										
-
+				
+				
 				});
 
 
-				return true;
+				return configModel;
 			};
 
 

@@ -66,7 +66,7 @@ angular
 			                  '</div>'
 	                   ].join(''),          
           control : 'empty',
-          cssClass: 'col-md-12'
+          cssClass: 'col-xs-12'
 				},
 				{
 					addToGroupCtrl : 'blank'
@@ -117,7 +117,7 @@ angular
 			                  '</div>'
 	                   ].join(''),          
           control : 'Header',
-          cssClass: 'col-md-12'
+          cssClass: 'col-xs-12'
 				},
 				{
 					addToGroupCtrl : 'headers'
@@ -181,7 +181,7 @@ angular
 			                  '</div>'
 	                    ].join(''),
           'control'	: 'Subtitle',
-          'cssClass': 'col-md-12'
+          'cssClass': 'col-xs-12'
         },
 				{
 					addToGroupCtrl : 'headers'
@@ -235,7 +235,7 @@ angular
 	                  	].join(''),
 
 	        'control'	: 'TextInput',
-	        'cssClass': 'col-md-12'
+	        'cssClass': 'col-xs-12'
 	      },
 				{
 					addToGroupCtrl : 'inputs'
@@ -290,7 +290,7 @@ angular
 	                    ].join(''),
 
           'control'	: 'Password',
-          'cssClass': 'col-md-12'
+          'cssClass': 'col-xs-12'
         },
 				{
 					addToGroupCtrl : 'inputs'
@@ -441,7 +441,7 @@ angular
 															'</div>'
 														].join(''),
 				          control	: 'Date',
-				          cssClass: 'col-md-12'
+				          cssClass: 'col-xs-12'
 				},
 				{
 					addToGroupCtrl : 'inputs'
@@ -493,7 +493,7 @@ angular
                         '</div>'                                  
                     	].join(''),
           'control'	: 'Texarea',
-          'cssClass': 'col-md-12'          
+          'cssClass': 'col-xs-12'          
 				},
 				{
 					addToGroupCtrl : 'textareas'
@@ -554,7 +554,7 @@ angular
 											'</div>'
 										].join(''),
 			    control	: 'RichTextEditor',
-			    cssClass: 'col-md-12'
+			    cssClass: 'col-xs-12'
 				},
 				{
 					addToGroupCtrl : 'textareas'
@@ -617,7 +617,7 @@ angular
                         '</div>'
                       ].join(''),
           'control'	: 'Radio',
-          'cssClass': 'col-md-12'            
+          'cssClass': 'col-xs-12'            
         },
 				{
 					addToGroupCtrl : 'radios'
@@ -670,7 +670,7 @@ angular
 											'</div>' 
 										].join(''),
 				  control	: 'Checkbox',
-				  cssClass: 'col-md-12' 
+				  cssClass: 'col-xs-12' 
 				},
 				{
 					addToGroupCtrl : 'checkboxes'
@@ -744,7 +744,7 @@ angular
 											'</div>' 
 										].join(''),
 				  control	: 'BasicSelect',
-				  cssClass: 'col-md-12' 	
+				  cssClass: 'col-xs-12' 	
 				},
 				{
 					addToGroupCtrl : 'selects'
@@ -821,7 +821,7 @@ angular
 											'</div>' 
 										].join(''),
 					control	: 'GroupedSelect',
-					cssClass: 'col-md-12' 
+					cssClass: 'col-xs-12' 
 				},
 				{
 					addToGroupCtrl : 'selects'
