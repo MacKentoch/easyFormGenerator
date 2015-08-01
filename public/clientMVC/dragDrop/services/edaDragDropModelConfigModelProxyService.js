@@ -35,12 +35,49 @@ angular
 				return controlModel;
 			}
 
+			/**
+			 * valid a control key is unique
+			 *
+			 * yes... function name already told us that, 
+			 * -> it's just confirmation and to see if
+			 *    you keep focus while reading it ^^
+			 */
+			function validKeyUniqueness(thisKey, configurationObj){
+			  var isUnique = true;
+			  for (var i = configurationObj.lines.length - 1; i >= 0; i--) {
+			    for (var j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
+			      if (configurationObj.lines[i].columns[j].control.key === thisKey) {
+			        isUnique = false;
+			      }
+			    } 
+			  }
+			  return isUnique;  
+			} 
 
+
+			function createUniqueKey(baseKeyValue, configurationObj){
+				/**
+	       * unique key (set only first time) in this model is formly control type + Date.now(); 
+	       */
+	      var newKey = baseKeyValue + '-' + Date.now();
+	      if (validKeyUniqueness(newKey, configurationObj) === true){
+	        return newKey;
+	      }else{
+	        newKey = baseKeyValue + '-' + Date.now();
+	        if (validKeyUniqueness(newKey, configurationObj) === true){
+	          return newKey;
+	        }else{
+	          newKey = baseKeyValue + '-' + Date.now();
+	          return newKey;
+	        }
+	      } 
+
+			}
 
 			/**
 			 * bind formly detailed model to configuration control model
 			 */
-			function bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailCtrlModel, configurationCtrlModel){
+			function bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailCtrlModel, configurationCtrlModel, configModel){
 				
 
 				/**
@@ -58,9 +95,9 @@ angular
 				$parse('control.type')
 					.assign(configurationCtrlModel, $parse('formlyType')(formlyDetailCtrlModel));
 
-				//set type :	
-				$parse('control.type')
-					.assign(configurationCtrlModel, $parse('formlyType')(formlyDetailCtrlModel));
+				//set key :	
+				$parse('control.key')
+					.assign(configurationCtrlModel, createUniqueKey($parse('control.type')(configurationCtrlModel), configModel));
 
 				//set subtype :	
 				$parse('control.subtype')
@@ -89,8 +126,8 @@ angular
 
  				if ($parse('control.type')(configurationCtrlModel) === 'datepicker') {
 
-					//$parse('control.templateOptions.datepicker')
-					//	.assign(configurationCtrlModel, $parse('formlyOptions')(formlyDetailCtrlModel));
+					$parse('control.templateOptions.datepickerPopup')
+						.assign(configurationCtrlModel, $parse('datepickerPopup')(formlyDetailCtrlModel));
 
 			  }
 			      
@@ -162,7 +199,7 @@ angular
 			    			}
 			    	);
 
-			    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(getFormlyDetailedContorlModelFromDragDropObject(lineValue[i]), configModel.lines[keyValue].columns[columnsLength - 1]);
+			    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(getFormlyDetailedContorlModelFromDragDropObject(lineValue[i]), configModel.lines[keyValue].columns[columnsLength - 1], configModel);
 
 
 

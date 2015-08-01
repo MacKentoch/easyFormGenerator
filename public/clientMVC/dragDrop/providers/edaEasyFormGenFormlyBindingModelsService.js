@@ -367,7 +367,7 @@ angular
 				 *
 				 *
 				 * 
-				 * TODO : helpers to improve "formfielMange Service"
+				 * TODO : helpers to improve "formfielManage Service"
 				 *
 				 * - objective it to replace Add N ColumnControl methods
 				 * 
