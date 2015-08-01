@@ -19,7 +19,7 @@ angular.module('edaApp.services',
 							[	
 								'edaApp.services.formFieldManage',
 								'edaApp.services.selectOptionManage',
-								'edaApp.services.edaWfFormsServices',
+								'edaApp.services.formsByIdService',
 								'edaApp.services.edaEditCtrlControllerModalProxy',
 								'edaApp.services.dragDropItemDecorationService',
 								'edaApp.services.dragDropItemCountersService',

@@ -8,7 +8,7 @@
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 angular
-  .module('edaApp.controllers.edaWfEditController', [])
+  .module('edaApp.controllers.edaEditController', [])
   .controller('edaEditController', [	'$scope', 
                                         'easyFormGenVersion',
                                         '$filter',

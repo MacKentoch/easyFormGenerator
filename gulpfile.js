@@ -48,7 +48,7 @@ var clientMVC={
 };
 
 var clientMVC_dragDrop={
-	app: ['public/clientMVC/dragDrop/ngwfApp.js'],
+	app: ['public/clientMVC/dragDrop/edaApp.js'],
 	controllers: ['public/clientMVC/dragDrop/controllers/**/*.js'],
 	directives: ['public/clientMVC/dragDrop/directives/**/*.js'],
 	filters: ['public/clientMVC/dragDrop/filters/**/*.js'],

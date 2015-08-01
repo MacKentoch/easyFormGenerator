@@ -13,7 +13,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-	.module('ngwfApp.directives.ngwfDdNoEditableControlDirective', [])
+	.module('edaApp.directives.edaDdNoEditableControlDirective', [])
 	.directive('ddNoEditableControl', [
 
 	function(){

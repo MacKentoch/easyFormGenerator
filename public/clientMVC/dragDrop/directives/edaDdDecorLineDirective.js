@@ -1,6 +1,6 @@
 /**
  *  ------------------------------------------------------
- *  directive : ngwfDdDecorLineDirective
+ *  directive : edaDdDecorLineDirective
  *  ------------------------------------------------------
  *
  * decorate a form line :
@@ -14,7 +14,7 @@
  * ——————————————————————————————————————————————
 **/
 angular
-    .module('ngwfApp.directives.ngwfDdDecorLineDirective', [])
+    .module('edaApp.directives.edaDdDecorLineDirective', [])
     .directive('ddDecorLine', ['$timeout', 
 
     function($timeout){
