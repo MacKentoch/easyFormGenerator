@@ -128,28 +128,60 @@ angular
      * New auuto adpat  add N column controls
      */
     function AddNColumnControl(formlyModel, configurationModel, lineIndex){
-      /**
-       * iterates through controls
-       */
+
       var numberOfColumns = configurationModel.lines[lineIndex].columns.length;
 
+      
+      /**
+       * push formly model 
+       * 
+       * here : only className and empty fieldGroup (controls != header)
+       */
+      // if (column.control.type === 'header') {
+      //   formlyModel.push(
+      //                      {
+      //                         className   : ''
+      //                       }
+      //                   );        
+      // }
+
+      // if (typeof controlTemplate !== 'undefined' &&
+      //   column.control.type    !== 'none')  {
+      var indexFormlyModel =  formlyModel.push(
+                                               {
+                                                  className   : 'row', 
+                                                  fieldGroup  : []
+                                                }
+                                              ) - 1 ;        
+     // }
+      /**
+       * iterates through controls in the line
+       */
+      
       configurationModel.lines[lineIndex].columns.forEach(function(column){
         var controlTemplate = {};
 
-        if (column.control.type === 'header') {
-          /**
-           * header is not a control just a template
-           *
-           * getHeaderTemplateForNcolumnLine()
-           */
-          var headerTextContent = column.control;
-          controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
-          /**
-           * popuplate properties
-           */
+        if (column.control.type === 'header' &&
+            column.control.type !== 'none') {
+            /**
+             * header is not a control just a template
+             *
+             * getHeaderTemplateForNcolumnLine()
+             */
+            var headerTextContent = column.control;
+            controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
+            /**
+             * popuplate properties
+             */
 
+             /**
+              * push
+              */
+        }
+        
+        if (typeof controlTemplate !== 'undefined' &&
+          column.control.type    !== 'none') {
 
-        }else{
           /**
            * controls : getFormlyControlTemplateForNcolumnLine()
            *
@@ -160,65 +192,43 @@ angular
           /**
            * popuplate properties
            */
-          if (column.control.type    !== 'none') {
-            controlTemplate.className                   = column.control.className;
-            controlTemplate.type                        = column.control.type;
-            controlTemplate.key                         = column.control.key;
-            controlTemplate.templateOptions.type        = column.control.templateOptions.type;
-            controlTemplate.templateOptions.label       = column.control.templateOptions.label;
-            controlTemplate.templateOptions.required    = column.control.templateOptions.required;
-            controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
-            controlTemplate.templateOptions.description = column.control.templateOptions.description;
-            controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options);              
+          
+          console.warn( [
+                          'debug AddNColumnControl',
+                          '\ncolumn.control.type : ',
+                          column.control.type
+
+                        ].join('')
+                      );
+          console.dir(  
+                        {
+                          'desired controlTemplate': '<- this was title' ,
+                          controlTemplate : controlTemplate
+                        }
+                      );
+
+
+          controlTemplate.className                   = column.control.className;
+          controlTemplate.type                        = column.control.type;
+          controlTemplate.key                         = column.control.key;
+          controlTemplate.templateOptions.type        = column.control.templateOptions.type;
+          controlTemplate.templateOptions.label       = column.control.templateOptions.label;
+          controlTemplate.templateOptions.required    = column.control.templateOptions.required;
+          controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
+          controlTemplate.templateOptions.description = column.control.templateOptions.description;
+          controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options); 
+
+
+
+          /**
+           * push control into formly model in its group
+           */
+          formlyModel[indexFormlyModel].fieldGroup.push(controlTemplate);         
+
           }
-        
-
         }
-    
-       /**
-        * test before push : it could be an empty column added
-        * which means : column.control.type = 'none'
-        * (so we dont affect configurationModel it is just visual)
-        *
-        *
-        *
-        * TODO : fix bug when addding empty line (configuration has at least 1 line with 2 columns)
-        */
-       if (typeof controlTemplate !== 'undefined' &&
-           column.control.type    !== 'none') {
 
-        console.warn( [
-                        'debug AddNColumnControl',
-                        '\ncolumn.control.type : ',
-                        column.control.type
-
-                      ].join('')
-                    );
-        console.dir(  
-                    {
-                      'disired controlTemplate': '<- this was title' ,
-                      controlTemplate : controlTemplate
-                    }
       );
-
-
-
-        var FieldGroup = [];
-        FieldGroup.push(controlTemplate);
-        
-        formlyModel.push(
-                           {
-                              className   : 'row', 
-                              fieldGroup  : FieldGroup
-                            }
-                        );          
-
-        }
-
-      
-
-      });
-
     }    
 
     function AddOneColumnHeader(formlyModel, configurationModel,lineIndex){
