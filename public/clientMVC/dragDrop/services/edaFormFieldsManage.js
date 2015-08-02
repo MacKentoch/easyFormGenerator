@@ -173,10 +173,13 @@ angular
         * (so we dont affect configurationModel it is just visual)
         */
        if (typeof controlTemplate !== 'undefined' &&
-           column.control.type !== 'none' ) {
-        FieldGroup.push(controlTemplate);
+           column.control.type    !== 'none') {
 
         var FieldGroup = [];
+        FieldGroup.push(controlTemplate);
+
+
+        
         formlyModel.push(
                            {
                               className: 'row', 
