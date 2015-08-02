@@ -80,7 +80,7 @@ angular
 			function applyThisLine(linevalue, lineIndex, configModel){
 				angular.forEach(configModel.lines, function(aLineValue, aLineKey){
 					if (aLineKey === lineIndex){ 
-						aLineValue = linevalue;
+						aLineValue.line = linevalue;
 					}
 				});
 			}
@@ -181,7 +181,7 @@ angular
 
 					//$parse('lines[' + keyValue + '].line').assign(configModel, keyValue + 1);
 
-					applyThisLine(keyValue + 1, keyValue, configModel);
+					applyThisLine(keyValue, keyValue, configModel);
 
 					// console.warn('after');
 					// console.warn(	[
