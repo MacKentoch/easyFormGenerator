@@ -164,9 +164,10 @@ angular
 					 * add empty line 1st 
 					 * if line is empty -> it will be enough
 					 */
-				
 					configModel.lines.push(angular.copy(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel()));
-
+					/**
+					 * update line value field
+					 */
 					applyThisLine(keyValue + 1, keyValue, configModel);
 
 					/**
@@ -175,7 +176,6 @@ angular
 					 */	
 					angular.forEach(lineValue, function(colValue, colIndex){
 
-						 if (lineValue[colIndex]) {
 				    	/**
 				    	 * push an empty control model but relative to dradrop : model control type
 				    	 * (if datepicker so additionnal properties are added)
@@ -190,16 +190,20 @@ angular
 				    	/**
 				    	 * bind dragdrop control properties to configuration model through controlToBind var
 				    	 */
-				    	//var controlToBind = angular.copy(configModel.lines[keyValue].columns[colIndex]);
 				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
 				    																									controlToBind, 
 				    																									configModel);
 				    	/**
 				    	 * apply controlToBind var to configuration model control
 				    	 */
-				    	configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);
+				    	if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') {
+				    		configModel.lines[keyValue].columns[colIndex].push(angular.copy(controlToBind.control));
+				    	}else{
+				    		configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);	
+				    	}
+
+				    	
 				    	configModel.lines[keyValue].columns[colIndex].numColumn = colIndex + 1;
-						}
 
 					});
 										
