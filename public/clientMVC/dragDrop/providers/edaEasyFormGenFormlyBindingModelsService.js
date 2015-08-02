@@ -95,6 +95,12 @@ angular
 	                               ]
 	             }                                 
 	        ;
+	    var _emptyControlFieldModel = {
+	                                  control 		: {
+	                                                  type:'none',
+	                                                  key: 'none',
+	                                                }	    	
+	    };
 		/**
 		 * formly field model (back model = configuration model)
 		 * at initial state (1 line empty)

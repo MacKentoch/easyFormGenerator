@@ -46,9 +46,11 @@ angular
 			  var isUnique = true;
 			  for (var i = configurationObj.lines.length - 1; i >= 0; i--) {
 			    for (var j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
-			      if (configurationObj.lines[i].columns[j].control.key === thisKey) {
-			        isUnique = false;
-			      }
+			    	if (typeof configurationObj.lines[i].columns[j].control !== 'undefined') {
+				      if (configurationObj.lines[i].columns[j].control.key === thisKey) {
+				        isUnique = false;
+				      }			    		
+			    	}
 			    } 
 			  }
 			  return isUnique;  
@@ -59,6 +61,7 @@ angular
 				/**
 	       * unique key (set only first time) in this model is formly control type + Date.now(); 
 	       */
+
 	      var newKey = baseKeyValue + '-' + Date.now();
 	      if (validKeyUniqueness(newKey, configurationObj) === true){
 	        return newKey;
@@ -71,6 +74,7 @@ angular
 	          return newKey;
 	        }
 	      } 
+
 
 			}
 
@@ -197,7 +201,7 @@ angular
 				    	 * apply controlToBind var to configuration model control
 				    	 */
 				    	if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') {
-				    		configModel.lines[keyValue].columns[colIndex].push(angular.copy(controlToBind.control));
+				    		configModel.lines[keyValue].columns.push(angular.copy(controlToBind.control));
 				    	}else{
 				    		configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);	
 				    	}
