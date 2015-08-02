@@ -75,6 +75,17 @@ angular
 			}
 
 			/**
+			 * apply this line
+			 */
+			function applyThisLine(linevalue, lineIndex, configModel){
+				angular.forEach(configModel.lines, function(aLineValue, aLineKey){
+					if (aLineKey === lineIndex){ 
+						aLineValue = linevalue;
+					}
+				});
+			}
+
+			/**
 			 * bind formly detailed model to configuration control model
 			 */
 			function bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailCtrlModel, configurationCtrlModel, configModel){
@@ -153,7 +164,11 @@ angular
 					 * add empty line 1st 
 					 * if line is empty -> it will be enough
 					 */
-					configModel.lines.push(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel());
+					//if (typeof configModel.lines[keyValue] !== 'undefined') configModel.lines[keyValue] = {};
+
+					configModel.lines.push(angular.copy(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel()));
+
+
 
 					// console.warn('before');
 					// console.warn(	[
@@ -164,7 +179,9 @@ angular
 					// 							].join(''));
 					// console.dir($parse('lines[' + keyValue + ']')(configModel));
 
-					$parse('lines[' + keyValue + '].line').assign(configModel, keyValue + 1);
+					//$parse('lines[' + keyValue + '].line').assign(configModel, keyValue + 1);
+
+					applyThisLine(keyValue + 1, keyValue, configModel);
 
 					// console.warn('after');
 					// console.warn(	[
@@ -178,9 +195,8 @@ angular
 					/**
 					 * iterate through columns
 					 * and add them if control exists
-					 */
-					
-					//configModel.lines[newLineLength - 1].columns = [];
+					 */	
+					//configModel.lines[keyValue].columns = [];
 
 					angular.forEach(lineValue, function(colValue, colIndex){
 
@@ -200,18 +216,18 @@ angular
 
 							var controlToBind = 
 									{
-				    				control : EasyFormGenFormlyBindingModels
+				    				control : angular.copy(EasyFormGenFormlyBindingModels
 				    											.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
 				    																																getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
-				    																															)
+				    																															))
 				    			};
 
-				    	console.dir({
-				    		title : 'configModel_before_bind', 
-				    		atLine : keyValue,
-				    		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
-								configModelALLLINE : angular.copy(configModel.lines)
-				    	});
+				    // 	console.dir({
+				    // 		title : 'configModel_before_bind', 
+				    // 		atLine : keyValue,
+				    // 		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
+								// configModelALLLINE : angular.copy(configModel.lines)
+				    // 	});
 				    	/**
 				    	 * bind dragdrop control properties to configuration model
 				    	 */
@@ -220,26 +236,18 @@ angular
 				    																									controlToBind, 
 				    																									configModel);
 
-				    	configModel.lines[keyValue].columns.push(controlToBind);
+				    	configModel.lines[keyValue].columns.push(angular.copy(controlToBind));
 
-				    	console.dir({
-				    		title : 'configModel_after_bind', 
-				    		atLine : keyValue,
-				    		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
-				    		configModelALLLINE : angular.copy(configModel.lines)
-				    	});
+				    	// console.dir({
+				    	// 	title : 'configModel_after_bind', 
+				    	// 	atLine : keyValue,
+				    	// 	configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
+				    	// 	configModelALLLINE : angular.copy(configModel.lines)
+				    	// });
 						}
 
 					});
-
-
-					// console.dir({
-					// 	title 			: 'this line modified configuration model',
-					// 	configurationModel : angular.copy(configModel)
-					// });
 										
-				
-
 				});
 
 
