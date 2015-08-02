@@ -87,42 +87,31 @@ angular
 
       //manage header here line0
       var lineNumber = configurationModel.lines.length;
+
+
+      
+
       for (var i = 0; i < lineNumber; i++) {
 
 
         /**
          * TO TEST
          */
+        
+        //var FieldGroup = [];
         AddNColumnControl(formlyModel, configurationModel, i);
 
-          // /**
-          //  * 1 column line control
-          //  */
-          // if (configurationModel.lines[i].columns.length === 1) {
-          //   /**
-          //    * test if template control = header
-          //    * header is not a control in formly but a simple template
-          //    */
-          //   if (configurationModel.lines[i].columns[0].control.type === 'header') {
-          //     AddOneColumnHeader(formlyModel, configurationModel, i);
-          //   }else{
-          //     AddOneColumnControl(formlyModel, configurationModel, i);  
-          //   }
-          // }
-          // *
-          //  * 2 columns line control
-          //  * header, datepicker are particular cases, manganed inside AddTwoColumnControl()
-           
-          // if (configurationModel.lines[i].columns.length === 2) {
-          //   AddTwoColumnControl(formlyModel, configurationModel,i);
-          // }
-          // /**
-          //  * 3 columns line control
-          //  * header, datepicker are particular cases, manganed inside AddThreeColumnControl()
-          //  */
-          // if (configurationModel.lines[i].columns.length === 3) {
-          //   AddThreeColumnControl(formlyModel, configurationModel,i);
-          // }
+
+        // FieldGroup.push(controlTemplate);
+
+
+        
+        // formlyModel.push(
+        //                    {
+        //                       className   : 'row', 
+        //                       fieldGroup  : FieldGroup
+        //                     }
+        //                 ); 
       }
     };
         
@@ -138,7 +127,7 @@ angular
     /**
      * New auuto adpat  add N column controls
      */
-    function AddNColumnControl(formlyModel, configurationModel,lineIndex){
+    function AddNColumnControl(formlyModel, configurationModel, lineIndex){
       /**
        * iterates through controls
        */
@@ -155,6 +144,10 @@ angular
            */
           var headerTextContent = column.control;
           controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
+          /**
+           * popuplate properties
+           */
+
 
         }else{
           /**
@@ -164,6 +157,21 @@ angular
            * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
            */
           controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
+          /**
+           * popuplate properties
+           */
+          if (column.control.type    !== 'none') {
+            controlTemplate.className                   = column.control.className;
+            controlTemplate.type                        = column.control.type;
+            controlTemplate.key                         = column.control.key;
+            controlTemplate.templateOptions.type        = column.control.templateOptions.type;
+            controlTemplate.templateOptions.label       = column.control.templateOptions.label;
+            controlTemplate.templateOptions.required    = column.control.templateOptions.required;
+            controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
+            controlTemplate.templateOptions.description = column.control.templateOptions.description;
+            controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options);              
+          }
+        
 
         }
     
@@ -186,16 +194,22 @@ angular
 
                       ].join('')
                     );
+        console.dir(  
+                    {
+                      'disired controlTemplate': '<- this was title' ,
+                      controlTemplate : controlTemplate
+                    }
+      );
+
+
 
         var FieldGroup = [];
         FieldGroup.push(controlTemplate);
-
-
         
         formlyModel.push(
                            {
-                              className: 'row', 
-                              fieldGroup: FieldGroup
+                              className   : 'row', 
+                              fieldGroup  : FieldGroup
                             }
                         );          
 
