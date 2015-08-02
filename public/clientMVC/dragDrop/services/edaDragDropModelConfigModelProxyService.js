@@ -154,7 +154,26 @@ angular
 					 * if line is empty -> it will be enough
 					 */
 					configModel.lines.push(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel());
-					$parse('lines[' + keyValue + '].line').assign(configModel, keyValue);
+
+					// console.warn('before');
+					// console.warn(	[
+					// 								'atLineIndex : ',
+					// 								keyValue,
+					// 								'\nconfig : ',
+					// 								$parse('lines[' + keyValue + '].line')(configModel)
+					// 							].join(''));
+					// console.dir($parse('lines[' + keyValue + ']')(configModel));
+
+					$parse('lines[' + keyValue + '].line').assign(configModel, keyValue + 1);
+
+					// console.warn('after');
+					// console.warn(	[
+					// 								'atLineIndex : ',
+					// 								keyValue,
+					// 								'\nconfig : ',
+					// 								$parse('lines[' + keyValue  + '].line')(configModel)
+					// 							].join(''));
+					// console.dir($parse('lines[' + keyValue + ']')(configModel));
 
 					/**
 					 * iterate through columns
@@ -220,7 +239,7 @@ angular
 					// });
 										
 				
-				
+
 				});
 
 
