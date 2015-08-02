@@ -368,6 +368,12 @@ angular
 					return _easyFormEmptyConfigurationLineModel;
 				};
 
+				/**
+				 * get an empty control model from coniguration model
+				 */
+				 Service.getEasyFormConfigurationEmptyControlModel = function(){
+				 	return _emptyControlFieldModel;
+				 };
 
 				/**
 				 *

@@ -200,14 +200,12 @@ angular
 				    	/**
 				    	 * apply controlToBind var to configuration model control
 				    	 */
-				    	if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') {
-				    		configModel.lines[keyValue].columns.push(angular.copy(controlToBind.control));
-				    	}else{
-				    		configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);	
-				    	}
+				    	if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') configModel.lines[keyValue].columns.push(angular.copy( EasyFormGenFormlyBindingModels.getEasyFormConfigurationEmptyControlModel())); 
 
-				    	
+							
+							configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);
 				    	configModel.lines[keyValue].columns[colIndex].numColumn = colIndex + 1;
+				    	configModel.lines[keyValue].columns[colIndex].exist = true;
 
 					});
 										
