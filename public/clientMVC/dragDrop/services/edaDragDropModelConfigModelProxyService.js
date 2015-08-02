@@ -164,56 +164,31 @@ angular
 					 * add empty line 1st 
 					 * if line is empty -> it will be enough
 					 */
-					//if (typeof configModel.lines[keyValue] !== 'undefined') configModel.lines[keyValue] = {};
-
+				
 					configModel.lines.push(angular.copy(EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel()));
 
-
-
-					// console.warn('before');
-					// console.warn(	[
-					// 								'atLineIndex : ',
-					// 								keyValue,
-					// 								'\nconfig : ',
-					// 								$parse('lines[' + keyValue + '].line')(configModel)
-					// 							].join(''));
-					// console.dir($parse('lines[' + keyValue + ']')(configModel));
-
-					//$parse('lines[' + keyValue + '].line').assign(configModel, keyValue + 1);
-
-					applyThisLine(keyValue, keyValue, configModel);
-
-					// console.warn('after');
-					// console.warn(	[
-					// 								'atLineIndex : ',
-					// 								keyValue,
-					// 								'\nconfig : ',
-					// 								$parse('lines[' + keyValue  + '].line')(configModel)
-					// 							].join(''));
-					// console.dir($parse('lines[' + keyValue + ']')(configModel));
+					applyThisLine(keyValue + 1, keyValue, configModel);
 
 					/**
 					 * iterate through columns
 					 * and add them if control exists
 					 */	
-					//configModel.lines[keyValue].columns = [];
-
 					angular.forEach(lineValue, function(colValue, colIndex){
 
 						
 						 if (lineValue[colIndex]) {
+							
+							// /**
+							//  * reset empty control if exists
+							//  */
+							// if (configModel.lines[keyValue].columns[colIndex] !== 'undefined') {
+							// 	//configModel.lines[keyValue].columns[colIndex] = [];
+							// }
+
 				    	/**
 				    	 * push an emty control model but relative to dradrop ::model control type
 				    	 * (if datepicker so additionnal properties are added)
 				    	 */ 	
-				    	// var columnsLength = configModel.lines[keyValue].columns.push(
-				    	// 		{
-				    	// 			control : EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
-				    	// 																																												getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
-				    	// 																																											)
-				    	// 		}
-				    	// );
-
 							var controlToBind = 
 									{
 				    				control : angular.copy(EasyFormGenFormlyBindingModels
@@ -221,13 +196,6 @@ angular
 				    																																getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
 				    																															))
 				    			};
-
-				    // 	console.dir({
-				    // 		title : 'configModel_before_bind', 
-				    // 		atLine : keyValue,
-				    // 		configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
-								// configModelALLLINE : angular.copy(configModel.lines)
-				    // 	});
 				    	/**
 				    	 * bind dragdrop control properties to configuration model
 				    	 */
@@ -236,14 +204,8 @@ angular
 				    																									controlToBind, 
 				    																									configModel);
 
-				    	configModel.lines[keyValue].columns.push(angular.copy(controlToBind));
-
-				    	// console.dir({
-				    	// 	title : 'configModel_after_bind', 
-				    	// 	atLine : keyValue,
-				    	// 	configModelAtThisLine : angular.copy(configModel.lines[keyValue]),
-				    	// 	configModelALLLINE : angular.copy(configModel.lines)
-				    	// });
+				    	//configModel.lines[keyValue].columns.push(angular.copy(controlToBind));
+				    	configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);
 						}
 
 					});
