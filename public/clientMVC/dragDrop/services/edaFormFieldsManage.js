@@ -171,9 +171,21 @@ angular
         * test before push : it could be an empty column added
         * which means : column.control.type = 'none'
         * (so we dont affect configurationModel it is just visual)
+        *
+        *
+        *
+        * TODO : fix bug when addding empty line (configuration has at least 1 line with 2 columns)
         */
        if (typeof controlTemplate !== 'undefined' &&
            column.control.type    !== 'none') {
+
+        console.warn( [
+                        'debug AddNColumnControl',
+                        '\ncolumn.control.type : ',
+                        column.control.type
+
+                      ].join('')
+                    );
 
         var FieldGroup = [];
         FieldGroup.push(controlTemplate);

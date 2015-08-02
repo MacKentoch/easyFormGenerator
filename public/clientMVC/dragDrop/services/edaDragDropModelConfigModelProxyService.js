@@ -179,7 +179,6 @@ angular
 					 * and add them if control exists
 					 */	
 					angular.forEach(lineValue, function(colValue, colIndex){
-
 				    	/**
 				    	 * push an empty control model but relative to dradrop : model control type
 				    	 * (if datepicker so additionnal properties are added)
