@@ -23,7 +23,7 @@ angular
 			 * return a control model that is more formly detailed
 			 * (more formly detailed : see controls property in EasyFormGenFormlyBindingModels._easyFormListControls)
 			 */
-			function getFormlyDetailedContorlModelFromDragDropObject(dragDrapCtrlModel){
+			function getFormlyDetailedControlModelFromDragDropObject(dragDrapCtrlModel){
 				var controlModel = {};
 				var listControl = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 				var controlsListGetter = $parse('controls');
@@ -175,37 +175,30 @@ angular
 					 */	
 					angular.forEach(lineValue, function(colValue, colIndex){
 
-						
 						 if (lineValue[colIndex]) {
-							
-							// /**
-							//  * reset empty control if exists
-							//  */
-							// if (configModel.lines[keyValue].columns[colIndex] !== 'undefined') {
-							// 	//configModel.lines[keyValue].columns[colIndex] = [];
-							// }
-
 				    	/**
-				    	 * push an emty control model but relative to dradrop ::model control type
+				    	 * push an empty control model but relative to dradrop : model control type
 				    	 * (if datepicker so additionnal properties are added)
 				    	 */ 	
 							var controlToBind = 
 									{
 				    				control : angular.copy(EasyFormGenFormlyBindingModels
 				    											.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
-				    																																getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]).formlyType
+				    																																getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType
 				    																															))
 				    			};
 				    	/**
-				    	 * bind dragdrop control properties to configuration model
+				    	 * bind dragdrop control properties to configuration model through controlToBind var
 				    	 */
 				    	//var controlToBind = angular.copy(configModel.lines[keyValue].columns[colIndex]);
-				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedContorlModelFromDragDropObject(lineValue[colIndex]), 
+				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
 				    																									controlToBind, 
 				    																									configModel);
-
-				    	//configModel.lines[keyValue].columns.push(angular.copy(controlToBind));
+				    	/**
+				    	 * apply controlToBind var to configuration model control
+				    	 */
 				    	configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);
+				    	configModel.lines[keyValue].columns[colIndex].numColumn = colIndex + 1;
 						}
 
 					});
