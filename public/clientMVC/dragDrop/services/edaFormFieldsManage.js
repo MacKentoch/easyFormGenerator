@@ -155,9 +155,10 @@ angular
       configurationModel.lines[lineIndex].columns.forEach(function(column){
         var controlTemplate = {};
 
-        if (( column.control.type  === 'header' || 
-              column.control.type === 'subTitle') &&
-            column.control.type   !== 'none') {
+        if (( typeof controlTemplate  !== 'undefined' &&
+              column.control.type   === 'header' || 
+              column.control.type   === 'subTitle') &&
+              column.control.type   !== 'none') {
             /**
              * header is not a control just a template
              *
@@ -180,7 +181,8 @@ angular
         }
         
         if (typeof controlTemplate  !== 'undefined' &&
-            (column.control.type    === 'header' || column.control.type === 'subTitle') &&
+            column.control.type     !== 'header' && 
+            column.control.type     !== 'subTitle' &&
             column.control.type     !== 'none') {
 
           /**
