@@ -136,24 +136,18 @@ angular
        * push formly model 
        * 
        * here : only className and empty fieldGroup (controls != header)
+       *
+       * if header will be reset to set a template (at least we have now indexFormlyModel)
        */
-      // if (column.control.type === 'header') {
-      //   formlyModel.push(
-      //                      {
-      //                         className   : ''
-      //                       }
-      //                   );        
-      // }
-
-      // if (typeof controlTemplate !== 'undefined' &&
-      //   column.control.type    !== 'none')  {
+      
+      //get index formlyModel for this line :
       var indexFormlyModel =  formlyModel.push(
                                                {
                                                   className   : 'row', 
                                                   fieldGroup  : []
                                                 }
                                               ) - 1 ;        
-     // }
+
       /**
        * iterates through controls in the line
        */
