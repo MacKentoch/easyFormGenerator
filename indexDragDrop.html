@@ -135,7 +135,7 @@
 							                              dnd-allowed-types="['containerType']"
 							                              dnd-external-sources="true"
 							                              dnd-dragover="dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
-							                              dnd-drop="dropCallback(event, index, item, external, type, 'containerType')"
+							                              dnd-drop="dropCallback(event, index, item, external, type, 'containerType');"
 							                              
 
 
@@ -180,7 +180,7 @@
 							                                          dnd-external-sources="true"
 							                                          dnd-disable-if="items.length > 2"
 							                                          dnd-dragover="dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
-							                                          dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType')"
+							                                          dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');"
 							                                          class="itemlist"
 
 							                                          dd-content-counter

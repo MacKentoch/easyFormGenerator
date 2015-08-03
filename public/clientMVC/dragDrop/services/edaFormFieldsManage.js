@@ -211,6 +211,10 @@ angular
                       );
 
 
+          /**
+           * TODO need to validate all controls (datepicker may not work)
+           * need to refactor
+           */
           controlTemplate.className                   = column.control.className;
           controlTemplate.type                        = column.control.type;
           controlTemplate.key                         = column.control.key;

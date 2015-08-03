@@ -566,8 +566,55 @@ angular
           if (allowedType === 'containerType' && !angular.isArray(item)) return false; 
       }
     
+     /**
+      * set a timeout befire binding
+      * since ddModel may not be called when already full updated
+      */
+      var timerRefreshDDToConfig = $timeout(function(){
+        
+        $scope.configuration = angular.copy(ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel($scope.configuration, $scope.dragDropModel));
+
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+        
+        console.info('result when bound : ');
+        console.dir( { 
+                        message     :   [
+                                          'line drop :\n',
+                                          ''
+                                        ].join(''),
+                        configModel :   $scope.configuration
+                      }
+                    );
+      }, 200);
+
+
+      /**
+      * timerRefreshDDToConfig timer destruction
+      */
+      $scope.$on('$destroy', function(){
+
+            $timeout.cancel(timerRefreshDDToConfig);
+        }
+      );
+
+
       return item;
   };
+
+
+  // /**
+  //  * refreshModels : to call after drag and drop events
+  //  */
+  // $scope.refreshModels = function(){
+  //   $timeout(function(){
+  //     console.info('refreshing models');
+  //     formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+  //     $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+  //   }, 10);
+
+
+  // };
 
 
 
