@@ -155,26 +155,33 @@ angular
       configurationModel.lines[lineIndex].columns.forEach(function(column){
         var controlTemplate = {};
 
-        if (column.control.type === 'header' &&
-            column.control.type !== 'none') {
+        if (( column.control.type  === 'header' || 
+              column.control.type === 'subTitle') &&
+            column.control.type   !== 'none') {
             /**
              * header is not a control just a template
              *
              * getHeaderTemplateForNcolumnLine()
+             * NOTE : header text is stored from description
              */
-            var headerTextContent = column.control;
+            
+            var headerTextContent = column.control.templateOptions.description;
             controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
             /**
              * popuplate properties
+             *
              */
+            formlyModel[indexFormlyModel] = {};
 
+            formlyModel[indexFormlyModel].template = controlTemplate.template;
              /**
               * push
               */
         }
         
-        if (typeof controlTemplate !== 'undefined' &&
-          column.control.type    !== 'none') {
+        if (typeof controlTemplate  !== 'undefined' &&
+            (column.control.type    === 'header' || column.control.type === 'subTitle') &&
+            column.control.type     !== 'none') {
 
           /**
            * controls : getFormlyControlTemplateForNcolumnLine()
