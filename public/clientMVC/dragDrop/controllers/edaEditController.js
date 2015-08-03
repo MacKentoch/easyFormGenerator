@@ -491,17 +491,11 @@ angular
       var timerRefreshDDToConfig = $timeout(function(){
         
         $scope.configuration = angular.copy(ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel($scope.configuration, $scope.dragDropModel));
-        console.info('result when bound : ');
-        console.dir( { 
-                        message     :   [
-                                          'line drop :\n',
-                                          ''
-                                        ].join(''),
-                        configModel :   $scope.configuration
-                      }
-                    );
-      }, 200);
+        
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
 
+      }, 200);
 
       /**
       * timerRefreshDDToConfig timer destruction
@@ -567,7 +561,7 @@ angular
       }
     
      /**
-      * set a timeout befire binding
+      * set a timeout before binding
       * since ddModel may not be called when already full updated
       */
       var timerRefreshDDToConfig = $timeout(function(){
@@ -576,18 +570,8 @@ angular
 
         formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
-        
-        console.info('result when bound : ');
-        console.dir( { 
-                        message     :   [
-                                          'line drop :\n',
-                                          ''
-                                        ].join(''),
-                        configModel :   $scope.configuration
-                      }
-                    );
-      }, 200);
 
+      }, 200);
 
       /**
       * timerRefreshDDToConfig timer destruction

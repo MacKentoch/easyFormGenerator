@@ -156,9 +156,9 @@ angular
         var controlTemplate = {};
 
         if (( typeof controlTemplate  !== 'undefined' &&
-              column.control.type   === 'header' || 
-              column.control.type   === 'subTitle') &&
-              column.control.type   !== 'none') {
+              column.control.type     === 'header' || 
+              column.control.type     === 'subTitle') &&
+              column.control.type     !== 'none') {
             /**
              * header is not a control just a template
              *
@@ -224,6 +224,8 @@ angular
           controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
           controlTemplate.templateOptions.description = column.control.templateOptions.description;
           controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options); 
+
+          if (typeof controlTemplate.templateOptions.datepickerPopup !== 'undefined')  column.control.templateOptions.datepickerPopup = controlTemplate.templateOptions.datepickerPopup  ;
 
 
 
