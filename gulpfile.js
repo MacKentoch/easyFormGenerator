@@ -106,7 +106,8 @@ var paths = {
 														'bower_components/lodash/lodash.min.js',
 														'vendor/js/angular-drag-and-drop-lists.min.js',
 														'bower_components/angular-strap/dist/angular-strap.min.js',
-														'bower_components/angular-strap/dist/angular-strap.tpl.min.js'
+														'bower_components/angular-strap/dist/angular-strap.tpl.min.js',
+														'vendor/js/angular-pageslide-directive.min.js'
 								 					],
 bower_components_map: 		[
 														'bower_components/jquery/dist/jquery.min.map',
@@ -139,7 +140,8 @@ bower_components_fonts: 	[
  scriptsWithNav: 					[
 						 								'public/js/**/*.js', 
 						 								'!public/js/main_noNavigationBar.js', 
-						 								'!public/js/angular-drag-and-drop-lists.min.js'
+						 								'!public/js/angular-drag-and-drop-lists.min.js',
+						 								'!public/js/angular-pageslide-directive.min.js'
 				 									],
  css 										: ['public/css/*.css'],
  images 								: ['public/images/**/*'],
