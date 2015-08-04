@@ -661,6 +661,21 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 /*=========================================================
    specific drag and drop test (will change or be deleted)
 ===========================================================*/
+
+
+/***************************** pageSlide directive css *****************************/
+/* Needed for hiding crollbars when pushing */
+html {
+    overflow-x: hidden;
+}
+.ng-pageslide {
+    background: #eee;
+}
+#controlEditLeftPanel{
+  margin-top : 80px; 
+}
+
+
 /***************************** Required styles *****************************/
 
 /**

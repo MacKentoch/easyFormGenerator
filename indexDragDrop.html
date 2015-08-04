@@ -113,19 +113,22 @@
 												  </pre> -->
 
 												  <hr/>
-												  <button class="btn btn-primary" ng-click="pageSlideNOw = !pageSlideNOw ">test page slide</button>
+												  
 												  <div>
 
-           <div ng-controller="pageslideCtrl">
-                <a class="tiny button" href="" ng-click="toggle()">Go west</a>
-                <div pageslide ps-open="checked" ps-side="left">
-                    <div style="padding:20px" id="demo-right">
-                        <h2>Hello Pageslide</h2>
-                        <p>Put here whatever you want</p>
-                        <a ng-click="toggle()" class="button" >Close</a>
-                    </div>
-                </div>
-            </div>
+								           <div >
+								                <a class="tiny button" href="" ng-click="toggleEditPanel()">test : force open left panel</a>
+								                <div 	pageslide 
+								                			ps-open="editPanelModel.toggle" 
+								                			ps-side="left"
+								                			ps-cloak="true">
+								                    <div style="padding:20px" id="controlEditLeftPanel">
+								                        <h2>Hello Pageslide</h2>
+								                        <p>Put here whatever you want</p>
+								                        <a ng-click="toggleEditPanel()" class="button" >Close</a>
+								                    </div>
+								                </div>
+								            </div>
 
 												  </div>
 

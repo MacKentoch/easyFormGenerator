@@ -587,6 +587,18 @@ angular
   };
 
 
+
+  /**
+   * left panel (edit control)
+   */
+  $scope.editPanelModel = {
+                            toggle : false,
+                            
+                          };
+
+  $scope.toggleEditPanel = function(){
+                             $scope.editPanelModel.toggle  = !$scope.editPanelModel.toggle;
+  };
   // /**
   //  * refreshModels : to call after drag and drop events
   //  */
