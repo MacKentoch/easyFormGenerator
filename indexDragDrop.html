@@ -111,6 +111,25 @@
 												  <!-- <pre>
 												  	{{configuration | json}}
 												  </pre> -->
+
+												  <hr/>
+												  <button class="btn btn-primary" ng-click="pageSlideNOw = !pageSlideNOw ">test page slide</button>
+												  <div>
+
+           <div ng-controller="pageslideCtrl">
+                <a class="tiny button" href="" ng-click="toggle()">Go west</a>
+                <div pageslide ps-open="checked" ps-side="left">
+                    <div style="padding:20px" id="demo-right">
+                        <h2>Hello Pageslide</h2>
+                        <p>Put here whatever you want</p>
+                        <a ng-click="toggle()" class="button" >Close</a>
+                    </div>
+                </div>
+            </div>
+
+												  </div>
+
+
 												</div>
 
 								    		</div>
@@ -1639,6 +1658,9 @@
 
 			<!-- angular touch : internet connxion issue :so not the bower one :to fix -->
 			<script type="text/javascript" src="./vendor/js/angular-touch.js"></script>
+
+			<!-- angualr pageSlide directive -->
+			<script type="text/javascript" src="./public/lib/js/angular-pageslide-directive.min.js"></script>
 
 			<!-- angular animate -->
 			<script type="text/javascript" src="./public/lib/js/angular-animate.min.js"></script>

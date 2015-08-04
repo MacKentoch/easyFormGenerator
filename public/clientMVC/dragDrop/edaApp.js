@@ -33,6 +33,7 @@ angular
                         'dndLists',
                         'mgcrea.ngStrap.affix',
                         'ngTouch',
+                        'pageslide-directive',
                         function(){}
 	                     ])
 

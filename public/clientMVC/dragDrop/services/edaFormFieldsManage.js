@@ -156,7 +156,7 @@ angular
         var controlTemplate = {};
 
         if (( typeof controlTemplate  !== 'undefined' &&
-              column.control.type     === 'header' || 
+              column.control.type     === 'header'    || 
               column.control.type     === 'subTitle') &&
               column.control.type     !== 'none') {
             /**
@@ -181,8 +181,8 @@ angular
         }
         
         if (typeof controlTemplate  !== 'undefined' &&
-            column.control.type     !== 'header' && 
-            column.control.type     !== 'subTitle' &&
+            column.control.type     !== 'header'    && 
+            column.control.type     !== 'subTitle'  &&
             column.control.type     !== 'none') {
 
           /**
