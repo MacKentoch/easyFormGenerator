@@ -20,6 +20,7 @@ angular
 																	'edaApp.directives.edaDdDecorItemDirective',
 																	'edaApp.directives.edaDdNoEditableControlDirective',
 																	'edaApp.directives.edaDdContentCounterDirective',
+																	'edaApp.directives.edaRightClickDirective',
 	function () {
 
 }]);
