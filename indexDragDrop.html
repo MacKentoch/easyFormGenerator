@@ -117,18 +117,23 @@
 												  <div>
 
 								           <div >
-								                <a class="tiny button" href="" ng-click="toggleEditPanel()">test : force open left panel</a>
+
+								                <!-- here is left panel to edit right clicked control -->
 								                <div 	pageslide 
 								                			ps-open="editPanelModel.toggle" 
 								                			ps-side="left"
 								                			ps-cloak="true"
 								                			ps-size="400px">
-								                    <div style="padding:20px" id="controlEditLeftPanel">
-								                        <h2>Hello Pageslide</h2>
-								                        <p>Put here whatever you want</p>
+								                    <div 	style="padding:20px" 
+								                    			id="controlEditLeftPanel">
+								                        <h2>Edit right clicked control</h2>
+								                        <p>Here you will soon be abel to edit your right clicked control</p>
+								                        <p>Will be pretty nice and less commun than modals.</p>
 								                        <a ng-click="toggleEditPanel()" class="button" >Close</a>
 								                    </div>
 								                </div>
+
+
 								            </div>
 
 												  </div>
@@ -235,7 +240,8 @@
 							                                              <div 
 																																	id="itemContent" 
 							                                              		>
-							                                              	<div dd-no-editable-control>
+							                                              	<div dd-no-editable-control
+							                                              				eda-right-click="toggleEditPanel()">
 								                                              	<span ng-bind-html="item.label | trustThis">
 								                                              	</span>	
 							                                             	 	</div>

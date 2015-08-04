@@ -670,9 +670,13 @@ html {
 }
 .ng-pageslide {
     background: #eee;
+    box-shadow: 5px 1px 12px 0px rgba(188, 183, 183, 0.7);
+    -moz-box-shadow: 5px 1px 12px 0px rgba(188, 183, 183, 0.7);
+    -webkit-box-shadow: 5px 1px 12px 0px rgba(188, 183, 183, 0.7);    
 }
 #controlEditLeftPanel{
   margin-top : 80px; 
+
 }
 .panelControlWidth{
   width : 45%;
