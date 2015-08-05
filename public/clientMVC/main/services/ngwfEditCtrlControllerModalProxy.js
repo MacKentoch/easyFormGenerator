@@ -179,7 +179,11 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
                                         formlyRequired: false, 
                                         formlyDesciption: '',
                                         formlyPlaceholder: '',
-                                        formlyOptions : []
+                                        formlyOptions : [],
+															          //expressions/validation fields
+															          formlyExpressionProperties: {},
+															          formlyValidators: {},
+															          formlyValidation: {}                                        
                                       } 
 
     };

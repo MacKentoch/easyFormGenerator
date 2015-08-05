@@ -436,6 +436,19 @@ function extractTemplateOptionDatepickerPopup(obj){
   return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
 }
 
+function extractFormlyExpressionProperties(obj){
+  return  typeof obj.expressionProperties !== 'undefined' ? (typeof obj.expressionProperties !== 'undefined'? angular.copy(obj.expressionProperties) : {}) : {};
+}
+
+function extractFormlyValidators(obj){
+  return  typeof obj.validators !== 'undefined' ? (typeof obj.validators !== 'undefined'? angular.copy(obj.validators) : {}) : {};
+}
+
+function extractFormlyvalidation(obj){
+  return  typeof obj.validation !== 'undefined' ? (typeof obj.validation !== 'undefined'? angular.copy(obj.validation) : {}) : {};
+}
+
+
 function extractTemplateOptionRequired(obj){
   return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.required !== 'undefined'? obj.templateOptions.required: '') : '';
 }
