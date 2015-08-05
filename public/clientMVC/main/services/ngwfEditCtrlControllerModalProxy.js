@@ -18,9 +18,9 @@ var ngwfEditCtrlControllerModalProxy = angular.module('ngwfApp.services.ngwfEdit
 
 ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 
-   //console.log('--> INIT : Hello service  \'\'controllerModalProxy\'\' ');
 
-   	/////////////////////////////////////////
+
+  /////////////////////////////////////////
 	// proxy services
 	/////////////////////////////////////////
     return {
@@ -40,6 +40,12 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				        nyaSelectObj.temporyConfig.formlyDesciption = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
 				        nyaSelectObj.temporyConfig.formlyPlaceholder = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
 				        nyaSelectObj.temporyConfig.formlyOptions = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+								
+								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties : {};
+								nyaSelectObj.temporyConfig.formlyValidators = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators : {};
+								nyaSelectObj.temporyConfig.formlyValidation = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation : {};
+								
+
 				        //particular case : datepicker
 				        if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
 				        	nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
