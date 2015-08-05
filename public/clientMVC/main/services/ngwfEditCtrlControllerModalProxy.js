@@ -41,9 +41,9 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				        nyaSelectObj.temporyConfig.formlyPlaceholder = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
 				        nyaSelectObj.temporyConfig.formlyOptions = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
 								
-								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties : {};
-								nyaSelectObj.temporyConfig.formlyValidators = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators : {};
-								nyaSelectObj.temporyConfig.formlyValidation = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation : {};
+								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
+								nyaSelectObj.temporyConfig.formlyValidators = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
+								nyaSelectObj.temporyConfig.formlyValidation = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
 								
 
 				        //particular case : datepicker
@@ -75,6 +75,10 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description = extractedProps.formlyDesciption;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options = extractedProps.formlyOptions;
+
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyOptions);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators = angular.copy(extractedProps.formlyOptions);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation = angular.copy(extractedProps.formlyOptions);
 
 					  //////////////////////////////////////////
 				      // add additionnal particular properties
@@ -126,6 +130,10 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
 				          nyaSelectObj.controls[i].formlyPlaceholder = nyaSelectObj.temporyConfig.formlyPlaceholder;
 				          nyaSelectObj.controls[i].formlyOptions = nyaSelectObj.temporyConfig.formlyOptions;
 
+				          nyaSelectObj.controls[i].formlyExpressionProperties = angular.copy(nyaSelectObj.temporyConfig.formlyOptions);
+				          nyaSelectObj.controls[i].formlyValidators = angular.copy(nyaSelectObj.temporyConfig.formlyOptions);
+				          nyaSelectObj.controls[i].formlyValidation = angular.copy(nyaSelectObj.temporyConfig.formlyOptions);
+			          
 				          if (nyaSelectObj.controls[i].id ==='Date' ) {
 				          	nyaSelectObj.controls[i].datepickerPopup = nyaSelectObj.temporyConfig.datepickerPopup;
 
@@ -195,8 +203,13 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
           formlyRequired : false,
           formlyDesciption: '',
           formlyPlaceholder: '',
-          formlyOptions: []
+          formlyOptions: [],
+          //validation fields
+          formlyExpressionProperties: {},
+          formlyValidators: {},
+          formlyValidation: {}
     };
+
 
     for (var i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
       if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
@@ -208,6 +221,10 @@ ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
         modelToReturn.formlyDesciption = CtrlModalModel.controls[i].formlyDesciption;
         modelToReturn.formlyPlaceholder = CtrlModalModel.controls[i].formlyPlaceholder;
         modelToReturn.formlyOptions = CtrlModalModel.controls[i].formlyOptions;
+
+        modelToReturn.formlyExpressionProperties = angular.copy(CtrlModalModel.controls[i].formlyOptions);
+        modelToReturn.formlyValidators = angular.copy(CtrlModalModel.controls[i].formlyOptions);
+        modelToReturn.formlyValidation = angular.copy(CtrlModalModel.controls[i].formlyOptions);
 
         //particular properties 
         //datetpicker format
