@@ -78,8 +78,8 @@ formFieldManage.factory('formFieldManage', [ function(){
                                                                 false
                                                           ], 
                                         configStepCounter: 0, 
-                                        submitButtonText : "submit",
-                                        cancelButtonText: "cancel",
+                                        submitButtonText : 'submit',
+                                        cancelButtonText: 'cancel',
 
                                         lines: [
                                                 {
@@ -128,8 +128,8 @@ formFieldManage.factory('formFieldManage', [ function(){
                                                                   false
                                                             ], 
                                           configStepCounter: 0, 
-                                          submitButtonText : "submit",
-                                          cancelButtonText: "cancel",
+                                          submitButtonText : 'submit',
+                                          cancelButtonText: 'cancel',
                                           lines: []
                                         };
                 configurationModelResult.lines = [].concat(lines);  
@@ -153,7 +153,7 @@ formFieldManage.factory('formFieldManage', [ function(){
                   //1 column line control
                   if (configurationModel.lines[i].columns.length === 1) {
                     //test if template control = header
-                    if (configurationModel.lines[i].columns[0].control.type === "header") {
+                    if (configurationModel.lines[i].columns[0].control.type === 'header') {
                       AddOneColumnHeader(formlyModel, configurationModel, i);
                     }else{
                       AddOneColumnControl(formlyModel, configurationModel, i);  
@@ -168,8 +168,6 @@ formFieldManage.factory('formFieldManage', [ function(){
                     AddThreeColumnControl(formlyModel, configurationModel,i);
                   }
 
-                 // console.info('applyConfigurationToformlyModel : formlyModelis after bind =');
-                 // console.dir(formlyModel);
               }
             }
         };
@@ -208,12 +206,15 @@ function AddOneColumnControl(formlyModel, configurationModel,lineIndex){
                         type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
                         key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
                         templateOptions: {
-                          type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-                          label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                          type : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                          label : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
                           required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                           placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                           description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                          options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+                          options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
+                          expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                          validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                          validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
                         } 
                       };
     //////////////////////////////////////////////                  
@@ -256,7 +257,10 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
                                   required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                                   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                                   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
+                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
+                                  expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                                  validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                                  validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
                               }
                             };
     //////////////////////////////////////////////                  
@@ -277,7 +281,11 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
                                   required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
                                   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
                                   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
+                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control),
+
+                                  expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+                                  validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+                                  validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
                               }
                       };
 
@@ -290,13 +298,13 @@ function AddTwoColumnControl(formlyModel, configurationModel,lineIndex){
 
     var FieldGroup = [];
 
-    if (configurationModel.lines[lineIndex].columns[0].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
       FieldGroup.push(headerTemplateCol0);
     }else{
       FieldGroup.push(controlCol0);
     }
      
-    if (configurationModel.lines[lineIndex].columns[1].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
       FieldGroup.push(headerTemplateCol1);
     }else{
       FieldGroup.push(controlCol1);
@@ -341,7 +349,11 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                                   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                                   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)             
+                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
+
+                                  expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                                  validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                                  validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                               
                               }
                             };
     //////////////////////////////////////////////                  
@@ -361,7 +373,11 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
                                   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
                                   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)             
+                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control),
+
+                                  expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+                                  validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+                                  validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                               
                               }
                       };
     //////////////////////////////////////////////                  
@@ -380,7 +396,11 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
                                   required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
                                   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
                                   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)             
+                                  options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control),
+
+                                  expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
+                                  validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
+                                  validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                               
                               }
                       };
     //////////////////////////////////////////////                  
@@ -392,19 +412,19 @@ function AddThreeColumnControl(formlyModel, configurationModel,lineIndex){
 
     var FieldGroup = [];
 
-    if (configurationModel.lines[lineIndex].columns[0].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
       FieldGroup.push(headerTemplateCol0);
     }else{
       FieldGroup.push(controlCol0);
     }
      
-    if (configurationModel.lines[lineIndex].columns[1].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
       FieldGroup.push(headerTemplateCol1);
     }else{
       FieldGroup.push(controlCol1);
     }    
 
-    if (configurationModel.lines[lineIndex].columns[2].control.type === "header") {
+    if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
       FieldGroup.push(headerTemplateCol2);
     }else{
       FieldGroup.push(controlCol2);
@@ -444,7 +464,7 @@ function extractFormlyValidators(obj){
   return  typeof obj.validators !== 'undefined' ? (typeof obj.validators !== 'undefined'? angular.copy(obj.validators) : {}) : {};
 }
 
-function extractFormlyvalidation(obj){
+function extractFormlyValidation(obj){
   return  typeof obj.validation !== 'undefined' ? (typeof obj.validation !== 'undefined'? angular.copy(obj.validation) : {}) : {};
 }
 
