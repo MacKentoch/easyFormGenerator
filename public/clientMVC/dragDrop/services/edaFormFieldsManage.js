@@ -199,6 +199,8 @@ angular
 
 
           /**
+           *
+           * 
            * NEED REFACTOR HERE 
            * should bind properties dynamically 
            * 
