@@ -612,6 +612,23 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     margin-bottom:0px;
 }
 
+/**
+ * formly fiedl css
+ */
+.formly-field {
+  margin-bottom: 20px;
+}
+
+.validation {
+  position: absolute;
+  font-size: .8em;
+  color: #a94442;
+}
+
+.formly-template-wrapper {
+  position: relative;
+}
+
 
 
 

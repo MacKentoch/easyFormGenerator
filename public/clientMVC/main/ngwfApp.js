@@ -35,6 +35,7 @@ ngwfApp.value('easyFormGenVersion', 'v1.0.7');
 // CONFIG HERE (formly...)							
 /////////////////////////////
 ngwfApp.config([	'formlyConfigProvider', 
+
 					function(formlyConfigProvider) {
 
     formlyConfigProvider.setType(
@@ -188,4 +189,4 @@ ngwfApp.config([	'formlyConfigProvider',
     });
   } 
 
- }]);   
+ }]);
