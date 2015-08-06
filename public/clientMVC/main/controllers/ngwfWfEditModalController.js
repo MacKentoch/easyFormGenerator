@@ -24,10 +24,6 @@ ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope',
                                                                                 selectOptionManage,
                                                                                 controllerModalProxy
                                                                               ){
-  //verbose
-  //console.log('--> INIT : Hello controller  \'\'ngwfWfEditMODALController\'\' ');
-  
-
 
 var initOptionModel = {rows:[
                             ]
@@ -38,16 +34,16 @@ var initOptionModel = {rows:[
   ///////////////////////////////////////////
 
   $scope.radioRowCollection = initOptionModel;
-  $scope.newOptionRadio = {saisie: ""};
+  $scope.newOptionRadio = {saisie: ''};
 
 
   function bindRadioFromNYA(){
     if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
       for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
 
-            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-                      "order": i,
-                      "group": ""
+            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+                      'order': i,
+                      'group': ''
                     };
             $scope.radioRowCollection.rows.push(newOption);
       }    
@@ -61,9 +57,9 @@ var initOptionModel = {rows:[
     if ($scope.radioRowCollection.rows.length > 0) {
 
       for (var i = 0; i <= $scope.radioRowCollection.rows.length - 1; i++){
-            var newOption = {"name": $scope.radioRowCollection.rows[i].option,
-                      "value": i,
-                      "group": ""
+            var newOption = {'name': $scope.radioRowCollection.rows[i].option,
+                      'value': i,
+                      'group': ''
                     };
             $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
         }       
@@ -82,7 +78,7 @@ var initOptionModel = {rows:[
             });
     }
     //reset input
-    $scope.newOptionRadio = {saisie: ""};
+    $scope.newOptionRadio = {saisie: ''};
   };
 
   $scope.removeRadioRow = function(index) {
@@ -131,7 +127,7 @@ var initOptionModel = {rows:[
   ///////////////////////////////////////////
 
   $scope.basicSelectRowCollection = initOptionModel;
-  $scope.newOptionBasicSelect = {saisie: ""};
+  $scope.newOptionBasicSelect = {saisie: ''};
 
 
   function bindBasicSelectFromNYA(){
@@ -141,9 +137,9 @@ var initOptionModel = {rows:[
     if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
       for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
 
-            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-                      "order": i,
-                      "group": ""
+            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+                      'order': i,
+                      'group': ''
                     };
             $scope.basicSelectRowCollection.rows.push(newOption);
       }    
@@ -155,9 +151,9 @@ var initOptionModel = {rows:[
     $scope.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
     if ($scope.basicSelectRowCollection.rows.length > 0) {
       for (var i = 0; i <= $scope.basicSelectRowCollection.rows.length - 1; i++){
-            var newOption = {"name": $scope.basicSelectRowCollection.rows[i].option,
-                      "value": i,
-                      "group": ""
+            var newOption = {'name': $scope.basicSelectRowCollection.rows[i].option,
+                      'value': i,
+                      'group': ''
                     };
             $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);
         }      
@@ -176,7 +172,7 @@ var initOptionModel = {rows:[
             });
     }
     //reset input
-    $scope.newOptionBasicSelect = {saisie: ""};
+    $scope.newOptionBasicSelect = {saisie: ''};
   };
 
   $scope.removeRow = function(index) {
@@ -224,12 +220,12 @@ var initOptionModel = {rows:[
   ///////////////////////////////////////////
 
   $scope.groupedSelectRowCollection = initOptionModel;
-  $scope.newOptionGroupedSelect = {saisie: ""};
+  $scope.newOptionGroupedSelect = {saisie: ''};
 
   $scope.GroupedSelectGroups =    {
                                     list:[]
                                   };
-  $scope.newGroupGroupedSelect = {saisie: ""};  
+  $scope.newGroupGroupedSelect = {saisie: ''};  
   $scope.groupSelectGroupClick = {showList : false};                                
 
 
@@ -238,9 +234,9 @@ var initOptionModel = {rows:[
       for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
       //for (var i = $scope.nyaSelect.temporyConfig.formlyOptions.length - 1; i >= 0; i--) {
 
-            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-                      "order": i,
-                      "group": $scope.nyaSelect.temporyConfig.formlyOptions[i].group
+            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+                      'order': i,
+                      'group': $scope.nyaSelect.temporyConfig.formlyOptions[i].group
                     };
             $scope.groupedSelectRowCollection.rows.push(newOption);            
         }
@@ -255,16 +251,14 @@ var initOptionModel = {rows:[
   function bindGroupedSelectToNya(){
     $scope.nyaSelect.temporyConfig.formlyOptions = [];
     for (var i = 0; i <= $scope.groupedSelectRowCollection.rows.length - 1; i++){
-          var newOption = {"name": $scope.groupedSelectRowCollection.rows[i].option,
-                    "value": i,
-                    "group": $scope.groupedSelectRowCollection.rows[i].group
+          var newOption = {'name': $scope.groupedSelectRowCollection.rows[i].option,
+                    'value': i,
+                    'group': $scope.groupedSelectRowCollection.rows[i].group
                   };
 
           $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);
           
       }
-      ///console.log('\n\n\n\n\n');
-      //console.dir($scope.nyaSelect.temporyConfig.formlyOptions);
   }  
 
   $scope.showGroupListToChoose = function(){
@@ -272,7 +266,7 @@ var initOptionModel = {rows:[
   };
 
   $scope.addNewGroupToGroupedSelect = function(){
-    if ($scope.newGroupGroupedSelect.saisie !== "") {
+    if ($scope.newGroupGroupedSelect.saisie !== '') {
       for (var i = $scope.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
         if ($scope.GroupedSelectGroups.list[i] === $scope.newGroupGroupedSelect.saisie) {
           toaster.pop({
@@ -297,7 +291,7 @@ var initOptionModel = {rows:[
             });
 
     }
-    $scope.newGroupGroupedSelect.saisie = "";
+    $scope.newGroupGroupedSelect.saisie = '';
   };
 
 
@@ -315,7 +309,7 @@ var initOptionModel = {rows:[
     //bind nya : dont bind here $apply is not done fast enough
     //bindGroupedSelectToNya();
     //reset input
-    $scope.newOptionGroupedSelect = {saisie: ""};
+    $scope.newOptionGroupedSelect = {saisie: ''};
   };
 
   $scope.removeGroupedSelectRow = function(index) {
@@ -416,15 +410,15 @@ var initOptionModel = {rows:[
        }
     }
 
-    if ($scope.nyaSelect.selectedControl === "BasicSelect") {
+    if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
       bindBasicSelectFromNYA();
     }
 
-    if ($scope.nyaSelect.selectedControl === "GroupedSelect") {
+    if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
       bindGroupedSelectFromNYA();
     } 
 
-    if ($scope.nyaSelect.selectedControl === "Radio") {
+    if ($scope.nyaSelect.selectedControl === 'Radio') {
       bindRadioFromNYA();
     }    
 
@@ -434,10 +428,10 @@ var initOptionModel = {rows:[
 
   function resetTemporyConfig(){
     $scope.nyaSelect.temporyConfig = {
-                                        formlyLabel: "", 
+                                        formlyLabel: '', 
                                         formlyRequired: false, 
-                                        formlyPlaceholder: "",
-                                        formlyDesciption: "",
+                                        formlyPlaceholder: '',
+                                        formlyDesciption: '',
                                         formlyOptions: []
                                       };   
   }
@@ -466,15 +460,15 @@ var initOptionModel = {rows:[
   /////////////////////////
   $scope.ok = function () {
 
-    if ($scope.nyaSelect.selectedControl === "BasicSelect") {
+    if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
       bindBasicSelectToNya();
     }
 
-    if ($scope.nyaSelect.selectedControl === "GroupedSelect") {
+    if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
       bindGroupedSelectToNya();
     }  
 
-    if ($scope.nyaSelect.selectedControl === "Radio") {
+    if ($scope.nyaSelect.selectedControl === 'Radio') {
       bindRadioToNya();
     }  
 

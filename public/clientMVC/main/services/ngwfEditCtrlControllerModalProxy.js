@@ -131,6 +131,7 @@ angular
 		        }
 		      }
 		    }
+		    console.info('model should contain validators fields if email ctrl :');
 		    console.dir(modelToReturn);
 		    return modelToReturn;
 		  }
@@ -271,6 +272,22 @@ angular
 				       }
 				    }
 				  };
+
+		/**
+		 * just return an emty nyaselect Model (needed in modal to edit controls)
+		 * 
+		 * in model (edit control): when selecting a control, its model is reseted 
+		 * //then bind to model shape of the selected control
+		 */
+		Service.resetTemporyConfig = function(){
+					    return {
+                      formlyLabel: '', 
+                      formlyRequired: false, 
+                      formlyPlaceholder: '',
+                      formlyDesciption: '',
+                      formlyOptions: []
+                    };   
+ 	 	};		  
 
     return Service;
 
