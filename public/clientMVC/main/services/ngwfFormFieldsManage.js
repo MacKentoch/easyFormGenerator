@@ -1,116 +1,103 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  MOST IMPORTANT service (ok... It is a factory...^^)
-//////////////////////////////////////////////////////////
-//
-//
-//  module = "service"  formly management
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.services.serviceNAME" = container services module
-//
-//  This module is a service -> it must be injected in services container
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *  ------------------------------------------------------
+ *  service : formFieldManage
+ *  ------------------------------------------------------
+ *
+ *         MOST IMPORTANT service to manage formly field model 
+ *  (the presentation model and the back model or configuration model)
+ * 
+ *
+ *  - "formlyModel" is the model exposed to view or html "fields model" (= an array of objects)
+ *    This model is the one you can see in all well documented examples here : http://angular-formly.com
+ *    -> in your view or html : <formly-form model="dataModel" fields="formlyModel">
+ *
+ *  - "configurationModel" is the model on which editing a form will work
+ *    before applying results to "formlyModel"
+ *
+ *
+ * NOTE : if you save a form to database, you will save "configurationModel" rather than "formlyModel".
+ *        Why? : 
+ *          since as you plan to create a form generator you can't create a finite model
+ *          since you may want to be able to save the generated form even if it is not a finite model
+ *          since "formlyModel" objects will be populated with a lot of properties you don't need to store contrary to "configurationModel" which contains only what you need
+ *          since "formlyModel" can't be JSON.stringify when you want to use advanced layout (1 column/2/3 columns template?)
+ *          since it is better approach to use a backgroundModel (async operation ...) that is bind to presentation model only when it is fully ready or filled.
+ *
+ *
+ * NOTE : 
+ * - if you want to manage more columns templates (right now only manage up to 3 columns), just inspire from existing code
+ * - if you want to extend easy form generator, be sure to be a minimum comfortable with "angular formly": http://angular-formly.com
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+angular
+  .module('ngwfApp.services.formFieldManage', [])
+  .factory('formFieldManage', [ 
+    function(){
 
+    var Service = {};
 
-//---------------------------
-// Wait, what does it mean?
-//---------------------------
-//
-//  This service is intended to make your coding easier when you want to develop your own form generator using angular formly
-//  before going on, be sure to be a minimum comfortable with "angular formly": http://angular-formly.com
-//
-//
-//PRINCIPLE : this service will help you to manage these 2 models and you'll be able to manage dynamic form with advanced layout (1 to 3 columns)
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-//  - "formlyModel" is the model exposed to view or html "fields model" (= an array of objects)
-//    This model is the one you can see in all well documented examples here : http://angular-formly.com
-//    -> in your view or html : <formly-form model="dataModel" fields="formlyModel">
-//
-//  - "configurationModel" is the model on which editing a form will work
-//    before applying results to "formlyModel"
-//
-//
-// NOTE : if you save a form to database, you will save "configurationModel" rather than "formlyModel".
-//        Why? : 
-//              since as you plan to create a form generator you can't create a finite model
-//              since you may want to be able to save the generated form even if it is not a finite model
-//              since "formlyModel" objects will be populated with a lot of properties you don't need to store contrary to "configurationModel" which contains only what you need
-//              since "formlyModel" can't be JSON.stringify when you want to use advanced layout (1 column/2/3 columns template?)
-//              since it is better approach to use a backgroundModel (async operation ...) that is bind to presentation model only when it is fully ready or filled.
-//
-//
-//NOTE : if you want to manage more columns templates (right now only manage up to 3 columns), just inspire from existing code
+    /**
+     * At initial state : configuration model will contain 1 line, since :
+     *    -> it is non sense to create a form without a single line (no line = no form at all)
+     *    -> so it is non sense to force user to add a first line
+     * 
+     *  PLEASE NOTE columns array contains objects that look like formly fields one
+     */
 
+    Service.initConfigurationEditFromScratch =  function(configurationModel){
+      var configurationModelInit = {
 
-var formFieldManage = angular.module('ngwfApp.services.formFieldManage', []);
+        activeLine: 1,   
 
+        listConfigStep: [
+                        'init',
+                        'first',
+                        'second',
+                        'third'
+                      ],
+                      
+        stepIndicators:  [
+                                true,
+                                false,
+                                false,
+                                false
+                          ], 
+        configStepCounter: 0, 
+        submitButtonText : 'submit',
+        cancelButtonText: 'cancel',
 
-formFieldManage.factory('formFieldManage', [ function(){
+        lines: [
+                {
+                    line:1,                                       
+                    activeColumn : 1,
+                    columns: [
+                                    {  
+                                        numColumn: 1,
+                                        exist:true, 
+                                        control: {
+                                                    type:'none',
+                                                    key: 'none',
+                                                    // templateOptions: {
+                                                    //                     label: 'none',
+                                                    //                     placeholder: 'none',
+                                                    //                     required: false,
+                                                    //                     description: 'Descriptive text'
+                                                    //                   }
+                                                  }
+                                      }
+                              ]
+                 }                                 
+            ]
+      };
+      
+      angular.copy(configurationModelInit, configurationModel);                   
+    };
 
-
-	//console.log('--> INIT : Hello service  \'\'formFieldManage\'\' ');
-
-              //configuration model will contain 1 line, since :
-              //   - it is non sense to create a form without a single line (no line = no form at all)
-              //   -> so it is non sense to force user to add a first line
-              //
-              // PLEASE NOTE columns array contains objects that look like formly fields one
-
-    return {
-
-            initConfigurationEditFromScratch: function(configurationModel){
-              var configurationModelInit = {
-
-                                        activeLine: 1,   
-
-                                        listConfigStep: [
-                                                        'init',
-                                                        'first',
-                                                        'second',
-                                                        'third'
-                                                      ],
-                                                      
-                                        stepIndicators:  [
-                                                                true,
-                                                                false,
-                                                                false,
-                                                                false
-                                                          ], 
-                                        configStepCounter: 0, 
-                                        submitButtonText : 'submit',
-                                        cancelButtonText: 'cancel',
-
-                                        lines: [
-                                                {
-                                                    line:1,                                       
-                                                    activeColumn : 1,
-                                                    columns: [
-                                                                    {  
-                                                                        numColumn: 1,
-                                                                        exist:true, 
-                                                                        control: {
-                                                                                    type:'none',
-                                                                                    key: 'none',
-                                                                                    // templateOptions: {
-                                                                                    //                     label: 'none',
-                                                                                    //                     placeholder: 'none',
-                                                                                    //                     required: false,
-                                                                                    //                     description: 'Descriptive text'
-                                                                                    //                   }
-                                                                                  }
-                                                                      }
-                                                              ]
-                                                 }                                 
-                                            ]
-
-
-                                      };
-              angular.copy(configurationModelInit, configurationModel);                   
-            },
-
-
-            bindConfigurationLines: function(configurationModel, lines){
+    Service.bindConfigurationLines = function(configurationModel, lines){
               
               if( Object.prototype.toString.call(lines) === '[object Array]' ) {
                 var configurationModelResult = {
@@ -139,7 +126,14 @@ formFieldManage.factory('formFieldManage', [ function(){
               }else{
                 return getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
               }
-            },
+            };
+
+    return {
+
+
+
+
+
 
             applyConfigurationToformlyModel:function(configurationModel, formlyModel, formlyDataModel){
               resetFormlyModel(formlyModel);
