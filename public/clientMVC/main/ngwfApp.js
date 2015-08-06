@@ -27,9 +27,6 @@ var ngwfApp = angular.module('ngwfApp', [
 												'ui.bootstrap',
 												'nya.bootstrap.select',
 												function () {
-    //verbose init is ok  
-    //console.log('--> INIT : Hello application :  \'\'ngwfApp\'\' ');
-
 }]);
 
 

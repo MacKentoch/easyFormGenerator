@@ -1,59 +1,64 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  - edit control -
-//	controller modal proxy 
-//
-//
-// NOTE : adding new custom control (template) -> update this service (at least function resetNyaSelect(nyaSelectObj))
-//
-//  module = "service" 
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.services.serviceNAME" = container services module
-//
-//  This module is a service -> it must be injected in services container
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfEditCtrlControllerModalProxy = angular.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', []);
+/**
+ *  ------------------------------------------------------
+ *  service : controllerModalProxy
+ *  ------------------------------------------------------
+ *
+ *  service dedicated to - edit control - (controller modal proxy)
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+angular
+	.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
+	.factory('controllerModalProxy', [
+		function(){
 
 
-ngwfEditCtrlControllerModalProxy.factory('controllerModalProxy', [function(){
+			/**
+			 * proxy services
+			 */
+			var Service = {};
 
-
-
-  /////////////////////////////////////////
-	// proxy services
-	/////////////////////////////////////////
-    return {
-    			initNyaSelect : function(nyaSelectObj){
+			Service.initNyaSelect = function(nyaSelectObj){
     				return resetNyaSelect(nyaSelectObj);
-    			},
+    	};
 
-				getNyASelectFromSelectedLineColumn: function(nyaSelectObj, configurationObj, indexLine, numcolumn){
+    	Service.getNyASelectFromSelectedLineColumn =  function(nyaSelectObj, configurationObj, indexLine, numcolumn){
 				      resetNyaSelect(nyaSelectObj);
-				      
-				      //data send to modal controller                                          
+				      /**
+				       * data send to modal controller                                           
+				       */
 				      if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
 
-				        nyaSelectObj.temporyConfig.selectedControl = typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
-				        nyaSelectObj.temporyConfig.formlyLabel = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-				        nyaSelectObj.temporyConfig.formlyRequired = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-				        nyaSelectObj.temporyConfig.formlyDesciption = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-				        nyaSelectObj.temporyConfig.formlyPlaceholder = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-				        nyaSelectObj.temporyConfig.formlyOptions = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+				        nyaSelectObj.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 						!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
+				        nyaSelectObj.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+				        nyaSelectObj.temporyConfig.formlyRequired 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+				        nyaSelectObj.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+				        nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+				        nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
 								
 								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
-								nyaSelectObj.temporyConfig.formlyValidators = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
-								nyaSelectObj.temporyConfig.formlyValidation = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
+								nyaSelectObj.temporyConfig.formlyValidators 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 						!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
+								nyaSelectObj.temporyConfig.formlyValidation 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 						!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
 								
-
-				        //particular case : datepicker
+								/**
+								 * particular case : datepicker 
+								 */
 				        if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-				        	nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
-
+				        	nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 				        }
 				      }
 				      return nyaSelectObj;
-				  },
+				  };
+
+				  
+
+    return {
+    			
+
+
 
 				  bindConfigurationModelFromModalReturn: function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
 				      
