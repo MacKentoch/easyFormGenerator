@@ -203,15 +203,15 @@ angular
                             type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
                             key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
                             templateOptions: {
-                              type : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-                              label : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-                              required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-                              placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-                              description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                              options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
-                              expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-                              validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-                              validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+                              type                  : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                              label                 : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                              required              : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                              placeholder           : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+                              description           : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+                              options               : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
+                              expressionProperties  : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                              validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                              validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
                             } 
                           };
         //////////////////////////////////////////////                  

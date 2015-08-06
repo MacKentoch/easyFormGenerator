@@ -127,10 +127,11 @@ angular
 		        //datetpicker format
 		        if (CtrlModalModel.controls[i].formlyType === 'datepicker') {
 					modelToReturn.datepickerPopup = CtrlModalModel.controls[i].datepickerPopup;   
-					//console.warn('returnControlFromAddCtrlModalModel : datepickerPopup= ' + modelToReturn.datepickerPopup);     	
+					  	
 		        }
 		      }
 		    }
+		    console.dir(modelToReturn);
 		    return modelToReturn;
 		  }
 			/**
