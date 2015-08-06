@@ -1085,6 +1085,101 @@
                         </div> 
                 </div>   
 
+                <div ng-switch-when="Email">
+                        <!-- password -->
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-eye"></i>&nbsp; Preview :</h5>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <div class="row">    
+
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group">
+
+                                    <label for="inputEmail" class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if="nyaSelect.temporyConfig.formlyRequired" class="textControlLabel">*</span></label>
+
+
+                                      <div class="">
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="{{nyaSelect.temporyConfig.formlyPlaceholder}}">
+                                        <p class="help-block">{{nyaSelect.temporyConfig.formlyDesciption}}</p>
+                                      </div>
+
+
+                                    </div>
+
+                                </div>                    
+
+                            </div> 
+                          </div>
+                        </div>  
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>
+                                </div>
+                            </div> 
+                            <hr/>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextLabelUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextplaceholderUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputTextplaceholderUpdate" placeholder="Add / edit placeholder text here">
+                                      </div>
+                                    </div>
+                            </div>
+
+
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextRequiredUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label>
+                                      <div class="col-lg-9">
+                                        <div class="checkboxCssCorrection">&nbsp;</div>
+                                        <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="inputTextRequiredUpdate">
+                                      </div>
+                                    </div>
+                            </div>
+
+                            <div class="marginTopFivepixels"></div>
+
+                            <div class="row">
+                                    <div class="form-group">
+                                      <label for="inputTextDescriptionUpdate" class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label>
+                                      <div class="col-lg-9">
+                                        <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="inputTextDescriptionUpdate" placeholder="Add / edit description here">
+                                      </div>
+                                    </div>
+                            </div>
+
+                          </div>
+                        </div> 
+                </div> 
+
                 <div ng-switch-when="Date">
                         <!-- datetimepicker (input type date not ok in all browsers) -->
                         <div class="panel panel-default">
