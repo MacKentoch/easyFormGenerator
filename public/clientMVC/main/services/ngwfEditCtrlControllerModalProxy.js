@@ -52,10 +52,10 @@ angular
 																																			              		var value = modelValue || viewValue;
 																																			              		return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
 																																			            		},
-																																			            		message: '$viewValue + " is not a valid email"'
+																																			            		message: '$viewValue + \' is not a valid email\''
 																																			          		}
 																						                        },
-																						                         
+
 		                                	formlyValidation 						: {}
 		                                },
 		                                
@@ -112,29 +112,29 @@ angular
 
 		    for (var i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
 		      if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
-		        modelToReturn.selectedControl = CtrlModalModel.selectedControl;
-		        modelToReturn.formlyType = CtrlModalModel.controls[i].formlyType;
-		        modelToReturn.formlySubtype = CtrlModalModel.controls[i].formlySubtype;
-		        modelToReturn.formlyLabel = CtrlModalModel.controls[i].formlyLabel;
-		        modelToReturn.formlyRequired = CtrlModalModel.controls[i].formlyRequired;
-		        modelToReturn.formlyDesciption = CtrlModalModel.controls[i].formlyDesciption;
-		        modelToReturn.formlyPlaceholder = CtrlModalModel.controls[i].formlyPlaceholder;
-		        modelToReturn.formlyOptions = CtrlModalModel.controls[i].formlyOptions;
+		        modelToReturn.selectedControl 		= CtrlModalModel.selectedControl;
+		        modelToReturn.formlyType 					= CtrlModalModel.controls[i].formlyType;
+		        modelToReturn.formlySubtype 			= CtrlModalModel.controls[i].formlySubtype;
+		        modelToReturn.formlyLabel 				= CtrlModalModel.controls[i].formlyLabel;
+		        modelToReturn.formlyRequired 			= CtrlModalModel.controls[i].formlyRequired;
+		        modelToReturn.formlyDesciption 		= CtrlModalModel.controls[i].formlyDesciption;
+		        modelToReturn.formlyPlaceholder 	= CtrlModalModel.controls[i].formlyPlaceholder;
+		        modelToReturn.formlyOptions 			= CtrlModalModel.controls[i].formlyOptions;
 
-		        modelToReturn.formlyExpressionProperties = angular.copy(CtrlModalModel.controls[i].formlyExpressionProperties);
-		        modelToReturn.formlyValidators = angular.copy(CtrlModalModel.controls[i].formlyValidators);
-		        modelToReturn.formlyValidation = angular.copy(CtrlModalModel.controls[i].formlyValidation);
+		        modelToReturn.formlyExpressionProperties 	= angular.copy(CtrlModalModel.controls[i].formlyExpressionProperties);
+		        modelToReturn.formlyValidators 						= angular.copy(CtrlModalModel.controls[i].formlyValidators);
+		        modelToReturn.formlyValidation 						= angular.copy(CtrlModalModel.controls[i].formlyValidation);
 
 		        //particular properties 
 		        //datetpicker format
 		        if (CtrlModalModel.controls[i].formlyType === 'datepicker') {
-					modelToReturn.datepickerPopup = CtrlModalModel.controls[i].datepickerPopup;   
+					modelToReturn.datepickerPopup 							= CtrlModalModel.controls[i].datepickerPopup;   
 					  	
 		        }
 		      }
 		    }
 		    console.info('model should contain validators fields if email ctrl :');
-		    console.dir(modelToReturn);
+		    console.dir(angular.copy(modelToReturn));
 		    return modelToReturn;
 		  }
 			/**
@@ -178,9 +178,9 @@ angular
 				        nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
 				        nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
 								
-								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
-								nyaSelectObj.temporyConfig.formlyValidators 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 						!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
-								nyaSelectObj.temporyConfig.formlyValidation 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 						!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
+								nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties 	!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
+								nyaSelectObj.temporyConfig.formlyValidators 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
+								nyaSelectObj.temporyConfig.formlyValidation 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
 								
 								/**
 								 * particular case : datepicker 
@@ -189,18 +189,19 @@ angular
 				        	nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 				        }
 				      }
-				      console.dir(nyaSelectObj);
+				      console.info('getNyASelectFromSelectedLineColumn :');
+				      console.dir(angular.copy(nyaSelectObj));
 				      return nyaSelectObj;
 				  };
 
 			Service.bindConfigurationModelFromModalReturn = function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
 				      
 				      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl = extractedProps.selectedControl;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.type = extractedProps.formlyType;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.subtype = extractedProps.formlySubtype;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 		= extractedProps.selectedControl;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.type 							= extractedProps.formlyType;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.subtype 						= extractedProps.formlySubtype;
 				      //reset templateOptions
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions 		= {
 				                                                                                            label: '',
 				                                                                                            required: false,
 				                                                                                            description: '',
@@ -208,15 +209,15 @@ angular
 				                                                                                            options: []
 				                                                                                          };
 				       //then bind templateOptions                                                                                   
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label = extractedProps.formlyLabel;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required = extractedProps.formlyRequired;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			= extractedProps.formlyLabel;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 	= extractedProps.formlyRequired;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description = extractedProps.formlyDesciption;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options = extractedProps.formlyOptions;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		= extractedProps.formlyOptions;
 
 				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyExpressionProperties);
-				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators = angular.copy(extractedProps.formlyValidators);
-				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation = angular.copy(extractedProps.formlyValidation);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 					= angular.copy(extractedProps.formlyValidators);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 					= angular.copy(extractedProps.formlyValidation);
 
 					  	//////////////////////////////////////////
 				      // add additionnal particular properties
@@ -248,6 +249,9 @@ angular
 			          }
 			        }                                                                     
 			      configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+
+			      console.info('bindConfigurationModelFromModalReturn :');
+			      console.dir(angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control));
 				  };
 
 
@@ -258,7 +262,12 @@ angular
 				    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
 				      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
 
-				      	console.dir(nyaSelectObj);
+				      		console.info(	[
+				      										'nyaSelectObj.controls[i].id : ',
+				      										nyaSelectObj.controls[i].id,
+				      										'\nnyaSelectObj.selectedControl : ',
+				      										nyaSelectObj.selectedControl
+				      									].join(''));
 
 				          nyaSelectObj.controls[i].formlyLabel 								= nyaSelectObj.temporyConfig.formlyLabel;
 				          nyaSelectObj.controls[i].formlyRequired 						= nyaSelectObj.temporyConfig.formlyRequired;
@@ -266,9 +275,9 @@ angular
 				          nyaSelectObj.controls[i].formlyPlaceholder 					= nyaSelectObj.temporyConfig.formlyPlaceholder;
 				          nyaSelectObj.controls[i].formlyOptions 							= nyaSelectObj.temporyConfig.formlyOptions;
 
-				          nyaSelectObj.controls[i].formlyExpressionProperties	= angular.copy(nyaSelectObj.temporyConfig.formlyExpressionProperties);
-				          nyaSelectObj.controls[i].formlyValidators 					= angular.copy(nyaSelectObj.temporyConfig.formlyValidators);
-				          nyaSelectObj.controls[i].formlyValidation 					= angular.copy(nyaSelectObj.temporyConfig.formlyValidation);
+				          //nyaSelectObj.controls[i].formlyExpressionProperties	= nyaSelectObj.temporyConfig.formlyExpressionProperties;
+				          //nyaSelectObj.controls[i].formlyValidators 					= nyaSelectObj.temporyConfig.formlyValidators;
+				          //nyaSelectObj.controls[i].formlyValidation 					= nyaSelectObj.temporyConfig.formlyValidation;
 
 				          if (nyaSelectObj.controls[i].id ==='Date' ) {
 				          	nyaSelectObj.controls[i].datepickerPopup 					= nyaSelectObj.temporyConfig.datepickerPopup;
@@ -276,6 +285,8 @@ angular
 				        
 				       }
 				    }
+				    console.info('applyConfigToSelectedControl ; ');
+				    console.dir(angular.copy(nyaSelectObj.controls[i]));
 				  };
 
 		/**
