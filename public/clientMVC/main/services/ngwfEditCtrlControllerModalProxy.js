@@ -43,17 +43,19 @@ angular
 		                                	formlyLabel 								: '', 
 		                                	formlyRequired 							: false, 
 		                                	formlyDesciption 						: '', 
-		                                	formlyOptions 							: [] , 
+		                                	formlyOptions 							: [], 
 		                                	formlyExpressionProperties 	: {}, 
+
 		                                	formlyValidators 						: {
 																	                                		emailShape : {
-																																			            		expression: function(viewValue, modelValue) {
+																																			            		expression : function(viewValue, modelValue) {
 																																			              		var value = modelValue || viewValue;
 																																			              		return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
 																																			            		},
 																																			            		message: '$viewValue + " is not a valid email"'
 																																			          		}
-																						                        }, 
+																						                        },
+																						                         
 		                                	formlyValidation 						: {}
 		                                },
 		                                
@@ -187,6 +189,7 @@ angular
 				        	nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 				        }
 				      }
+				      console.dir(nyaSelectObj);
 				      return nyaSelectObj;
 				  };
 
@@ -211,9 +214,9 @@ angular
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options = extractedProps.formlyOptions;
 
-				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyOptions);
-				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators = angular.copy(extractedProps.formlyOptions);
-				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation = angular.copy(extractedProps.formlyOptions);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyExpressionProperties);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators = angular.copy(extractedProps.formlyValidators);
+				      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation = angular.copy(extractedProps.formlyValidation);
 
 					  	//////////////////////////////////////////
 				      // add additionnal particular properties
