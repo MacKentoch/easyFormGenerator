@@ -208,11 +208,11 @@ angular
                               required              : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                               placeholder           : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                               description           : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                              options               : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
-                              expressionProperties  : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-                              validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-                              validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
-                            } 
+                              options               : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+                            },
+                            expressionProperties  : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                            validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                            validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
                           };
         //////////////////////////////////////////////                  
         //datepicker additionnal particular property  
@@ -252,11 +252,11 @@ angular
                                       required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                                       placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                                       description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+                                  },
                                       expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
                                       validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
-                                  }
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                  
                                 };
         //////////////////////////////////////////////                  
         //datepicker additionnal particular property  
@@ -276,12 +276,11 @@ angular
                                       required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
                                       placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
                                       description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control),
-
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+                                  },
                                       expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
                                       validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
-                                  }
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
                           };
 
         //////////////////////////////////////////////                  
@@ -344,12 +343,11 @@ angular
                                       required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
                                       placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
                                       description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control),
-
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)                                              
+                                  },
                                       expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
                                       validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                               
-                                  }
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                   
                                 };
         //////////////////////////////////////////////                  
         //datepicker additionnal particular property  
@@ -368,12 +366,11 @@ angular
                                       required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
                                       placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
                                       description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control),
-
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)                                               
+                                  },
                                       expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
                                       validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                               
-                                  }
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
                           };
         //////////////////////////////////////////////                  
         //datepicker additionnal particular property  
@@ -391,12 +388,11 @@ angular
                                       required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
                                       placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
                                       description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control),
-
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)                                              
+                                  },
                                       expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
                                       validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                               
-                                  }
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                   
                           };
         //////////////////////////////////////////////                  
         //datepicker additionnal particular property  
