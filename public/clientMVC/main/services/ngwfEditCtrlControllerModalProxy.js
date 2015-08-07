@@ -255,6 +255,8 @@ angular
 				    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
 				      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
 
+				      	console.dir(nyaSelectObj);
+
 				          nyaSelectObj.controls[i].formlyLabel 								= nyaSelectObj.temporyConfig.formlyLabel;
 				          nyaSelectObj.controls[i].formlyRequired 						= nyaSelectObj.temporyConfig.formlyRequired;
 				          nyaSelectObj.controls[i].formlyDesciption 					= nyaSelectObj.temporyConfig.formlyDesciption;
@@ -264,7 +266,7 @@ angular
 				          nyaSelectObj.controls[i].formlyExpressionProperties	= angular.copy(nyaSelectObj.temporyConfig.formlyExpressionProperties);
 				          nyaSelectObj.controls[i].formlyValidators 					= angular.copy(nyaSelectObj.temporyConfig.formlyValidators);
 				          nyaSelectObj.controls[i].formlyValidation 					= angular.copy(nyaSelectObj.temporyConfig.formlyValidation);
-			          
+
 				          if (nyaSelectObj.controls[i].id ==='Date' ) {
 				          	nyaSelectObj.controls[i].datepickerPopup 					= nyaSelectObj.temporyConfig.datepickerPopup;
 				          }
@@ -286,6 +288,7 @@ angular
                       formlyPlaceholder: '',
                       formlyDesciption: '',
                       formlyOptions: []
+
                     };   
  	 	};		  
 
