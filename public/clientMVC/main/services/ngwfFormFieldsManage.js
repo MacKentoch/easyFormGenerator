@@ -166,6 +166,13 @@ angular
             AddThreeColumnControl(formlyModel, configurationModel,i);
           }
       }
+
+      console.info('applyConfigurationToformlyModel - configuration model : ');
+      console.dir(angular.copy(configurationModel));
+
+
+      console.info('applyConfigurationToformlyModel - formly model : ');
+      console.dir(angular.copy(formlyModel));
     };
 
     return Service;
