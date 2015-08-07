@@ -458,17 +458,17 @@ angular
 
     function extractFormlyExpressionProperties(obj){
 
-      return  typeof obj.expressionProperties !== 'undefined' ? angular.copy(obj.expressionProperties) : {};
+      return  typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
     }
 
     function extractFormlyValidators(obj){
 
-      return  typeof obj.validators !== 'undefined' ? angular.copy(obj.validators): {};
+      return  typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators): {};
     }
 
     function extractFormlyValidation(obj){
 
-      return  typeof obj.validation !== 'undefined' ?  angular.copy(obj.validation) : {};
+      return  typeof obj.formlyValidation !== 'undefined' ?  angular.copy(obj.formlyValidation) : {};
     }
 
 
