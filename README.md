@@ -41,14 +41,22 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 
 ## What is new?
- - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
+
+ - :newspaper: `step way` : added `email` control
+     + email entered must follow an email pattern (validation included)
+     + a validation message is displyed when entered email is invalid (pattern related)
+     + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master/index.html) 
 
  - `drag and drop` alternative coming soon
-   - under heavy developments (**preview daily UPDATED, see here : ** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/indexDragDrop.html))
+   - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/indexDragDrop.html))
      
- - NOTE :     
+    - NOTE :     
      - open `indexDragDrop.html` in your navigator  : for `drag and drop` version
      - see `index.html` in your navigator : for current version `step guided generator`
+
+ - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
+
+
 
 ##What is coming next?
 
