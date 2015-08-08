@@ -43,8 +43,8 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 ## What is new?
 
  - :newspaper: `step way` : added `email` control
-     + email entered must follow an email pattern (validation included)
-     + a validation message is displyed when entered email is invalid (pattern related)
+     + email entered must follow *an email pattern* (validation included)
+     + a validation message is displayed when entered email is invalid (pattern related)
      + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master/index.html) 
 
  - `drag and drop` alternative coming soon
