@@ -133,8 +133,6 @@ angular
 		        }
 		      }
 		    }
-		    console.info('model should contain validators fields if email ctrl :');
-		    console.dir(angular.copy(modelToReturn));
 		    return modelToReturn;
 		  }
 			/**
@@ -189,8 +187,6 @@ angular
 				        	nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 				        }
 				      }
-				      console.info('getNyASelectFromSelectedLineColumn :');
-				      console.dir(angular.copy(nyaSelectObj));
 				      return nyaSelectObj;
 				  };
 
@@ -250,8 +246,6 @@ angular
 			        }                                                                     
 			      configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
 
-			      console.info('bindConfigurationModelFromModalReturn :');
-			      console.dir(angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control));
 				  };
 
 
@@ -261,13 +255,6 @@ angular
 				  	 */
 				    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
 				      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
-
-				      		console.info(	[
-				      										'nyaSelectObj.controls[i].id : ',
-				      										nyaSelectObj.controls[i].id,
-				      										'\nnyaSelectObj.selectedControl : ',
-				      										nyaSelectObj.selectedControl
-				      									].join(''));
 
 				          nyaSelectObj.controls[i].formlyLabel 								= nyaSelectObj.temporyConfig.formlyLabel;
 				          nyaSelectObj.controls[i].formlyRequired 						= nyaSelectObj.temporyConfig.formlyRequired;
@@ -285,8 +272,7 @@ angular
 				        
 				       }
 				    }
-				    console.info('applyConfigToSelectedControl ; ');
-				    console.dir(angular.copy(nyaSelectObj.controls[i]));
+
 				  };
 
 		/**

@@ -131,8 +131,7 @@ var initOptionModel = {rows:[
 
 
   function bindBasicSelectFromNYA(){
-    // console.info('bindBasicSelectFromNYA');
-    // console.dir($scope.nyaSelect.temporyConfig);
+
 
     if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
       for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -243,7 +242,6 @@ var initOptionModel = {rows:[
         //grouplist : thx to lodash it is easy
         var filteredgroup = _.uniq(_.pluck($scope.groupedSelectRowCollection.rows, 'group'));
        angular.copy(filteredgroup, $scope.GroupedSelectGroups.list); 
-       //console.dir($scope.GroupedSelectGroups.list);
 
     }
   }
@@ -394,9 +392,7 @@ var initOptionModel = {rows:[
   // init model from controller data
   /////////////////////////////////////////////
   $scope.nyaSelect = nyaSelect ;
-
-  //console.dir($scope.nyaSelect);
-  
+    
   //selected control from  main controller applied to current selected control
   $scope.nyaSelect.selectedControl = $scope.nyaSelect.temporyConfig.selectedControl;
 

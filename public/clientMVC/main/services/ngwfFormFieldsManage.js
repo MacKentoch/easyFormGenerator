@@ -167,12 +167,6 @@ angular
           }
       }
 
-      console.info('applyConfigurationToformlyModel - configuration model : ');
-      console.dir(angular.copy(configurationModel));
-
-
-      console.info('applyConfigurationToformlyModel - formly model : ');
-      console.dir(angular.copy(formlyModel));
     };
 
     return Service;
@@ -445,8 +439,6 @@ angular
 
     function extractTemplateOptionLabel(obj){
 
-     //console.info('extractTemplateOptionLabel');
-     //console.dir(obj);
      return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
     }
 

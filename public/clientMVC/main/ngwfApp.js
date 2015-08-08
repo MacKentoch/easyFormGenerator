@@ -190,7 +190,6 @@ ngwfApp.config([	'formlyConfigProvider',
         template: [
           '<div class="formly-template-wrapper form-group"',
           '     ng-class="{\'has-error\': options.validation.errorExistsAndShouldBeVisible}">',
-          //' <label for="{{::id}}">{{options.templateOptions.label}} {{options.templateOptions.required ? \'*\' : \'\'}}</label>',
           ' <formly-transclude></formly-transclude>',
           ' <div class="validation"',
           '       ng-if="options.validation.errorExistsAndShouldBeVisible"',
