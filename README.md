@@ -1,5 +1,7 @@
 #Easy form generator 
 
+[![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 >Generate advanced and unique boostrap forms without typing a single line of code!
 
