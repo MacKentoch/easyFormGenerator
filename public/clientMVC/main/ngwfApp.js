@@ -41,6 +41,7 @@ ngwfApp.config([	'formlyConfigProvider',
     formlyConfigProvider.setType(
 	    {
 	  		name: 'richEditor',
+        wrapper: ['bootstrapLabel', 'bootstrapHasError'],
 	  		template: '<text-angular name="{{id}}" class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'
 	    }
     );
@@ -145,7 +146,6 @@ ngwfApp.config([	'formlyConfigProvider',
     ngModelAttrs[camelize(binding)] = {bound: binding};
   });
 
-  //console.log(ngModelAttrs);
   
 
   formlyConfigProvider.setType({
@@ -156,7 +156,6 @@ ngwfApp.config([	'formlyConfigProvider',
        $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
-        console.log('controller does a good job!');
         $scope.opened = true;
       };
      
