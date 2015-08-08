@@ -108,7 +108,8 @@ var paths = {
 														'vendor/js/angular-drag-and-drop-lists.min.js',
 														'bower_components/angular-strap/dist/angular-strap.min.js',
 														'bower_components/angular-strap/dist/angular-strap.tpl.min.js',
-														'vendor/js/angular-pageslide-directive.min.js'
+														'vendor/js/angular-pageslide-directive.min.js',
+														'bower_components/angular-messages/angular-messages.min.js'
 								 					],
 bower_components_map: 		[
 														'bower_components/jquery/dist/jquery.min.map',
@@ -118,7 +119,8 @@ bower_components_map: 		[
 														'bower_components/angular-formly/dist/formly.min.js.map',
 														'bower_components/api-check/dist/api-check.min.js.map',
 														'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map',
-														'bower_components/angular-strap/dist/angular-strap.min.js.map'
+														'bower_components/angular-strap/dist/angular-strap.min.js.map',
+														'bower_components/angular-messages/angular-messages.min.js.map'
 													], 					
 
 bower_components_css: 		[
