@@ -46,6 +46,9 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
      + email entered must follow *an email pattern* (validation included)
      + a validation message is displayed when entered email is invalid (pattern related)
      + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master/index.html) 
+     + preview :
+ 
+ ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
 
  - `drag and drop` alternative coming soon
    - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/indexDragDrop.html))
@@ -61,6 +64,8 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 ##What is coming next?
 
 - developing `drag and drop` alternative (I'm not joking when I tell you under :muscle: (heavy) developements )
+- adding more controls
+- adding more validations 
  - adding tests
    - unit test (in progress - already in `branch master` not finished)
    - E2E (coming soon)
