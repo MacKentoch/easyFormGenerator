@@ -41,7 +41,7 @@ ngwfApp.config([	'formlyConfigProvider',
     formlyConfigProvider.setType(
 	    {
 	  		name: 'richEditor',
-        wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+        //wrapper: ['bootstrapLabel', 'bootstrapHasError'],
 	  		template: '<text-angular name="{{id}}" class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'
 	    }
     );

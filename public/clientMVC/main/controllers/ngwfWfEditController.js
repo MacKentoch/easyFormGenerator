@@ -535,7 +535,6 @@ ngwfWfEditController.controller('ngwfWfEditController', [	'$scope',
         
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
 
-        console.dir($scope.vm.wfFormFieldsOnlyNeededProperties);
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });

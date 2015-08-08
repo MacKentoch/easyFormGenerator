@@ -207,7 +207,9 @@ angular
 		                                	formlyDesciption: '', 
 		                                	formlyOptions: [], 
 		                                	formlyExpressionProperties: {}, 
-		                                	formlyValidators: {}, 
+		   
+		                                	formlyValidators 						: {},
+
 		                                	formlyValidation: {
 						                                		          messages: {
 																													            required: function(viewValue, modelValue, scope) {
