@@ -65,7 +65,7 @@ angular
 																													              		//return a required validation message : 
 																													              		//-> '<label as name> is required '
 																													              		//-> or if not exists or empty just 'this field is required'
-																													              		var defaultReturnMsg = 'this input field is required';
+																													              		var defaultReturnMsg = 'this Text input field is required';
 																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
 																													              		return returnMsg;
 																													            		}
@@ -92,7 +92,7 @@ angular
 																												              		//return a required validation message : 
 																												              		//-> '<label as name> is required '
 																												              		//-> or if not exists or empty just 'this field is required'
-																												              		var defaultReturnMsg = 'this password field is required';
+																												              		var defaultReturnMsg = 'this Password field is required';
 																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
 																												              		return returnMsg;
 																												            		}
@@ -151,7 +151,18 @@ angular
 		                                	datepickerPopup: 'dd-MMMM-yyyy', 
 		                                	formlyExpressionProperties: {}, 
 		                                	formlyValidators: {}, 
-		                                	formlyValidation: {}
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this Date field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
 		                                },
 
 		                                {
@@ -167,7 +178,18 @@ angular
 		                                	formlyOptions: [], 
 		                                	formlyExpressionProperties: {}, 
 		                                	formlyValidators: {}, 
-		                                	formlyValidation: {}
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this Textarea field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
 		                                },
 
 		                                {
@@ -183,7 +205,18 @@ angular
 		                                	formlyOptions: [], 
 		                                	formlyExpressionProperties: {}, 
 		                                	formlyValidators: {}, 
-		                                	formlyValidation: {}
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this RichTextEditor field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
 		                                },
 
 		                                {
@@ -202,10 +235,56 @@ angular
 		                                	formlyValidators: {}, 
 		                                	formlyValidation: {}
 		                                },
-		                                
-		                                {id: 'Checkbox', name: 'Checkbox', subtitle: 'Checkbox', group: 'Checkbox', formlyType: 'checkbox', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [], formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
-		                                {id: 'BasicSelect', name: 'Basic select', subtitle: 'Basic select',options: [], group: 'Select', formlyType: 'basicSelect', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [], formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
-		                                {id: 'GroupedSelect', name: 'Grouped Select', subtitle: 'Grouped Select',options: [], group: 'Select', formlyType: 'groupedSelect', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '',formlyOptions: [], formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}}
+
+		                                {
+		                                	id: 'Checkbox', 
+		                                	name: 'Checkbox', 
+		                                	subtitle: 'Checkbox', 
+		                                	group: 'Checkbox', 
+		                                	formlyType: 'checkbox', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {}
+		                                },
+
+		                                {
+		                                	id: 'BasicSelect', 
+		                                	name: 'Basic select', 
+		                                	subtitle: 'Basic select',
+		                                	options: [], 
+		                                	group: 'Select', 
+		                                	formlyType: 'basicSelect', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {}
+		                                },
+
+		                                {
+		                                	id: 'GroupedSelect', 
+		                                	name: 'Grouped Select', 
+		                                	subtitle: 'Grouped Select',
+		                                	options: [], 
+		                                	group: 'Select', 
+		                                	formlyType: 'groupedSelect', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '',
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {}
+		                                }
 		                              ],
 
 		                      selectedControl : 'none' ,
