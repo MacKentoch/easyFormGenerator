@@ -229,6 +229,15 @@ angular
 		 * ============================================================
 		 */
 		 
+		 /**
+			* proxyModel getter
+			* 
+			* - primary use for side edit panel controller
+		  */
+		 Service.getProxyModel = function(){
+			 
+		 };
+		 
 		/**
 		 * set local proxyModel from Selected control in configuration model
 		 * 

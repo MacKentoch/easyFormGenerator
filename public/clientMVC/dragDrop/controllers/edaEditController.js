@@ -599,10 +599,7 @@ angular
   
 
   $scope.editPanelModel = {
-                            toggle : false,
-                            // lineIndex : -1,
-                            // columnIndex : -1,
-                            // control : {}
+                            toggle : false
                           };
 
   $scope.closeEditPanel = function(){
@@ -629,12 +626,20 @@ angular
     */
    if (controllerModalProxy.getEditPanelModelToggle()) {
     /**
-     * immediate close 
+     * - immediate close 
+     * and 
+     * - refresh configuration model + formly model
      */
     controllerModalProxy.setEditPanelModelToggle(false);
-    $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                              
+    $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle(); 
+    
+    //TODO : for refreshing
+    //controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+    //formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
+    //$scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);    
+                                 
     /**
-     * check if new control right clicked other wise just togle side panel
+     * check if new control right clicked otherwise just toggle side panel
      */
     if (typeof controllerModalProxy.getEditPanelModelLineIndex()    !== 'undefined' &&
         typeof controllerModalProxy.getEditPanelModelColumnIndex()  !== 'undefined' &&
@@ -651,16 +656,17 @@ angular
   
           console.info('already opened for DIFFERENT ctrl : so re-open');
   
-          console.dir(  {
-                            'scope.editPanelModel.lineIndex '   : controllerModalProxy.getEditPanelModelLineIndex(),
-                            'scope.editPanelModel.columnIndex'  : controllerModalProxy.getEditPanelModelColumnIndex(),
-                            'scope.editPanelModel.control'      : controllerModalProxy.getEditPanelModelControl(),
-                            'test equal'                        : angular.equals(controllerModalProxy.getEditPanelModelControl(), item),
-                            'lineIndex'                         : lineIndex,
-                            'colIndex'                          : colIndex,
-                            'item'                              : item,
-                        }
-                      );
+          // console.dir(  {
+          //                   'scope.editPanelModel.lineIndex '   : controllerModalProxy.getEditPanelModelLineIndex(),
+          //                   'scope.editPanelModel.columnIndex'  : controllerModalProxy.getEditPanelModelColumnIndex(),
+          //                   'scope.editPanelModel.control'      : controllerModalProxy.getEditPanelModelControl(),
+          //                   'test equal'                        : angular.equals(controllerModalProxy.getEditPanelModelControl(), item),
+          //                   'lineIndex'                         : lineIndex,
+          //                   'colIndex'                          : colIndex,
+          //                   'item'                              : item,
+          //               }
+          //             );
+          
           /**
           * set a timeout before re-opening
           * 500ms is ok for a ps-size="400px"
@@ -673,7 +679,7 @@ angular
            
            /**
             * control model passed to Service : controllerModalProxy
-            * Next, refresh editPanel to take inot account this control
+            * 
             */
            controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                         $scope.configuration,
@@ -710,6 +716,16 @@ angular
      controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
      controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
      controllerModalProxy.setEditPanelModelControl(item);
+     
+     /**
+      * control model passed to Service : controllerModalProxy
+      * 
+      */
+     controllerModalProxy.setProxyModelFromConfigurationSelection(
+                                                                  $scope.configuration,
+                                                                  lineIndex, 
+                                                                  colIndex
+                                                                  );     
      
      controllerModalProxy.setEditPanelModelToggle(true);
      $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
