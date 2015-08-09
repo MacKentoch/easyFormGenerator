@@ -299,7 +299,7 @@ angular
 																												              		//return a required validation message : 
 																												              		//-> '<label as name> is required '
 																												              		//-> or if not exists or empty just 'this field is required'
-																												              		var defaultReturnMsg = 'this Password field is required';
+																												              		var defaultReturnMsg = 'this Basic select field is required';
 																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
 																												              		return returnMsg;
 																												            		}
@@ -327,7 +327,7 @@ angular
 																												              		//return a required validation message : 
 																												              		//-> '<label as name> is required '
 																												              		//-> or if not exists or empty just 'this field is required'
-																												              		var defaultReturnMsg = 'this Password field is required';
+																												              		var defaultReturnMsg = 'this Grouped Select field is required';
 																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
 																												              		return returnMsg;
 																												            		}
