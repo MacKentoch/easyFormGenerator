@@ -606,7 +606,20 @@ angular
                           };
 
   $scope.closeEditPanel = function(){
-    $scope.editPanelModel.toggle = false;
+    /**
+     * TODO : refresh configuration model 
+     * uncomment pafter update these next 3 lines
+     * 
+     * NOTE : indexLine AND  numcolumn should be stored in service and
+     * updated when togle sidepanel
+     */
+   
+    //controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+    //formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
+    //$scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+    
+    controllerModalProxy.setEditPanelModelToggle(false);
+    $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
   };
 
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
