@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/lodash/lodash.d.ts"/>
+/// <reference path="../../../typings/angularjs/angular.d.ts"/>
 /**
  *  -----------------------------------------------------------------------
  *  application module of the drag and drop version of easy form generator

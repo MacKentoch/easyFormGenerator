@@ -30,7 +30,7 @@ angular
 												 * control like 'RichTextEditor'
 												 *
 												 */
-												//constrol array should be like :
+												//control array should be like :
 												//	controls: [				
 												// 	{
 												// 		id 								: 'TextInput',  
@@ -293,7 +293,7 @@ angular
 			}
 		};
 		/**
-		 * setFormlyControlTemplate : ovverrides ControlTemplate
+		 * setFormlyControlTemplate : overrides ControlTemplate
 		 */
 		this.setFormlyControlTemplate  = function(newFormlyControlTemplate){
 			/**

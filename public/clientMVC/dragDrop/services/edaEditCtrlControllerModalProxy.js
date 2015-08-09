@@ -103,6 +103,11 @@ angular
 	    return isUnique;  
 	  }  
 
+		/**
+		 * deprecated in drag and drop version
+		 * 
+		 * use initProxyModel insead
+		 */
 		Service.initNyaSelect = function(nyaSelectObj){
     	return resetNyaSelect(nyaSelectObj);
     };
@@ -234,9 +239,75 @@ angular
 			* 
 			* - primary use for side edit panel controller
 		  */
-		 Service.getProxyModel = function(){
-			 
-		 };
+			Service.getProxyModel = function(){
+			 return proxyModel;
+			};
+		 
+		/**
+		 * reset proxy model
+		 */
+		Service.initProxyModel = function(thisProxyModelToInit){
+    	return resetProxyModel(thisProxyModelToInit);
+    };		 
+		 
+		/**
+		 * to refresh configuration model from edit panel
+		 */
+		Service.bindConfigurationModelFromProxyModel =  function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
+				      
+				      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
+
+				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
+				      /**
+				       * templateOptions
+				       */
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
+		                                                                                            label				: '',
+		                                                                                            required		: false,
+		                                                                                            description	: '',
+		                                                                                            placeholder	: '',
+		                                                                                            options			: []
+				                                                                                      };
+				       /**
+				        * then bind template option
+				        */
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
+				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
+
+				      /**
+				       * add additionnal — particular — properties :
+				       * 
+				       * -> datepicker : datepickerPopup
+				       */
+				      if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+				       	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
+				      }	
+
+				      /**
+				       * unique key (set only first time) in this model is formly control type + Date.now(); 
+				       */
+				      var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+
+			        if (validKeyUniqueness(newKey, configurationObj) === true){
+			          configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+			        }else{
+			          newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+			          if (validKeyUniqueness(newKey, configurationObj) === true){
+			            configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+			          }else{
+			            newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+			          }
+			        }                                                                     
+
+				      configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+
+		};		 
+		 
 		 
 		/**
 		 * set local proxyModel from Selected control in configuration model
