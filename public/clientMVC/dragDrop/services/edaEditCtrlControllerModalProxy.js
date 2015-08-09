@@ -17,13 +17,16 @@ angular
 	function( EasyFormGenFormlyBindingModels ){
 		
 		/**
-		 * model shared between main controller (where configuration model comes from)
-		 * and modal or sidepanel controller (where controls are configured/customized)
+		 * model shared between 
+		 * 
+		 * - main controller (where configuration model comes from)
+		 * AND
+		 * - modal or sidepanel controller (where controls are configured/customized)
 		 */
 		var proxyModel = {};
 				
 		/***
-		 * Service itself
+		 * Service itself (no more no less)
 		 */
 		var Service = {};
 
@@ -108,7 +111,7 @@ angular
 		 * return nyaSelectModel from Selected control in configuration model
 		 * 
 		 * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
-		 * 				-> in drag and drop version : use 'setNyASelectFromSelectedLineColumn' instead 
+		 * 				-> in drag and drop version : use 'setProxyModelFromConfigurationSelection' instead 
 		 * 					to set private object that will be readable to side edit panel
 		 */
     Service.getNyASelectFromSelectedLineColumn = function(nyaSelectObj, configurationObj, indexLine, numcolumn){
@@ -136,13 +139,15 @@ angular
 		
 		
 		/**
-		 * set local nyaSelectModel from Selected control in configuration model
+		 * set local proxyModel from Selected control in configuration model
 		 * 
-		 * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
-		 * 				-> in drag and drop version : use 'setNyASelectFromSelectedLineColumn' instead 
-		 * 					to set private object that will be readable to side edit panel
+		 * replace deprecated "getNyASelectFromSelectedLineColumn"
+		 * -model is now named "proxyModel"
+		 * -model is stored in this service 
+		 * 
+		 * -> it has just more sence!
 		 */
-    Service.setNyASelectFromSelectedLineColumn = function(configurationObj, indexLine, numcolumn){
+    Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
 	    resetProxyModel();  
 	    /**
 	     * data send to modal controller
@@ -249,16 +254,14 @@ angular
 
 
 		/**
-		 * following methods for "editPanelModel""
+		 * ============================================================
+		 * following methods for "editPanelModel"
+		 * 
+		 * Note this model : 
+		 * - to manage side edit control panel
+		 * ============================================================
 		 */
 		 
-		/**
-		 * editPanelModel 
-		 * 
-		 * manage 
-		 * - side panel toggle
-		 * - control identification (line index and column index)
-		 */
 		var editPanelModel = {
                             toggle : false,
                             lineIndex : -1,
