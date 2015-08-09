@@ -20,11 +20,13 @@ angular
     		 
     		link: function(scope, element, attrs) {
 	    		var fn = $parse(attrs.edaRightClick);
+                var columnIndex = $parse(attrs.edaRightClickColIndex);
 
 	        element.bind('contextmenu', function(event) {
 	            scope.$apply(function() {
 	                event.preventDefault();
-	                fn(scope, {$event:event});
+                    //right click limited to template column    
+	                if (columnIndex(scope) === 1) fn(scope, {$event:event});
 	            });
 	        });	
 
