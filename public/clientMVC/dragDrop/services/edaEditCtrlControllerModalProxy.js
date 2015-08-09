@@ -16,6 +16,8 @@ angular
 
 	function( EasyFormGenFormlyBindingModels ){
 		
+		var modelToPassBetweenControllers = {};
+		
 		var Service = {};
 
 
@@ -80,6 +82,13 @@ angular
     	return resetNyaSelect(nyaSelectObj);
     };
 
+		/**
+		 * return nyaSelectModel from Selected control in configuration model
+		 * 
+		 * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
+		 * 				-> in drag and drop version : use 'setNyASelectFromSelectedLineColumn' instead 
+		 * 					to set private object that will be readable to side edit panel
+		 */
     Service.getNyASelectFromSelectedLineColumn = function(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	    resetNyaSelect(nyaSelectObj);  
 	    /**
@@ -102,6 +111,10 @@ angular
 	    }
 	    return nyaSelectObj;
 		};
+		
+		
+		
+		
 
 
 		Service.bindConfigurationModelFromModalReturn =  function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){

@@ -19,13 +19,13 @@ angular
     		restrict: 'A',
     		 
     		link: function(scope, element, attrs) {
-	    		var fn = $parse(attrs.edaRightClick);
+	    		var fn          = $parse(attrs.edaRightClick);
                 var columnIndex = $parse(attrs.edaRightClickColIndex);
 
 	        element.bind('contextmenu', function(event) {
 	            scope.$apply(function() {
 	                event.preventDefault();
-                    //right click limited to template column    
+                    //right click limited to template column (index = 1)   
 	                if (columnIndex(scope) === 1) fn(scope, {$event:event});
 	            });
 	        });	

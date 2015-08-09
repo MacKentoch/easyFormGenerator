@@ -426,7 +426,12 @@ angular
                                       size: 'lg',
                                       resolve: {
                                         nyaSelect: function () {
-                                          return controllerModalProxy.getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
+                                          return controllerModalProxy
+                                                            .getNyASelectFromSelectedLineColumn(  $scope.nyaSelect, 
+                                                                                                  $scope.configuration,
+                                                                                                  indexLine, 
+                                                                                                  numcolumn
+                                                                                                );
                                         }
                                       }
     });
@@ -632,24 +637,38 @@ angular
 
                                     console.info('already opened for DIFFERENT ctrl : so re-open');
 
-                                    console.dir(  {
-                                                      'scope.editPanelModel.lineIndex '   : $scope.editPanelModel.lineIndex,
-                                                      'scope.editPanelModel.columnIndex'  : $scope.editPanelModel.columnIndex,
-                                                      'scope.editPanelModel.control'      : $scope.editPanelModel.control,
-                                                      '' : '',
-                                                      'lineIndex'                         : lineIndex,
-                                                      'colIndex'                          : colIndex,
-                                                      'item'                              : item,
-                                                  }
-                                                );
+                                    // console.dir(  {
+                                    //                   'scope.editPanelModel.lineIndex '   : $scope.editPanelModel.lineIndex,
+                                    //                   'scope.editPanelModel.columnIndex'  : $scope.editPanelModel.columnIndex,
+                                    //                   'scope.editPanelModel.control'      : $scope.editPanelModel.control,
+                                    //                   '' : '',
+                                    //                   'lineIndex'                         : lineIndex,
+                                    //                   'colIndex'                          : colIndex,
+                                    //                   'item'                              : item,
+                                    //               }
+                                    //             );
                                     /**
                                     * set a timeout before re-opening
                                     * 500ms is ok for a ps-size="400px"
                                     */
                                     var timerCloseOpenedEditPanel     = $timeout(function(){
+                                      
                                       $scope.editPanelModel.lineIndex = lineIndex;
                                       $scope.editPanelModel.columnIndex  = colIndex;
                                       $scope.editPanelModel.control   = angular.copy(item);
+                                      
+                                      /**
+                                       * pass data should be done by passing "nyaSelect"
+                                       */
+                                       // nyaSelect: function () {
+                                        //   return controllerModalProxy
+                                        //                     .getNyASelectFromSelectedLineColumn(  $scope.nyaSelect, 
+                                        //                                                           $scope.configuration,
+                                        //                                                           indexLine, 
+                                        //                                                           numcolumn
+                                        //                                                         );
+                                        // }
+                                        
                                       $scope.editPanelModel.toggle    = true;
 
                                     }, 500);
