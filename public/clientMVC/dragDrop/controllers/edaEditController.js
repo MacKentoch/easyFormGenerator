@@ -604,55 +604,82 @@ angular
     $scope.editPanelModel.toggle = false;
   };
 
-  $scope.toggleEditPanel = function(lineIndex, colIndex, item){
+  $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
                              
                              /**
                               * already opened (could be another control edit)
                               */
                              if ($scope.editPanelModel.toggle) {
-                              
-
                               /**
                                * immediate close 
                                */
                               $scope.editPanelModel.toggle = false;
-
-
-                             /**
-                              * set a timeout before re-opening
-                              * 500ms is ok for a ps-size="400px"
-                              */
-                              var timerCloseOpenedEditPanel = $timeout(function(){
-                                $scope.editPanelModel.lineIndex = lineIndex;
-                                $scope.editPanelModel.colIndex = colIndex;
-                                $scope.editPanelModel.control = angular.copy(item);
-                                $scope.editPanelModel.toggle = true;
-
-                              }, 500);
-
                               /**
-                              * timerCloseOpenedEditPanel timer destruction
-                              */
-                              $scope.$on('$destroy', function(){
-                                    $timeout.cancel(timerCloseOpenedEditPanel);
+                               * check if new control right clicked other wise just togle side panel
+                               */
+                              if (typeof $scope.editPanelModel.lineIndex    !== 'undefined' &&
+                                  typeof $scope.editPanelModel.columnIndex  !== 'undefined' &&
+                                  typeof $scope.editPanelModel.control      !== 'undefined') {
+
+
+                                if ($scope.editPanelModel.lineIndex   === lineIndex &&
+                                    $scope.editPanelModel.columnIndex === colIndex  &&
+                                    angular.equals($scope.editPanelModel.control, item)) {
+
+                                    console.info('already opened for SAME ctrl : so close - no re-open');
+
+                                }else{
+
+                                    console.info('already opened for DIFFERENT ctrl : so re-open');
+
+                                    console.dir(  {
+                                                      'scope.editPanelModel.lineIndex '   : $scope.editPanelModel.lineIndex,
+                                                      'scope.editPanelModel.columnIndex'  : $scope.editPanelModel.columnIndex,
+                                                      'scope.editPanelModel.control'      : $scope.editPanelModel.control,
+                                                      '' : '',
+                                                      'lineIndex'                         : lineIndex,
+                                                      'colIndex'                          : colIndex,
+                                                      'item'                              : item,
+                                                  }
+                                                );
+                                    /**
+                                    * set a timeout before re-opening
+                                    * 500ms is ok for a ps-size="400px"
+                                    */
+                                    var timerCloseOpenedEditPanel     = $timeout(function(){
+                                      $scope.editPanelModel.lineIndex = lineIndex;
+                                      $scope.editPanelModel.columnIndex  = colIndex;
+                                      $scope.editPanelModel.control   = angular.copy(item);
+                                      $scope.editPanelModel.toggle    = true;
+
+                                    }, 500);
+
+                                    /**
+                                    * timerCloseOpenedEditPanel timer destruction
+                                    */
+                                    $scope.$on('$destroy', function(){
+                                          $timeout.cancel(timerCloseOpenedEditPanel);
+                                      }
+                                    );
+
                                 }
 
-                              );
+                              }
 
+  
 
                              }else{
-                              
+                              /**
+                               * previous state = closed = immediate open 
+                               */
+                               console.info('NOT already opened : so open'); 
+                               $scope.editPanelModel.lineIndex  = lineIndex;
+                               $scope.editPanelModel.columnIndex   = colIndex;
+                               $scope.editPanelModel.control    = angular.copy(item);
 
-                               $scope.editPanelModel.lineIndex = lineIndex;
-                               $scope.editPanelModel.colIndex = colIndex;
-                               $scope.editPanelModel.control = angular.copy(item);
+                               $scope.editPanelModel.toggle     = true;  
 
-                               $scope.editPanelModel.toggle  = !$scope.editPanelModel.toggle;  
-
-                             }
-
-
-                             
+                             }                       
   };
   // /**
   //  * refreshModels : to call after drag and drop events
