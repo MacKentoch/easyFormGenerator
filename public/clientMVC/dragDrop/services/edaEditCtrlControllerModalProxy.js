@@ -136,41 +136,8 @@ angular
 	    }
 	    return nyaSelectObj;
 		};
+	
 		
-		
-		/**
-		 * set local proxyModel from Selected control in configuration model
-		 * 
-		 * replace deprecated "getNyASelectFromSelectedLineColumn"
-		 * -model is now named "proxyModel"
-		 * -model is stored in this service 
-		 * 
-		 * -> it has just more sence!
-		 */
-    Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
-	    resetProxyModel();  
-	    /**
-	     * data send to modal controller
-	     */
-	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
-
-	      proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
-	      proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-	      proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-	      proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-	      proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-	      proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
-	      /**
-	       * particular case : datepicker
-	       */
-	      if (proxyModel.temporyConfig.selectedControl === 'Date') {
-	      	proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
-	      }
-	    }
-	    return proxyModel;
-		};		
-		
-
 		/**
 		 * deprecated in drag and drop version : 
 		 * 	use bindConfigurationModelFromProxyModel to refresh configuration after control update in side panel
@@ -250,6 +217,49 @@ angular
 				       }
 				    }
 		};
+
+		/**
+		 * ============================================================
+		 * following methods for "proxyModell"
+		 * 
+		 * Note this model : 
+		 * - to share control model between 
+		 * 	+ main controller (configuration model one)
+		 * 	+ edit panel controller (where apply customization to a selected control)
+		 * ============================================================
+		 */
+		 
+		/**
+		 * set local proxyModel from Selected control in configuration model
+		 * 
+		 * replace deprecated "getNyASelectFromSelectedLineColumn"
+		 * -model is now named "proxyModel"
+		 * -model is stored in this service 
+		 * 
+		 * -> it has just more sence!
+		 */
+    Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
+	    resetProxyModel();  
+	    /**
+	     * data send to modal controller
+	     */
+	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
+
+	      proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
+	      proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+	      proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+	      proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+	      proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+	      proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+	      /**
+	       * particular case : datepicker
+	       */
+	      if (proxyModel.temporyConfig.selectedControl === 'Date') {
+	      	proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
+	      }
+	    }
+	    return proxyModel;
+		};			 
 
 
 

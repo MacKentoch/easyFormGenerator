@@ -667,23 +667,23 @@ angular
           */
           var timerCloseOpenedEditPanel = $timeout(function(){
             
-            controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
-            controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
-            controllerModalProxy.setEditPanelModelControl(item);
+           controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
+           controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
+           controllerModalProxy.setEditPanelModelControl(item);
            
-            /**
-             * pass data should be done by passing "nyaSelect"
-             */
-             // nyaSelect: function () {
-              //   return controllerModalProxy
-              //                     .getNyASelectFromSelectedLineColumn(  $scope.nyaSelect, 
-              //                                                           $scope.configuration,
-              //                                                           indexLine, 
-              //                                                           numcolumn
-              //                                                         );
-              // }
-            controllerModalProxy.setEditPanelModelToggle(true);
-            $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                                         
+           /**
+            * control model passed to Service : controllerModalProxy
+            * Next, refresh editPanel to take inot account this control
+            */
+           controllerModalProxy.setProxyModelFromConfigurationSelection(
+                                                                        $scope.configuration,
+                                                                        lineIndex, 
+                                                                        colIndex
+                                                                        );
+           
+           
+           controllerModalProxy.setEditPanelModelToggle(true);
+           $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                                         
             
           }, 500);
   
