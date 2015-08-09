@@ -269,7 +269,7 @@ angular
 		/**
 		 * getter : editPanelModel (whole model => type = object)
 		 */			 
-		Service.getSideEditPanelModelAllModel = function(){
+		Service.getEditPanelModelAllModel = function(){
 			return editPanelModel;
 		};
 		/**
@@ -290,7 +290,7 @@ angular
 		/**
 		 * getter : editPanelModel.columnIndex
 		 */		
-		Service.getSideEditPanelModelColumnIndex = function(){
+		Service.getEditPanelModelColumnIndex = function(){
 			return editPanelModel.columnIndex;
 		};
 		/**
@@ -300,7 +300,7 @@ angular
 			var successfullDone  = false;
 			
 			if (typeof newColumnIndex !== 'undefined') {
-				editPanelModel.lineIndex = newColumnIndex;
+				editPanelModel.columnIndex = newColumnIndex;
 				successfullDone = true;	
 			}
 			
@@ -311,7 +311,7 @@ angular
 		/**
 		 * getter : editPanelModel.lineIndex
 		 */			
-		Service.getSideEditPanelModelLineIndex = function(){
+		Service.getEditPanelModelLineIndex = function(){
 			return editPanelModel.lineIndex;
 		};
 		/**
@@ -341,6 +341,7 @@ angular
 			var successfullDone  = false;
 			
 			if (typeof newControl !== 'undefined') {
+				//editPanelModel.control = angular.copy({});
 				editPanelModel.control = angular.copy(newControl);
 				successfullDone = true;	
 			}

@@ -600,9 +600,9 @@ angular
 
   $scope.editPanelModel = {
                             toggle : false,
-                            lineIndex : -1,
-                            columnIndex : -1,
-                            control : {}
+                            // lineIndex : -1,
+                            // columnIndex : -1,
+                            // control : {}
                           };
 
   $scope.closeEditPanel = function(){
@@ -623,95 +623,98 @@ angular
   };
 
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
-                             
-                             /**
-                              * already opened (could be another control edit)
-                              */
-                             if ($scope.editPanelModel.toggle) {
-                              /**
-                               * immediate close 
-                               */
-                              $scope.editPanelModel.toggle = false;
-                              /**
-                               * check if new control right clicked other wise just togle side panel
-                               */
-                              if (typeof $scope.editPanelModel.lineIndex    !== 'undefined' &&
-                                  typeof $scope.editPanelModel.columnIndex  !== 'undefined' &&
-                                  typeof $scope.editPanelModel.control      !== 'undefined') {
-
-
-                                if ($scope.editPanelModel.lineIndex   === lineIndex &&
-                                    $scope.editPanelModel.columnIndex === colIndex  &&
-                                    angular.equals($scope.editPanelModel.control, item)) {
-
-                                    console.info('already opened for SAME ctrl : so close - no re-open');
-
-                                }else{
-
-                                    console.info('already opened for DIFFERENT ctrl : so re-open');
-
-                                    // console.dir(  {
-                                    //                   'scope.editPanelModel.lineIndex '   : $scope.editPanelModel.lineIndex,
-                                    //                   'scope.editPanelModel.columnIndex'  : $scope.editPanelModel.columnIndex,
-                                    //                   'scope.editPanelModel.control'      : $scope.editPanelModel.control,
-                                    //                   '' : '',
-                                    //                   'lineIndex'                         : lineIndex,
-                                    //                   'colIndex'                          : colIndex,
-                                    //                   'item'                              : item,
-                                    //               }
-                                    //             );
-                                    /**
-                                    * set a timeout before re-opening
-                                    * 500ms is ok for a ps-size="400px"
-                                    */
-                                    var timerCloseOpenedEditPanel     = $timeout(function(){
-                                      
-                                      $scope.editPanelModel.lineIndex = lineIndex;
-                                      $scope.editPanelModel.columnIndex  = colIndex;
-                                      $scope.editPanelModel.control   = angular.copy(item);
-                                      
-                                      /**
-                                       * pass data should be done by passing "nyaSelect"
-                                       */
-                                       // nyaSelect: function () {
-                                        //   return controllerModalProxy
-                                        //                     .getNyASelectFromSelectedLineColumn(  $scope.nyaSelect, 
-                                        //                                                           $scope.configuration,
-                                        //                                                           indexLine, 
-                                        //                                                           numcolumn
-                                        //                                                         );
-                                        // }
-                                        
-                                      $scope.editPanelModel.toggle    = true;
-
-                                    }, 500);
-
-                                    /**
-                                    * timerCloseOpenedEditPanel timer destruction
-                                    */
-                                    $scope.$on('$destroy', function(){
-                                          $timeout.cancel(timerCloseOpenedEditPanel);
-                                      }
-                                    );
-
-                                }
-
-                              }
-
+   
+   /**
+    * already opened (could be another control edit)
+    */
+   if (controllerModalProxy.getEditPanelModelToggle()) {
+    /**
+     * immediate close 
+     */
+    controllerModalProxy.setEditPanelModelToggle(false);
+    $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                              
+    /**
+     * check if new control right clicked other wise just togle side panel
+     */
+    if (typeof controllerModalProxy.getEditPanelModelLineIndex()    !== 'undefined' &&
+        typeof controllerModalProxy.getEditPanelModelColumnIndex()  !== 'undefined' &&
+        typeof controllerModalProxy.getEditPanelModelControl()      !== 'undefined') {
   
-
-                             }else{
-                              /**
-                               * previous state = closed = immediate open 
-                               */
-                               console.info('NOT already opened : so open'); 
-                               $scope.editPanelModel.lineIndex  = lineIndex;
-                               $scope.editPanelModel.columnIndex   = colIndex;
-                               $scope.editPanelModel.control    = angular.copy(item);
-
-                               $scope.editPanelModel.toggle     = true;  
-
-                             }                       
+  
+      if (controllerModalProxy.getEditPanelModelLineIndex()   === lineIndex &&
+          controllerModalProxy.getEditPanelModelColumnIndex() === colIndex  &&
+          angular.equals(controllerModalProxy.getEditPanelModelControl(), item)) {
+  
+          console.info('already opened for SAME ctrl : so close - no re-open');
+  
+      }else{
+  
+          console.info('already opened for DIFFERENT ctrl : so re-open');
+  
+          console.dir(  {
+                            'scope.editPanelModel.lineIndex '   : controllerModalProxy.getEditPanelModelLineIndex(),
+                            'scope.editPanelModel.columnIndex'  : controllerModalProxy.getEditPanelModelColumnIndex(),
+                            'scope.editPanelModel.control'      : controllerModalProxy.getEditPanelModelControl(),
+                            'test equal'                        : angular.equals(controllerModalProxy.getEditPanelModelControl(), item),
+                            'lineIndex'                         : lineIndex,
+                            'colIndex'                          : colIndex,
+                            'item'                              : item,
+                        }
+                      );
+          /**
+          * set a timeout before re-opening
+          * 500ms is ok for a ps-size="400px"
+          */
+          var timerCloseOpenedEditPanel = $timeout(function(){
+            
+            controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
+            controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
+            controllerModalProxy.setEditPanelModelControl(item);
+           
+            /**
+             * pass data should be done by passing "nyaSelect"
+             */
+             // nyaSelect: function () {
+              //   return controllerModalProxy
+              //                     .getNyASelectFromSelectedLineColumn(  $scope.nyaSelect, 
+              //                                                           $scope.configuration,
+              //                                                           indexLine, 
+              //                                                           numcolumn
+              //                                                         );
+              // }
+            controllerModalProxy.setEditPanelModelToggle(true);
+            $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                                         
+            
+          }, 500);
+  
+          /**
+          * timerCloseOpenedEditPanel timer destruction
+          */
+          $scope.$on('$destroy', function(){
+                $timeout.cancel(timerCloseOpenedEditPanel);
+            }
+          );
+  
+      }
+  
+    }
+  
+  
+  
+   }else{
+    /**
+     * previous state = closed = immediate open 
+     */
+     console.info('NOT already opened : so open');
+      
+     controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
+     controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
+     controllerModalProxy.setEditPanelModelControl(item);
+     
+     controllerModalProxy.setEditPanelModelToggle(true);
+     $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
+     
+   }                       
   };
   // /**
   //  * refreshModels : to call after drag and drop events
