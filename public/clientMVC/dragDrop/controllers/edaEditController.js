@@ -591,13 +591,68 @@ angular
   /**
    * left panel (edit control)
    */
+  
+
   $scope.editPanelModel = {
                             toggle : false,
-                            
+                            lineIndex : -1,
+                            columnIndex : -1,
+                            control : {}
                           };
 
-  $scope.toggleEditPanel = function(){
-                             $scope.editPanelModel.toggle  = !$scope.editPanelModel.toggle;
+  $scope.closeEditPanel = function(){
+    $scope.editPanelModel.toggle = false;
+  };
+
+  $scope.toggleEditPanel = function(lineIndex, colIndex, item){
+                             
+                             /**
+                              * already opened (could be another control edit)
+                              */
+                             if ($scope.editPanelModel.toggle) {
+                              
+
+                              /**
+                               * immediate close 
+                               */
+                              $scope.editPanelModel.toggle = false;
+
+
+                             /**
+                              * set a timeout before re-opening
+                              * 500ms is ok for a ps-size="400px"
+                              */
+                              var timerCloseOpenedEditPanel = $timeout(function(){
+                                $scope.editPanelModel.lineIndex = lineIndex;
+                                $scope.editPanelModel.colIndex = colIndex;
+                                $scope.editPanelModel.control = angular.copy(item);
+                                $scope.editPanelModel.toggle = true;
+
+                              }, 500);
+
+                              /**
+                              * timerCloseOpenedEditPanel timer destruction
+                              */
+                              $scope.$on('$destroy', function(){
+                                    $timeout.cancel(timerCloseOpenedEditPanel);
+                                }
+
+                              );
+
+
+                             }else{
+                              
+
+                               $scope.editPanelModel.lineIndex = lineIndex;
+                               $scope.editPanelModel.colIndex = colIndex;
+                               $scope.editPanelModel.control = angular.copy(item);
+
+                               $scope.editPanelModel.toggle  = !$scope.editPanelModel.toggle;  
+
+                             }
+
+
+                             
   };
   // /**
   //  * refreshModels : to call after drag and drop events
