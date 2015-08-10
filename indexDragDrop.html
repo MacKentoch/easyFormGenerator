@@ -130,6 +130,7 @@
 								                        <h2>Edit right clicked control</h2>
 
                                          <div ng-switch on="panel.proxyModel.selectedControl">              
+                                          <!--nothing selected : should not occur-->
                                           <div ng-switch-when="none">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -137,9 +138,26 @@
                                                 </div>                
                                             </div>
                                           </div>
-                                          
+                                          <!--blank control selected-->
                                           <div ng-switch-when="empty">
+                                            <p>blanck control seleced</p>
                                           </div>
+                                          
+                                          <!--Header control selected-->
+                                          <div ng-switch-when="Header">
+                                            <p>header control seleced</p>
+                                          </div> 
+                                          
+                                          <!--Subtitle control selected-->
+                                          <div ng-switch-when="Subtitle">
+                                            <p>Subtitle control seleced</p>
+                                          </div>
+                                          
+                                          
+                                                                                  
+                                          
+                                          
+                                          
                                          </div>
 								                        <button class="btn btn-primary btn-xs pull-right"
 								                        				ng-click="closeEditPanel()">Close</button>
