@@ -37,7 +37,9 @@ angular
 			 */
 			$scope.proxyModel = controllerModalProxy.getProxyModel() ;
 		
-		  
+		  console.dir($scope.proxyModel);
+			
+			
 		  //selected control from  main controller applied to current selected control
 		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
 		

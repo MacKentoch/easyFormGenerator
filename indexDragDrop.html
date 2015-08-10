@@ -125,10 +125,22 @@
 								                			ps-cloak="true"
 								                			ps-size="400px">
 								                    <div 	style="padding:20px" 
-								                    			id="controlEditLeftPanel">
+								                    			id="controlEditLeftPanel"
+                                          ng-controller="edaEditPanelController as panel">
 								                        <h2>Edit right clicked control</h2>
-								                        <p>Here you will soon be abel to edit your right clicked control</p>
-								                        <p>Will be pretty nice and less commun than modals.</p>
+
+                                         <div ng-switch on="panel.proxyModel.selectedControl">              
+                                          <div ng-switch-when="none">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h5 class="text-center texteRouge"> <i class="fa fa-arrow-up"></i>&nbsp; Select a control</h5>
+                                                </div>                
+                                            </div>
+                                          </div>
+                                          
+                                          <div ng-switch-when="empty">
+                                          </div>
+                                         </div>
 								                        <button class="btn btn-primary btn-xs pull-right"
 								                        				ng-click="closeEditPanel()">Close</button>
 								                        

@@ -116,8 +116,11 @@ angular
    */
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
 
-
-
+  /**
+   * init proxyModel 
+   * (object shared between this controller and edit panel controlelr)
+   */
+  controllerModalProxy.initProxyModel();
   /**
    * collapse all other group of draggable controls : when a group control expands
    */
