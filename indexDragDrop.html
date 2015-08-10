@@ -128,6 +128,10 @@
 								                    			id="controlEditLeftPanel"
                                           ng-controller="edaEditPanelController as panel">
 								                        <h2>Edit right clicked control</h2>
+                                        
+                                        <!--<pre>
+                                          {{panel.previewObj | json}}
+                                        </pre>-->
 
                                          <div ng-switch on="panel.proxyModel.selectedControl">              
                                           <!--nothing selected : should not occur-->
