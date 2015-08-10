@@ -129,11 +129,11 @@
                                           ng-controller="edaEditPanelController as panel">
 								                        <h2>Edit right clicked control</h2>
                                         
-                                        <!--<pre>
-                                          {{panel.previewObj | json}}
-                                        </pre>-->
+                                        <pre>
+                                          {{panel.previewObj}}
+                                        </pre>
 
-                                         <div ng-switch on="panel.proxyModel.selectedControl">              
+                                         <div ng-switch on="panel.proxyModel.temporyConfig.selectedControl">              
                                           <!--nothing selected : should not occur-->
                                           <div ng-switch-when="none">
                                             <div class="row">
@@ -144,16 +144,16 @@
                                           </div>
                                           <!--blank control selected-->
                                           <div ng-switch-when="empty">
-                                            <p>blanck control seleced</p>
+                                            <p>blank control seleced</p>
                                           </div>
                                           
                                           <!--Header control selected-->
-                                          <div ng-switch-when="Header">
+                                          <div ng-switch-when="header">
                                             <p>header control seleced</p>
                                           </div> 
                                           
                                           <!--Subtitle control selected-->
-                                          <div ng-switch-when="Subtitle">
+                                          <div ng-switch-when="subtitle">
                                             <p>Subtitle control seleced</p>
                                           </div>
                                           

@@ -724,11 +724,22 @@ angular
       * control model passed to Service : controllerModalProxy
       * 
       */
-     controllerModalProxy.setProxyModelFromConfigurationSelection(
+     var proxyModel = controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
                                                                   lineIndex, 
                                                                   colIndex
-                                                                  );     
+                                                                  );
+                                                                  
+    console.dir(  
+                  { 
+                    item : item,
+                    lineIndex : lineIndex,
+                    colIndex: colIndex,
+                    proxyModel : proxyModel,
+                    proxyModelFromGetter :  controllerModalProxy.getProxyModel(),
+                    'configurationObj.lines[lineIndex].columns[colIndex].control' : $scope.configuration.lines[lineIndex].columns[colIndex].control
+                  }
+               );     
      
      controllerModalProxy.setEditPanelModelToggle(true);
      $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();

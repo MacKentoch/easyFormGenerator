@@ -43,26 +43,26 @@ angular
 		  //selected control from  main controller applied to current selected control
 		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
 		
-			//self.previewObj = JSON.stringify($scope.proxyModel.selectedControl); 
+			self.previewObj = JSON.stringify($scope.proxyModel.temporyConfig); 
 		  console.dir($scope.proxyModel);
 		
 		  //place proxyModel to selection if not none :
-		   if ($scope.proxyModel.selectedControl !== 'none') {
+		   if ($scope.proxyModel.temporyConfig.selectedControl !== 'none') {
 		    for (var i = $scope.proxyModel.controls.length - 1; i >= 0; i--) {
-		       if ($scope.proxyModel.controls[i].id === $scope.proxyModel.selectedControl) {
+		       if ($scope.proxyModel.controls[i].id === $scope.proxyModel.temporyConfig.selectedControl) {
 		          $scope.modelproxyModel = $scope.proxyModel.controls[i];
 		       }
 		    }
 		
-		    if ($scope.proxyModel.selectedControl === "BasicSelect") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === "BasicSelect") {
 		      bindBasicSelectFromNYA();
 		    }
 		
-		    if ($scope.proxyModel.selectedControl === "GroupedSelect") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === "GroupedSelect") {
 		      bindGroupedSelectFromNYA();
 		    } 
 		
-		    if ($scope.proxyModel.selectedControl === "Radio") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === "Radio") {
 		      bindRadioFromNYA();
 		    }    
 		
