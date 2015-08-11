@@ -741,6 +741,7 @@ angular
       */
      controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
+                                                                  controllerModalProxy.ProxyModel,
                                                                   lineIndex, 
                                                                   colIndex
                                                                   );
