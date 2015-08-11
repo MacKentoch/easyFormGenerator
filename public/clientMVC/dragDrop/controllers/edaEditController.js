@@ -622,6 +622,8 @@ angular
     $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
   };
 
+  $scope.debugProxyModel = controllerModalProxy.ProxyModel;
+
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
    
    /**
@@ -640,7 +642,9 @@ angular
     //controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
     //formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
     //$scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);    
-                                 
+            
+
+
     /**
      * check if new control right clicked otherwise just toggle side panel
      */
@@ -715,6 +719,17 @@ angular
      * previous state = closed = immediate open 
      */
      console.info('NOT already opened : so open');
+
+         console.dir(  
+                  { 
+                    'before' : '',
+                    item : item,
+                    lineIndex : lineIndex,
+                    colIndex: colIndex,
+                    proxyModel :  controllerModalProxy.ProxyModel,
+                    'configurationObj.lines[lineIndex].columns[colIndex].control' : $scope.configuration.lines[lineIndex].columns[colIndex].control
+                  }
+               ); 
       
      controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
      controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
@@ -724,7 +739,7 @@ angular
       * control model passed to Service : controllerModalProxy
       * 
       */
-     var proxyModel = controllerModalProxy.setProxyModelFromConfigurationSelection(
+     controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
                                                                   lineIndex, 
                                                                   colIndex
@@ -732,11 +747,11 @@ angular
                                                                   
     console.dir(  
                   { 
+                    'after' : '',
                     item : item,
                     lineIndex : lineIndex,
                     colIndex: colIndex,
-                    proxyModel : proxyModel,
-                    proxyModelFromGetter :  controllerModalProxy.getProxyModel(),
+                    proxyModel :  controllerModalProxy.ProxyModel,
                     'configurationObj.lines[lineIndex].columns[colIndex].control' : $scope.configuration.lines[lineIndex].columns[colIndex].control
                   }
                );     

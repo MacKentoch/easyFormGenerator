@@ -37,8 +37,8 @@ angular
 			 */
 			var self = this;
 			
-			$scope.proxyModel = controllerModalProxy.getProxyModel() ;
-			//$scope.proxyModel = controllerModalProxy.getProxyModel() ;			
+			$scope.proxyModel = controllerModalProxy.ProxyModel ;
+					
 			
 		  //selected control from  main controller applied to current selected control
 		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
@@ -54,15 +54,15 @@ angular
 		       }
 		    }
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === "BasicSelect") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
 		      bindBasicSelectFromNYA();
 		    }
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === "GroupedSelect") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
 		      bindGroupedSelectFromNYA();
 		    } 
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === "Radio") {
+		    if ($scope.proxyModel.temporyConfig.selectedControl === 'Radio') {
 		      bindRadioFromNYA();
 		    }    
 		
@@ -72,10 +72,10 @@ angular
 		
 		  function resetTemporyConfig(){
 		    $scope.proxyModel.temporyConfig = {
-		                                        formlyLabel: "", 
+		                                        formlyLabel: '', 
 		                                        formlyRequired: false, 
-		                                        formlyPlaceholder: "",
-		                                        formlyDesciption: "",
+		                                        formlyPlaceholder: '',
+		                                        formlyDesciption: '',
 		                                        formlyOptions: []
 		                                      };   
 		  }
@@ -103,15 +103,15 @@ angular
 			 */
 		  $scope.ok = function () {
 		
-		    if ($scope.proxyModel.selectedControl === "BasicSelect") {
+		    if ($scope.proxyModel.selectedControl === 'BasicSelect') {
 		      bindBasicSelectToNya();
 		    }
 		
-		    if ($scope.proxyModel.selectedControl === "GroupedSelect") {
+		    if ($scope.proxyModel.selectedControl === 'GroupedSelect') {
 		      bindGroupedSelectToNya();
 		    }  
 		
-		    if ($scope.proxyModel.selectedControl === "Radio") {
+		    if ($scope.proxyModel.selectedControl === 'Radio') {
 		      bindRadioToNya();
 		    }  
 		
@@ -192,7 +192,7 @@ angular
 		            });
 		    }
 		    //reset input
-		    $scope.newOptionRadio = {saisie: ""};
+		    $scope.newOptionRadio = {saisie: ''};
 		  };
 		
 		  $scope.removeRadioRow = function(index) {
@@ -239,16 +239,16 @@ angular
 			 * basic Select
 			 */			
 		  $scope.basicSelectRowCollection = initOptionModel;
-		  $scope.newOptionBasicSelect = {saisie: ""};
+		  $scope.newOptionBasicSelect = {saisie: ''};
 		
 		
 		  function bindBasicSelectFromNYA(){		
 		    if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
 		
-		            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-		                      "order": i,
-		                      "group": ""
+		            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+		                      'order': i,
+		                      'group': ''
 		                    };
 		            $scope.basicSelectRowCollection.rows.push(newOption);
 		      }    
@@ -260,9 +260,9 @@ angular
 		    $scope.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
 		    if ($scope.basicSelectRowCollection.rows.length > 0) {
 		      for (var i = 0; i <= $scope.basicSelectRowCollection.rows.length - 1; i++){
-		            var newOption = {"name": $scope.basicSelectRowCollection.rows[i].option,
-		                      "value": i,
-		                      "group": ""
+		            var newOption = {'name': $scope.basicSelectRowCollection.rows[i].option,
+		                      'value': i,
+		                      'group': ''
 		                    };
 		            $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);
 		        }      
@@ -281,7 +281,7 @@ angular
 		            });
 		    }
 		    //reset input
-		    $scope.newOptionBasicSelect = {saisie: ""};
+		    $scope.newOptionBasicSelect = {saisie: ''};
 		  };
 		
 		  $scope.removeRow = function(index) {
@@ -328,21 +328,21 @@ angular
 			 */
 		
 		  $scope.groupedSelectRowCollection = initOptionModel;
-		  $scope.newOptionGroupedSelect = {saisie: ""};
+		  $scope.newOptionGroupedSelect = {saisie: ''};
 		
 		  $scope.GroupedSelectGroups =    {
 		                                    list:[]
 		                                  };
-		  $scope.newGroupGroupedSelect = {saisie: ""};  
+		  $scope.newGroupGroupedSelect = {saisie: ''};  
 		  $scope.groupSelectGroupClick = {showList : false};                                
 		
 		
 		  function bindGroupedSelectFromNYA(){
 		    if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){		
-		            var newOption = {"option": $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
-		                      "order": i,
-		                      "group": $scope.nyaSelect.temporyConfig.formlyOptions[i].group
+		            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+		                      'order': i,
+		                      'group': $scope.nyaSelect.temporyConfig.formlyOptions[i].group
 		                    };
 		            $scope.groupedSelectRowCollection.rows.push(newOption);            
 		        }
@@ -355,9 +355,9 @@ angular
 		  function bindGroupedSelectToNya(){
 		    $scope.nyaSelect.temporyConfig.formlyOptions = [];
 		    for (var i = 0; i <= $scope.groupedSelectRowCollection.rows.length - 1; i++){
-		          var newOption = {"name": $scope.groupedSelectRowCollection.rows[i].option,
-		                    "value": i,
-		                    "group": $scope.groupedSelectRowCollection.rows[i].group
+		          var newOption = {'name': $scope.groupedSelectRowCollection.rows[i].option,
+		                    'value': i,
+		                    'group': $scope.groupedSelectRowCollection.rows[i].group
 		                  };
 		          $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
 		      }
@@ -368,7 +368,7 @@ angular
 		  };
 		
 		  $scope.addNewGroupToGroupedSelect = function(){
-		    if ($scope.newGroupGroupedSelect.saisie !== "") {
+		    if ($scope.newGroupGroupedSelect.saisie !== '') {
 		      for (var i = $scope.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
 		        if ($scope.GroupedSelectGroups.list[i] === $scope.newGroupGroupedSelect.saisie) {
 		          toaster.pop({
@@ -390,7 +390,7 @@ angular
 		                  showCloseButton: true
 		            });
 		    }
-		    $scope.newGroupGroupedSelect.saisie = "";
+		    $scope.newGroupGroupedSelect.saisie = '';
 		  };
 		
 		
@@ -408,7 +408,7 @@ angular
 		    //bind nya : dont bind here $apply is not done fast enough
 		    //bindGroupedSelectToNya();
 		    //reset input
-		    $scope.newOptionGroupedSelect = {saisie: ""};
+		    $scope.newOptionGroupedSelect = {saisie: ''};
 		  };
 		
 		  $scope.removeGroupedSelectRow = function(index) {

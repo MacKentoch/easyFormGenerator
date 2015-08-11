@@ -16,6 +16,13 @@ angular
 
 	function( EasyFormGenFormlyBindingModels ){
 		
+
+				
+		/***
+		 * Service itself (no more no less)
+		 */
+		var Service = {};
+
 		/**
 		 * model shared between 
 		 * 
@@ -23,13 +30,8 @@ angular
 		 * AND
 		 * - modal or sidepanel controller (where controls are configured/customized)
 		 */
-		var proxyModel = {};
-				
-		/***
-		 * Service itself (no more no less)
-		 */
-		var Service = {};
-
+		Service.ProxyModel = angular.copy(EasyFormGenFormlyBindingModels.getEasyFormListControls());
+		console.dir({'init': Service.ProxyModel });
 		
 		/**
 		 * deprecated : in drag and drop version
@@ -50,7 +52,7 @@ angular
 
 	    var newNyaSelectObj = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 
-	  	angular.copy(newNyaSelectObj, proxyModel);
+	  	angular.copy(newNyaSelectObj, Service.proxyModel);
 	    return true;
 	  }		
 	  
@@ -233,15 +235,7 @@ angular
 		 * 	+ edit panel controller (where apply customization to a selected control)
 		 * ============================================================
 		 */
-		 
-		 /**
-			* proxyModel getter
-			* 
-			* - primary use for side edit panel controller
-		  */
-			Service.getProxyModel = function(){
-			 return proxyModel;
-			};
+		
 		 
 		/**
 		 * reset proxy model
@@ -320,25 +314,33 @@ angular
 		 */
     Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
 	    resetProxyModel();  
+
+	    console.dir(	{
+	    								'fromService' : 'setProxyModelFromConfigurationSelection method',
+	    								'Service.proxyModel' 	: Service.proxyModel,
+	    								'this.proxyModel'			: this.proxyModel
+	    							}
+	    							);
+
 	    /**
 	     * data send to modal controller
 	     */
 	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control != 'undefined') {
 
-	      proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
-	      proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-	      proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-	      proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-	      proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-	      proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
+	      Service.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+	      Service.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+	      Service.proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+	      Service.proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+	      Service.proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
 	      /**
 	       * particular case : datepicker
 	       */
-	      if (proxyModel.temporyConfig.selectedControl === 'Date') {
-	      	proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
+	      if (Service.proxyModel.temporyConfig.selectedControl === 'Date') {
+	      	Service.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 	      }
 	    }
-	    return proxyModel;
+	    return Service.proxyModel;
 		};			 
 
 
