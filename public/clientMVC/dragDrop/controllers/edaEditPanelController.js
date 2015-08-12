@@ -37,14 +37,16 @@ angular
 			 */
 			var self = this;
 			
-			$scope.proxyModel = controllerModalProxy.ProxyModel ;
+			$scope.ServiceProxyModal = controllerModalProxy ;
+
+			$scope.proxyModel = $scope.ServiceProxyModal.proxyModel;
 					
 			
 		  //selected control from  main controller applied to current selected control
 		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
 		
 			self.previewObj = JSON.stringify($scope.proxyModel.temporyConfig); 
-		  console.dir($scope.proxyModel);
+		  console.dir(angular.copy($scope.proxyModel));
 		
 		  //place proxyModel to selection if not none :
 		   if ($scope.proxyModel.temporyConfig.selectedControl !== 'none') {

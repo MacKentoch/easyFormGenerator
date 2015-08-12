@@ -726,8 +726,8 @@ angular
                     item : item,
                     lineIndex : lineIndex,
                     colIndex: colIndex,
-                    proxyModel :  controllerModalProxy.ProxyModel,
-                    'configurationObj.lines[lineIndex].columns[colIndex].control' : $scope.configuration.lines[lineIndex].columns[colIndex].control
+                    proxyModel :  angular.copy(controllerModalProxy.ProxyModel),
+                    'configurationObj.lines[lineIndex].columns[colIndex].control' : angular.copy($scope.configuration.lines[lineIndex].columns[colIndex].control)
                   }
                ); 
       
@@ -741,7 +741,6 @@ angular
       */
      controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
-                                                                  controllerModalProxy.ProxyModel,
                                                                   lineIndex, 
                                                                   colIndex
                                                                   );
@@ -752,8 +751,8 @@ angular
                     item : item,
                     lineIndex : lineIndex,
                     colIndex: colIndex,
-                    proxyModel :  controllerModalProxy.ProxyModel,
-                    'configurationObj.lines[lineIndex].columns[colIndex].control' : $scope.configuration.lines[lineIndex].columns[colIndex].control
+                    proxyModel :  angular.copy(controllerModalProxy.ProxyModel),
+                    'configurationObj.lines[lineIndex].columns[colIndex].control' : angular.copy($scope.configuration.lines[lineIndex].columns[colIndex].control)
                   }
                );     
      
