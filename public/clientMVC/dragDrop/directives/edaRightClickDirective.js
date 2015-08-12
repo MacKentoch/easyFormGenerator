@@ -21,28 +21,24 @@ angular
     		link: function(scope, element, attrs) {
 	    		var fn             = $parse(attrs.edaRightClick);
                 var columnIndex    = $parse(attrs.edaRightClickColIndex);
-                //var selectedClas  = attrs.edaSelectedClas;  //= $parse(attrs.edaSelectedClass);
+                var currentClass   = attrs.edaSelectedClass;
                 var selectedState  = $parse(attrs.edaIsSelected);
-
-                console.info('selectedState(scope) ' + selectedState(scope));
-                console.info('selectedClass(scope) ' + selectedClas(scope));   
 
 
     	        element.bind('contextmenu', function(event) {
     	            scope.$apply(function() {
     	                event.preventDefault();
 
+                        console.info('selectedState=' + selectedState +'\n' + 'currentClass: ' +currentClass);
+
                         //right click limited to template column (index = 1)                           
                         if (columnIndex(scope) === 1) {
-                            if (isSelected(selectedState(scope))) element.addClass(selectedClas(scope));
-                            toggleSelected(selectedState(scope)); 
+                            element.removeClass(currentClass);
 
-                            console.dir(    {
-                                  selectedClass: selectedClas(scope),
-                                  selectedState: selectedState(scope)  
-                            });
+                            if (selectedState) element.addClass(currentClass);
+                            if (!selectedState) element.removeClass(currentClass);
 
-                      
+                            selectedState = !selectedState;
                         }
 
                         //right click limited to template column (index = 1)   
@@ -51,13 +47,13 @@ angular
     	        });	
 
 
-                function toggleSelected(val){
-                    return val === 'true' ? 'false' : 'true';
-                }
+                // function toggleSelected(val){
+                //     return val === 'true' ? 'false' : 'true';
+                // }
 
-                function isSelected(val){
-                    return val === 'true' ? true : false;
-                }
+                // function isSelected(val){
+                //     return val === 'true' ? true : false;
+                // }
 
     		}
     	};
