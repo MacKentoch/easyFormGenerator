@@ -128,10 +128,7 @@
 								                    			id="controlEditLeftPanel"
                                           ng-controller="edaEditPanelController as panel">
 								                        <h2>Edit right clicked control</h2>
-                                        
-                                        <pre>
-                                          {{panel.proxyModel.temporyConfig}}
-                                        </pre>
+
 
                                          <div ng-switch on="panel.proxyModel.temporyConfig.selectedControl">              
                                           <!--nothing selected : should not occur-->
@@ -148,19 +145,62 @@
                                           </div>
                                           
                                           <!--Header control selected-->
-                                          <div ng-switch-when="header">
+                                          <div ng-switch-when="Header">
                                             <p>header control selected</p>
                                           </div> 
                                           
                                           <!--Subtitle control selected-->
-                                          <div ng-switch-when="subTitle">
+                                          <div ng-switch-when="Subtitle">
                                             <p>Subtitle control selected</p>
                                           </div>
-                                          
-                                          
+
+                                          <!--Basic text input control selected-->
+                                          <div ng-switch-when="TextInput">
+                                            <p>Basic text input control selected</p>
+                                          </div>                                          
+                                          <!--Password input control selected-->
+                                          <div ng-switch-when="Password">
+                                            <p>Password input control selected</p>
+                                          </div>                                           
                                                                                   
+                                          <!--datepicker control selected-->
+                                          <div ng-switch-when="Date">
+                                            <p>datepicker control selected</p>
+                                          </div>                                           
                                           
-                                          
+                                          <!--Basic textarea control selected-->
+                                          <div ng-switch-when="Texarea">
+                                            <p>Basic textarea control selected</p>
+                                          </div> 
+
+
+                                          <!--RichTextEditor control selected-->
+                                          <div ng-switch-when="RichTextEditor">
+                                            <p>RichTextEditor control selected</p>
+                                          </div> 
+
+                                          <!--Radio control selected-->
+                                          <div ng-switch-when="Radio">
+                                            <p>Radio control selected</p>
+                                          </div> 
+
+
+                                          <!--Checkbox control selected-->
+                                          <div ng-switch-when="Radio">
+                                            <p>Checkbox control selected</p>
+                                          </div>
+
+
+                                          <!--BasicSelect control selected-->
+                                          <div ng-switch-when="BasicSelect">
+                                            <p>BasicSelect control selected</p>
+                                          </div>
+
+                                          <!--GroupedSelect control selected-->
+                                          <div ng-switch-when="GroupedSelect">
+                                            <p>GroupedSelect control selected</p>
+                                          </div>                                          
+
                                           
                                          </div>
 								                        <button class="btn btn-primary btn-xs pull-right"
