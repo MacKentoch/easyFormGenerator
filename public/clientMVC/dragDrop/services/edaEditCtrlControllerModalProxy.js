@@ -30,8 +30,8 @@ angular
 		 * AND
 		 * - modal or sidepanel controller (where controls are configured/customized)
 		 */
-		Service.ProxyModel = angular.copy(EasyFormGenFormlyBindingModels.getEasyFormListControls());
-		
+		Service.ProxyModel = {};//angular.copy(EasyFormGenFormlyBindingModels.getEasyFormListControls());
+		resetProxyModel();
 		/**
 		 * deprecated : in drag and drop version
 		 * 							use "resetProxyModel()"" 
@@ -316,14 +316,15 @@ angular
 		 */
 		
     Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
-	    resetProxyModel();  
+	    //resetProxyModel();  
 
 	    
 	    console.info('setProxyModelFromConfigurationSelection');
 	    console.dir(	
 	    							{
 	    								'fromService' : 'setProxyModelFromConfigurationSelection method',
-	    								'Service.proxyModel' 	: angular.copy(Service.proxyModel)
+	    								'before' : 'apply config',
+	    								'Service.proxyModel' 	: angular.copy(this.proxyModel)
 	    							}
 	    						);
 
@@ -332,6 +333,7 @@ angular
 	     */
 	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control != 'undefined') {
 
+	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
 	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
 	      Service.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
 	      Service.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
@@ -345,9 +347,24 @@ angular
 	      	Service.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 	      }
 	    }
-	    return true;
+
+	    
+	    console.info('setProxyModelFromConfigurationSelection');
+	    console.dir(	
+	    							{
+	    								'fromService' : 'setProxyModelFromConfigurationSelection method',
+	    								'after' : 'applied config',
+	    								'Service.proxyModel' 	: angular.copy(Service.proxyModel)
+	    							}
+	    						);
+
+
+	    return Service.proxyModel;
 		};			 
 
+		Service.getProxyModel = function(){
+			return Service.proxyModel;
+		};
 
 
 		/**

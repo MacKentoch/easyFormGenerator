@@ -739,7 +739,7 @@ angular
       * control model passed to Service : controllerModalProxy
       * 
       */
-     controllerModalProxy.setProxyModelFromConfigurationSelection(
+     var result = controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
                                                                   lineIndex, 
                                                                   colIndex
@@ -752,6 +752,8 @@ angular
                     lineIndex : lineIndex,
                     colIndex: colIndex,
                     proxyModel :  angular.copy(controllerModalProxy.ProxyModel),
+                    result : angular.copy(result),
+                    getProxyModel : angular.copy(controllerModalProxy.getProxyModel()),
                     'configurationObj.lines[lineIndex].columns[colIndex].control' : angular.copy($scope.configuration.lines[lineIndex].columns[colIndex].control)
                   }
                );     

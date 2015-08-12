@@ -36,16 +36,18 @@ angular
 			 * - properties to customize control (then bound to configuration model)
 			 */
 			var self = this;
-			
-			$scope.ServiceProxyModal = controllerModalProxy ;
+		
 
-			$scope.proxyModel = $scope.ServiceProxyModal.proxyModel;
+			$scope.proxyModel = controllerModalProxy.getProxyModel();
+
+
+			self.proxyModel = controllerModalProxy.getProxyModel();
 					
-			
 		  //selected control from  main controller applied to current selected control
 		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
 		
 			self.previewObj = JSON.stringify($scope.proxyModel.temporyConfig); 
+			console.info(angular.copy($scope.proxyModel));
 		  console.dir(angular.copy($scope.proxyModel));
 		
 		  //place proxyModel to selection if not none :
