@@ -657,22 +657,12 @@ angular
           controllerModalProxy.getEditPanelModelColumnIndex() === colIndex  &&
           angular.equals(controllerModalProxy.getEditPanelModelControl(), item)) {
   
-          console.info('already opened for SAME ctrl : so close - no re-open');
+          //console.info('already opened for SAME ctrl : so close - no re-open');
   
       }else{
   
-          console.info('already opened for DIFFERENT ctrl : so re-open');
-  
-          // console.dir(  {
-          //                   'scope.editPanelModel.lineIndex '   : controllerModalProxy.getEditPanelModelLineIndex(),
-          //                   'scope.editPanelModel.columnIndex'  : controllerModalProxy.getEditPanelModelColumnIndex(),
-          //                   'scope.editPanelModel.control'      : controllerModalProxy.getEditPanelModelControl(),
-          //                   'test equal'                        : angular.equals(controllerModalProxy.getEditPanelModelControl(), item),
-          //                   'lineIndex'                         : lineIndex,
-          //                   'colIndex'                          : colIndex,
-          //                   'item'                              : item,
-          //               }
-          //             );
+          //console.info('already opened for DIFFERENT ctrl : so re-open');
+
           
           /**
           * set a timeout before re-opening
@@ -718,18 +708,7 @@ angular
     /**
      * previous state = closed = immediate open 
      */
-     console.info('NOT already opened : so open');
-
-         console.dir(  
-                  { 
-                    'before' : '',
-                    item : item,
-                    lineIndex : lineIndex,
-                    colIndex: colIndex,
-                    proxyModel :  angular.copy(controllerModalProxy.ProxyModel),
-                    'configurationObj.lines[lineIndex].columns[colIndex].control' : angular.copy($scope.configuration.lines[lineIndex].columns[colIndex].control)
-                  }
-               ); 
+     //console.info('NOT already opened : so open');
       
      controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
      controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
@@ -739,24 +718,12 @@ angular
       * control model passed to Service : controllerModalProxy
       * 
       */
-     var result = controllerModalProxy.setProxyModelFromConfigurationSelection(
+     controllerModalProxy.setProxyModelFromConfigurationSelection(
                                                                   $scope.configuration,
                                                                   lineIndex, 
                                                                   colIndex
                                                                   );
-                                                                  
-    console.dir(  
-                  { 
-                    'after' : '',
-                    item : item,
-                    lineIndex : lineIndex,
-                    colIndex: colIndex,
-                    proxyModel :  angular.copy(controllerModalProxy.ProxyModel),
-                    result : angular.copy(result),
-                    getProxyModel : angular.copy(controllerModalProxy.getProxyModel()),
-                    'configurationObj.lines[lineIndex].columns[colIndex].control' : angular.copy($scope.configuration.lines[lineIndex].columns[colIndex].control)
-                  }
-               );     
+
      
      controllerModalProxy.setEditPanelModelToggle(true);
      $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
