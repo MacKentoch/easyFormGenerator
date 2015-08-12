@@ -51,8 +51,8 @@ angular
 
 	    var newNyaSelectObj = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 
-	    console.info('resetProxyModel');
-	    console.dir(newNyaSelectObj);
+	    // console.info('resetProxyModel');
+	    // console.dir(newNyaSelectObj);
 
 	  	Service.proxyModel = angular.copy(newNyaSelectObj);
 	    return true;
@@ -105,7 +105,33 @@ angular
 	      } 
 	    }
 	    return isUnique;  
-	  }  
+	  }
+
+	  /**
+	   * return selected control ID (proxyModel)
+	   * -> from configuration model selected indexes (line, column) 
+	   * 		+ control.formlyType 
+	   *   	+ control.formlySubtype
+	   */
+	  function getSelectedProxyModel(configurationSelectedCtrl){
+	  	var selectedProxyModelControl = 'none';
+	  	var listProxyModelCTRL = angular.copy(EasyFormGenFormlyBindingModels
+	  																					.getEasyFormListControls().controls);
+
+	  	listProxyModelCTRL.forEach(function(control){
+	  		if (control.formlyType 		=== configurationSelectedCtrl.type &&
+	  				control.formlySubtype === configurationSelectedCtrl.subtype) {
+
+	  				selectedProxyModelControl = control.id;
+	  				
+	  				return selectedProxyModelControl;
+
+	  		}
+	  	});
+
+
+	  	return selectedProxyModelControl;
+	  }
 
 		/**
 		 * deprecated in drag and drop version
@@ -316,25 +342,18 @@ angular
 		 */
 		
     Service.setProxyModelFromConfigurationSelection = function(configurationObj, indexLine, numcolumn){
-	    //resetProxyModel();  
-
-	    
-	    console.info('setProxyModelFromConfigurationSelection');
-	    console.dir(	
-	    							{
-	    								'fromService' : 'setProxyModelFromConfigurationSelection method',
-	    								'before' : 'apply config',
-	    								'Service.proxyModel' 	: angular.copy(this.proxyModel)
-	    							}
-	    						);
-
 	    /**
 	     * data send to modal controller
 	     */
 	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control != 'undefined') {
 
-	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
-	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type : 'none';
+	    	/**
+	    	 * determine selected control from indexes 
+	    	 * and control.type and control.subtype in configuration model
+	    	 */
+
+	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
 	      Service.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
 	      Service.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
 	      Service.proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
@@ -349,14 +368,14 @@ angular
 	    }
 
 	    
-	    console.info('setProxyModelFromConfigurationSelection');
-	    console.dir(	
-	    							{
-	    								'fromService' : 'setProxyModelFromConfigurationSelection method',
-	    								'after' : 'applied config',
-	    								'Service.proxyModel' 	: angular.copy(Service.proxyModel)
-	    							}
-	    						);
+	    // console.info('setProxyModelFromConfigurationSelection');
+	    // console.dir(	
+	    // 							{
+	    // 								'fromService' : 'setProxyModelFromConfigurationSelection method',
+	    // 								'after' : 'applied config',
+	    // 								'Service.proxyModel' 	: angular.copy(Service.proxyModel)
+	    // 							}
+	    // 						);
 
 
 	    return Service.proxyModel;

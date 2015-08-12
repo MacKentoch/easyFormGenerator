@@ -7,6 +7,8 @@
 //
 //  This module is a view controller -> it must be injected in controller container
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 angular
   .module('edaApp.controllers.edaEditController', [])
   .controller('edaEditController', [	'$scope', 
@@ -38,9 +40,12 @@ angular
               dragDropConfig,
               ddModelConfModelProxyService) {
 
+
+
   /**
    * versionning
    */
+  
   $scope.easyFormGeneratorVERSION = easyFormGenVersion;
 
   /**
@@ -86,6 +91,8 @@ angular
                             }
 
   };
+
+
   /**
    * easyFormDragDropProperties : configure drag and drop apearance
    *
@@ -133,6 +140,7 @@ angular
     });
     
   };
+
 
 
   $scope.vm.onSubmit = onSubmit;
