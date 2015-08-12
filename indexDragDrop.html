@@ -317,7 +317,10 @@
 																																	id="itemContent" 
 							                                              		>
 							                                              	<div dd-no-editable-control
+							                                              				class="rightClickCtrl" 
 							                                              				eda-right-click="toggleEditPanel($event, $parent.$index, $index, item)"
+							                                              				eda-selected-clas="rightClickCtrlSelected"
+							                                              				eda-is-selected="false"
 							                                              				eda-right-click-col-index = "{{$parent.$parent.$index}}"
 							                                              				>
 								                                              	<span ng-bind-html="item.label | trustThis">

@@ -1026,3 +1026,20 @@ textarea {
   transform: scale(1, -1);
 }
 
+
+.rightClickCtrl{
+  background: {
+    color: #FFF;
+  }
+   -webkit-transition: background-color .3s ease-in;
+    -moz-transition: background-color .3s ease-in;
+    -o-transition: background-color .3s ease-in;
+    transition: background-color .3s ease-in;
+}
+
+.rightClickCtrlSelected{
+  background: {
+    color: #000;
+  }
+}
+
