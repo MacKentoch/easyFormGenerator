@@ -653,6 +653,12 @@ angular
 
   $scope.debugProxyModel = controllerModalProxy.ProxyModel;
 
+  $scope.setRightClicked = function(previousState, item){
+    console.warn('setRightClicked');
+    console.dir(item);
+    item.rightCliked = true; //!previousState;
+  };
+
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
    
    /**
