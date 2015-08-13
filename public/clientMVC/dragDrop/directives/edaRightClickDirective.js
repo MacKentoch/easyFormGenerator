@@ -33,10 +33,10 @@ angular
 
                         //right click limited to template column (index = 1)                           
                         if (columnIndex(scope) === 1) {
-                            element.removeClass(currentClass);
+                            element.parent().removeClass(currentClass);
 
-                            if (selectedState) element.addClass(currentClass);
-                            if (!selectedState) element.removeClass(currentClass);
+                            if (selectedState) element.parent().addClass(currentClass);
+                            if (!selectedState) element.parent().removeClass(currentClass);
 
                             selectedState = !selectedState;
                         }

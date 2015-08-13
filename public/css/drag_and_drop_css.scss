@@ -1031,15 +1031,17 @@ textarea {
   background: {
     color: #FFF;
   }
-   -webkit-transition: background-color .3s ease-in;
-    -moz-transition: background-color .3s ease-in;
-    -o-transition: background-color .3s ease-in;
-    transition: background-color .3s ease-in;
+  opacity: 1.0;
+   -webkit-transition: opacity .3s ease-in;
+    -moz-transition: opacity .3s ease-in;
+    -o-transition: opacity .3s ease-in;
+    transition: opacity .3s ease-in;
 }
 
 .rightClickCtrlSelected{
   background: {
     color: #000;
   }
+  opacity: 0.5;
 }
 
