@@ -27,9 +27,7 @@ angular
 	    		var fn             = $parse(attrs.edaRightClick);
                 var columnIndex    = $parse(attrs.edaRightClickColIndex);
                 var currentClass   = attrs.edaSelectedClass;
-                //var selectedState  = $parse(attrs.edaIsSelected);
-
-
+                
 
     	        element.on('contextmenu', function(event) {
     	            scope.$apply(function() {
@@ -45,7 +43,7 @@ angular
 
                             scope.selectedState = !scope.selectedState;
 
-                            console.info('changed state : ' + scope.selectedState);
+                            //console.info('changed state : ' + scope.selectedState);
                         }
 
                         //right click limited to template column (index = 1)   
@@ -54,25 +52,17 @@ angular
     	        });	
 
 
-                // scope.$watch(function(){ return attrs.edaIsSelected; }, function (value){
-                //     console.log(value);
-                // });
+                scope.$watch(function(){return scope.selectedState;}, function (value){
+                    
+                    element.parent().removeClass(currentClass);
 
-                scope.$watch(attrs.edaIsSelected, function (value){
-                    console.log(value);
+                    if (scope.selectedState) element.parent().addClass(currentClass);
+                    if (!scope.selectedState) element.parent().removeClass(currentClass);
+                    
+                    console.log('watch : ' + value);    
+                    
                 });                
-                // attrs.$observe('', function(value){
-                //     console.warn(value);
-                // });
-
-
-                // function toggleSelected(val){
-                //     return val === 'true' ? 'false' : 'true';
-                // }
-
-                // function isSelected(val){
-                //     return val === 'true' ? true : false;
-                // }
+          
 
     		}
     	};
