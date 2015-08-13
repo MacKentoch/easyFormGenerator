@@ -27,6 +27,7 @@ angular
                                         'dragDropItemDecorationService',
                                         'dragDropConfig',
                                         'ddModelConfModelProxyService',
+                                        'ddItemRightClickedManager',
   function (	$scope, 
               easyFormGenVersion,
               $filter,
@@ -40,7 +41,8 @@ angular
               controllerModalProxy,
               dragDropItemDecorationService,
               dragDropConfig,
-              ddModelConfModelProxyService) {
+              ddModelConfModelProxyService,
+              ddItemRightClickedManager) {
 
 
 
