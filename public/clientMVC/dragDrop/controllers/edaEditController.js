@@ -595,8 +595,12 @@ angular
 
       }, 200);
 
-      console.info('dropCallBackItem');
-      console.dir({'item': item});
+      /**
+       * add/set rightCliked property to false
+       *
+       * will help edaRightClick directive
+       */
+      ddItemRightClickedManager.setUnRightClicked(item);
 
       /**
       * timerRefreshDDToConfig timer destruction
@@ -622,6 +626,15 @@ angular
                           };
 
   $scope.closeEditPanel = function(){
+    /**
+     * reset all rightClicked control properties to false
+     */
+    ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
+    console.dir(  {
+                    '$scope.dragDropModel)[1]' : $scope.dragDropModel[1]
+                  }
+                );
+
     /**
      * TODO : refresh configuration model 
      * uncomment pafter update these next 3 lines

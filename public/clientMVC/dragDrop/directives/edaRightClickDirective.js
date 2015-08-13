@@ -52,16 +52,16 @@ angular
     	        });	
 
 
-                scope.$watch(function(){return scope.selectedState;}, function (value){
+                // scope.$watch(function(){return scope.selectedState;}, function (value){
                     
-                    element.parent().removeClass(currentClass);
+                //     element.parent().removeClass(currentClass);
 
-                    if (scope.selectedState) element.parent().addClass(currentClass);
-                    if (!scope.selectedState) element.parent().removeClass(currentClass);
+                //     if (scope.selectedState) element.parent().addClass(currentClass);
+                //     if (!scope.selectedState) element.parent().removeClass(currentClass);
                     
-                    console.log('watch : ' + value);    
+                //     console.log('watch : ' + value);    
                     
-                });                
+                // });                
           
 
     		}
