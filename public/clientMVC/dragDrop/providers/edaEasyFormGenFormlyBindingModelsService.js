@@ -455,7 +455,6 @@ angular
 
 								var controlToReturn = angular.copy(_formlyControlTemplates);
 								controlToReturn.className = _formlyControlTemplates.className[nbColInLines - 1];
-
 								/**
 								 * check controlType: it may require another particular property
 								 */

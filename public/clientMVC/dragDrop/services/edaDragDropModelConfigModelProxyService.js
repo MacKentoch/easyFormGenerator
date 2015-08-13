@@ -173,7 +173,6 @@ angular
 					 * update line value field
 					 */
 					applyThisLine(keyValue + 1, keyValue, configModel);
-
 					/**
 					 * iterate through columns
 					 * and add them if control exists
@@ -202,9 +201,9 @@ angular
 				    	if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') configModel.lines[keyValue].columns.push(angular.copy( EasyFormGenFormlyBindingModels.getEasyFormConfigurationEmptyControlModel())); 
 
 							
-							configModel.lines[keyValue].columns[colIndex].control = angular.copy(controlToBind.control);
+							configModel.lines[keyValue].columns[colIndex].control 	= angular.copy(controlToBind.control);
 				    	configModel.lines[keyValue].columns[colIndex].numColumn = colIndex + 1;
-				    	configModel.lines[keyValue].columns[colIndex].exist = true;
+				    	configModel.lines[keyValue].columns[colIndex].exist 		= true;
 
 					});
 										

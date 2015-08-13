@@ -1,14 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  module = "controllers"  for view "edit/manage forms"
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "edaApp" = application
-//          "edaApp.controllers.viewNameController" = controller module
-//
-//  This module is a view controller -> it must be injected in controller container
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+/**
+ *  ------------------------------------------------------
+ *   edaEditController
+ *  ------------------------------------------------------ 
+ *
+ * main controller for viewing / editing / managing forms
+ *
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+ */
 angular
   .module('edaApp.controllers.edaEditController', [])
   .controller('edaEditController', [	'$scope', 
@@ -106,12 +108,14 @@ angular
    */
   $scope.dragDropModel = [].concat(dragDropConfig.getDragDropPresentationModel());
 
+  //console.dir(  {'dragDropModel' : $scope.dragDropModel});
 
-  
- //column ref                         
- $scope.numberOfColumns = 1;
- $scope.MaxNumberOfColumns = 3;
- $scope.MinNumberOfColumns = 1;
+
+ 
+   //column ref                         
+   $scope.numberOfColumns = 1;
+   $scope.MaxNumberOfColumns = 3;
+   $scope.MinNumberOfColumns = 1;
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -589,11 +593,13 @@ angular
 
       }, 200);
 
+      console.info('dropCallBackItem');
+      console.dir({'item': item});
+
       /**
       * timerRefreshDDToConfig timer destruction
       */
       $scope.$on('$destroy', function(){
-
             $timeout.cancel(timerRefreshDDToConfig);
         }
       );
