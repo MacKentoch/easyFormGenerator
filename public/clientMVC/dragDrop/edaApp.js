@@ -39,4 +39,29 @@ angular
                         function(){}
 	                     ])
 
-  .value('easyFormGenVersion', 'v1.1.3');
+  .value('easyFormGenVersion', 'v1.1.3')
+  .run('name', [
+  	'$templateCache', 
+  	function($templateCache){
+  		/**
+  		 * register template cache for side edit control panel
+  		 * 
+  		 * control : "blank"
+  		 */
+  		$templateCache.put('editPanelBlankCtrl.tpls.html', 
+  											[
+  												'<p>here is blank control</p>'
+  											].join(''));
+
+  		/**
+  		 * register template cache for side edit control panel
+  		 * 
+  		 * control : "Header"
+  		 */
+  		$templateCache.put('editPanelHeaderCtrl.tpls.html', 
+  											[
+  												''
+  											].join(''));
+  	}
+  ]);
+
