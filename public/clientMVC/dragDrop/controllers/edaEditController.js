@@ -727,12 +727,8 @@ angular
                 $timeout.cancel(timerCloseOpenedEditPanel);
             }
           );
-  
       }
-  
     }
-  
-  
   
    }else{
     /**

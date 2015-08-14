@@ -127,7 +127,14 @@
 								                    <div 	style="padding:20px" 
 								                    			id="controlEditLeftPanel"
                                           ng-controller="edaEditPanelController as panel">
-								                        <h2>Edit right clicked control</h2>
+
+                                        <div class="pull-right">
+                                        	<button type="button" class="close" ng-click="closeEditPanel()" aria-label="Close">
+                                        		<span aria-hidden="true">&times;</span>
+                                        	</button>
+                                        </div>
+
+								                        <h2>Customization</h2>
 
 
                                          <div ng-switch on="panel.proxyModel.temporyConfig.selectedControl">              
@@ -141,15 +148,11 @@
                                           </div>
                                           <!--blank control selected-->
                                           <div ng-switch-when="empty">
-                                            <p>blank control selected</p>
-
                                             <script type="text/ng-template" id="editPanelBlankCtrl.tpls.html"></script>
-                                            
                                           </div>
                                           
                                           <!--Header control selected-->
                                           <div ng-switch-when="Header">
-                                            <p>header control selected</p>
                                             <div ng-include=" 'editPanelHeaderCtrl-tpls.html' "></div>
                                           </div> 
                                           
@@ -207,7 +210,10 @@
 
                                           
                                          </div>
-								                        <button class="btn btn-primary btn-xs pull-right"
+
+
+
+								                        <button class="btn btn-primary btn-block pull-right"
 								                        				ng-click="closeEditPanel()">Close</button>
 								                        
 								                    </div>
