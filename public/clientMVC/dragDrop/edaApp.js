@@ -40,7 +40,7 @@ angular
 	                     ])
 
   .value('easyFormGenVersion', 'v1.1.3')
-  .run('name', [
+  .run([
   	'$templateCache', 
   	function($templateCache){
   		/**
@@ -48,7 +48,7 @@ angular
   		 * 
   		 * control : "blank"
   		 */
-  		$templateCache.put('editPanelBlankCtrl.tpls.html', 
+  		$templateCache.put('editPanelBlankCtrl-tpls.html', 
   											[
   												'<p>here is blank control</p>'
   											].join(''));
@@ -58,9 +58,9 @@ angular
   		 * 
   		 * control : "Header"
   		 */
-  		$templateCache.put('editPanelHeaderCtrl.tpls.html', 
+  		$templateCache.put('editPanelHeaderCtrl-tpls.html', 
   											[
-  												''
+  												'<p><b>header from template cache</b></p>'
   											].join(''));
   	}
   ]);

@@ -143,13 +143,14 @@
                                           <div ng-switch-when="empty">
                                             <p>blank control selected</p>
 
-                                            <!-- <script type="text/ng-template" id="editPanelBlankCtrl.tpls.html"></script> -->
+                                            <script type="text/ng-template" id="editPanelBlankCtrl.tpls.html"></script>
                                             
                                           </div>
                                           
                                           <!--Header control selected-->
                                           <div ng-switch-when="Header">
                                             <p>header control selected</p>
+                                            <div ng-include=" 'editPanelHeaderCtrl-tpls.html' "></div>
                                           </div> 
                                           
                                           <!--Subtitle control selected-->
