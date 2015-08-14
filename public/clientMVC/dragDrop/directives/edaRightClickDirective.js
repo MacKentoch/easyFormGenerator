@@ -23,8 +23,6 @@ angular
     		link: function(scope, element, attrs) {
 	    		var fn                  = $parse(attrs.edaRightClick);
                 var columnIndex         = $parse(attrs.edaRightClickColIndex);
-                //var currentClass        = attrs.edaSelectedClass;
-                //var selectedState       = $parse(attrs.edaIsSelected);
                 var fctSetRightclicked  = $parse(attrs.edaSetRightClicked);
                 
                 /**
@@ -39,14 +37,8 @@ angular
                     
                         //right click limited to template column (index = 1)                           
                         if (columnIndex(scope) === 1) {
-                            
-                            //element.parent().removeClass(currentClass);
-
-                            //if (!selectedState(scope)) element.parent().addClass(currentClass);
-                            // if (selectedState(scope)) element.parent().removeClass(currentClass);
-
                             //set rightClicked to true
-                            fctSetRightclicked(scope, {previousState : false});
+                            fctSetRightclicked(scope, {});
                         }
 
                         //right click limited to template column (index = 1)   

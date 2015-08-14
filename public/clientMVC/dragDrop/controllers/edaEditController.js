@@ -630,10 +630,7 @@ angular
      * reset all rightClicked control properties to false
      */
     ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
-    console.dir(  {
-                    '$scope.dragDropModel)[1]' : $scope.dragDropModel[1]
-                  }
-                );
+
 
     /**
      * TODO : refresh configuration model 
@@ -654,11 +651,11 @@ angular
   $scope.debugProxyModel = controllerModalProxy.ProxyModel;
 
   $scope.setRightClicked = function(previousState, item){
-    item.rightCliked = !previousState;
+    item.rightCliked = true;
   };
 
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
-   
+   ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
    /**
     * already opened (could be another control edit)
     */
@@ -691,12 +688,12 @@ angular
           angular.equals(controllerModalProxy.getEditPanelModelControl(), item)) {
   
           //console.info('already opened for SAME ctrl : so close - no re-open');
-  
+        
       }else{
   
           //console.info('already opened for DIFFERENT ctrl : so re-open');
 
-          
+          item.rightCliked = true;
           /**
           * set a timeout before re-opening
           * 500ms is ok for a ps-size="400px"
@@ -742,6 +739,7 @@ angular
      * previous state = closed = immediate open 
      */
      //console.info('NOT already opened : so open');
+     item.rightCliked = true;
       
      controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
      controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
