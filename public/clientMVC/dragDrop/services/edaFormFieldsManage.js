@@ -224,7 +224,17 @@ angular
           /**
            * push control into formly model in its group
            */
-          formlyModel[indexFormlyModel].fieldGroup.push(controlTemplate);         
+          
+      
+           /**
+            * need to catch this random error
+            */
+          try{
+            formlyModel[indexFormlyModel].fieldGroup.push(controlTemplate);         
+          }catch(e){
+            console.warn('error...');
+          }
+          
 
           }
         }

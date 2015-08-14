@@ -718,7 +718,7 @@ angular
            controllerModalProxy.setEditPanelModelToggle(true);
            $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();                                         
             
-          }, 500);
+          }, 200);
   
           /**
           * timerCloseOpenedEditPanel timer destruction
