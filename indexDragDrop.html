@@ -318,6 +318,7 @@
 							                                              		>
 							                                              	<div dd-no-editable-control
 							                                              				class="rightClickCtrl" 
+							                                              				ng-class="{rightClickCtrlSelected : item.rightCliked === true}"
 							                                              				eda-set-right-clicked="setRightClicked(previousState, item)"
 							                                              				eda-right-click="toggleEditPanel($event, $parent.$index, $index, item)"
 							                                              				eda-selected-class="rightClickCtrlSelected"
