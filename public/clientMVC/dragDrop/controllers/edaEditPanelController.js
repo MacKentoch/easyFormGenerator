@@ -43,6 +43,23 @@ angular
 		  self.proxyModel.selectedControl = self.proxyModel.temporyConfig.selectedControl;
 		
 		
+			
+			/**
+			 * basic Select tempory models
+			 */			
+		  self.basicSelectRowCollection = initOptionModel;
+		  self.newOptionBasicSelect 		= {saisie: ''};
+
+			/**
+			 * grouped Select tempory models
+			 */
+		  self.groupedSelectRowCollection = initOptionModel;
+		  self.newOptionGroupedSelect 		= { saisie: '' };
+		  self.GroupedSelectGroups 				= { list:[] };
+		  self.newGroupGroupedSelect 			= { saisie: '' };  
+		  self.groupSelectGroupClick 			= { showList : false };   		  
+
+
 		  //place proxyModel to selection if not none :
 		   if (self.proxyModel.temporyConfig.selectedControl !== 'none') {
 		    for (var i = self.proxyModel.controls.length - 1; i >= 0; i--) {
@@ -52,7 +69,7 @@ angular
 		    }
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
-		      bindBasicSelectFromNYA();
+		      controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
 		    }
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
@@ -101,7 +118,7 @@ angular
 		  self.ok = function () {
 		
 		    if (self.proxyModel.selectedControl === 'BasicSelect') {
-		      bindBasicSelectToNya();
+		      controllerModalProxy.bindBasicSelectToProxyModel(self.basicSelectRowCollection);
 		    }
 		
 		    if (self.proxyModel.selectedControl === 'GroupedSelect') {
@@ -115,10 +132,16 @@ angular
 		    //save config to control
 		    controllerModalProxy.applyConfigToSelectedControl(self.proxyModel);
 		    //return current model to parent controller :
-				/**
-				 * TODO : to adpat drag and drop way
-				 */
-		    //$modalInstance.close(self.proxyModel);
+
+
+
+		    // //update configuration model and formly model
+		    // controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+    		// formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
+    		// $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+    
+    		// controllerModalProxy.setEditPanelModelToggle(false);
+    		// $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  
 		
 		  };
 		
@@ -231,14 +254,14 @@ angular
 		      }
 		  };
 			
-			
+
+		
+		
 			/**
-			 * basic Select
-			 */			
-		  self.basicSelectRowCollection = initOptionModel;
-		  self.newOptionBasicSelect = {saisie: ''};
-		
-		
+			 * deprecated in drag and drop verion
+			 * 
+			 * drag and drop uses service controllerModalProxy.bindBasicSelectFromProxyModel()
+			 */
 		  function bindBasicSelectFromNYA(){		
 		    if (self.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= self.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -251,7 +274,9 @@ angular
 		      }    
 		    }
 		  }
-		
+			/**
+			 * deprecated in drag and drop version
+			 */
 		  function bindBasicSelectToNya(){
 		    var resetNyASelectOptions = [];
 		    self.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
@@ -320,18 +345,7 @@ angular
 		      }
 		  };
 		
-			/**
-			 * grouped Select
-			 */
-		
-		  self.groupedSelectRowCollection = initOptionModel;
-		  self.newOptionGroupedSelect = {saisie: ''};
-		
-		  self.GroupedSelectGroups =    {
-		                                    list:[]
-		                                  };
-		  self.newGroupGroupedSelect = {saisie: ''};  
-		  self.groupSelectGroupClick = {showList : false};                                
+                             
 		
 		
 		  function bindGroupedSelectFromNYA(){

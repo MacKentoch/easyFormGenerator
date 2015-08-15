@@ -625,6 +625,12 @@ angular
                             toggle : false
                           };
 
+
+
+  /**
+   * close side panel
+   * -> no update =  cancel
+   */
   $scope.closeEditPanel = function(){
     /**
      * reset all rightClicked control properties to false

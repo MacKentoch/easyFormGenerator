@@ -505,6 +505,49 @@ angular
 			return successfullDone;
 		};
 
+		
+		/**
+		 * special controls bindings from edit panel
+		 * -> controls like basic select, radio and groupe select
+		 */
+		
+		/**
+		 * basic select
+		 */
+		Service.bindBasicSelectFromProxyModel = function(basicSelectRowCollection){		
+		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){
+		
+		            var newOption = {
+		            									'option' 	: Service.proxyModel
+		            																			.temporyConfig.formlyOptions[i].name,
+		                      				'order' 	: i,
+
+		                      				'group' 	: ''
+		                    				};
+
+		            basicSelectRowCollection.rows.push(newOption);
+		      }    
+		    }
+		  };
+
+		 Service.bindBasicSelectToProxyModel = function(basicSelectRowCollection){
+		    var resetNyASelectOptions = [];
+		    Service.proxyModel.temporyConfig.formlyOptions = resetNyASelectOptions;
+		    if (basicSelectRowCollection.rows.length > 0) {
+		      for (var i = 0; i <= basicSelectRowCollection.rows.length - 1; i++){
+		            var newOption = {
+		            									'name' : basicSelectRowCollection.rows[i].option,
+
+		                      				'value': i,
+
+		                      				'group': ''
+		                    				};
+
+		            Service.proxyModel.temporyConfig.formlyOptions.push(newOption);
+		        }      
+		   }
+		  };		  
 
     return Service;
 
