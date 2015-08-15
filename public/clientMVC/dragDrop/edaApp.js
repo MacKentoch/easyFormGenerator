@@ -160,7 +160,6 @@ angular
 													'</div> '
 												].join(''));
 
-
 	 		/**
 			 * register template cache for side edit control panel
 			 * 
@@ -196,6 +195,7 @@ angular
 													'            </div>',
 													'    </div>',
 
+													'    <div class="marginTopFivepixels"></div>',
 
 													//placeholder
 													'    <div class="row">',
@@ -213,6 +213,7 @@ angular
 													'            </div>',
 													'    </div>',													
 
+													'    <div class="marginTopFivepixels"></div>',
 
 													//required
 													'    <div class="row">',
@@ -231,6 +232,8 @@ angular
 													'            </div>',
 													'    </div>',	
 
+
+													'    <div class="marginTopFivepixels"></div>',
 
 													//description
 													'    <div class="row">',
@@ -254,7 +257,211 @@ angular
 													'</div> '
 												].join(''));
 
+	 		/**
+			 * register template cache for side edit control panel
+			 * 
+			 * control : "Password"
+			 */
+			$templateCache.put('editPanelPasswordCtrl-tpls.html', 
+												[
+													'<div class="panel panel-default">',
+													'    <div class="panel-body">',
 
+													'    <div class="row">',
+													'        <div class="col-md-12">',
+													'            <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>',
+													'        </div>',
+													'    </div> ',
+													//'    <hr/>',
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//label text
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+		                      '              <label for="inputTextLabelUpdate" class=" control-label greyText editPropertiesLabel">Label text :</label>',
+		                      '              <div class="">',
+		                      '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">',
+		                      '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',
+													
+													'    <div class="marginTopFivepixels"></div>',
+
+													//placeholder
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+	                        '              <label for="placeholderUpdate" class="control-label greyText editPropertiesLabel">placeholder :</label>',
+	                        '              <div class="">',
+	                        '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputTextplaceholderUpdate" placeholder="Add / edit placeholder text here">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',													
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//required
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="">',
+
+	                        '              <label for="RequiredUpdate" class="col-md-4 control-label greyText editPropertiesLabel">Required :</label>',
+	                        '              <div class="col-md-8">',
+	                        '                <div class="checkboxCssCorrection">&nbsp;</div>',
+	                        '                <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="RequiredUpdate">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//description
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+	                        '              <label for="DescriptionUpdate" class="control-label greyText editPropertiesLabel">Description :</label>',
+	                        '              <div class="">',
+	                        '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="DescriptionUpdate" placeholder="Add / edit description here">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+
+													'  </div>',
+													validEditFooter,
+													'</div> '
+												].join(''));
+
+	 		/**
+			 * register template cache for side edit control panel
+			 * 
+			 * control : "Date"
+			 */
+			$templateCache.put('editPanelDateCtrl-tpls.html', 
+												[
+													'<div class="panel panel-default">',
+													'    <div class="panel-body">',
+
+													'    <div class="row">',
+													'        <div class="col-md-12">',
+													'            <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>',
+													'        </div>',
+													'    </div> ',
+													//'    <hr/>',
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//date format
+                          '     <label class="control-label greyText editPropertiesLabel">Date format :</label>',
+                          '      <div class="">',
+                          '        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="nyaSelect.temporyConfig.datepickerPopup" id="dateformatSelect">',
+                          '          <li class="nya-bs-option" nya-bs-option="dateformat in demodt.formats" value="dateformat">',
+                          '            <a>{{dateformat}}</a>',
+                          '          </li>',
+                          '        </ol>',
+                          '      </div>',
+
+
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//label text
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+		                      '              <label for="inputTextLabelUpdate" class=" control-label greyText editPropertiesLabel">Label text :</label>',
+		                      '              <div class="">',
+		                      '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">',
+		                      '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//placeholder
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+	                        '              <label for="placeholderUpdate" class="control-label greyText editPropertiesLabel">placeholder :</label>',
+	                        '              <div class="">',
+	                        '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyPlaceholder" id="inputTextplaceholderUpdate" placeholder="Add / edit placeholder text here">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',													
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//required
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="">',
+
+	                        '              <label for="RequiredUpdate" class="col-md-4 control-label greyText editPropertiesLabel">Required :</label>',
+	                        '              <div class="col-md-8">',
+	                        '                <div class="checkboxCssCorrection">&nbsp;</div>',
+	                        '                <input type="checkbox" ng-model="nyaSelect.temporyConfig.formlyRequired" id="RequiredUpdate">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//description
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+	                        '              <label for="DescriptionUpdate" class="control-label greyText editPropertiesLabel">Description :</label>',
+	                        '              <div class="">',
+	                        '                <input type="text" class="form-control" ng-model="nyaSelect.temporyConfig.formlyDesciption" id="DescriptionUpdate" placeholder="Add / edit description here">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+
+													'  </div>',
+													validEditFooter,
+													'</div> '
+												].join(''));
 
 
 

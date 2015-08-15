@@ -134,8 +134,7 @@
                                         	</button>
                                         </div>
 
-								                        <h2>Customization</h2>
-
+                                        <h4>Customization</h4>
 
                                          <div ng-switch on="panel.proxyModel.temporyConfig.selectedControl">              
                                           <!--nothing selected : should not occur-->
@@ -167,12 +166,12 @@
                                           </div>                                          
                                           <!--Password input control selected-->
                                           <div ng-switch-when="Password">
-                                            <p>Password input control selected</p>
+                                            <div ng-include=" 'editPanelPasswordCtrl-tpls.html' "></div>
                                           </div>                                           
                                                                                   
                                           <!--datepicker control selected-->
                                           <div ng-switch-when="Date">
-                                            <p>datepicker control selected</p>
+                                            <div ng-include=" 'editPanelDateCtrl-tpls.html' "></div>
                                           </div>                                           
                                           
                                           <!--Basic textarea control selected-->
