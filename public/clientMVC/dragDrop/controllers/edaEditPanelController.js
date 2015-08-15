@@ -43,29 +43,30 @@ angular
 		  self.proxyModel.selectedControl = self.proxyModel.temporyConfig.selectedControl;
 		
 		
-
-
-			var initOptionModel = { rows:[] };			
+		
 			/**
 			 * basic Select tempory models
 			 */			
-		  self.basicSelectRowCollection = initOptionModel;
-		  self.newOptionBasicSelect 		= { saisie: '' };
-
+		  self.basicSelectRowCollection 	= controllerModalProxy.basicSelectRowCollection;
+		  self.newOptionBasicSelect 			= controllerModalProxy.newOptionBasicSelect;
 			/**
 			 * grouped Select tempory models
 			 */
-		  self.groupedSelectRowCollection = initOptionModel;
-		  self.newOptionGroupedSelect 		= { saisie: '' };
-		  self.GroupedSelectGroups 				= { list:[] };
-		  self.newGroupGroupedSelect 			= { saisie: '' };  
-		  self.groupSelectGroupClick 			= { showList : false };  
-
+		  self.groupedSelectRowCollection = controllerModalProxy.groupedSelectRowCollection;
+		  self.newOptionGroupedSelect 		= controllerModalProxy.newOptionGroupedSelect;
+		  self.GroupedSelectGroups 				= controllerModalProxy.GroupedSelectGroups;
+		  self.newGroupGroupedSelect 			= controllerModalProxy.newGroupGroupedSelect;
+		  self.groupSelectGroupClick 			= controllerModalProxy.groupSelectGroupClick;  
 			/**
 			 * radio control tempory models
 			 */
-		  self.radioRowCollection 		= initOptionModel;
-		  self.newOptionRadio 				= { saisie: '' };		   		  
+		  self.radioRowCollection 				= controllerModalProxy.radioRowCollection;
+		  self.newOptionRadio 						= controllerModalProxy.newOptionRadio;
+		  /**
+		   * reset all tempory modals (fo special controls)
+		   */
+		  controllerModalProxy.resetAllTemporyModels();
+
 
 
 
@@ -76,7 +77,7 @@ angular
 		          self.modelproxyModel = self.proxyModel.controls[i];
 		       }
 		    }
-		
+
 		    if (self.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
 		      controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
 		    }

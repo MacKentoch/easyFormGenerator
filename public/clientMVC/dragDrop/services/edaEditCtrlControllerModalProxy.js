@@ -49,12 +49,12 @@ angular
 		 */
 	  function resetProxyModel(){
 
-	    var newNyaSelectObj = EasyFormGenFormlyBindingModels.getEasyFormListControls();
+	    var newProxyModel = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 
 	    // console.info('resetProxyModel');
 	    // console.dir(newNyaSelectObj);
 
-	  	Service.proxyModel = angular.copy(newNyaSelectObj);
+	  	Service.proxyModel = angular.copy(newProxyModel);
 	    return true;
 	  }		
 	  
@@ -512,8 +512,66 @@ angular
 		 */
 		
 		/**
+		 * special controls temporay models
+		 *
+		 * -> helps in side panel to add aditionnal properties 
+		 * like options for selects...
+		 */
+		var initOptionModel 								= { rows:[] };
+
+		Service.basicSelectRowCollection 		= angular.copy(initOptionModel);
+		Service.newOptionBasicSelect 				= angular.copy({ saisie: '' });
+
+		Service.groupedSelectRowCollection 	= angular.copy(initOptionModel);
+		Service.newOptionGroupedSelect 			= angular.copy({ saisie: '' });
+		Service.GroupedSelectGroups 				= angular.copy({ list:[] });
+		Service.newGroupGroupedSelect 			= angular.copy({ saisie: '' });
+		Service.groupSelectGroupClick 			= angular.copy({ showList : false });
+
+		Service.radioRowCollection 					= angular.copy(initOptionModel);
+		Service.newOptionRadio 							= angular.copy({ saisie: '' });
+
+		Service.resetAllTemporyModels = function(){
+			//basic select : shallow copy way (= basicSelectRowCollection shared with groupedSelectRowCollection and radioRowCollection)
+			//Service.basicSelectRowCollection 		= initOptionModel;
+			//Service.newOptionBasicSelect 				= { saisie: '' };
+
+			//basic select :  deep copy way :
+			Service.basicSelectRowCollection 		= angular.copy(initOptionModel);
+			Service.newOptionBasicSelect 				= angular.copy({ saisie: '' });
+
+			//grouped select : shallow copy way :
+			// Service.groupedSelectRowCollection 	= initOptionModel;
+			// Service.newOptionGroupedSelect 			= { saisie: '' };
+			// Service.GroupedSelectGroups 				= { list:[] };
+			// Service.newGroupGroupedSelect 			= { saisie: '' };
+			// Service.groupSelectGroupClick 			= { showList : false };
+
+			//grouped select :  deep copy way :
+			Service.groupedSelectRowCollection 	= angular.copy(initOptionModel);
+			Service.newOptionGroupedSelect 			= angular.copy({ saisie: '' });
+			Service.GroupedSelectGroups 				= angular.copy({ list:[] });
+			Service.newGroupGroupedSelect 			= angular.copy({ saisie: '' });
+			Service.groupSelectGroupClick 			= angular.copy({ showList : false });
+
+			//radio : shallow copy way :
+			// Service.radioRowCollection 					= initOptionModel;
+			// Service.newOptionRadio 							= { saisie: '' };
+
+			//radio : deep copy way :
+			Service.radioRowCollection 					= angular.copy(initOptionModel);
+			Service.newOptionRadio 							= angular.copy({ saisie: '' });
+
+			return true;
+		};		
+
+
+		/**
 		 * basic select
 		 */
+		
+
+
 		Service.bindBasicSelectFromProxyModel = function(basicSelectRowCollection){		
 		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){

@@ -627,6 +627,53 @@ angular
 
 
 
+  $scope.saveFromEditPanel = function(){
+
+        /**
+         * TODO : 
+         * should be called from edit panel
+         *
+         * AND
+         *
+         * should call all these methods
+         *
+         * need to get  : 
+         * 
+         * - line index
+         * - column index
+         * - basicSelectRowCollection (from edpitpanelcontroller)   --> maybe in controllerModalProxy service
+         * - groupedSelectRowCollection (from edpitpanelcontroller) --> maybe in controllerModalProxy service
+         * - radioRowCollection (from edpitpanelcontroller)         --> maybe in controllerModalProxy service
+         */
+        // if (self.proxyModel.selectedControl === 'BasicSelect') {
+        //   controllerModalProxy.bindBasicSelectToProxyModel(self.basicSelectRowCollection);
+        // }
+    
+        // if (self.proxyModel.selectedControl === 'GroupedSelect') {
+        //   controllerModalProxy.bindGroupedSelectToProxyModel(self.groupedSelectRowCollection);
+        // }  
+    
+        // if (self.proxyModel.selectedControl === 'Radio') {
+        //   controllerModalProxy.bindRadioToProxyModel(self.radioRowCollection);
+        // }  
+    
+        //save config to control
+        //controllerModalProxy.applyConfigToSelectedControl(self.proxyModel);
+        //return current model to parent controller :
+
+
+
+        // //update configuration model and formly model
+        // controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+        // formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
+        // $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+    
+        // controllerModalProxy.setEditPanelModelToggle(false);
+        // $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  
+
+
+  };
+
   /**
    * close side panel
    * -> no update =  cancel
