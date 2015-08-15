@@ -82,7 +82,8 @@ angular
 		    }
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
-		      bindGroupedSelectFromNYA();
+		      //bindGroupedSelectFromNYA();
+		      controllerModalProxy.bindGroupedSelectFromProxyModel(self.groupedSelectRowCollection, self.GroupedSelectGroups);
 		    } 
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
@@ -139,7 +140,8 @@ angular
 		    }
 		
 		    if (self.proxyModel.selectedControl === 'GroupedSelect') {
-		      bindGroupedSelectToNya();
+		      //bindGroupedSelectToNya();
+		      controllerModalProxy.bindGroupedSelectToProxyModel(self.groupedSelectRowCollection);
 		    }  
 		
 		    if (self.proxyModel.selectedControl === 'Radio') {

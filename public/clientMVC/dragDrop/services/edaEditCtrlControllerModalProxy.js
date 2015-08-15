@@ -547,7 +547,43 @@ angular
 		            Service.proxyModel.temporyConfig.formlyOptions.push(newOption);
 		        }      
 		   }
-		  };		  
+		  };
+
+
+
+		 Service.bindGroupedSelectFromProxyModel = function(groupedSelectRowCollection, GroupedSelectGroups){
+		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){		
+		            var newOption = {
+		            									'option' 	: Service.proxyModel.temporyConfig.formlyOptions[i].name,
+		                      				'order'		: i,
+		                      				'group'		: Service.proxyModel.temporyConfig.formlyOptions[i].group
+		                    				};
+		            groupedSelectRowCollection.rows.push(newOption);            
+		        }
+		        //grouplist : thx to lodash it is easy
+		       var filteredgroup = _.uniq(_.pluck(groupedSelectRowCollection.rows, 'group'));
+		       angular.copy(filteredgroup, GroupedSelectGroups.list); 		
+		    }
+		 };
+
+
+
+		Service.bindGroupedSelectToProxyModel = function(groupedSelectRowCollection){
+		    Service.proxyModel.temporyConfig.formlyOptions = [];
+		    for (var i = 0; i <= groupedSelectRowCollection.rows.length - 1; i++){
+		          var newOption = {
+		          									'name' 	: groupedSelectRowCollection.rows[i].option,
+		                    				'value'	: i,
+		                    				'group'	: groupedSelectRowCollection.rows[i].group
+		                  				};
+		          Service.proxyModel.temporyConfig.formlyOptions.push(newOption);   
+		      }
+		};
+		
+ 		  
+
+
 
     return Service;
 
