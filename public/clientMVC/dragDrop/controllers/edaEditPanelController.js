@@ -37,33 +37,29 @@ angular
 			 */
 			var self = this;
 		
-
-			$scope.proxyModel = controllerModalProxy.getProxyModel();
-
-
 			self.proxyModel = controllerModalProxy.proxyModel;
 					
 		  //selected control from  main controller applied to current selected control
-		  $scope.proxyModel.selectedControl = $scope.proxyModel.temporyConfig.selectedControl;
+		  self.proxyModel.selectedControl = self.proxyModel.temporyConfig.selectedControl;
 		
 		
 		  //place proxyModel to selection if not none :
-		   if ($scope.proxyModel.temporyConfig.selectedControl !== 'none') {
-		    for (var i = $scope.proxyModel.controls.length - 1; i >= 0; i--) {
-		       if ($scope.proxyModel.controls[i].id === $scope.proxyModel.temporyConfig.selectedControl) {
-		          $scope.modelproxyModel = $scope.proxyModel.controls[i];
+		   if (self.proxyModel.temporyConfig.selectedControl !== 'none') {
+		    for (var i = self.proxyModel.controls.length - 1; i >= 0; i--) {
+		       if (self.proxyModel.controls[i].id === self.proxyModel.temporyConfig.selectedControl) {
+		          self.modelproxyModel = self.proxyModel.controls[i];
 		       }
 		    }
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
+		    if (self.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
 		      bindBasicSelectFromNYA();
 		    }
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
+		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
 		      bindGroupedSelectFromNYA();
 		    } 
 		
-		    if ($scope.proxyModel.temporyConfig.selectedControl === 'Radio') {
+		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
 		      bindRadioFromNYA();
 		    }    
 		
@@ -72,7 +68,7 @@ angular
 		
 		
 		  function resetTemporyConfig(){
-		    $scope.proxyModel.temporyConfig = {
+		    self.proxyModel.temporyConfig = {
 		                                        formlyLabel: '', 
 		                                        formlyRequired: false, 
 		                                        formlyPlaceholder: '',
@@ -83,17 +79,17 @@ angular
 		
 		
 		
-		  $scope.selectThisControl = function(controlName){
-		    $scope.proxyModel.selectedControl = 'none';
+		  self.selectThisControl = function(controlName){
+		    self.proxyModel.selectedControl = 'none';
 		    resetTemporyConfig();
 		
-		    for (var i = $scope.proxyModel.controls.length - 1; i >= 0; i--) {
-		       if ($scope.proxyModel.controls[i].id === controlName) {
-		          $scope.proxyModel.selectedControl = $scope.proxyModel.controls[i].id;         
+		    for (var i = self.proxyModel.controls.length - 1; i >= 0; i--) {
+		       if (self.proxyModel.controls[i].id === controlName) {
+		          self.proxyModel.selectedControl = self.proxyModel.controls[i].id;         
 		       }
 		    }
 		
-		    if ($scope.proxyModel.selectedControl === 'Date') {
+		    if (self.proxyModel.selectedControl === 'Date') {
 		      initDatePicker();
 		    }
 		  };
@@ -102,31 +98,31 @@ angular
 			/**
 			 * modal buttons click
 			 */
-		  $scope.ok = function () {
+		  self.ok = function () {
 		
-		    if ($scope.proxyModel.selectedControl === 'BasicSelect') {
+		    if (self.proxyModel.selectedControl === 'BasicSelect') {
 		      bindBasicSelectToNya();
 		    }
 		
-		    if ($scope.proxyModel.selectedControl === 'GroupedSelect') {
+		    if (self.proxyModel.selectedControl === 'GroupedSelect') {
 		      bindGroupedSelectToNya();
 		    }  
 		
-		    if ($scope.proxyModel.selectedControl === 'Radio') {
+		    if (self.proxyModel.selectedControl === 'Radio') {
 		      bindRadioToNya();
 		    }  
 		
 		    //save config to control
-		    controllerModalProxy.applyConfigToSelectedControl($scope.proxyModel);
+		    controllerModalProxy.applyConfigToSelectedControl(self.proxyModel);
 		    //return current model to parent controller :
 				/**
 				 * TODO : to adpat drag and drop way
 				 */
-		    //$modalInstance.close($scope.proxyModel);
+		    //$modalInstance.close(self.proxyModel);
 		
 		  };
 		
-		  $scope.cancel = function () {
+		  self.cancel = function () {
 				/**
 				 * TODO : to adpat drag and drop way
 				 */				
@@ -146,58 +142,58 @@ angular
 			/**
 			 * radio control
 			 */
-		  $scope.radioRowCollection = initOptionModel;
-		  $scope.newOptionRadio = {saisie: ''};
+		  self.radioRowCollection = initOptionModel;
+		  self.newOptionRadio = {saisie: ''};
 		
 		
 		  function bindRadioFromNYA(){
-		    if ($scope.proxyModel.temporyConfig.formlyOptions.length > 0) {
-		      for (var i = 0; i <= $scope.proxyModel.temporyConfig.formlyOptions.length-1; i++){
+		    if (self.proxyModel.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= self.proxyModel.temporyConfig.formlyOptions.length-1; i++){
 		
 		            var newOption = { 
-		                              'option': $scope.proxyModel.temporyConfig.formlyOptions[i].name,
+		                              'option': self.proxyModel.temporyConfig.formlyOptions[i].name,
 		                              'order': i,
 		                              'group': ''
 		                            };
-		            $scope.radioRowCollection.rows.push(newOption);
+		            self.radioRowCollection.rows.push(newOption);
 		      }    
 		    }
 		  }
 		
 		  function bindRadioToNya(){
 		    var resetproxyModelOptions = [];
-		    $scope.proxyModel.temporyConfig.formlyOptions = resetproxyModelOptions;
+		    self.proxyModel.temporyConfig.formlyOptions = resetproxyModelOptions;
 		
-		    if ($scope.radioRowCollection.rows.length > 0) {
+		    if (self.radioRowCollection.rows.length > 0) {
 		
-		      for (var i = 0; i <= $scope.radioRowCollection.rows.length - 1; i++){
+		      for (var i = 0; i <= self.radioRowCollection.rows.length - 1; i++){
 		            var newOption = {
-		                              'name': $scope.radioRowCollection.rows[i].option,
+		                              'name': self.radioRowCollection.rows[i].option,
 		                              'value': i,
 		                              'group': ''
 		                    };
-		            $scope.proxyModel.temporyConfig.formlyOptions.push(newOption);   
+		            self.proxyModel.temporyConfig.formlyOptions.push(newOption);   
 		        }       
 		   }
 		  }
 		
-		  $scope.addNewOptionRadio = function(){
-		    var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
+		  self.addNewOptionRadio = function(){
+		    var result = selectOptionManage.addNewOptionRadio(self.radioRowCollection, self.newOptionRadio.saisie);
 		    if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
 		                  timeout:2000,
 		                  title: result.details,
-		                  body: '\''+ $scope.newOptionRadio.saisie + '\'' + ' cannot be added.',                
+		                  body: '\''+ self.newOptionRadio.saisie + '\'' + ' cannot be added.',                
 		                  showCloseButton: true
 		            });
 		    }
 		    //reset input
-		    $scope.newOptionRadio = {saisie: ''};
+		    self.newOptionRadio = {saisie: ''};
 		  };
 		
-		  $scope.removeRadioRow = function(index) {
-		      var result = selectOptionManage.removeOption($scope.radioRowCollection, index);
+		  self.removeRadioRow = function(index) {
+		      var result = selectOptionManage.removeOption(self.radioRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -209,8 +205,8 @@ angular
 		      }      
 		    }; 
 		
-		  $scope.upThisRadioRow = function(index){
-		      var result = selectOptionManage.upthisOption($scope.radioRowCollection, index);
+		  self.upThisRadioRow = function(index){
+		      var result = selectOptionManage.upthisOption(self.radioRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -222,8 +218,8 @@ angular
 		      }       
 		  };                                    
 		
-		  $scope.downThisRadioRow = function(index){
-		      var result = selectOptionManage.downthisOption($scope.radioRowCollection, index);
+		  self.downThisRadioRow = function(index){
+		      var result = selectOptionManage.downthisOption(self.radioRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -239,54 +235,54 @@ angular
 			/**
 			 * basic Select
 			 */			
-		  $scope.basicSelectRowCollection = initOptionModel;
-		  $scope.newOptionBasicSelect = {saisie: ''};
+		  self.basicSelectRowCollection = initOptionModel;
+		  self.newOptionBasicSelect = {saisie: ''};
 		
 		
 		  function bindBasicSelectFromNYA(){		
-		    if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
-		      for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
+		    if (self.nyaSelect.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= self.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
 		
-		            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+		            var newOption = {'option': self.nyaSelect.temporyConfig.formlyOptions[i].name,
 		                      'order': i,
 		                      'group': ''
 		                    };
-		            $scope.basicSelectRowCollection.rows.push(newOption);
+		            self.basicSelectRowCollection.rows.push(newOption);
 		      }    
 		    }
 		  }
 		
 		  function bindBasicSelectToNya(){
 		    var resetNyASelectOptions = [];
-		    $scope.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
-		    if ($scope.basicSelectRowCollection.rows.length > 0) {
-		      for (var i = 0; i <= $scope.basicSelectRowCollection.rows.length - 1; i++){
-		            var newOption = {'name': $scope.basicSelectRowCollection.rows[i].option,
+		    self.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
+		    if (self.basicSelectRowCollection.rows.length > 0) {
+		      for (var i = 0; i <= self.basicSelectRowCollection.rows.length - 1; i++){
+		            var newOption = {'name': self.basicSelectRowCollection.rows[i].option,
 		                      'value': i,
 		                      'group': ''
 		                    };
-		            $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);
+		            self.nyaSelect.temporyConfig.formlyOptions.push(newOption);
 		        }      
 		   }
 		  }
 		
-		  $scope.addNewOptionBasicSelect = function(){
-		    var result = selectOptionManage.addNewOptionBasicSelect($scope.basicSelectRowCollection, $scope.newOptionBasicSelect.saisie);
+		  self.addNewOptionBasicSelect = function(){
+		    var result = selectOptionManage.addNewOptionBasicSelect(self.basicSelectRowCollection, self.newOptionBasicSelect.saisie);
 		    if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
 		                  timeout:2000,
 		                  title: result.details,
-		                  body: '\''+ $scope.newOptionBasicSelect.saisie + '\'' + ' cannot be added.',                
+		                  body: '\''+ self.newOptionBasicSelect.saisie + '\'' + ' cannot be added.',                
 		                  showCloseButton: true
 		            });
 		    }
 		    //reset input
-		    $scope.newOptionBasicSelect = {saisie: ''};
+		    self.newOptionBasicSelect = {saisie: ''};
 		  };
 		
-		  $scope.removeRow = function(index) {
-		      var result = selectOptionManage.removeOption($scope.basicSelectRowCollection, index);
+		  self.removeRow = function(index) {
+		      var result = selectOptionManage.removeOption(self.basicSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -298,8 +294,8 @@ angular
 		      }      
 		    }; 
 		
-		  $scope.upThisRow = function(index){
-		      var result = selectOptionManage.upthisOption($scope.basicSelectRowCollection, index);
+		  self.upThisRow = function(index){
+		      var result = selectOptionManage.upthisOption(self.basicSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -311,8 +307,8 @@ angular
 		      }       
 		  };                                    
 		
-		  $scope.downThisRow = function(index){
-		      var result = selectOptionManage.downthisOption($scope.basicSelectRowCollection, index);
+		  self.downThisRow = function(index){
+		      var result = selectOptionManage.downthisOption(self.basicSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -328,50 +324,50 @@ angular
 			 * grouped Select
 			 */
 		
-		  $scope.groupedSelectRowCollection = initOptionModel;
-		  $scope.newOptionGroupedSelect = {saisie: ''};
+		  self.groupedSelectRowCollection = initOptionModel;
+		  self.newOptionGroupedSelect = {saisie: ''};
 		
-		  $scope.GroupedSelectGroups =    {
+		  self.GroupedSelectGroups =    {
 		                                    list:[]
 		                                  };
-		  $scope.newGroupGroupedSelect = {saisie: ''};  
-		  $scope.groupSelectGroupClick = {showList : false};                                
+		  self.newGroupGroupedSelect = {saisie: ''};  
+		  self.groupSelectGroupClick = {showList : false};                                
 		
 		
 		  function bindGroupedSelectFromNYA(){
-		    if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
-		      for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){		
-		            var newOption = {'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+		    if (self.nyaSelect.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= self.nyaSelect.temporyConfig.formlyOptions.length-1; i++){		
+		            var newOption = {'option': self.nyaSelect.temporyConfig.formlyOptions[i].name,
 		                      'order': i,
-		                      'group': $scope.nyaSelect.temporyConfig.formlyOptions[i].group
+		                      'group': self.nyaSelect.temporyConfig.formlyOptions[i].group
 		                    };
-		            $scope.groupedSelectRowCollection.rows.push(newOption);            
+		            self.groupedSelectRowCollection.rows.push(newOption);            
 		        }
 		        //grouplist : thx to lodash it is easy
-		       var filteredgroup = _.uniq(_.pluck($scope.groupedSelectRowCollection.rows, 'group'));
-		       angular.copy(filteredgroup, $scope.GroupedSelectGroups.list); 		
+		       var filteredgroup = _.uniq(_.pluck(self.groupedSelectRowCollection.rows, 'group'));
+		       angular.copy(filteredgroup, self.GroupedSelectGroups.list); 		
 		    }
 		  }
 		
 		  function bindGroupedSelectToNya(){
-		    $scope.nyaSelect.temporyConfig.formlyOptions = [];
-		    for (var i = 0; i <= $scope.groupedSelectRowCollection.rows.length - 1; i++){
-		          var newOption = {'name': $scope.groupedSelectRowCollection.rows[i].option,
+		    self.nyaSelect.temporyConfig.formlyOptions = [];
+		    for (var i = 0; i <= self.groupedSelectRowCollection.rows.length - 1; i++){
+		          var newOption = {'name': self.groupedSelectRowCollection.rows[i].option,
 		                    'value': i,
-		                    'group': $scope.groupedSelectRowCollection.rows[i].group
+		                    'group': self.groupedSelectRowCollection.rows[i].group
 		                  };
-		          $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
+		          self.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
 		      }
 		  }  
 		
-		  $scope.showGroupListToChoose = function(){
-		    $scope.groupSelectGroupClick.showList = !$scope.groupSelectGroupClick.showList;
+		  self.showGroupListToChoose = function(){
+		    self.groupSelectGroupClick.showList = !self.groupSelectGroupClick.showList;
 		  };
 		
-		  $scope.addNewGroupToGroupedSelect = function(){
-		    if ($scope.newGroupGroupedSelect.saisie !== '') {
-		      for (var i = $scope.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
-		        if ($scope.GroupedSelectGroups.list[i] === $scope.newGroupGroupedSelect.saisie) {
+		  self.addNewGroupToGroupedSelect = function(){
+		    if (self.newGroupGroupedSelect.saisie !== '') {
+		      for (var i = self.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
+		        if (self.GroupedSelectGroups.list[i] === self.newGroupGroupedSelect.saisie) {
 		          toaster.pop({
 		                  type: 'warning',
 		                  timeout:2000,
@@ -381,7 +377,7 @@ angular
 		            });          
 		        }
 		      }
-		      $scope.GroupedSelectGroups.list.push($scope.newGroupGroupedSelect.saisie);
+		      self.GroupedSelectGroups.list.push(self.newGroupGroupedSelect.saisie);
 		    }else{
 		          toaster.pop({
 		                  type: 'warning',
@@ -391,29 +387,29 @@ angular
 		                  showCloseButton: true
 		            });
 		    }
-		    $scope.newGroupGroupedSelect.saisie = '';
+		    self.newGroupGroupedSelect.saisie = '';
 		  };
 		
 		
-		  $scope.addNewOptionGroupedSelect = function(){
-		    var result = selectOptionManage.addNewOptionGroupedSelect($scope.groupedSelectRowCollection, $scope.newOptionGroupedSelect.saisie, '');
+		  self.addNewOptionGroupedSelect = function(){
+		    var result = selectOptionManage.addNewOptionGroupedSelect(self.groupedSelectRowCollection, self.newOptionGroupedSelect.saisie, '');
 		    if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
 		                  timeout:2000,
 		                  title: result.details,
-		                  body: '\''+ $scope.newOptionGroupedSelect.saisie + '\'' + ' cannot be added.',                
+		                  body: '\''+ self.newOptionGroupedSelect.saisie + '\'' + ' cannot be added.',                
 		                  showCloseButton: true
 		            });
 		    }
 		    //bind nya : dont bind here $apply is not done fast enough
 		    //bindGroupedSelectToNya();
 		    //reset input
-		    $scope.newOptionGroupedSelect = {saisie: ''};
+		    self.newOptionGroupedSelect = {saisie: ''};
 		  };
 		
-		  $scope.removeGroupedSelectRow = function(index) {
-		      var result = selectOptionManage.removeOption($scope.groupedSelectRowCollection, index);
+		  self.removeGroupedSelectRow = function(index) {
+		      var result = selectOptionManage.removeOption(self.groupedSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -425,8 +421,8 @@ angular
 		      }   
 		    }; 
 		
-		  $scope.upThisGroupedSelectRow = function(index){
-		      var result = selectOptionManage.upthisOption($scope.groupedSelectRowCollection, index);
+		  self.upThisGroupedSelectRow = function(index){
+		      var result = selectOptionManage.upthisOption(self.groupedSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -438,8 +434,8 @@ angular
 		      } 
 		  };                                    
 		
-		  $scope.downThisGroupedSelectRow = function(index){
-		      var result = selectOptionManage.downthisOption($scope.groupedSelectRowCollection, index);
+		  self.downThisGroupedSelectRow = function(index){
+		      var result = selectOptionManage.downthisOption(self.groupedSelectRowCollection, index);
 		      if (result.resultFlag === false) {
 		          toaster.pop({
 		                  type: 'warning',
@@ -455,36 +451,36 @@ angular
 			/**
 			 * init datetimepicker model
 			 */
-		  $scope.demodt ={};
+		  self.demodt ={};
 		
-		  $scope.today = function() {
-		    $scope.demodt.dt = new Date();
+		  self.today = function() {
+		    self.demodt.dt = new Date();
 		  };
-		  $scope.today();
+		  self.today();
 		
-		  $scope.clear = function () {
-		    $scope.demodt.dt = null;
+		  self.clear = function () {
+		    self.demodt.dt = null;
 		  };
 		
 		
-		  $scope.open = function($event) {
+		  self.open = function($event) {
 		    $event.preventDefault();
 		    $event.stopPropagation();
 		
-		    $scope.demodt.opened = true;
+		    self.demodt.opened = true;
 		  };
 		
-		  $scope.dateOptions = {
+		  self.dateOptions = {
 		           formatYear: 'yy',
 		           startingDay: 1,
 		           showWeeks: true,
 		           initDate: null
 		  };
 		
-		  $scope.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		  self.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		  
 		  function initDatePicker(){
-		    $scope.nyaSelect.temporyConfig.datepickerPopup = $scope.demodt.formats[0];  
+		    self.nyaSelect.temporyConfig.datepickerPopup = self.demodt.formats[0];  
 		  }
 		  
 		
