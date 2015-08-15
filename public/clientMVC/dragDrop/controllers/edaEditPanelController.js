@@ -86,7 +86,6 @@ angular
 		    } 
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
-		      //bindRadioFromNYA();
 		      controllerModalProxy.bindRadioFromProxyModel(self.radioRowCollection);
 		    }    
 		
@@ -127,8 +126,6 @@ angular
 			 */
 		  self.ok = function () {
 		
-
-
 				/**
 				 * TODO : 
 				 * - refactor all ok method and containt
@@ -144,7 +141,6 @@ angular
 		    }  
 		
 		    if (self.proxyModel.selectedControl === 'Radio') {
-		      //bindRadioToNya();
 		      controllerModalProxy.bindRadioToProxyModel(self.radioRowCollection);
 		    }  
 		
