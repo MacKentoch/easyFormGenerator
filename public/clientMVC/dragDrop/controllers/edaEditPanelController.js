@@ -82,12 +82,12 @@ angular
 		    }
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
-		      //bindGroupedSelectFromNYA();
 		      controllerModalProxy.bindGroupedSelectFromProxyModel(self.groupedSelectRowCollection, self.GroupedSelectGroups);
 		    } 
 		
 		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
-		      bindRadioFromNYA();
+		      //bindRadioFromNYA();
+		      controllerModalProxy.bindRadioFromProxyModel(self.radioRowCollection);
 		    }    
 		
 		  }
@@ -140,12 +140,12 @@ angular
 		    }
 		
 		    if (self.proxyModel.selectedControl === 'GroupedSelect') {
-		      //bindGroupedSelectToNya();
 		      controllerModalProxy.bindGroupedSelectToProxyModel(self.groupedSelectRowCollection);
 		    }  
 		
 		    if (self.proxyModel.selectedControl === 'Radio') {
-		      bindRadioToNya();
+		      //bindRadioToNya();
+		      controllerModalProxy.bindRadioToProxyModel(self.radioRowCollection);
 		    }  
 		
 		    //save config to control
@@ -178,38 +178,6 @@ angular
 		 * ==============================================================
 		 */
 
-		
-		
-		  function bindRadioFromNYA(){
-		    if (self.proxyModel.temporyConfig.formlyOptions.length > 0) {
-		      for (var i = 0; i <= self.proxyModel.temporyConfig.formlyOptions.length-1; i++){
-		
-		            var newOption = { 
-		                              'option': self.proxyModel.temporyConfig.formlyOptions[i].name,
-		                              'order': i,
-		                              'group': ''
-		                            };
-		            self.radioRowCollection.rows.push(newOption);
-		      }    
-		    }
-		  }
-		
-		  function bindRadioToNya(){
-		    var resetproxyModelOptions = [];
-		    self.proxyModel.temporyConfig.formlyOptions = resetproxyModelOptions;
-		
-		    if (self.radioRowCollection.rows.length > 0) {
-		
-		      for (var i = 0; i <= self.radioRowCollection.rows.length - 1; i++){
-		            var newOption = {
-		                              'name': self.radioRowCollection.rows[i].option,
-		                              'value': i,
-		                              'group': ''
-		                    };
-		            self.proxyModel.temporyConfig.formlyOptions.push(newOption);   
-		        }       
-		   }
-		  }
 		
 		  self.addNewOptionRadio = function(){
 		    var result = selectOptionManage.addNewOptionRadio(self.radioRowCollection, self.newOptionRadio.saisie);
@@ -322,33 +290,9 @@ angular
 		  };
 		
                              
-		
-		
-		  function bindGroupedSelectFromNYA(){
-		    if (self.nyaSelect.temporyConfig.formlyOptions.length > 0) {
-		      for (var i = 0; i <= self.nyaSelect.temporyConfig.formlyOptions.length-1; i++){		
-		            var newOption = {'option': self.nyaSelect.temporyConfig.formlyOptions[i].name,
-		                      'order': i,
-		                      'group': self.nyaSelect.temporyConfig.formlyOptions[i].group
-		                    };
-		            self.groupedSelectRowCollection.rows.push(newOption);            
-		        }
-		        //grouplist : thx to lodash it is easy
-		       var filteredgroup = _.uniq(_.pluck(self.groupedSelectRowCollection.rows, 'group'));
-		       angular.copy(filteredgroup, self.GroupedSelectGroups.list); 		
-		    }
-		  }
-		
-		  function bindGroupedSelectToNya(){
-		    self.nyaSelect.temporyConfig.formlyOptions = [];
-		    for (var i = 0; i <= self.groupedSelectRowCollection.rows.length - 1; i++){
-		          var newOption = {'name': self.groupedSelectRowCollection.rows[i].option,
-		                    'value': i,
-		                    'group': self.groupedSelectRowCollection.rows[i].group
-		                  };
-		          self.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
-		      }
-		  }  
+
+
+
 		
 		  self.showGroupListToChoose = function(){
 		    self.groupSelectGroupClick.showList = !self.groupSelectGroupClick.showList;

@@ -550,7 +550,9 @@ angular
 		  };
 
 
-
+		  /**
+		   * grouped select
+		   */
 		 Service.bindGroupedSelectFromProxyModel = function(groupedSelectRowCollection, GroupedSelectGroups){
 		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){		
@@ -581,6 +583,42 @@ angular
 		      }
 		};
 		
+		
+		/**
+		 * radio
+		 */
+		Service.bindRadioFromProxyModel = function(radioRowCollection){
+		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
+		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){
+		
+		            var newOption = { 
+		                              'option'	: Service.proxyModel.temporyConfig.formlyOptions[i].name,
+		                              'order'		: i,
+		                              'group'		: ''
+		                            };
+		            radioRowCollection.rows.push(newOption);
+		      }    
+		    }
+		};
+
+
+		Service.bindRadioToProxyModel = function(radioRowCollection){
+		    var resetproxyModelOptions = [];
+		    Service.proxyModel.temporyConfig.formlyOptions = resetproxyModelOptions;
+		
+		    if (radioRowCollection.rows.length > 0) {
+		
+		      for (var i = 0; i <= radioRowCollection.rows.length - 1; i++){
+		            var newOption = {
+		                              'name'		: radioRowCollection.rows[i].option,
+		                              'value'		: i,
+		                              'group'		: ''
+		                    };
+		            Service.proxyModel.temporyConfig.formlyOptions.push(newOption);   
+		        }       
+		   }
+		};
+
  		  
 
 
