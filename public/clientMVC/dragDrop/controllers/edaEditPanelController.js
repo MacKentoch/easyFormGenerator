@@ -44,11 +44,12 @@ angular
 		
 		
 			
+			var initOptionModel = { rows:[] };			
 			/**
 			 * basic Select tempory models
 			 */			
 		  self.basicSelectRowCollection = initOptionModel;
-		  self.newOptionBasicSelect 		= {saisie: ''};
+		  self.newOptionBasicSelect 		= { saisie: '' };
 
 			/**
 			 * grouped Select tempory models
@@ -57,7 +58,13 @@ angular
 		  self.newOptionGroupedSelect 		= { saisie: '' };
 		  self.GroupedSelectGroups 				= { list:[] };
 		  self.newGroupGroupedSelect 			= { saisie: '' };  
-		  self.groupSelectGroupClick 			= { showList : false };   		  
+		  self.groupSelectGroupClick 			= { showList : false };  
+
+			/**
+			 * radio control tempory models
+			 */
+		  self.radioRowCollection 		= initOptionModel;
+		  self.newOptionRadio 				= { saisie: '' };		   		  
 
 
 		  //place proxyModel to selection if not none :
@@ -158,15 +165,7 @@ angular
 		 * (display, properties.... : ex : grouped Select)
 		 * ==============================================================
 		 */
-				
-			var initOptionModel = {
-															rows:[]
-			                  		};	
-			/**
-			 * radio control
-			 */
-		  self.radioRowCollection = initOptionModel;
-		  self.newOptionRadio = {saisie: ''};
+
 		
 		
 		  function bindRadioFromNYA(){
@@ -494,7 +493,7 @@ angular
 		  self.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		  
 		  function initDatePicker(){
-		    self.nyaSelect.temporyConfig.datepickerPopup = self.demodt.formats[0];  
+		    self.proxyModel.temporyConfig.datepickerPopup = self.demodt.formats[0];  
 		  }
 		  
 		
