@@ -55,11 +55,20 @@ angular
   		 */
   		var validEditFooter = [
   														'<div class="modal-footer">',
+
+  														//reset button
+															'	<button class="btn btn-danger pull-left"',
+								              '	        ng-click="closeEditPanel()">',
+								              ' 	<i class="fa fa-refresh"></i>&nbsp;Reset',
+								              ' </button>',
+
+  														//save button
 															'	<button class="btn btn-success pull-right"',
 								              '	        ng-click="closeEditPanel()">',
 								              ' 	<i class="fa fa-floppy-o"></i>&nbsp;Save',
 								              ' </button>',
-								              '</div>'
+								              //															
+															'</div>'
   													].join('');
 
   		$templateCache.put('editPanelBlankCtrl-tpls.html', 
@@ -667,6 +676,83 @@ angular
                           '         </div>',
                           '  </div>',
 
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//label text
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+		                      '              <label for="inputTextLabelUpdate" class=" control-label greyText editPropertiesLabel">Label text :</label>',
+		                      '              <div class="">',
+		                      '                <input type="text" class="form-control" ng-model="panel.proxyModel.temporyConfig.formlyLabel" id="inputTextLabelUpdate" placeholder="Add / edit control label here">',
+		                      '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',
+													
+													'    <div class="marginTopFivepixels"></div>',
+
+													//required
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="">',
+
+	                        '              <label for="RequiredUpdate" class="col-md-4 control-label greyText editPropertiesLabel">Required :</label>',
+	                        '              <div class="col-md-8">',
+	                        '                <div class="checkboxCssCorrection">&nbsp;</div>',
+	                        '                <input type="checkbox" ng-model="panel.proxyModel.temporyConfig.formlyRequired" id="RequiredUpdate">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+													'    <div class="marginTopFivepixels"></div>',
+
+													//description
+													'    <div class="row">',
+													'            <div class="form-group">',
+
+													'							<div class="col-md-12">',
+
+	                        '              <label for="DescriptionUpdate" class="control-label greyText editPropertiesLabel">Description :</label>',
+	                        '              <div class="">',
+	                        '                <input type="text" class="form-control" ng-model="panel.proxyModel.temporyConfig.formlyDesciption" id="DescriptionUpdate" placeholder="Add / edit description here">',
+	                        '              </div>',
+
+													'							</div>',
+
+													'            </div>',
+													'    </div>',	
+
+
+													'  </div>',
+													validEditFooter,
+													'</div> '
+												].join(''));
+	 		/**
+			 * register template cache for side edit control panel
+			 * 
+			 * control : "Checkbox"
+			 */
+			$templateCache.put('editPanelCheckboxCtrl-tpls.html', 
+												[
+													'<div class="panel panel-default">',
+													'    <div class="panel-body">',
+
+													'    <div class="row">',
+													'        <div class="col-md-12">',
+													'            <h5 class="greyText"><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5>',
+													'        </div>',
+													'    </div> ',
+													//'    <hr/>',
 
 													'    <div class="marginTopFivepixels"></div>',
 
