@@ -375,8 +375,8 @@ angular
 													//date format
                           '     <label class="control-label greyText editPropertiesLabel">Date format :</label>',
                           '      <div class="">',
-                          '        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="nyaSelect.temporyConfig.datepickerPopup" id="dateformatSelect">',
-                          '          <li class="nya-bs-option" nya-bs-option="dateformat in demodt.formats" value="dateformat">',
+                          '        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model="panel.nyaSelect.temporyConfig.datepickerPopup" id="dateformatSelect">',
+                          '          <li class="nya-bs-option" nya-bs-option="dateformat in panel.demodt.formats" value="dateformat">',
                           '            <a>{{dateformat}}</a>',
                           '          </li>',
                           '        </ol>',
