@@ -229,11 +229,11 @@ angular
            /**
             * need to catch this random error
             */
-          try{
+          //try{
             formlyModel[indexFormlyModel].fieldGroup.push(controlTemplate);         
-          }catch(e){
-            console.warn('error...');
-          }
+          //}catch(e){
+          //  console.warn('error...');
+          //}
           
 
           }
