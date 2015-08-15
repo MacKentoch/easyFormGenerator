@@ -158,12 +158,12 @@
                                           
                                           <!--Subtitle control selected-->
                                           <div ng-switch-when="Subtitle">
-                                            <p>Subtitle control selected</p>
+                                            <div ng-include=" 'editPanelSubTitleCtrl-tpls.html' "></div>
                                           </div>
 
                                           <!--Basic text input control selected-->
                                           <div ng-switch-when="TextInput">
-                                            <p>Basic text input control selected</p>
+                                            <div ng-include=" 'editPanelTextInputCtrl-tpls.html' "></div>
                                           </div>                                          
                                           <!--Password input control selected-->
                                           <div ng-switch-when="Password">
