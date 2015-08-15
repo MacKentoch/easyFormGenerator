@@ -176,13 +176,12 @@
                                           
                                           <!--Basic textarea control selected-->
                                           <div ng-switch-when="Texarea">
-                                            <p>Basic textarea control selected</p>
+                                          	<div ng-include=" 'editPanelTextareaCtrl-tpls.html' "></div>
                                           </div> 
-
 
                                           <!--RichTextEditor control selected-->
                                           <div ng-switch-when="RichTextEditor">
-                                            <p>RichTextEditor control selected</p>
+                                          	<div ng-include=" 'editPanelRichTextEditorCtrl-tpls.html' "></div>
                                           </div> 
 
                                           <!--Radio control selected-->
