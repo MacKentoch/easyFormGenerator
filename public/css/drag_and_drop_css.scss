@@ -675,9 +675,25 @@ html {
     -webkit-box-shadow: 5px 1px 12px 0px rgba(188, 183, 183, 0.7);    
 }
 #controlEditLeftPanel{
-  margin-top : 80px; 
+  margin-top : 95px; 
+  padding: {
+    top: 20px;
+    bottom: 20px;
+    right: 10px;
+    left: 10px;
+  }
+  height: 80%;
+  overflow-y: scroll;
 
 }
+.separator10pixel{
+  margin: {
+    top: 5px;
+    bottom: 5px;
+  }
+  height: 25px;
+}
+
 .panelControlWidth{
   width : 45%;
 }
