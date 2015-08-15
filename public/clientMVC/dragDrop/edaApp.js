@@ -64,7 +64,7 @@ angular
 
   														//save button
 															'	<button class="btn btn-success pull-right"',
-								              '	        ng-click="closeEditPanel()">',
+								              '	        ng-click="saveFromEditPanel()">',
 								              ' 	<i class="fa fa-floppy-o"></i>&nbsp;Save',
 								              ' </button>',
 								              //															

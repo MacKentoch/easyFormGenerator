@@ -51,9 +51,6 @@ angular
 
 	    var newProxyModel = EasyFormGenFormlyBindingModels.getEasyFormListControls();
 
-	    // console.info('resetProxyModel');
-	    // console.dir(newNyaSelectObj);
-
 	  	Service.proxyModel = angular.copy(newProxyModel);
 	    return true;
 	  }		
@@ -275,9 +272,15 @@ angular
 		/**
 		 * to refresh configuration model from edit panel
 		 */
-		Service.bindConfigurationModelFromProxyModel =  function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
+		Service.bindConfigurationModelFromProxyModel =  function(indexLine, numcolumn, configurationObj){
 				      
-				      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
+				      var extractedProps = angular.copy(Service.proxyModel.temporyConfig);
+							
+							/**
+							 * debug : todel this lines
+							 */
+							console.warn('debug edaEditCtrlControllerModalProxy'); 
+							console.dir(extractedProps);
 
 				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
 				      configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
@@ -354,6 +357,10 @@ angular
 
 	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
 	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+				
+				Service.proxyModel.temporyConfig.formlyType 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type: 'none';
+				Service.proxyModel.temporyConfig.formlySubtype 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.subtype != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.subtype : 'none';
+				
 	      Service.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
 	      Service.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
 	      Service.proxyModel.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
@@ -565,6 +572,26 @@ angular
 			return true;
 		};		
 
+	/**
+	 * bindSpecialCtrlTemporyModelsToProxyModel: needed when validating after editing a control
+	 * tempory models applied to proxyModel if control is one of these
+	 *
+	 * example : if selected control is a basic select options 
+	 * -> so its tempory models are bound to proxyModel
+	 */
+	Service.bindSpecialCtrlTemporyModelsToProxyModel = function(){
+		if (Service.proxyModel.selectedControl === 'BasicSelect') {
+		  Service.bindBasicSelectToProxyModel(Service.basicSelectRowCollection);
+		}
+
+		if (Service.proxyModel.selectedControl === 'GroupedSelect') {
+		  Service.bindGroupedSelectToProxyModel(Service.groupedSelectRowCollection);
+		}  
+
+		if (Service.proxyModel.selectedControl === 'Radio') {
+		  Service.bindRadioToProxyModel(Service.radioRowCollection);
+		}  
+	};
 
 		/**
 		 * basic select
