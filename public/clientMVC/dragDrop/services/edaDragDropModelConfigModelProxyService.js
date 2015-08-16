@@ -105,7 +105,19 @@ angular
 				 * 
 				 */
 
-
+				// console.warn('starting bind ctrl model');
+				// console.dir(		
+				// 							{
+				// 								'refreshAllConfigurationFromDragAndDropModel' : 'starting',
+				// 								
+				// 								'configurationCtrlModel = ctrl to bind' : angular.copy(configurationCtrlModel),
+				// 								'configModel = configurationModel' : angular.copy(configModel),
+				// 								'formlyDetailCtrlModel = template' : angular.copy(formlyDetailCtrlModel)
+				// 								
+				// 							}
+				// 						);
+														 
+				
 				//set selected control :
 				$parse('control.selectedControl')
 					.assign(configurationCtrlModel, $parse('selectedControl')(formlyDetailCtrlModel));
@@ -160,13 +172,22 @@ angular
 			 */
 			Service.refreshAllConfigurationFromDragAndDropModel = function(configModel, ddModel){
 				
-				console.warn('starting refresh');
-				console.dir(		
-											{
-												'refreshAllConfigurationFromDragAndDropModel' : 'starting',
-												'configuratioModel' : angular.copy(configModel)
-											}
-										);
+				// console.warn('starting refresh');
+				// console.dir(		
+				// 							{
+				// 								'refreshAllConfigurationFromDragAndDropModel' : 'starting',
+				// 								'configuratioModel' : angular.copy(configModel)
+				// 							}
+				// 						);
+				
+				/**
+				 * TODO : prevent reset already set props
+				 * 
+				 * previousConfigurationModel = a backup of configuration model 'configModel 'before resetting it
+				 *  
+				 * 
+				 */
+				var previousConfigurationModel = angular.copy(configModel); 
 				
 				
 				configModel.lines = [];
@@ -223,15 +244,26 @@ angular
 										
 				});
 
-				console.warn('ended refresh');
-				console.dir(		
-											{
-												'refreshAllConfigurationFromDragAndDropModel' : 'ended',
-												'configuratioModel' : angular.copy(configModel)
-											}
-										);
+				// console.warn('ended refresh');
+				// console.dir(		
+				// 							{
+				// 								'refreshAllConfigurationFromDragAndDropModel' : 'ended',
+				// 								'configuratioModel' : angular.copy(configModel)
+				// 							}
+				// 						);
 										
 				return configModel;
+			};
+			
+			/**
+			 * drag drop model
+			 * -> will be used to bind configuration model
+			 * 	of no key saved, configuration model controls would be reset each drop events
+			 * 
+			 * -> matching key : wil prevent to reset existing control
+			 */
+			Service.refreshControlsKeys = function(configModel, dragDropModel){
+				
 			};
 
 

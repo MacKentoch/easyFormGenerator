@@ -591,6 +591,13 @@ angular
                                                                                                       
         formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+        /**
+         * TODO : refresh controls key in dragDrop Model
+         */
+        ddModelConfModelProxyService.refreshControlsKeys( 
+                                                          $scope.configuration, 
+                                                          $scope.dragDropModel
+                                                         );        
 
       }, 200);
 
