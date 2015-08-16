@@ -10,7 +10,7 @@
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
- */
+ */ 
 angular
   .module('edaApp.controllers.edaEditController', [])
   .controller('edaEditController', [	'$scope', 
@@ -684,15 +684,6 @@ angular
                                                         $scope.configuration
                                                       );
 
-        // console.warn('debug');
-        // console.dir( 
-        //             {
-        //               line          : controllerModalProxy.getEditPanelModelLineIndex(),
-        //               column        : controllerModalProxy.getEditPanelModelColumnIndex(),
-        //               configuration : angular.copy($scope.configuration)
-        //             }        
-        //             );
-        
         formFieldManage.applyConfigurationToformlyModel(
                                                           $scope.configuration, 
                                                           $scope.vm.wfFormFields, 
@@ -708,13 +699,9 @@ angular
     
         controllerModalProxy.setEditPanelModelToggle(false);
         $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  
-
         ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
 
-        
-
   };
-
   /**
    * close side panel
    * -> no update =  cancel
