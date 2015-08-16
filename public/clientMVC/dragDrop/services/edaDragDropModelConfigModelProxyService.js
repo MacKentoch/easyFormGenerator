@@ -198,24 +198,38 @@ angular
 				    																																		)
 				    													)
 				    			};
+							var formlyDetailedControlModel = getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]);
 							/**
 							 * controls alreadys existed so do not reset it
+							 * 
+							 * control to bind is the previous one
 							 */		
 							if(typeof colValue.key !== 'undefined'){
 								console.warn('debug dragdropModel show this control key : ' + colValue.key);
 								
+								controlToBind.control = angular.copy(colValue.configModelControl);
+								//update cssClass depending new position:
+								var newClassName = EasyFormGenFormlyBindingModels
+												    														.getFormlyControlTemplateForNcolumnLine(	
+																																									lineValue.length, 
+				    																																			getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType
+				    																																	);
+							controlToBind.control.className = newClassName.className;																																							
 								/**
 								 * get control details for this key in backup : previousConfigurationModel
 								 */
-							}			
-				    	/**
-				    	 * bind dragdrop control properties to configuration model through controlToBind var
-				    	 */
-				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	
-																															getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
-				    																									controlToBind, 
-				    																									configModel
-				    																								);
+							}else{
+								
+								/**
+								* controls did not exists before : control to bind is a new one
+								* bind dragdrop control properties to configuration model through controlToBind var
+								*/
+								bindConfigCtrlModelFromFormlyDetailedCtrlModel(	
+																																formlyDetailedControlModel, //getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
+																																controlToBind, 
+																																configModel
+																															);
+							}	
 				    	/**
 				    	 * apply controlToBind var to configuration model control
 				    	 */
@@ -241,14 +255,6 @@ angular
 			 * -> matching key : will prevent to reset existing control
 			 */
 			Service.refreshControlsKeys = function(configModel, dragDropModel){				
-				console.info('refreshControlsKeys');
-				console.dir(	
-											{
-													'when' 							: 'starting',
-													'configModel is ' 	: angular.copy(configModel),
-													'dragDropModel is ' : angular.copy(dragDropModel)
-											}
-										);
 				
 				angular.forEach(configModel.lines, function(aConfigLine, aConfigLineIndex){						
 						angular.forEach(aConfigLine.columns, function(aConfigControl, aConfigControlIndex){
@@ -257,9 +263,20 @@ angular
 							//configModel still needed 
 							// -> to keep coherence (same back model) between all version of easyForm Generator
 							// -> is the back model (can be saved to dataBase)
+							dragDropModel[1][aConfigLineIndex][aConfigControlIndex].configModelControl = angular.copy(aConfigControl.control);
 							
 						});
 				});
+				
+				console.info('refreshControlsKeys');
+				console.dir(	
+											{
+													'when' 							: 'starting',
+													'configModel is ' 	: angular.copy(configModel),
+													'dragDropModel is ' : angular.copy(dragDropModel)
+											}
+										);
+								
 			};
 
 
