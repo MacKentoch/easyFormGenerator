@@ -15,7 +15,7 @@ angular
 	.provider('EasyFormGenFormlyBindingModels', [
 
 	function(){ 
-		
+	 
 		/**
 		 * define all controls easy form genearator will manage
 		 */

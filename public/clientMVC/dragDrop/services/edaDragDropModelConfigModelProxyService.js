@@ -159,6 +159,16 @@ angular
 			 * refreshAllConfigurationFromDragAndDropModel 
 			 */
 			Service.refreshAllConfigurationFromDragAndDropModel = function(configModel, ddModel){
+				
+				console.warn('starting refresh');
+				console.dir(		
+											{
+												'refreshAllConfigurationFromDragAndDropModel' : 'starting',
+												'configuratioModel' : angular.copy(configModel)
+											}
+										);
+				
+				
 				configModel.lines = [];
 				/**
 				 * iterates line config model
@@ -184,17 +194,21 @@ angular
 				    	 */ 	
 							var controlToBind = 
 									{
-				    				control : angular.copy(EasyFormGenFormlyBindingModels
-				    											.getFormlyControlTemplateForNcolumnLine(	lineValue.length, 
-				    																																getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType
-				    																															))
+				    				control : angular
+				    										.copy(EasyFormGenFormlyBindingModels
+				    														.getFormlyControlTemplateForNcolumnLine(	
+																																									lineValue.length, 
+				    																																			getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType
+				    																																		)
+				    													)
 				    			};
 				    	/**
 				    	 * bind dragdrop control properties to configuration model through controlToBind var
 				    	 */
 				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
 				    																									controlToBind, 
-				    																									configModel);
+				    																									configModel
+				    																								);
 				    	/**
 				    	 * apply controlToBind var to configuration model control
 				    	 */
@@ -209,7 +223,14 @@ angular
 										
 				});
 
-
+				console.warn('ended refresh');
+				console.dir(		
+											{
+												'refreshAllConfigurationFromDragAndDropModel' : 'ended',
+												'configuratioModel' : angular.copy(configModel)
+											}
+										);
+										
 				return configModel;
 			};
 

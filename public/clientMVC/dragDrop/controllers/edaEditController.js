@@ -465,17 +465,6 @@ angular
   };
 
 
-
-  // $scope.toggleAnimation = function () {
-  //   $scope.animationsEnabled = !$scope.animationsEnabled;
-  // };                            
-
-
-
-
-
-
-
   /**
    *
    * 
@@ -512,7 +501,13 @@ angular
       */
       var timerRefreshDDToConfig = $timeout(function(){
         
-        $scope.configuration = angular.copy(ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel($scope.configuration, $scope.dragDropModel));
+        $scope.configuration = angular
+                                  .copy(ddModelConfModelProxyService
+                                          .refreshAllConfigurationFromDragAndDropModel(
+                                                                                        $scope.configuration, 
+                                                                                        $scope.dragDropModel
+                                                                                       )
+                                       );
         
         formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
@@ -588,8 +583,12 @@ angular
       */
       var timerRefreshDDToConfig = $timeout(function(){
         
-        $scope.configuration = angular.copy(ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel($scope.configuration, $scope.dragDropModel));
-
+        $scope.configuration = angular.copy(ddModelConfModelProxyService
+                                                          .refreshAllConfigurationFromDragAndDropModel(
+                                                                                                        $scope.configuration, 
+                                                                                                        $scope.dragDropModel
+                                                                                                      ));
+                                                                                                      
         formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
 
@@ -705,13 +704,17 @@ angular
     
     controllerModalProxy.setEditPanelModelToggle(false);
     $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();
+    
   };
 
   $scope.debugProxyModel = controllerModalProxy.ProxyModel;
 
+
+
   $scope.setRightClicked = function(previousState, item){
     item.rightCliked = true;
   };
+
 
   $scope.toggleEditPanel = function(event, lineIndex, colIndex, item){
    ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
