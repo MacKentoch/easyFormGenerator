@@ -16,7 +16,7 @@ angular
 
 	function(){ 
 	 
-		/**
+		/** 
 		 * define all controls easy form genearator will manage
 		 */
 		var _easyFormListControls =	{

@@ -509,8 +509,18 @@ angular
                                                                                        )
                                        );
         
-        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
-        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+        formFieldManage.applyConfigurationToformlyModel(  
+                                                          $scope.configuration, 
+                                                          $scope.vm.wfFormFields, 
+                                                          $scope.vm.model
+                                                        );
+                                                        
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+         
+        ddModelConfModelProxyService.refreshControlsKeys( 
+                                                          $scope.configuration, 
+                                                          $scope.dragDropModel
+                                                         );            
 
       }, 200);
 
@@ -589,10 +599,16 @@ angular
                                                                                                         $scope.dragDropModel
                                                                                                       ));
                                                                                                       
-        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        formFieldManage.applyConfigurationToformlyModel(  
+                                                            $scope.configuration, 
+                                                            $scope.vm.wfFormFields, 
+                                                            $scope.vm.model
+                                                        );
+                                                        
         $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
         /**
-         * TODO : refresh controls key in dragDrop Model
+         * refresh controls key in dragDrop Model
+         * to persist already exists controls between refreshes when item drop events
          */
         ddModelConfModelProxyService.refreshControlsKeys( 
                                                           $scope.configuration, 
@@ -668,17 +684,27 @@ angular
                                                         $scope.configuration
                                                       );
 
-        console.warn('debug');
-        console.dir( 
-                    {
-                      line          : controllerModalProxy.getEditPanelModelLineIndex(),
-                      column        : controllerModalProxy.getEditPanelModelColumnIndex(),
-                      configuration : angular.copy($scope.configuration)
-                    }        
-                    );
+        // console.warn('debug');
+        // console.dir( 
+        //             {
+        //               line          : controllerModalProxy.getEditPanelModelLineIndex(),
+        //               column        : controllerModalProxy.getEditPanelModelColumnIndex(),
+        //               configuration : angular.copy($scope.configuration)
+        //             }        
+        //             );
         
-        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
-        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+        formFieldManage.applyConfigurationToformlyModel(
+                                                          $scope.configuration, 
+                                                          $scope.vm.wfFormFields, 
+                                                          $scope.vm.model
+                                                        );
+                                                            
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+        
+        ddModelConfModelProxyService.refreshControlsKeys( 
+                                                  $scope.configuration, 
+                                                  $scope.dragDropModel
+                                                  );    
     
         controllerModalProxy.setEditPanelModelToggle(false);
         $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  

@@ -93,8 +93,6 @@ angular
 			 * bind formly detailed model to configuration control model
 			 */
 			function bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailCtrlModel, configurationCtrlModel, configModel){
-				
-
 				/**
 				 *
 				 * 
@@ -102,22 +100,7 @@ angular
 				 *
 				 * more configurable without pain
 				 *
-				 * 
 				 */
-
-				// console.warn('starting bind ctrl model');
-				// console.dir(		
-				// 							{
-				// 								'refreshAllConfigurationFromDragAndDropModel' : 'starting',
-				// 								
-				// 								'configurationCtrlModel = ctrl to bind' : angular.copy(configurationCtrlModel),
-				// 								'configModel = configurationModel' : angular.copy(configModel),
-				// 								'formlyDetailCtrlModel = template' : angular.copy(formlyDetailCtrlModel)
-				// 								
-				// 							}
-				// 						);
-														 
-				
 				//set selected control :
 				$parse('control.selectedControl')
 					.assign(configurationCtrlModel, $parse('selectedControl')(formlyDetailCtrlModel));
@@ -171,20 +154,12 @@ angular
 			 * refreshAllConfigurationFromDragAndDropModel 
 			 */
 			Service.refreshAllConfigurationFromDragAndDropModel = function(configModel, ddModel){
-				
-				// console.warn('starting refresh');
-				// console.dir(		
-				// 							{
-				// 								'refreshAllConfigurationFromDragAndDropModel' : 'starting',
-				// 								'configuratioModel' : angular.copy(configModel)
-				// 							}
-				// 						);
-				
 				/**
 				 * TODO : prevent reset already set props
 				 * 
 				 * previousConfigurationModel = a backup of configuration model 'configModel 'before resetting it
-				 *  
+				 * 
+				 * -> dragDrop model contains unique keys of already existing controls : these controls must not be reset / overwritten  
 				 * 
 				 */
 				var previousConfigurationModel = angular.copy(configModel); 
@@ -223,10 +198,21 @@ angular
 				    																																		)
 				    													)
 				    			};
+							/**
+							 * controls alreadys existed so do not reset it
+							 */		
+							if(typeof colValue.key !== 'undefined'){
+								console.warn('debug dragdropModel show this control key : ' + colValue.key);
+								
+								/**
+								 * get control details for this key in backup : previousConfigurationModel
+								 */
+							}			
 				    	/**
 				    	 * bind dragdrop control properties to configuration model through controlToBind var
 				    	 */
-				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
+				    	bindConfigCtrlModelFromFormlyDetailedCtrlModel(	
+																															getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]), 
 				    																									controlToBind, 
 				    																									configModel
 				    																								);
@@ -254,8 +240,7 @@ angular
 			 * 
 			 * -> matching key : will prevent to reset existing control
 			 */
-			Service.refreshControlsKeys = function(configModel, dragDropModel){
-				
+			Service.refreshControlsKeys = function(configModel, dragDropModel){				
 				console.info('refreshControlsKeys');
 				console.dir(	
 											{
@@ -264,17 +249,17 @@ angular
 													'dragDropModel is ' : angular.copy(dragDropModel)
 											}
 										);
-				/**
-				 * iterates configuration model lines
-				 */						
-				angular.forEach(configModel.lines, function(aConfigLine, aConfigLineIndex){
-						
+				
+				angular.forEach(configModel.lines, function(aConfigLine, aConfigLineIndex){						
 						angular.forEach(aConfigLine.columns, function(aConfigControl, aConfigControlIndex){
 							dragDropModel[1][aConfigLineIndex][aConfigControlIndex].key = aConfigControl.control.key;
+							//need to save all in dragdropModel as it is a reference
+							//configModel still needed 
+							// -> to keep coherence (same back model) between all version of easyForm Generator
+							// -> is the back model (can be saved to dataBase)
 							
 						});
 				});
-				
 			};
 
 
