@@ -709,6 +709,9 @@ angular
         controllerModalProxy.setEditPanelModelToggle(false);
         $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  
 
+        ddItemRightClickedManager.resetAllDragDropItemSelectedState($scope.dragDropModel);
+
+        
 
   };
 
