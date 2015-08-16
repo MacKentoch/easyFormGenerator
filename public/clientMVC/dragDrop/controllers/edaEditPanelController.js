@@ -68,8 +68,6 @@ angular
 		  controllerModalProxy.resetAllTemporyModels();
 
 
-
-
 		  //place proxyModel to selection if not none :
 		   if (self.proxyModel.temporyConfig.selectedControl !== 'none') {
 		    for (var i = self.proxyModel.controls.length - 1; i >= 0; i--) {
@@ -120,53 +118,8 @@ angular
 		      initDatePicker();
 		    }
 		  };
-		
-		
-			/**
-			 * modal buttons click
-			 */
-		  self.ok = function () {
-		
-				/**
-				 * TODO : 
-				 * - refactor all ok method and containt
-				 * - ok should be then migrated to editController : onSave event
-				 * - will be able to bind all models in there (configuration model and formly model)
-				 */
-		    if (self.proxyModel.selectedControl === 'BasicSelect') {
-		      controllerModalProxy.bindBasicSelectToProxyModel(self.basicSelectRowCollection);
-		    }
-		
-		    if (self.proxyModel.selectedControl === 'GroupedSelect') {
-		      controllerModalProxy.bindGroupedSelectToProxyModel(self.groupedSelectRowCollection);
-		    }  
-		
-		    if (self.proxyModel.selectedControl === 'Radio') {
-		      controllerModalProxy.bindRadioToProxyModel(self.radioRowCollection);
-		    }  
-		
-		    //save config to control
-		    controllerModalProxy.applyConfigToSelectedControl(self.proxyModel);
-		    //return current model to parent controller :
+	
 
-
-
-		    // //update configuration model and formly model
-		    // controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
-    		// formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);    
-    		// $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
-    
-    		// controllerModalProxy.setEditPanelModelToggle(false);
-    		// $scope.editPanelModel.toggle = controllerModalProxy.getEditPanelModelToggle();  
-		
-		  };
-		
-		  self.cancel = function () {
-				/**
-				 * TODO : to adpat drag and drop way
-				 */				
-		    //$modalInstance.dismiss('cancel');
-		  };
 
 		/**
 		 * ==============================================================
