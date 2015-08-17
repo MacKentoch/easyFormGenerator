@@ -168,9 +168,13 @@ angular
             
             var headerTextContent = column.control.templateOptions.description;
             controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
+            
+                      
+            console.warn('EasyFormGenFormlyBindingModels : controlTEemplate');
+            console.dir(controlTemplate);
+          
             /**
              * popuplate properties
-             *
              */
             formlyModel[indexFormlyModel] = {};
 
@@ -192,6 +196,7 @@ angular
            * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
            */
           controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
+
           /**
            * popuplate properties
            */

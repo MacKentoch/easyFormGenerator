@@ -155,7 +155,7 @@ angular
     };
 
     var _headerTemplates = 	{
-    													cssClass 		: ['col-md-12', 'col-md-6', 'col-md-4'],
+    													cssClass 		: ['col-xs-12', 'col-xs-6', 'col-xs-4'],
     													textContent : '',
     													html_part1 	: [
 		                                          '<div class="row">',

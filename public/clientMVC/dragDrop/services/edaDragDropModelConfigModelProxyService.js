@@ -214,7 +214,11 @@ angular
 																																									lineValue.length, 
 				    																																			getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType
 				    																																	);
-							controlToBind.control.className = newClassName.className;																																							
+							controlToBind.control.className = newClassName.className;
+							//test if header nee this one
+							controlToBind.control.cssClass = newClassName.className;
+							
+																																														
 								/**
 								 * get control details for this key in backup : previousConfigurationModel
 								 */
@@ -275,7 +279,7 @@ angular
 
 						});
 				});
-				
+
 				console.info('refreshControlsKeys');
 				console.dir(	
 											{
