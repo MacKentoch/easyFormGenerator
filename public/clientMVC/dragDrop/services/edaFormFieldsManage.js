@@ -152,41 +152,38 @@ angular
        * iterates through controls in the line
        */
       
-      configurationModel.lines[lineIndex].columns.forEach(function(column){
+      configurationModel.lines[lineIndex].columns.forEach(function(column, columnIndex){
         var controlTemplate = {};
 
-        if (( typeof controlTemplate  !== 'undefined' &&
-              column.control.type     === 'header'    || 
-              column.control.type     === 'subTitle') &&
-              column.control.type     !== 'none') {
-            /**
-             * header is not a control just a template
-             *
-             * getHeaderTemplateForNcolumnLine()
-             * NOTE : header text is stored from description
-             */
-            
-            var headerTextContent = column.control.templateOptions.description;
-            controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
-            
-                      
-            console.warn('EasyFormGenFormlyBindingModels : controlTEemplate');
-            console.dir(controlTemplate);
-          
-            /**
-             * popuplate properties
-             */
-            formlyModel[indexFormlyModel] = {};
-
-            formlyModel[indexFormlyModel].template = controlTemplate.template;
-             /**
-              * push
-              */
-        }
+        // if (( typeof controlTemplate  !== 'undefined' &&
+        //       column.control.type     === 'header'    || 
+        //       column.control.type     === 'subTitle') &&
+        //       column.control.type     !== 'none') {
+        //     /**
+        //      * header is not a control just a template
+        //      *
+        //      * getHeaderTemplateForNcolumnLine()
+        //      * NOTE : header text is stored from description
+        //      */
+        //     
+        //     var headerTextContent = column.control.templateOptions.description;
+        //     controlTemplate = EasyFormGenFormlyBindingModels.getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent);
+        //     
+        //               
+        //     console.warn('EasyFormGenFormlyBindingModels : controlTEemplate');
+        //     console.dir(controlTemplate);
+        //   
+        //     /**
+        //      * popuplate properties
+        //      */
+        //      
+        //     formlyModel[indexFormlyModel] = {};
+        //     formlyModel[indexFormlyModel].template = controlTemplate.template;
+        // }
         
         if (typeof controlTemplate  !== 'undefined' &&
-            column.control.type     !== 'header'    && 
-            column.control.type     !== 'subTitle'  &&
+            // column.control.type     !== 'header'    && 
+            // column.control.type     !== 'subTitle'  &&
             column.control.type     !== 'none') {
 
           /**
@@ -195,7 +192,51 @@ angular
            * @PARAM numberOfColumns       : integer to deduce cssClss to apply
            * @PARAM column.control.type   : to add if needed specific properties (example : datepicker)
            */
-          controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
+           
+          if(column.control.type  === 'header' || 
+             column.control.type  === 'subTitle'){
+               
+            var headerTextContent = column.control.templateOptions.description;
+            
+            controlTemplate.template = EasyFormGenFormlyBindingModels
+                                        .getHeaderTemplateForNcolumnLine(numberOfColumns, headerTextContent)
+                                            .template;
+            
+            controlTemplate.className = EasyFormGenFormlyBindingModels
+                                          .getRawHeaderTemplates()
+                                            .selectedClass; 
+            
+                             
+          } else {
+            
+            controlTemplate = EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
+
+            /**
+            *
+            * 
+            * NEED REFACTOR HERE 
+            * should bind properties dynamically 
+            * 
+            * TODO need to validate all controls (datepicker may not work)
+            * need to refactor
+            *
+            * 
+            */
+            controlTemplate.className                   = column.control.className;
+            controlTemplate.type                        = column.control.type;
+            controlTemplate.key                         = column.control.key;
+            controlTemplate.templateOptions.type        = column.control.templateOptions.type;
+            controlTemplate.templateOptions.label       = column.control.templateOptions.label;
+            controlTemplate.templateOptions.required    = column.control.templateOptions.required;
+            controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
+            controlTemplate.templateOptions.description = column.control.templateOptions.description;
+            controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options); 
+  
+            if (typeof controlTemplate.templateOptions.datepickerPopup !== 'undefined')  column.control.templateOptions.datepickerPopup = controlTemplate.templateOptions.datepickerPopup  ;
+
+              
+          }
+          
 
           /**
            * popuplate properties
@@ -203,28 +244,7 @@ angular
           
 
 
-          /**
-           *
-           * 
-           * NEED REFACTOR HERE 
-           * should bind properties dynamically 
-           * 
-           * TODO need to validate all controls (datepicker may not work)
-           * need to refactor
-           *
-           * 
-           */
-          controlTemplate.className                   = column.control.className;
-          controlTemplate.type                        = column.control.type;
-          controlTemplate.key                         = column.control.key;
-          controlTemplate.templateOptions.type        = column.control.templateOptions.type;
-          controlTemplate.templateOptions.label       = column.control.templateOptions.label;
-          controlTemplate.templateOptions.required    = column.control.templateOptions.required;
-          controlTemplate.templateOptions.placeholder = column.control.templateOptions.placeholder;
-          controlTemplate.templateOptions.description = column.control.templateOptions.description;
-          controlTemplate.templateOptions.options     = [].concat(column.control.templateOptions.options); 
 
-          if (typeof controlTemplate.templateOptions.datepickerPopup !== 'undefined')  column.control.templateOptions.datepickerPopup = controlTemplate.templateOptions.datepickerPopup  ;
 
           /**
            * push control into formly model in its group

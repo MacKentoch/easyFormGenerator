@@ -159,7 +159,7 @@ angular
     													textContent : '',
 															
     													html_part1 	: [
-		                                          '<div class="row">',
+		                                          //'<div class="row">',
 		                                          '  <div class="',
 
 		                                         ].join(''),
@@ -173,8 +173,16 @@ angular
 		                                          '    <h2>',
 		                                          '    <hr/>',
 		                                          '  </div>',
-		                                          '</div>'
+		                                          //'</div>'
 		                                         ].join(''),
+																						 
+															simpleHtml1 : 	[
+																							'<h2 class="text-center">'
+																							].join(''),
+															simpleHtml2 : 	[
+		                                          '    <h2>',
+		                                          '    <hr/>',																
+																							].join('')						 
     												};
 
     var _formlyControlTemplates =	{
@@ -424,12 +432,18 @@ angular
 					    	_headerTemplates.textContent = textContent;
 								_headerTemplates.selectedClass = headerToReturn.className;
 
+					    	// headerToReturn.template = [
+					    	// 														_headerTemplates.html_part1,
+								// 														_headerTemplates.selectedClass,
+								// 														_headerTemplates.html_part2,
+					    	// 														textContent,
+					    	// 														_headerTemplates.html_part4
+					    	// 													].join('');
+
 					    	headerToReturn.template = [
-					    															_headerTemplates.html_part1,
-																						_headerTemplates.selectedClass,
-																						_headerTemplates.html_part2,
+					    															_headerTemplates.simpleHtml1,
 					    															textContent,
-					    															_headerTemplates.html_part4
+					    															_headerTemplates.simpleHtml2
 					    														].join('');
 
 					    	return headerToReturn;
