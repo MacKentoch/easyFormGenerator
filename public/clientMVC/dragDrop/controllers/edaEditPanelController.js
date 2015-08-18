@@ -91,18 +91,24 @@ angular
 		  }
 		
 		self.updateSpecialControl = function(){
-				if (self.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
-		      controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
-		    }
-		
-		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
-		      controllerModalProxy.bindGroupedSelectFromProxyModel(self.groupedSelectRowCollection, self.GroupedSelectGroups);
-		    } 
-		
-		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
-		      controllerModalProxy.bindProxyModelOptionFromRadio(self.radioRowCollection);
-		    }  
-				return true; 	
+			
+			//refresh service data for sepcial control as selects and radio
+			controllerModalProxy.basicSelectRowCollection 		= self.basicSelectRowCollection;
+			controllerModalProxy.newOptionBasicSelect 				= self.newOptionBasicSelect;
+
+			controllerModalProxy.groupedSelectRowCollection 	= self.groupedSelectRowCollection;
+			controllerModalProxy.newOptionGroupedSelect 			= self.newOptionGroupedSelect;
+			controllerModalProxy.GroupedSelectGroups 					= self.GroupedSelectGroups;
+			controllerModalProxy.newGroupGroupedSelect 				= self.newGroupGroupedSelect;
+			controllerModalProxy.groupSelectGroupClick 				= self.groupSelectGroupClick;
+
+
+			controllerModalProxy.radioRowCollection 					= self.radioRowCollection;
+			controllerModalProxy.newOptionRadio 							= self.newOptionRadio;			
+			
+			//force apply update proxyModel
+			controllerModalProxy.bindSpecialCtrlTemporyModelsToProxyModel(); 
+			return true; 	
 		};
 		
 		  function resetTemporyConfig(){
