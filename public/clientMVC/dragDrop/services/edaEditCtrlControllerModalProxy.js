@@ -686,6 +686,21 @@ angular
 		    }
 		};
 
+		Service.bindProxyModelOptionFromRadio = function(radioRowCollection){
+		    if (radioRowCollection.rows.length > 0) {
+					Service.proxyModel.temporyConfig.formlyOptions = [];
+		      for (var i = 0; i <= radioRowCollection.rows.length-1; i++){
+		
+		            var newOption = { 
+		                              'name'		: radioRowCollection.rows[i].option,
+		                              'value'		: i,
+		                              'group'		: ''
+		                            };
+		            Service.proxyModel.temporyConfig.formlyOptions.push(newOption);
+		      }    
+		    }
+		};
+
 
 		Service.bindRadioToProxyModel = function(radioRowCollection){
 		    var resetproxyModelOptions = [];

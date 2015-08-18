@@ -63,7 +63,7 @@ angular
 
   														//save button
 															'	<button class="btn btn-success pull-right"',
-								              '	        ng-click="saveFromEditPanel()">',
+								              '	        ng-click="panel.updateSpecialControl(); saveFromEditPanel();">',
 								              ' 	<i class="fa fa-floppy-o"></i>&nbsp;Save',
 								              ' </button>',
 								              //															

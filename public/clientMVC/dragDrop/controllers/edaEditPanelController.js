@@ -90,7 +90,20 @@ angular
 		
 		  }
 		
+		self.updateSpecialControl = function(){
+				if (self.proxyModel.temporyConfig.selectedControl === 'BasicSelect') {
+		      controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
+		    }
 		
+		    if (self.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') {
+		      controllerModalProxy.bindGroupedSelectFromProxyModel(self.groupedSelectRowCollection, self.GroupedSelectGroups);
+		    } 
+		
+		    if (self.proxyModel.temporyConfig.selectedControl === 'Radio') {
+		      controllerModalProxy.bindProxyModelOptionFromRadio(self.radioRowCollection);
+		    }  
+				return true; 	
+		};
 		
 		  function resetTemporyConfig(){
 		    self.proxyModel.temporyConfig = {
@@ -107,7 +120,7 @@ angular
 				self.proxyModel.temporyConfig.formlyRequired 		= false;
 				self.proxyModel.temporyConfig.formlyPlaceholder	= '';
 				self.proxyModel.temporyConfig.formlyDesciption 	= '';
-				self.proxyModel.temporyConfig.formlyOptions 		= []
+				self.proxyModel.temporyConfig.formlyOptions 		= [];
 				self.proxyModel.temporyConfig.datepickerPopup   = initDatePicker();
 				
 			};
