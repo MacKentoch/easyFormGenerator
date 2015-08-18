@@ -35,8 +35,7 @@ angular
                         'dndLists',
                         'mgcrea.ngStrap.affix',
                         'ngTouch',
-                        'pageslide-directive',
-                        function(){}
+                        'pageslide-directive'
 	                     ])
 
   .value('easyFormGenVersion', 'v1.1.3')
@@ -58,7 +57,7 @@ angular
 
   														//reset button
 															'	<button class="btn btn-danger pull-left"',
-								              '	        ng-click="closeEditPanel()">',
+								              '	        ng-click="panel.resetControl()">',
 								              ' 	<i class="fa fa-refresh"></i>&nbsp;Reset',
 								              ' </button>',
 

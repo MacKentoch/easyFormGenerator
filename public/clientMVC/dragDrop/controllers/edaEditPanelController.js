@@ -102,7 +102,15 @@ angular
 		                                      };   
 		  }
 		
-		
+			self.resetControl = function(){
+				self.proxyModel.temporyConfig.formlyLabel 			= '';
+				self.proxyModel.temporyConfig.formlyRequired 		= false;
+				self.proxyModel.temporyConfig.formlyPlaceholder	= '';
+				self.proxyModel.temporyConfig.formlyDesciption 	= '';
+				self.proxyModel.temporyConfig.formlyOptions 		= []
+				self.proxyModel.temporyConfig.datepickerPopup   = initDatePicker();
+				
+			};
 		
 		  self.selectThisControl = function(controlName){
 		    self.proxyModel.selectedControl = 'none';
