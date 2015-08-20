@@ -10,11 +10,19 @@
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
-angular
-	.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource'])
-	.factory('wfFormsByIdServices', ['$resource', function($resource){
-    return $resource('/api/wfedit/:id', {id: '@id'}, {
 
-    });
-  }]);
+(function(){
 
+	'use strict';
+	
+	angular
+		.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource'])
+		.factory('wfFormsByIdServices', wfFormsByIdServices);
+
+		wfFormsByIdServices.$inject = ['$resource'];
+		function wfFormsByIdServices($resource){
+			return $resource('/api/wfedit/:id', {id: '@id'}, {});
+		}
+
+
+})();
