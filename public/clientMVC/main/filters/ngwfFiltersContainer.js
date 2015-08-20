@@ -1,14 +1,21 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// module = "filters" container
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.filters" = container filters module
-//
-//  This module is a container -> it must be injected in the application -> so it will inject all filters injected here
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-angular.module('ngwfApp.filters', ['ngwfApp.filters.serviceTemplate'], 
-									function () {
-    //verbose
-    //console.log('--> INIT : Hello filters container  \'\'ngwfApp.filters\'\' ');
-});
+/**
+ *  ------------------------------------------------------
+ *  filters container
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function () {
+	'use strict';
+
+	angular
+		.module('ngwfApp.filters', []);
+
+})(); 
+
+

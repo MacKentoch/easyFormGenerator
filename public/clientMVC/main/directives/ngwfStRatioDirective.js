@@ -3,8 +3,7 @@
  *  simple directive to set width style attribute in %
  *  ------------------------------------------------------
  *
- *  
- *
+ * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
