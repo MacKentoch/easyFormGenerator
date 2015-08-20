@@ -12,7 +12,7 @@
 **/
 
 
-(function() {
+;(function() {
   'use strict';
 
 

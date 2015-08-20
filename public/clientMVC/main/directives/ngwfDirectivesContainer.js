@@ -9,7 +9,7 @@
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
-(function () {
+;(function () {
 	'use strict';
 	
 	angular
