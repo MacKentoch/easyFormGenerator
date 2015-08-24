@@ -63,22 +63,28 @@ angular
     $scope.upThisGroupedSelectRow     = upThisGroupedSelectRow;
     $scope.downThisGroupedSelectRow   = downThisGroupedSelectRow;
 
-    $scope.demodt         = {};
+    $scope.demodt         = {}; 
     $scope.today          = today;
     $scope.clear          = clear;
-    $scope.open           = open;
+    $scope.open           = openfct;
     $scope.dateOptions    = dateOptionsInit(); 
     $scope.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    
+
+    $scope.nyaSelect                  = nyaSelect ;
+    $scope.nyaSelect.selectedControl  = $scope.nyaSelect.temporyConfig.selectedControl;
+    $scope.selectThisControl          = selectThisControl;
+    $scope.ok                         = okfct;
+    $scope.cancel                     = cancelfct;
 
 
 
-    $scope.today();
+    //init today date
+    today();
+    //init nyaSelect model depending selected control
+    initNyaSelectConformingSelectedControl();
 
-   
 
   
-
   
     function addNewOptionRadio(){
       var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
@@ -282,7 +288,7 @@ angular
       $scope.demodt.dt = null;
     } 
 
-    function open($event){
+    function openfct($event){
       $event.preventDefault();
       $event.stopPropagation();
       $scope.demodt.opened = true;
@@ -295,7 +301,45 @@ angular
         showWeeks: true,
         initDate: null
       };
+    }
+
+    function selectThisControl(controlName){
+      $scope.nyaSelect.selectedControl = 'none';
+      resetTemporyConfig();
+
+      for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+        if ($scope.nyaSelect.controls[i].id === controlName) {
+          $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
+        }
+      }
+
+      if ($scope.nyaSelect.selectedControl === 'Date') {
+        initDatePicker();
+      }
+    }  
+
+    function okfct() {
+      if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+        bindBasicSelectToNya();
+      }
+      if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+        bindGroupedSelectToNya();
+      }  
+      if ($scope.nyaSelect.selectedControl === 'Radio') {
+        bindRadioToNya();
+      }  
+      //save config to control
+      controllerModalProxy.applyConfigToSelectedControl($scope.nyaSelect);
+      //return current model to parent controller :
+      $modalInstance.close($scope.nyaSelect);
+    }
+
+    function cancelfct() {
+      $modalInstance.dismiss('cancel');
     }    
+
+
+
 
 
 
@@ -388,29 +432,56 @@ angular
       $scope.nyaSelect.temporyConfig.datepickerPopup = $scope.demodt.formats[0];  
     }    
 
+    function initNyaSelectConformingSelectedControl(){
+      //place nya-select to selection if not none :
+      if (nyaSelect.selectedControl !== 'none') {
+        for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+           if ($scope.nyaSelect.controls[i].id === nyaSelect.selectedControl) {
+              $scope.modelNyaSelect = nyaSelect.controls[i];
+           }
+        }
+        if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+          bindBasicSelectFromNYA();
+        }
+        if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+          bindGroupedSelectFromNYA();
+        } 
+        if ($scope.nyaSelect.selectedControl === 'Radio') {
+          bindRadioFromNYA();
+        }    
+      }
+    }
 
-
+    function resetTemporyConfig(){
+      $scope.nyaSelect.temporyConfig = {
+        formlyLabel: '', 
+        formlyRequired: false, 
+        formlyPlaceholder: '',
+        formlyDesciption: '',
+        formlyOptions: []
+      };   
+    }
 
 
   }
 
 
 
-ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope', 
-                                                                    '$modalInstance',
-                                      															'nyaSelect',
-                                                                    'toaster' ,
-                                                                    '$timeout',
-                                                                    'selectOptionManage',
-                                                                    'controllerModalProxy',
-                                      															function (	$scope, 
-                                                                                $modalInstance, 
-                                                                                nyaSelect, 
-                                                                                toaster,
-                                                                                $timeout,
-                                                                                selectOptionManage,
-                                                                                controllerModalProxy
-                                                                              ){
+// ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope', 
+//                                                                     '$modalInstance',
+//                                       															'nyaSelect',
+//                                                                     'toaster' ,
+//                                                                     '$timeout',
+//                                                                     'selectOptionManage',
+//                                                                     'controllerModalProxy',
+//                                       															function (	$scope, 
+//                                                                                 $modalInstance, 
+//                                                                                 nyaSelect, 
+//                                                                                 toaster,
+//                                                                                 $timeout,
+//                                                                                 selectOptionManage,
+//                                                                                 controllerModalProxy
+//                                                                               ){
 
 // var initOptionModel = {rows:[
 //                             ]
@@ -778,93 +849,93 @@ ngwfWfEditMODALController.controller('ngwfWfEditMODALController', [	'$scope',
   /////////////////////////////////////////////
   // init model from controller data
   /////////////////////////////////////////////
-  $scope.nyaSelect = nyaSelect ;
+  // $scope.nyaSelect = nyaSelect ;
     
-  //selected control from  main controller applied to current selected control
-  $scope.nyaSelect.selectedControl = $scope.nyaSelect.temporyConfig.selectedControl;
+  // //selected control from  main controller applied to current selected control
+  // $scope.nyaSelect.selectedControl = $scope.nyaSelect.temporyConfig.selectedControl;
 
 
-  //place nya-select to selection if not none :
-   if (nyaSelect.selectedControl !== 'none') {
-    for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
-       if ($scope.nyaSelect.controls[i].id === nyaSelect.selectedControl) {
-          //$scope.nyaSelect.selectedControl = nyaSelect.controls[i].id;
-          $scope.modelNyaSelect = nyaSelect.controls[i];
-       }
-    }
+  // //place nya-select to selection if not none :
+  //  if (nyaSelect.selectedControl !== 'none') {
+  //   for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+  //      if ($scope.nyaSelect.controls[i].id === nyaSelect.selectedControl) {
+  //         //$scope.nyaSelect.selectedControl = nyaSelect.controls[i].id;
+  //         $scope.modelNyaSelect = nyaSelect.controls[i];
+  //      }
+  //   }
 
-    if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
-      bindBasicSelectFromNYA();
-    }
+  //   if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+  //     bindBasicSelectFromNYA();
+  //   }
 
-    if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
-      bindGroupedSelectFromNYA();
-    } 
+  //   if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+  //     bindGroupedSelectFromNYA();
+  //   } 
 
-    if ($scope.nyaSelect.selectedControl === 'Radio') {
-      bindRadioFromNYA();
-    }    
+  //   if ($scope.nyaSelect.selectedControl === 'Radio') {
+  //     bindRadioFromNYA();
+  //   }    
 
-  }
-
-
-
-  function resetTemporyConfig(){
-    $scope.nyaSelect.temporyConfig = {
-                                        formlyLabel: '', 
-                                        formlyRequired: false, 
-                                        formlyPlaceholder: '',
-                                        formlyDesciption: '',
-                                        formlyOptions: []
-                                      };   
-  }
+  // }
 
 
 
-  $scope.selectThisControl = function(controlName){
-    $scope.nyaSelect.selectedControl = 'none';
-    resetTemporyConfig();
+  // function resetTemporyConfig(){
+  //   $scope.nyaSelect.temporyConfig = {
+  //                                       formlyLabel: '', 
+  //                                       formlyRequired: false, 
+  //                                       formlyPlaceholder: '',
+  //                                       formlyDesciption: '',
+  //                                       formlyOptions: []
+  //                                     };   
+  // }
 
-    for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
-       if ($scope.nyaSelect.controls[i].id === controlName) {
-          $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
-       }
-    }
 
-    if ($scope.nyaSelect.selectedControl === 'Date') {
-      initDatePicker();
-    }
-  };
+
+  // $scope.selectThisControl = function(controlName){
+  //   $scope.nyaSelect.selectedControl = 'none';
+  //   resetTemporyConfig();
+
+  //   for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+  //      if ($scope.nyaSelect.controls[i].id === controlName) {
+  //         $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
+  //      }
+  //   }
+
+  //   if ($scope.nyaSelect.selectedControl === 'Date') {
+  //     initDatePicker();
+  //   }
+  // };
 
 
 
   /////////////////////////
   // modal buttons click
   /////////////////////////
-  $scope.ok = function () {
+  // $scope.ok = function () {
 
-    if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
-      bindBasicSelectToNya();
-    }
+  //   if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+  //     bindBasicSelectToNya();
+  //   }
 
-    if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
-      bindGroupedSelectToNya();
-    }  
+  //   if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+  //     bindGroupedSelectToNya();
+  //   }  
 
-    if ($scope.nyaSelect.selectedControl === 'Radio') {
-      bindRadioToNya();
-    }  
+  //   if ($scope.nyaSelect.selectedControl === 'Radio') {
+  //     bindRadioToNya();
+  //   }  
 
-    //save config to control
-    controllerModalProxy.applyConfigToSelectedControl($scope.nyaSelect);
-    //return current model to parent controller :
-    $modalInstance.close($scope.nyaSelect);
+  //   //save config to control
+  //   controllerModalProxy.applyConfigToSelectedControl($scope.nyaSelect);
+  //   //return current model to parent controller :
+  //   $modalInstance.close($scope.nyaSelect);
 
-  };
+  // };
 
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+  // $scope.cancel = function () {
+  //   $modalInstance.dismiss('cancel');
+  // };
 
 
-}]);
+//}]);
