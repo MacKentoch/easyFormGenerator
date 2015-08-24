@@ -1,15 +1,26 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// module = "controllers"  for view "ngwfMainController"
-//  ------------------------------------------------------
-//      Syntax (convention) :
-//          "ngwfApp" = application
-//          "ngwfApp.controllers.ngwfMainController" = controller module
-//
-//  This module is a view controller -> it must be injected in controller container
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var ngwfMainController = angular.module('ngwfApp.controllers.ngwfMainController', []);
+/**
+ *  ------------------------------------------------------
+ *  module = "controller" main controller
+ *  ------------------------------------------------------
+ *
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 
-ngwfMainController.controller('ngwfMainController', ['$scope', function ($scope) {
-    //verbose
-    //console.log('--> INIT : Hello controller  \'\'ngwfMainController\'\' ');
-}]);
+;(function () {
+	'use strict';
+
+	angular
+		.module('ngwfApp.controllers.ngwfMainController', [])
+		.controller('ngwfMainController', ngwfMainController);
+
+		ngwfMainController.$inject = [];
+		function ngwfMainController(){
+
+		}
+
+})(); 
+
