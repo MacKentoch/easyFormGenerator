@@ -20,6 +20,7 @@
 **/
 
 (function () {
+
   'use strict';
 
   angular
@@ -37,10 +38,11 @@
       '$modal',
       '$log', 
       'formFieldManage',
-      'wfFormsByIdServices',
+      'WfFormsByIdServices',
       'controllerModalProxy',
     ];
 
+    
     function ngwfWfEditController(
                                     $scope, 
                                     easyFormGenVersion,
@@ -51,20 +53,20 @@
                                     $modal,
                                     $log, 
                                     formFieldManage, 
-                                    wfFormsByIdServices, 
+                                    WfFormsByIdServices, 
                                     controllerModalProxy
                                     ){
-
-
-      $scope.easyFormGeneratorVERSION = easyFormGenVersion;
-      $scope.debug                    = initDebugModel();
-      $scope.tab                      = initTabModel();
-      //formly control
+      /*jshint validthis: true */
       $scope.vm                       = this;
       $scope.vm.model                 = {};
       $scope.vm.wfFormFields          = [];
       $scope.vm.wfFormFieldsOnlyNeededProperties = []; 
       $scope.vm.onSubmit              = onSubmit;
+
+      $scope.easyFormGeneratorVERSION = easyFormGenVersion;
+      $scope.debug                    = initDebugModel();
+      $scope.tab                      = initTabModel();
+
       //configuration model (contains array of lines which contains array of columns)
       $scope.configuration            = {};    
                                
@@ -421,7 +423,7 @@
        *  - LOAD from database (list of forms)
        */
       function loadExistingFormsAsList(){
-        // $scope.formlyList = wfFormsByIdServices.query();
+        // $scope.formlyList = WfFormsByIdServices.query();
       }
       /**
        * saveThisForm 
@@ -455,21 +457,23 @@
                 body: 'Wait.',                
                 showCloseButton: true
         });
-        var wfForm = new wfFormsByIdServices();
+
+        
+        var WfForm = new WfFormsByIdServices();
         var formSavingIsOK = true;
 
-        wfForm.formName = $scope.configuration.formName;
-        wfForm.submitButtonText = $scope.configuration.submitButtonText;
-        wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+        WfForm.formName = $scope.configuration.formName;
+        WfForm.submitButtonText = $scope.configuration.submitButtonText;
+        WfForm.cancelButtonText = $scope.configuration.cancelButtonText;
 
-        wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+        WfForm.formlyField = JSON.stringify($scope.configuration.lines); 
 
         //------------------------------------------------------------------------------------------------------
         // UNCOMMENT TO MAKE IT SAVE TO DB 
-        // -> (assuming your service in wfFormsByIdServices is well configurered for your RESTfull server)
+        // -> (assuming your service in WfFormsByIdServices is well configurered for your RESTfull server)
         //------------------------------------------------------------------------------------------------------
         // save to database here 
-        // wfForm.$save()
+        // WfForm.$save()
         //             .then(function(res)  {    formSavingIsOK = true;    })
         //             .catch(function(req) { 
         //                                   toaster.clear();
