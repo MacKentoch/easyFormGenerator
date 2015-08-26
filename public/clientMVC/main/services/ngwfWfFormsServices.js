@@ -17,10 +17,10 @@
 	
 	angular
 		.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource'])
-		.factory('wfFormsByIdServices', wfFormsByIdServices);
+		.factory('WfFormsByIdServices', WfFormsByIdServices);
 
-		wfFormsByIdServices.$inject = ['$resource'];
-		function wfFormsByIdServices($resource){
+		WfFormsByIdServices.$inject = ['$resource'];
+		function WfFormsByIdServices($resource){
 			return $resource('/api/wfedit/:id', {id: '@id'}, {});
 		}
 
