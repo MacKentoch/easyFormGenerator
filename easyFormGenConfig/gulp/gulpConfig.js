@@ -50,6 +50,12 @@ module.exports = {
 				root: '',
 				standAlone: false
 			}
+	},
+	
+	//minify html
+	minifyHtmlOpts : {
+		conditionals : true,
+		spare : true
 	}
 	
 }

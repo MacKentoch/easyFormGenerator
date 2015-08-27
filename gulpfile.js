@@ -206,7 +206,7 @@ gulp.task('clean:app:lib', function (cb) {
 //==================================================
 gulp.task('templatecache:main', function() {
     return gulp
-        .src(gulpConfig.base.root + gulpConfig.templateCache.sourceFiles)
+        .src(gulpConfig.base.root + gulpConfig.templateCache.sourceDir + gulpConfig.templateCache.sourceFiles)
         .pipe(ngTemplateCache(
             gulpConfig.templateCache.destFile,
             gulpConfig.templateCache.options
