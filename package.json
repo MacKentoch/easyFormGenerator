@@ -26,6 +26,7 @@
   "devDependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
+    "gulp-angular-templatecache": "^1.7.0",
     "gulp-concat": "^2.5.2",
     "gulp-cssmin": "^0.1.7",
     "gulp-delete-lines": "0.0.7",
@@ -34,7 +35,6 @@
     "gulp-jshint": "^1.10.0",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.0",
-    "gulp-template": "^3.0.0",
     "gulp-uglify": "^1.2.0",
     "gulp-wrap": "^0.11.0",
     "jasmine-core": "^2.3.4",

@@ -1,13 +1,14 @@
-var gulp 				= require('gulp');
-var del    			= require('del');
-var jshint 			= require('gulp-jshint');
-var concat 			= require('gulp-concat');
-var uglify 			= require('gulp-uglify');
-var cssmin 			= require('gulp-cssmin');
-var sass 				= require('gulp-sass');
-var notify 			= require('gulp-notify');
-var wrap 				= require('gulp-wrap');
-var deleteLines = require('gulp-delete-lines');
+var gulp 								= require('gulp');
+var del    							= require('del');
+var jshint 							= require('gulp-jshint');
+var concat 							= require('gulp-concat');
+var uglify 							= require('gulp-uglify');
+var cssmin 							= require('gulp-cssmin');
+var sass 								= require('gulp-sass');
+var notify 							= require('gulp-notify');
+var wrap 								= require('gulp-wrap');
+var deleteLines 				= require('gulp-delete-lines');
+var anularTemplateCache = require('gulp-angular-templatecache');
 
 
 
