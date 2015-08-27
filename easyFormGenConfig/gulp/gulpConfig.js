@@ -43,7 +43,7 @@ module.exports = {
 	templateCache	: {
 			sourceDir		: 'src/app/stepway/htmlTemplates/',
 			sourceFiles : '**/*.html',
-			destDir 		: 'clientMVC/main/core/',	
+			destDir 		: 'src/app/stepway/core/',	
 			destFile		: 'ngwf.templates.js',
 			options 		: {
 				module: 'app.core.templates.js',

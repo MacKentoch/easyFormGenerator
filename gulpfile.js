@@ -9,6 +9,7 @@ var notify 							= require('gulp-notify');
 var wrap 								= require('gulp-wrap');
 var deleteLines 				= require('gulp-delete-lines');
 var ngTemplateCache 		= require('gulp-angular-templatecache');
+var minifyHtml					= require('gulp-minify-html');
 
 
 
@@ -207,7 +208,8 @@ gulp.task('clean:app:lib', function (cb) {
 gulp.task('templatecache:main', function() {
     return gulp
         .src(gulpConfig.base.root + gulpConfig.templateCache.sourceDir + gulpConfig.templateCache.sourceFiles)
-        .pipe(ngTemplateCache(
+        .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
+				.pipe(ngTemplateCache(
             gulpConfig.templateCache.destFile,
             gulpConfig.templateCache.options
         ))
