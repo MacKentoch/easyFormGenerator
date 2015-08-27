@@ -213,7 +213,7 @@ gulp.task('templatecache:main', function() {
             gulpConfig.templateCache.destFile,
             gulpConfig.templateCache.options
         ))
-        .pipe(gulp.dest(gulpConfig.base.publicDir + gulpConfig.templateCache.destDir));
+        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.destDir));
 });
 
 //==================================================

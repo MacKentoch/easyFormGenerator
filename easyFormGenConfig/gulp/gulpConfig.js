@@ -46,7 +46,7 @@ module.exports = {
 			destDir 		: 'src/app/stepway/core/',	
 			destFile		: 'ngwf.templates.js',
 			options 		: {
-				module: 'app.core.templates.js',
+				module: 'ngwfApp',
 				root: '',
 				standAlone: false
 			}
