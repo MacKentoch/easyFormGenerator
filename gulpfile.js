@@ -8,7 +8,7 @@ var sass 								= require('gulp-sass');
 var notify 							= require('gulp-notify');
 var wrap 								= require('gulp-wrap');
 var deleteLines 				= require('gulp-delete-lines');
-var anularTemplateCache = require('gulp-angular-templatecache');
+var ngTemplateCache 		= require('gulp-angular-templatecache');
 
 
 
@@ -200,6 +200,20 @@ gulp.task('clean:app:lib', function (cb) {
     'public/lib/**/*'
   ], cb);
 });
+
+//==================================================
+//ANGULAR TEMPLATES CACHE : main
+//==================================================
+gulp.task('templatecache:main', function() {
+    return gulp
+        .src(gulpConfig.base.root + gulpConfig.templateCache.sourceFiles)
+        .pipe(ngTemplateCache(
+            gulpConfig.templateCache.destFile,
+            gulpConfig.templateCache.options
+        ))
+        .pipe(gulp.dest(gulpConfig.base.publicDir + gulpConfig.templateCache.destDir));
+});
+
 //==================================================
 //SCRIPTS TASKS : main
 //==================================================

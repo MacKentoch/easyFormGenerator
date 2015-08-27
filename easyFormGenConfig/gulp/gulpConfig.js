@@ -39,20 +39,18 @@ module.exports = {
 		}
 	},
 	
-	
 	//templateCache config
-	gulpTplsCache : {
-    sourceFiles 	: '/**/*.html',
-    templateCache	: {
-				sourceFiles : '/src/app/stepway/htmlTemplates/templates.js',
-        destFile		: '/public/clientMVC/main/core/templates.js',
-        options 		: {
-					module: 'app.core',
-					root: 'app/',
-					standAlone: false
-        }
-    }
-	}	
+	templateCache	: {
+			sourceDir		: 'src/app/stepway/htmlTemplates/',
+			sourceFiles : '**/*.html',
+			destDir 		: 'clientMVC/main/core/',	
+			destFile		: 'templates.js',
+			options 		: {
+				module: 'app.core.templates.js',
+				root: '',
+				standAlone: false
+			}
+	}
 	
 }
 
