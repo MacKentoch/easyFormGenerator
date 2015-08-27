@@ -18,20 +18,12 @@
 
   angular
     .module('ngwfApp', [  
-                          'ngwfApp.controllers',
-                          'ngwfApp.services', 
-                          'ngwfApp.filters',
-                          'ngwfApp.directives',
-                          'textAngular',
-                          'textAngularSetup',
-                          'ngAnimate',
-                          'toaster',                      
-                          'formly', 
-                          'formlyBootstrap',
-                          'ui.bootstrap',
-                          'nya.bootstrap.select'
-                        ]
-            )
+      'ngwfApp.core',
+      'ngwfApp.controllers',
+      'ngwfApp.services', 
+      'ngwfApp.filters',
+      'ngwfApp.directives'
+    ])
     .value('easyFormGenVersion', 'v1.0.7')
     .config(configfct);
 

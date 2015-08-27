@@ -45,6 +45,7 @@ var clientMVC={
 	directives 		: ['public/clientMVC/main/directives/**/*.js'],
 	filters 			: ['public/clientMVC/main/filters/**/*.js'],
 	services 			: ['public/clientMVC/main/services/**/*.js'],
+	core 					: ['public/clientMVC/main/core/**/*.js'],
 	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
 };
 
@@ -236,6 +237,7 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
 //==========================================================
 gulp.task('scripts:clientMVC:dev', [], function() {
  gulp.src(		clientMVC.app
+ 				.concat(clientMVC.core)
  				.concat(clientMVC.controllers)
  				.concat(clientMVC.directives)
  				.concat(clientMVC.filters)
