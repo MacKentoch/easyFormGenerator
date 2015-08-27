@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/lodash/lodash.d.ts"/>
-/// <reference path="../../../typings/angularjs/angular.d.ts"/>
 /**
  *  -----------------------------------------------------------------------
  *  application module of the step way version of easy form generator

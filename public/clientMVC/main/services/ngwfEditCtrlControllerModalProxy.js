@@ -22,11 +22,11 @@
 		function controllerModalProxy(){
 			
 			var service = {
-				initNyaSelect : initNyaSelect,
-				getNyASelectFromSelectedLineColumn: getNyASelectFromSelectedLineColumn,
-				bindConfigurationModelFromModalReturn : bindConfigurationModelFromModalReturn,
-				applyConfigToSelectedControl : applyConfigToSelectedControl,
-				resetTemporyConfig : resetTemporyConfig
+				initNyaSelect 													: initNyaSelect,
+				getNyASelectFromSelectedLineColumn 			: getNyASelectFromSelectedLineColumn,
+				bindConfigurationModelFromModalReturn 	: bindConfigurationModelFromModalReturn,
+				applyConfigToSelectedControl 						: applyConfigToSelectedControl,
+				resetTemporyConfig 											: resetTemporyConfig
 			};
 			
 			return service;
