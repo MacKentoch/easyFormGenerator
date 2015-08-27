@@ -1,3 +1,6 @@
+var bowerFiles 	= require('./bowerFiles');
+var appFiles		= require('./appFiles');
+
 module.exports = {
 	
 	//directories bases
@@ -12,27 +15,37 @@ module.exports = {
 	//source files
 	srcFiles : {
 		app : {
-			js : '',
-			sass : '',
-			htmlTemplates : ''
-		},
-		vendor : {
-			js 		: '',
-			css 	: '', 
-			fonts : ''
+			stepway : {
+				js 						: appFiles.stepway.js,
+				sass 					: 'src/sass/stepway/**/*.scss',
+				htmlTemplates : 'src/app/stepway/htmlTemplates/**/*.html'			
+			},
+			dragAndDropWay : {
+				js 						: appFiles.dragdropway.js,
+				sass 					: 'src/sass/dragdropway/**/*.scss',
+				htmlTemplates : 'src/app/dragdropway/htmlTemplates/**/*.html'				
+			}
 		},
 		bowerFiles : {
-			js 		: '',
-			css 	: '',
-			fonts : '',
-			maps 	: ''
+			js 		: {
+				noConcat : bowerFiles.bowerComponentsNoConcatJS,
+				toConcat : bowerFiles.bower_components_js
+			},
+			css 	: {
+				noMinify 					: bowerFiles.bower_components_css,
+				toMinify 					: bowerFiles.bower_textAngular_css,
+				toCleanAndMinify 	: bowerFiles.bower_clean_paper_boostrap_css
+			},
+			fonts : bowerFiles.bower_components_fonts,
+			maps 	: bowerFiles.bower_components_map
 		}
 	},
 	
 	//destination files
 	destFiles : {
 		app : {
-			
+			stepway 				: '',
+			dragAndDropWay 	: ''
 		},
 		vendor : {
 			

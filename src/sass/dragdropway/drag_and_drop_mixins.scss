@@ -1,0 +1,106 @@
+
+//  =======================================================================
+//media queries pour container
+$smartphone-min-width: 768px;
+$tablette-min-width:992px;
+$bureau-min-width:1200px;
+
+
+ @mixin media-bureau-min-width {
+	  @media (min-width: $bureau-min-width) 
+	  {
+		@content
+	  }
+  }
+
+@mixin media-smartphone-min-width 
+{
+	  @media (min-width: $smartphone-min-width) 
+	  {
+		@content
+	  }
+  }
+
+@mixin media-tablette-min-width 
+{
+	  @media (min-width: $tablette-min-width)
+	  {
+		@content
+	  }
+ }
+
+
+ //  =======================================================================
+@mixin animation-mixin($surProprietes, $TypeEase, $delay)
+{
+	-moz-transition: $surProprietes $delay $TypeEase;
+	-o-transition:  $surProprietes $delay $TypeEase;
+	-webkit-transition:  $surProprietes $delay $TypeEase;
+	transition:  $surProprietes $delay $TypeEase; 
+} 		
+
+
+ //  =======================================================================
+ //effets d'ombre 
+ //REMARQUE : "$inset:null" => rend le parametre optionnel
+ @mixin box-shadow-mix($x-shadow, $y-shadow, $blur, $spread-distance,$couleur-ombre, $inset:null)
+ {
+	//voir preview pour ajuster les parametre. 
+	//Par exemple ici : http://www.debray-jerome.fr/outils/Generateur-de-box-shadow-css3.html
+	
+	//test si inset est affecte d'une valeur
+	@if($inset){
+		-moz-box-shadow: $inset $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		-webkit-box-shadow: $inset $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		-o-box-shadow: $inset $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		box-shadow: $inset $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;		
+	}
+	@else
+	{
+		-moz-box-shadow:  $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		-webkit-box-shadow:  $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		-o-box-shadow:  $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;
+		box-shadow:  $x-shadow $y-shadow $blur $spread-distance  $couleur-ombre;		
+	}
+ }
+
+ @mixin box-shadow-mix-simple($x-shadow, $y-shadow, $spread-distance,$couleur-ombre, $inset:null)
+ {
+	@if($inset){
+ 		-moz-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre $inset ;
+		-webkit-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre $inset;
+		-o-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre $inset;
+		box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre $inset;
+	}
+	@else
+	{
+ 		-moz-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre ;
+		-webkit-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre;
+		-o-box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre;
+		box-shadow: $x-shadow $y-shadow $spread-distance $couleur-ombre;			
+	}
+ }
+
+ @mixin clearFix-isotope(){
+ 	  content: '';
+	  display: block;
+	  clear: both;	
+ }
+
+  @mixin clearFix-table-like-li(){
+ 	  content: '';
+	  display: block;
+	  clear: both;	
+ }
+
+
+ @mixin mix-transition($property, $duration, $fonction)
+ {
+	-moz-transition:		$property $duration $fonction;
+	-o-transition:			$property $duration $fonction;
+	-webkit-transition:		$property $duration $fonction;
+	transition:				$property $duration $fonction;		
+ } 
+
+
+

@@ -21,6 +21,7 @@
 		
 		function ngwfEditModalDirective(){
 			var directive = {
+				restrict : 'AE',
 				replace : true,
 				templateUrl : 'editModalTemplate.html'
 			}
