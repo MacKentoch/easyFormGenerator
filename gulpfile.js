@@ -33,7 +33,6 @@ var bases ={
 };
 
 var scriptFileNames={
-	scripts_with_navbar 				: 'app_nav.min.js',
 	angularDragAndDrop					: 'angular-drag-and-drop-lists.min.js',
 	clientMvcOutput 						: 'clientMVC.min.js',
 	clientMvcDragAndDropOutput 	: 'clientMVC.min.js',
@@ -190,7 +189,6 @@ bower_components_fonts: 	[
 //clean all the js in ./public/js (app)
 gulp.task('clean:app:scripts_css', function (cb) {
   del([
-    'public/js/' + scriptFileNames.scripts_with_navbar,
     'public/js/' + scriptFileNames.angularDragAndDrop,
     'public/css/' + app_main_css.css_result	
   ], cb);
@@ -221,15 +219,6 @@ gulp.task('templatecache:main', function() {
 //==================================================
 // Process scripts and concatenate them into one output file
 gulp.task('build', ['clean:app:scripts_css'], function() {
- // //script main app with navabar	
- gulp.src(paths.scriptsWithNav, {cwd: bases.app})
- .pipe(jshint())
- .pipe(jshint.reporter('default'))
- .pipe(uglify())
- .pipe(concat(scriptFileNames.scripts_with_navbar))
- .pipe(gulp.dest(bases.app + 'public/js/')
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-
 
  //textAngularcss minify
  gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
@@ -240,20 +229,19 @@ gulp.task('build', ['clean:app:scripts_css'], function() {
 
  //sass main 
  gulp.src(paths.sass_main_files, {cwd: bases.app})
-
 	.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
-    .pipe(concat('main.min.css'))
-    .pipe(cssmin())     
+  .pipe(concat('main.min.css'))
+  .pipe(cssmin())     
  	.pipe(wrap(decorate.templateCSS))    
-    .pipe(gulp.dest(bases.app + 'public/css'));
+  .pipe(gulp.dest(bases.app + 'public/css'));
  
 
  //sass drag_and_drop
  gulp.src(paths.sass_dragAndDrop_files, {cwd: bases.app})
-	.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
     .pipe(concat('drag_and_drop.min.css'))
     .pipe(cssmin())     
- 	.pipe(wrap(decorate.templateCSS))    
+ 		.pipe(wrap(decorate.templateCSS))    
     .pipe(gulp.dest(bases.app + 'public/css'));
  });
 

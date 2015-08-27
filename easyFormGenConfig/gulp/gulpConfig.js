@@ -41,14 +41,30 @@ module.exports = {
 		}
 	},
 	
+	//destination directories
+	destDirs : {
+		app : {
+			js 	: 'public/js/',
+			css : 'public/css/' 
+		}
+	},
+	
 	//destination files
 	destFiles : {
 		app : {
-			stepway 				: '',
-			dragAndDropWay 	: ''
+			stepway 				: {
+				js : 'eda.stepway.js',
+				css: 'eda.stepway.css',
+			},
+			dragAndDropWay 	: {
+				js : 'eda.dragdropway.js',
+				css: 'eda.dragdropway.js',
+			}
 		},
 		vendor : {
-			
+			js 		: 'public/lib/js/',
+			css 	: 'public/lib/css/',
+			fonts : 'public/lib/fonts'
 		}
 	},
 	
