@@ -44,7 +44,7 @@ module.exports = {
 			sourceDir		: 'src/app/stepway/htmlTemplates/',
 			sourceFiles : '**/*.html',
 			destDir 		: 'clientMVC/main/core/',	
-			destFile		: 'templates.js',
+			destFile		: 'ngwf.templates.js',
 			options 		: {
 				module: 'app.core.templates.js',
 				root: '',
