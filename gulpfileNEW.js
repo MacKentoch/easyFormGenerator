@@ -244,13 +244,13 @@ gulp.task('stepway:templatecache', function() {
 
 gulp.task('dragdropway:templatecache', function() {
     return gulp
-        .src(gulpConfig.base.root + gulpConfig.templateCache.sourceDir + gulpConfig.templateCache.sourceFiles)
+        .src(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.sourceDir + gulpConfig.templateCache.dragdropway.sourceFiles)
         .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
 				.pipe(ngTemplateCache(
-            gulpConfig.templateCache.destFile,
-            gulpConfig.templateCache.options
+            gulpConfig.templateCache.dragdropway.destFile,
+            gulpConfig.templateCache.dragdropway.options
         ))
-        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.destDir));
+        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.destDir));
 });
 
 
