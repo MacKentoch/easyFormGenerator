@@ -1,5 +1,6 @@
 var bowerFiles 	= require('./bowerFiles');
 var appFiles		= require('./appFiles');
+var appConfig 	= require('../app/appConfig');
 
 module.exports = {
 	
@@ -85,7 +86,62 @@ module.exports = {
 	minifyHtmlOpts : {
 		conditionals : true,
 		spare : true
-	}
+	},
+	
+	
+	//decorate
+	decorate : {
+		
+		stepway  : {
+			templateJS: [
+										'/** \n' , 
+										' *easyFormGenerator \n',
+										' *Version ' +  appConfig.version.stepWay + ' \n',
+										' *Author : Erwan Datin (MacKentoch) \n', 
+										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
+										' *License : MIT (2015) \n',
+										'**/ \n',
+										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
+									].join(' '),
+		
+			templateCSS: 	[
+											'/*! \n' + 
+											' * easyFormGenerator \n' + 
+											' * Version ' + appConfig.version.stepWay + ' \n' + 				
+											' * Author : Erwan Datin (MacKentoch) \n' +
+											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
+											' * License : 2015 MIT \n' + 								
+											'*/ \n' +
+											'\n<%= contents %>\n'
+										].join('') 
+			},
+			
+		dragdropway  : {
+			templateJS: [
+										'/** \n' , 
+										' *easyFormGenerator \n',
+										' *Version ' +  appConfig.version.dragAndDropWay + ' \n',
+										' *Author : Erwan Datin (MacKentoch) \n', 
+										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
+										' *License : MIT (2015) \n',
+										'**/ \n',
+										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
+									].join(' '),
+		
+			templateCSS: 	[
+											'/*! \n' + 
+											' * easyFormGenerator \n' + 
+											' * Version ' + appConfig.version.dragAndDropWay + ' \n' + 				
+											' * Author : Erwan Datin (MacKentoch) \n' +
+											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
+											' * License : 2015 MIT \n' + 								
+											'*/ \n' +
+											'\n<%= contents %>\n'
+										].join('') 
+			},				
+			
+			
+		}
 	
 }
 
