@@ -252,7 +252,38 @@ gulp.task('dragdropway:templatecache', function() {
         ))
         .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.destDir));
 });
+/**
+ * -------------------------------
+ * VENDORS CSS TASKS
+ * -------------------------------
+ */
+//vendor:css subtask
+gulp.task('vendor:css:minifyOnly', function(){
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.noMinify)
+		.pipe(cssmin())
+		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+});
+//vendor:css subtask
+gulp.task('vendor:css:minifyAndClean', function(){
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify)
+		.pipe(cssmin())
+		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+});
 
+//vendor:css TASK
+gulp.task('vendor:css', 
+	[
+		'vendor:css:minifyOnly', 
+		'vendor:css:minifyAndClean'
+	],  
+	function(){
+		gulp.src(
+				gulpConfig.srcFiles.bowerFiles.css.noMinify
+					.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+			)
+				.pipe(cssmin())
+				.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+});
 
 //==================================================
 //SCRIPTS TASKS : main

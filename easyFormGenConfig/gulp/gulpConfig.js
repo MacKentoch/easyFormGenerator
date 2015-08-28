@@ -33,9 +33,10 @@ module.exports = {
 				toConcat : bowerFiles.bower_components_js
 			},
 			css 	: {
-				noMinify 					: bowerFiles.bower_components_css,
+				noMinify 					: bowerFiles.bower_components_css,		
 				toMinify 					: bowerFiles.bower_textAngular_css,
-				toCleanAndMinify 	: bowerFiles.bower_clean_paper_boostrap_css
+				toCleanAndMinify 	: bowerFiles.bower_clean_paper_boostrap_css,
+				minifyInThisDir 	: 'src/vendor/css'
 			},
 			fonts : bowerFiles.bower_components_fonts,
 			maps 	: bowerFiles.bower_components_map
@@ -43,11 +44,16 @@ module.exports = {
 	},
 	
 	//destination directories
-	destDirs : {
+	destDirs : {		
 		app : {
 			js 	: 'public/js/',
 			css : 'public/css/' 
-		}
+		},
+		vendor : {
+			js 		: 'public/lib/js/',
+			css 	: 'public/lib/css/',
+			fonts : 'public/lib/fonts'
+		}		
 	},
 	
 	//destination files
@@ -63,9 +69,8 @@ module.exports = {
 			}
 		},
 		vendor : {
-			js 		: 'public/lib/js/',
-			css 	: 'public/lib/css/',
-			fonts : 'public/lib/fonts'
+			js 		: 'vendors.js',
+			css 	: 'vendor.css'
 		}
 	},
 	
