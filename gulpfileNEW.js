@@ -18,13 +18,16 @@ var minifyHtml					= require('gulp-minify-html');
  * CONFIGS
  * ////////////////////////////////////////////////////////////////
  */
+var appConfig = require('./easyFormGenConfig/app/appConfig');
+var gulpConfig = require('./easyFormGenConfig/gulp/gulpConfig');
+
+
 var version = {
 	build: '1.1.3'
 	//build: '1.0.7'
 };
 
-var appConfig = require('./easyFormGenConfig/app/appConfig');
-var gulpConfig = require('./easyFormGenConfig/gulp/gulpConfig');
+
 
 
 
@@ -178,32 +181,68 @@ bower_components_fonts: 	[
 };
  
 
-///////////////////////////////////////////////////////////////////////
-// GULP TASKS
-///////////////////////////////////////////////////////////////////////
 
 
-//==================================================
-//CLEANING TASKS
-//==================================================
-//clean all the js in ./public/js (app)
-gulp.task('clean:app:scripts_css', function (cb) {
-  del([
-    'public/js/' + scriptFileNames.angularDragAndDrop,
-    'public/css/' + app_main_css.css_result	
-  ], cb);
+
+
+
+
+
+
+
+/**
+ * ------------------
+ * CLEANING TASKS :
+ * ------------------
+ * - dist (all)
+ * - public (all)
+ * - public (only stepway)
+ * - public (only dragdropway)
+ */
+
+//clean all dist
+gulp.task('dist:clean', function (cb) {
+  del([gulpConfig.base.distDir + '**/*'], cb);
 });
-//clean all content public/lib/ directory
-gulp.task('clean:app:lib', function (cb) {
-  del([
-    'public/lib/**/*'
-  ], cb);
+
+//clean all public
+gulp.task('public:clean', function (cb) {
+  del([gulpConfig.base.publicDir + '**/*'], cb);
 });
 
-//==================================================
-//ANGULAR TEMPLATES CACHE : main
-//==================================================
-gulp.task('templatecache:main', function() {
+//clean public : stepway
+gulp.task('stepway:clean', function (cb) {
+  del([
+		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.stepway.js,
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.stepway.css,
+		], cb);
+});
+
+//clean public : dragdropway
+gulp.task('dragdropway:clean', function (cb) {
+  del([
+		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.dragAndDropWay.js,
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.dragAndDropWay.css,
+		], cb);
+});
+
+/**
+ * -------------------------------
+ * ANGULAR TEMPLATES CACHE  TASKS
+ * -------------------------------
+ */
+gulp.task('stepway:templatecache', function() {
+    return gulp
+        .src(gulpConfig.base.root + gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles)
+        .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
+				.pipe(ngTemplateCache(
+            gulpConfig.templateCache.stepway.destFile,
+            gulpConfig.templateCache.stepway.options
+        ))
+        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.stepway.destDir));
+});
+
+gulp.task('dragdropway:templatecache', function() {
     return gulp
         .src(gulpConfig.base.root + gulpConfig.templateCache.sourceDir + gulpConfig.templateCache.sourceFiles)
         .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
@@ -213,6 +252,7 @@ gulp.task('templatecache:main', function() {
         ))
         .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.destDir));
 });
+
 
 //==================================================
 //SCRIPTS TASKS : main

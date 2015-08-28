@@ -71,6 +71,7 @@ module.exports = {
 	
 	//templateCache config
 	templateCache	: {
+		stepway : {
 			sourceDir		: 'src/app/stepway/htmlTemplates/',
 			sourceFiles : '**/*.html',
 			destDir 		: 'src/app/stepway/core/',	
@@ -79,7 +80,21 @@ module.exports = {
 				module: 'ngwfApp',
 				root: '',
 				standAlone: false
-			}
+			}			
+		},
+		dragdropway : {
+			sourceDir		: 'src/app/dragdropway/htmlTemplates/',
+			sourceFiles : '**/*.html',
+			destDir 		: 'src/app/dragdropway/core/',	
+			destFile		: 'eda.templates.js',
+			options 		: {
+				module: 'edaApp',
+				root: '',
+				standAlone: false
+			}			
+		},		
+		
+
 	},
 	
 	//minify html
