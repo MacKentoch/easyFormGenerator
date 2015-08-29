@@ -10,6 +10,9 @@ var wrap 								= require('gulp-wrap');
 var deleteLines 				= require('gulp-delete-lines');
 var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
+var sourcemaps 					= require('gulp-sourcemaps');
+
+
 
 
 
@@ -65,9 +68,12 @@ gulp.task('dragdropway:clean', function (cb) {
 
 
 
+
+
+
 /**
  * -------------------------------
- * ANGULAR TEMPLATES CACHE  TASKS
+ * APP ANGULAR TEMPLATES CACHE  TASKS
  * -------------------------------
  */
 gulp.task('stepway:templatecache', function() {
@@ -91,6 +97,9 @@ gulp.task('dragdropway:templatecache', function() {
         ))
         .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.destDir));
 });
+
+
+
 
 
 
@@ -167,47 +176,84 @@ gulp.task('vendor:css',
 
 
 
-//==========================================================
-//SCRIPTS TASKS : client MVC (angular JS) - dev = no uglify
-//==========================================================
-gulp.task('scripts:clientMVC:dev', [], function() {
- gulp.src(		clientMVC.app
- 				.concat(clientMVC.core)
- 				.concat(clientMVC.controllers)
- 				.concat(clientMVC.directives)
- 				.concat(clientMVC.filters)
- 				.concat(clientMVC.services),
- 				{cwd: bases.app})
- .pipe(jshint())
- .pipe(jshint.reporter('default'))
- //.pipe(uglify())   //uncomment to uglify
- .pipe(concat(scriptFileNames.clientMvcOutput))
- .pipe(wrap(decorate.templateJS))
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
- .pipe(gulp.dest(bases.app + 'public/clientMVC/main/'));
+/**
+ * -------------------------------
+ * APP JS TASKS (STEPWAY WAY)
+ * -------------------------------
+ */
+gulp.task('app:js:stepway', [], function() {
+	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
+	if(appConfig.environment.current === 'PROD'){
+		//prod version
+		gulp.src(gulpConfig.srcFiles.app.stepway.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(sourcemaps.init())	
+			.pipe(uglify()) 
+			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
+			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
+			.pipe(sourcemaps.write('./'))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+		);
+	}else{
+		//dev version (no uglify/no source map)
+		gulp.src(gulpConfig.srcFiles.app.stepway.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
+			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+		);
+	}
+
 });
 
 
-//================================================================================
-//SCRIPTS TASKS : client MVC -drag & drop version (angular JS) - dev = no uglify
-//================================================================================
-gulp.task('scripts:clientMVC_dragDrop:dev', [], function() {
- gulp.src(		clientMVC_dragDrop.app
- 				.concat(clientMVC_dragDrop.controllers)
- 				.concat(clientMVC_dragDrop.directives)
- 				.concat(clientMVC_dragDrop.filters)
- 				.concat(clientMVC_dragDrop.services)
- 				.concat(clientMVC_dragDrop.providers)
- 				.concat(clientMVC_dragDrop.configs),
- 				{cwd: bases.app})
- .pipe(jshint())
- .pipe(jshint.reporter('default'))
- //.pipe(uglify())   //uncomment to uglify
- .pipe(concat(scriptFileNames.clientMvcDragAndDropOutput))
- .pipe(wrap(decorate.templateJS))
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
- .pipe(gulp.dest(bases.app + 'public/clientMVC/dragDrop/'));
+/**
+ * -------------------------------
+ * APP JS TASKS (DRAGDROP WAY)
+ * -------------------------------
+ */
+gulp.task('app:js:dragdropway', [], function() {
+	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
+	if(appConfig.environment.current === 'PROD'){
+		//prod version
+		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(sourcemaps.init())	
+			.pipe(uglify()) 
+			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
+			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
+			.pipe(sourcemaps.write('./'))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+		);
+	}else{
+		//dev version (no uglify/no source map)
+		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
+			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+		);
+	}
+
 });
+
+
+
+
+
+
 
 //==================================================
 //LIB : SCRIPTS for HEADER (vendor) : jquery, angular....

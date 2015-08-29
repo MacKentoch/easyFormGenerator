@@ -24,7 +24,7 @@
 				restrict : 'AE',
 				replace : true,
 				templateUrl : 'editModalTemplate.html'
-			}
+			};
 			return directive;
 		}
 		
