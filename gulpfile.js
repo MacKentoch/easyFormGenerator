@@ -153,8 +153,8 @@ gulp.task('vendor:css',
  * -------------------------------
  */
 gulp.task('vendor:fonts', function(){	
- gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, {cwd: gulpConfig.base.root })
- .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, {cwd: gulpConfig.base.root }))
+ gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, { cwd: gulpConfig.base.root })
+ .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }))
 });
 
 
@@ -285,31 +285,31 @@ gulp.task('app:js:dragdropway', [], function() {
  * ------------------------------------------------------------
  */
 
-gulp.task('lib', ['clean:app:lib'], function(){
-
-/////////////////
-//HEADER scripts
-/////////////////
-//copy bower APP-> app/public/lib/js	
- gulp.src(	paths.bower_angularjs
- 				.concat(paths.bower_angular_loadingbarjs)
- 				.concat(paths.bower_html5shiv)
- 				.concat(paths.bower_respondJS), 
- 			{cwd: bases.app}) 
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
- .pipe(gulp.dest(bases.app + 'public/lib/js/'));
-
-/////////////////
-//FOOTER scripts
-/////////////////
-//copy bower APP -> app/public/lib/js	
- gulp.src(paths.bower_components_js, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/js/')
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-
- // APP : chrome needs map, so jquery map copy here
- gulp.src(paths.bower_components_map, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/js/'));
+// gulp.task('lib', ['clean:app:lib'], function(){
+// 
+// /////////////////
+// //HEADER scripts
+// /////////////////
+// //copy bower APP-> app/public/lib/js	
+//  gulp.src(	paths.bower_angularjs
+//  				.concat(paths.bower_angular_loadingbarjs)
+//  				.concat(paths.bower_html5shiv)
+//  				.concat(paths.bower_respondJS), 
+//  			{cwd: bases.app}) 
+//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+//  .pipe(gulp.dest(bases.app + 'public/lib/js/'));
+// 
+// /////////////////
+// //FOOTER scripts
+// /////////////////
+// //copy bower APP -> app/public/lib/js	
+//  gulp.src(paths.bower_components_js, {cwd: bases.app })
+//  .pipe(gulp.dest(bases.app + 'public/lib/js/')
+//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
+// 
+//  // APP : chrome needs map, so jquery map copy here
+//  gulp.src(paths.bower_components_map, {cwd: bases.app })
+//  .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
 // /////////////////
 // //HEADER css  
