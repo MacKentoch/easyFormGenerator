@@ -78,24 +78,26 @@ gulp.task('dragdropway:clean', function (cb) {
  */
 gulp.task('stepway:templatecache', function() {
     return gulp
-        .src(gulpConfig.base.root + gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles)
+        .src(gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles, 
+					{ cwd: gulpConfig.base.root })
         .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
 				.pipe(ngTemplateCache(
             gulpConfig.templateCache.stepway.destFile,
             gulpConfig.templateCache.stepway.options
         ))
-        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.stepway.destDir));
+        .pipe(gulp.dest(gulpConfig.templateCache.stepway.destDir, { cwd: gulpConfig.base.root }));
 });
 
 gulp.task('dragdropway:templatecache', function() {
     return gulp
-        .src(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.sourceDir + gulpConfig.templateCache.dragdropway.sourceFiles)
+        .src(gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles, 
+					{ cwd: gulpConfig.base.root })
         .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
 				.pipe(ngTemplateCache(
-            gulpConfig.templateCache.dragdropway.destFile,
-            gulpConfig.templateCache.dragdropway.options
+            gulpConfig.templateCache.dragAndDropWay.destFile,
+            gulpConfig.templateCache.dragAndDropWay.options
         ))
-        .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.destDir));
+        .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
 });
 
 
@@ -112,17 +114,17 @@ gulp.task('dragdropway:templatecache', function() {
  */
 //vendor:css subtask
 gulp.task('vendor:css:minifyOnly', function(){
-	gulp.src(gulpConfig.srcFiles.bowerFiles.css.noMinify)
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.noMinify, { cwd: gulpConfig.base.root })
 		.pipe(cssmin())
-		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
 });
 //vendor:css subtask
 gulp.task('vendor:css:minifyAndClean', function(){
-	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify)
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify, { cwd: gulpConfig.base.root })
 		.pipe(deleteLines({ 'filters': [/^@import url/] }))
 		.pipe(cssmin())
 		.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
 });
 
 
@@ -133,12 +135,11 @@ gulp.task('vendor:css',
 		'vendor:css:minifyAndClean'
 	],  
 	function(){
-		gulp.src(
-				gulpConfig.srcFiles.bowerFiles.css.noMinify
-					.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
-			)
+		gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
+							.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+							,{ cwd: gulpConfig.base.root })
 				.pipe(concat(gulpConfig.destFiles.vendor.css))
-				.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.vendor.css))
+				.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
 });
 
 
@@ -168,12 +169,12 @@ gulp.task('vendor:fonts', function(){
 
  //sass : stepway
  gulp.task('app:sass:stepway', function(){
-	gulp.src(gulpConfig.srcFiles.app.stepway.sass)
+	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
 		.pipe(cssmin())     
 		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))    
-		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.css));	 
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));	 
  });
  
 /**
@@ -183,12 +184,12 @@ gulp.task('vendor:fonts', function(){
  */
  //sass drag_and_drop
  gulp.task('app:sass:dragdropway', function(){
-	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass)
+	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
 		.pipe(cssmin())     
 		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
-		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.css));
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 });
 
 
@@ -218,7 +219,7 @@ gulp.task('app:js:stepway', [], function() {
 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
 			.pipe(sourcemaps.write('./'))
 			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
 		);
 	}else{
 		//dev version (no uglify/no source map)
@@ -229,7 +230,7 @@ gulp.task('app:js:stepway', [], function() {
 			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
 			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
 		);
 	}
 
@@ -255,7 +256,7 @@ gulp.task('app:js:dragdropway', [], function() {
 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
 			.pipe(sourcemaps.write('./'))
 			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
 		);
 	}else{
 		//dev version (no uglify/no source map)
@@ -266,7 +267,7 @@ gulp.task('app:js:dragdropway', [], function() {
 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
 			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-			.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.js)
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
 		);
 	}
 
