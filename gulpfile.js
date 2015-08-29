@@ -119,9 +119,12 @@ gulp.task('vendor:css:minifyOnly', function(){
 //vendor:css subtask
 gulp.task('vendor:css:minifyAndClean', function(){
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify)
+		.pipe(deleteLines({ 'filters': [/^@import url/] }))
 		.pipe(cssmin())
+		.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
 		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
 });
+
 
 //vendor:css TASK : concat css, copyt to public dir
 gulp.task('vendor:css', 
@@ -136,6 +139,22 @@ gulp.task('vendor:css',
 			)
 				.pipe(concat(gulpConfig.destFiles.vendor.css))
 				.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.vendor.css))
+});
+
+
+
+
+
+
+
+/**
+ * -------------------------------
+ * VENDORS FONTS COPY TASK
+ * -------------------------------
+ */
+gulp.task('vendor:fonts', function(){	
+ gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, {cwd: gulpConfig.base.root })
+ .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, {cwd: gulpConfig.base.root }))
 });
 
 
@@ -171,6 +190,10 @@ gulp.task('vendor:css',
 		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
 		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.css));
 });
+
+
+
+
 
 
 
@@ -255,9 +278,12 @@ gulp.task('app:js:dragdropway', [], function() {
 
 
 
-//==================================================
-//LIB : SCRIPTS for HEADER (vendor) : jquery, angular....
-//==================================================
+
+/**
+ * ------------------------------------------------------------
+ * VENDOR JS TASKS (SCRIPTS for HEADER : jquery, angular....)
+ * ------------------------------------------------------------
+ */
 
 gulp.task('lib', ['clean:app:lib'], function(){
 
@@ -285,35 +311,26 @@ gulp.task('lib', ['clean:app:lib'], function(){
  gulp.src(paths.bower_components_map, {cwd: bases.app })
  .pipe(gulp.dest(bases.app + 'public/lib/js/'));
 
-/////////////////
-//HEADER css  
-/////////////////
-//copy bower -> app/public/lib/	
- gulp.src(paths.bower_components_css, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/css/')
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
+// /////////////////
+// //HEADER css  
+// /////////////////
+// //copy bower -> app/public/lib/	
+//  gulp.src(paths.bower_components_css, {cwd: bases.app })
+//  .pipe(gulp.dest(bases.app + 'public/lib/css/')
+//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
+// 
+// //particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
+//  gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
+//  .pipe(deleteLines({
+//       'filters': [
+//       	/^@import url/
+//       ]
+//     }))
+//   	.pipe(concat('bootstrap.min.css'))
+//  	.pipe(cssmin())
+//  .pipe(gulp.dest(bases.app + 'public/lib/css/')
+//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
-//particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
- gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
- .pipe(deleteLines({
-      'filters': [
-      	/^@import url/
-      ]
-    }))
-  	.pipe(concat('bootstrap.min.css'))
- 	.pipe(cssmin())
- .pipe(gulp.dest(bases.app + 'public/lib/css/')
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-
-
-/////////////////
-//FONTS (boostrap and font-awesome) 
-/////////////////
-//copy bower -> app/public/lib/fonts
- gulp.src(paths.bower_components_fonts, {cwd: bases.app })
- .pipe(gulp.dest(bases.app + 'public/lib/fonts/')
- .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-});
 
 
 
