@@ -65,7 +65,7 @@ module.exports = {
 			},
 			dragAndDropWay 	: {
 				js : 'eda.dragdropway.js',
-				css: 'eda.dragdropway.js',
+				css: 'eda.dragdropway.css',
 			}
 		},
 		vendor : {
@@ -87,7 +87,7 @@ module.exports = {
 				standAlone: false
 			}			
 		},
-		dragdropway : {
+		dragAndDropWay : {
 			sourceDir		: 'src/app/dragdropway/htmlTemplates/',
 			sourceFiles : '**/*.html',
 			destDir 		: 'src/app/dragdropway/core/',	
@@ -115,7 +115,7 @@ module.exports = {
 		stepway  : {
 			templateJS: [
 										'/** \n' , 
-										' *easyFormGenerator \n',
+										' *easyFormGenerator — step way — version \n',
 										' *Version ' +  appConfig.version.stepWay + ' \n',
 										' *Author : Erwan Datin (MacKentoch) \n', 
 										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
@@ -126,7 +126,7 @@ module.exports = {
 		
 			templateCSS: 	[
 											'/*! \n' + 
-											' * easyFormGenerator \n' + 
+											' * easyFormGenerator — step way — version \n' + 
 											' * Version ' + appConfig.version.stepWay + ' \n' + 				
 											' * Author : Erwan Datin (MacKentoch) \n' +
 											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
@@ -136,10 +136,10 @@ module.exports = {
 										].join('') 
 			},
 			
-		dragdropway  : {
+		dragAndDropWay  : {
 			templateJS: [
 										'/** \n' , 
-										' *easyFormGenerator \n',
+										' *easyFormGenerator — drag and drop way — version \n',
 										' *Version ' +  appConfig.version.dragAndDropWay + ' \n',
 										' *Author : Erwan Datin (MacKentoch) \n', 
 										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
@@ -150,7 +150,7 @@ module.exports = {
 		
 			templateCSS: 	[
 											'/*! \n' + 
-											' * easyFormGenerator \n' + 
+											' * easyFormGenerator — drag and drop way — version \n' + 
 											' * Version ' + appConfig.version.dragAndDropWay + ' \n' + 				
 											' * Author : Erwan Datin (MacKentoch) \n' +
 											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 

@@ -22,170 +22,6 @@ var appConfig = require('./easyFormGenConfig/app/appConfig');
 var gulpConfig = require('./easyFormGenConfig/gulp/gulpConfig');
 
 
-var version = {
-	build: '1.1.3'
-	//build: '1.0.7'
-};
-
-
-
-
-
-var bases ={
- app: './'
-};
-
-var scriptFileNames={
-	angularDragAndDrop					: 'angular-drag-and-drop-lists.min.js',
-	clientMvcOutput 						: 'clientMVC.min.js',
-	clientMvcDragAndDropOutput 	: 'clientMVC.min.js',
-	ngdagableFileMinName 				: 'ngDraggable.min.js'
-};
-
-
-var app_main_css={
-	css_result 			: 'main_css.min.css',
-	sass_main 			: 'main_css.scss',
-	sass_variables 	: 'main_var.scss',
-	sass_mixins 		: 'main_mixins.scss',
-	sass_functions 	: 'main_function.scss'
-};
-
-var clientMVC={
-	app 					: ['public/clientMVC/main/ngwfApp.js'],
-	controllers 	: ['public/clientMVC/main/controllers/**/*.js'],
-	directives 		: ['public/clientMVC/main/directives/**/*.js'],
-	filters 			: ['public/clientMVC/main/filters/**/*.js'],
-	services 			: ['public/clientMVC/main/services/**/*.js'],
-	core 					: ['public/clientMVC/main/core/**/*.js'],
-	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
-};
-
-var clientMVC_dragDrop={
-	app 					: ['public/clientMVC/dragDrop/edaApp.js'],
-	controllers 	: ['public/clientMVC/dragDrop/controllers/**/*.js'],
-	directives 		: ['public/clientMVC/dragDrop/directives/**/*.js'],
-	filters 			: ['public/clientMVC/dragDrop/filters/**/*.js'],
-	services 			: ['public/clientMVC/dragDrop/services/**/*.js'],
-	providers 		: ['public/clientMVC/dragDrop/providers/**/*.js'],
-	configs 			: ['public/clientMVC/dragDrop/configs/**/*.js'],	
-	htmlTemplates : ['public/clientMVC/htmlTemplates/**/*.html']
-};
-
-var decorate={
-	templateJS: [
-								'/** \n' , 
-								' *easyFormGenerator \n',
-								' *Version ' +  version.build + ' \n',
-								' *Author : Erwan Datin (MacKentoch) \n', 
-								' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
-								' *License : MIT (2015) \n',
-								'**/ \n',
-								';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
-							].join(' '),
-
-	templateCSS: 	[
-									'/*! \n' + 
-									' * easyFormGenerator \n' + 
-									' * Version ' + version.build + ' \n' + 				
-									' * Author : Erwan Datin (MacKentoch) \n' +
-									' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
-									' * License : 2015 MIT \n' + 								
-									'*/ \n' +
-									'\n<%= contents %>\n'
-								].join('') 
-			
-};
-
-var paths = {
- bower_angularjs 			: 		['bower_components/angular/angular.min.js'],
- bower_angular_loadingbarjs: ['bower_components/angular-loading-bar/build/loading-bar.min.js'],
- bower_html5shiv 			: 		['bower_components/html5shiv/dist/html5shiv.min.js'],
- bower_respondJS 			: 		['bower_components/respondJS/dest/respond.min.js'],
- bower_components_js 	: 		[
-								 						'bower_components/jquery/dist/jquery.min.js',   //jquery always first
-								 						'bower_components/bootstrap/dist/js/bootstrap.min.js',						
-								 						'bower_components/modernizer/modernizr.js',
-														'bower_components/textAngular/dist/textAngular-rangy.min.js',
-														'bower_components/textAngular/dist/textAngular-sanitize.min.js',
-														'bower_components/textAngular/dist/textAngular.min.js',
-														'bower_components/angular-resource/angular-resource.min.js',
-														'bower_components/angular-animate/angular-animate.min.js',
-														'bower_components/angularjs-toaster/toaster.min.js',
-														'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-														'bower_components/api-check/dist/api-check.min.js',
-														'bower_components/angular-formly/dist/formly.min.js',
-														'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
-														'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js',
-														'bower_components/lodash/lodash.min.js',
-														'vendor/js/angular-drag-and-drop-lists.min.js',
-														'bower_components/angular-strap/dist/angular-strap.min.js',
-														'bower_components/angular-strap/dist/angular-strap.tpl.min.js',
-														'vendor/js/angular-pageslide-directive.min.js',
-														'bower_components/angular-messages/angular-messages.min.js'
-								 					],
-bower_components_map: 		[
-														'bower_components/jquery/dist/jquery.min.map',
-														'bower_components/angular/angular.min.js.map',
-														'bower_components/angular-resource/angular-resource.min.js.map',
-														'bower_components/angular-animate/angular-animate.min.js.map',
-														'bower_components/angular-formly/dist/formly.min.js.map',
-														'bower_components/api-check/dist/api-check.min.js.map',
-														'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js.map',
-														'bower_components/angular-strap/dist/angular-strap.min.js.map',
-														'bower_components/angular-messages/angular-messages.min.js.map'
-													], 					
-
-bower_components_css: 		[
-								 						'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
-								 						'bower_components/font-awesome/css/font-awesome.min.css',
-								 						'bower_components/angular-loading-bar/build/loading-bar.min.css',
-								 						'bower_components/animate.css/animate.min.css',
-								 						'bower_components/angularjs-toaster/toaster.min.css',
-								 						'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
-								 					],
-bower_clean_paper_boostrap_css : ['bower_components/bootswatch/paper/bootstrap.css'], 					 					
-
-bower_textAngular_css: 		[
-														'bower_components/textAngular/src/textAngular.css'
-													], 					
-bower_components_fonts: 	[
-														'bower_components/bootstrap/dist/fonts/**/*',
-														'bower_components/font-awesome/fonts/**/*'
-													], 
- scriptsWithNav: 					[
-						 								'public/js/**/*.js', 
-						 								'!public/js/main_noNavigationBar.js', 
-						 								'!public/js/angular-drag-and-drop-lists.min.js',
-						 								'!public/js/angular-pageslide-directive.min.js'
-				 									],
- css 										: ['public/css/*.css'],
- images 								: ['public/images/**/*'],
- app_js 								: ['app.js', 'db.js'],
- bin_js 								: ['bin/www'],
- models_js 							: ['models/**/*.js'],
- passport_js 						: ['passport/**/*.js'],
- controllers_js					: ['controllers/**/*.js'],
- router_js 							: ['router/**/*.js'],
- views_ejs 							: ['views/**/*.ejs'],
- packageJSON 						: ['package.json'],
- readme 								: ['README.md'],
- sass_main_files				: [
- 														'public/css/**.*scss', 
- 														'!public/css/drag_and_drop_css.scss'
- 													],
- sass_dragAndDrop_files	: [	
- 														'public/css/**.*scss', 
- 														'!public/css/main_css.scss'],
- js_lib 								: ['']
-};
- 
-
-
-
-
-
-
 
 
 
@@ -226,6 +62,9 @@ gulp.task('dragdropway:clean', function (cb) {
 		], cb);
 });
 
+
+
+
 /**
  * -------------------------------
  * ANGULAR TEMPLATES CACHE  TASKS
@@ -252,6 +91,11 @@ gulp.task('dragdropway:templatecache', function() {
         ))
         .pipe(gulp.dest(gulpConfig.base.root + gulpConfig.templateCache.dragdropway.destDir));
 });
+
+
+
+
+
 /**
  * -------------------------------
  * VENDORS CSS TASKS
@@ -261,16 +105,16 @@ gulp.task('dragdropway:templatecache', function() {
 gulp.task('vendor:css:minifyOnly', function(){
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.noMinify)
 		.pipe(cssmin())
-		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
 });
 //vendor:css subtask
 gulp.task('vendor:css:minifyAndClean', function(){
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify)
 		.pipe(cssmin())
-		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
+		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir))
 });
 
-//vendor:css TASK
+//vendor:css TASK : concat css, copyt to public dir
 gulp.task('vendor:css', 
 	[
 		'vendor:css:minifyOnly', 
@@ -282,39 +126,46 @@ gulp.task('vendor:css',
 					.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
 			)
 				.pipe(concat(gulpConfig.destFiles.vendor.css))
-				.pipe(gulp.dest(gulpConfig.destDirs.vendor.css))
+				.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.vendor.css))
 });
 
-//==================================================
-//SCRIPTS TASKS : main
-//==================================================
-// Process scripts and concatenate them into one output file
-gulp.task('build', ['clean:app:scripts_css'], function() {
 
- //textAngularcss minify
- gulp.src(paths.bower_textAngular_css, {cwd: bases.app})
- 	.pipe(concat('textAngular.min.css'))
- 	.pipe(cssmin())
- 	.pipe(gulp.dest(bases.app + 'public/css')
- 	.on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
 
- //sass main 
- gulp.src(paths.sass_main_files, {cwd: bases.app})
-	.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
-  .pipe(concat('main.min.css'))
-  .pipe(cssmin())     
- 	.pipe(wrap(decorate.templateCSS))    
-  .pipe(gulp.dest(bases.app + 'public/css'));
- 
 
- //sass drag_and_drop
- gulp.src(paths.sass_dragAndDrop_files, {cwd: bases.app})
+/**
+ * -------------------------------
+ * APP SASS TASKS (STEPWAY)
+ * -------------------------------
+ */
+
+ //sass : stepway
+ gulp.task('app:sass:stepway', function(){
+	gulp.src(gulpConfig.srcFiles.app.stepway.sass)
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
-    .pipe(concat('drag_and_drop.min.css'))
-    .pipe(cssmin())     
- 		.pipe(wrap(decorate.templateCSS))    
-    .pipe(gulp.dest(bases.app + 'public/css'));
+		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
+		.pipe(cssmin())     
+		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))    
+		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.css));	 
  });
+ 
+/**
+ * -------------------------------
+ * APP SASS TASKS (DRAGDROP WAY)
+ * -------------------------------
+ */
+ //sass drag_and_drop
+ gulp.task('app:sass:dragdropway', function(){
+	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass)
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
+		.pipe(cssmin())     
+		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
+		.pipe(gulp.dest(gulpConfig.base.root + gulpConfig.destDirs.app.css));
+});
+
+
+
+
 
 //==========================================================
 //SCRIPTS TASKS : client MVC (angular JS) - dev = no uglify
@@ -419,6 +270,12 @@ gulp.task('lib', ['clean:app:lib'], function(){
 });
 
 
+
+
+
+
+
+
 //==================================================
 //WATCH TASK 
 //==================================================
@@ -447,3 +304,4 @@ gulp.task('default', [
 						'scripts:clientMVC_dragDrop:dev',
 						'lib'
 					 ]);
+					 

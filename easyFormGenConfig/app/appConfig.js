@@ -1,4 +1,14 @@
+var ENV_CHOICES = [
+	'DEV',
+	'PROD'
+]
+
 module.exports = {
+	
+	
+	environment : {
+		current : ENV_CHOICES[0]
+	},
 	
 	//easy form generator verioning
 	version : {
