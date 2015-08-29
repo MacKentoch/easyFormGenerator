@@ -46,12 +46,12 @@ module.exports = {
 	//destination directories
 	destDirs : {		
 		app : {
-			js 	: 'public/js/',
-			css : 'public/css/' 
+			js 	: 'public/js',
+			css : 'public/css' 
 		},
 		vendor : {
-			js 		: 'public/lib/js/',
-			css 	: 'public/lib/css/',
+			js 		: 'public/lib/js',
+			css 	: 'public/lib/css',
 			fonts : 'public/lib/fonts'
 		}		
 	},
