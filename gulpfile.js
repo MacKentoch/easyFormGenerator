@@ -519,18 +519,24 @@ gulp.task('build:all', [
 					 
 
 
+/**
+ * --------------------------------------------------------------------
+ * DIST TASK : uglify app js files and copy all public + html into dist
+ * --------------------------------------------------------------------
+ */
+gulp.task('dist', [
+'dist:copy'	
+]);
 
 
-  // //server  - ejs sources
-  // gulp.src(config.sysDirs.serverEJS)
-  //   .pipe(gulp.dest(config.baseDirs.dist + config.sysDirs.serverRootDir));
-     
-  //public  - all content 
- 
- 
- 
+
+
+ //public  - all content  
  gulp.task('dist:copy', 
-	 	['dist:clean'], 
+	 		[
+			 	'dist:clean', 
+				'dist:uglify:app:js'
+			], 
 		 function(){
 	//all public dir	 
   gulp.src(gulpConfig.base.publicDir + '**/*', {base : './'})
@@ -547,16 +553,16 @@ gulp.task('build:all', [
  
  
  gulp.task('dist:uglify:app:js', 
-	 ['dist:copy'],
 	 function(){
 	 
 	 var appJsFiles = [
-		 	gulpConfig.base.distDir + gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway,
-			gulpConfig.base.distDir +	gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay
+		  gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway.js,
+			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js
 	 ];
-		return gulp.src(appJsFiles)
+	 console.info(appJsFiles);
+		gulp.src(appJsFiles, {cwd : './'})
 			.pipe(sourcemaps.init())
 			.pipe(uglify())
-			.pipe(sourcemaps.write('.'))
-			//.pipe(gulp.dest(config.baseDirs.app + config.publicDirs.js));
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
  });
