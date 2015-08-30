@@ -527,9 +527,13 @@ gulp.task('build:all', [
      
   //public  - all content 
  
- gulp.task('dist:copy', function(){
+ 
+ 
+ gulp.task('dist:copy', 
+	 	['dist:clean'], 
+		 function(){
 	//all public dir	 
-  gulp.src(gulpConfig.base.publicDir ,{cwd: gulpConfig.base.root})
+  gulp.src(gulpConfig.base.publicDir + '**/*', {base : './'})
     .pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
 	
 	var indexHtmlFiles = [
@@ -541,3 +545,18 @@ gulp.task('build:all', [
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
  })
  
+ 
+ gulp.task('dist:uglify:app:js', 
+	 ['dist:copy'],
+	 function(){
+	 
+	 var appJsFiles = [
+		 	gulpConfig.base.distDir + gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway,
+			gulpConfig.base.distDir +	gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay
+	 ];
+		return gulp.src(appJsFiles)
+			.pipe(sourcemaps.init())
+			.pipe(uglify())
+			.pipe(sourcemaps.write('.'))
+			//.pipe(gulp.dest(config.baseDirs.app + config.publicDirs.js));
+ });
