@@ -438,7 +438,7 @@ angular
 
     var modalInstance = $modal.open({
                                       animation: $scope.animationsEnabled,
-                                      templateUrl: 'modalWfEdit.html', 
+                                      templateUrl: 'editModalTemplate.html', 
                                       controller: 'edaEditMODALController',
                                       size: 'lg',
                                       resolve: {
