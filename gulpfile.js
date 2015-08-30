@@ -96,6 +96,7 @@ gulp.task('vendor:css:minifyAndClean', function(){
 //vendor:css TASK : concat css, copyt to public dir
 gulp.task('vendor:css', 
 	[
+		'public:clean',
 		'vendor:css:minifyOnly', 
 		'vendor:css:minifyAndClean'
 	],  
@@ -114,7 +115,9 @@ gulp.task('vendor:css',
  * VENDORS FONTS COPY TASK
  * -------------------------------
  */
-gulp.task('vendor:fonts', function(){	
+gulp.task('vendor:fonts', 
+			['public:clean'], 
+			function(){	
  gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, { cwd: gulpConfig.base.root })
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }))
 });
@@ -132,7 +135,9 @@ gulp.task('vendor:fonts', function(){
  * VENDOR JS TASKS (SCRIPTS for HEADER : jquery, angular....)
  * ------------------------------------------------------------
  */
-gulp.task('vendor:header:js', function(){
+gulp.task('vendor:header:js', 
+		['public:clean'], 
+		function(){
 	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, 
  				{ cwd: gulpConfig.base.root }) 
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
@@ -144,7 +149,9 @@ gulp.task('vendor:header:js', function(){
  * VENDOR JS TASKS (SCRIPTS for FOOTER and concatenable)
  * ------------------------------------------------------------
  */
- gulp.task('vendor:footer:js', function(){
+ gulp.task('vendor:footer:js', 
+	 	['public:clean'], 
+		 function(){
 	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
  				{ cwd: gulpConfig.base.root })
 	.pipe(concat(gulpConfig.destFiles.vendor.js))			  
@@ -162,7 +169,9 @@ gulp.task('vendor:header:js', function(){
  * VENDOR MAP TASKS
  * ------------------------------------------------------------
  */
- gulp.task('vendor:map', function(){
+ gulp.task('vendor:map', 
+	 	['public:clean'], 
+		 function(){
 	gulp.src(	gulpConfig.srcFiles.bowerFiles.maps, 
  				{ cwd: gulpConfig.base.root })	  
  	.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	 
@@ -220,7 +229,9 @@ gulp.task('dragdropway:templatecache', function() {
  */
 
  //sass : stepway
- gulp.task('app:sass:stepway', function(){
+ gulp.task('app:sass:stepway', 
+	 	['public:clean'], 
+		 function(){
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
@@ -235,7 +246,9 @@ gulp.task('dragdropway:templatecache', function() {
  * -------------------------------
  */
  //sass drag_and_drop
- gulp.task('app:sass:dragdropway', function(){
+ gulp.task('app:sass:dragdropway', 
+	 	['public:clean'], 
+		 function(){
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
@@ -257,7 +270,9 @@ gulp.task('dragdropway:templatecache', function() {
  * APP JS TASKS (STEPWAY WAY)
  * -------------------------------
  */
-gulp.task('app:js:stepway', [], function() {
+gulp.task('app:js:stepway', 
+		['public:clean'], 
+		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
 		//prod version
@@ -294,7 +309,9 @@ gulp.task('app:js:stepway', [], function() {
  * APP JS TASKS (DRAGDROP WAY)
  * -------------------------------
  */
-gulp.task('app:js:dragdropway', [], function() {
+gulp.task('app:js:dragdropway', 
+		['public:clean'],  
+		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
 		//prod version
@@ -336,50 +353,23 @@ gulp.task('app:js:dragdropway', [], function() {
  
  
  
- 
- 
- 
+
+
 /**
- * -------------------------------
- * VENDOR CSS TASKS 
- * -------------------------------
- */ 
- 
- 
-// /////////////////
-// //HEADER css  
-// /////////////////
-// //copy bower -> app/public/lib/	
-//  gulp.src(paths.bower_components_css, {cwd: bases.app })
-//  .pipe(gulp.dest(bases.app + 'public/lib/css/')
-//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-// 
-// //particular cases : example : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
-//  gulp.src(paths.bower_clean_paper_boostrap_css, {cwd: bases.app })
-//  .pipe(deleteLines({
-//       'filters': [
-//       	/^@import url/
-//       ]
-//     }))
-//   	.pipe(concat('bootstrap.min.css'))
-//  	.pipe(cssmin())
-//  .pipe(gulp.dest(bases.app + 'public/lib/css/')
-//  .on('error', notify.onError(function (error) { return 'Error: ' + error.message;})));
-
-
-
-
-
-
-
-
-
-//==================================================
-//WATCH TASK 
-//==================================================
+ * --------------------------------------
+ * WATCH TASK (developments friend task)
+ * --------------------------------------
+ */
 gulp.task('watch', function() {
-	var watcher = gulp.watch(	[	'./public/css/*.scss',
-									'./public/clientMVC/**/*',
+	var watcher = gulp.watch(	[	
+									gulpConfig.srcFiles.app.dragAndDropWay.htmlTemplates,
+									gulpConfig.srcFiles.app.dragAndDropWay.js,
+									gulpConfig.srcFiles.app.dragAndDropWay.sass,
+									
+									gulpConfig.srcFiles.app.stepway.htmlTemplates,
+									gulpConfig.srcFiles.app.stepway.js,
+									gulpConfig.srcFiles.app.stepway.sass,
+																		
 									'!./public/clientMVC/clientMVC.min.js'
 								], 
 								[
@@ -391,10 +381,12 @@ gulp.task('watch', function() {
 	});
 });
 
-//==================================================
-//DEFAULT TASK 
-//================================================== 
-// Define the default task as a sequence of the above tasks
+
+/**
+ * ---------------------------------------------------------
+ * DEFAULT TASK : 'gulp' command or ctrl+shift+B (in VSCode)
+ * ---------------------------------------------------------
+ */
 gulp.task('default', [	
 						'clean:app:scripts_css', 
 						'build', 
