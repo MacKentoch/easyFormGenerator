@@ -93,7 +93,8 @@ gulp.task('vendor:css:minifyAndClean', function(){
 });
 
 
-//vendor:css TASK : concat css, copyt to public dir
+//vendor:css TASK : css, copyt to public dir
+//NOTE : depending 'appConfig.js' : could concat vendor css
 gulp.task('vendor:css', 
 	[
 		'public:clean',
@@ -101,11 +102,20 @@ gulp.task('vendor:css',
 		'vendor:css:minifyAndClean'
 	],  
 	function(){
-		gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
-							.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
-							,{ cwd: gulpConfig.base.root })
-				.pipe(concat(gulpConfig.destFiles.vendor.css))
-				.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
+		if(appConfig.concatVendorFiles === true){
+			gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
+								.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+								,{ cwd: gulpConfig.base.root })
+					.pipe(concat(gulpConfig.destFiles.vendor.css))
+					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
+		}else{
+			gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
+								.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+								,{ cwd: gulpConfig.base.root })
+					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
+		}
+		
+
 });
 
 
@@ -134,6 +144,8 @@ gulp.task('vendor:fonts',
  * ------------------------------------------------------------
  * VENDOR JS TASKS (SCRIPTS for HEADER : jquery, angular....)
  * ------------------------------------------------------------
+ * 
+ * NOTE these vendor js never concatenate
  */
 gulp.task('vendor:header:js', 
 		['public:clean'], 
@@ -148,14 +160,22 @@ gulp.task('vendor:header:js',
  * ------------------------------------------------------------
  * VENDOR JS TASKS (SCRIPTS for FOOTER and concatenable)
  * ------------------------------------------------------------
+ * 
+ * NOTE : depending 'appConfig.js' : could concat footer vendor js
  */
  gulp.task('vendor:footer:js', 
 	 	['public:clean'], 
 		 function(){
-	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
- 				{ cwd: gulpConfig.base.root })
-	.pipe(concat(gulpConfig.destFiles.vendor.js))			  
- 	.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	 
+			if(appConfig.concatVendorFiles === true){			 
+				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
+							{ cwd: gulpConfig.base.root })
+				.pipe(concat(gulpConfig.destFiles.vendor.js))			  
+				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
+			}else{
+				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
+							{ cwd: gulpConfig.base.root })
+				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	
+			}	 	 
  });
 
 
