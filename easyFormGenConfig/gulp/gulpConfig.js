@@ -34,9 +34,15 @@ module.exports = {
 			},
 			css 	: {
 				noMinify 					: bowerFiles.bower_components_css,		
-				toMinify 					: bowerFiles.bower_textAngular_css,
-				toCleanAndMinify 	: bowerFiles.bower_clean_paper_boostrap_css,
-				minifyInThisDir 	: 'src/vendor/css'
+				toMinify 					: {
+						srcFile : bowerFiles.bower_textAngular_css,
+						destfileName : 'textAngular.min.css'
+					},
+				toCleanAndMinify 	: {
+						srcFile : bowerFiles.bower_clean_paper_boostrap_css,
+						destfileName : 'bootstrap.min.css'
+					},
+				minifyInThisDir 	: 'src/vendor/css/'
 			},
 			fonts : bowerFiles.bower_components_fonts,
 			maps 	: bowerFiles.bower_components_map

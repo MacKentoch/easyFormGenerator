@@ -45,7 +45,7 @@ module.exports = {
 	], 					
 
 	bower_components_css : [
-		'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', 						
+		'bower_components/bootstrap/dist/css/bootstrap.min.css', 						
 		'bower_components/font-awesome/css/font-awesome.min.css',
 		'bower_components/angular-loading-bar/build/loading-bar.min.css',
 		'bower_components/animate.css/animate.min.css',

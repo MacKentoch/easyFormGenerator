@@ -49,6 +49,23 @@ gulp.task('public:clean', function (cb) {
   del([gulpConfig.base.publicDir + '**/*'], cb);
 });
 
+//clean all vendor css  : public dir
+gulp.task('public:vendor:css:clean', function (cb) {
+  del([gulpConfig.base.root + gulpConfig.destDirs.vendor.css + '/**/*.css'], cb);
+});
+
+//clean all vendor js  : public dir
+gulp.task('public:vendor:js:clean', function (cb) {
+  del([gulpConfig.base.root + gulpConfig.destDirs.vendor.js + '/**/*.js'], cb);
+});
+
+
+//clean all vendor fonts  : public dir
+gulp.task('public:vendor:fonts:clean', function (cb) {
+  del([gulpConfig.base.root + gulpConfig.destDirs.vendor.fonts + '/**/*'], cb);
+});
+
+
 //clean public : stepway
 gulp.task('stepway:clean', function (cb) {
   del([
@@ -69,6 +86,21 @@ gulp.task('dragdropway:clean', function (cb) {
 
 
 
+/**
+ * cleaning src/vendor/ temp files
+ */
+gulp.task('vendor:clean:temp', function(cb){
+  del([
+		gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css'
+		], cb);	
+});
+
+
+
+
+
+
+
 
 
 
@@ -78,39 +110,48 @@ gulp.task('dragdropway:clean', function (cb) {
  * -------------------------------
  */
 //vendor:css subtask
-gulp.task('vendor:css:minifyOnly', function(){
-	gulp.src(gulpConfig.srcFiles.bowerFiles.css.noMinify, { cwd: gulpConfig.base.root })
+gulp.task('vendor:css:specialCases', 
+		['public:vendor:css:clean'],
+		function(){
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toMinify.srcFile, { cwd: gulpConfig.base.root })
+		.pipe(concat(gulpConfig.srcFiles.bowerFiles.css.toMinify.destfileName))
 		.pipe(cssmin())
-		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
-});
-//vendor:css subtask
-gulp.task('vendor:css:minifyAndClean', function(){
-	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify, { cwd: gulpConfig.base.root })
+		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
+		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
+		
+	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify.srcFile, { cwd: gulpConfig.base.root })
 		.pipe(deleteLines({ 'filters': [/^@import url/] }))
+		.pipe(concat(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify.destfileName))
 		.pipe(cssmin())
 		.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
-		.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
+		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
+		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
+				
 });
+
+
+
 
 
 //vendor:css TASK : css, copyt to public dir
 //NOTE : depending 'appConfig.js' : could concat vendor css
 gulp.task('vendor:css', 
 	[
-		'public:clean',
-		'vendor:css:minifyOnly', 
-		'vendor:css:minifyAndClean'
+		'vendor:css:specialCases'
 	],  
 	function(){
+		
+		var sources = gulpConfig.srcFiles.bowerFiles.css.noMinify;		
+																	
 		if(appConfig.concatVendorFiles === true){
-			gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
-								.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+			
+			gulp.src( sources 
 								,{ cwd: gulpConfig.base.root })
 					.pipe(concat(gulpConfig.destFiles.vendor.css))
 					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
 		}else{
-			gulp.src( gulpConfig.srcFiles.bowerFiles.css.noMinify
-								.concat(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css')
+						
+			gulp.src( sources 
 								,{ cwd: gulpConfig.base.root })
 					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
 		}
@@ -126,7 +167,7 @@ gulp.task('vendor:css',
  * -------------------------------
  */
 gulp.task('vendor:fonts', 
-			['public:clean'], 
+			['public:vendor:fonts:clean'], 
 			function(){	
  gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, { cwd: gulpConfig.base.root })
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }))
@@ -148,13 +189,12 @@ gulp.task('vendor:fonts',
  * NOTE these vendor js never concatenate
  */
 gulp.task('vendor:header:js', 
-		['public:clean'], 
+		['public:vendor:js:clean'], 
 		function(){
 	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, 
  				{ cwd: gulpConfig.base.root }) 
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
 });
-
 
 /**
  * ------------------------------------------------------------
@@ -164,8 +204,9 @@ gulp.task('vendor:header:js',
  * NOTE : depending 'appConfig.js' : could concat footer vendor js
  */
  gulp.task('vendor:footer:js', 
-	 	['public:clean'], 
+	 	['public:vendor:js:clean'], 
 		 function(){
+			 
 			if(appConfig.concatVendorFiles === true){			 
 				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
 							{ cwd: gulpConfig.base.root })
@@ -177,6 +218,16 @@ gulp.task('vendor:header:js',
 				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	
 			}	 	 
  });
+ 
+ /**
+ * ------------------------------------------------------------
+ * VENDOR JS TASKS (combine all vendor js tasks)
+ * ------------------------------------------------------------
+ */
+ gulp.task('vendor:js', [
+	 'vendor:header:js',
+	 'vendor:footer:js'
+	]);
 
 
 
@@ -190,7 +241,7 @@ gulp.task('vendor:header:js',
  * ------------------------------------------------------------
  */
  gulp.task('vendor:map', 
-	 	['public:clean'], 
+	 	//['public:clean'], 
 		 function(){
 	gulp.src(	gulpConfig.srcFiles.bowerFiles.maps, 
  				{ cwd: gulpConfig.base.root })	  
@@ -434,20 +485,22 @@ gulp.task('default', [
  */
 gulp.task('build:all', [
 						//cleanings
-						'public:clean',	
-						'stepway:clean', 
-						'dragdropway:clean', 
+						//'public:clean',	
+						//'stepway:clean', 
+						//'dragdropway:clean', 
 						//vendor tasks
-						'vendor:css:minifyOnly',
-						'vendor:css:minifyAndClean',
+						'vendor:css:specialCases',
 						'vendor:css',
 						'vendor:fonts',
-						'vendor:header:js',
-						'vendor:footer:js',
+						//'vendor:header:js',
+						//'vendor:footer:js',
+						'vendor:js',
 						'vendor:map',
 						//app tasks
 						'app:sass:stepway',
 						'app:sass:dragdropway',
 						'app:js:stepway',
 						'app:js:dragdropway'
-					 ]);
+					 ], function(){
+						 console.info('building app + vendors. \concat vendors param set to : ' + appConfig.concatVendorFiles);
+					 });
