@@ -516,3 +516,28 @@ gulp.task('build:all', [
 					 ], function(){
 						 console.info('building app + vendors. \concat vendors param set to : ' + appConfig.concatVendorFiles);
 					 });
+					 
+
+
+
+
+  // //server  - ejs sources
+  // gulp.src(config.sysDirs.serverEJS)
+  //   .pipe(gulp.dest(config.baseDirs.dist + config.sysDirs.serverRootDir));
+     
+  //public  - all content 
+ 
+ gulp.task('dist:copy', function(){
+	//all public dir	 
+  gulp.src(gulpConfig.base.publicDir ,{cwd: gulpConfig.base.root})
+    .pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
+	
+	var indexHtmlFiles = [
+		gulpConfig.base.root + gulpConfig.stepWayHtmlFile.name,
+		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
+	];
+	//html files
+	gulp.src(indexHtmlFiles) 
+	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
+ })
+ 

@@ -80,6 +80,7 @@ module.exports = {
 		}
 	},
 	
+	
 	//templateCache config
 	templateCache	: {
 		stepway : {
@@ -167,7 +168,15 @@ module.exports = {
 			},				
 			
 			
-		}
+		},
+		
+		stepWayHtmlFile : {
+			name : 'index_StepWay.html'
+		},
+	
+		dragDropWayHtmlFile : {
+			name : 'index_DragDropWay.html'
+		}	
 	
 }
 
