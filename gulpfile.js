@@ -374,7 +374,7 @@ gulp.task('watch', function() {
 									'!' + gulpConfig.templateCache.stepway.destDir + gulpConfig.templateCache.stepway.destFile	
 								], 
 								[
-									'build'
+									'default'
 								]
 							);
 	watcher.on('change', function(event) {
