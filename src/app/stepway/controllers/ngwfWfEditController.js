@@ -30,6 +30,7 @@
 
     ngwfWfEditController.$inject = [
       '$scope', 
+      '$templateCache',
       'easyFormGenVersion',
       '$filter',
       '$anchorScroll',
@@ -45,6 +46,7 @@
     
     function ngwfWfEditController(
                                     $scope, 
+                                    $templateCache,
                                     easyFormGenVersion,
                                     $filter,
                                     $anchorScroll,
@@ -389,7 +391,7 @@
 
         var modalInstance = $modal.open({
                                           animation: $scope.animationsEnabled,
-                                          templateUrl: 'modalWfEdit.html', 
+                                          templateUrl: 'editModalTemplate.html',  
                                           controller: 'ngwfWfEditMODALController',
                                           size: 'lg',
                                           resolve: {

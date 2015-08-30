@@ -271,7 +271,10 @@ gulp.task('dragdropway:templatecache', function() {
  * -------------------------------
  */
 gulp.task('app:js:stepway', 
-		['stepway:clean'], 
+		[
+			'stepway:clean',
+			'stepway:templatecache'
+		], 
 		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
@@ -310,7 +313,10 @@ gulp.task('app:js:stepway',
  * -------------------------------
  */
 gulp.task('app:js:dragdropway', 
-		['dragdropway:clean'],  
+		[
+			'dragdropway:clean',
+			'dragdropway:templatecache'
+		],  
 		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
@@ -394,8 +400,6 @@ gulp.task('default', [
 						'stepway:clean', 
 						'dragdropway:clean', 
 						//app tasks
-						'stepway:templatecache',
-						'dragdropway:templatecache',
 						'app:sass:stepway',
 						'app:sass:dragdropway',
 						'app:js:stepway',
@@ -422,8 +426,6 @@ gulp.task('build:all', [
 						'vendor:footer:js',
 						'vendor:map',
 						//app tasks
-						'stepway:templatecache',
-						'dragdropway:templatecache',
 						'app:sass:stepway',
 						'app:sass:dragdropway',
 						'app:js:stepway',
