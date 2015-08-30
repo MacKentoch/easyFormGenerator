@@ -386,13 +386,46 @@ gulp.task('watch', function() {
 /**
  * ---------------------------------------------------------
  * DEFAULT TASK : 'gulp' command or ctrl+shift+B (in VSCode)
+ * -> build app only
  * ---------------------------------------------------------
  */
 gulp.task('default', [	
-						'clean:app:scripts_css', 
-						'build', 
-						'scripts:clientMVC:dev',
-						'scripts:clientMVC_dragDrop:dev',
-						'lib'
+						//cleanings
+						'stepway:clean', 
+						'dragdropway:clean', 
+						//app tasks
+						'stepway:templatecache',
+						'dragdropway:templatecache',
+						'app:sass:stepway',
+						'app:sass:dragdropway',
+						'app:js:stepway',
+						'app:js:dragdropway'
 					 ]);
 					 
+
+/**
+ * ------------------------------------------------------------
+ * BUILD:ALL TASK : 'gulp build:all' refresh all (vendors + app)
+ * ------------------------------------------------------------
+ */
+gulp.task('build:all', [
+						//cleanings
+						'public:clean',	
+						'stepway:clean', 
+						'dragdropway:clean', 
+						//vendor tasks
+						'vendor:css:minifyOnly',
+						'vendor:css:minifyAndClean',
+						'vendor:css',
+						'vendor:fonts',
+						'vendor:header:js',
+						'vendor:footer:js',
+						'vendor:map',
+						//app tasks
+						'stepway:templatecache',
+						'dragdropway:templatecache',
+						'app:sass:stepway',
+						'app:sass:dragdropway',
+						'app:js:stepway',
+						'app:js:dragdropway'
+					 ]);
