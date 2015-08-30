@@ -1,3 +1,24 @@
+/**
+ *  ------------------------------------------------------
+ *  easy form generator — gulpfile —
+ *  ------------------------------------------------------
+ *
+ * INFO on relevant tasks :
+ * -------------------------
+ * 
+ * 1) want to build "only app dependencies"" (only), use :
+ * - $ gulp
+ * - $ gulp watch
+ * 
+ * 2) want to build "all dependencies" (vendor + app), use :
+ * - $ gulp build:all
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
 var gulp 								= require('gulp');
 var del    							= require('del');
 var jshint 							= require('gulp-jshint');
@@ -44,7 +65,7 @@ gulp.task('dist:clean', function (cb) {
   del([gulpConfig.base.distDir + '**/*'], cb);
 });
 
-//clean all public
+//clean all public : NOT USED -> use other cleaning tasks (safer)
 gulp.task('public:clean', function (cb) {
   del([gulpConfig.base.publicDir + '**/*'], cb);
 });
@@ -466,10 +487,7 @@ gulp.task('watch', function() {
  * -> build app only
  * ---------------------------------------------------------
  */
-gulp.task('default', [	
-						//cleanings
-						//'stepway:clean', 
-						//'dragdropway:clean', 
+gulp.task('default', [	 
 						//app tasks
 						'app:sass:stepway',
 						'app:sass:dragdropway',
@@ -483,17 +501,11 @@ gulp.task('default', [
  * BUILD:ALL TASK : 'gulp build:all' refresh all (vendors + app)
  * ------------------------------------------------------------
  */
-gulp.task('build:all', [
-						//cleanings
-						//'public:clean',	
-						//'stepway:clean', 
-						//'dragdropway:clean', 
+gulp.task('build:all', [ 
 						//vendor tasks
 						'vendor:css:specialCases',
 						'vendor:css',
 						'vendor:fonts',
-						//'vendor:header:js',
-						//'vendor:footer:js',
 						'vendor:js',
 						'vendor:map',
 						//app tasks
