@@ -13,6 +13,8 @@
  * 2) want to build "all dependencies" (vendor + app), use :
  * - $ gulp build:all
  * 
+ * 3) want to dist, use :
+ * - $ gulp dist 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator

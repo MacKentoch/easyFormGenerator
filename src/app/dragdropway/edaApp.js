@@ -34,7 +34,6 @@ angular
 												'nya.bootstrap.select',
                         'dndLists',
                         'mgcrea.ngStrap.affix',
-                        'ngTouch',
                         'pageslide-directive'
 	                     ])
 
