@@ -14,7 +14,7 @@ module.exports = {
 	},
 	dragdropway : {
 		js : [
-				'src/app/dragdropway/ngwfApp.js',
+				'src/app/dragdropway/edaApp.js',
 				'src/app/dragdropway/configs/**/*.js',
 				'src/app/dragdropway/core/**/*.js',
 				'src/app/dragdropway/providers/**/*.js',

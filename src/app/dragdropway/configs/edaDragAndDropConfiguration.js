@@ -13,7 +13,7 @@
 angular
 	.module('edaApp')
 	.config(['dragDropConfigProvider',
-
+	
 	function (dragDropConfigProvider) {
 
     dragDropConfigProvider.setItemsNotTocount({
