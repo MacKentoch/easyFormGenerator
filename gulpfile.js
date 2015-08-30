@@ -362,15 +362,16 @@ gulp.task('app:js:dragdropway',
  */
 gulp.task('watch', function() {
 	var watcher = gulp.watch(	[	
-									gulpConfig.srcFiles.app.dragAndDropWay.htmlTemplates,
+									//app : drag and drop way sources
+									gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles,
 									gulpConfig.srcFiles.app.dragAndDropWay.js,
 									gulpConfig.srcFiles.app.dragAndDropWay.sass,
-									
-									gulpConfig.srcFiles.app.stepway.htmlTemplates,
+									'!' + gulpConfig.templateCache.dragAndDropWay.destDir + gulpConfig.templateCache.dragAndDropWay.destFile,
+									//app : step way sources
+									gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles,
 									gulpConfig.srcFiles.app.stepway.js,
 									gulpConfig.srcFiles.app.stepway.sass,
-																		
-									'!./public/clientMVC/clientMVC.min.js'
+									'!' + gulpConfig.templateCache.stepway.destDir + gulpConfig.templateCache.stepway.destFile	
 								], 
 								[
 									'build'
