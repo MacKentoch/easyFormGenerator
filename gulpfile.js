@@ -417,8 +417,8 @@ gulp.task('watch', function() {
  */
 gulp.task('default', [	
 						//cleanings
-						'stepway:clean', 
-						'dragdropway:clean', 
+						//'stepway:clean', 
+						//'dragdropway:clean', 
 						//app tasks
 						'app:sass:stepway',
 						'app:sass:dragdropway',
