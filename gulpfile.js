@@ -230,7 +230,7 @@ gulp.task('dragdropway:templatecache', function() {
 
  //sass : stepway
  gulp.task('app:sass:stepway', 
-	 	['public:clean'], 
+	 	['stepway:clean'], 
 		 function(){
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
@@ -247,7 +247,7 @@ gulp.task('dragdropway:templatecache', function() {
  */
  //sass drag_and_drop
  gulp.task('app:sass:dragdropway', 
-	 	['public:clean'], 
+	 	['dragdropway:clean'], 
 		 function(){
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
@@ -271,7 +271,7 @@ gulp.task('dragdropway:templatecache', function() {
  * -------------------------------
  */
 gulp.task('app:js:stepway', 
-		['public:clean'], 
+		['stepway:clean'], 
 		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
@@ -310,7 +310,7 @@ gulp.task('app:js:stepway',
  * -------------------------------
  */
 gulp.task('app:js:dragdropway', 
-		['public:clean'],  
+		['dragdropway:clean'],  
 		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 	if(appConfig.environment.current === 'PROD'){
