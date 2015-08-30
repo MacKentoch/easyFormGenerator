@@ -26,7 +26,7 @@ _EASY_ :
 
 _WANT EASIER WAY? OK_ :
 
-- no installation, no clone : just go here : [up to date — rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/index.html)
+- no installation, no clone : just go here : [up to date — rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/index.html)
 
 _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
@@ -47,13 +47,13 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
  - :newspaper: `step way` : added `email` control
      + email entered must follow *an email pattern* (validation included)
      + a validation message is displayed when entered email is invalid (pattern related)
-     + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master/index.html) 
+     + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/index.html) 
      + preview :
  
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
 
  - `drag and drop` alternative coming soon
-   - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master/indexDragDrop.html))
+   - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/indexDragDrop.html))
      
     - NOTE :     
      - open `indexDragDrop.html` in your navigator  : for `drag and drop` version
