@@ -1,9 +1,9 @@
 /**
  *  ------------------------------------------------------
- *  edit Modal html template directive
+ *  easy form generator directive (Step way)
  *  ------------------------------------------------------
  * 
- *  (template from template cache : ok for static and performance friendly)
+ *  all easy form generator emebeded in a directive
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -14,12 +14,12 @@
 	'use strict';
 	
 	angular
-		.module('ngwfApp.directives.ngwfEditModalDirective', [])
-		.directive('ngwfEditModalDirective', ngwfEditModalDirective);
+		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
+		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		ngwfEditModalDirective.$inject = [];
+		edaStepWayEasyFormGen.$inject = [];
 		
-		function ngwfEditModalDirective(){
+		function edaStepWayEasyFormGen(){
 			var directive = {
 				restrict : 'AE',
 				replace : true,
