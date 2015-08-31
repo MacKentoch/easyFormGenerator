@@ -1345,7 +1345,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				scope : {},
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
-				bindToController : true,
+				bindToController : true, //because scope is isolated
 				replace : true,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
 				link : linkFct
@@ -1353,7 +1353,26 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-					//console.info(ngwfWfEditCtrl.MaxNumberOfColumns);
+					/**
+					 * bind controller's scope.prop through scope.prop
+           * 
+           * formName : string (required) - give a name to your form
+           * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
+           * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
+           * formlyField : array[objects] : formly fields (description of your form)
+           * dataModel : array[objects] : data model (value of your form)
+           * 
+					 */
+					
+					
+          // scope.formName = scope.configuration.formName;
+          // scope.submitButtonText = scope.configuration.submitButtonText;
+          // scope.cancelButtonText = scope.configuration.cancelButtonText;
+          // scope.formlyFields = scope.configuration.lines;
+          // scope.formlyFieldsStringified = JSON.stringify(scope.configuration.lines);
+          // scope.dataModel = [];
+          
+          
 			}
 			
 			
