@@ -1342,7 +1342,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		function edaStepWayEasyFormGen($templateCache){
 			var directive = {
 				restrict : 'AE',
-				//replace : true,
+				replace : true,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html'
 			};
 			return directive;
