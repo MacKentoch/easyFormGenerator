@@ -20,6 +20,27 @@
 		edaStepWayEasyFormGen.$inject = ['$templateCache'];
 		
 		function edaStepWayEasyFormGen($templateCache){
+      
+      /**
+       * directive's controller injection is here (before return directive) = to avoid minification errors
+       * sad but true... -> this reminds me something?!
+       */
+      edaStepWayEasyFormGenCtrl.$inject = [
+        "$scope", 
+        '$templateCache',
+        'easyFormGenVersion',
+        '$filter',
+        '$anchorScroll',
+        'toaster', 
+        '$timeout',
+        '$modal',
+        '$log', 
+        'formFieldManage',
+        'WfFormsByIdServices',
+        'controllerModalProxy',
+      ];
+      
+      
 			var directive = {
 				restrict : 'AE',
 				scope : {},
@@ -54,25 +75,7 @@
           
           
 			}
-			
-			
-		
-    edaStepWayEasyFormGenCtrl.$inject = [
-      '$scope', 
-      '$templateCache',
-      'easyFormGenVersion',
-      '$filter',
-      '$anchorScroll',
-      'toaster', 
-      '$timeout',
-      '$modal',
-      '$log', 
-      'formFieldManage',
-      'WfFormsByIdServices',
-      'controllerModalProxy',
-    ];
-
-    
+			    
     function edaStepWayEasyFormGenCtrl(
                                     $scope, 
                                     $templateCache,
