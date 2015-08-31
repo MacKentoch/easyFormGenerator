@@ -13,7 +13,10 @@
 	'use strict';
 	
 	angular
-		.module('ngwfApp.directives', [	'ngwfApp.directives.ngwfStRatioDirective' ]);
+		.module('ngwfApp.directives', [	
+			'ngwfApp.directives.ngwfStRatioDirective',
+			'ngwfApp.directives.edaStepWayEasyFormGenDirective' 
+			]);
 
 })(); 
 

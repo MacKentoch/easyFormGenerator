@@ -546,6 +546,7 @@ gulp.task('dist', [
 	
 	var indexHtmlFiles = [
 		gulpConfig.base.root + gulpConfig.stepWayHtmlFile.name,
+		gulpConfig.base.root + gulpConfig.stepWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
 	];
 	//html files

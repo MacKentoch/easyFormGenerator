@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngwfApp" ng-controller="ngwfMainController">
+	<head>
+		<title>Easy form generator</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="create amazing forms without coding : form editor based on angular formly">
+		<meta name="author" content="Erwan Datin (MacKentoch)">
+		<!-- IMPORTANT : angular js lib (here for better result with ng-cloak) -->
+		<script type="text/javascript" src="./public/lib/js/angular.min.js"></script>	
+		<!-- Bootstrap core CSS -->
+		<link href="./public/lib/css/bootstrap.min.css" rel="stylesheet">		
+		<!-- <link href="/public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+		<!-- font-awesome -->
+		<link href="./public/lib/css/font-awesome.min.css" rel="stylesheet">
+		<!-- animate -->
+		<link href="./public/lib/css/animate.min.css" rel="stylesheet">
+		<!-- angular loading bar css-->
+		<!-- <link href="./public/lib/css/loading-bar.min.css" rel="stylesheet"> -->
+		<!-- angulat loading bar js -->
+		<!-- <script type="text/javascript" src="./public/lib/js/loading-bar.min.js"></script> -->
+		<!-- textAngular -->
+		<link rel='stylesheet' href='./public/lib/css/textAngular.min.css'>		
+		<!-- taoster angular -->
+		<link rel='stylesheet' href='./public/lib/css/toaster.min.css'>		
+		<!-- nya select bootstrap -->
+		<link rel='stylesheet' href='./public/lib/css/nya-bs-select.min.css'>	
+		<!-- Custom styles for this template -->
+		<link href="./public/css/eda.stepway.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="./public/lib/html5shiv/dist/html5shiv.min.js"></script>
+			<script src="./public/lib/respondJS/dest/respond.min.js"></script>
+		<![endif]-->		
+	</head>
+	<!-- NOTE : ng-cloak here is not optimal solution : better to use it only where it is needed (I just take a shortcut as this an example not a production sample)  -->
+	<body ng-cloak>
+		<div>
+			<!-- navigation 
+			=============================================================-->
+			<header id="pageHeader" >	
+				<div class="navbar navbar-default navbar-fixed-top">
+			      <div class="container">
+			        <div class="navbar-header">
+			          <a class="navbar-brand" href="#">Easy form generator</a>
+			          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			        </div>
+			        <div class="navbar-collapse collapse" id="navbar-main">
+			          <ul class="nav navbar-nav">
+			          </ul>
+			          <ul class="nav navbar-nav navbar-right">
+			          	<li><a class="socialIcon" target="_blank" href="https://github.com/MacKentoch"><span class="text-center"><i class="fa fa-github"></i></span></a></li>
+			          	<li><a class="socialIcon" target="_blank" href="https://twitter.com/erwan_datin"><span class="text-center"><i class="fa fa-twitter"></i></span></a></li>
+			          </ul>
+			        </div>
+			      </div>
+			    </div>
+			</header>   		
+
+			
+			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
+			=============================================================-->
+			<div eda-step-way-easy-form-gen></div>
+
+		</div>	
+
+	
+		<!-- footer : declare JS dependencies
+		=============================================================-->
+		<footer id="pageFooter">
+			<!-- jquery framework : top 1 priority -->
+			<script type="text/javascript" src="./public/lib/js/jquery.min.js"></script>
+			<!-- bootstrap framework scripts -->
+			<script type="text/javascript" src="./public/lib/js/bootstrap.min.js"></script>
+			<!-- angular ui bootstrap -->
+			<script type="text/javascript" src="./public/lib/js/ui-bootstrap-tpls.min.js"></script>
+			<!-- angular app all concatenated here (app, controllers directives, containers ...) -->
+			<script type="text/javascript" src="./public/js/eda.stepway.js"></script>
+			<!-- textAngular Includes -->
+			<script src='./public/lib/js/textAngular-rangy.min.js'></script>
+			<script src='./public/lib/js/textAngular-sanitize.min.js'></script>
+			<script src='./public/lib/js/textAngular.min.js'></script> 
+			<!-- lodash -->
+			<script src='./public/lib/js/lodash.min.js'></script> 
+			<script type="text/javascript" src="./public/lib/js/angular-resource.min.js"></script>
+			<!-- angular animate -->
+			<script type="text/javascript" src="./public/lib/js/angular-animate.min.js"></script>
+			<!-- angular toaster -->
+			<script type="text/javascript" src="./public/lib/js/toaster.min.js"></script>
+			<!-- nya select bootstrap -->		
+			<script type="text/javascript" src="./public/lib/js/nya-bs-select.min.js"></script>
+			<!--  api-check = formly needed : IMPORTANT : always before formly -->
+			<script type="text/javascript" src="./public/lib/js/api-check.min.js"></script> 
+			<!-- angular formly -->
+			<script type="text/javascript" src="./public/lib/js/formly.min.js"></script> 
+			<!-- angular formly template bootstrap -->
+			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script>
+			<!-- angular messages --> 
+			<script type="text/javascript" src="./public/lib/js/angular-messages.min.js"></script>
+		</footer>
+
+	</body>
+</html>
+
+
+
+
+
+
+

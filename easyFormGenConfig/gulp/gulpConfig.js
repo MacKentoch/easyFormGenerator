@@ -174,6 +174,10 @@ module.exports = {
 			name : 'index_StepWay.html'
 		},
 	
+		stepWayAsModuleHtmlFile : {
+			name : 'index_StepWay_As_Module.html'
+		},
+	
 		dragDropWayHtmlFile : {
 			name : 'index_DragDropWay.html'
 		}	

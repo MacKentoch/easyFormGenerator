@@ -17,13 +17,13 @@
 		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
 		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		edaStepWayEasyFormGen.$inject = [];
+		edaStepWayEasyFormGen.$inject = ['$templateCache'];
 		
-		function edaStepWayEasyFormGen(){
+		function edaStepWayEasyFormGen($templateCache){
 			var directive = {
 				restrict : 'AE',
 				replace : true,
-				templateUrl : 'editModalTemplate.html'
+				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html'
 			};
 			return directive;
 		}
