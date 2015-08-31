@@ -42,8 +42,8 @@ module.exports = function(config) {
 
         'bower_components/lodash/lodash.js',
          
-        'public/clientMVC/main/**/clientMVC.min.js',
-        'test/**/*.js'
+        'public/js/**/eda.stepway.js',
+        'src/test/**/*.js'
     ],
 
 
