@@ -44,11 +44,11 @@
 			var directive = {
 				restrict : 'AE',
 				scope : {
-          edaFormName : '@edaFormName'
+          edaFormName : '=edaFormName'
         },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
-				//bindToController : true, 
+				//bindToController : true, //angular < 1.4, activating this property will break databindings
 				replace : false,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
 				link : linkFct
@@ -67,16 +67,16 @@
           * 
           */
 
-          console.info(scope.edaFormName);
+          console.info('form name at initial state : ' + scope.edaFormName);
            
-					scope.$watch('edaFormName', 
+					scope.$watch(function(){return scope.edaFormName;}, 
             function(newValue, oldValue){
-              //if (newValue !== oldValue) {
+              if (newValue !== oldValue) {
                 console.info('form name changed : ' + newValue);  
-              //}
+              }
           });
 					
-               
+              
           // scope.formName = scope.configuration.formName;
           // scope.submitButtonText = scope.configuration.submitButtonText;
           // scope.cancelButtonText = scope.configuration.cancelButtonText;

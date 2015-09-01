@@ -67,7 +67,7 @@
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
 			<div 	eda-step-way-easy-form-gen
-						eda-form-name="{{demoCtrl.FormNameAsTest}}">
+						eda-form-name="demoCtrl.FormNameAsTest">
 			</div>
 
 		</div>	
@@ -91,9 +91,34 @@
 				demoController.$inject = ['$timeout'];	
 				function demoController($timeout){
 					var demoCtrl = this;
-					//form Name
-					demoCtrl.FormNameAsTest = 'initial_name';
 					
+					//easy form generator properties : 
+					//-> will be bound with your local properties
+					demoCtrl.FormNameAsTest = 'initial_name';
+					demoCtrl.submitButtonText = 'I Confirm';
+					demoCtrl.cancelButtonText = 'I give up';
+					demoCtrl.dataModel = {};
+					demoCtrl.formlyFields = {};
+					
+					demoCtrl.saveForm = saveForm;
+					
+					/**
+					 * when click on save form, will call your save form function :
+					 */
+					function saveForm(fieldsModel, dataModel){
+						//_ You can save to your database _
+						//1- just JSON.stringify these models
+						var stringifiedFieldsModel = JSON.stringify(fieldsModel);
+						var stringifiedDataModel = JSON.stringify(dataModel);
+						
+						
+						//2- send all to your database -> it is done!
+						var formnameToSave = demoCtrl.FormNameAsTest;
+						var submitButtonTextTosave = demoCtrl.FormNameAsTest;
+					}
+					
+					
+					//simulating "FormNameAsTest" property value changing
 					$timeout(function(){
 						demoCtrl.FormNameAsTest = 'name changed after 3s';
 					}, 3000);
