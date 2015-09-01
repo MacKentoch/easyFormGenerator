@@ -1373,8 +1373,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
         },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
-				//bindToController : true, //because scope is isolated
-				replace : true,
+				//bindToController : true, 
+				replace : false,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
 				link : linkFct
 			};

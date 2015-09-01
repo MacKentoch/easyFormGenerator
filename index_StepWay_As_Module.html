@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ngwfApp" ng-controller="ngwfMainController">
+<html lang="en" ng-app="appDemo">
 	<head>
 		<title>Easy form generator</title>
 		<meta charset="utf-8">
@@ -36,7 +36,7 @@
 		<![endif]-->		
 	</head>
 	<!-- NOTE : ng-cloak here is not optimal solution : better to use it only where it is needed (I just take a shortcut as this an example not a production sample)  -->
-	<body ng-cloak>
+	<body ng-controller="demoController as demoCtrl" ng-cloak>
 		<div>
 			<!-- navigation : just decoration it is not easy form generator
 			=============================================================-->
@@ -67,11 +67,40 @@
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
 			<div 	eda-step-way-easy-form-gen
-						eda-form-name="{{FormNameAsTest}}">
+						eda-form-name="{{demoCtrl.FormNameAsTest}}">
 			</div>
 
 		</div>	
 
+
+
+		<script type="text/javascript">
+			//demo purpose : here should be your app
+			
+			//just inject easy form generator and bind properties
+			//then, 
+			
+			(function(){
+				'use strict';
+				angular
+					.module('appDemo', [
+						'ngwfApp' //injects easy form generator
+					])
+					.controller('demoController', demoController);
+					
+				demoController.$inject = ['$timeout'];	
+				function demoController($timeout){
+					var demoCtrl = this;
+					//form Name
+					demoCtrl.FormNameAsTest = 'initial_name';
+					
+					$timeout(function(){
+						demoCtrl.FormNameAsTest = 'name changed after 3s';
+					}, 3000);
+					
+				}		
+			})();
+		</script>
 	
 		<!-- footer : declare JS dependencies
 		=============================================================-->
