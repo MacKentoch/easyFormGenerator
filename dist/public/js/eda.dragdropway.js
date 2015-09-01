@@ -2850,8 +2850,7 @@ angular
 																	'edaApp.controllers.edaEditController',
 																	'edaApp.controllers.edaEditMODALController',
 																	'edaApp.controllers.edaEditPanelController',							
-			function () {
-}]);
+	]);
 
 /**
  *  ------------------------------------------------------
@@ -5389,9 +5388,7 @@ angular
 																	'edaApp.directives.edaDdNoEditableControlDirective',
 																	'edaApp.directives.edaDdContentCounterDirective',
 																	'edaApp.directives.edaRightClickDirective',
-	function () {
-
-}]);
+	]);
 
 
 /**
@@ -7421,8 +7418,7 @@ angular.module('edaApp.services',
 								'edaApp.services.dragDropItemCountersService',
 								'edaApp.services.dragDropModelConfigModelProxyService',
 								'edaApp.services.ddItemRightClickedManager',
-								function () {
-}]);
+				]);
 /**
  *  ------------------------------------------------------
  *  filters container
@@ -7440,9 +7436,7 @@ angular.module('edaApp.services',
 angular
 	.module('edaApp.filters', ['edaApp.filters.trustThis', 
 	
-	function () {
-
-	}]);
+	]);
 
 /**
  *  ------------------------------------------------------

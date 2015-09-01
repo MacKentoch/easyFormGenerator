@@ -25,5 +25,4 @@ angular.module('edaApp.services',
 								'edaApp.services.dragDropItemCountersService',
 								'edaApp.services.dragDropModelConfigModelProxyService',
 								'edaApp.services.ddItemRightClickedManager',
-								function () {
-}]);
+				]);

@@ -15,5 +15,4 @@ angular
 																	'edaApp.controllers.edaEditController',
 																	'edaApp.controllers.edaEditMODALController',
 																	'edaApp.controllers.edaEditPanelController',							
-			function () {
-}]);
+	]);

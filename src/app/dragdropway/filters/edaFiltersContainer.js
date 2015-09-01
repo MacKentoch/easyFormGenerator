@@ -15,6 +15,4 @@
 angular
 	.module('edaApp.filters', ['edaApp.filters.trustThis', 
 	
-	function () {
-
-	}]);
+	]);

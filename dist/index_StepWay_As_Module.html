@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ngwfApp" ng-controller="ngwfMainController">
+<html lang="en" ng-app="appDemo">
 	<head>
 		<title>Easy form generator</title>
 		<meta charset="utf-8">
@@ -36,7 +36,7 @@
 		<![endif]-->		
 	</head>
 	<!-- NOTE : ng-cloak here is not optimal solution : better to use it only where it is needed (I just take a shortcut as this an example not a production sample)  -->
-	<body ng-cloak>
+	<body ng-controller="demoController as demoCtrl" ng-cloak>
 		<div>
 			<!-- navigation : just decoration it is not easy form generator
 			=============================================================-->
@@ -63,13 +63,78 @@
 			    </div>
 			</header>   		
 
-			
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
-			<div eda-step-way-easy-form-gen></div>
+			<div 	eda-step-way-easy-form-gen
+						eda-form-name="demoCtrl.FormName"
+						eda-submit-button-text="demoCtrl.submitButtonText"
+						eda-cancel-button-text="demoCtrl.cancelButtonText"
+						eda-data-model="demoCtrl.dataModel"
+						eda-form-model="demoCtrl.formlyFields"
+						eda-save-form-event="demoCtrl.saveForm(fieldsModel, dataModel)">
+			</div>
 
 		</div>	
 
+
+
+		<script type="text/javascript">
+			//demo purpose : here should be your app
+			
+			//just inject easy form generator and bind properties
+			//then, 
+			
+			(function(){
+				'use strict';
+				angular
+					.module('appDemo', [
+						'ngwfApp' //injects easy form generator
+					])
+					.controller('demoController', demoController);
+					
+				demoController.$inject = ['$timeout'];	
+				function demoController($timeout){
+					var demoCtrl = this;
+					
+					//easy form generator properties : 
+					//-> will be bound with your local properties
+					demoCtrl.FormName 				= 'DemoForm';
+					demoCtrl.submitButtonText = 'I Confirm';
+					demoCtrl.cancelButtonText = 'I give up';
+					demoCtrl.dataModel 				= [];
+					demoCtrl.formlyFields 		= [];
+					
+					//demoCtrl.loadForms				= laodForms
+					demoCtrl.saveForm = saveForm;
+					
+					/**
+					 * when click on save form, will call your save form function :
+					 */
+					function saveForm(fieldsModel, dataModel){
+						
+						console.info('-> can handle save models to database here (your controller)');
+						
+						console.dir({
+							'got' 				: 'objects',
+							'datamodel' 	: dataModel,
+							'fieldsModel' : fieldsModel
+						});
+						
+						//_ You can save to your database _
+						//1- just JSON.stringify these models
+						var stringifiedFieldsModel 	= JSON.stringify(fieldsModel);
+						var stringifiedDataModel 		= JSON.stringify(dataModel);
+						
+						
+						//2- send all to your database -> it is done!
+						var formnameToSave 					= demoCtrl.FormNameAsTest;
+						var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
+					}
+					
+					
+				}		
+			})();
+		</script>
 	
 		<!-- footer : declare JS dependencies
 		=============================================================-->
