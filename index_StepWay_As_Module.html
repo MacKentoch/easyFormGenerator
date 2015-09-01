@@ -63,11 +63,15 @@
 			    </div>
 			</header>   		
 
-			<pre>debug : {{FormNameAsTest}}</pre>
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
 			<div 	eda-step-way-easy-form-gen
-						eda-form-name="demoCtrl.FormNameAsTest">
+						eda-form-name="demoCtrl.FormName"
+						eda-submit-button-text="demoCtrl.submitButtonText"
+						eda-cancel-button-text="demoCtrl.cancelButtonText"
+						eda-data-model="demoCtrl.dataModel"
+						eda-form-model="demoCtrl.formlyFields"
+						eda-save-form-event="demoCtrl.">
 			</div>
 
 		</div>	
@@ -94,12 +98,13 @@
 					
 					//easy form generator properties : 
 					//-> will be bound with your local properties
-					demoCtrl.FormNameAsTest = 'initial_name';
+					demoCtrl.FormName 				= 'DemoForm';
 					demoCtrl.submitButtonText = 'I Confirm';
 					demoCtrl.cancelButtonText = 'I give up';
-					demoCtrl.dataModel = {};
-					demoCtrl.formlyFields = {};
+					demoCtrl.dataModel 				= [];
+					demoCtrl.formlyFields 		= [];
 					
+					//demoCtrl.loadForms				= laodForms
 					demoCtrl.saveForm = saveForm;
 					
 					/**
@@ -108,20 +113,15 @@
 					function saveForm(fieldsModel, dataModel){
 						//_ You can save to your database _
 						//1- just JSON.stringify these models
-						var stringifiedFieldsModel = JSON.stringify(fieldsModel);
-						var stringifiedDataModel = JSON.stringify(dataModel);
+						var stringifiedFieldsModel 	= JSON.stringify(fieldsModel);
+						var stringifiedDataModel 		= JSON.stringify(dataModel);
 						
 						
 						//2- send all to your database -> it is done!
-						var formnameToSave = demoCtrl.FormNameAsTest;
-						var submitButtonTextTosave = demoCtrl.FormNameAsTest;
+						var formnameToSave 					= demoCtrl.FormNameAsTest;
+						var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
 					}
 					
-					
-					//simulating "FormNameAsTest" property value changing
-					$timeout(function(){
-						demoCtrl.FormNameAsTest = 'name changed after 3s';
-					}, 3000);
 					
 				}		
 			})();
