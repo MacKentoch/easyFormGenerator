@@ -71,7 +71,7 @@
 						eda-cancel-button-text="demoCtrl.cancelButtonText"
 						eda-data-model="demoCtrl.dataModel"
 						eda-form-model="demoCtrl.formlyFields"
-						eda-save-form-event="demoCtrl.">
+						eda-save-form-event="demoCtrl.saveForm(fieldsModel, dataModel)">
 			</div>
 
 		</div>	
@@ -111,6 +111,15 @@
 					 * when click on save form, will call your save form function :
 					 */
 					function saveForm(fieldsModel, dataModel){
+						
+						console.info('-> can handle save models to database here (your controller)');
+						
+						console.dir({
+							'got' 				: 'objects',
+							'datamodel' 	: dataModel,
+							'fieldsModel' : fieldsModel
+						});
+						
 						//_ You can save to your database _
 						//1- just JSON.stringify these models
 						var stringifiedFieldsModel 	= JSON.stringify(fieldsModel);

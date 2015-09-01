@@ -1369,7 +1369,12 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			var directive = {
 				restrict : 'AE',
 				scope : {
-          edaFormName : '=edaFormName'
+          edaFormName         : '=edaFormName',
+          edaSubmitButtonText : '=edaSubmitButtonText',
+          edaCancelButtonText : '=edaCancelButtonText',
+          edaDataModel        : '=edaDataModel',
+          edaFormModel        : '=edaFormModel',
+          edaSaveFormEvent    : '&edaSaveFormEvent'
         },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
@@ -1381,16 +1386,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-        /**
-          * bind controller's scope.prop through scope.prop
-          * 
-          * formName : string (required) - give a name to your form
-          * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
-          * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
-          * formlyField : array[objects] : formly fields (description of your form)
-          * dataModel : array[objects] : data model (value of your form)
-          * 
-          */
 
           console.info('form name at initial state : ' + scope.edaFormName);
            
@@ -1399,8 +1394,23 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
               if (newValue !== oldValue) {
                 console.info('form name changed : ' + newValue);  
               }
-          });
-					
+            }
+          );
+            
+					scope.$watch(function(){return scope.returnSaveEvent;}, 
+            function(newValue, oldValue){
+              if (newValue === true) {
+                
+                console.info('form saving event should return to parent controller!');
+                scope.edaSaveFormEvent({
+                  fieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
+                  dataModel   : scope.vm.model
+                });
+                //back to false, waiting next save event
+                scope.returnSaveEvent = false;
+              }
+            }
+          );					
               
           // scope.formName = scope.configuration.formName;
           // scope.submitButtonText = scope.configuration.submitButtonText;
@@ -1463,7 +1473,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation = toggleAnimation;
+      $scope.toggleAnimation          = toggleAnimation;
 
       $scope.nyaSelect                = {};
       
@@ -1479,6 +1489,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.configurationLoaded      = {};   
       $scope.previewExistingform      = previewExistingform;
       $scope.saveThisForm             = saveThisForm; //should save to database (commented here)
+      $scope.returnSaveEvent          = false;
 
 
    
@@ -1870,13 +1881,15 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
         //              });
 
         toaster.clear();  
-        toaster.pop({
-                type: 'info',
-                timeout:2000,
-                title: 'Form would be saved if it were not a static example',
-                body: '',                
-                showCloseButton: true
-          }); 
+        
+        // toaster.pop({
+        //         type: 'info',
+        //         timeout:2000,
+        //         title: 'Form would be saved if it were not a static example',
+        //         body: '',                
+        //         showCloseButton: true
+        //   }); 
+        $scope.returnSaveEvent = true;
         return true;
       } 
 
