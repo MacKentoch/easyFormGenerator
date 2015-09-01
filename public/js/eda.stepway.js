@@ -301,9 +301,14 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		.module('ngwfApp.controllers.ngwfMainController', [])
 		.controller('ngwfMainController', ngwfMainController);
 
-		ngwfMainController.$inject = [];
-		function ngwfMainController(){
-
+		ngwfMainController.$inject = ['$scope', '$timeout'];
+		function ngwfMainController($scope, $timeout){
+			
+			$scope.FormNameAsTest = 'initial_name';
+			
+			$timeout(function(){
+				$scope.FormNameAsTest = 'name changed after 3s';
+			}, 3000);
 		}
 
 })(); 
@@ -1363,10 +1368,12 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       
 			var directive = {
 				restrict : 'AE',
-				scope : {},
+				scope : {
+          edaFormName : '@edaFormName'
+        },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
-				bindToController : true, //because scope is isolated
+				//bindToController : true, //because scope is isolated
 				replace : true,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
 				link : linkFct
@@ -1374,18 +1381,27 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-					/**
-					 * bind controller's scope.prop through scope.prop
-           * 
-           * formName : string (required) - give a name to your form
-           * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
-           * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
-           * formlyField : array[objects] : formly fields (description of your form)
-           * dataModel : array[objects] : data model (value of your form)
-           * 
-					 */
+        /**
+          * bind controller's scope.prop through scope.prop
+          * 
+          * formName : string (required) - give a name to your form
+          * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
+          * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
+          * formlyField : array[objects] : formly fields (description of your form)
+          * dataModel : array[objects] : data model (value of your form)
+          * 
+          */
+
+          console.info(scope.edaFormName);
+           
+					scope.$watch('edaFormName', 
+            function(newValue, oldValue){
+              //if (newValue !== oldValue) {
+                console.info('form name changed : ' + newValue);  
+              //}
+          });
 					
-					
+               
           // scope.formName = scope.configuration.formName;
           // scope.submitButtonText = scope.configuration.submitButtonText;
           // scope.cancelButtonText = scope.configuration.cancelButtonText;

@@ -43,29 +43,40 @@
       
 			var directive = {
 				restrict : 'AE',
-				scope : {},
+				scope : {
+          edaFormName : '@edaFormName'
+        },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
-				bindToController : true, //because scope is isolated
-				replace : true,
+				//bindToController : true, 
+				replace : false,
 				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
 				link : linkFct
 			};
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-					/**
-					 * bind controller's scope.prop through scope.prop
-           * 
-           * formName : string (required) - give a name to your form
-           * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
-           * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
-           * formlyField : array[objects] : formly fields (description of your form)
-           * dataModel : array[objects] : data model (value of your form)
-           * 
-					 */
+        /**
+          * bind controller's scope.prop through scope.prop
+          * 
+          * formName : string (required) - give a name to your form
+          * submitButtonText : string (optionnal) - change submit buttun text (default is "submit")
+          * cancelButtonText : string (optionnal) - change submit buttun text (default is "cancel")
+          * formlyField : array[objects] : formly fields (description of your form)
+          * dataModel : array[objects] : data model (value of your form)
+          * 
+          */
+
+          console.info(scope.edaFormName);
+           
+					scope.$watch('edaFormName', 
+            function(newValue, oldValue){
+              //if (newValue !== oldValue) {
+                console.info('form name changed : ' + newValue);  
+              //}
+          });
 					
-					
+               
           // scope.formName = scope.configuration.formName;
           // scope.submitButtonText = scope.configuration.submitButtonText;
           // scope.cancelButtonText = scope.configuration.cancelButtonText;
