@@ -418,6 +418,10 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  }
  .customPagerButton{
   width: 100px;
+  margin : {
+    left : 2px;
+    right: 2px;
+  }
 
  }
  .numberOfColumnsLabel
