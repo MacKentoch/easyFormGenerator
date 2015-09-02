@@ -17,9 +17,9 @@
 		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
 		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		edaStepWayEasyFormGen.$inject = ['$templateCache'];
+		edaStepWayEasyFormGen.$inject = ['$templateCache', '$timeout'];
 		
-		function edaStepWayEasyFormGen($templateCache){
+		function edaStepWayEasyFormGen($templateCache, $timeout){
       
       /**
        * directive's controller injection is here (before return directive) = to avoid minification errors
@@ -64,41 +64,39 @@
 			
 			function linkFct(scope, element, attrs){
           
+          // scope.edaFormName         = scope.configuration.formName;
+          // scope.edaSubmitButtonText = scope.configuration.submitButtonText;
+          // scope.edaCancelButtonText = scope.configuration.cancelButtonText;
+          // scope.edaDataModel        = scope.vm.model;
+          // scope.edaFormModel        = scope.vm.wfFormFieldsOnlyNeededProperties;          
+          
+          
           //catch saving form event  
 					scope.$watch(function(){return scope.returnSaveEvent;}, 
             function(newValue, oldValue){
               if (newValue === true) {
+                                             
                 
-                //return all form attributes to parent scope
-                scope.edaFormName         = scope.configuration.formName;
-                scope.edaSubmitButtonText = scope.configuration.submitButtonText;
-                scope.edaCancelButtonText = scope.configuration.cancelButtonText;
-                scope.edaDataModel        = angular.copy(scope.vm.model);
-                scope.edaFormModel        = angular.copy(scope.vm.wfFormFieldsOnlyNeededProperties);
+                var _easyFormModel = {
+                  formName      : scope.configuration.formName,
+                  btnSubmitText : scope.configuration.submitButtonText,
+                  btnCancelText : scope.configuration.cancelButtonText,
+                  fieldsModel   : scope.vm.wfFormFieldsOnlyNeededProperties,
+                  dataModel     : scope.vm.model
+                };
                 
-                console.dir({
-                  'side' 				: 'directive',
-                  'demoCtrl.FormName' : scope.edaFormName,
-                  'demoCtrl.submitButtonText' : scope.edaSubmitButtonText,
-                  'demoCtrl.cancelButtonText'  : scope.edaCancelButtonText,
-                  'demoCtrl.dataModel' : scope.edaDataModel,
-                  'demoCtrl.formlyFields' : scope.edaFormModel
-                  
-                });                
-                
-                //execute parent controller save form event :
                 scope.edaSaveFormEvent({
-                  fieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
-                  dataModel   : scope.vm.model
+                  easyFormModel      : _easyFormModel
                 });
+                
                 //back to false, waiting next save event
                 scope.returnSaveEvent = false;
-                
+
               }
             }
           );	
           
-
+          
                    
 			}
 			    

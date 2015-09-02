@@ -71,7 +71,7 @@
 						eda-cancel-button-text="demoCtrl.cancelButtonText"
 						eda-data-model="demoCtrl.dataModel"
 						eda-form-model="demoCtrl.formlyFields"
-						eda-save-form-event="demoCtrl.saveForm(fieldsModel, dataModel)">
+						eda-save-form-event="demoCtrl.saveForm(easyFormModel)">
 			</div>
 
 		</div>	
@@ -101,8 +101,8 @@
 					demoCtrl.FormName 				= 'DemoForm';
 					demoCtrl.submitButtonText = 'I Confirm';
 					demoCtrl.cancelButtonText = 'I give up';
-					demoCtrl.dataModel 				= [];
-					demoCtrl.formlyFields 		= [];
+					demoCtrl.dataModel 				= {};
+					demoCtrl.formlyFields 		= {};
 					
 					//demoCtrl.loadForms				= laodForms
 					demoCtrl.saveForm = saveForm;
@@ -110,31 +110,23 @@
 					/**
 					 * when click on save form, will call your save form function :
 					 */
-					function saveForm(fieldsModel, dataModel){
+					function saveForm(easyFormModel){
 						
 						console.info('-> can handle save models to database here (your controller)');
 						
 						console.dir({
-							'side' 				: 'parent controller',
-							'datamodel' 	: dataModel,
-							'fieldsModel' : fieldsModel,
-							'demoCtrl.FormName' : demoCtrl.FormName,
-							'demoCtrl.submitButtonText' : demoCtrl.submitButtonText,
-							'demoCtrl.cancelButtonText'  :demoCtrl.cancelButtonText,
-							'demoCtrl.dataModel' : demoCtrl.dataModel,
-							'demoCtrl.formlyFields' : demoCtrl.formlyFields
-							
+								'easyfomModel' : easyFormModel
 						});
 						
 						//_ You can save to your database _
 						//1- just JSON.stringify these models
-						var stringifiedFieldsModel 	= JSON.stringify(fieldsModel);
-						var stringifiedDataModel 		= JSON.stringify(dataModel);
+						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
+						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
 						
 						
 						//2- send all to your database -> it is done!
-						var formnameToSave 					= demoCtrl.FormNameAsTest;
-						var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
+						//var formnameToSave 					= demoCtrl.FormNameAsTest;
+						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
 					}
 					
 					
