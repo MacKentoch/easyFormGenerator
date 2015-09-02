@@ -49,6 +49,8 @@
           edaCancelButtonText : '=edaCancelButtonText',
           edaDataModel        : '=edaDataModel',
           edaFormModel        : '=edaFormModel',
+          
+          edaLoadFormModel    : '&edaLoadformModel',
           edaSaveFormEvent    : '&edaSaveFormEvent'
         },
 				controller : edaStepWayEasyFormGenCtrl,
@@ -61,40 +63,43 @@
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-
-          console.info('form name at initial state : ' + scope.edaFormName);
-           
-					scope.$watch(function(){return scope.edaFormName;}, 
-            function(newValue, oldValue){
-              if (newValue !== oldValue) {
-                console.info('form name changed : ' + newValue);  
-              }
-            }
-          );
-            
+          
+          //catch saving form event  
 					scope.$watch(function(){return scope.returnSaveEvent;}, 
             function(newValue, oldValue){
               if (newValue === true) {
                 
-                console.info('form saving event should return to parent controller!');
+                //return all form attributes to parent scope
+                scope.edaFormName         = scope.configuration.formName;
+                scope.edaSubmitButtonText = scope.configuration.submitButtonText;
+                scope.edaCancelButtonText = scope.configuration.cancelButtonText;
+                scope.edaDataModel        = angular.copy(scope.vm.model);
+                scope.edaFormModel        = angular.copy(scope.vm.wfFormFieldsOnlyNeededProperties);
+                
+                console.dir({
+                  'side' 				: 'directive',
+                  'demoCtrl.FormName' : scope.edaFormName,
+                  'demoCtrl.submitButtonText' : scope.edaSubmitButtonText,
+                  'demoCtrl.cancelButtonText'  : scope.edaCancelButtonText,
+                  'demoCtrl.dataModel' : scope.edaDataModel,
+                  'demoCtrl.formlyFields' : scope.edaFormModel
+                  
+                });                
+                
+                //execute parent controller save form event :
                 scope.edaSaveFormEvent({
                   fieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
                   dataModel   : scope.vm.model
                 });
                 //back to false, waiting next save event
                 scope.returnSaveEvent = false;
+                
               }
             }
-          );					
-              
-          // scope.formName = scope.configuration.formName;
-          // scope.submitButtonText = scope.configuration.submitButtonText;
-          // scope.cancelButtonText = scope.configuration.cancelButtonText;
-          // scope.formlyFields = scope.configuration.lines;
-          // scope.formlyFieldsStringified = JSON.stringify(scope.configuration.lines);
-          // scope.dataModel = [];
+          );	
           
-          
+
+                   
 			}
 			    
     function edaStepWayEasyFormGenCtrl(

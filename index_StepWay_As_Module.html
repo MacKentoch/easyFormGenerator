@@ -115,9 +115,15 @@
 						console.info('-> can handle save models to database here (your controller)');
 						
 						console.dir({
-							'got' 				: 'objects',
+							'side' 				: 'parent controller',
 							'datamodel' 	: dataModel,
-							'fieldsModel' : fieldsModel
+							'fieldsModel' : fieldsModel,
+							'demoCtrl.FormName' : demoCtrl.FormName,
+							'demoCtrl.submitButtonText' : demoCtrl.submitButtonText,
+							'demoCtrl.cancelButtonText'  :demoCtrl.cancelButtonText,
+							'demoCtrl.dataModel' : demoCtrl.dataModel,
+							'demoCtrl.formlyFields' : demoCtrl.formlyFields
+							
 						});
 						
 						//_ You can save to your database _

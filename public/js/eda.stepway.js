@@ -1,5 +1,3694 @@
-!function(){"use strict";!function(){function e(e){function o(e){return e=e.replace(/[\-_\s]+(.)?/g,function(e,o){return o?o.toUpperCase():""}),e.replace(/^([A-Z])/,function(e,o){return o?o.toLowerCase():""})}e.setType({name:"richEditor",template:'<text-angular name="{{id}}" class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'}),e.setType({name:"blank",template:"<div></div>"});var l='<div class="row"><div class=""><h4 class="text-center">{{options.templateOptions.placeholder}}<h4><hr/></div></div>';e.setType({name:"subTitle",template:l});var t=' <ol   class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"    ng-model="model[options.key || index]"     id="{{id}}"     disabled="options.templateOptions.options.length === 0">    <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options">      <a>{{option.name}}</a>    </li>  </ol>     ';e.setType({name:"basicSelect",template:t});var i='  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"     ng-model="model[options.key || index]"        data-live-search="true"        disabled="options.templateOptions.options.length === 0">       <li nya-bs-option="option in  options.templateOptions.options group by option.group"         >         <span class="dropdown-header">{{$group}}</span>         <a>           <span>{{option.name}}</span>           <span class="glyphicon glyphicon-ok check-mark"></span>         </a>       </li>     </ol>';e.setType({name:"groupedSelect",template:i});var n=["date-disabled","custom-class","show-weeks","starting-day","init-date","min-mode","max-mode","format-day","format-month","format-year","format-day-header","format-day-title","format-month-title","year-range","shortcut-propagation","datepicker-popup","show-button-bar","current-text","clear-text","close-text","close-on-date-selection","datepicker-append-to-body"],s=["datepicker-mode","min-date","max-date"],a={};angular.forEach(n,function(e){a[o(e)]={attribute:e}}),angular.forEach(s,function(e){a[o(e)]={bound:e}}),e.setType({name:"datepicker",template:'<input  id="{{id}}" class="form-control" ng-click="open($event)" ng-model="model[options.key  || index]" is-open="to.isOpen" ng-click="to.isOpen = true" datepicker-options="to.datepickerOptions" />',wrapper:["bootstrapLabel","bootstrapHasError"],controller:["$scope",function(e){e.open=function(o){o.preventDefault(),o.stopPropagation(),e.opened=!0}}],defaultOptions:{ngModelAttrs:a,templateOptions:{addonLeft:{"class":"glyphicon glyphicon-calendar",onClick:function(e,o){e.templateOptions.isOpen=!e.templateOptions.isOpen}},onFocus:function(e,o,l){l.to.isOpen=!l.to.isOpen},datepickerOptions:{}}}}),e.setWrapper([{template:['<div class="formly-template-wrapper form-group"',"     ng-class=\"{'has-error': options.validation.errorExistsAndShouldBeVisible}\">"," <formly-transclude></formly-transclude>",' <div class="validation"','       ng-if="options.validation.errorExistsAndShouldBeVisible"','       ng-messages="options.formControl.$error">','   <div ng-messages-include="validation.html"></div>','   <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',"     {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}","   </div>"," </div>","</div>"].join(" ")}])}angular.module("ngwfApp",["ngwfApp.core","ngwfApp.controllers","ngwfApp.services","ngwfApp.filters","ngwfApp.directives"]).value("easyFormGenVersion","v1.0.7").config(e),e.$inject=["formlyConfigProvider"]}(),angular.module("ngwfApp").run(["$templateCache",function(e){e.put("edaStepWayEasyFormGeneratorTemplate.html",'<section id=pageWfEdit><div ng-init=""><div class=container><section id=preview><div id=preview-content><div class=content-container><toaster-container toaster-options="{ \'position-class\': \'toast-top-full-width\', \'extendedTimeout\':500, \'timeOut\':500, }"></toaster-container><tabset justified=true><tab select=tabJustSelected(2) active=tab.editTab.active heading="Edit /Create"><div class=row><div class="row stepwizardTopmargin"><div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2"><div class=stepwizard><div class="row stepwizard-row"><div class="stepwizard-step col-md-3"><button type=button class="btn btn-circle" ng-class="{\'btn-primary\': configuration.stepIndicators[0], \'btn-default\': !configuration.stepIndicators[0]}">0</button><p>lines</p></div><div class="stepwizard-step col-md-3"><button type=button class="btn btn-circle" ng-class="{\'btn-primary\': configuration.stepIndicators[1], \'btn-default\': !configuration.stepIndicators[1], \'disabled\': (configuration.configStepCounter < 1)}">1</button><p>layout</p></div><div class="stepwizard-step col-md-3"><button type=button class="btn btn-default btn-circle" ng-class="{\'btn-primary\': configuration.stepIndicators[2], \'btn-default\': !configuration.stepIndicators[2], \'disabled\': (configuration.configStepCounter < 2)}">2</button><p>controls</p></div><div class="stepwizard-step col-md-3"><button type=button class="btn btn-default btn-circle" ng-class="{\'btn-primary\': configuration.stepIndicators[3], \'btn-default\': !configuration.stepIndicators[3], \'disabled\': (configuration.configStepCounter < 3)}">3</button><p>save</p></div></div></div></div></div></div><div class=row><ul class=pager><li ng-class="{\'disabled\':stepIndicators[0]}"><button class="btn btn-primary customPagerButton" ng-click=previousConfigStep()><i class="fa fa-arrow-left fa-2x pull-left"></i> <span class=pull-right>Prev</span></button></li><li ng-class="{\'disabled\':stepIndicators[3]}"><button class="btn btn-primary customPagerButton" ng-click=nextConfigStep()><span class=pull-left>Next</span> <i class="fa fa-arrow-right fa-2x pull-right"></i></button></li></ul><div class=animate-switch-container ng-switch="" on=configuration.listConfigStep[configuration.configStepCounter]><div class=animate-switch ng-switch-when=init><div class=col-md-4><div id=commandPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-keyboard-o"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><span class=addNewLine>Add a new line :</span>&nbsp; <button class="btn btn-primary" ng-click=addNewline()><i class="fa fa-plus fa-1x"></i></button></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-eye"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat="line in configuration.lines track by $index"><div ng-switch="" on=line.columns.length><div class="row linesList" ng-switch-when=1><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class="btn btn-warning" ng-hide="$index==0" ng-click=upThisLine($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click=downThisLine($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-danger pull-right" ng-click=removeThisLine($index)><i class="fa fa-trash-o"></i></button></div><div class=col-md-12><div class="col-md-12 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class="row linesList" ng-switch-when=2><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class="btn btn-warning" ng-hide="$index==0" ng-click=upThisLine($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click=downThisLine($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-danger pull-right" ng-click=removeThisLine($index)><i class="fa fa-trash-o"></i></button></div><div class=col-md-12><div class="col-md-6 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-6 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class="row linesList" ng-switch-when=3><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class="btn btn-warning" ng-hide="$index==0" ng-click=upThisLine($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click=downThisLine($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-danger pull-right" ng-click=removeThisLine($index)><i class="fa fa-trash-o"></i></button></div><div class=col-md-12><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=first><div class=col-md-4><div id=commandPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-keyboard-o"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><h4 class="numberOfcolumsText text-center"><i>– Selected line –</i></h4><h4 class="numberOfcolumsText text-center">number of columns :</h4></div></div><div class=row><div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3"><button class="btn btn-primary pull-right btnMinusColumns" ng-click=decreaseNumberOfColumns()><i class="fa fa-minus fa-1x"></i></button></div><div class="col-xs-2 col-sm-2 col-md-2 text-center"><span class=numberOfColumnsLabel>{{configuration.lines[configuration.activeLine -1].columns.length}}</span></div><div class="col-xs-2 col-sm-2 col-md-2"><button class="btn btn-primary pull-left btnAddColumns" ng-click=increaseNumberOfColumns()><i class="fa fa-plus fa-1x"></i></button></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-eye"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat="line in configuration.lines track by $index"><div ng-switch="" on=line.columns.length><div class="row linesList" ng-switch-when=1><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-12 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class="row linesList" ng-switch-when=2><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-6 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-6 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class="row linesList" ng-switch-when=3><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block btn-default disabled">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=second><div class=col-md-4><div id=commandPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-keyboard-o"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><h4 class="numberOfcolumsText text-center">– Apply controls to columns –</h4></div></div><div class=row><div class=col-lg-12><hr><blockquote><p class=numberOfcolumsText><i class="fa fa-minus"></i>&nbsp; Click / Tap on column to open control selection.</p><p class=numberOfcolumsText><i class="fa fa-minus"></i>&nbsp; Select desired control and valid to apply it to column.</p></blockquote></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-eye"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat="line in configuration.lines track by $index"><div ng-switch="" on=line.columns.length><div class="row linesList" ng-switch-when=1><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-12 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 0)">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class="row linesList" ng-switch-when=2><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-6 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 0)">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-6 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 1)">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class="row linesList" ng-switch-when=3><div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1"><button class=btn ng-class="{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)"><i class=fa ng-class="{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}"></i></button></div><div class=col-md-12><div class="col-md-4 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 0)">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 1)">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class="col-md-4 well"><button class="btn btn-lg btn-block" ng-class="{\'btn-primary\': !line.columns[2].control.edited, \'btn-success\': line.columns[2].control.edited}" ng-click="showModalAddCtrlToColumn(\'\', $index, 2)">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=third><div class=col-md-4><div id=commandPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-keyboard-o"></i>&nbsp;Command</h3></div><div class=panel-body><div class=row><div class=col-xs-12><div class=form-group><label for=inputSubmitButtontext class="greyText control-label">Customize Submit button Text :</label><div><input type=text class=form-control id=inputSubmitButtontext placeholder="Submit button text" ng-model=configuration.submitButtonText></div></div></div></div><hr><div class=row><div class=col-xs-12><div class=form-group><label for=inputCancelButtontext class="greyText control-label">Customize Cancel button Text :</label><div><input type=text class=form-control id=inputCancelButtontext placeholder="Cancel button text" ng-model=configuration.cancelButtonText></div></div></div></div><hr><div class=row><div class=col-xs-12><div class=form-group><label for=inputNameFormtext class="greyText control-label">Name to this form :</label><div><input type=text class=form-control id=inputNameFormtext placeholder="Enter formName" ng-model=configuration.formName></div></div></div></div><button class="btn btn-primary btn-block btn-lg" ng-click=saveThisForm()>save this form</button></div></div></div></div><div class=col-md-8><div id=visualPanel><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title><i class="fa fa-thumbs-o-up"></i>&nbsp;Final Step : form preview</h3></div><div class=panel-body><form ng-submit=vm.onSubmit()><formly-form id=saveFormlyFom model=vm.model fields=vm.wfFormFields><span class=pull-right><button class="btn btn-primary" type=submit>{{configuration.submitButtonText}}</button> <button class="btn btn-primary" type=cancel>{{configuration.cancelButtonText}}</button></span></formly-form></form></div></div></div></div></div></div></div></tab><tab select=tabJustSelected(1) active=tab.previewTab.active heading=Preview><div class="panel panel-default"><div class=panel-body><form ng-submit=vm.onSubmit()><formly-form id=previewFormlyForm model=vm.model fields=vm.wfFormFields><span class=pull-right><button class="btn btn-primary" type=submit>{{configuration.submitButtonText}}</button> <button class="btn btn-primary" type=cancel>{{configuration.cancelButtonText}}</button></span></formly-form></form></div></div><div class="panel panel-default"><div class=panel-body><p>DATA MODEL</p><pre>\n										{{vm.model | json}}\n									</pre></div></div><div class="panel panel-default"><div class=panel-body><p>FIELDS MODEL (ready to save to database one)</p><pre>\n										{{vm.wfFormFieldsOnlyNeededProperties | json}}\n									</pre></div></div></tab></tabset></div></div></section><hr><section><h6 class=text-right>Easy form generator : {{easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6></section></div></div></section>'),e.put("editModalTemplate.html",'<div class=modal-header><h3 class="modal-title greyText">Select a control</h3></div><div class=modal-body><hr><div class=row><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h5 class=greyText><i class="fa fa-filter"></i>&nbsp; Select a control in the list below :</h5></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-model=modelNyaSelect data-live-search=false><li nya-bs-option="option in nyaSelect.controls group by option.group"><span class="dropdown-header greyText">{{$group}}</span><a ng-click=selectThisControl(option.id)><span>{{ option.name }}</span> <span class="glyphicon glyphicon-ok check-mark"></span></a></li></ol></div></div><hr><div ng-switch="" on=nyaSelect.selectedControl><div ng-switch-when=none><div class=row><div class=col-sm-12><h5 class="text-center texteRouge"><i class="fa fa-arrow-up"></i>&nbsp; Select a control</h5></div></div></div><div ng-switch-when=empty><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-sm-12><h5 class="text-center greyText">Column will be blank</h5></div></div></div></div></div><div ng-switch-when=Header><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div><h2 class=text-center>{{nyaSelect.temporyConfig.formlyDesciption}}</h2><hr></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Header text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputHeaderTextUpdate placeholder="Add / edit header text here"></div></div></div></div></div></div><div ng-switch-when=Subtitle><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div><h4 class=text-center>{{nyaSelect.temporyConfig.formlyPlaceholder}}</h4><hr></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputSubTitleTextUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Subtitle text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputSubTitleTextUpdate placeholder="Add / edit subtitle text here"></div></div></div></div></div></div><div ng-switch-when=TextInput><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputText class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=text class=form-control id=inputText placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder="Add / edit placeholder text here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Password><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputPassword class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=password class=form-control id=inputPassword placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder="Add / edit placeholder text here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Email><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputEmail class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=text class=form-control id=inputEmail placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class="col-lg-3 control-label greyText editPropertiesLabel">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder="Add / edit placeholder text here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Date><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputDate class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><div class=input-group><span class=input-group-addon><i class="glyphicon glyphicon-calendar"></i></span> <input type=text class=form-control datepicker-popup={{nyaSelect.temporyConfig.datepickerPopup}} ng-model=demodt.dt is-open=demodt.opened min-date=demodt.minDate max-date="\'2099-12-31\'" datepicker-options=dateOptions date-disabled="disabled(date, mode)" close-text=Close ng-click=open($event)></div><p></p><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label class="col-lg-3 control-label greyText editPropertiesLabel">Date format :</label><div class=col-lg-9><ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model=nyaSelect.temporyConfig.datepickerPopup id=dateformatSelect><li class=nya-bs-option nya-bs-option="dateformat in demodt.formats" value=dateformat><a>{{dateformat}}</a></li></ol></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Texarea><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=textArea class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><textarea class=form-control ng-model=model[options.key] rows=3 id=textArea></textarea><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=RichTextEditor><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=RichTextEditor class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><text-angular ng-model=model[options.key]></text-angular><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Radio><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=basicSelect class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><div class=radio ng-repeat="radioRow in radioRowCollection.rows"><label><input type=radio name=optionsRadios id="{{\'optionsRadio-\' + $index}}" value=$index checked=""> {{radioRow.option}}</label></div><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class="col-lg-3 col-md-3"><label for=radioRowCollection class="control-label greyText editPropertiesLabel">Add new radio :</label></div></div><div class=row><div><div class=form-group><div class="col-sm-9 col-xs-9 col-md-9 col-lg-9"><input type=text class=form-control id=inputAddNewRadioOption placeholder="add new radio" ng-model=newOptionRadio.saisie></div><div class="col-sm-3 col-xs-3 col-md-3 col-lg-3"><button class="btn btn-primary" ng-click=addNewOptionRadio()>add</button></div></div></div></div><div class=row><div class="col-lg-3 col-md-3"><label for=radioRowCollection class="control-label greyText editPropertiesLabel">Edit/Remove radio :</label></div></div><div class=row><div class=form-group><div class-"col-lg-12="" col-md-12="" col-sm-12="" col-xs-12"=""><div class=container><div ng-show="radioRowCollection.rows.length === 0"><h5 class="text-center greyText"><em>- no radio : add new radio values -</em></h5></div><table ng-if="radioRowCollection.rows.length > 0" class="table table-striped"><thead><tr><th st-ratio=20>order</th><th st-ratio=55>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=55><input ng-model=radioFilter placeholder="search for option" class="input-sm form-control" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat="radioRow in radioRowCollection.rows | filter:radioFilter as radioRow"><td st-ratio=20>{{$index}}</td><td st-ratio=55>{{radioRow.option}}</td><td st-ratio=25><div class=pull-right><button class="btn btn-primary" ng-click=upThisRadioRow($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-primary" ng-click=downThisRadioRow($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-danger" ng-click=removeRadioRow($index)><i class="fa fa-trash-o"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=Checkbox><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div class=col-md-12><div class=checkbox><label><input type=checkbox id=checkBox> <span class=blackText>{{nyaSelect.temporyConfig.formlyLabel}}</span><span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label></div><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder="Add / edit control label here"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=BasicSelect><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=basicSelect class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model=modelbasicSelect id=basicSelect disabled="basicSelectRowCollection.rows.length === 0"><li class=nya-bs-option nya-bs-option="basicSelectRow in basicSelectRowCollection.rows" value=$index><a>{{basicSelectRow.option}}</a></li></ol><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class="col-lg-3 col-md-3"><label for=basicSelectRowCollection class="control-label greyText editPropertiesLabel">Add new options :</label></div></div><div class=row><div><div class=form-group><div class="col-sm-9 col-xs-9 col-md-9 col-lg-9"><input type=text class=form-control id=inputAddNewBasicOption placeholder="add new option" ng-model=newOptionBasicSelect.saisie></div><div class="col-sm-3 col-xs-3 col-md-3 col-lg-3"><button class="btn btn-primary" ng-click=addNewOptionBasicSelect()>add</button></div></div></div></div><div class=row><div class="col-lg-3 col-md-3"><label class="control-label greyText editPropertiesLabel">Edit/Remove options :</label></div></div><div class=row><div class=form-group><div class-"col-lg-12="" col-md-12="" col-sm-12="" col-xs-12"=""><div class=container><div ng-if="basicSelectRowCollection.rows.length === 0"><h5 class="text-center greyText"><em>- no option : add new options -</em></h5></div><table ng-if="basicSelectRowCollection.rows.length > 0" class="table table-striped"><thead><tr><th st-ratio=20>order</th><th st-ratio=55>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=55><input ng-model=basicSelectFilter placeholder="search for option" class="input-sm form-control" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat="basicSelectRow in basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow"><td st-ratio=20>{{$index}}</td><td st-ratio=55>{{basicSelectRow.option}}</td><td st-ratio=25><div class=pull-right><button class="btn btn-primary" ng-click=upThisRow($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-primary" ng-click=downThisRow($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-danger" ng-click=removeRow($index)><i class="fa fa-trash-o"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div><div ng-switch-when=GroupedSelect><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-eye"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=select class="control-label textControlLabel">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ng-model=modelGroupedSelect data-live-search=true disabled="groupedSelectRowCollection.rows.length === 0"><li nya-bs-option="groupedSelectRow in groupedSelectRowCollection.rows group by groupedSelectRow.group" value=$index><span class=dropdown-header>{{groupedSelectRow.group}}</span> <a><span>{{groupedSelectRow.option}}</span> <span class="glyphicon glyphicon-ok check-mark"></span></a></li></ol><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class="fa fa-pencil-square-o"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class="col-lg-3 col-md-3"><label for=groupedSelectRowCollection class="control-label greyText editPropertiesLabel">Add new options :</label></div></div><div class=row><div><div class=form-group><div class="col-sm-9 col-xs-9 col-md-9 col-lg-9"><input type=text class=form-control id=inputAddNewGroupedOption placeholder="add new option" ng-model=newOptionGroupedSelect.saisie></div><div class="col-sm-3 col-xs-3 col-md-3 col-lg-3"><button class="btn btn-primary" ng-click=addNewOptionGroupedSelect()>add</button></div></div></div></div><div class=row><div class="col-lg-3 col-md-3"><label for=groupedSelectRowCollection class="control-label greyText editPropertiesLabel">Add new groups :</label></div></div><div class=row><div><div class=form-group><div class="col-sm-9 col-xs-9 col-md-9 col-lg-9"><input id=inputAddNewGroupGroupedOption type=text class=form-control ng-model=newGroupGroupedSelect.saisie placeholder="Add new group"></div><div class="col-sm-3 col-xs-3 col-md-3 col-lg-3"><button class="btn btn-primary" ng-click=addNewGroupToGroupedSelect()>add</button></div></div></div></div><div class=row><div class="col-lg-3 col-md-3"><label class="control-label greyText editPropertiesLabel">Edit/Remove options/groups:</label></div></div><div class=row><div class=form-group><div class-"col-lg-12="" col-md-12="" col-sm-12="" col-xs-12"=""><div class=container><div ng-if="groupedSelectRowCollection.rows.length === 0"><h5 class="text-center greyText"><em>- no option : add new options -</em></h5></div><table ng-if="groupedSelectRowCollection.rows.length > 0" class="table table-striped"><thead><tr><th st-ratio=20>order</th><th st-ratio=25>group</th><th st-ratio=30>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=25></th><th st-ratio=30><input ng-model=groupedSelectFilter placeholder="search for option" class="input-sm form-control" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat="groupedSelectRow in groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow"><td st-ratio=20>{{$index}}</td><td st-ratio=25><div ng-if="groupSelectGroupClick.showList === true"><div ng-if="GroupedSelectGroups.list.length === 0"><p class="text-left noGroupText">- add new groups -</p></div><div ng-if="GroupedSelectGroups.list.length > 0"><ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect" ng-model=groupedSelectRow.group id=modelGroupedOptionGroupedChoose disabled="GroupedSelectGroups.list.length === 0"><li class=nya-bs-option nya-bs-option="GroupedSelectGroup in GroupedSelectGroups.list" value=GroupedSelectGroup><a>{{GroupedSelectGroup}}</a></li></ol></div></div><div ng-if="groupSelectGroupClick.showList === false">{{groupedSelectRow.group}}</div></td><td st-ratio=30>{{groupedSelectRow.option}}</td><td st-ratio=25><div class=pull-right><button class="btn btn-primary" ng-click=upThisGroupedSelectRow($index)><i class="fa fa-arrow-up"></i></button> <button class="btn btn-primary" ng-click=downThisGroupedSelectRow($index)><i class="fa fa-arrow-down"></i></button> <button class="btn btn-warning" ng-click=showGroupListToChoose()><i class="fa fa-pencil-square-o"></i></button> <button class="btn btn-danger" ng-click=removeGroupedSelectRow($index)><i class="fa fa-trash-o"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class="col-lg-3 control-label greyText editPropertiesLabel">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder="Add / edit description here"></div></div></div></div></div></div></div></div><div class=modal-footer><button class="btn btn-primary" ng-class="{\'disabled\': nyaSelect.selectedControl === \'none\'}" ng-click=ok()>OK</button> <button class="btn btn-warning" ng-click=cancel()>Cancel</button></div>');
+/** 
+  *easyFormGenerator — step way — version 
+  *Version 1.0.8 
+  *Author : Erwan Datin (MacKentoch) 
+  *Link: https://github.com/MacKentoch/easyFormGenerator 
+  *License : MIT (2015) 
+ **/ 
+ ;(function(){
+ 	'use strict';
+/**
+ *  -----------------------------------------------------------------------
+ *  application module of the step way version of easy form generator
+ *  -----------------------------------------------------------------------
+ *  
+ *   
+ *     - this version is production friendly -
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+;(function(){
+  'use strict';
 
-}]),function(){angular.module("ngwfApp.core",["textAngular","textAngularSetup","ngAnimate","toaster","formly","formlyBootstrap","ui.bootstrap","nya.bootstrap.select"])}(),function(){angular.module("ngwfApp.controllers",["ngwfApp.controllers.ngwfMainController","ngwfApp.controllers.ngwfWfEditController","ngwfApp.controllers.ngwfWfEditMODALController"])}(),function(){function e(e,o){e.FormNameAsTest="initial_name",o(function(){e.FormNameAsTest="name changed after 3s"},3e3)}angular.module("ngwfApp.controllers.ngwfMainController",[]).controller("ngwfMainController",e),e.$inject=["$scope","$timeout"]}(),function(){function e(e,o,l,t,i,n,s,a,r,c,d,p){function u(){return{showDebug:!1,configurationModelNumberofLines:1}}function m(){return{editTab:{active:!0},previewTab:{active:!1}}}function f(o){var l=JSON.parse(o.formlyField);e.configurationLoaded={},c.bindConfigurationLines(e.configurationLoaded,l),c.applyConfigurationToformlyModel(e.configurationLoaded,e.previewLoadedForm.fieldsModel,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields),e.previewLoadedForm.cancelButtonText=o.cancelButtonText,e.previewLoadedForm.submitButtonText=o.submitButtonText}function v(){n.pop({type:"info",timeout:2e3,title:"should save data model if it were not a static example",body:"data :"+t("json")(e.vm.model,4),showCloseButton:!0})}function g(){return{numColumn:-1,exist:!0,control:{type:"none",key:"none",subtype:"none"}}}function y(){return{line:-1,activeColumn:1,columns:[{numColumn:1,exist:!0,control:{type:"none",key:"none"}}]}}function b(){return e.configuration.activeLine=1,e.configuration.lines.length>1&&e.configuration.lines.splice(1,e.configuration.lines.length-2),e.countConfigurationModelLines()}function h(){return e.debug.configurationModelNumberofLines=e.configuration.lines.length,e.configuration.lines.length}function w(o){o<=e.countConfigurationModelLines()&&(e.configuration.activeLine=o)}function x(o){if(o>-1&&e.configuration.lines[o-1]){var l=e.configuration.lines[o];e.configuration.lines.splice(o,1),e.configuration.lines.splice(o-1,0,l),e.configuration.activeLine=1}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function C(o){if(o>-1&&e.configuration.lines[o+1]){var l=e.configuration.lines[o];e.configuration.lines.splice(o,1),e.configuration.lines.splice(o+1,0,l),e.configuration.activeLine=1}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function S(){e.configuration.lines.push({line:-1,activeColumn:1,columns:[{numColumn:1,exist:!0,control:{type:"none",key:"none"}}]}),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function T(o){o>-1&&(e.configuration.lines.length>1?(e.configuration.activeLine===o+1&&(e.configuration.activeLine=1),e.configuration.lines.splice(o,1)):s(function(){n.pop({type:"warning",title:"Last line",body:"Can't delete the last line",showCloseButton:!0})},100),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields))}function L(){if(e.configuration.lines[e.configuration.activeLine-1].columns.length<e.MaxNumberOfColumns){var o=e.configuration.lines[e.configuration.activeLine-1].columns.push({numColumn:-1,exist:!0,control:{type:"none",key:"none"}});e.configuration.lines[e.configuration.activeLine-1].columns[o-1].numColumn=o}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function F(){e.configuration.lines[e.configuration.activeLine-1].columns.length>1&&e.configuration.lines[e.configuration.activeLine-1].columns.splice(e.configuration.lines[e.configuration.activeLine-1].columns.length-1,1),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function k(){e.configuration.configStepCounter=0}function O(){var o=e.configuration.listConfigStep.length-1;e.configuration.configStepCounter!==o&&e.configuration.configStepCounter++,M(e.configuration.configStepCounter)}function R(){0!==e.configuration.configStepCounter&&e.configuration.configStepCounter--,M(e.configuration.configStepCounter)}function P(o){return o<e.configuration.configStepCounter?"disabled":"enabled"}function q(o,l,t){var i=a.open({animation:e.animationsEnabled,templateUrl:"editModalTemplate.html",controller:"ngwfWfEditMODALController",size:"lg",resolve:{nyaSelect:function(){return p.getNyASelectFromSelectedLineColumn(e.nyaSelect,e.configuration,l,t)}}});i.result.then(function(o){p.bindConfigurationModelFromModalReturn(l,t,o,e.configuration),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)},function(){})}function D(){e.animationsEnabled=!e.animationsEnabled}function N(){}function E(){if("undefined"==typeof e.configuration.formName)return n.pop({type:"warning",timeout:2e3,title:"Form name is undefined",body:"Form has not been saved.",showCloseButton:!0}),!1;if(""===e.configuration.formName)return n.pop({type:"warning",timeout:2e3,title:"Form name is required",body:"Form has not been saved.",showCloseButton:!0}),!1;n.pop({type:"wait",timeout:1e4,title:"Form is being saved",body:"Wait.",showCloseButton:!0});var o=new d;return o.formName=e.configuration.formName,o.submitButtonText=e.configuration.submitButtonText,o.cancelButtonText=e.configuration.cancelButtonText,o.formlyField=JSON.stringify(e.configuration.lines),n.clear(),n.pop({type:"info",timeout:2e3,title:"Form would be saved if it were not a static example",body:"",showCloseButton:!0}),!0}function $(){for(var o=e.configuration.stepIndicators.length-1;o>=0;o--)e.configuration.stepIndicators[o]=!1}function M(o){$(),e.configuration.stepIndicators[o]=!0}e.vm=this,e.vm.model={},e.vm.wfFormFields=[],e.vm.wfFormFieldsOnlyNeededProperties=[],e.vm.onSubmit=v,e.easyFormGeneratorVERSION=l,e.debug=u(),e.tab=m(),e.configuration={},e.numberOfColumns=1,e.MaxNumberOfColumns=3,e.MinNumberOfColumns=1,e.columnTemplate=g(),e.lineTemplate=y(),e.resetToZeroModel=b,e.countConfigurationModelLines=h,e.setActiveLineNumber=w,e.upThisLine=x,e.downThisLine=C,e.addNewline=S,e.removeThisLine=T,e.increaseNumberOfColumns=L,e.decreaseNumberOfColumns=F,e.resetStepCounter=k,e.nextConfigStep=O,e.previousConfigStep=R,e.stepReachable=P,e.toggleAnimation=D,e.nyaSelect={},e.animationsEnabled=!0,e.showModalAddCtrlToColumn=q,e.loadExistingFormsList=N(),e.formlyList={},e.previewLoadedForm={fieldsModel:[]},e.configurationLoaded={},e.previewExistingform=f,e.saveThisForm=E,N(),c.initConfigurationEditFromScratch(e.configuration),p.initNyaSelect(e.nyaSelect)}angular.module("ngwfApp.controllers.ngwfWfEditController",[]).controller("ngwfWfEditController",e),e.$inject=["$scope","$templateCache","easyFormGenVersion","$filter","$anchorScroll","toaster","$timeout","$modal","$log","formFieldManage","WfFormsByIdServices","controllerModalProxy"]}(),function(){function e(e,o,l,t,i,n,s){function a(){var o=n.addNewOptionRadio(e.radioRowCollection,e.newOptionRadio.saisie);o.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:o.details,body:"'"+e.newOptionRadio.saisie+"' cannot be added.",showCloseButton:!0}),e.newOptionRadio={saisie:""}}function r(o){var l=n.removeOption(e.radioRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Delete was cancelled.",showCloseButton:!0})}function c(o){var l=n.upthisOption(e.radioRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function d(o){var l=n.downthisOption(e.radioRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function p(){var o=n.addNewOptionBasicSelect(e.basicSelectRowCollection,e.newOptionBasicSelect.saisie);o.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:o.details,body:"'"+e.newOptionBasicSelect.saisie+"' cannot be added.",showCloseButton:!0}),e.newOptionBasicSelect={saisie:""}}function u(o){var l=n.removeOption(e.basicSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Delete was cancelled.",showCloseButton:!0})}function m(o){var l=n.upthisOption(e.basicSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function f(o){var l=n.downthisOption(e.basicSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function v(){e.groupSelectGroupClick.showList=!e.groupSelectGroupClick.showList}function g(){if(""!==e.newGroupGroupedSelect.saisie){for(var o=e.GroupedSelectGroups.list.length-1;o>=0;o--)e.GroupedSelectGroups.list[o]===e.newGroupGroupedSelect.saisie&&t.pop({type:"warning",timeout:2e3,title:"Group already exists",body:"No group added.",showCloseButton:!0});e.GroupedSelectGroups.list.push(e.newGroupGroupedSelect.saisie)}else t.pop({type:"warning",timeout:2e3,title:"Not a valid group to add",body:"No group added.",showCloseButton:!0});e.newGroupGroupedSelect.saisie=""}function y(){var o=n.addNewOptionGroupedSelect(e.groupedSelectRowCollection,e.newOptionGroupedSelect.saisie,"");o.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:o.details,body:"'"+e.newOptionGroupedSelect.saisie+"' cannot be added.",showCloseButton:!0}),e.newOptionGroupedSelect={saisie:""}}function b(o){var l=n.removeOption(e.groupedSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Delete was cancelled.",showCloseButton:!0})}function h(o){var l=n.upthisOption(e.groupedSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function w(o){var l=n.downthisOption(e.groupedSelectRowCollection,o);l.resultFlag===!1&&t.pop({type:"warning",timeout:2e3,title:l.details,body:"Operation cancelled.",showCloseButton:!0})}function x(){e.demodt.dt=new Date}function C(){e.demodt.dt=null}function S(o){o.preventDefault(),o.stopPropagation(),e.demodt.opened=!0}function T(){return{formatYear:"yy",startingDay:1,showWeeks:!0,initDate:null}}function L(o){e.nyaSelect.selectedControl="none",M();for(var l=e.nyaSelect.controls.length-1;l>=0;l--)e.nyaSelect.controls[l].id===o&&(e.nyaSelect.selectedControl=e.nyaSelect.controls[l].id);"Date"===e.nyaSelect.selectedControl&&E()}function F(){"BasicSelect"===e.nyaSelect.selectedControl&&q(),"GroupedSelect"===e.nyaSelect.selectedControl&&N(),"Radio"===e.nyaSelect.selectedControl&&R(),s.applyConfigToSelectedControl(e.nyaSelect),o.close(e.nyaSelect)}function k(){o.dismiss("cancel")}function O(){if(e.nyaSelect.temporyConfig.formlyOptions.length>0)for(var o=0;o<=e.nyaSelect.temporyConfig.formlyOptions.length-1;o++){var l={option:e.nyaSelect.temporyConfig.formlyOptions[o].name,order:o,group:""};e.radioRowCollection.rows.push(l)}}function R(){var o=[];if(e.nyaSelect.temporyConfig.formlyOptions=o,e.radioRowCollection.rows.length>0)for(var l=0;l<=e.radioRowCollection.rows.length-1;l++){var t={name:e.radioRowCollection.rows[l].option,value:l,group:""};e.nyaSelect.temporyConfig.formlyOptions.push(t)}}function P(){if(e.nyaSelect.temporyConfig.formlyOptions.length>0)for(var o=0;o<=e.nyaSelect.temporyConfig.formlyOptions.length-1;o++){var l={option:e.nyaSelect.temporyConfig.formlyOptions[o].name,order:o,group:""};e.basicSelectRowCollection.rows.push(l)}}function q(){var o=[];if(e.nyaSelect.temporyConfig.formlyOptions=o,e.basicSelectRowCollection.rows.length>0)for(var l=0;l<=e.basicSelectRowCollection.rows.length-1;l++){var t={name:e.basicSelectRowCollection.rows[l].option,value:l,group:""};e.nyaSelect.temporyConfig.formlyOptions.push(t)}}function D(){if(e.nyaSelect.temporyConfig.formlyOptions.length>0){for(var o=0;o<=e.nyaSelect.temporyConfig.formlyOptions.length-1;o++){var l={option:e.nyaSelect.temporyConfig.formlyOptions[o].name,order:o,group:e.nyaSelect.temporyConfig.formlyOptions[o].group};e.groupedSelectRowCollection.rows.push(l)}var t=_.uniq(_.pluck(e.groupedSelectRowCollection.rows,"group"));angular.copy(t,e.GroupedSelectGroups.list)}}function N(){e.nyaSelect.temporyConfig.formlyOptions=[];for(var o=0;o<=e.groupedSelectRowCollection.rows.length-1;o++){var l={name:e.groupedSelectRowCollection.rows[o].option,value:o,group:e.groupedSelectRowCollection.rows[o].group};e.nyaSelect.temporyConfig.formlyOptions.push(l)}}function E(){e.nyaSelect.temporyConfig.datepickerPopup=e.demodt.formats[0]}function $(){if("none"!==l.selectedControl){for(var o=e.nyaSelect.controls.length-1;o>=0;o--)e.nyaSelect.controls[o].id===l.selectedControl&&(e.modelNyaSelect=l.controls[o]);"BasicSelect"===e.nyaSelect.selectedControl&&P(),"GroupedSelect"===e.nyaSelect.selectedControl&&D(),"Radio"===e.nyaSelect.selectedControl&&O()}}function M(){e.nyaSelect.temporyConfig={formlyLabel:"",formlyRequired:!1,formlyPlaceholder:"",formlyDesciption:"",formlyOptions:[]}}var A={rows:[]};e.radioRowCollection=A,e.newOptionRadio={saisie:""},e.addNewOptionRadio=a,e.removeRadioRow=r,e.upThisRadioRow=c,e.downThisRadioRow=d,e.basicSelectRowCollection=A,e.newOptionBasicSelect={saisie:""},e.addNewOptionBasicSelect=p,e.removeRow=u,e.upThisRow=m,e.downThisRow=f,e.groupedSelectRowCollection=A,e.newOptionGroupedSelect={saisie:""},e.GroupedSelectGroups={list:[]},e.newGroupGroupedSelect={saisie:""},e.groupSelectGroupClick={showList:!1},e.showGroupListToChoose=v,e.addNewGroupToGroupedSelect=g,e.addNewOptionGroupedSelect=y,e.removeGroupedSelectRow=b,e.upThisGroupedSelectRow=h,e.downThisGroupedSelectRow=w,e.demodt={},e.today=x,e.clear=C,e.open=S,e.dateOptions=T(),e.demodt.formats=["dd-MMMM-yyyy","yyyy/MM/dd","dd.MM.yyyy","shortDate"],e.nyaSelect=l,e.nyaSelect.selectedControl=e.nyaSelect.temporyConfig.selectedControl,e.selectThisControl=L,e.ok=F,e.cancel=k,x(),$()}angular.module("ngwfApp.controllers.ngwfWfEditMODALController",[]).controller("ngwfWfEditMODALController",e),e.$inject=["$scope","$modalInstance","nyaSelect","toaster","$timeout","selectOptionManage","controllerModalProxy"]}(),function(){function e(e){function o(e,o,l){console.info("form name at initial state : "+e.edaFormName),e.$watch(function(){return e.edaFormName},function(e,o){e!==o&&console.info("form name changed : "+e)}),e.$watch(function(){return e.returnSaveEvent},function(o,l){o===!0&&(console.info("form saving event should return to parent controller!"),e.edaSaveFormEvent({fieldsModel:e.vm.wfFormFieldsOnlyNeededProperties,dataModel:e.vm.model}),e.returnSaveEvent=!1)})}function l(e,o,l,t,i,n,s,a,r,c,d,p){function u(){return{showDebug:!1,configurationModelNumberofLines:1}}function m(){return{editTab:{active:!0},previewTab:{active:!1}}}function f(o){var l=JSON.parse(o.formlyField);e.configurationLoaded={},c.bindConfigurationLines(e.configurationLoaded,l),c.applyConfigurationToformlyModel(e.configurationLoaded,e.previewLoadedForm.fieldsModel,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields),e.previewLoadedForm.cancelButtonText=o.cancelButtonText,e.previewLoadedForm.submitButtonText=o.submitButtonText}function v(){n.pop({type:"info",timeout:2e3,title:"should save data model if it were not a static example",body:"data :"+t("json")(e.vm.model,4),showCloseButton:!0})}function g(){return{numColumn:-1,exist:!0,control:{type:"none",key:"none",subtype:"none"}}}function y(){return{line:-1,activeColumn:1,columns:[{numColumn:1,exist:!0,control:{type:"none",key:"none"}}]}}function b(){return e.configuration.activeLine=1,e.configuration.lines.length>1&&e.configuration.lines.splice(1,e.configuration.lines.length-2),e.countConfigurationModelLines()}function h(){return e.debug.configurationModelNumberofLines=e.configuration.lines.length,e.configuration.lines.length}function w(o){o<=e.countConfigurationModelLines()&&(e.configuration.activeLine=o)}function x(o){if(o>-1&&e.configuration.lines[o-1]){var l=e.configuration.lines[o];e.configuration.lines.splice(o,1),e.configuration.lines.splice(o-1,0,l),e.configuration.activeLine=1}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function C(o){if(o>-1&&e.configuration.lines[o+1]){var l=e.configuration.lines[o];e.configuration.lines.splice(o,1),e.configuration.lines.splice(o+1,0,l),e.configuration.activeLine=1}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function S(){e.configuration.lines.push({line:-1,activeColumn:1,columns:[{numColumn:1,exist:!0,control:{type:"none",key:"none"}}]}),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function T(o){o>-1&&(e.configuration.lines.length>1?(e.configuration.activeLine===o+1&&(e.configuration.activeLine=1),e.configuration.lines.splice(o,1)):s(function(){n.pop({type:"warning",title:"Last line",body:"Can't delete the last line",showCloseButton:!0})},100),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields))}function L(){if(e.configuration.lines[e.configuration.activeLine-1].columns.length<e.MaxNumberOfColumns){var o=e.configuration.lines[e.configuration.activeLine-1].columns.push({numColumn:-1,exist:!0,control:{type:"none",key:"none"}});e.configuration.lines[e.configuration.activeLine-1].columns[o-1].numColumn=o}c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function F(){e.configuration.lines[e.configuration.activeLine-1].columns.length>1&&e.configuration.lines[e.configuration.activeLine-1].columns.splice(e.configuration.lines[e.configuration.activeLine-1].columns.length-1,1),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)}function k(){e.configuration.configStepCounter=0}function O(){var o=e.configuration.listConfigStep.length-1;e.configuration.configStepCounter!==o&&e.configuration.configStepCounter++,M(e.configuration.configStepCounter)}function R(){0!==e.configuration.configStepCounter&&e.configuration.configStepCounter--,M(e.configuration.configStepCounter)}function P(o){return o<e.configuration.configStepCounter?"disabled":"enabled"}function q(o,l,t){var i=a.open({animation:e.animationsEnabled,templateUrl:"editModalTemplate.html",controller:"ngwfWfEditMODALController",size:"lg",resolve:{nyaSelect:function(){return p.getNyASelectFromSelectedLineColumn(e.nyaSelect,e.configuration,l,t)}}});i.result.then(function(o){p.bindConfigurationModelFromModalReturn(l,t,o,e.configuration),c.applyConfigurationToformlyModel(e.configuration,e.vm.wfFormFields,e.vm.model),e.vm.wfFormFieldsOnlyNeededProperties=angular.copy(e.vm.wfFormFields)},function(){})}function D(){e.animationsEnabled=!e.animationsEnabled}function N(){}function E(){if("undefined"==typeof e.configuration.formName)return n.pop({type:"warning",timeout:2e3,title:"Form name is undefined",body:"Form has not been saved.",showCloseButton:!0}),!1;if(""===e.configuration.formName)return n.pop({type:"warning",timeout:2e3,title:"Form name is required",body:"Form has not been saved.",showCloseButton:!0}),!1;n.pop({type:"wait",timeout:1e4,title:"Form is being saved",body:"Wait.",showCloseButton:!0});var o=new d;return o.formName=e.configuration.formName,o.submitButtonText=e.configuration.submitButtonText,o.cancelButtonText=e.configuration.cancelButtonText,o.formlyField=JSON.stringify(e.configuration.lines),n.clear(),e.returnSaveEvent=!0,!0}function $(){for(var o=e.configuration.stepIndicators.length-1;o>=0;o--)e.configuration.stepIndicators[o]=!1}function M(o){$(),e.configuration.stepIndicators[o]=!0}e.vm=this,e.vm.model={},e.vm.wfFormFields=[],e.vm.wfFormFieldsOnlyNeededProperties=[],e.vm.onSubmit=v,e.easyFormGeneratorVERSION=l,e.debug=u(),e.tab=m(),e.configuration={},e.numberOfColumns=1,e.MaxNumberOfColumns=3,e.MinNumberOfColumns=1,e.columnTemplate=g(),e.lineTemplate=y(),e.resetToZeroModel=b,e.countConfigurationModelLines=h,e.setActiveLineNumber=w,e.upThisLine=x,e.downThisLine=C,e.addNewline=S,e.removeThisLine=T,e.increaseNumberOfColumns=L,e.decreaseNumberOfColumns=F,e.resetStepCounter=k,e.nextConfigStep=O,e.previousConfigStep=R,e.stepReachable=P,e.toggleAnimation=D,e.nyaSelect={},e.animationsEnabled=!0,e.showModalAddCtrlToColumn=q,e.loadExistingFormsList=N(),e.formlyList={},e.previewLoadedForm={fieldsModel:[]},e.configurationLoaded={},e.previewExistingform=f,e.saveThisForm=E,e.returnSaveEvent=!1,N(),c.initConfigurationEditFromScratch(e.configuration),p.initNyaSelect(e.nyaSelect)}l.$inject=["$scope","$templateCache","easyFormGenVersion","$filter","$anchorScroll","toaster","$timeout","$modal","$log","formFieldManage","WfFormsByIdServices","controllerModalProxy"];var t={restrict:"AE",scope:{edaFormName:"=edaFormName",edaSubmitButtonText:"=edaSubmitButtonText",edaCancelButtonText:"=edaCancelButtonText",edaDataModel:"=edaDataModel",edaFormModel:"=edaFormModel",edaSaveFormEvent:"&edaSaveFormEvent"},controller:l,controllerAs:"vm",replace:!1,templateUrl:"edaStepWayEasyFormGeneratorTemplate.html",link:o};return t}angular.module("ngwfApp.directives.edaStepWayEasyFormGenDirective",[]).directive("edaStepWayEasyFormGen",e),e.$inject=["$templateCache"]}(),function(){angular.module("ngwfApp.directives",["ngwfApp.directives.ngwfStRatioDirective","ngwfApp.directives.edaStepWayEasyFormGenDirective"])}(),function(){function e(){function e(e,o,l){var t=+l.stRatio;o.css("width",t+"%")}var o={link:e};return o}angular.module("ngwfApp.directives.ngwfStRatioDirective",[]).directive("stRatio",e),e.$inject=[]}(),function(){function e(){function e(e){return n(e)}function o(e,o,l,t){return n(e),"undefined"!=typeof o.lines[l].columns[t].control.templateOptions&&(e.temporyConfig.selectedControl="undefined"!=typeof o.lines[l].columns[t].control.selectedControl?o.lines[l].columns[t].control.selectedControl:"none",e.temporyConfig.formlyLabel="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.label?o.lines[l].columns[t].control.templateOptions.label:"",e.temporyConfig.formlyRequired="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.required?o.lines[l].columns[t].control.templateOptions.required:"",e.temporyConfig.formlyDesciption="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.description?o.lines[l].columns[t].control.templateOptions.description:"",e.temporyConfig.formlyPlaceholder="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.placeholder?o.lines[l].columns[t].control.templateOptions.placeholder:"",e.temporyConfig.formlyOptions="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.options?o.lines[l].columns[t].control.templateOptions.options:"",e.temporyConfig.formlyExpressionProperties="undefined"!=typeof o.lines[l].columns[t].control.formlyExpressionProperties?angular.copy(o.lines[l].columns[t].control.formlyExpressionProperties):{},e.temporyConfig.formlyValidators="undefined"!=typeof o.lines[l].columns[t].control.formlyValidators?angular.copy(o.lines[l].columns[t].control.formlyValidators):{},e.temporyConfig.formlyValidation="undefined"!=typeof o.lines[l].columns[t].control.formlyValidation?angular.copy(o.lines[l].columns[t].control.formlyValidation):{},"Date"===e.temporyConfig.selectedControl&&(e.temporyConfig.datepickerPopup="undefined"!=typeof o.lines[l].columns[t].control.templateOptions.datepickerPopup?o.lines[l].columns[t].control.templateOptions.datepickerPopup:"")),e}function l(e,o,l,t){var i=s(l);t.lines[e].columns[o].control.selectedControl=i.selectedControl,t.lines[e].columns[o].control.type=i.formlyType,t.lines[e].columns[o].control.subtype=i.formlySubtype,t.lines[e].columns[o].control.templateOptions={label:"",required:!1,description:"",placeholder:"",options:[]},t.lines[e].columns[o].control.templateOptions.label=i.formlyLabel,t.lines[e].columns[o].control.templateOptions.required=i.formlyRequired,t.lines[e].columns[o].control.templateOptions.description=i.formlyDesciption,t.lines[e].columns[o].control.templateOptions.placeholder=i.formlyPlaceholder,t.lines[e].columns[o].control.templateOptions.options=i.formlyOptions,t.lines[e].columns[o].control.formlyExpressionProperties=angular.copy(i.formlyExpressionProperties),t.lines[e].columns[o].control.formlyValidators=angular.copy(i.formlyValidators),t.lines[e].columns[o].control.formlyValidation=angular.copy(i.formlyValidation),"datepicker"===t.lines[e].columns[o].control.type&&(t.lines[e].columns[o].control.templateOptions.datepickerPopup=i.datepickerPopup);var n=t.lines[e].columns[o].control.type+"-"+Date.now();a(n,t)===!0?t.lines[e].columns[o].control.key=n:(n=t.lines[e].columns[o].control.type+"-"+Date.now(),a(n,t)===!0?t.lines[e].columns[o].control.key=n:n=t.lines[e].columns[o].control.type+"-"+Date.now()),t.lines[e].columns[o].control.edited=!0}function t(e){for(var o=e.controls.length-1;o>=0;o--)e.controls[o].id===e.selectedControl&&(e.controls[o].formlyLabel=e.temporyConfig.formlyLabel,e.controls[o].formlyRequired=e.temporyConfig.formlyRequired,e.controls[o].formlyDesciption=e.temporyConfig.formlyDesciption,e.controls[o].formlyPlaceholder=e.temporyConfig.formlyPlaceholder,e.controls[o].formlyOptions=e.temporyConfig.formlyOptions,"Date"===e.controls[o].id&&(e.controls[o].datepickerPopup=e.temporyConfig.datepickerPopup))}function i(){return{formlyLabel:"",formlyRequired:!1,formlyPlaceholder:"",formlyDesciption:"",formlyOptions:[]}}function n(e){var o={controls:[{id:"empty",name:"no control",subtitle:"no control",group:"Blank",formlyType:"blank",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{}},{id:"Header",name:"Header",subtitle:"no control",group:"Decoration",formlyType:"header",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{}},{id:"Subtitle",name:"Subtitle",subtitle:"no control",group:"Decoration",formlyType:"subTitle",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{}},{id:"TextInput",name:"Text input",subtitle:"Text input",group:"input",formlyType:"input",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Text input field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"Password",name:"Password",subtitle:"Password",group:"input",formlyType:"input",formlySubtype:"password",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Password field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"Email",name:"Email",subtitle:"Email",group:"input",formlyType:"input",formlySubtype:"email",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{emailShape:{expression:function(e,o){var l=o||e;return/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(l)},message:"$viewValue + ' is not a valid email'"}},formlyValidation:{messages:{required:function(e,o,l){var t="this Email field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return l.to.required?i:void 0}}}},{id:"Date",name:"Date",subtitle:"Date",group:"input",formlyType:"datepicker",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],datepickerPopup:"dd-MMMM-yyyy",formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Date field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"Texarea",name:"Textarea",subtitle:"Textarea",group:"Textarea",formlyType:"textarea",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Textarea field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"RichTextEditor",name:"RichTextEditor",subtitle:"RichTextEditor",group:"Textarea",formlyType:"richEditor",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this RichTextEditor field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"Radio",name:"Radio",subtitle:"Radio",options:[],group:"Radio",formlyType:"radio",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Password field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"Checkbox",name:"Checkbox",subtitle:"Checkbox",group:"Checkbox",formlyType:"checkbox",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Checkbox field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"BasicSelect",name:"Basic select",subtitle:"Basic select",options:[],group:"Select",formlyType:"basicSelect",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Basic select field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}},{id:"GroupedSelect",name:"Grouped Select",subtitle:"Grouped Select",options:[],group:"Select",formlyType:"groupedSelect",formlySubtype:"",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{messages:{required:function(e,o,l){var t="this Grouped Select field is required",i="undefined"!=typeof l.to.label&&""!==l.to.label?l.to.label+" is required":t;return i}}}}],selectedControl:"none",temporyConfig:{selectedControl:"none",formlyLabel:"label",formlyRequired:!1,formlyDesciption:"",formlyPlaceholder:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{}}};return angular.copy(o,e),!0}function s(e){for(var o={selectedControl:"none",formlyType:"none",formlySubtype:"none",formlyLabel:"",formlyRequired:!1,formlyDesciption:"",formlyPlaceholder:"",formlyOptions:[],formlyExpressionProperties:{},formlyValidators:{},formlyValidation:{}},l=e.controls.length-1;l>=0;l--)e.selectedControl===e.controls[l].id&&(o.selectedControl=e.selectedControl,o.formlyType=e.controls[l].formlyType,o.formlySubtype=e.controls[l].formlySubtype,o.formlyLabel=e.controls[l].formlyLabel,o.formlyRequired=e.controls[l].formlyRequired,o.formlyDesciption=e.controls[l].formlyDesciption,
-o.formlyPlaceholder=e.controls[l].formlyPlaceholder,o.formlyOptions=e.controls[l].formlyOptions,o.formlyExpressionProperties=angular.copy(e.controls[l].formlyExpressionProperties),o.formlyValidators=angular.copy(e.controls[l].formlyValidators),o.formlyValidation=angular.copy(e.controls[l].formlyValidation),"datepicker"===e.controls[l].formlyType&&(o.datepickerPopup=e.controls[l].datepickerPopup));return o}function a(e,o){for(var l=!0,t=o.lines.length-1;t>=0;t--)for(var i=o.lines[t].columns.length-1;i>=0;i--)o.lines[t].columns[i].control.key===e&&(l=!1);return l}var r={initNyaSelect:e,getNyASelectFromSelectedLineColumn:o,bindConfigurationModelFromModalReturn:l,applyConfigToSelectedControl:t,resetTemporyConfig:i};return r}angular.module("ngwfApp.services.ngwfEditCtrlControllerModalProxy",[]).factory("controllerModalProxy",e),e.$inject=[]}(),function(){function e(){function e(e){var o={activeLine:1,listConfigStep:["init","first","second","third"],stepIndicators:[!0,!1,!1,!1],configStepCounter:0,submitButtonText:"submit",cancelButtonText:"cancel",lines:[{line:1,activeColumn:1,columns:[{numColumn:1,exist:!0,control:{type:"none",key:"none"}}]}]};angular.copy(o,e)}function o(e,o){if("[object Array]"===Object.prototype.toString.call(o)){var l={activeLine:1,listConfigStep:["init","first","second","third"],stepIndicators:[!0,!1,!1,!1],configStepCounter:0,submitButtonText:"submit",cancelButtonText:"cancel",lines:[]};return l.lines=[].concat(o),angular.copy(l,e),x("configuration model is bound","lines are bound to configuration model.")}return w("lines is not an array","Checks lines type, it is not an array.")}function l(e,o,l){t(o),h(l);for(var n=e.lines.length,c=0;n>c;c++)1===e.lines[c].columns.length&&("header"===e.lines[c].columns[0].control.type?i(o,e,c):s(o,e,c)),2===e.lines[c].columns.length&&a(o,e,c),3===e.lines[c].columns.length&&r(o,e,c)}function t(e){var o=[];angular.copy(o,e)}function i(e,o,l){var t='<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">'+b(o.lines[l].columns[0].control)+"<h2></div></div><hr/>";e.push({template:"undefined"!=typeof o.lines[l].columns[0].control.type&&"header"===o.lines[l].columns[0].control.type?t:"<div></div>"})}function n(e,o,l){e.templateOptions.datepickerPopup=d(o.lines[l].columns[0].control)}function s(e,o,l){var t={className:"col-xs-12",type:"undefined"!=typeof o.lines[l].columns[0].control.type?"none"===o.lines[l].columns[0].control.type?"blank":o.lines[l].columns[0].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[0].control.key?o.lines[l].columns[0].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[0].control),label:c(o.lines[l].columns[0].control),required:f(o.lines[l].columns[0].control),placeholder:y(o.lines[l].columns[0].control),description:b(o.lines[l].columns[0].control),options:v(o.lines[l].columns[0].control)},expressionProperties:p(o.lines[l].columns[0].control),validators:u(o.lines[l].columns[0].control),validation:m(o.lines[l].columns[0].control)};"datepicker"===o.lines[l].columns[0].control.type&&n(t,o,l),e.push(t)}function a(e,o,l){var t={className:"col-xs-6",template:'<div class="row"><div class=""><h2 class="text-center">'+b(o.lines[l].columns[0].control)+"<h2><hr/></div></div>"},i={className:"col-xs-6",template:'<div class="row"><div class=""><h2 class="text-center">'+b(o.lines[l].columns[1].control)+"<h2><hr/></div></div>"},s={className:"col-xs-6",type:"undefined"!=typeof o.lines[l].columns[0].control.type?"none"===o.lines[l].columns[0].control.type?"blank":o.lines[l].columns[0].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[0].control.key?o.lines[l].columns[0].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[0].control),label:c(o.lines[l].columns[0].control),required:f(o.lines[l].columns[0].control),placeholder:y(o.lines[l].columns[0].control),description:b(o.lines[l].columns[0].control),options:v(o.lines[l].columns[0].control)},expressionProperties:p(o.lines[l].columns[0].control),validators:u(o.lines[l].columns[0].control),validation:m(o.lines[l].columns[0].control)};"datepicker"===o.lines[l].columns[0].control.type&&n(s,o,l);var a={className:"col-xs-6",type:"undefined"!=typeof o.lines[l].columns[1].control.type?"none"===o.lines[l].columns[1].control.type?"blank":o.lines[l].columns[1].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[1].control.key?o.lines[l].columns[1].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[1].control),label:c(o.lines[l].columns[1].control),required:f(o.lines[l].columns[1].control),placeholder:y(o.lines[l].columns[1].control),description:b(o.lines[l].columns[1].control),options:v(o.lines[l].columns[1].control)},expressionProperties:p(o.lines[l].columns[1].control),validators:u(o.lines[l].columns[1].control),validation:m(o.lines[l].columns[1].control)};"datepicker"===o.lines[l].columns[1].control.type&&n(a,o,l);var r=[];r.push("header"===o.lines[l].columns[0].control.type?t:s),r.push("header"===o.lines[l].columns[1].control.type?i:a),e.push({className:"row",fieldGroup:r})}function r(e,o,l){var t={className:"col-xs-4",template:'<div class="row"><div class=""><h2 class="text-center">'+b(o.lines[l].columns[0].control)+"<h2><hr/></div></div>"},i={className:"col-xs-4",template:'<div class="row"><div class=""><h2 class="text-center">'+b(o.lines[l].columns[1].control)+"<h2><hr/></div></div>"},s={className:"col-xs-4",template:'<div class="row"><div class=""><h2 class="text-center">'+b(o.lines[l].columns[2].control)+"<h2><hr/></div></div>"},a={className:"col-xs-4",type:"undefined"!=typeof o.lines[l].columns[0].control.type?"none"===o.lines[l].columns[0].control.type?"blank":o.lines[l].columns[0].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[0].control.key?o.lines[l].columns[0].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[0].control),label:c(o.lines[l].columns[0].control),required:f(o.lines[l].columns[0].control),placeholder:y(o.lines[l].columns[0].control),description:b(o.lines[l].columns[0].control),options:v(o.lines[l].columns[0].control)},expressionProperties:p(o.lines[l].columns[0].control),validators:u(o.lines[l].columns[0].control),validation:m(o.lines[l].columns[0].control)};"datepicker"===o.lines[l].columns[0].control.type&&n(a,o,l);var r={className:"col-xs-4",type:"undefined"!=typeof o.lines[l].columns[1].control.type?"none"===o.lines[l].columns[1].control.type?"blank":o.lines[l].columns[1].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[1].control.key?o.lines[l].columns[1].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[1].control),label:c(o.lines[l].columns[1].control),required:f(o.lines[l].columns[1].control),placeholder:y(o.lines[l].columns[1].control),description:b(o.lines[l].columns[1].control),options:v(o.lines[l].columns[1].control)},expressionProperties:p(o.lines[l].columns[1].control),validators:u(o.lines[l].columns[1].control),validation:m(o.lines[l].columns[1].control)};"datepicker"===o.lines[l].columns[1].control.type&&n(r,o,l);var d={className:"col-xs-4",type:"undefined"!=typeof o.lines[l].columns[2].control.type?"none"===o.lines[l].columns[2].control.type?"blank":o.lines[l].columns[2].control.type:"blank",key:"undefined"!=typeof o.lines[l].columns[2].control.key?o.lines[l].columns[2].control.key:"blank"+Date.now(),templateOptions:{type:g(o.lines[l].columns[2].control),label:c(o.lines[l].columns[2].control),required:f(o.lines[l].columns[2].control),placeholder:y(o.lines[l].columns[2].control),description:b(o.lines[l].columns[2].control),options:v(o.lines[l].columns[2].control)},expressionProperties:p(o.lines[l].columns[2].control),validators:u(o.lines[l].columns[2].control),validation:m(o.lines[l].columns[2].control)};"datepicker"===o.lines[l].columns[2].control.type&&n(d,o,l);var h=[];h.push("header"===o.lines[l].columns[0].control.type?t:a),h.push("header"===o.lines[l].columns[1].control.type?i:r),h.push("header"===o.lines[l].columns[2].control.type?s:d),e.push({className:"row",fieldGroup:h})}function c(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.label?e.templateOptions.label:""}function d(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.datepickerPopup?e.templateOptions.datepickerPopup:""}function p(e){return"undefined"!=typeof e.formlyExpressionProperties?angular.copy(e.formlyExpressionProperties):{}}function u(e){return"undefined"!=typeof e.formlyValidators?angular.copy(e.formlyValidators):{}}function m(e){return"undefined"!=typeof e.formlyValidation?angular.copy(e.formlyValidation):{}}function f(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.required?e.templateOptions.required:""}function v(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.options?e.templateOptions.options:""}function g(e){return"undefined"!=typeof e.subtype?e.subtype:""}function y(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.placeholder?e.templateOptions.placeholder:""}function b(e){return"undefined"!=typeof e.templateOptions&&"undefined"!=typeof e.templateOptions.description?e.templateOptions.description:""}function h(e){var o={};return angular.copy(o,e),!0}function w(e,o){var l={noError:!1,title:"",Message:""};return l.noError=!1,l.title=e,l.Message=o,l}function x(e,o){var l={noError:!1,title:"",Message:""};return l.noError=!0,l.title=e,l.Message=o,l}var C={initConfigurationEditFromScratch:e,bindConfigurationLines:o,applyConfigurationToformlyModel:l};return C}angular.module("ngwfApp.services.formFieldManage",[]).factory("formFieldManage",e),e.$inject=[]}(),function(){function e(){function e(){return"selectOptionManage is here."}function o(e){p(e)}function l(e,o){for(var l=e.rows.length-1;l>=0;l--)if(e.rows[l].option===o)return!1;return!0}function t(e){return""!==e?!0:!1}function i(e,o){var l={resultFlag:!1,details:""},t=d(e,o);if(t.resultFlag===!0){var i={option:o,order:e.rows.length};return e.rows.push(i),l.resultFlag=!0,l.details="",l}return angular.copy(t,l),l}function n(e,o){var l={resultFlag:!1,details:""},t=d(e,o);if(t.resultFlag===!0){var i={option:o,order:e.rows.length};return e.rows.push(i),l.resultFlag=!0,l.details="",l}return angular.copy(t,l),l}function s(e,o,l){var t={resultFlag:!1,details:""},i=d(e,o);if(i.resultFlag===!0){var n={option:o,group:l,order:e.rows.length};return e.rows.push(n),t.resultFlag=!0,t.details="",t}return angular.copy(i,t),t}function a(e,o){var l={resultFlag:!1,details:""};return-1!==o?(e.rows.splice(o,1),l.resultFlag=!0,l.details="",l):(l.resultFlag=!1,l.details="Option index not valid",l)}function r(e,o){var l={resultFlag:!1,details:""};if(o>-1){if(o>0){if(e.rows[o-1]){var t=e.rows[o];return e.rows.splice(o,1),e.rows.splice(o-1,0,t),l.resultFlag=!0,l.details="",l}return l.resultFlag=!1,l.details="Can't retreive option from option index",l}return l.resultFlag=!0,l.details="",l}return l.resultFlag=!1,l.details="Option index not valid",l}function c(e,o){var l={resultFlag:!1,details:""};if(o>-1){if(o<e.rows.length-1){if(e.rows[o+1]){var t=e.rows[o];return e.rows.splice(o,1),e.rows.splice(o+1,0,t),l.resultFlag=!0,l.details="",l}return l.resultFlag=!1,l.details="Can't retreive option from option index",l}return l.resultFlag=!0,l.details="",l}return l.resultFlag=!1,l.details="Option index not valid",l}function d(e,o){var l={resultFlag:!1,details:""};if("undefined"==typeof o)return l.resultFlag=!1,l.details="Entered option is empty",l;if(""!==o){for(var t=e.rows.length-1;t>=0;t--)if(e.rows[t].option===o)return l.resultFlag=!1,l.details="Entered option is not unique",l;return l.resultFlag=!0,l.details="",l}return l.resultFlag=!1,l.details="Entered option is empty",l}function p(e){var o={rows:[]};angular.copy(o,e)}var u={testMe:e,initModel:o,isOptionUnique:l,isOptionValidFormat:t,addNewOptionRadio:i,addNewOptionBasicSelect:n,addNewOptionGroupedSelect:s,removeOption:a,upthisOption:r,downthisOption:c};return u}angular.module("ngwfApp.services.selectOptionManage",[]).factory("selectOptionManage",e),e.$inject=[]}(),function(){angular.module("ngwfApp.services",["ngwfApp.services.formFieldManage","ngwfApp.services.selectOptionManage","ngwfApp.services.ngwfWfFormsServices","ngwfApp.services.ngwfEditCtrlControllerModalProxy"])}(),function(){function e(e){return e("/api/wfedit/:id",{id:"@id"},{})}angular.module("ngwfApp.services.ngwfWfFormsServices",["ngResource"]).factory("WfFormsByIdServices",e),e.$inject=["$resource"]}(),function(){angular.module("ngwfApp.filters",[])}()}(this);
-//# sourceMappingURL=eda.stepway.js.map
+
+  angular
+    .module('ngwfApp', [  
+      'ngwfApp.core',
+      'ngwfApp.controllers',
+      'ngwfApp.services', 
+      'ngwfApp.filters',
+      'ngwfApp.directives'
+    ])
+    .value('easyFormGenVersion', 'v1.0.7')
+    .config(configfct);
+
+
+
+
+
+
+    configfct.$inject = ['formlyConfigProvider'];
+    function configfct(formlyConfigProvider){
+      //////////////////////////////
+      // CONFIG HERE (formly...)              
+      /////////////////////////////
+      formlyConfigProvider.setType(
+        {
+          name: 'richEditor',
+          //wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+          template: '<text-angular name="{{id}}" class="richTextAngular" ng-model="model[options.key || index]"></text-angular>'
+        }
+      );
+
+      formlyConfigProvider.setType(
+        {
+          name: 'blank',
+          template: '<div></div>'
+        }
+      );
+
+
+      var subTitleTemplate = '<div class="row"><div class=""><h4 class="text-center">{{options.templateOptions.placeholder}}<h4><hr/></div></div>';
+      formlyConfigProvider.setType(
+        {
+          name: 'subTitle',
+          template: subTitleTemplate
+        }
+      );
+
+      var basicSelectTemplate =   ' <ol   class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ' + 
+                    '   ng-model="model[options.key || index]"  ' + 
+                      '   id="{{id}}"  ' + 
+                      '   disabled="options.templateOptions.options.length === 0"> ' + 
+                      '   <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> ' + 
+                      '     <a>{{option.name}}</a> ' + 
+                      '   </li> ' + 
+                      ' </ol>     ' ;
+
+     formlyConfigProvider.setType(
+        {
+          name: 'basicSelect',
+          template: basicSelectTemplate
+        }
+      );
+
+
+     var groupedSelectTemplate =   '  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ' +
+                   '    ng-model="model[options.key || index]" ' +
+                   '       data-live-search="true" ' +
+                   '       disabled="options.templateOptions.options.length === 0">' +
+                                 '       <li nya-bs-option="option in  options.templateOptions.options group by option.group"  ' +
+                                 '       >' +
+                                 '         <span class="dropdown-header">{{$group}}</span>' + 
+                                 '         <a>' +
+                                 '           <span>{{option.name}}</span>' +
+                                 '           <span class="glyphicon glyphicon-ok check-mark"></span>' +
+                                 '         </a>' +
+                                 '       </li>' +
+                                 '     </ol>';
+
+     formlyConfigProvider.setType(
+        {
+          name: 'groupedSelect',
+          template: groupedSelectTemplate
+        }
+      );
+
+     ////////////////////////////
+     // angular UI date picker
+     ////////////////////////////
+     // thx Kent C. Dodds
+
+      var attributes = [
+        'date-disabled',
+        'custom-class',
+        'show-weeks',
+        'starting-day',
+        'init-date',
+        'min-mode',
+        'max-mode',
+        'format-day',
+        'format-month',
+        'format-year',
+        'format-day-header',
+        'format-day-title',
+        'format-month-title',
+        'year-range',
+        'shortcut-propagation',
+        'datepicker-popup',
+        'show-button-bar',
+        'current-text',
+        'clear-text',
+        'close-text',
+        'close-on-date-selection',
+        'datepicker-append-to-body'
+      ];
+
+      var bindings = [
+        'datepicker-mode',
+        'min-date',
+        'max-date'
+      ];
+
+      var ngModelAttrs = {};
+
+      angular.forEach(attributes, function(attr) {
+        ngModelAttrs[camelize(attr)] = {attribute: attr};
+      });
+
+      angular.forEach(bindings, function(binding) {
+        ngModelAttrs[camelize(binding)] = {bound: binding};
+      });
+
+    
+
+      formlyConfigProvider.setType({
+        name: 'datepicker',
+        template: '<input  id="{{id}}" class="form-control" ng-click="open($event)" ng-model="model[options.key  || index]" is-open="to.isOpen" ng-click="to.isOpen = true" datepicker-options="to.datepickerOptions" />',
+        wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+        controller: ['$scope', function($scope) {
+           $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.opened = true;
+          };
+         
+         }],
+        defaultOptions: {
+          ngModelAttrs: ngModelAttrs,
+          templateOptions: {
+            addonLeft: {
+              class: 'glyphicon glyphicon-calendar',
+              onClick: function(options, scope) {
+                options.templateOptions.isOpen = !options.templateOptions.isOpen;
+              }
+            },       
+            onFocus: function($viewValue, $modelValue, scope) {
+              scope.to.isOpen = !scope.to.isOpen;
+            },
+            datepickerOptions: {}
+          }
+        }
+        
+      });
+
+
+
+      /**
+       * wrappers to show validation errors
+       * without having to rewrite formly types
+       */
+      formlyConfigProvider.setWrapper([
+          {
+            template: [
+              '<div class="formly-template-wrapper form-group"',
+              '     ng-class="{\'has-error\': options.validation.errorExistsAndShouldBeVisible}">',
+              ' <formly-transclude></formly-transclude>',
+              ' <div class="validation"',
+              '       ng-if="options.validation.errorExistsAndShouldBeVisible"',
+              '       ng-messages="options.formControl.$error">',
+              '   <div ng-messages-include="validation.html"></div>',
+              '   <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">',
+              '     {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}',
+              '   </div>',
+              ' </div>',
+              '</div>'
+            ].join(' ')
+          }
+        ]);
+
+      function camelize(string) {
+        string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {
+          return chr ? chr.toUpperCase() : '';
+        });
+        // Ensure 1st char is always lowercase
+        return string.replace(/^([A-Z])/, function(match, chr) {
+          return chr ? chr.toLowerCase() : '';
+        });
+      } 
+
+    }
+
+
+})();
+
+angular.module("ngwfApp").run(["$templateCache", function($templateCache) {$templateCache.put("edaStepWayEasyFormGeneratorTemplate.html","<section id=pageWfEdit><div ng-init=\"\"><div class=container><section id=preview><div id=preview-content><div class=content-container><toaster-container toaster-options=\"{ \'position-class\': \'toast-top-full-width\', \'extendedTimeout\':500, \'timeOut\':500, }\"></toaster-container><tabset justified=true><tab select=tabJustSelected(2) active=tab.editTab.active heading=\"Edit /Create\"><div class=row><div class=\"row stepwizardTopmargin\"><div class=\"col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2\"><div class=stepwizard><div class=\"row stepwizard-row\"><div class=\"stepwizard-step col-md-3\"><button type=button class=\"btn btn-circle\" ng-class=\"{\'btn-primary\': configuration.stepIndicators[0], \'btn-default\': !configuration.stepIndicators[0]}\">0</button><p>lines</p></div><div class=\"stepwizard-step col-md-3\"><button type=button class=\"btn btn-circle\" ng-class=\"{\'btn-primary\': configuration.stepIndicators[1], \'btn-default\': !configuration.stepIndicators[1], \'disabled\': (configuration.configStepCounter < 1)}\">1</button><p>layout</p></div><div class=\"stepwizard-step col-md-3\"><button type=button class=\"btn btn-default btn-circle\" ng-class=\"{\'btn-primary\': configuration.stepIndicators[2], \'btn-default\': !configuration.stepIndicators[2], \'disabled\': (configuration.configStepCounter < 2)}\">2</button><p>controls</p></div><div class=\"stepwizard-step col-md-3\"><button type=button class=\"btn btn-default btn-circle\" ng-class=\"{\'btn-primary\': configuration.stepIndicators[3], \'btn-default\': !configuration.stepIndicators[3], \'disabled\': (configuration.configStepCounter < 3)}\">3</button><p>save</p></div></div></div></div></div></div><div class=row><ul class=pager><li ng-class=\"{\'disabled\':stepIndicators[0]}\"><button class=\"btn btn-primary customPagerButton\" ng-click=previousConfigStep()><i class=\"fa fa-arrow-left fa-2x pull-left\"></i> <span class=pull-right>Prev</span></button></li><li ng-class=\"{\'disabled\':stepIndicators[3]}\"><button class=\"btn btn-primary customPagerButton\" ng-click=nextConfigStep()><span class=pull-left>Next</span> <i class=\"fa fa-arrow-right fa-2x pull-right\"></i></button></li></ul><div class=animate-switch-container ng-switch=\"\" on=configuration.listConfigStep[configuration.configStepCounter]><div class=animate-switch ng-switch-when=init><div class=col-md-4><div id=commandPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-keyboard-o\"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><span class=addNewLine>Add a new line :</span>&nbsp; <button class=\"btn btn-primary\" ng-click=addNewline()><i class=\"fa fa-plus fa-1x\"></i></button></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-eye\"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat=\"line in configuration.lines track by $index\"><div ng-switch=\"\" on=line.columns.length><div class=\"row linesList\" ng-switch-when=1><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=upThisLine($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-warning\" ng-hide=\"$index==(configuration.lines.length-1)\" ng-click=downThisLine($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-danger pull-right\" ng-click=removeThisLine($index)><i class=\"fa fa-trash-o\"></i></button></div><div class=col-md-12><div class=\"col-md-12 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=2><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=upThisLine($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-warning\" ng-hide=\"$index==(configuration.lines.length-1)\" ng-click=downThisLine($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-danger pull-right\" ng-click=removeThisLine($index)><i class=\"fa fa-trash-o\"></i></button></div><div class=col-md-12><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=3><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=upThisLine($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-warning\" ng-hide=\"$index==(configuration.lines.length-1)\" ng-click=downThisLine($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-danger pull-right\" ng-click=removeThisLine($index)><i class=\"fa fa-trash-o\"></i></button></div><div class=col-md-12><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=first><div class=col-md-4><div id=commandPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-keyboard-o\"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><h4 class=\"numberOfcolumsText text-center\"><i>– Selected line –</i></h4><h4 class=\"numberOfcolumsText text-center\">number of columns :</h4></div></div><div class=row><div class=\"col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3\"><button class=\"btn btn-primary pull-right btnMinusColumns\" ng-click=decreaseNumberOfColumns()><i class=\"fa fa-minus fa-1x\"></i></button></div><div class=\"col-xs-2 col-sm-2 col-md-2 text-center\"><span class=numberOfColumnsLabel>{{configuration.lines[configuration.activeLine -1].columns.length}}</span></div><div class=\"col-xs-2 col-sm-2 col-md-2\"><button class=\"btn btn-primary pull-left btnAddColumns\" ng-click=increaseNumberOfColumns()><i class=\"fa fa-plus fa-1x\"></i></button></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-eye\"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat=\"line in configuration.lines track by $index\"><div ng-switch=\"\" on=line.columns.length><div class=\"row linesList\" ng-switch-when=1><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-12 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=2><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=3><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block btn-default disabled\">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=second><div class=col-md-4><div id=commandPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-keyboard-o\"></i> Command</h3></div><div class=panel-body><div class=row><div class=col-md-12><h4 class=\"numberOfcolumsText text-center\">– Apply controls to columns –</h4></div></div><div class=row><div class=col-lg-12><hr><blockquote><p class=numberOfcolumsText><i class=\"fa fa-minus\"></i>&nbsp; Click / Tap on column to open control selection.</p><p class=numberOfcolumsText><i class=\"fa fa-minus\"></i>&nbsp; Select desired control and valid to apply it to column.</p></blockquote></div></div></div></div></div></div><div class=col-md-8><div id=visualPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-eye\"></i> Visual</h3></div><div class=panel-body><ul class=list-group><li class=list-group-item ng-repeat=\"line in configuration.lines track by $index\"><div ng-switch=\"\" on=line.columns.length><div class=\"row linesList\" ng-switch-when=1><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-12 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 0)\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=2><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 0)\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-6 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 1)\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div></div></div><div class=\"row linesList\" ng-switch-when=3><div class=\"col-md-12 lineCommandButtons\" ng-show=\"configuration.lines.length > 1\"><button class=btn ng-class=\"{\'btn-warning\':($index + 1) !== configuration.activeLine, \'btn-success\': ($index + 1) === configuration.activeLine}\" ng-click=\"setActiveLineNumber($index + 1)\"><i class=fa ng-class=\"{\'fa-square-o\': ($index + 1) !== configuration.activeLine, \'fa-check-square-o\': ($index + 1) === configuration.activeLine}\"></i></button></div><div class=col-md-12><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 0)\">{{line.columns[0].control.type !== \'none\' ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 1)\">{{line.columns[1].control.type !== \'none\' ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}</button></div><div class=\"col-md-4 well\"><button class=\"btn btn-lg btn-block\" ng-class=\"{\'btn-primary\': !line.columns[2].control.edited, \'btn-success\': line.columns[2].control.edited}\" ng-click=\"showModalAddCtrlToColumn(\'\', $index, 2)\">{{line.columns[2].control.type !== \'none\' ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}</button></div></div></div></div></li></ul></div></div></div></div></div><div class=animate-switch ng-switch-when=third><div class=col-md-4><div id=commandPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-keyboard-o\"></i>&nbsp;Command</h3></div><div class=panel-body><div class=row><div class=col-xs-12><div class=form-group><label for=inputSubmitButtontext class=\"greyText control-label\">Customize Submit button Text :</label><div><input type=text class=form-control id=inputSubmitButtontext placeholder=\"Submit button text\" ng-model=configuration.submitButtonText></div></div></div></div><hr><div class=row><div class=col-xs-12><div class=form-group><label for=inputCancelButtontext class=\"greyText control-label\">Customize Cancel button Text :</label><div><input type=text class=form-control id=inputCancelButtontext placeholder=\"Cancel button text\" ng-model=configuration.cancelButtonText></div></div></div></div><hr><div class=row><div class=col-xs-12><div class=form-group><label for=inputNameFormtext class=\"greyText control-label\">Name to this form :</label><div><input type=text class=form-control id=inputNameFormtext placeholder=\"Enter formName\" ng-model=configuration.formName></div></div></div></div><button class=\"btn btn-primary btn-block btn-lg\" ng-click=saveThisForm()>save this form</button></div></div></div></div><div class=col-md-8><div id=visualPanel><div class=\"panel panel-default\"><div class=panel-heading><h3 class=panel-title><i class=\"fa fa-thumbs-o-up\"></i>&nbsp;Final Step : form preview</h3></div><div class=panel-body><form ng-submit=vm.onSubmit()><formly-form id=saveFormlyFom model=vm.model fields=vm.wfFormFields><span class=pull-right><button class=\"btn btn-primary\" type=submit>{{configuration.submitButtonText}}</button> <button class=\"btn btn-primary\" type=cancel>{{configuration.cancelButtonText}}</button></span></formly-form></form></div></div></div></div></div></div></div></tab><tab select=tabJustSelected(1) active=tab.previewTab.active heading=Preview><div class=\"panel panel-default\"><div class=panel-body><form ng-submit=vm.onSubmit()><formly-form id=previewFormlyForm model=vm.model fields=vm.wfFormFields><span class=pull-right><button class=\"btn btn-primary\" type=submit>{{configuration.submitButtonText}}</button> <button class=\"btn btn-primary\" type=cancel>{{configuration.cancelButtonText}}</button></span></formly-form></form></div></div><div class=\"panel panel-default\"><div class=panel-body><p>DATA MODEL</p><pre>\n										{{vm.model | json}}\n									</pre></div></div><div class=\"panel panel-default\"><div class=panel-body><p>FIELDS MODEL (ready to save to database one)</p><pre>\n										{{vm.wfFormFieldsOnlyNeededProperties | json}}\n									</pre></div></div></tab></tabset></div></div></section><hr><section><h6 class=text-right>Easy form generator : {{easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6></section></div></div></section>");
+$templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\"modal-title greyText\">Select a control</h3></div><div class=modal-body><hr><div class=row><div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\"><h5 class=greyText><i class=\"fa fa-filter\"></i>&nbsp; Select a control in the list below :</h5></div><div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\"><ol class=\"nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12\" ng-model=modelNyaSelect data-live-search=false><li nya-bs-option=\"option in nyaSelect.controls group by option.group\"><span class=\"dropdown-header greyText\">{{$group}}</span><a ng-click=selectThisControl(option.id)><span>{{ option.name }}</span> <span class=\"glyphicon glyphicon-ok check-mark\"></span></a></li></ol></div></div><hr><div ng-switch=\"\" on=nyaSelect.selectedControl><div ng-switch-when=none><div class=row><div class=col-sm-12><h5 class=\"text-center texteRouge\"><i class=\"fa fa-arrow-up\"></i>&nbsp; Select a control</h5></div></div></div><div ng-switch-when=empty><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-sm-12><h5 class=\"text-center greyText\">Column will be blank</h5></div></div></div></div></div><div ng-switch-when=Header><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div><h2 class=text-center>{{nyaSelect.temporyConfig.formlyDesciption}}</h2><hr></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Header text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputHeaderTextUpdate placeholder=\"Add / edit header text here\"></div></div></div></div></div></div><div ng-switch-when=Subtitle><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div><h4 class=text-center>{{nyaSelect.temporyConfig.formlyPlaceholder}}</h4><hr></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputSubTitleTextUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Subtitle text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputSubTitleTextUpdate placeholder=\"Add / edit subtitle text here\"></div></div></div></div></div></div><div ng-switch-when=TextInput><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputText class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=text class=form-control id=inputText placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder=\"Add / edit placeholder text here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Password><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputPassword class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=password class=form-control id=inputPassword placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder=\"Add / edit placeholder text here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Email><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputEmail class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><input type=text class=form-control id=inputEmail placeholder={{nyaSelect.temporyConfig.formlyPlaceholder}}><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextplaceholderUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">placeholder :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyPlaceholder id=inputTextplaceholderUpdate placeholder=\"Add / edit placeholder text here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Date><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=inputDate class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><div class=input-group><span class=input-group-addon><i class=\"glyphicon glyphicon-calendar\"></i></span> <input type=text class=form-control datepicker-popup={{nyaSelect.temporyConfig.datepickerPopup}} ng-model=demodt.dt is-open=demodt.opened min-date=demodt.minDate max-date=\"\'2099-12-31\'\" datepicker-options=dateOptions date-disabled=\"disabled(date, mode)\" close-text=Close ng-click=open($event)></div><p></p><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label class=\"col-lg-3 control-label greyText editPropertiesLabel\">Date format :</label><div class=col-lg-9><ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\" ng-model=nyaSelect.temporyConfig.datepickerPopup id=dateformatSelect><li class=nya-bs-option nya-bs-option=\"dateformat in demodt.formats\" value=dateformat><a>{{dateformat}}</a></li></ol></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Texarea><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=textArea class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><textarea class=form-control ng-model=model[options.key] rows=3 id=textArea></textarea><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=RichTextEditor><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=RichTextEditor class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><text-angular ng-model=model[options.key]></text-angular><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Radio><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=basicSelect class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><div class=radio ng-repeat=\"radioRow in radioRowCollection.rows\"><label><input type=radio name=optionsRadios id=\"{{\'optionsRadio-\' + $index}}\" value=$index checked=\"\"> {{radioRow.option}}</label></div><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=\"col-lg-3 col-md-3\"><label for=radioRowCollection class=\"control-label greyText editPropertiesLabel\">Add new radio :</label></div></div><div class=row><div><div class=form-group><div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\"><input type=text class=form-control id=inputAddNewRadioOption placeholder=\"add new radio\" ng-model=newOptionRadio.saisie></div><div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\"><button class=\"btn btn-primary\" ng-click=addNewOptionRadio()>add</button></div></div></div></div><div class=row><div class=\"col-lg-3 col-md-3\"><label for=radioRowCollection class=\"control-label greyText editPropertiesLabel\">Edit/Remove radio :</label></div></div><div class=row><div class=form-group><div class-\"col-lg-12=\"\" col-md-12=\"\" col-sm-12=\"\" col-xs-12\"=\"\"><div class=container><div ng-show=\"radioRowCollection.rows.length === 0\"><h5 class=\"text-center greyText\"><em>- no radio : add new radio values -</em></h5></div><table ng-if=\"radioRowCollection.rows.length > 0\" class=\"table table-striped\"><thead><tr><th st-ratio=20>order</th><th st-ratio=55>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=55><input ng-model=radioFilter placeholder=\"search for option\" class=\"input-sm form-control\" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat=\"radioRow in radioRowCollection.rows | filter:radioFilter as radioRow\"><td st-ratio=20>{{$index}}</td><td st-ratio=55>{{radioRow.option}}</td><td st-ratio=25><div class=pull-right><button class=\"btn btn-primary\" ng-click=upThisRadioRow($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-primary\" ng-click=downThisRadioRow($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-danger\" ng-click=removeRadioRow($index)><i class=\"fa fa-trash-o\"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=Checkbox><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><div class=col-md-12><div class=checkbox><label><input type=checkbox id=checkBox> <span class=blackText>{{nyaSelect.temporyConfig.formlyLabel}}</span><span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label></div><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=form-group><label for=inputTextLabelUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Label text :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyLabel id=inputTextLabelUpdate placeholder=\"Add / edit control label here\"></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextRequiredUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :</label><div class=col-lg-9><div class=checkboxCssCorrection>&nbsp;</div><input type=checkbox ng-model=nyaSelect.temporyConfig.formlyRequired id=inputTextRequiredUpdate></div></div></div><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=BasicSelect><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=basicSelect class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\" ng-model=modelbasicSelect id=basicSelect disabled=\"basicSelectRowCollection.rows.length === 0\"><li class=nya-bs-option nya-bs-option=\"basicSelectRow in basicSelectRowCollection.rows\" value=$index><a>{{basicSelectRow.option}}</a></li></ol><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=\"col-lg-3 col-md-3\"><label for=basicSelectRowCollection class=\"control-label greyText editPropertiesLabel\">Add new options :</label></div></div><div class=row><div><div class=form-group><div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\"><input type=text class=form-control id=inputAddNewBasicOption placeholder=\"add new option\" ng-model=newOptionBasicSelect.saisie></div><div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\"><button class=\"btn btn-primary\" ng-click=addNewOptionBasicSelect()>add</button></div></div></div></div><div class=row><div class=\"col-lg-3 col-md-3\"><label class=\"control-label greyText editPropertiesLabel\">Edit/Remove options :</label></div></div><div class=row><div class=form-group><div class-\"col-lg-12=\"\" col-md-12=\"\" col-sm-12=\"\" col-xs-12\"=\"\"><div class=container><div ng-if=\"basicSelectRowCollection.rows.length === 0\"><h5 class=\"text-center greyText\"><em>- no option : add new options -</em></h5></div><table ng-if=\"basicSelectRowCollection.rows.length > 0\" class=\"table table-striped\"><thead><tr><th st-ratio=20>order</th><th st-ratio=55>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=55><input ng-model=basicSelectFilter placeholder=\"search for option\" class=\"input-sm form-control\" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat=\"basicSelectRow in basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow\"><td st-ratio=20>{{$index}}</td><td st-ratio=55>{{basicSelectRow.option}}</td><td st-ratio=25><div class=pull-right><button class=\"btn btn-primary\" ng-click=upThisRow($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-primary\" ng-click=downThisRow($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-danger\" ng-click=removeRow($index)><i class=\"fa fa-trash-o\"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div><div ng-switch-when=GroupedSelect><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-eye\"></i>&nbsp; Preview :</h5></div></div><hr><div class=row><div class=col-md-12><div class=form-group><label for=select class=\"control-label textControlLabel\">{{nyaSelect.temporyConfig.formlyLabel}}<span ng-if=nyaSelect.temporyConfig.formlyRequired class=textControlLabel>*</span></label><div><ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\" ng-model=modelGroupedSelect data-live-search=true disabled=\"groupedSelectRowCollection.rows.length === 0\"><li nya-bs-option=\"groupedSelectRow in groupedSelectRowCollection.rows group by groupedSelectRow.group\" value=$index><span class=dropdown-header>{{groupedSelectRow.group}}</span> <a><span>{{groupedSelectRow.option}}</span> <span class=\"glyphicon glyphicon-ok check-mark\"></span></a></li></ol><p class=help-block>{{nyaSelect.temporyConfig.formlyDesciption}}</p></div></div></div></div></div></div><div class=\"panel panel-default\"><div class=panel-body><div class=row><div class=col-md-12><h5 class=greyText><i class=\"fa fa-pencil-square-o\"></i>&nbsp; Edit properties :</h5></div></div><hr><div class=row><div class=\"col-lg-3 col-md-3\"><label for=groupedSelectRowCollection class=\"control-label greyText editPropertiesLabel\">Add new options :</label></div></div><div class=row><div><div class=form-group><div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\"><input type=text class=form-control id=inputAddNewGroupedOption placeholder=\"add new option\" ng-model=newOptionGroupedSelect.saisie></div><div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\"><button class=\"btn btn-primary\" ng-click=addNewOptionGroupedSelect()>add</button></div></div></div></div><div class=row><div class=\"col-lg-3 col-md-3\"><label for=groupedSelectRowCollection class=\"control-label greyText editPropertiesLabel\">Add new groups :</label></div></div><div class=row><div><div class=form-group><div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\"><input id=inputAddNewGroupGroupedOption type=text class=form-control ng-model=newGroupGroupedSelect.saisie placeholder=\"Add new group\"></div><div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\"><button class=\"btn btn-primary\" ng-click=addNewGroupToGroupedSelect()>add</button></div></div></div></div><div class=row><div class=\"col-lg-3 col-md-3\"><label class=\"control-label greyText editPropertiesLabel\">Edit/Remove options/groups:</label></div></div><div class=row><div class=form-group><div class-\"col-lg-12=\"\" col-md-12=\"\" col-sm-12=\"\" col-xs-12\"=\"\"><div class=container><div ng-if=\"groupedSelectRowCollection.rows.length === 0\"><h5 class=\"text-center greyText\"><em>- no option : add new options -</em></h5></div><table ng-if=\"groupedSelectRowCollection.rows.length > 0\" class=\"table table-striped\"><thead><tr><th st-ratio=20>order</th><th st-ratio=25>group</th><th st-ratio=30>option</th><th st-ratio=25></th></tr><tr><th st-ratio=20></th><th st-ratio=25></th><th st-ratio=30><input ng-model=groupedSelectFilter placeholder=\"search for option\" class=\"input-sm form-control\" type=search></th><th st-ratio=25></th></tr></thead><tbody><tr ng-repeat=\"groupedSelectRow in groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow\"><td st-ratio=20>{{$index}}</td><td st-ratio=25><div ng-if=\"groupSelectGroupClick.showList === true\"><div ng-if=\"GroupedSelectGroups.list.length === 0\"><p class=\"text-left noGroupText\">- add new groups -</p></div><div ng-if=\"GroupedSelectGroups.list.length > 0\"><ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect\" ng-model=groupedSelectRow.group id=modelGroupedOptionGroupedChoose disabled=\"GroupedSelectGroups.list.length === 0\"><li class=nya-bs-option nya-bs-option=\"GroupedSelectGroup in GroupedSelectGroups.list\" value=GroupedSelectGroup><a>{{GroupedSelectGroup}}</a></li></ol></div></div><div ng-if=\"groupSelectGroupClick.showList === false\">{{groupedSelectRow.group}}</div></td><td st-ratio=30>{{groupedSelectRow.option}}</td><td st-ratio=25><div class=pull-right><button class=\"btn btn-primary\" ng-click=upThisGroupedSelectRow($index)><i class=\"fa fa-arrow-up\"></i></button> <button class=\"btn btn-primary\" ng-click=downThisGroupedSelectRow($index)><i class=\"fa fa-arrow-down\"></i></button> <button class=\"btn btn-warning\" ng-click=showGroupListToChoose()><i class=\"fa fa-pencil-square-o\"></i></button> <button class=\"btn btn-danger\" ng-click=removeGroupedSelectRow($index)><i class=\"fa fa-trash-o\"></i></button></div></td></tr></tbody></table></div></div></div></div><hr><div class=marginTopFivepixels></div><div class=row><div class=form-group><label for=inputTextDescriptionUpdate class=\"col-lg-3 control-label greyText editPropertiesLabel\">Description :</label><div class=col-lg-9><input type=text class=form-control ng-model=nyaSelect.temporyConfig.formlyDesciption id=inputTextDescriptionUpdate placeholder=\"Add / edit description here\"></div></div></div></div></div></div></div></div><div class=modal-footer><button class=\"btn btn-primary\" ng-class=\"{\'disabled\': nyaSelect.selectedControl === \'none\'}\" ng-click=ok()>OK</button> <button class=\"btn btn-warning\" ng-click=cancel()>Cancel</button></div>");}]);
+/**
+ *  ------------------------------------------------------
+ *  module core : injects core "non app modules"
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function () {
+	'use strict';
+
+	angular
+		.module('ngwfApp.core', [
+	    'textAngular',
+	    'textAngularSetup',
+	    'ngAnimate',
+	    'toaster',                      
+	    'formly', 
+	    'formlyBootstrap',
+	    'ui.bootstrap',
+	    'nya.bootstrap.select'
+		]);
+
+})(); 
+
+/**
+ *  ------------------------------------------------------
+ *  controllers container
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+(function () {
+	'use strict';
+
+
+	angular.module('ngwfApp.controllers', [	
+																				'ngwfApp.controllers.ngwfMainController',
+																				'ngwfApp.controllers.ngwfWfEditController',
+																				'ngwfApp.controllers.ngwfWfEditMODALController'
+																				]
+								);
+
+})(); 
+
+
+/**
+ *  ------------------------------------------------------
+ *  module = "controller" main controller
+ *  ------------------------------------------------------
+ *
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function () {
+	'use strict';
+
+	angular
+		.module('ngwfApp.controllers.ngwfMainController', [])
+		.controller('ngwfMainController', ngwfMainController);
+
+		ngwfMainController.$inject = ['$scope', '$timeout'];
+		function ngwfMainController($scope, $timeout){
+			
+			$scope.FormNameAsTest = 'initial_name';
+			
+			$timeout(function(){
+				$scope.FormNameAsTest = 'name changed after 3s';
+			}, 3000);
+		}
+
+})(); 
+
+
+/**
+ *  ------------------------------------------------------
+ *  module = "controller" edit controller
+ *  ------------------------------------------------------
+ *
+ * Main controller :
+ * 
+ *  - configuration model : fields model database friendly
+ *  - formlymodel : fields model bound to formly directive (not database freindly)
+ *  - vm.model : data model (database friendly)
+ *
+ * if you want more details on how to save to data base :
+ *
+ * http://www.erwan-datin.com/tips/how-do-I-store-angular-formly-fields-model-into-database
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function () {
+
+  'use strict';
+
+  angular
+    .module('ngwfApp.controllers.ngwfWfEditController', [])
+    .controller('ngwfWfEditController', ngwfWfEditController);
+
+
+    ngwfWfEditController.$inject = [
+      '$scope', 
+      '$templateCache',
+      'easyFormGenVersion',
+      '$filter',
+      '$anchorScroll',
+      'toaster', 
+      '$timeout',
+      '$modal',
+      '$log', 
+      'formFieldManage',
+      'WfFormsByIdServices',
+      'controllerModalProxy',
+    ];
+
+    
+    function ngwfWfEditController(
+                                    $scope, 
+                                    $templateCache,
+                                    easyFormGenVersion,
+                                    $filter,
+                                    $anchorScroll,
+                                    toaster,
+                                    $timeout, 
+                                    $modal,
+                                    $log, 
+                                    formFieldManage, 
+                                    WfFormsByIdServices, 
+                                    controllerModalProxy
+                                    ){
+      /*jshint validthis: true */
+      $scope.vm                       = this;
+      $scope.vm.model                 = {};
+      $scope.vm.wfFormFields          = [];
+      $scope.vm.wfFormFieldsOnlyNeededProperties = []; 
+      $scope.vm.onSubmit              = onSubmit;
+
+      $scope.easyFormGeneratorVERSION = easyFormGenVersion;
+      $scope.debug                    = initDebugModel();
+      $scope.tab                      = initTabModel();
+
+      //configuration model (contains array of lines which contains array of columns)
+      $scope.configuration            = {};    
+                               
+      $scope.numberOfColumns          = 1;
+      $scope.MaxNumberOfColumns       = 3;
+      $scope.MinNumberOfColumns       = 1;
+      $scope.columnTemplate           = initColumnTemplate();
+
+      $scope.lineTemplate             = initLineTemplate();
+      $scope.resetToZeroModel         = resetToZeroModel;
+      $scope.countConfigurationModelLines = countConfigurationModelLines;
+      $scope.setActiveLineNumber      = setActiveLineNumber;
+      $scope.upThisLine               = upThisLine;
+      $scope.downThisLine             = downThisLine;
+      $scope.addNewline               = addNewline;
+      $scope.removeThisLine           = removeThisLine;
+
+      $scope.increaseNumberOfColumns  = increaseNumberOfColumns;
+      $scope.decreaseNumberOfColumns  = decreaseNumberOfColumns;
+
+      $scope.resetStepCounter         = resetStepCounter;
+      $scope.nextConfigStep           = nextConfigStep;
+
+      $scope.previousConfigStep       = previousConfigStep;
+      $scope.stepReachable            = stepReachable;
+
+      $scope.toggleAnimation = toggleAnimation;
+
+      $scope.nyaSelect                = {};
+      
+      $scope.animationsEnabled        = true;
+      //call modal to edit selected control
+      $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
+
+      
+      //disabled here : to load list of saved formly fields from database
+      $scope.loadExistingFormsList    = loadExistingFormsAsList();
+      $scope.formlyList               = {};
+      $scope.previewLoadedForm        = { fieldsModel:[] };
+      $scope.configurationLoaded      = {};   
+      $scope.previewExistingform      = previewExistingform;
+      $scope.saveThisForm             = saveThisForm; //should save to database (commented here)
+
+
+   
+
+
+      
+
+
+
+      //load formlyList on init
+      loadExistingFormsAsList();
+
+      formFieldManage.initConfigurationEditFromScratch($scope.configuration);
+
+      controllerModalProxy.initNyaSelect($scope.nyaSelect);
+
+
+
+      function initDebugModel(){
+        return {
+         showDebug : false,
+         configurationModelNumberofLines : 1        
+        };
+      }
+
+      function initTabModel(){
+        return {
+          editTab : {active : true},
+          previewTab : {active : false}
+        };
+      }
+
+      function previewExistingform(formlyform){
+       var configlines = JSON.parse(formlyform.formlyField);
+       //here to replace with $scope.configuration : initialise configuration with lines 
+       $scope.configurationLoaded = {};
+       formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
+       formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
+       $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+       $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
+       $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
+      }    
+
+      function onSubmit() {
+        toaster.pop({
+            type: 'info',
+            timeout:2000,
+            title: 'should save data model if it were not a static example',
+            body: 'data :' + $filter('json')($scope.vm.model, 4),                
+            showCloseButton: true
+        }); 
+      }
+      
+      function initColumnTemplate(){
+        return  {
+          numColumn: -1,
+          exist:true, 
+          control: {
+            type:'none',
+            key: 'none',
+            subtype: 'none',
+            // templateOptions: {
+            //                     label: 'none',
+            //                     placeholder: 'none',
+            //                     required: false,
+            //                     description: 'Descriptive text'
+            //                   }
+          }                                         
+        };
+      }
+
+      function initLineTemplate(){
+        return {
+          line:-1, 
+          activeColumn : 1,
+          columns: [
+            {  
+              numColumn: 1,
+              exist:true, 
+              control: {
+                type:'none',
+                key: 'none',
+                // templateOptions: {
+                //                     label: 'none',
+                //                     placeholder: 'none',
+                //                     required: false,
+                //                     description: 'Descriptive text'
+                //                   }
+                }
+              }
+            ]
+        };
+      }
+
+      function resetToZeroModel(){
+        $scope.configuration.activeLine = 1;
+        if ($scope.configuration.lines.length > 1) {
+          $scope.configuration.lines.splice(1, $scope.configuration.lines.length - 2);
+        }
+        return $scope.countConfigurationModelLines();
+      }
+
+      function countConfigurationModelLines(){
+        //information in debug model
+        $scope.debug.configurationModelNumberofLines = $scope.configuration.lines.length;
+        return $scope.configuration.lines.length;
+      }      
+
+      function setActiveLineNumber(lineNumber){
+        if (lineNumber <= $scope.countConfigurationModelLines()) {
+          $scope.configuration.activeLine = lineNumber;
+        }
+      } 
+
+      function upThisLine(indexLine){    
+        if (indexLine > -1) {
+          if ($scope.configuration.lines[indexLine - 1]) {
+            var currentLineObj = $scope.configuration.lines[indexLine];
+            $scope.configuration.lines.splice(indexLine , 1);
+            $scope.configuration.lines.splice((indexLine - 1), 0, currentLineObj);    
+            //manage selected aciveLine
+            $scope.configuration.activeLine = 1;
+          }
+        }
+          //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+      }  
+
+      function downThisLine(indexLine){
+        if (indexLine > -1) {
+          if ($scope.configuration.lines[indexLine + 1]) {
+            var currentLineObj = $scope.configuration.lines[indexLine];
+            $scope.configuration.lines.splice(indexLine , 1);
+            $scope.configuration.lines.splice((indexLine + 1), 0, currentLineObj);  
+            //manage selected aciveLine
+            $scope.configuration.activeLine = 1;
+          }
+        }     
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
+      } 
+
+      function addNewline(){
+        $scope.configuration.lines.push(
+          {
+            line:-1, 
+            activeColumn : 1,
+            columns: [
+                      {  
+                        numColumn: 1,
+                        exist:true, 
+                        control: {
+                                    type:'none',
+                                    key: 'none',
+                                    // templateOptions: {
+                                    //                     label: 'none',
+                                    //                     placeholder: 'none',
+                                    //                     required: false,
+                                    //                     description: 'Descriptive text'
+                                    //                   }
+                                  }
+                        }
+                      ]
+            }
+        );
+          //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+      }
+
+      function removeThisLine(index){
+        if (index > -1) {
+          if ($scope.configuration.lines.length > 1) {
+              //manage selected aciveLine
+              if ($scope.configuration.activeLine === index + 1) {
+                $scope.configuration.activeLine = 1;
+              }
+              $scope.configuration.lines.splice(index, 1);
+          }else{
+            $timeout(function(){
+                toaster.pop({
+                        type: 'warning',
+                        title: 'Last line' ,
+                        body: 'Can\'t delete the last line',                
+                        showCloseButton: true
+                  });
+            }, 100); 
+          }
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+        }
+      }
+
+      function increaseNumberOfColumns(){
+        if ($scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns.length < $scope.MaxNumberOfColumns) {
+
+          var newNumberOfColumns = $scope
+                                      .configuration
+                                      .lines[$scope.configuration.activeLine -1]
+                                      .columns
+                                      .push(
+                                            {
+                                              numColumn: -1,
+                                              exist: true, 
+                                              control: {
+                                                          type:'none',
+                                                          key: 'none'
+                                                          // templateOptions: {
+                                                          //                     label: 'none',
+                                                          //                     placeholder: 'none',
+                                                          //                     required: false,
+                                                          //                     description: 'Descriptive text'
+                                                          //                   }
+                                                        }                                         
+                                             }                                        
+                                            );
+          $scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns[newNumberOfColumns - 1]
+              .numColumn = newNumberOfColumns; 
+          }
+           //re-render formfield 
+          formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
+          $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+      }  
+
+      function decreaseNumberOfColumns(){
+        if ($scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns.length > 1) {
+          $scope.configuration
+            .lines[$scope.configuration.activeLine -1]
+            .columns
+            .splice($scope.configuration.lines[$scope.configuration.activeLine -1].columns.length -1, 1);
+        }
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);  
+
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);  
+      }  
+
+      function resetStepCounter(){
+        $scope.configuration.configStepCounter = 0;
+      } 
+
+      function nextConfigStep(){
+        var configStepCounterMAX = $scope.configuration.listConfigStep.length -1;
+        if ($scope.configuration.configStepCounter !== configStepCounterMAX) {
+            $scope.configuration.configStepCounter ++;
+        }    
+        setTrueThisStepIndicator($scope.configuration.configStepCounter);
+      }   
+
+      function previousConfigStep(){
+        if ($scope.configuration.configStepCounter !== 0) {
+          $scope.configuration.configStepCounter --;
+        }
+        setTrueThisStepIndicator($scope.configuration.configStepCounter);
+      }
+
+      function stepReachable(indexStep){
+        if (indexStep < $scope.configuration.configStepCounter) {
+          return 'disabled';
+        }else{
+          return 'enabled';
+        }
+      } 
+
+      function showModalAddCtrlToColumn(size, indexLine, numcolumn) {
+
+        var modalInstance = $modal.open({
+                                          animation: $scope.animationsEnabled,
+                                          templateUrl: 'editModalTemplate.html',  
+                                          controller: 'ngwfWfEditMODALController',
+                                          size: 'lg',
+                                          resolve: {
+                                            nyaSelect: function () {
+                                              return controllerModalProxy
+                                                        .getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
+                                            }
+                                          }
+        });
+
+        modalInstance.result.then(function (modalAddCtrlModel) {
+            controllerModalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+            formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+            
+            $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+        }, function () {
+          //$log.info('Modal dismissed at: ' + new Date());
+        });
+      } 
+
+      function toggleAnimation() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+      }            
+
+
+
+
+      /**
+       * loadExistingFormsAsList :
+       *  - LOAD from database (list of forms)
+       */
+      function loadExistingFormsAsList(){
+        // $scope.formlyList = WfFormsByIdServices.query();
+      }
+      /**
+       * saveThisForm 
+       * - SAVE to database (current stringified configuration model === current form)
+       */
+      function saveThisForm(){
+        if (typeof $scope.configuration.formName === 'undefined') {
+        toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: 'Form name is undefined',
+                body: 'Form has not been saved.',                
+                showCloseButton: true
+          });
+          return false;
+        }
+        if ($scope.configuration.formName === '') {
+        toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: 'Form name is required',
+                body: 'Form has not been saved.',                
+                showCloseButton: true
+          });
+          return false;
+        }
+        toaster.pop({
+                type: 'wait',
+                timeout:10000,
+                title: 'Form is being saved',
+                body: 'Wait.',                
+                showCloseButton: true
+        });
+
+        
+        var WfForm = new WfFormsByIdServices();
+        var formSavingIsOK = true;
+
+        WfForm.formName = $scope.configuration.formName;
+        WfForm.submitButtonText = $scope.configuration.submitButtonText;
+        WfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+
+        WfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+
+        //------------------------------------------------------------------------------------------------------
+        // UNCOMMENT TO MAKE IT SAVE TO DB 
+        // -> (assuming your service in WfFormsByIdServices is well configurered for your RESTfull server)
+        //------------------------------------------------------------------------------------------------------
+        // save to database here 
+        // WfForm.$save()
+        //             .then(function(res)  {    formSavingIsOK = true;    })
+        //             .catch(function(req) { 
+        //                                   toaster.clear();
+        //                                   formSavingIsOK = false; 
+        //                                   toaster.pop({
+        //                                           type: 'error',
+        //                                           timeout:2000,
+        //                                           title: 'Error while saving form',
+        //                                           body: 'Sorry, an Error occured while saving form.',                
+        //                                           showCloseButton: true
+        //                                     });
+        //             })
+        //             .finally(function()  { 
+        //                                   if (formSavingIsOK === true) {
+        //                                     toaster.clear();  
+        //                                     toaster.pop({
+        //                                             type: 'success',
+        //                                             timeout:2000,
+        //                                             title: 'Form is successfully saved',
+        //                                             body: '',                
+        //                                             showCloseButton: true
+        //                                       });                                         
+        //                                   }
+        //              });
+
+        toaster.clear();  
+        toaster.pop({
+                type: 'info',
+                timeout:2000,
+                title: 'Form would be saved if it were not a static example',
+                body: '',                
+                showCloseButton: true
+          }); 
+        return true;
+      } 
+
+
+
+
+      function resetAllIndicators(){
+        for (var i = $scope.configuration.stepIndicators.length - 1; i >= 0; i--) {
+          $scope.configuration.stepIndicators[i] = false;
+        }
+      }
+      
+      function setTrueThisStepIndicator(indexIndicator){
+          resetAllIndicators();
+          $scope.configuration.stepIndicators[indexIndicator] = true;    
+      }
+
+
+
+
+
+    }
+
+
+})(); 
+/**
+ *  ------------------------------------------------------
+ *  module = "controller" modal controller
+ *  ------------------------------------------------------
+ *
+ * edit control modal controller
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function () {
+  'use strict';
+
+
+  angular
+    .module('ngwfApp.controllers.ngwfWfEditMODALController', [])
+    .controller('ngwfWfEditMODALController', ngwfWfEditMODALController);
+
+    ngwfWfEditMODALController.$inject = [
+      '$scope', 
+      '$modalInstance',
+      'nyaSelect',
+      'toaster' ,
+      '$timeout',
+      'selectOptionManage',
+      'controllerModalProxy',
+    ];
+
+    function ngwfWfEditMODALController( $scope, 
+                                        $modalInstance, 
+                                        nyaSelect, 
+                                        toaster,
+                                        $timeout,
+                                        selectOptionManage,
+                                        controllerModalProxy
+                                      ){
+      
+      var initOptionModel = { rows:[] };
+
+      $scope.radioRowCollection = initOptionModel;
+      $scope.newOptionRadio     = {saisie: ''};
+
+      $scope.addNewOptionRadio  = addNewOptionRadio;
+      $scope.removeRadioRow     = removeRadioRow;
+      $scope.upThisRadioRow     = upThisRadioRow;
+      $scope.downThisRadioRow   = downThisRadioRow;
+
+      $scope.basicSelectRowCollection = initOptionModel;
+      $scope.newOptionBasicSelect     = {saisie: ''}; 
+      $scope.addNewOptionBasicSelect  = addNewOptionBasicSelect;
+      $scope.removeRow                = removeRow;
+      $scope.upThisRow                = upThisRow;
+      $scope.downThisRow              = downThisRow;
+
+      $scope.groupedSelectRowCollection = initOptionModel;
+      $scope.newOptionGroupedSelect     = {saisie: ''};
+      $scope.GroupedSelectGroups        = { list:[] };
+      $scope.newGroupGroupedSelect      = {saisie: ''};  
+      $scope.groupSelectGroupClick      = {showList : false};
+      $scope.showGroupListToChoose      = showGroupListToChoose;
+      $scope.addNewGroupToGroupedSelect = addNewGroupToGroupedSelect;
+      $scope.addNewOptionGroupedSelect  = addNewOptionGroupedSelect;
+      $scope.removeGroupedSelectRow     = removeGroupedSelectRow;
+      $scope.upThisGroupedSelectRow     = upThisGroupedSelectRow;
+      $scope.downThisGroupedSelectRow   = downThisGroupedSelectRow;
+
+      $scope.demodt         = {}; 
+      $scope.today          = today;
+      $scope.clear          = clear;
+      $scope.open           = openfct;
+      $scope.dateOptions    = dateOptionsInit(); 
+      $scope.demodt.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+
+      $scope.nyaSelect                  = nyaSelect ;
+      $scope.nyaSelect.selectedControl  = $scope.nyaSelect.temporyConfig.selectedControl;
+      $scope.selectThisControl          = selectThisControl;
+      $scope.ok                         = okfct;
+      $scope.cancel                     = cancelfct;
+
+
+
+      //init today date
+      today();
+      //init nyaSelect model depending selected control
+      initNyaSelectConformingSelectedControl();
+
+
+    
+    
+      function addNewOptionRadio(){
+        var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
+        if (result.resultFlag === false) {
+              toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: result.details,
+                body: '\''+ $scope.newOptionRadio.saisie + '\'' + ' cannot be added.',                
+                showCloseButton: true
+          });
+        }
+        //reset input
+        $scope.newOptionRadio = {saisie: ''};
+      }
+
+      function removeRadioRow(index) {
+        var result = selectOptionManage.removeOption($scope.radioRowCollection, index);
+        if (result.resultFlag === false) {
+            toaster.pop({
+              type: 'warning',
+              timeout:2000,
+              title: result.details,
+              body: 'Delete was cancelled.',                
+              showCloseButton: true
+          });
+        }      
+      } 
+
+      function upThisRadioRow(index){
+        var result = selectOptionManage.upthisOption($scope.radioRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        }       
+      }
+
+      function downThisRadioRow(index){
+        var result = selectOptionManage.downthisOption($scope.radioRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        }
+      }
+
+      function addNewOptionBasicSelect(){
+        var result = selectOptionManage.addNewOptionBasicSelect($scope.basicSelectRowCollection, $scope.newOptionBasicSelect.saisie);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: '\''+ $scope.newOptionBasicSelect.saisie + '\'' + ' cannot be added.',                
+            showCloseButton: true
+          });
+        }
+        //reset input
+        $scope.newOptionBasicSelect = {saisie: ''};
+      }  
+
+      function removeRow(index) {
+        var result = selectOptionManage.removeOption($scope.basicSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Delete was cancelled.',                
+            showCloseButton: true
+          });
+        }      
+      }   
+
+      function upThisRow(index){
+        var result = selectOptionManage.upthisOption($scope.basicSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        }       
+      }
+
+      function downThisRow(index){
+        var result = selectOptionManage.downthisOption($scope.basicSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        }
+      }
+
+      function showGroupListToChoose(){
+        $scope.groupSelectGroupClick.showList = !$scope.groupSelectGroupClick.showList;
+      }
+
+      function addNewGroupToGroupedSelect(){
+        if ($scope.newGroupGroupedSelect.saisie !== '') {
+          for (var i = $scope.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
+            if ($scope.GroupedSelectGroups.list[i] === $scope.newGroupGroupedSelect.saisie) {
+              toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: 'Group already exists',
+                body: 'No group added.',                
+                showCloseButton: true
+              });          
+            }
+          }
+          $scope.GroupedSelectGroups.list.push($scope.newGroupGroupedSelect.saisie);
+        }else{
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: 'Not a valid group to add',
+            body: 'No group added.',                
+            showCloseButton: true
+          });
+        }
+        $scope.newGroupGroupedSelect.saisie = '';
+      } 
+
+      function addNewOptionGroupedSelect(){
+        var result = selectOptionManage.addNewOptionGroupedSelect($scope.groupedSelectRowCollection, $scope.newOptionGroupedSelect.saisie, '');
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: '\''+ $scope.newOptionGroupedSelect.saisie + '\'' + ' cannot be added.',                
+            showCloseButton: true
+          });
+        }
+        //bind nya : dont bind here $apply is not done fast enough
+        //bindGroupedSelectToNya();
+        //reset input
+        $scope.newOptionGroupedSelect = {saisie: ''};
+      }
+
+      function removeGroupedSelectRow(index) {
+        var result = selectOptionManage.removeOption($scope.groupedSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Delete was cancelled.',                
+            showCloseButton: true
+          });
+        }   
+      }        
+
+      function upThisGroupedSelectRow(index){
+        var result = selectOptionManage.upthisOption($scope.groupedSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        } 
+      }
+
+      function downThisGroupedSelectRow(index){
+        var result = selectOptionManage.downthisOption($scope.groupedSelectRowCollection, index);
+        if (result.resultFlag === false) {
+          toaster.pop({
+            type: 'warning',
+            timeout:2000,
+            title: result.details,
+            body: 'Operation cancelled.',                
+            showCloseButton: true
+          });
+        } 
+      }
+
+      function today() {
+        $scope.demodt.dt = new Date();
+      } 
+
+      function clear() {
+        $scope.demodt.dt = null;
+      } 
+
+      function openfct($event){
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.demodt.opened = true;
+      }
+
+      function dateOptionsInit(){
+        return  {
+          formatYear: 'yy',
+          startingDay: 1,
+          showWeeks: true,
+          initDate: null
+        };
+      }
+
+      function selectThisControl(controlName){
+        $scope.nyaSelect.selectedControl = 'none';
+        resetTemporyConfig();
+
+        for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+          if ($scope.nyaSelect.controls[i].id === controlName) {
+            $scope.nyaSelect.selectedControl = $scope.nyaSelect.controls[i].id;         
+          }
+        }
+
+        if ($scope.nyaSelect.selectedControl === 'Date') {
+          initDatePicker();
+        }
+      }  
+
+      function okfct() {
+        if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+          bindBasicSelectToNya();
+        }
+        if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+          bindGroupedSelectToNya();
+        }  
+        if ($scope.nyaSelect.selectedControl === 'Radio') {
+          bindRadioToNya();
+        }  
+        //save config to control
+        controllerModalProxy.applyConfigToSelectedControl($scope.nyaSelect);
+        //return current model to parent controller :
+        $modalInstance.close($scope.nyaSelect);
+      }
+
+      function cancelfct() {
+        $modalInstance.dismiss('cancel');
+      }    
+
+
+
+
+
+
+
+      function bindRadioFromNYA(){
+        if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
+          for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
+            var newOption = {
+                'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+                'order': i,
+                'group': ''
+            };
+            $scope.radioRowCollection.rows.push(newOption);
+          }    
+        }
+      }
+
+      function bindRadioToNya(){
+        var resetNyASelectOptions = [];
+        $scope.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
+        if ($scope.radioRowCollection.rows.length > 0) {
+          for (var i = 0; i <= $scope.radioRowCollection.rows.length - 1; i++){
+                var newOption = {
+                  'name': $scope.radioRowCollection.rows[i].option,
+                  'value': i,
+                  'group': ''
+                };
+                $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
+            }       
+       }
+      }
+
+      function bindBasicSelectFromNYA(){
+        if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
+          for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
+            var newOption = {
+              'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+              'order': i,
+              'group': ''
+            };
+            $scope.basicSelectRowCollection.rows.push(newOption);
+          }    
+        }
+      }
+
+      function bindBasicSelectToNya(){
+        var resetNyASelectOptions = [];
+        $scope.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
+        if ($scope.basicSelectRowCollection.rows.length > 0) {
+          for (var i = 0; i <= $scope.basicSelectRowCollection.rows.length - 1; i++){
+            var newOption = {
+              'name': $scope.basicSelectRowCollection.rows[i].option,
+              'value': i,
+              'group': ''
+            };
+            $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);
+          }      
+        }
+      } 
+
+      function bindGroupedSelectFromNYA(){
+        if ($scope.nyaSelect.temporyConfig.formlyOptions.length > 0) {
+          for (var i = 0; i <= $scope.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
+            var newOption = {
+              'option': $scope.nyaSelect.temporyConfig.formlyOptions[i].name,
+              'order': i,
+              'group': $scope.nyaSelect.temporyConfig.formlyOptions[i].group
+            };
+            $scope.groupedSelectRowCollection.rows.push(newOption);            
+          }
+          //grouplist : thx to lodash it is easy
+          var filteredgroup = _.uniq(_.pluck($scope.groupedSelectRowCollection.rows, 'group'));
+          angular.copy(filteredgroup, $scope.GroupedSelectGroups.list); 
+        }
+      }
+
+      function bindGroupedSelectToNya(){
+        $scope.nyaSelect.temporyConfig.formlyOptions = [];
+        for (var i = 0; i <= $scope.groupedSelectRowCollection.rows.length - 1; i++){
+          var newOption = {
+            'name': $scope.groupedSelectRowCollection.rows[i].option,
+            'value': i,
+            'group': $scope.groupedSelectRowCollection.rows[i].group
+          };
+          $scope.nyaSelect.temporyConfig.formlyOptions.push(newOption);  
+        }
+      } 
+
+      function initDatePicker(){
+        $scope.nyaSelect.temporyConfig.datepickerPopup = $scope.demodt.formats[0];  
+      }    
+
+      function initNyaSelectConformingSelectedControl(){
+        //place nya-select to selection if not none :
+        if (nyaSelect.selectedControl !== 'none') {
+          for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
+             if ($scope.nyaSelect.controls[i].id === nyaSelect.selectedControl) {
+                $scope.modelNyaSelect = nyaSelect.controls[i];
+             }
+          }
+          if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
+            bindBasicSelectFromNYA();
+          }
+          if ($scope.nyaSelect.selectedControl === 'GroupedSelect') {
+            bindGroupedSelectFromNYA();
+          } 
+          if ($scope.nyaSelect.selectedControl === 'Radio') {
+            bindRadioFromNYA();
+          }    
+        }
+      }
+
+      function resetTemporyConfig(){
+        $scope.nyaSelect.temporyConfig = {
+          formlyLabel: '', 
+          formlyRequired: false, 
+          formlyPlaceholder: '',
+          formlyDesciption: '',
+          formlyOptions: []
+        };   
+      }
+
+
+    }
+
+
+})(); 
+/**
+ *  ------------------------------------------------------
+ *  easy form generator directive (Step way)
+ *  ------------------------------------------------------
+ * 
+ *  all easy form generator emebeded in a directive
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+;(function(){
+	'use strict';
+	
+	angular
+		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
+		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
+		
+		edaStepWayEasyFormGen.$inject = ['$templateCache'];
+		
+		function edaStepWayEasyFormGen($templateCache){
+      
+      /**
+       * directive's controller injection is here (before return directive) = to avoid minification errors
+       * sad but true... -> this reminds me something?!
+       */
+      edaStepWayEasyFormGenCtrl.$inject = [
+        "$scope", 
+        '$templateCache',
+        'easyFormGenVersion',
+        '$filter',
+        '$anchorScroll',
+        'toaster', 
+        '$timeout',
+        '$modal',
+        '$log', 
+        'formFieldManage',
+        'WfFormsByIdServices',
+        'controllerModalProxy',
+      ];
+      
+      
+			var directive = {
+				restrict : 'AE',
+				scope : {
+          edaFormName         : '=edaFormName',
+          edaSubmitButtonText : '=edaSubmitButtonText',
+          edaCancelButtonText : '=edaCancelButtonText',
+          edaDataModel        : '=edaDataModel',
+          edaFormModel        : '=edaFormModel',
+          
+          edaLoadFormModel    : '&edaLoadformModel',
+          edaSaveFormEvent    : '&edaSaveFormEvent'
+        },
+				controller : edaStepWayEasyFormGenCtrl,
+				controllerAs : 'vm',
+				//bindToController : true, //angular < 1.4, activating this property will break databindings
+				replace : false,
+				templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
+				link : linkFct
+			};
+			return directive;
+			
+			function linkFct(scope, element, attrs){
+          
+          //catch saving form event  
+					scope.$watch(function(){return scope.returnSaveEvent;}, 
+            function(newValue, oldValue){
+              if (newValue === true) {
+                
+                //return all form attributes to parent scope
+                scope.edaFormName         = scope.configuration.formName;
+                scope.edaSubmitButtonText = scope.configuration.submitButtonText;
+                scope.edaCancelButtonText = scope.configuration.cancelButtonText;
+                scope.edaDataModel        = angular.copy(scope.vm.model);
+                scope.edaFormModel        = angular.copy(scope.vm.wfFormFieldsOnlyNeededProperties);
+                
+                console.dir({
+                  'side' 				: 'directive',
+                  'demoCtrl.FormName' : scope.edaFormName,
+                  'demoCtrl.submitButtonText' : scope.edaSubmitButtonText,
+                  'demoCtrl.cancelButtonText'  : scope.edaCancelButtonText,
+                  'demoCtrl.dataModel' : scope.edaDataModel,
+                  'demoCtrl.formlyFields' : scope.edaFormModel
+                  
+                });                
+                
+                //execute parent controller save form event :
+                scope.edaSaveFormEvent({
+                  fieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
+                  dataModel   : scope.vm.model
+                });
+                //back to false, waiting next save event
+                scope.returnSaveEvent = false;
+                
+              }
+            }
+          );	
+          
+          scope.$apply();				
+              
+          // scope.formName = scope.configuration.formName;
+          // scope.submitButtonText = scope.configuration.submitButtonText;
+          // scope.cancelButtonText = scope.configuration.cancelButtonText;
+          // scope.formlyFields = scope.configuration.lines;
+          // scope.formlyFieldsStringified = JSON.stringify(scope.configuration.lines);
+          // scope.dataModel = [];
+          
+          
+			}
+			    
+    function edaStepWayEasyFormGenCtrl(
+                                    $scope, 
+                                    $templateCache,
+                                    easyFormGenVersion,
+                                    $filter,
+                                    $anchorScroll,
+                                    toaster,
+                                    $timeout, 
+                                    $modal,
+                                    $log, 
+                                    formFieldManage, 
+                                    WfFormsByIdServices, 
+                                    controllerModalProxy
+                                    ){
+      /*jshint validthis: true */
+      $scope.vm                       = this;
+      $scope.vm.model                 = {};
+      $scope.vm.wfFormFields          = [];
+      $scope.vm.wfFormFieldsOnlyNeededProperties = []; 
+      $scope.vm.onSubmit              = onSubmit;
+
+      $scope.easyFormGeneratorVERSION = easyFormGenVersion;
+      $scope.debug                    = initDebugModel();
+      $scope.tab                      = initTabModel();
+
+      //configuration model (contains array of lines which contains array of columns)
+      $scope.configuration            = {};    
+                               
+      $scope.numberOfColumns          = 1;
+      $scope.MaxNumberOfColumns       = 3;
+      $scope.MinNumberOfColumns       = 1;
+      $scope.columnTemplate           = initColumnTemplate();
+
+      $scope.lineTemplate             = initLineTemplate();
+      $scope.resetToZeroModel         = resetToZeroModel;
+      $scope.countConfigurationModelLines = countConfigurationModelLines;
+      $scope.setActiveLineNumber      = setActiveLineNumber;
+      $scope.upThisLine               = upThisLine;
+      $scope.downThisLine             = downThisLine;
+      $scope.addNewline               = addNewline;
+      $scope.removeThisLine           = removeThisLine;
+
+      $scope.increaseNumberOfColumns  = increaseNumberOfColumns;
+      $scope.decreaseNumberOfColumns  = decreaseNumberOfColumns;
+
+      $scope.resetStepCounter         = resetStepCounter;
+      $scope.nextConfigStep           = nextConfigStep;
+
+      $scope.previousConfigStep       = previousConfigStep;
+      $scope.stepReachable            = stepReachable;
+
+      $scope.toggleAnimation          = toggleAnimation;
+
+      $scope.nyaSelect                = {};
+      
+      $scope.animationsEnabled        = true;
+      //call modal to edit selected control
+      $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
+
+      
+      //disabled here : to load list of saved formly fields from database
+      $scope.loadExistingFormsList    = loadExistingFormsAsList();
+      $scope.formlyList               = {};
+      $scope.previewLoadedForm        = { fieldsModel:[] };
+      $scope.configurationLoaded      = {};   
+      $scope.previewExistingform      = previewExistingform;
+      $scope.saveThisForm             = saveThisForm; //should save to database (commented here)
+      $scope.returnSaveEvent          = false;
+
+
+   
+
+
+      
+
+
+
+      //load formlyList on init
+      loadExistingFormsAsList();
+
+      formFieldManage.initConfigurationEditFromScratch($scope.configuration);
+
+      controllerModalProxy.initNyaSelect($scope.nyaSelect);
+
+
+
+      function initDebugModel(){
+        return {
+         showDebug : false,
+         configurationModelNumberofLines : 1        
+        };
+      }
+
+      function initTabModel(){
+        return {
+          editTab : {active : true},
+          previewTab : {active : false}
+        };
+      }
+
+      function previewExistingform(formlyform){
+       var configlines = JSON.parse(formlyform.formlyField);
+       //here to replace with $scope.configuration : initialise configuration with lines 
+       $scope.configurationLoaded = {};
+       formFieldManage.bindConfigurationLines($scope.configurationLoaded,configlines);
+       formFieldManage.applyConfigurationToformlyModel($scope.configurationLoaded, $scope.previewLoadedForm.fieldsModel, $scope.vm.model);
+       $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+       $scope.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
+       $scope.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
+      }    
+
+      function onSubmit() {
+        toaster.pop({
+            type: 'info',
+            timeout:2000,
+            title: 'should save data model if it were not a static example',
+            body: 'data :' + $filter('json')($scope.vm.model, 4),                
+            showCloseButton: true
+        }); 
+      }
+      
+      function initColumnTemplate(){
+        return  {
+          numColumn: -1,
+          exist:true, 
+          control: {
+            type:'none',
+            key: 'none',
+            subtype: 'none',
+            // templateOptions: {
+            //                     label: 'none',
+            //                     placeholder: 'none',
+            //                     required: false,
+            //                     description: 'Descriptive text'
+            //                   }
+          }                                         
+        };
+      }
+
+      function initLineTemplate(){
+        return {
+          line:-1, 
+          activeColumn : 1,
+          columns: [
+            {  
+              numColumn: 1,
+              exist:true, 
+              control: {
+                type:'none',
+                key: 'none',
+                // templateOptions: {
+                //                     label: 'none',
+                //                     placeholder: 'none',
+                //                     required: false,
+                //                     description: 'Descriptive text'
+                //                   }
+                }
+              }
+            ]
+        };
+      }
+
+      function resetToZeroModel(){
+        $scope.configuration.activeLine = 1;
+        if ($scope.configuration.lines.length > 1) {
+          $scope.configuration.lines.splice(1, $scope.configuration.lines.length - 2);
+        }
+        return $scope.countConfigurationModelLines();
+      }
+
+      function countConfigurationModelLines(){
+        //information in debug model
+        $scope.debug.configurationModelNumberofLines = $scope.configuration.lines.length;
+        return $scope.configuration.lines.length;
+      }      
+
+      function setActiveLineNumber(lineNumber){
+        if (lineNumber <= $scope.countConfigurationModelLines()) {
+          $scope.configuration.activeLine = lineNumber;
+        }
+      } 
+
+      function upThisLine(indexLine){    
+        if (indexLine > -1) {
+          if ($scope.configuration.lines[indexLine - 1]) {
+            var currentLineObj = $scope.configuration.lines[indexLine];
+            $scope.configuration.lines.splice(indexLine , 1);
+            $scope.configuration.lines.splice((indexLine - 1), 0, currentLineObj);    
+            //manage selected aciveLine
+            $scope.configuration.activeLine = 1;
+          }
+        }
+          //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);     
+      }  
+
+      function downThisLine(indexLine){
+        if (indexLine > -1) {
+          if ($scope.configuration.lines[indexLine + 1]) {
+            var currentLineObj = $scope.configuration.lines[indexLine];
+            $scope.configuration.lines.splice(indexLine , 1);
+            $scope.configuration.lines.splice((indexLine + 1), 0, currentLineObj);  
+            //manage selected aciveLine
+            $scope.configuration.activeLine = 1;
+          }
+        }     
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);   
+      } 
+
+      function addNewline(){
+        $scope.configuration.lines.push(
+          {
+            line:-1, 
+            activeColumn : 1,
+            columns: [
+                      {  
+                        numColumn: 1,
+                        exist:true, 
+                        control: {
+                                    type:'none',
+                                    key: 'none',
+                                    // templateOptions: {
+                                    //                     label: 'none',
+                                    //                     placeholder: 'none',
+                                    //                     required: false,
+                                    //                     description: 'Descriptive text'
+                                    //                   }
+                                  }
+                        }
+                      ]
+            }
+        );
+          //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields); 
+      }
+
+      function removeThisLine(index){
+        if (index > -1) {
+          if ($scope.configuration.lines.length > 1) {
+              //manage selected aciveLine
+              if ($scope.configuration.activeLine === index + 1) {
+                $scope.configuration.activeLine = 1;
+              }
+              $scope.configuration.lines.splice(index, 1);
+          }else{
+            $timeout(function(){
+                toaster.pop({
+                        type: 'warning',
+                        title: 'Last line' ,
+                        body: 'Can\'t delete the last line',                
+                        showCloseButton: true
+                  });
+            }, 100); 
+          }
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+        }
+      }
+
+      function increaseNumberOfColumns(){
+        if ($scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns.length < $scope.MaxNumberOfColumns) {
+
+          var newNumberOfColumns = $scope
+                                      .configuration
+                                      .lines[$scope.configuration.activeLine -1]
+                                      .columns
+                                      .push(
+                                            {
+                                              numColumn: -1,
+                                              exist: true, 
+                                              control: {
+                                                          type:'none',
+                                                          key: 'none'
+                                                          // templateOptions: {
+                                                          //                     label: 'none',
+                                                          //                     placeholder: 'none',
+                                                          //                     required: false,
+                                                          //                     description: 'Descriptive text'
+                                                          //                   }
+                                                        }                                         
+                                             }                                        
+                                            );
+          $scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns[newNumberOfColumns - 1]
+              .numColumn = newNumberOfColumns; 
+          }
+           //re-render formfield 
+          formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model); 
+          $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+      }  
+
+      function decreaseNumberOfColumns(){
+        if ($scope
+              .configuration
+              .lines[$scope.configuration.activeLine -1]
+              .columns.length > 1) {
+          $scope.configuration
+            .lines[$scope.configuration.activeLine -1]
+            .columns
+            .splice($scope.configuration.lines[$scope.configuration.activeLine -1].columns.length -1, 1);
+        }
+        //re-render formfield 
+        formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);  
+
+        $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);  
+      }  
+
+      function resetStepCounter(){
+        $scope.configuration.configStepCounter = 0;
+      } 
+
+      function nextConfigStep(){
+        var configStepCounterMAX = $scope.configuration.listConfigStep.length -1;
+        if ($scope.configuration.configStepCounter !== configStepCounterMAX) {
+            $scope.configuration.configStepCounter ++;
+        }    
+        setTrueThisStepIndicator($scope.configuration.configStepCounter);
+      }   
+
+      function previousConfigStep(){
+        if ($scope.configuration.configStepCounter !== 0) {
+          $scope.configuration.configStepCounter --;
+        }
+        setTrueThisStepIndicator($scope.configuration.configStepCounter);
+      }
+
+      function stepReachable(indexStep){
+        if (indexStep < $scope.configuration.configStepCounter) {
+          return 'disabled';
+        }else{
+          return 'enabled';
+        }
+      } 
+
+      function showModalAddCtrlToColumn(size, indexLine, numcolumn) {
+
+        var modalInstance = $modal.open({
+                                          animation: $scope.animationsEnabled,
+                                          templateUrl: 'editModalTemplate.html',  
+                                          controller: 'ngwfWfEditMODALController',
+                                          size: 'lg',
+                                          resolve: {
+                                            nyaSelect: function () {
+                                              return controllerModalProxy
+                                                        .getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
+                                            }
+                                          }
+        });
+
+        modalInstance.result.then(function (modalAddCtrlModel) {
+            controllerModalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, $scope.configuration);
+            formFieldManage.applyConfigurationToformlyModel($scope.configuration, $scope.vm.wfFormFields, $scope.vm.model);
+            
+            $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+
+        }, function () {
+          //$log.info('Modal dismissed at: ' + new Date());
+        });
+      } 
+
+      function toggleAnimation() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+      }            
+
+
+
+
+      /**
+       * loadExistingFormsAsList :
+       *  - LOAD from database (list of forms)
+       */
+      function loadExistingFormsAsList(){
+        // $scope.formlyList = WfFormsByIdServices.query();
+      }
+      /**
+       * saveThisForm 
+       * - SAVE to database (current stringified configuration model === current form)
+       */
+      function saveThisForm(){
+        if (typeof $scope.configuration.formName === 'undefined') {
+        toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: 'Form name is undefined',
+                body: 'Form has not been saved.',                
+                showCloseButton: true
+          });
+          return false;
+        }
+        if ($scope.configuration.formName === '') {
+        toaster.pop({
+                type: 'warning',
+                timeout:2000,
+                title: 'Form name is required',
+                body: 'Form has not been saved.',                
+                showCloseButton: true
+          });
+          return false;
+        }
+        toaster.pop({
+                type: 'wait',
+                timeout:10000,
+                title: 'Form is being saved',
+                body: 'Wait.',                
+                showCloseButton: true
+        });
+
+        
+        var WfForm = new WfFormsByIdServices();
+        var formSavingIsOK = true;
+
+        WfForm.formName = $scope.configuration.formName;
+        WfForm.submitButtonText = $scope.configuration.submitButtonText;
+        WfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+
+        WfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+
+        //------------------------------------------------------------------------------------------------------
+        // UNCOMMENT TO MAKE IT SAVE TO DB 
+        // -> (assuming your service in WfFormsByIdServices is well configurered for your RESTfull server)
+        //------------------------------------------------------------------------------------------------------
+        // save to database here 
+        // WfForm.$save()
+        //             .then(function(res)  {    formSavingIsOK = true;    })
+        //             .catch(function(req) { 
+        //                                   toaster.clear();
+        //                                   formSavingIsOK = false; 
+        //                                   toaster.pop({
+        //                                           type: 'error',
+        //                                           timeout:2000,
+        //                                           title: 'Error while saving form',
+        //                                           body: 'Sorry, an Error occured while saving form.',                
+        //                                           showCloseButton: true
+        //                                     });
+        //             })
+        //             .finally(function()  { 
+        //                                   if (formSavingIsOK === true) {
+        //                                     toaster.clear();  
+        //                                     toaster.pop({
+        //                                             type: 'success',
+        //                                             timeout:2000,
+        //                                             title: 'Form is successfully saved',
+        //                                             body: '',                
+        //                                             showCloseButton: true
+        //                                       });                                         
+        //                                   }
+        //              });
+
+        toaster.clear();  
+        
+        // toaster.pop({
+        //         type: 'info',
+        //         timeout:2000,
+        //         title: 'Form would be saved if it were not a static example',
+        //         body: '',                
+        //         showCloseButton: true
+        //   }); 
+        $scope.returnSaveEvent = true;
+        return true;
+      } 
+
+
+
+
+      function resetAllIndicators(){
+        for (var i = $scope.configuration.stepIndicators.length - 1; i >= 0; i--) {
+          $scope.configuration.stepIndicators[i] = false;
+        }
+      }
+      
+      function setTrueThisStepIndicator(indexIndicator){
+          resetAllIndicators();
+          $scope.configuration.stepIndicators[indexIndicator] = true;    
+      }
+
+    }			
+			
+		}
+		
+})();
+
+/**
+ *  ------------------------------------------------------
+ *  directives container
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+;(function () {
+	'use strict';
+	
+	angular
+		.module('ngwfApp.directives', [	
+			'ngwfApp.directives.ngwfStRatioDirective',
+			'ngwfApp.directives.edaStepWayEasyFormGenDirective' 
+			]);
+
+})(); 
+
+
+
+/**
+ *  ------------------------------------------------------
+ *  simple directive to set width style attribute in %
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function () {
+	
+	'use strict';
+
+	angular
+		.module('ngwfApp.directives.ngwfStRatioDirective', [])
+		.directive('stRatio', stRatio);
+
+		stRatio.$inject = [];
+		function stRatio(){
+
+			var directive = {
+				link : linkfct
+			};
+
+			return directive;
+
+			function linkfct(scope, element, attr){
+				var ratio=+(attr.stRatio);
+			  element.css('width',ratio+'%');
+			}
+
+		}
+
+})(); 
+
+
+
+
+/**
+ *  ------------------------------------------------------
+ *  service : controllerModalProxy
+ *  ------------------------------------------------------
+ *
+ *  service dedicated to - edit control - (controller modal proxy)
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+(function () {
+	'use strict';
+
+
+	angular
+		.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
+		.factory('controllerModalProxy', controllerModalProxy);
+
+		controllerModalProxy.$inject = [];
+		function controllerModalProxy(){
+			
+			var service = {
+				initNyaSelect 													: initNyaSelect,
+				getNyASelectFromSelectedLineColumn 			: getNyASelectFromSelectedLineColumn,
+				bindConfigurationModelFromModalReturn 	: bindConfigurationModelFromModalReturn,
+				applyConfigToSelectedControl 						: applyConfigToSelectedControl,
+				resetTemporyConfig 											: resetTemporyConfig
+			};
+			
+			return service;
+
+
+			function initNyaSelect(nyaSelectObj){
+				return resetNyaSelect(nyaSelectObj);
+	    }
+
+	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
+	      resetNyaSelect(nyaSelectObj);
+	      /**
+	       * data send to modal controller                                           
+	       */
+	      
+	      if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
+
+	        nyaSelectObj.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 						!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
+	        nyaSelectObj.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+	        nyaSelectObj.temporyConfig.formlyRequired 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+	        nyaSelectObj.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+	        nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+	        nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		!= 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+					
+					nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties 	!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
+					nyaSelectObj.temporyConfig.formlyValidators 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
+					nyaSelectObj.temporyConfig.formlyValidation 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
+					
+					/**
+					 * particular case : datepicker 
+					 */
+	        if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
+	        	nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
+	        }
+	      }
+	      return nyaSelectObj;	    	
+	    }
+
+	    function bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
+					      
+	      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
+	      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 		= extractedProps.selectedControl;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.type 							= extractedProps.formlyType;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.subtype 						= extractedProps.formlySubtype;
+	      //reset templateOptions
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions 		= {
+	                                                                                            label: '',
+	                                                                                            required: false,
+	                                                                                            description: '',
+	                                                                                            placeholder: '',
+	                                                                                            options: []
+	                                                                                          };
+	       //then bind templateOptions                                                                                   
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			 = extractedProps.formlyLabel;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 	 = extractedProps.formlyRequired;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description = extractedProps.formlyDesciption;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
+	      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		 = extractedProps.formlyOptions;
+
+	      configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyExpressionProperties);
+	      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 					= angular.copy(extractedProps.formlyValidators);
+	      configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 					= angular.copy(extractedProps.formlyValidation);
+
+		  	//////////////////////////////////////////
+	      // add additionnal particular properties
+	      //////////////////////////////////////////
+	      //-> datepicker : datepickerPopup
+	      if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+	       	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
+	      }	
+	      /**
+	       * unique key (set only first time) in this model is formly control type + Date.now();  
+	       */
+	      var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+
+	      if (validKeyUniqueness(newKey, configurationObj) === true){
+	        configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+	      }else{
+	      	/**
+	      	 * 2nd attempt 
+	      	 */
+	        newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+
+	        if (validKeyUniqueness(newKey, configurationObj) === true){
+	          configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+	        }else{
+	        	/**
+	        	 * 2nd attempt 
+	        	 */
+	          newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+	        }
+	      }                                                                     
+	    	configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+	  	}
+
+	  	function applyConfigToSelectedControl(nyaSelectObj){
+		  	/**
+		  	 * used in modal (edit control) 
+		  	 */
+		    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
+		      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
+
+		          nyaSelectObj.controls[i].formlyLabel 								= nyaSelectObj.temporyConfig.formlyLabel;
+		          nyaSelectObj.controls[i].formlyRequired 						= nyaSelectObj.temporyConfig.formlyRequired;
+		          nyaSelectObj.controls[i].formlyDesciption 					= nyaSelectObj.temporyConfig.formlyDesciption;
+		          nyaSelectObj.controls[i].formlyPlaceholder 					= nyaSelectObj.temporyConfig.formlyPlaceholder;
+		          nyaSelectObj.controls[i].formlyOptions 							= nyaSelectObj.temporyConfig.formlyOptions;
+
+		          if (nyaSelectObj.controls[i].id ==='Date' ) {
+		          	nyaSelectObj.controls[i].datepickerPopup 					= nyaSelectObj.temporyConfig.datepickerPopup;
+		          }
+		        
+		       }
+		    }
+		  }
+
+		  function resetTemporyConfig(){
+		    return {
+	              formlyLabel: '', 
+	              formlyRequired: false, 
+	              formlyPlaceholder: '',
+	              formlyDesciption: '',
+	              formlyOptions: []
+	            }; 		  	
+		  }
+
+
+
+	    /**
+	     * init object : return true (if not true, you may have problem^^)
+	     */
+		  function resetNyaSelect(nyaSelectObj){
+		    var newNyaSelectObj = {
+
+		                    controls : [
+		                                {
+		                                	id: 'empty',  
+		                                	name: 'no control', 
+		                                	subtitle: 'no control', 
+		                                	group: 'Blank', 
+		                                	formlyType: 'blank', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [] , 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {} 
+		                                },
+
+		                                {id: 'Header',  name: 'Header', subtitle: 'no control', group: 'Decoration', formlyType: 'header', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [] , formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
+		                                {id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: 'subTitle', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [] , formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
+
+		                                {
+		                                	id: 'TextInput',  
+		                                	name: 'Text input', 
+		                                	subtitle: 'Text input', 
+		                                	group: 'input', 
+		                                	formlyType: 'input', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [] , 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this Text input field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
+		                                },
+
+		                                {
+		                                	id: 'Password',  
+		                               	 	name: 'Password', 
+		                                	subtitle: 'Password', 
+		                                	group: 'input', 
+		                                	formlyType: 'input', 
+		                                	formlySubtype: 'password', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [] , 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+	                                		formlyValidation: {
+					                                		          messages: {
+																												            required: function(viewValue, modelValue, scope) {
+																												              		//return a required validation message : 
+																												              		//-> '<label as name> is required '
+																												              		//-> or if not exists or empty just 'this field is required'
+																												              		var defaultReturnMsg = 'this Password field is required';
+																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																												              		return returnMsg;
+																												            		}
+					                                												}
+	                                										}
+		                              },
+		                                
+		                                {
+		                                	id 													: 'Email',  
+		                                	name 												: 'Email', 
+		                                	subtitle 										: 'Email', 
+		                                	group 											: 'input', 
+		                                	formlyType									: 'input', 
+		                                	formlySubtype 							: 'email', 
+		                                	formlyLabel 								: '', 
+		                                	formlyRequired 							: false, 
+		                                	formlyDesciption 						: '', 
+		                                	formlyOptions 							: [], 
+		                                	formlyExpressionProperties 	: {}, 
+
+		                                	formlyValidators 						: {
+																	                                		emailShape : {
+																																			            		expression : function(viewValue, modelValue) {
+																																			              		var value = modelValue || viewValue;
+																																			              		return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
+																																			            		},
+																																			            		message: '$viewValue + \' is not a valid email\''
+																																			          		}
+																						                        },
+
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		
+																													              		var defaultReturnMsg = 'this Email field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		//check if validation is really dued to require validation 
+																													              		//and not another validation like emailShape validator
+																													              		if (scope.to.required) return returnMsg;
+																													            		}
+						                                												}
+		                                										}
+		                                },
+		                                
+		                                {
+		                                	id: 'Date',  
+		                                	name: 'Date', 
+		                                	subtitle: 'Date', 
+		                                	group: 'input', 
+		                                	formlyType: 'datepicker', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	datepickerPopup: 'dd-MMMM-yyyy', 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this Date field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
+		                                },
+
+		                                {
+		                                	id: 'Texarea', 
+		                                	name: 'Textarea', 
+		                                	subtitle: 'Textarea', 
+		                                	group: 'Textarea', 
+		                                	formlyType: 'textarea', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this Textarea field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
+		                                },
+
+		                                {
+		                                	id: 'RichTextEditor', 
+		                                	name: 'RichTextEditor', 
+		                                	subtitle: 'RichTextEditor', 
+		                                	group: 'Textarea', 
+		                                	formlyType: 'richEditor', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		   
+		                                	formlyValidators 						: {},
+
+		                                	formlyValidation: {
+						                                		          messages: {
+																													            required: function(viewValue, modelValue, scope) {
+																													              		//return a required validation message : 
+																													              		//-> '<label as name> is required '
+																													              		//-> or if not exists or empty just 'this field is required'
+																													              		var defaultReturnMsg = 'this RichTextEditor field is required';
+																													              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																													              		return returnMsg;
+																													            		}
+						                                												}
+		                                										}
+		                                },
+
+		                                {
+		                                	id: 'Radio', 
+		                                	name: 'Radio', 
+		                                	subtitle: 'Radio', 
+		                                	options: [], 
+		                                	group: 'Radio', 
+		                                	formlyType: 'radio', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '' , 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+	                                		formlyValidation: {
+					                                		          messages: {
+																												            required: function(viewValue, modelValue, scope) {
+																												              		//return a required validation message : 
+																												              		//-> '<label as name> is required '
+																												              		//-> or if not exists or empty just 'this field is required'
+																												              		var defaultReturnMsg = 'this Password field is required';
+																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																												              		return returnMsg;
+																												            		}
+					                                												}
+	                                										}
+		                                },
+
+		                                {
+		                                	id: 'Checkbox', 
+		                                	name: 'Checkbox', 
+		                                	subtitle: 'Checkbox', 
+		                                	group: 'Checkbox', 
+		                                	formlyType: 'checkbox', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+	                                		formlyValidation: {
+					                                		          messages: {
+																												            required: function(viewValue, modelValue, scope) {
+																												              		//return a required validation message : 
+																												              		//-> '<label as name> is required '
+																												              		//-> or if not exists or empty just 'this field is required'
+																												              		var defaultReturnMsg = 'this Checkbox field is required';
+																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																												              		return returnMsg;
+																												            		}
+					                                												}
+	                                										}
+		                                },
+
+		                                {
+		                                	id: 'BasicSelect', 
+		                                	name: 'Basic select', 
+		                                	subtitle: 'Basic select',
+		                                	options: [], 
+		                                	group: 'Select', 
+		                                	formlyType: 'basicSelect', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '', 
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+	                                		formlyValidation: {
+					                                		          messages: {
+																												            required: function(viewValue, modelValue, scope) {
+																												              		//return a required validation message : 
+																												              		//-> '<label as name> is required '
+																												              		//-> or if not exists or empty just 'this field is required'
+																												              		var defaultReturnMsg = 'this Basic select field is required';
+																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																												              		return returnMsg;
+																												            		}
+					                                												}
+	                                										}
+		                                },
+
+		                                {
+		                                	id: 'GroupedSelect', 
+		                                	name: 'Grouped Select', 
+		                                	subtitle: 'Grouped Select',
+		                                	options: [], 
+		                                	group: 'Select', 
+		                                	formlyType: 'groupedSelect', 
+		                                	formlySubtype: '', 
+		                                	formlyLabel: '', 
+		                                	formlyRequired: false, 
+		                                	formlyDesciption: '',
+		                                	formlyOptions: [], 
+		                                	formlyExpressionProperties: {}, 
+		                                	formlyValidators: {}, 
+	                                		formlyValidation: {
+					                                		          messages: {
+																												            required: function(viewValue, modelValue, scope) {
+																												              		//return a required validation message : 
+																												              		//-> '<label as name> is required '
+																												              		//-> or if not exists or empty just 'this field is required'
+																												              		var defaultReturnMsg = 'this Grouped Select field is required';
+																												              		var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+																												              		return returnMsg;
+																												            		}
+					                                												}
+	                                										}
+		                                }
+		                              ],
+
+		                      selectedControl : 'none' ,
+		                      temporyConfig : {
+		                                        selectedControl: 'none',
+		                                        formlyLabel: 'label', 
+		                                        formlyRequired: false, 
+		                                        formlyDesciption: '',
+		                                        formlyPlaceholder: '',
+		                                        formlyOptions : [],
+																	          //expressions/validation fields
+																	          formlyExpressionProperties: {},
+																	          formlyValidators: {},
+																	          formlyValidation: {}                                        
+		                                      } 
+
+		    };
+
+		    //reset
+		  	angular.copy(newNyaSelectObj, nyaSelectObj);
+		    return true;
+		  }
+		  /**
+		   * data passed back to parent controller 
+		   * after control being finsihed editing in modal
+		   */
+		  function returnControlFromAddCtrlModalModel(CtrlModalModel){
+
+		    var modelToReturn = {
+		          selectedControl:'none', 
+		          formlyType : 'none',
+		          formlySubtype: 'none',
+		          formlyLabel: '',
+		          formlyRequired : false,
+		          formlyDesciption: '',
+		          formlyPlaceholder: '',
+		          formlyOptions: [],
+		          //validation fields
+		          formlyExpressionProperties: {},
+		          formlyValidators: {},
+		          formlyValidation: {}
+		    };
+
+
+		    for (var i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
+		      if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
+		        modelToReturn.selectedControl 		= CtrlModalModel.selectedControl;
+		        modelToReturn.formlyType 					= CtrlModalModel.controls[i].formlyType;
+		        modelToReturn.formlySubtype 			= CtrlModalModel.controls[i].formlySubtype;
+		        modelToReturn.formlyLabel 				= CtrlModalModel.controls[i].formlyLabel;
+		        modelToReturn.formlyRequired 			= CtrlModalModel.controls[i].formlyRequired;
+		        modelToReturn.formlyDesciption 		= CtrlModalModel.controls[i].formlyDesciption;
+		        modelToReturn.formlyPlaceholder 	= CtrlModalModel.controls[i].formlyPlaceholder;
+		        modelToReturn.formlyOptions 			= CtrlModalModel.controls[i].formlyOptions;
+
+		        modelToReturn.formlyExpressionProperties 	= angular.copy(CtrlModalModel.controls[i].formlyExpressionProperties);
+		        modelToReturn.formlyValidators 						= angular.copy(CtrlModalModel.controls[i].formlyValidators);
+		        modelToReturn.formlyValidation 						= angular.copy(CtrlModalModel.controls[i].formlyValidation);
+
+		        //particular properties 
+		        //datetpicker format
+		        if (CtrlModalModel.controls[i].formlyType === 'datepicker') {
+					modelToReturn.datepickerPopup 							= CtrlModalModel.controls[i].datepickerPopup;   
+					  	
+		        }
+		      }
+		    }
+		    return modelToReturn;
+		  }
+			/**
+			 * validKeyUniqueness
+			 * to be sure the "keys" are unique (in same formly field model)
+			 */
+		  function validKeyUniqueness(thisKey, configurationObj){
+		    var isUnique = true;
+		    //each lines
+		    for (var i = configurationObj.lines.length - 1; i >= 0; i--) {
+		      //each columns
+		      for (var j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
+		        if (configurationObj.lines[i].columns[j].control.key === thisKey) {
+		          isUnique = false;
+		        }
+		          
+		      }
+		      
+		    }
+
+		    return isUnique;  
+		  }  
+
+		}
+
+})(); 
+
+/**
+ *  ------------------------------------------------------
+ *  service : formFieldManage
+ *  ------------------------------------------------------
+ *
+ *         MOST IMPORTANT service to manage formly field model 
+ *  (the presentation model and the back model or configuration model)
+ * 
+ *
+ *  - "formlyModel" is the model exposed to view or html "fields model" (= an array of objects)
+ *    This model is the one you can see in all well documented examples here : http://angular-formly.com
+ *    -> in your view or html : <formly-form model="dataModel" fields="formlyModel">
+ *
+ *  - "configurationModel" is the model on which editing a form will work
+ *    before applying results to "formlyModel"
+ *
+ *
+ * NOTE : if you save a form to database, you will save "configurationModel" rather than "formlyModel".
+ *        Why? : 
+ *          since as you plan to create a form generator you can't create a finite model
+ *          since you may want to be able to save the generated form even if it is not a finite model
+ *          since "formlyModel" objects will be populated with a lot of properties you don't need to store contrary to "configurationModel" which contains only what you need
+ *          since "formlyModel" can't be JSON.stringify when you want to use advanced layout (1 column/2/3 columns template?)
+ *          since it is better approach to use a backgroundModel (async operation ...) that is bind to presentation model only when it is fully ready or filled.
+ *
+ *
+ * NOTE : 
+ * - if you want to manage more columns templates (right now only manage up to 3 columns), just inspire from existing code
+ * - if you want to extend easy form generator, be sure to be a minimum comfortable with "angular formly": http://angular-formly.com
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function () {
+  'use strict';
+
+
+
+
+  angular
+    .module('ngwfApp.services.formFieldManage', [])
+    .factory('formFieldManage', formFieldManage);
+
+    formFieldManage.$inject = [];
+
+    function formFieldManage(){
+
+      var service = {
+        initConfigurationEditFromScratch : initConfigurationEditFromScratch,
+        bindConfigurationLines           : bindConfigurationLines,
+        applyConfigurationToformlyModel  : applyConfigurationToformlyModel 
+      };
+      return service;
+
+
+      function initConfigurationEditFromScratch(configurationModel){
+        var configurationModelInit = {
+          activeLine: 1,   
+          listConfigStep: [
+                            'init',
+                            'first',
+                            'second',
+                            'third'
+                          ],
+          stepIndicators:  [
+                              true,
+                              false,
+                              false,
+                              false
+                            ], 
+          configStepCounter : 0, 
+          submitButtonText  : 'submit',
+          cancelButtonText  : 'cancel',
+          lines: [
+                  {
+                    line:1,                                       
+                    activeColumn : 1,
+                    columns: [
+                              {  
+                                numColumn: 1,
+                                exist:true, 
+                                control: {
+                                            type:'none',
+                                            key: 'none',
+                                            // templateOptions: {
+                                            //                     label: 'none',
+                                            //                     placeholder: 'none',
+                                            //                     required: false,
+                                            //                     description: 'Descriptive text'
+                                            //                   }
+                                          }
+                                }
+                              ]
+                   }                                 
+              ]
+        };
+        angular.copy(configurationModelInit, configurationModel);                         
+      }
+
+      function bindConfigurationLines(configurationModel, lines){
+        if( Object.prototype.toString.call(lines) === '[object Array]' ) {
+          var configurationModelResult = {
+            activeLine: 1,   
+            listConfigStep: [
+                              'init',
+                              'first',
+                              'second',
+                              'third'
+                            ],
+            stepIndicators:  [
+                                true,
+                                false,
+                                false,
+                                false
+                              ], 
+            configStepCounter: 0, 
+            submitButtonText : 'submit',
+            cancelButtonText: 'cancel',
+            lines: []
+          };
+          configurationModelResult.lines = [].concat(lines);  
+          angular.copy(configurationModelResult, configurationModel);                                         
+
+          return getMessageObject('configuration model is bound','lines are bound to configuration model.');
+        }else{
+          return getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
+        }
+      }
+
+      function applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel){
+        resetFormlyModel(formlyModel);
+        resetDataModel(formlyDataModel);
+        /**
+         * manage header here line0 
+         */
+        var lineNumber = configurationModel.lines.length;
+        for (var i = 0; i < lineNumber; i++) {
+            //1 column line control
+            if (configurationModel.lines[i].columns.length === 1) {
+              //test if template control = header
+              if (configurationModel.lines[i].columns[0].control.type === 'header') {
+                addOneColumnHeader(formlyModel, configurationModel, i);
+              }else{
+                addOneColumnControl(formlyModel, configurationModel, i);  
+              }          
+            }
+            if (configurationModel.lines[i].columns.length === 2) {
+              addTwoColumnControl(formlyModel, configurationModel,i);
+            }
+            if (configurationModel.lines[i].columns.length === 3) {
+              addThreeColumnControl(formlyModel, configurationModel,i);
+            }
+        }
+      }
+
+      function resetFormlyModel(formlyModel){
+        var resetformly = [];
+        angular.copy(resetformly, formlyModel);
+      }
+
+
+
+      function addOneColumnHeader(formlyModel, configurationModel,lineIndex){
+        /**
+         * text header is stored in "description" in templateOtion model 
+         */
+        var headerTemplateCol0 = '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2></div></div><hr/>';
+
+        formlyModel.push(
+          {
+            template: typeof configurationModel
+                                    .lines[lineIndex]
+                                    .columns[0]
+                                    .control
+                                    .type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? headerTemplateCol0 : '<div></div>') : '<div></div>'
+          }
+        );
+      }
+
+      function addDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex){
+          fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+      }
+
+      function addOneColumnControl(formlyModel, configurationModel,lineIndex){
+        var fieldToPush = {
+          className: 'col-xs-12',
+          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type                  : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+            label                 : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+            required              : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+            placeholder           : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+            description           : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+            options               : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+          },
+          expressionProperties  : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+          validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+          validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+        };
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
+        }     
+
+        formlyModel.push( 
+          fieldToPush
+        );
+      }    
+
+      function addTwoColumnControl(formlyModel, configurationModel,lineIndex){
+
+        //text header is stored in "description" in templateOtion model
+        var headerTemplateCol0 =  {
+                                    className: 'col-xs-6',
+                                    template : '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+                                  };
+
+        var headerTemplateCol1 =  {
+                                    className: 'col-xs-6',
+                                   template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+                                  };
+
+        var controlCol0 =     {
+            className: 'col-xs-6',
+            type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+            key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+            templateOptions: {
+                type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+                description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+                options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+            },
+                expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                  
+          };
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
+        }                            
+
+        var controlCol1 =  {
+                  className: 'col-xs-6',
+                  type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+                  key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+                  templateOptions: {
+                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+                  },
+                      expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+                      validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+          };
+
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+          addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+        }                                
+
+        var FieldGroup = [];
+
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol0);
+        }else{
+          FieldGroup.push(controlCol0);
+        }
+         
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol1);
+        }else{
+          FieldGroup.push(controlCol1);
+        }    
+
+        formlyModel.push(
+           {
+              className: 'row', 
+              fieldGroup: FieldGroup
+            }
+        );
+      }
+
+      function addThreeColumnControl(formlyModel, configurationModel,lineIndex){
+        //text header is stored in "description" in templateOtion model
+        var headerTemplateCol0 =  {
+                                    className: 'col-xs-4',
+                                    template : '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+                                  };
+
+        var headerTemplateCol1 =  {
+                                    className: 'col-xs-4',
+                                   template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+                                  };
+
+        var headerTemplateCol2 =  {
+                                    className: 'col-xs-4',
+                                   template:'<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control) + '<h2><hr/></div></div>'
+                                  };
+      
+        var controlCol0 =     {
+                                  className: 'col-xs-4',
+                                  type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+                                  key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+                                  templateOptions: {
+                                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+                                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+                                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+                                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+                                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)                                              
+                                  },
+                                      expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+                                      validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                   
+                                };
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
+        }                             
+
+        var controlCol1 =  {
+                                  className: 'col-xs-4',
+                                  type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+                                  key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+                                  templateOptions: {
+                                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+                                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+                                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+                                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+                                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)                                               
+                                  },
+                                      expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+                                      validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+                          };
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+          addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+        }                       
+        var controlCol2 =  {
+                                  className: 'col-xs-4',
+                                  type: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
+                                  key: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
+                                  templateOptions: {
+                                      type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
+                                      label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
+                                      required : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
+                                      placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
+                                      description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
+                                      options : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)                                              
+                                  },
+                                      expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
+                                      validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
+                                      validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                   
+                          };
+        //////////////////////////////////////////////                  
+        //datepicker additionnal particular property  
+        //////////////////////////////////////////////                  
+        if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
+          addDatepickerPopupProperty(controlCol2, configurationModel,lineIndex);
+        }     
+
+        var FieldGroup = [];
+
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol0);
+        }else{
+          FieldGroup.push(controlCol0);
+        }
+         
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol1);
+        }else{
+          FieldGroup.push(controlCol1);
+        }    
+
+        if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol2);
+        }else{
+          FieldGroup.push(controlCol2);
+        }    
+
+
+        formlyModel.push(
+           {
+              className: 'row', 
+              fieldGroup: FieldGroup
+            }
+        );
+      }
+
+      function isTemplateOptionDefined(obj){
+        return typeof obj.templateOptions !== 'undefined' ? true : false;
+      }
+
+      function extractTemplateOptionLabel(obj){
+       return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
+      }
+
+
+      function extractTemplateOptionDatepickerPopup(obj){
+        return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
+      }
+
+      function extractFormlyExpressionProperties(obj){
+        return  typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
+      }
+
+      function extractFormlyValidators(obj){
+        return  typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators): {};
+      }
+
+      function extractFormlyValidation(obj){
+        return  typeof obj.formlyValidation !== 'undefined' ?  angular.copy(obj.formlyValidation) : {};
+      }
+
+      function extractTemplateOptionRequired(obj){
+        return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.required !== 'undefined'? obj.templateOptions.required: '') : '';
+      }
+
+      function extractTemplateOptionOptions(obj){
+        return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.options !== 'undefined'? obj.templateOptions.options: '') : '';
+      }
+
+      function extractTemplateOptionType(obj){
+        return  typeof obj.subtype !== 'undefined'? obj.subtype: '';
+      }
+
+      function extractTemplateOptionPlaceholder(obj){
+        return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.placeholder !== 'undefined'? obj.templateOptions.placeholder: '') : '';
+      }
+
+      function extractTemplateOptionDescription(obj){
+        return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.description !== 'undefined'? obj.templateOptions.description: '') : '';
+      }
+
+      function resetDataModel(obj){
+        var emptyDataModel = {};
+        angular.copy(emptyDataModel, obj);
+        return true;
+      }
+
+      function getErrorObject(errorTitle, errorMessage){
+
+        var messageObj = {
+          noError : false,
+          title: '',
+          Message: ''  
+        };
+
+        messageObj.noError = false;
+        messageObj.title = errorTitle;
+        messageObj.Message = errorMessage;
+        return messageObj;
+      }
+
+      function getMessageObject(messageTitle, messageBody){
+        var messageObj = {
+          noError : false,
+          title: '',
+          Message: ''  
+        };
+
+        messageObj.noError = true;
+        messageObj.title = messageTitle;
+        messageObj.Message = messageBody;
+        return messageObj;
+      }    
+
+
+    }
+
+
+
+})(); 
+
+/**
+ *  ------------------------------------------------------
+ *  service to manage select options (used in modal to edit control)
+ *  ------------------------------------------------------
+ *
+ *  module = "service"  selectOptionManage (manage : selects, radio...)
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function() {
+  'use strict';
+
+
+  angular
+    .module('ngwfApp.services.selectOptionManage', [])
+    .factory('selectOptionManage', selectOptionManage);
+
+    selectOptionManage.$inject = [];
+    function selectOptionManage(){
+      var service = {
+        testMe                    : testMe,
+        initModel                 : initModel,
+        isOptionUnique            : isOptionUnique,
+        isOptionValidFormat       : isOptionValidFormat,
+        addNewOptionRadio         : addNewOptionRadio,
+        addNewOptionBasicSelect   : addNewOptionBasicSelect,
+        addNewOptionGroupedSelect : addNewOptionGroupedSelect,
+        removeOption              : removeOption,
+        upthisOption              : upthisOption,
+        downthisOption            : downthisOption,
+      };
+      return service;
+
+      /**
+       * just a test function
+       */
+      function testMe(){
+        return 'selectOptionManage is here.';
+      }
+      /**
+       * reset model
+       */
+      function initModel(selectObj){
+        resetModel(selectObj);
+      }
+
+      function isOptionUnique(selectObj, textValue){
+        for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+          if (selectObj.rows[i].option === textValue) return false;
+        }
+        return true;
+      }
+
+      function isOptionValidFormat(textValue){
+        if (textValue !== '')  return true;
+        return false;
+      }
+
+      function addNewOptionRadio(selectObj, newOptionText){
+        var fullResponse = {
+                              resultFlag : false,
+                              details : ''
+                            };
+
+        var checkResult = validOption(selectObj, newOptionText);  
+        if (checkResult.resultFlag === true){
+
+            var newOption = {
+                                option: newOptionText,
+                                order: selectObj.rows.length
+                            };
+
+            selectObj.rows.push(newOption);
+            fullResponse.resultFlag = true;
+            fullResponse.details = '';
+            return fullResponse;
+        }else{
+              angular.copy(checkResult, fullResponse);                    
+              return fullResponse;                        
+        }
+      }
+
+      function addNewOptionBasicSelect(selectObj, newOptionText){
+          var fullResponse = {
+                                resultFlag : false,
+                                details : ''
+                              };
+
+          var checkResult = validOption(selectObj, newOptionText);  
+          if (checkResult.resultFlag === true){
+
+              var newOption = {
+                                  option: newOptionText,
+                                  order: selectObj.rows.length
+                              };
+
+              selectObj.rows.push(newOption);
+              fullResponse.resultFlag = true;
+              fullResponse.details = '';
+              return fullResponse;
+          }else{
+                angular.copy(checkResult, fullResponse);                    
+                return fullResponse;                        
+          }
+      }
+
+      function addNewOptionGroupedSelect(selectObj, newOptionText, newOptionGroup){
+        var fullResponse = {
+                              resultFlag : false,
+                              details : ''
+                            };
+
+        var checkResult = validOption(selectObj, newOptionText);  
+    
+        if (checkResult.resultFlag === true){
+
+            var newOption = {
+                                option: newOptionText,
+                                group: newOptionGroup,
+                                order: selectObj.rows.length
+                            };
+
+            selectObj.rows.push(newOption);
+            fullResponse.resultFlag = true;
+            fullResponse.details = '';
+            return fullResponse;
+        }else{
+              angular.copy(checkResult, fullResponse);                    
+              return fullResponse;                        
+        }
+      }
+
+      function removeOption(selectObj, AtIndex) {
+        var fullResponse = {
+                            resultFlag : false,
+                            details : ''
+                          };
+
+        if (AtIndex !== -1) {
+            selectObj.rows.splice(AtIndex, 1);
+            fullResponse.resultFlag = true;
+            fullResponse.details= '';
+            return fullResponse;
+        }else{
+            fullResponse.resultFlag = false;
+            fullResponse.details= 'Option index not valid';
+            return fullResponse;
+        }
+      }
+
+      function upthisOption(selectObj, indexOption){
+          var fullResponse = {
+                              resultFlag : false,
+                              details : ''
+                            };  
+
+          if (indexOption > -1) {
+            if (indexOption > 0) {
+              if (selectObj.rows[indexOption - 1]) {
+                var currentOption = selectObj.rows[indexOption];
+                selectObj.rows.splice(indexOption , 1);
+                selectObj.rows.splice((indexOption - 1), 0, currentOption); 
+                fullResponse.resultFlag = true;
+                fullResponse.details = '';
+                return fullResponse;
+              }else{
+                fullResponse.resultFlag = false;
+                fullResponse.details = 'Can\'t retreive option from option index';
+                return fullResponse;
+              }
+            }else{
+                fullResponse.resultFlag = true;
+                fullResponse.details = '';
+                return fullResponse;
+            }  
+          }else{
+            fullResponse.resultFlag = false;
+            fullResponse.details = 'Option index not valid';
+            return fullResponse;
+          }
+      }
+
+      function downthisOption(selectObj, indexOption){
+          var fullResponse = {
+                              resultFlag : false,
+                              details : ''
+                            };
+
+          if (indexOption > -1) {
+            if (indexOption < selectObj.rows.length - 1){
+              if (selectObj.rows[indexOption + 1]) {
+                var currentOption = selectObj.rows[indexOption];
+                selectObj.rows.splice(indexOption , 1);
+                selectObj.rows.splice((indexOption + 1), 0, currentOption);  
+                fullResponse.resultFlag = true;
+                fullResponse.details = '';
+                return fullResponse;  
+              }else{
+                fullResponse.resultFlag = false;
+                fullResponse.details = 'Can\'t retreive option from option index';
+                return fullResponse;
+              }
+            }else{ 
+                fullResponse.resultFlag = true;
+                fullResponse.details = '';
+              return fullResponse;
+            }
+          }else{
+            fullResponse.resultFlag = false;
+            fullResponse.details = 'Option index not valid';
+            return fullResponse;
+          }
+      }
+
+
+
+
+
+
+      function validOption(selectObj, newOptionText){
+          var fullResponse = {
+                                resultFlag  : false,
+                                details     : ''
+                              };
+
+          if (typeof newOptionText === 'undefined') {
+              fullResponse.resultFlag = false;
+              fullResponse.details    = 'Entered option is empty';
+              return fullResponse;
+          }
+
+          if (newOptionText !== '') {
+                for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+                  if (selectObj.rows[i].option === newOptionText) {
+                    fullResponse.resultFlag = false;
+                    fullResponse.details    = 'Entered option is not unique';
+                    return fullResponse;
+                  }
+                }
+                fullResponse.resultFlag = true;
+                fullResponse.details    = '';
+                return fullResponse;
+          }
+          fullResponse.resultFlag = false;     
+          fullResponse.details    = 'Entered option is empty';
+          return fullResponse;
+      }
+
+      function resetModel(selectObj){
+        var zeroModel = { rows:[] };
+        angular.copy(zeroModel, selectObj);
+      }
+  }
+
+
+})(); 
+
+    //}
+
+
+    // .factory('selectOptionManage', [ function(){
+    
+
+    //   return {
+              // testMe: function() {
+              //     return 'selectOptionManage is here.';
+              // },
+
+              // initModel: function(selectObj){
+              //   resetModel(selectObj);
+              // },
+          
+              // isOptionUnique: function(selectObj, textValue){
+              //   for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+
+              //     if (selectObj.rows[i].option === textValue) {
+              //       return false;
+              //     }
+                  
+              //   }
+              //   return true;
+              // },
+
+              //test if not empty string (= full space string is not conidered as valid)
+              // isOptionValidFormat: function(textValue){
+              //   if (textValue !== '') {
+              //     return true;
+              //   }
+              //   return false;                    
+              // },
+
+              // addNewOptionRadio: function(selectObj, newOptionText){
+              //   var fullResponse = {
+              //                         resultFlag : false,
+              //                         details : ''
+              //                       };
+
+              //   var checkResult = validOption(selectObj, newOptionText);  
+
+              //   //console.info(checkResult);
+
+              //   if (checkResult.resultFlag === true){
+
+              //       var newOption = {
+              //                           option: newOptionText,
+              //                           order: selectObj.rows.length
+              //                       };
+
+              //       selectObj.rows.push(newOption);
+              //       fullResponse.resultFlag = true;
+              //       fullResponse.details = "";
+              //       return fullResponse;
+              //   }else{
+
+              //         angular.copy(checkResult, fullResponse);                    
+              //         return fullResponse;                        
+              //   }
+
+
+              // },
+
+
+              // addNewOptionBasicSelect: function(selectObj, newOptionText){
+              //   var fullResponse = {
+              //                         resultFlag : false,
+              //                         details : ''
+              //                       };
+
+              //   var checkResult = validOption(selectObj, newOptionText);  
+
+              //   //console.info(checkResult);
+
+              //   if (checkResult.resultFlag === true){
+
+              //       var newOption = {
+              //                           option: newOptionText,
+              //                           order: selectObj.rows.length
+              //                       };
+
+              //       selectObj.rows.push(newOption);
+              //       fullResponse.resultFlag = true;
+              //       fullResponse.details = '';
+              //       return fullResponse;
+              //   }else{
+
+              //         angular.copy(checkResult, fullResponse);                    
+              //         return fullResponse;                        
+              //   }
+
+
+              // },
+
+              // addNewOptionGroupedSelect: function(selectObj, newOptionText, newOptionGroup){
+              //   var fullResponse = {
+              //                         resultFlag : false,
+              //                         details : ''
+              //                       };
+
+              //   // if (typeof newOptionGroup === "undefined") {
+
+              //   //     fullResponse.resultFlag = false;
+              //   //     fullResponse.details = "Group option is undefined";
+              //   //     return fullResponse;
+              //   // }
+
+              //   // if (newOptionGroup === "") {
+
+              //   //     fullResponse.resultFlag = false;
+              //   //     fullResponse.details = "Group option is undefined";
+              //   //     return fullResponse;
+              //   // }
+
+              //   var checkResult = validOption(selectObj, newOptionText);  
+
+            
+              //   if (checkResult.resultFlag === true){
+
+              //       var newOption = {
+              //                           option: newOptionText,
+              //                           group: newOptionGroup,
+              //                           order: selectObj.rows.length
+              //                       };
+
+              //       selectObj.rows.push(newOption);
+              //       fullResponse.resultFlag = true;
+              //       fullResponse.details = '';
+              //       return fullResponse;
+              //   }else{
+
+              //         angular.copy(checkResult, fullResponse);                    
+              //         return fullResponse;                        
+              //   }
+
+              // },
+
+
+              // removeOption:  function(selectObj, AtIndex) {
+              //   var fullResponse = {
+              //                       resultFlag : false,
+              //                       details : ''
+              //                     };
+
+              //   if (AtIndex !== -1) {
+              //       selectObj.rows.splice(AtIndex, 1);
+              //       fullResponse.resultFlag = true;
+              //       fullResponse.details= '';
+              //       return fullResponse;
+              //   }else{
+              //       fullResponse.resultFlag = false;
+              //       fullResponse.details= 'Option index not valid';
+              //       return fullResponse;
+              //   }
+              // },
+
+            //   upthisOption : function(selectObj, indexOption){
+            //     var fullResponse = {
+            //                         resultFlag : false,
+            //                         details : ''
+            //                       };  
+
+            //     if (indexOption > -1) {
+
+            //       if (indexOption > 0) {
+
+            //         if (selectObj.rows[indexOption - 1]) {
+            //           var currentOption = selectObj.rows[indexOption];
+            //           selectObj.rows.splice(indexOption , 1);
+            //           selectObj.rows.splice((indexOption - 1), 0, currentOption); 
+
+            //           fullResponse.resultFlag = true;
+            //           fullResponse.details = '';
+            //           return fullResponse;
+            //         }else{
+            //           fullResponse.resultFlag = false;
+            //           fullResponse.details = 'Can\'t retreive option from option index';
+            //           return fullResponse;
+            //         }
+            //       }else{
+            //           fullResponse.resultFlag = true;
+            //           fullResponse.details = '';
+            //           return fullResponse;
+            //       }  
+
+            //     }else{
+            //       fullResponse.resultFlag = false;
+            //       fullResponse.details = 'Option index not valid';
+            //       return fullResponse;
+            //     }
+            // },
+
+            // downthisOption : function(selectObj, indexOption){
+            //     var fullResponse = {
+            //                         resultFlag : false,
+            //                         details : ''
+            //                       };
+
+            //     if (indexOption > -1) {
+    
+
+            //       if (indexOption < selectObj.rows.length - 1){
+                    
+
+            //         if (selectObj.rows[indexOption + 1]) {
+                      
+
+            //           var currentOption = selectObj.rows[indexOption];
+                      
+            //           selectObj.rows.splice(indexOption , 1);
+            //           selectObj.rows.splice((indexOption + 1), 0, currentOption);  
+
+            //           fullResponse.resultFlag = true;
+            //           fullResponse.details = '';
+            //           return fullResponse;  
+
+            //         }else{
+            //           fullResponse.resultFlag = false;
+            //           fullResponse.details = 'Can\'t retreive option from option index';
+            //           return fullResponse;
+            //         }
+            //       }else{
+
+                    
+            //           fullResponse.resultFlag = true;
+            //           fullResponse.details = '';
+            //         return fullResponse;
+            //       }
+
+
+            //     }else{
+            //       fullResponse.resultFlag = false;
+            //       fullResponse.details = 'Option index not valid';
+            //       return fullResponse;
+            //     }
+
+            // }
+
+        
+
+
+
+  //         };
+
+
+
+
+  // function validOption(selectObj, newOptionText){
+  //     var fullResponse = {
+  //                           resultFlag : false,
+  //                           details : ""
+  //                         };
+
+  //     if (typeof newOptionText === 'undefined') {
+  //         fullResponse.resultFlag = false;
+  //         fullResponse.details = 'Entered option is empty';
+  //         return fullResponse;
+  //     }
+
+  //     if (newOptionText !== '') {
+  //           for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+  //             if (selectObj.rows[i].option === newOptionText) {
+  //               fullResponse.resultFlag = false;
+  //               fullResponse.details = 'Entered option is not unique';
+  //               return fullResponse;
+  //             }
+  //           }
+  //           fullResponse.resultFlag = true;
+  //           fullResponse.details = '';
+  //           return fullResponse;
+  //     }
+  //     fullResponse.resultFlag = false;     
+  //     fullResponse.details = 'Entered option is empty';
+  //     return fullResponse;
+  // }
+
+  // function resetModel(selectObj){
+  //   var zeroModel = { 
+  //                       rows:
+  //                       [
+  //                       ]
+  //                     };
+
+    
+  //   angular.copy(zeroModel, selectObj);
+  // }
+
+  
+
+  // }]);
+
+
+
+
+
+
+
+
+
+/**
+ *  ------------------------------------------------------
+ *  module = "services" container
+ *  ------------------------------------------------------
+ *
+ * contains all app services
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function () {
+	'use strict';
+
+	angular.module(
+									'ngwfApp.services', [	
+																				'ngwfApp.services.formFieldManage',
+																				'ngwfApp.services.selectOptionManage',
+																				'ngwfApp.services.ngwfWfFormsServices',
+																				'ngwfApp.services.ngwfEditCtrlControllerModalProxy'
+																			]
+								);
+
+})(); 
+
+
+/**
+ *  ------------------------------------------------------
+ *  form API : suppose you have your RESTful backend 
+ *  ------------------------------------------------------
+ *
+ *  
+ *
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function(){
+
+	'use strict';
+	
+	angular
+		.module('ngwfApp.services.ngwfWfFormsServices', ['ngResource'])
+		.factory('WfFormsByIdServices', WfFormsByIdServices);
+
+		WfFormsByIdServices.$inject = ['$resource'];
+		function WfFormsByIdServices($resource){
+			return $resource('/api/wfedit/:id', {id: '@id'}, {});
+		}
+
+
+})();
+/**
+ *  ------------------------------------------------------
+ *  filters container
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+;(function () {
+	'use strict';
+
+	angular
+		.module('ngwfApp.filters', []);
+
+})(); 
+
+
+
+})(this);
