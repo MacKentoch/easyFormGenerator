@@ -66,7 +66,7 @@
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
 			<div 	eda-step-way-easy-form-gen
-						eda-easy-form-model="demoCtrl.easyFormModel"
+						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
 						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
 			</div>
 
@@ -102,7 +102,7 @@
 					demoCtrl.edaFieldsModel 		= {};
 					
 					//
-					demoCtrl.easyFormModel	  = initEasyFormModel();
+					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
 					
 					
@@ -111,7 +111,7 @@
 					
 					
 					
-					function initEasyFormModel(){
+					function initEasyFormGeneratorModel(){
 						var initModel = {
 							formName      		: demoCtrl.FormName,
 							btnSubmitText 		: demoCtrl.submitButtonText,
@@ -146,7 +146,7 @@
 					function timedModelChanged(){
 						$timeout(function(){
 							
-							demoCtrl.easyFormModel.edaFieldsModel = [
+							demoCtrl.easyFormGeneratorModel.edaFieldsModel = [
 								{
 									"line": 1,
 									"activeColumn": 1,
@@ -176,19 +176,19 @@
 								}
 							];
 							console.info('timeout model change');
-							console.dir(demoCtrl.easyFormModel);
+							console.dir(demoCtrl.easyFormGeneratorModel);
 						}, 3000);
 					}
 					
 					/**
 					 * when click on save form, will call your save form function :
 					 */
-					function saveForm(easyFormModel){
+					function saveForm(easyFormGeneratorModel){
 						
 						console.info('-> can handle save models to database here (your controller)');
 						
 						console.dir({
-								'easyformModel' : easyFormModel
+								'easyFormGeneratorModel' : easyFormGeneratorModel
 						});
 						
 						//_ You can save to your database _

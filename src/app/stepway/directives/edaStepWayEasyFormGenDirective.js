@@ -44,10 +44,8 @@
 			var directive = {
 				restrict : 'AE',
 				scope : {
-          edaEasyFormModel    : '=',
-                    
-          //edaLoadFormModel    : '&edaLoadformModel',
-          edaSaveFormEvent    : '&edaSaveFormEvent'
+          edaEasyFormGeneratorModel : '=',
+          edaSaveFormEvent          : '&edaSaveFormEvent'
         },
 				controller : edaStepWayEasyFormGenCtrl,
 				controllerAs : 'vm',
@@ -60,16 +58,16 @@
 			
 			function linkFct(scope, element, attrs){
           
-          console.dir(scope.edaEasyFormModel);
+          console.dir(scope.edaEasyFormGeneratorModel);
           
-          scope.configuration.formName = scope.edaEasyFormModel.formName;
-          scope.configuration.submitButtonText = scope.edaEasyFormModel.btnSubmitText; 
-          scope.configuration.cancelButtonText = scope.edaEasyFormModel.btnCancelText;
-          scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormModel.formlyFieldsModel;
-          scope.configuration.lines = scope.edaEasyFormModel.edaFieldsModel;
-          scope.vm.model = scope.edaEasyFormModel.dataModel;          
+          scope.configuration.formName              = scope.edaEasyFormGeneratorModel.formName;
+          scope.configuration.submitButtonText      = scope.edaEasyFormGeneratorModel.btnSubmitText; 
+          scope.configuration.cancelButtonText      = scope.edaEasyFormGeneratorModel.btnCancelText;
+          scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormGeneratorModel.formlyFieldsModel;
+          scope.configuration.lines                 = scope.edaEasyFormGeneratorModel.edaFieldsModel;
+          scope.vm.model                            = scope.edaEasyFormGeneratorModel.dataModel;          
           
-          //watch "scope.edaEasyFormModel"
+          //watch "scope.easyFormGeneratorModel"
           scope.$watch(watchEdaEasyFormModelExpression, 
             watchEdaEasyFormModelHasChanged, 
             true);          
@@ -83,12 +81,12 @@
           
           
           function watchEdaEasyFormModelExpression(){
-            return scope.edaEasyFormModel;
+            return scope.edaEasyFormGeneratorModel;
           }
           
           function watchEdaEasyFormModelHasChanged(newValue, oldValue){
-            console.info('edaEasyFormModel changed');
-            console.dir(scope.edaEasyFormModel);            
+            console.info('edaEasyFormGeneratorModel changed');
+            console.dir(scope.edaEasyFormGeneratorModel);            
           }          
         
         
@@ -100,15 +98,16 @@
           
           function watchReturnSaveEventhasChanged(newValue, oldValue){
             if (newValue === true) {
-              var _easyFormModel = {
-                formName      : scope.configuration.formName,
-                btnSubmitText : scope.configuration.submitButtonText,
-                btnCancelText : scope.configuration.cancelButtonText,
-                fieldsModel   : scope.vm.wfFormFieldsOnlyNeededProperties,
-                dataModel     : scope.vm.model
+              var _easyFormGeneratorModel = {
+                formName          : scope.configuration.formName,
+                btnSubmitText     : scope.configuration.submitButtonText,
+                btnCancelText     : scope.configuration.cancelButtonText,
+                edaFieldsModel    : scope.configuration.lines,
+                formlyFieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
+                dataModel         : scope.vm.model
               };
               scope.edaSaveFormEvent({
-                easyFormModel      : _easyFormModel
+                edaEasyFormGeneratorModel      : _easyFormGeneratorModel
               });
               //back to false, waiting next save event
               scope.returnSaveEvent = false;
