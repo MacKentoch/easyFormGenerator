@@ -44,13 +44,9 @@
 			var directive = {
 				restrict : 'AE',
 				scope : {
-          edaFormName         : '=edaFormName',
-          edaSubmitButtonText : '=edaSubmitButtonText',
-          edaCancelButtonText : '=edaCancelButtonText',
-          edaDataModel        : '=edaDataModel',
-          edaFormModel        : '=edaFormModel',
-          
-          edaLoadFormModel    : '&edaLoadformModel',
+          edaEasyFormModel    : '=',
+                    
+          //edaLoadFormModel    : '&edaLoadformModel',
           edaSaveFormEvent    : '&edaSaveFormEvent'
         },
 				controller : edaStepWayEasyFormGenCtrl,
@@ -64,12 +60,19 @@
 			
 			function linkFct(scope, element, attrs){
           
-          // scope.edaFormName         = scope.configuration.formName;
-          // scope.edaSubmitButtonText = scope.configuration.submitButtonText;
-          // scope.edaCancelButtonText = scope.configuration.cancelButtonText;
-          // scope.edaDataModel        = scope.vm.model;
-          // scope.edaFormModel        = scope.vm.wfFormFieldsOnlyNeededProperties;          
+          console.dir(scope.edaEasyFormModel);
           
+          scope.configuration.formName = scope.edaEasyFormModel.formName;
+          scope.configuration.submitButtonText = scope.edaEasyFormModel.btnSubmitText; 
+          scope.configuration.cancelButtonText = scope.edaEasyFormModel.btnCancelText;
+          //scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormModel.fieldsModel;
+          scope.configuration.lines = scope.edaEasyFormModel.fieldsModel;
+          scope.vm.model = scope.edaEasyFormModel.dataModel;          
+          
+          scope.$watch('edaEasyFormModel', function(newValue, oldValue){
+            console.info('edaEasyFormModel changed');
+            console.dir(scope.edaEasyFormModel);
+          }, true);
           
           //catch saving form event  
 					scope.$watch(function(){return scope.returnSaveEvent;}, 
