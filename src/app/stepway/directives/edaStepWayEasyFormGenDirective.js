@@ -42,7 +42,7 @@
       
       
 			var directive = {
-				restrict : 'AE',
+				restrict : 'E',
 				scope : {
           edaEasyFormGeneratorModel : '=',
           edaSaveFormEvent          : '&edaSaveFormEvent'
