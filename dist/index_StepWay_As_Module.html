@@ -65,14 +65,10 @@
 
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
-			<div 	eda-step-way-easy-form-gen
-						eda-form-name="demoCtrl.FormName"
-						eda-submit-button-text="demoCtrl.submitButtonText"
-						eda-cancel-button-text="demoCtrl.cancelButtonText"
-						eda-data-model="demoCtrl.dataModel"
-						eda-form-model="demoCtrl.formlyFields"
-						eda-save-form-event="demoCtrl.saveForm(fieldsModel, dataModel)">
-			</div>
+			<eda-step-way-easy-form-gen 	
+						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
+						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
+			</eda-step-way-easy-form-gen>
 
 		</div>	
 
@@ -96,39 +92,195 @@
 				function demoController($timeout){
 					var demoCtrl = this;
 					
-					//easy form generator properties : 
-					//-> will be bound with your local properties
-					demoCtrl.FormName 				= 'DemoForm';
-					demoCtrl.submitButtonText = 'I Confirm';
-					demoCtrl.cancelButtonText = 'I give up';
-					demoCtrl.dataModel 				= [];
-					demoCtrl.formlyFields 		= [];
+ 
+					demoCtrl.dataModel 					= {};
+					demoCtrl.formlyFieldsModel 	= {};
+					demoCtrl.edaFieldsModel 		= {};
 					
-					//demoCtrl.loadForms				= laodForms
+					//
+					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
+					
+					
+					//demo purpose :
+					timedModelChanged();
+					
+					
+					
+					function initEasyFormGeneratorModel(){
+						var initModel = {
+							formName      		: 'DemoForm',
+							btnSubmitText 		: 'I Confirm',
+							btnCancelText 		: 'I give up',
+							edaFieldsModel   	:	emptyEdaFieldsModel(),
+							formlyFieldsModel : {},							
+							dataModel     		: {}							
+						};
+						return initModel;
+					}
+					
+					function emptyEdaFieldsModel(){
+						var emptyModel = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "none",
+											"key": "none"
+										}
+									}
+								]
+							}
+						];
+						return emptyModel;
+					}
+					
+					function timedModelChanged(){
+						$timeout(function(){
+							
+							demoCtrl.easyFormGeneratorModel.edaFieldsModel = [
+
+    {
+      "line": 1,
+      "activeColumn": 1,
+      "columns": [
+        {
+          "numColumn": 1,
+          "exist": true,
+          "control": {
+            "type": "header",
+            "key": "header-1441306293883",
+            "selectedControl": "Header",
+            "subtype": "",
+            "templateOptions": {
+              "label": "",
+              "required": false,
+              "description": "This form has just been loaded",
+              "placeholder": "",
+              "options": []
+            },
+            "formlyExpressionProperties": {},
+            "formlyValidators": {},
+            "formlyValidation": {},
+            "edited": true
+          }
+        }
+      ]
+    },
+    {
+      "line": -1,
+      "activeColumn": 1,
+      "columns": [
+        {
+          "numColumn": 1,
+          "exist": true,
+          "control": {
+            "type": "input",
+            "key": "input-1441306950364",
+            "selectedControl": "TextInput",
+            "subtype": "",
+            "templateOptions": {
+              "label": "text input",
+              "required": true,
+              "description": "text input",
+              "placeholder": "",
+              "options": []
+            },
+            "formlyExpressionProperties": {},
+            "formlyValidators": {},
+            "formlyValidation": {
+              "messages": {}
+            },
+            "edited": true
+          }
+        },
+        {
+          "numColumn": 2,
+          "exist": true,
+          "control": {
+            "type": "datepicker",
+            "key": "datepicker-1441306350290",
+            "selectedControl": "Date",
+            "subtype": "",
+            "templateOptions": {
+              "label": "A date",
+              "required": false,
+              "description": "Simple date",
+              "placeholder": "",
+              "options": [],
+              "datepickerPopup": "dd.MM.yyyy"
+            },
+            "formlyExpressionProperties": {},
+            "formlyValidators": {},
+            "formlyValidation": {
+              "messages": {}
+            },
+            "edited": true
+          }
+        }
+      ]
+    },
+    {
+      "line": -1,
+      "activeColumn": 1,
+      "columns": [
+        {
+          "numColumn": 1,
+          "exist": true,
+          "control": {
+            "type": "richEditor",
+            "key": "richEditor-1441306371493",
+            "selectedControl": "RichTextEditor",
+            "subtype": "",
+            "templateOptions": {
+              "label": "",
+              "required": false,
+              "description": "Rich text editor",
+              "placeholder": "",
+              "options": []
+            },
+            "formlyExpressionProperties": {},
+            "formlyValidators": {},
+            "formlyValidation": {
+              "messages": {}
+            },
+            "edited": true
+          }
+        }
+      ]
+    }
+ 							
+							
+							];
+							console.info('timeout model change');
+							console.dir(demoCtrl.easyFormGeneratorModel);
+						}, 3000);
+					}
 					
 					/**
 					 * when click on save form, will call your save form function :
 					 */
-					function saveForm(fieldsModel, dataModel){
+					function saveForm(easyFormGeneratorModel){
 						
 						console.info('-> can handle save models to database here (your controller)');
 						
 						console.dir({
-							'got' 				: 'objects',
-							'datamodel' 	: dataModel,
-							'fieldsModel' : fieldsModel
+								'easyFormGeneratorModel' : easyFormGeneratorModel
 						});
 						
 						//_ You can save to your database _
 						//1- just JSON.stringify these models
-						var stringifiedFieldsModel 	= JSON.stringify(fieldsModel);
-						var stringifiedDataModel 		= JSON.stringify(dataModel);
+						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
+						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
 						
 						
 						//2- send all to your database -> it is done!
-						var formnameToSave 					= demoCtrl.FormNameAsTest;
-						var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
+						//var formnameToSave 					= demoCtrl.FormNameAsTest;
+						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
 					}
 					
 					
