@@ -1342,9 +1342,9 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
 		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		edaStepWayEasyFormGen.$inject = ['$templateCache', '$timeout'];
+		edaStepWayEasyFormGen.$inject = ['$templateCache', '$timeout', 'formFieldManage'];
 		
-		function edaStepWayEasyFormGen($templateCache, $timeout){
+		function edaStepWayEasyFormGen($templateCache, $timeout, formFieldManage){
       
       /**
        * directive's controller injection is here (before return directive) = to avoid minification errors
@@ -1367,7 +1367,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       
       
 			var directive = {
-				restrict : 'AE',
+				restrict : 'E',
 				scope : {
           edaEasyFormGeneratorModel : '=',
           edaSaveFormEvent          : '&edaSaveFormEvent'
@@ -1382,16 +1382,9 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-          
-          console.dir(scope.edaEasyFormGeneratorModel);
-          
-          scope.configuration.formName              = scope.edaEasyFormGeneratorModel.formName;
-          scope.configuration.submitButtonText      = scope.edaEasyFormGeneratorModel.btnSubmitText; 
-          scope.configuration.cancelButtonText      = scope.edaEasyFormGeneratorModel.btnCancelText;
-          scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormGeneratorModel.formlyFieldsModel;
-          scope.configuration.lines                 = scope.edaEasyFormGeneratorModel.edaFieldsModel;
-          scope.vm.model                            = scope.edaEasyFormGeneratorModel.dataModel;          
-          
+         
+         
+                 
           //watch "scope.easyFormGeneratorModel"
           scope.$watch(watchEdaEasyFormModelExpression, 
             watchEdaEasyFormModelHasChanged, 
@@ -1402,8 +1395,24 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
            watchReturnSaveEventhasChanged);	
           
           
+          function returnAttributeConfigurationLinesIfNotEmpty(){
+            var edaEasyFormGeneratorModelToReturn = (
+                angular.isArray(scope.edaEasyFormGeneratorModel.edaFieldsModel)  ? 
+                  ( scope.edaEasyFormGeneratorModel.edaFieldsModel.length > 0 ? scope.edaEasyFormGeneratorModel.edaFieldsModel : {} ) : 
+                  {}
+            );
+             return edaEasyFormGeneratorModelToReturn;  
+          }
           
           
+          function returnAttributeDataModelIfNotEmpty(){
+            var dataModelToReturn = (
+                angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)  ? 
+                  ( scope.edaEasyFormGeneratorModel.dataModel.length > 0 ? scope.edaEasyFormGeneratorModel.dataModel : {} ) : 
+                  {}
+            );
+             return dataModelToReturn;  
+          }          
           
           function watchEdaEasyFormModelExpression(){
             return scope.edaEasyFormGeneratorModel;
@@ -1411,9 +1420,15 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           
           function watchEdaEasyFormModelHasChanged(newValue, oldValue){
             console.info('edaEasyFormGeneratorModel changed');
-            console.dir(scope.edaEasyFormGeneratorModel);            
+            console.dir(scope.edaEasyFormGeneratorModel); 
+             
+            loadExistingConfigurationModel();
+          
+            console.info('scope.configuration after loaded model');
+            console.dir(scope.configuration); 
+            
+                          
           }          
-        
         
         
         
@@ -1440,8 +1455,32 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			   }          
           
           
+        function loadExistingConfigurationModel(){
+          var configlines = returnAttributeConfigurationLinesIfNotEmpty(); 
+          
+          scope.configurationLoaded = {};
+          
+          formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
+          
+          scope.configuration = angular.copy(scope.configurationLoaded);
+          formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);
           
           
+          console.info('configurationLoaded');
+          console.dir(scope.configurationLoaded);
+          
+          scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
+          scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
+          
+          scope.configuration.formName              = scope.edaEasyFormGeneratorModel.formName;
+          scope.configuration.submitButtonText      = scope.edaEasyFormGeneratorModel.btnSubmitText; 
+          scope.configuration.cancelButtonText      = scope.edaEasyFormGeneratorModel.btnCancelText;
+          
+           
+           
+        } 
+         
+         
           
           
           
@@ -2696,6 +2735,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
             lines: []
           };
           configurationModelResult.lines = [].concat(lines);  
+                    
           angular.copy(configurationModelResult, configurationModel);                                         
 
           return getMessageObject('configuration model is bound','lines are bound to configuration model.');

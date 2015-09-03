@@ -93,10 +93,6 @@
 					var demoCtrl = this;
 					
  
-					//
-					demoCtrl.FormName 					= 'DemoForm';
-					demoCtrl.submitButtonText 	= 'I Confirm';
-					demoCtrl.cancelButtonText 	= 'I give up';
 					demoCtrl.dataModel 					= {};
 					demoCtrl.formlyFieldsModel 	= {};
 					demoCtrl.edaFieldsModel 		= {};
@@ -113,12 +109,12 @@
 					
 					function initEasyFormGeneratorModel(){
 						var initModel = {
-							formName      		: demoCtrl.FormName,
-							btnSubmitText 		: demoCtrl.submitButtonText,
-							btnCancelText 		: demoCtrl.cancelButtonText,
+							formName      		: 'DemoForm',
+							btnSubmitText 		: 'I Confirm',
+							btnCancelText 		: 'I give up',
 							edaFieldsModel   	:	emptyEdaFieldsModel(),
 							formlyFieldsModel : {},							
-							dataModel     		: demoCtrl.dataModel							
+							dataModel     		: {}							
 						};
 						return initModel;
 					}
@@ -156,19 +152,105 @@
 											"exist": true,
 											"control": {
 												"type": "header",
-												"key": "header-1441222613205",
+												"key": "header-1441306293883",
 												"selectedControl": "Header",
 												"subtype": "",
 												"templateOptions": {
 													"label": "",
 													"required": false,
-													"description": "title",
+													"description": "This form has just been loaded",
 													"placeholder": "",
 													"options": []
 												},
 												"formlyExpressionProperties": {},
 												"formlyValidators": {},
 												"formlyValidation": {},
+												"edited": true
+											}
+										}
+									]
+								},
+								{
+									"line": -1,
+									"activeColumn": 1,
+									"columns": [
+										{
+											"numColumn": 1,
+											"exist": true,
+											"control": {
+												"type": "input",
+												"key": "input-1441306326237",
+												"selectedControl": "Email",
+												"subtype": "email",
+												"templateOptions": {
+													"label": "Super nice Email",
+													"required": true,
+													"description": "Enter a valid email (for fake but valid pattern)",
+													"placeholder": "",
+													"options": []
+												},
+												"formlyExpressionProperties": {},
+												"formlyValidators": {
+													"emailShape": {
+														"message": "$viewValue + ' is not a valid email'"
+													}
+												},
+												"formlyValidation": {
+													"messages": {}
+												},
+												"edited": true
+											}
+										},
+										{
+											"numColumn": 2,
+											"exist": true,
+											"control": {
+												"type": "datepicker",
+												"key": "datepicker-1441306350290",
+												"selectedControl": "Date",
+												"subtype": "",
+												"templateOptions": {
+													"label": "A date",
+													"required": false,
+													"description": "Simple date",
+													"placeholder": "",
+													"options": [],
+													"datepickerPopup": "dd.MM.yyyy"
+												},
+												"formlyExpressionProperties": {},
+												"formlyValidators": {},
+												"formlyValidation": {
+													"messages": {}
+												},
+												"edited": true
+											}
+										}
+									]
+								},
+								{
+									"line": -1,
+									"activeColumn": 1,
+									"columns": [
+										{
+											"numColumn": 1,
+											"exist": true,
+											"control": {
+												"type": "richEditor",
+												"key": "richEditor-1441306371493",
+												"selectedControl": "RichTextEditor",
+												"subtype": "",
+												"templateOptions": {
+													"label": "",
+													"required": false,
+													"description": "Rich text editor",
+													"placeholder": "",
+													"options": []
+												},
+												"formlyExpressionProperties": {},
+												"formlyValidators": {},
+												"formlyValidation": {
+													"messages": {}
+												},
 												"edited": true
 											}
 										}

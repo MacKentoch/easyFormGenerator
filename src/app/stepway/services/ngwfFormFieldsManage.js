@@ -122,6 +122,7 @@
             lines: []
           };
           configurationModelResult.lines = [].concat(lines);  
+                    
           angular.copy(configurationModelResult, configurationModel);                                         
 
           return getMessageObject('configuration model is bound','lines are bound to configuration model.');
