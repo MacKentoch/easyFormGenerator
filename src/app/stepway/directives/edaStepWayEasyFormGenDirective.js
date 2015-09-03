@@ -65,39 +65,63 @@
           scope.configuration.formName = scope.edaEasyFormModel.formName;
           scope.configuration.submitButtonText = scope.edaEasyFormModel.btnSubmitText; 
           scope.configuration.cancelButtonText = scope.edaEasyFormModel.btnCancelText;
-          //scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormModel.fieldsModel;
-          scope.configuration.lines = scope.edaEasyFormModel.fieldsModel;
+          scope.vm.wfFormFieldsOnlyNeededProperties = scope.edaEasyFormModel.formlyFieldsModel;
+          scope.configuration.lines = scope.edaEasyFormModel.edaFieldsModel;
           scope.vm.model = scope.edaEasyFormModel.dataModel;          
           
-          scope.$watch('edaEasyFormModel', function(newValue, oldValue){
-            console.info('edaEasyFormModel changed');
-            console.dir(scope.edaEasyFormModel);
-          }, true);
+          //watch "scope.edaEasyFormModel"
+          scope.$watch(watchEdaEasyFormModelExpression, 
+            watchEdaEasyFormModelHasChanged, 
+            true);          
+         
+          //watch "scope.returnSaveEvent"" = catch saving form event  
+					scope.$watch(watchReturnSaveEventExpression, 
+           watchReturnSaveEventhasChanged);	
           
-          //catch saving form event  
-					scope.$watch(function(){return scope.returnSaveEvent;}, 
-            function(newValue, oldValue){
-              if (newValue === true) {
-                                             
-                
-                var _easyFormModel = {
-                  formName      : scope.configuration.formName,
-                  btnSubmitText : scope.configuration.submitButtonText,
-                  btnCancelText : scope.configuration.cancelButtonText,
-                  fieldsModel   : scope.vm.wfFormFieldsOnlyNeededProperties,
-                  dataModel     : scope.vm.model
-                };
-                
-                scope.edaSaveFormEvent({
-                  easyFormModel      : _easyFormModel
-                });
-                
-                //back to false, waiting next save event
-                scope.returnSaveEvent = false;
-
-              }
-            }
-          );	
+          
+          
+          
+          
+          function watchEdaEasyFormModelExpression(){
+            return scope.edaEasyFormModel;
+          }
+          
+          function watchEdaEasyFormModelHasChanged(newValue, oldValue){
+            console.info('edaEasyFormModel changed');
+            console.dir(scope.edaEasyFormModel);            
+          }          
+        
+        
+        
+        
+          function watchReturnSaveEventExpression(){
+            return scope.returnSaveEvent;
+          }
+          
+          function watchReturnSaveEventhasChanged(newValue, oldValue){
+            if (newValue === true) {
+              var _easyFormModel = {
+                formName      : scope.configuration.formName,
+                btnSubmitText : scope.configuration.submitButtonText,
+                btnCancelText : scope.configuration.cancelButtonText,
+                fieldsModel   : scope.vm.wfFormFieldsOnlyNeededProperties,
+                dataModel     : scope.vm.model
+              };
+              scope.edaSaveFormEvent({
+                easyFormModel      : _easyFormModel
+              });
+              //back to false, waiting next save event
+              scope.returnSaveEvent = false;
+            }            
+			   }          
+          
+          
+          
+          
+          
+          
+          
+          
           
           
                    

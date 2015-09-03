@@ -67,7 +67,7 @@
 			=============================================================-->
 			<div 	eda-step-way-easy-form-gen
 						eda-easy-form-model="demoCtrl.easyFormModel"
-						eda-save-form-event="demoCtrl.saveForm(easyFormModel)">
+						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
 			</div>
 
 		</div>	
@@ -92,53 +92,61 @@
 				function demoController($timeout){
 					var demoCtrl = this;
 					
-					//easy form generator properties : 
-					//-> will be bound with your local properties
-					demoCtrl.FormName 				= 'DemoForm';
-					demoCtrl.submitButtonText = 'I Confirm';
-					demoCtrl.cancelButtonText = 'I give up';
-					demoCtrl.dataModel 				= {};
-					demoCtrl.formlyFields 		= {};
+ 
+					//
+					demoCtrl.FormName 					= 'DemoForm';
+					demoCtrl.submitButtonText 	= 'I Confirm';
+					demoCtrl.cancelButtonText 	= 'I give up';
+					demoCtrl.dataModel 					= {};
+					demoCtrl.formlyFieldsModel 	= {};
+					demoCtrl.edaFieldsModel 		= {};
 					
+					//
 					demoCtrl.easyFormModel	  = initEasyFormModel();
-					//demoCtrl.loadForms				= laodForms
 					demoCtrl.saveForm = saveForm;
 					
+					
+					//demo purpose :
 					timedModelChanged();
 					
 					
 					
 					function initEasyFormModel(){
 						var initModel = {
-							formName      : demoCtrl.FormName,
-							btnSubmitText : demoCtrl.submitButtonText,
-							btnCancelText : demoCtrl.cancelButtonText,
-							fieldsModel   :	[
-															{
-																"line": 1,
-																"activeColumn": 1,
-																"columns": [
-																	{
-																		"numColumn": 1,
-																		"exist": true,
-																		"control": {
-																			"type": "none",
-																			"key": "none"
-																		}
-																	}
-																]
-															}
-														] ,
-							//demoCtrl.formlyFields,
-							dataModel     : demoCtrl.dataModel							
+							formName      		: demoCtrl.FormName,
+							btnSubmitText 		: demoCtrl.submitButtonText,
+							btnCancelText 		: demoCtrl.cancelButtonText,
+							edaFieldsModel   	:	emptyEdaFieldsModel(),
+							formlyFieldsModel : {},							
+							dataModel     		: demoCtrl.dataModel							
 						};
 						return initModel;
+					}
+					
+					function emptyEdaFieldsModel(){
+						var emptyModel = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "none",
+											"key": "none"
+										}
+									}
+								]
+							}
+						];
+						return emptyModel;
 					}
 					
 					function timedModelChanged(){
 						$timeout(function(){
 							
-							demoCtrl.easyFormModel.fieldsModel = [
+							demoCtrl.easyFormModel.edaFieldsModel = [
 								{
 									"line": 1,
 									"activeColumn": 1,
@@ -167,53 +175,6 @@
 									]
 								}
 							];
-							// [
-							// 	{
-							// 		"className": "row",
-							// 		"fieldGroup": [
-							// 			{
-							// 				"className": "col-xs-6",
-							// 				"type": "input",
-							// 				"key": "input-1441221208572",
-							// 				"templateOptions": {
-							// 					"type": "password",
-							// 					"label": "password",
-							// 					"required": false,
-							// 					"placeholder": "",
-							// 					"description": "",
-							// 					"options": []
-							// 				},
-							// 				"expressionProperties": {},
-							// 				"validators": {},
-							// 				"validation": {
-							// 					"messages": {}
-							// 				}
-							// 			},
-							// 			{
-							// 				"className": "col-xs-6",
-							// 				"type": "input",
-							// 				"key": "input-1441221221730",
-							// 				"templateOptions": {
-							// 					"type": "email",
-							// 					"label": "Email",
-							// 					"required": true,
-							// 					"placeholder": "",
-							// 					"description": "",
-							// 					"options": []
-							// 				},
-							// 				"expressionProperties": {},
-							// 				"validators": {
-							// 					"emailShape": {
-							// 						"message": "$viewValue + ' is not a valid email'"
-							// 					}
-							// 				},
-							// 				"validation": {
-							// 					"messages": {}
-							// 				}
-							// 			}
-							// 		]
-							// 	}
-							// ];
 							console.info('timeout model change');
 							console.dir(demoCtrl.easyFormModel);
 						}, 3000);
@@ -227,7 +188,7 @@
 						console.info('-> can handle save models to database here (your controller)');
 						
 						console.dir({
-								'easyfomModel' : easyFormModel
+								'easyformModel' : easyFormModel
 						});
 						
 						//_ You can save to your database _
