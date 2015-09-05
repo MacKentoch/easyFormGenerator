@@ -91,12 +91,6 @@
 				demoController.$inject = ['$timeout'];	
 				function demoController($timeout){
 					var demoCtrl = this;
-					
- 
-					demoCtrl.dataModel 					= {};
-					demoCtrl.formlyFieldsModel 	= {};
-					demoCtrl.edaFieldsModel 		= {};
-					
 					//
 					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
@@ -107,38 +101,19 @@
 					timedModelChanged();
 					
 					
-					
+					//an initial model as suggestion :
 					function initEasyFormGeneratorModel(){
 						var initModel = {
 							formName      		: 'DemoForm',
 							btnSubmitText 		: 'I Confirm',
 							btnCancelText 		: 'I give up',
-							edaFieldsModel   	:	emptyEdaFieldsModel(),
+							edaFieldsModel   	:	[],
 							formlyFieldsModel : {},							
 							dataModel     		: {}							
 						};
 						return initModel;
 					}
 					
-					function emptyEdaFieldsModel(){
-						var emptyModel = [
-							{
-								"line": 1,
-								"activeColumn": 1,
-								"columns": [
-									{
-										"numColumn": 1,
-										"exist": true,
-										"control": {
-											"type": "none",
-											"key": "none"
-										}
-									}
-								]
-							}
-						];
-						return emptyModel;
-					}
 					
 					function timedModelChanged(){
 						$timeout(function(){
