@@ -67,7 +67,7 @@
 			=============================================================-->
 			<eda-step-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
-						>
+						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
 			</eda-step-way-easy-form-gen>
 
 		</div>	
@@ -95,17 +95,60 @@
 					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
 	
+					//testing purpose : fields model :
+					demoCtrl.testHeader 				= testHeader();
+					demoCtrltestSubTitle 				= testSubTitle();
+					
+					demoCtrl.testADateInput 		= testADateInput();
+					demoCtrl.testtAnEmailInput 	= testtAnEmailInput();
+					
+					demoCtrl.testACompleteForm 	= testACompleteForm();
+					
+					
 					
 					//demo purpose, in 3 seconds a new form will be bound to easy form generator :
 					//magic happens then and you see the form described in the timeout  
 					timedModelChanged();
 					
+				
+				
+				
+					
+					/**
+					 * when click on save form, will call your save form function :
+					 */
+					function saveForm(easyFormGeneratorModel){
+						console.info('-> can handle save models to database here (your controller)');	
+						console.dir({
+								'easyFormGeneratorModel' : easyFormGeneratorModel
+						});
+						
+						//_ You can save to your database _
+						//1- just JSON.stringify these models
+						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
+						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
+						
+						
+						//2- send all to your database -> it is done!
+						//var formnameToSave 					= demoCtrl.FormNameAsTest;
+						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
+					}				
+				
 					
 					
 					/**
 					 * as suggestion : returns an initial model
 					 * 
-					 * otherwise
+					 * it shows easy form generator properties 
+					 * - formName 					: {string} (at save step you name your form)
+					 * - btnSubmitText 			: {string} (if 'Submit' does not suits to you change submit button name)
+					 * - btnCancelText			: {string} (if 'Cancel' does not suits to you change cancel button name)
+					 * - edaFieldsModel 		: {array} - easy form generator model that describe form
+					 * - formlyFieldsModel 	: {object} - easy form generator model translate by itself 'edaFieldsModel' to 'angular formly fields model' -> usefull is you just need a formly model 
+					 * - dataModel					: {object} - pre-populate your form - this object is filled when filling form. 
+					 * 
+					 * if you don't need to pre-populate easy form generator just init an empty object.
+					 * (NOTE : if you only need to create forms : save event will bring you easy form generator model)
 					 */
 					function initEasyFormGeneratorModel(){
 						var initModel = {
@@ -132,7 +175,7 @@
 						}, 3000);
 					}
 					/**
-					 * VALUDATION CONTROL BY CONTROL
+					 * VALUDATION CONTROL BY CONTROL (SUMMARY)
 					 * - header 	: OK
 					 * - subtitle : OK
 					 * - date 		: OK
@@ -145,7 +188,7 @@
 					 * something's wrong with email
 					 * NEED TO FIX
 					 */
-					function textAnEmailInput(){
+					function testtAnEmailInput(){
 						var emailForm = [
 							{
 								"line": 1,
@@ -285,12 +328,12 @@
 								]
 							}
 						];
-	return dateInput;
+						return dateInput;
 					}
 					
 					
 					function testACompleteForm(){
-						var passWordInputModel =  [
+						var _passWordInputModel =  [
 							{
 								"line": 1,
 								"activeColumn": 1,
@@ -495,35 +538,11 @@
 									}
 								]
 							}
-					
-					
-					
-					
-
 						]
-						return passWordInputModel;
+						return _passWordInputModel;
 					}
-					/**
-					 * when click on save form, will call your save form function :
-					 */
-					function saveForm(easyFormGeneratorModel){
-						
-						console.info('-> can handle save models to database here (your controller)');
-						
-						console.dir({
-								'easyFormGeneratorModel' : easyFormGeneratorModel
-						});
-						
-						//_ You can save to your database _
-						//1- just JSON.stringify these models
-						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
-						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
-						
-						
-						//2- send all to your database -> it is done!
-						//var formnameToSave 					= demoCtrl.FormNameAsTest;
-						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
-					}
+					
+					
 					
 					
 				}		
