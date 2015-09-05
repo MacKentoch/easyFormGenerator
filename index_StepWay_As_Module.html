@@ -67,7 +67,7 @@
 			=============================================================-->
 			<eda-step-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
-						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
+						>
 			</eda-step-way-easy-form-gen>
 
 		</div>	
@@ -91,17 +91,22 @@
 				demoController.$inject = ['$timeout'];	
 				function demoController($timeout){
 					var demoCtrl = this;
-					//
+
 					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
-					
+	
 					
 					//demo purpose, in 3 seconds a new form will be bound to easy form generator :
 					//magic happens then and you see the form described in the timeout  
 					timedModelChanged();
 					
 					
-					//an initial model as suggestion :
+					
+					/**
+					 * as suggestion : returns an initial model
+					 * 
+					 * otherwise
+					 */
 					function initEasyFormGeneratorModel(){
 						var initModel = {
 							formName      		: 'DemoForm',

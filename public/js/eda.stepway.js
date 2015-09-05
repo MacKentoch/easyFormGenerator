@@ -1382,9 +1382,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			return directive;
 			
 			function linkFct(scope, element, attrs){
-         
-         
-                 
+              
           //watch "scope.easyFormGeneratorModel"
           scope.$watch(watchEdaEasyFormModelExpression, 
             watchEdaEasyFormModelHasChanged, 
@@ -1393,6 +1391,14 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           //watch "scope.returnSaveEvent"" = catch saving form event  
 					scope.$watch(watchReturnSaveEventExpression, 
            watchReturnSaveEventhasChanged);	
+          
+          
+          
+          
+          
+          
+          
+          
           
           
           function returnAttributeConfigurationLinesIfNotEmpty(){
@@ -1477,20 +1483,22 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           
           
         function loadExistingConfigurationModel(){
-          var configlines = returnAttributeConfigurationLinesIfNotEmpty(); 
           
-          console.info('returnAttributeConfigurationLinesIfNotEmpty result :');
-          console.dir(configlines);
-          
-          scope.configurationLoaded = {};
-          formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
-          scope.configuration = angular.copy(scope.configurationLoaded);
-          formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
-          scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
-          scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
-          scope.configuration.formName              = scope.edaEasyFormGeneratorModel.formName;
-          scope.configuration.submitButtonText      = scope.edaEasyFormGeneratorModel.btnSubmitText; 
-          scope.configuration.cancelButtonText      = scope.edaEasyFormGeneratorModel.btnCancelText;  
+          if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
+            var configlines           = returnAttributeConfigurationLinesIfNotEmpty();           
+            scope.configurationLoaded = {};
+            
+            formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
+            scope.configuration = angular.copy(scope.configurationLoaded);
+            
+            formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
+            
+            scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
+            scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
+            scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
+            scope.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText) ? scope.edaEasyFormGeneratorModel.btnSubmitText : 'Submit'; 
+            scope.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText) ? scope.edaEasyFormGeneratorModel.btnCancelText : 'Cancel';
+          }  
         } 
          
          
