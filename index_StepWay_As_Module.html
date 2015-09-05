@@ -145,12 +145,21 @@
 							
 							demoCtrl
 								.easyFormGeneratorModel
-								.edaFieldsModel = textAnEmailInput();
+								.edaFieldsModel = testSubTitle();
 
 							console.info('timeout model change');
 							console.dir(demoCtrl.easyFormGeneratorModel);
 						}, 3000);
 					}
+					/**
+					 * VALUDATION CONTROL BY CONTROL
+					 * - header 	: OK
+					 * - subtitle : OK
+					 * - date 		: OK
+					 * - email 		: KO
+					 * 
+					 * 
+					 */
 					
 					/**
 					 * something's wrong with email
@@ -195,6 +204,109 @@
 						return emailForm;
 					}
 					
+					function testHeader(){
+						var headerInput =  [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "header",
+											"key": "header-1441457775359",
+											"selectedControl": "Header",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "test",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {},
+											"edited": true
+										}
+									}
+								]
+							}
+						]; 
+						return headerInput;
+					}
+					
+					function testSubTitle(){
+						var subtitleCtrl = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "subTitle",
+											"key": "subTitle-1441457936065",
+											"selectedControl": "Subtitle",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "",
+												"placeholder": "Subtitle for test",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return subtitleCtrl;
+						
+					}
+				
+					function testADateInput(){
+						var dateInput = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "datepicker",
+											"key": "datepicker-1441457561268",
+											"selectedControl": "Date",
+											"subtype": "",
+											"templateOptions": {
+												"label": "Date",
+												"required": true,
+												"description": "Date",
+												"placeholder": "",
+												"options": [],
+												"datepickerPopup": "dd-MMMM-yyyy"
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+	return dateInput;
+					}
 					
 					
 					function testACompleteForm(){
