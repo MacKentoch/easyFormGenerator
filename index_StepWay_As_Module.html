@@ -97,8 +97,10 @@
 	
 					//testing purpose : fields model :
 					demoCtrl.testHeader 				= testHeader();
-					demoCtrltestSubTitle 				= testSubTitle();
+					demoCtrl.testSubTitle 			= testSubTitle();
 					
+					demoCtrl.basicTextInput 		= basicTextInput();
+					demoCtrl.passwordInput 			= passwordInput();
 					demoCtrl.testADateInput 		= testADateInput();
 					demoCtrl.testtAnEmailInput 	= testtAnEmailInput();
 					
@@ -168,7 +170,7 @@
 							
 							demoCtrl
 								.easyFormGeneratorModel
-								.edaFieldsModel = testSubTitle();
+								.edaFieldsModel = demoCtrl.passwordInput;
 
 							console.info('timeout model change');
 							console.dir(demoCtrl.easyFormGeneratorModel);
@@ -176,13 +178,86 @@
 					}
 					/**
 					 * VALUDATION CONTROL BY CONTROL (SUMMARY)
-					 * - header 	: OK
-					 * - subtitle : OK
-					 * - date 		: OK
-					 * - email 		: KO
+					 * - header 					: OK
+					 * - subtitle 				: OK
+					 * - basic textinput 	: OK
+					 * - password input 	: OK
+					 * - date 						: OK
+					 * - email 						: KO
 					 * 
 					 * 
 					 */
+					
+					function basicTextInput(){
+						var _basicTextInput =  [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "input",
+											"key": "input-1441480221074",
+											"selectedControl": "TextInput",
+											"subtype": "",
+											"templateOptions": {
+												"label": "text input (basic)",
+												"required": true,
+												"description": "text input (basic)",
+												"placeholder": "text input (basic)",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _basicTextInput;
+						
+					}
+					
+					function passwordInput(){
+						var _passwordInput = 	[
+								{
+									"line": 1,
+									"activeColumn": 1,
+									"columns": [
+										{
+											"numColumn": 1,
+											"exist": true,
+											"control": {
+												"type": "input",
+												"key": "input-1441480929475",
+												"selectedControl": "Password",
+												"subtype": "password",
+												"templateOptions": {
+													"label": "password",
+													"required": true,
+													"description": "password",
+													"placeholder": "password",
+													"options": []
+												},
+												"formlyExpressionProperties": {},
+												"formlyValidators": {},
+												"formlyValidation": {
+													"messages": {}
+												},
+												"edited": true
+											}
+										}
+									]
+								}
+							];
+						return _passwordInput;
+					}
 					
 					/**
 					 * something's wrong with email
@@ -333,7 +408,7 @@
 					
 					
 					function testACompleteForm(){
-						var _passWordInputModel =  [
+						var _testACompleteForm =  [
 							{
 								"line": 1,
 								"activeColumn": 1,
@@ -539,7 +614,7 @@
 								]
 							}
 						]
-						return _passWordInputModel;
+						return _testACompleteForm;
 					}
 					
 					
