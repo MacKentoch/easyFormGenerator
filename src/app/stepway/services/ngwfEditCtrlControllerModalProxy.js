@@ -65,7 +65,6 @@
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&
@@ -89,7 +88,6 @@
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&
@@ -113,7 +111,6 @@
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&

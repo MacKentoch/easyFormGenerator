@@ -1328,7 +1328,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
  *  easy form generator directive (Step way)
  *  ------------------------------------------------------
  * 
- *  all easy form generator emebeded in a directive
+ *  all easy form generator embeded in a directive
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -1502,7 +1502,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
             
             formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
             /**
-             * rebind control properties :
+             * rebind special control properties :
              * 
              * formly expression properties
              * Validators
@@ -1512,10 +1512,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
             controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
             controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
             
-            
+            //apply configuration model
             scope.configuration = angular.copy(scope.configurationLoaded);
             
-            
+            //apply formly model
             formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
             
             scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
@@ -2159,7 +2159,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&
@@ -2183,7 +2182,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&
@@ -2207,7 +2205,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 					//iterates lines
 					angular.forEach(configurationModel.lines, function(line, indexLine){
 						angular.forEach(line.columns, function(column, controlIndex){
-							//console.dir(column.control);
 							var _controlsDefinition = getControlsDefinition();
 							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
 								if (column.control.type === aControl.formlyType &&

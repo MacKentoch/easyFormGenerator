@@ -67,7 +67,7 @@
 			=============================================================-->
 			<eda-step-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
-						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
+						eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
 			</eda-step-way-easy-form-gen>
 
 		</div>	
@@ -91,37 +91,109 @@
 				demoController.$inject = ['$timeout'];	
 				function demoController($timeout){
 					var demoCtrl = this;
-					
- 
-					demoCtrl.dataModel 					= {};
-					demoCtrl.formlyFieldsModel 	= {};
-					demoCtrl.edaFieldsModel 		= {};
-					
-					//
+
 					demoCtrl.easyFormGeneratorModel	  = initEasyFormGeneratorModel();
 					demoCtrl.saveForm = saveForm;
+	
+					//testing purpose : fields model :
+					demoCtrl.testHeader 				= testHeader();
+					demoCtrl.testSubTitle 			= testSubTitle();
+					
+					demoCtrl.basicTextInput 		= basicTextInput();
+					demoCtrl.passwordInput 			= passwordInput();
+					demoCtrl.testADateInput 		= testADateInput();
+					demoCtrl.testtAnEmailInput 	= testtAnEmailInput();
+					
+					demoCtrl.testtextArea 			= testtextArea(); 
+					demoCtrl.testRichText  			= testRichtext();
+					
+					demoCtrl.testRadio	 				= testRadio();
+					
+					demoCtrl.testCheckbox 			= testCheckbox();
+					
+					demoCtrl.testBasicSelect 		= testBasicSelect();
+					demoCtrl.testGroupedSelect 	= testGroupedSelect();  
+					
+					demoCtrl.testACompleteForm 	= testACompleteForm();
+					
 					
 					
 					//demo purpose, in 3 seconds a new form will be bound to easy form generator :
 					//magic happens then and you see the form described in the timeout  
 					timedModelChanged();
 					
+				
+				
+				
+					
+					/**
+					 * when click on save form, will call your save form function :
+					 */
+					function saveForm(easyFormGeneratorModel){
+						console.info('-> can handle save models to database here (your controller)');	
+						console.dir({
+								'easyFormGeneratorModel' : easyFormGeneratorModel
+						});
+						
+						//_ You can save to your database _
+						//1- just JSON.stringify these models
+						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
+						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
+						
+						
+						//2- send all to your database -> it is done!
+						//var formnameToSave 					= demoCtrl.FormNameAsTest;
+						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
+					}				
+				
 					
 					
+					/**
+					 * as suggestion : returns an initial model
+					 * 
+					 * it shows easy form generator properties 
+					 * - formName 					: {string} (at save step you name your form)
+					 * - btnSubmitText 			: {string} (if 'Submit' does not suits to you change submit button name)
+					 * - btnCancelText			: {string} (if 'Cancel' does not suits to you change cancel button name)
+					 * - edaFieldsModel 		: {array} - easy form generator model that describe form
+					 * - formlyFieldsModel 	: {object} - easy form generator model translate by itself 'edaFieldsModel' to 'angular formly fields model' -> usefull is you just need a formly model 
+					 * - dataModel					: {object} - pre-populate your form - this object is filled when filling form. 
+					 * 
+					 * if you don't need to pre-populate easy form generator just init an empty object.
+					 * (NOTE : if you only need to create forms : save event will bring you easy form generator model)
+					 */
 					function initEasyFormGeneratorModel(){
 						var initModel = {
 							formName      		: 'DemoForm',
 							btnSubmitText 		: 'I Confirm',
 							btnCancelText 		: 'I give up',
-							edaFieldsModel   	:	emptyEdaFieldsModel(),
+							edaFieldsModel   	:	[],
 							formlyFieldsModel : {},							
 							dataModel     		: {}							
 						};
 						return initModel;
 					}
 					
-					function emptyEdaFieldsModel(){
-						var emptyModel = [
+					
+					function timedModelChanged(){
+						$timeout(function(){
+							
+							demoCtrl
+								.easyFormGeneratorModel
+								.edaFieldsModel = demoCtrl.testACompleteForm;//testFromStringifiedModel();
+
+							console.info('timeout model change');
+							console.dir(demoCtrl.easyFormGeneratorModel);
+						}, 3000);
+					}
+					
+					function testFromStringifiedModel(){
+						var stringifiedModel = '[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"header","key":"header-1441426238190","selectedControl":"Header","subtype":"","templateOptions":{"label":"","required":false,"description":"Anther Loaded Form","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"input","key":"input-1441426278314","selectedControl":"TextInput","subtype":"","templateOptions":{"label":"text input","required":true,"description":"text input","placeholder":"text input","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":2,"exist":true,"control":{"type":"input","key":"input-1441426295927","selectedControl":"Password","subtype":"password","templateOptions":{"label":"password","required":true,"description":"password","placeholder":"password","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":3,"exist":true,"control":{"type":"input","key":"input-1441426313388","selectedControl":"Email","subtype":"email","templateOptions":{"label":"email","required":true,"description":"email","placeholder":"email","options":[]},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"datepicker","key":"datepicker-1441426325143","selectedControl":"Date","subtype":"","templateOptions":{"label":"date","required":true,"description":"date","placeholder":"","options":[],"datepickerPopup":"dd-MMMM-yyyy"},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":2,"exist":true,"control":{"type":"basicSelect","key":"basicSelect-1441426346817","selectedControl":"BasicSelect","subtype":"","templateOptions":{"label":"","required":false,"description":"","placeholder":"","options":[{"name":"opt1","value":0,"group":""},{"name":"opt2","value":1,"group":""},{"name":"opt3","value":2,"group":""}]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"richEditor","key":"richEditor-1441426365355","selectedControl":"RichTextEditor","subtype":"","templateOptions":{"label":"","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}}]}]';
+						return angular.fromJson(stringifiedModel);
+					}
+					
+					function testGroupedSelect(){
+						var _testGroupedSelect = [
 							{
 								"line": 1,
 								"activeColumn": 1,
@@ -130,21 +202,382 @@
 										"numColumn": 1,
 										"exist": true,
 										"control": {
-											"type": "none",
-											"key": "none"
+											"type": "groupedSelect",
+											"key": "groupedSelect-1441513522442",
+											"selectedControl": "GroupedSelect",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "grouped select",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "option1",
+														"value": 0,
+														"group": "group1"
+													},
+													{
+														"name": "option2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "option3",
+														"value": 2,
+														"group": "group2"
+													},
+													{
+														"name": "option4",
+														"value": 3,
+														"group": "group2"
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
 										}
 									}
 								]
 							}
 						];
-						return emptyModel;
+						return _testGroupedSelect;
 					}
 					
-					function timedModelChanged(){
-						$timeout(function(){
-							
-							demoCtrl.easyFormGeneratorModel.edaFieldsModel = [
-
+					function testBasicSelect(){
+						var _testBasicSelect = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "basicSelect",
+											"key": "basicSelect-1441513356472",
+											"selectedControl": "BasicSelect",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "basic select",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "option1",
+														"value": 0,
+														"group": ""
+													},
+													{
+														"name": "option2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "option3",
+														"value": 2,
+														"group": ""
+													},
+													{
+														"name": "option4",
+														"value": 3,
+														"group": ""
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testBasicSelect;
+					}
+					
+					function testCheckbox(){
+						var _testCheckbox =	[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "checkbox",
+											"key": "checkbox-1441513188923",
+											"selectedControl": "Checkbox",
+											"subtype": "",
+											"templateOptions": {
+												"label": "checkbox",
+												"required": true,
+												"description": "checkbox",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testCheckbox;
+					}
+					
+					function basicTextInput(){
+						var _basicTextInput =  [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "input",
+											"key": "input-1441480221074",
+											"selectedControl": "TextInput",
+											"subtype": "",
+											"templateOptions": {
+												"label": "text input (basic)",
+												"required": true,
+												"description": "text input (basic)",
+												"placeholder": "text input (basic)",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _basicTextInput;
+						
+					}
+					
+					function passwordInput(){
+						var _passwordInput = 	[
+								{
+									"line": 1,
+									"activeColumn": 1,
+									"columns": [
+										{
+											"numColumn": 1,
+											"exist": true,
+											"control": {
+												"type": "input",
+												"key": "input-1441480929475",
+												"selectedControl": "Password",
+												"subtype": "password",
+												"templateOptions": {
+													"label": "password",
+													"required": true,
+													"description": "password",
+													"placeholder": "password",
+													"options": []
+												},
+												"formlyExpressionProperties": {},
+												"formlyValidators": {},
+												"formlyValidation": {
+													"messages": {}
+												},
+												"edited": true
+											}
+										}
+									]
+								}
+							];
+						return _passwordInput;
+					}
+					
+					/**
+					 * something's wrong with email
+					 * NEED TO FIX
+					 */
+					function testtAnEmailInput(){
+						var emailForm = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "input",
+											"key": "input-1441457012642",
+											"selectedControl": "Email",
+											"subtype": "email",
+											"templateOptions": {
+												"label": "Email",
+												"required": true,
+												"description": "Email",
+												"placeholder": "Email",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {
+												"emailShape": {
+													"message": "$viewValue + ' is not a valid email'"
+												}
+											},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return emailForm;
+					}
+					
+					function testtextArea(){
+						var _testTextArea = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "textarea",
+											"key": "textarea-1441512437748",
+											"selectedControl": "Texarea",
+											"subtype": "",
+											"templateOptions": {
+												"label": "TextArea",
+												"required": true,
+												"description": "TextArea",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testTextArea;
+					}
+					
+					function testRichtext(){
+						var _testRichtext = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "richEditor",
+											"key": "richEditor-1441512657710",
+											"selectedControl": "RichTextEditor",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "rich text area",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testRichtext;
+					}
+					
+					function testRadio(){
+						var _testRadio = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "radio",
+											"key": "radio-1441512970266",
+											"selectedControl": "Radio",
+											"subtype": "",
+											"templateOptions": {
+												"label": "radio",
+												"required": true,
+												"description": "radio",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "choice1",
+														"value": 0,
+														"group": ""
+													},
+													{
+														"name": "choice2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "choice3",
+														"value": 2,
+														"group": ""
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testRadio;
+					}
+					
+					function testHeader(){
+						var headerInput =  [
 							{
 								"line": 1,
 								"activeColumn": 1,
@@ -154,13 +587,118 @@
 										"exist": true,
 										"control": {
 											"type": "header",
-											"key": "header-1441306293883",
+											"key": "header-1441457775359",
 											"selectedControl": "Header",
 											"subtype": "",
 											"templateOptions": {
 												"label": "",
 												"required": false,
-												"description": "This form has just been loaded",
+												"description": "test",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {},
+											"edited": true
+										}
+									}
+								]
+							}
+						]; 
+						return headerInput;
+					}
+					
+					function testSubTitle(){
+						var subtitleCtrl = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "subTitle",
+											"key": "subTitle-1441457936065",
+											"selectedControl": "Subtitle",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "",
+												"placeholder": "Subtitle for test",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return subtitleCtrl;
+						
+					}
+				
+					function testADateInput(){
+						var dateInput = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "datepicker",
+											"key": "datepicker-1441457561268",
+											"selectedControl": "Date",
+											"subtype": "",
+											"templateOptions": {
+												"label": "Date",
+												"required": true,
+												"description": "Date",
+												"placeholder": "",
+												"options": [],
+												"datepickerPopup": "dd-MMMM-yyyy"
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return dateInput;
+					}
+					
+					
+					function testACompleteForm(){
+						var _testACompleteForm =  [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "header",
+											"key": "header-1441426238190",
+											"selectedControl": "Header",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "Anther Loaded Form",
 												"placeholder": "",
 												"options": []
 											},
@@ -181,14 +719,14 @@
 										"exist": true,
 										"control": {
 											"type": "input",
-											"key": "input-1441306950364",
+											"key": "input-1441426278314",
 											"selectedControl": "TextInput",
 											"subtype": "",
 											"templateOptions": {
 												"label": "text input",
 												"required": true,
 												"description": "text input",
-												"placeholder": "",
+												"placeholder": "text input",
 												"options": []
 											},
 											"formlyExpressionProperties": {},
@@ -203,17 +741,112 @@
 										"numColumn": 2,
 										"exist": true,
 										"control": {
+											"type": "input",
+											"key": "input-1441426295927",
+											"selectedControl": "Password",
+											"subtype": "password",
+											"templateOptions": {
+												"label": "password",
+												"required": true,
+												"description": "password",
+												"placeholder": "password",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									},
+									{
+										"numColumn": 3,
+										"exist": true,
+										"control": {
+											"type": "input",
+											"key": "input-1441426313388",
+											"selectedControl": "Email",
+											"subtype": "email",
+											"templateOptions": {
+												"label": "email",
+												"required": true,
+												"description": "email",
+												"placeholder": "email",
+												"options": []
+											},
+											// "formlyExpressionProperties": {},
+											// "formlyValidators": {
+											// 	"emailShape": {
+											// 		"message": "$viewValue + ' is not a valid email'"
+											// 	}
+											// },
+											// "formlyValidation": {
+											// 	"messages": {}
+											// },
+											"edited": true
+										}
+									}
+								]
+							},
+							{
+								"line": -1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
 											"type": "datepicker",
-											"key": "datepicker-1441306350290",
+											"key": "datepicker-1441426325143",
 											"selectedControl": "Date",
 											"subtype": "",
 											"templateOptions": {
-												"label": "A date",
-												"required": false,
-												"description": "Simple date",
+												"label": "date",
+												"required": true,
+												"description": "date",
 												"placeholder": "",
 												"options": [],
-												"datepickerPopup": "dd.MM.yyyy"
+												"datepickerPopup": "dd-MMMM-yyyy"
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									},
+									{
+										"numColumn": 2,
+										"exist": true,
+										"control": {
+											"type": "basicSelect",
+											"key": "basicSelect-1441426346817",
+											"selectedControl": "BasicSelect",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "opt1",
+														"value": 0,
+														"group": ""
+													},
+													{
+														"name": "opt2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "opt3",
+														"value": 2,
+														"group": ""
+													}
+												]
 											},
 											"formlyExpressionProperties": {},
 											"formlyValidators": {},
@@ -234,13 +867,13 @@
 										"exist": true,
 										"control": {
 											"type": "richEditor",
-											"key": "richEditor-1441306371493",
+											"key": "richEditor-1441426365355",
 											"selectedControl": "RichTextEditor",
 											"subtype": "",
 											"templateOptions": {
 												"label": "",
 												"required": false,
-												"description": "Rich text editor",
+												"description": "",
 												"placeholder": "",
 												"options": []
 											},
@@ -254,35 +887,11 @@
 									}
 								]
 							}
-								
-							
-							];
-							console.info('timeout model change');
-							console.dir(demoCtrl.easyFormGeneratorModel);
-						}, 3000);
+						]
+						return _testACompleteForm;
 					}
 					
-					/**
-					 * when click on save form, will call your save form function :
-					 */
-					function saveForm(easyFormGeneratorModel){
-						
-						console.info('-> can handle save models to database here (your controller)');
-						
-						console.dir({
-								'easyFormGeneratorModel' : easyFormGeneratorModel
-						});
-						
-						//_ You can save to your database _
-						//1- just JSON.stringify these models
-						//var stringifiedFieldsModel 	= JSON.stringify(easyFormModel.fieldsModel);
-						//var stringifiedDataModel 		= JSON.stringify(easyFormModel.dataModel);
-						
-						
-						//2- send all to your database -> it is done!
-						//var formnameToSave 					= demoCtrl.FormNameAsTest;
-						//var submitButtonTextTosave 	= demoCtrl.FormNameAsTest;
-					}
+					
 					
 					
 				}		

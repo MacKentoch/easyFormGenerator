@@ -3,7 +3,7 @@
  *  easy form generator directive (Step way)
  *  ------------------------------------------------------
  * 
- *  all easy form generator emebeded in a directive
+ *  all easy form generator embeded in a directive
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -177,7 +177,7 @@
             
             formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
             /**
-             * rebind control properties :
+             * rebind special control properties :
              * 
              * formly expression properties
              * Validators
@@ -187,10 +187,10 @@
             controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
             controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
             
-            
+            //apply configuration model
             scope.configuration = angular.copy(scope.configurationLoaded);
             
-            
+            //apply formly model
             formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
             
             scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
