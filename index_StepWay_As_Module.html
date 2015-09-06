@@ -104,6 +104,16 @@
 					demoCtrl.testADateInput 		= testADateInput();
 					demoCtrl.testtAnEmailInput 	= testtAnEmailInput();
 					
+					demoCtrl.testtextArea 			= testtextArea(); 
+					demoCtrl.testRichText  			= testRichtext();
+					
+					demoCtrl.testRadio	 				= testRadio();
+					
+					demoCtrl.testCheckbox 			= testCheckbox();
+					
+					demoCtrl.testBasicSelect 		= testBasicSelect();
+					demoCtrl.testGroupedSelect 	= testGroupedSelect();  
+					
 					demoCtrl.testACompleteForm 	= testACompleteForm();
 					
 					
@@ -170,7 +180,7 @@
 							
 							demoCtrl
 								.easyFormGeneratorModel
-								.edaFieldsModel = demoCtrl.passwordInput;
+								.edaFieldsModel = demoCtrl.testGroupedSelect;
 
 							console.info('timeout model change');
 							console.dir(demoCtrl.easyFormGeneratorModel);
@@ -180,13 +190,171 @@
 					 * VALUDATION CONTROL BY CONTROL (SUMMARY)
 					 * - header 					: OK
 					 * - subtitle 				: OK
+					 * 
 					 * - basic textinput 	: OK
 					 * - password input 	: OK
 					 * - date 						: OK
 					 * - email 						: KO
 					 * 
+					 * - textarea 				: OK
+					 * - rich text 				: OK
+					 * 
+					 * - radio 						: OK
+					 * 
+					 * - checkbox      		: OK
+					 * 
+					 * - select (basic) 	: OK
+					 * - grouped select 	: OK
 					 * 
 					 */
+					
+					function testGroupedSelect(){
+						var _testGroupedSelect = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "groupedSelect",
+											"key": "groupedSelect-1441513522442",
+											"selectedControl": "GroupedSelect",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "grouped select",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "option1",
+														"value": 0,
+														"group": "group1"
+													},
+													{
+														"name": "option2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "option3",
+														"value": 2,
+														"group": "group2"
+													},
+													{
+														"name": "option4",
+														"value": 3,
+														"group": "group2"
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testGroupedSelect;
+					}
+					
+					function testBasicSelect(){
+						var _testBasicSelect = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "basicSelect",
+											"key": "basicSelect-1441513356472",
+											"selectedControl": "BasicSelect",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "basic select",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "option1",
+														"value": 0,
+														"group": ""
+													},
+													{
+														"name": "option2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "option3",
+														"value": 2,
+														"group": ""
+													},
+													{
+														"name": "option4",
+														"value": 3,
+														"group": ""
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testBasicSelect;
+					}
+					
+					function testCheckbox(){
+						var _testCheckbox =	[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "checkbox",
+											"key": "checkbox-1441513188923",
+											"selectedControl": "Checkbox",
+											"subtype": "",
+											"templateOptions": {
+												"label": "checkbox",
+												"required": true,
+												"description": "checkbox",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testCheckbox;
+					}
 					
 					function basicTextInput(){
 						var _basicTextInput =  [
@@ -300,6 +468,128 @@
 							}
 						];
 						return emailForm;
+					}
+					
+					function testtextArea(){
+						var _testTextArea = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "textarea",
+											"key": "textarea-1441512437748",
+											"selectedControl": "Texarea",
+											"subtype": "",
+											"templateOptions": {
+												"label": "TextArea",
+												"required": true,
+												"description": "TextArea",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testTextArea;
+					}
+					
+					function testRichtext(){
+						var _testRichtext = [
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "richEditor",
+											"key": "richEditor-1441512657710",
+											"selectedControl": "RichTextEditor",
+											"subtype": "",
+											"templateOptions": {
+												"label": "",
+												"required": false,
+												"description": "rich text area",
+												"placeholder": "",
+												"options": []
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testRichtext;
+					}
+					
+					function testRadio(){
+						var _testRadio = 
+						[
+							{
+								"line": 1,
+								"activeColumn": 1,
+								"columns": [
+									{
+										"numColumn": 1,
+										"exist": true,
+										"control": {
+											"type": "radio",
+											"key": "radio-1441512970266",
+											"selectedControl": "Radio",
+											"subtype": "",
+											"templateOptions": {
+												"label": "radio",
+												"required": true,
+												"description": "radio",
+												"placeholder": "",
+												"options": [
+													{
+														"name": "choice1",
+														"value": 0,
+														"group": ""
+													},
+													{
+														"name": "choice2",
+														"value": 1,
+														"group": ""
+													},
+													{
+														"name": "choice3",
+														"value": 2,
+														"group": ""
+													}
+												]
+											},
+											"formlyExpressionProperties": {},
+											"formlyValidators": {},
+											"formlyValidation": {
+												"messages": {}
+											},
+											"edited": true
+										}
+									}
+								]
+							}
+						];
+						return _testRadio;
 					}
 					
 					function testHeader(){
