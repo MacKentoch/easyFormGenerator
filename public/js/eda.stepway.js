@@ -778,7 +778,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 
         
         var WfForm = new WfFormsByIdServices();
-        var formSavingIsOK = true;
+        
 
         WfForm.formName = $scope.configuration.formName;
         WfForm.submitButtonText = $scope.configuration.submitButtonText;
@@ -1955,7 +1955,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 
         
         var WfForm = new WfFormsByIdServices();
-        var formSavingIsOK = true;
 
         WfForm.formName = $scope.configuration.formName;
         WfForm.submitButtonText = $scope.configuration.submitButtonText;

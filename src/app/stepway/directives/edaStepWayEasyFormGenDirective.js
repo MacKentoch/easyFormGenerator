@@ -630,7 +630,6 @@
 
         
         var WfForm = new WfFormsByIdServices();
-        var formSavingIsOK = true;
 
         WfForm.formName = $scope.configuration.formName;
         WfForm.submitButtonText = $scope.configuration.submitButtonText;
