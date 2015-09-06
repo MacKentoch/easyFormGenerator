@@ -1,4 +1,4 @@
-#Easy form generator 
+#Easy form generator (AngularJS)
 
 [![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -15,6 +15,31 @@ An *example or preview* is always more talkative than *long speech*.
 Here is a form *YOU* could *generate* in just 1 minute (_I took time to add description, decoration etc... I could have been faster_) :
 
 ![preview.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
+
+______
+
+###Easy Form Generator : **Step way**
+
+`Step way version` is most accomplished and stable version. 
+- cross browser compatible 
+- responsive (*not sure it will be used a lot but you can create a form on your smartphone with step way version*).
+
+Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
+
+###Easy Form Generator : **drag an drop way**
+
+`Drag and drop way version` is more fun and faster to design a form
+- drag control then drop control
+- right click to open edit panel 
+
+Drag and drop way is still in development. 
+Major issues comes from browsers defferent behaviours.
+>`Chrome` will give you the best experience with drag and drop version. 
+
+have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
+
+______
+
 
 ##How to use?
 
