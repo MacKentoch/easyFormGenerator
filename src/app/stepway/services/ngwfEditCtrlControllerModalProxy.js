@@ -26,7 +26,11 @@
 				getNyASelectFromSelectedLineColumn 			: getNyASelectFromSelectedLineColumn,
 				bindConfigurationModelFromModalReturn 	: bindConfigurationModelFromModalReturn,
 				applyConfigToSelectedControl 						: applyConfigToSelectedControl,
-				resetTemporyConfig 											: resetTemporyConfig
+				resetTemporyConfig 											: resetTemporyConfig,
+				getControlsDefinition 									: getControlsDefinition,
+				refreshControlFormlyExpressionProperties: refreshControlFormlyExpressionProperties,
+				refreshControlFormlyValidators					: refreshControlFormlyValidators,
+				refreshControlFormlyValidation					: refreshControlFormlyValidation,
 			};
 			
 			return service;
@@ -36,6 +40,95 @@
 				return resetNyaSelect(nyaSelectObj);
 	    }
 
+			/**
+			 * get all controls definition (nyaSelectObj)
+			 * 
+			 * needed to bind these properties :
+			 * 
+			 * formlyExpressionProperties: {}, 
+			 * formlyValidators: {},
+			 * formlyValidation                       		
+			 */
+			function getControlsDefinition(){
+				var controls = {};
+				resetNyaSelect(controls);	
+				return controls;
+			}
+			
+			/**
+			 * loading forms will not be able to retrieve formlyExpressionProperties
+			 * -> here does the job
+			 */
+			function refreshControlFormlyExpressionProperties(configurationModel){
+				
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyExpressionProperties property											
+										column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+								}
+							});		
+						});
+					});
+				}
+				
+			}
+			/**
+			 * loading forms will not be able to retrieve formlyValidators
+			 * -> here does the job
+			 */			
+			function refreshControlFormlyValidators(configurationModel){
+				
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyValidators property											
+										column.control.formlyValidators = aControl.formlyValidators;
+								}
+							});		
+						});
+					});
+				}				
+				
+			}
+			/**
+			 * loading forms will not be able to retrieve formlyValidation
+			 * -> here does the job
+			 */			
+			function refreshControlFormlyValidation(configurationModel){
+			
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyValidation property											
+										column.control.formlyValidation = aControl.formlyValidation;
+								}
+							});		
+						});
+					});
+				}					
+				
+			}
+
+			
 	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	      resetNyaSelect(nyaSelectObj);
 	      /**

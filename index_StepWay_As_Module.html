@@ -67,7 +67,7 @@
 			=============================================================-->
 			<eda-step-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
-						eda-save-form-event="demoCtrl.saveForm(easyFormModel, formlyModel)">
+						eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
 			</eda-step-way-easy-form-gen>
 
 		</div>	
@@ -180,7 +180,7 @@
 							
 							demoCtrl
 								.easyFormGeneratorModel
-								.edaFieldsModel = demoCtrl.testGroupedSelect;
+								.edaFieldsModel = testFromStringifiedModel();//demoCtrl.testACompleteForm;
 
 							console.info('timeout model change');
 							console.dir(demoCtrl.easyFormGeneratorModel);
@@ -194,7 +194,7 @@
 					 * - basic textinput 	: OK
 					 * - password input 	: OK
 					 * - date 						: OK
-					 * - email 						: KO
+					 * - email 						: KO but OK if loaded from stringified - issue comes from expression/validators properties 
 					 * 
 					 * - textarea 				: OK
 					 * - rich text 				: OK
@@ -207,6 +207,11 @@
 					 * - grouped select 	: OK
 					 * 
 					 */
+					
+					function testFromStringifiedModel(){
+						var stringifiedModel = '[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"header","key":"header-1441426238190","selectedControl":"Header","subtype":"","templateOptions":{"label":"","required":false,"description":"Anther Loaded Form","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"input","key":"input-1441426278314","selectedControl":"TextInput","subtype":"","templateOptions":{"label":"text input","required":true,"description":"text input","placeholder":"text input","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":2,"exist":true,"control":{"type":"input","key":"input-1441426295927","selectedControl":"Password","subtype":"password","templateOptions":{"label":"password","required":true,"description":"password","placeholder":"password","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":3,"exist":true,"control":{"type":"input","key":"input-1441426313388","selectedControl":"Email","subtype":"email","templateOptions":{"label":"email","required":true,"description":"email","placeholder":"email","options":[]},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"datepicker","key":"datepicker-1441426325143","selectedControl":"Date","subtype":"","templateOptions":{"label":"date","required":true,"description":"date","placeholder":"","options":[],"datepickerPopup":"dd-MMMM-yyyy"},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}},{"numColumn":2,"exist":true,"control":{"type":"basicSelect","key":"basicSelect-1441426346817","selectedControl":"BasicSelect","subtype":"","templateOptions":{"label":"","required":false,"description":"","placeholder":"","options":[{"name":"opt1","value":0,"group":""},{"name":"opt2","value":1,"group":""},{"name":"opt3","value":2,"group":""}]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}}]},{"line":-1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"type":"richEditor","key":"richEditor-1441426365355","selectedControl":"RichTextEditor","subtype":"","templateOptions":{"label":"","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{"messages":{}},"edited":true}}]}]';
+						return angular.fromJson(stringifiedModel);
+					}
 					
 					function testGroupedSelect(){
 						var _testGroupedSelect = [
@@ -791,15 +796,15 @@
 												"placeholder": "email",
 												"options": []
 											},
-											"formlyExpressionProperties": {},
-											"formlyValidators": {
-												"emailShape": {
-													"message": "$viewValue + ' is not a valid email'"
-												}
-											},
-											"formlyValidation": {
-												"messages": {}
-											},
+											// "formlyExpressionProperties": {},
+											// "formlyValidators": {
+											// 	"emailShape": {
+											// 		"message": "$viewValue + ' is not a valid email'"
+											// 	}
+											// },
+											// "formlyValidation": {
+											// 	"messages": {}
+											// },
 											"edited": true
 										}
 									}

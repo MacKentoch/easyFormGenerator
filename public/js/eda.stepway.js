@@ -1342,9 +1342,17 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
 		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		edaStepWayEasyFormGen.$inject = ['$templateCache', '$timeout', 'formFieldManage'];
+		edaStepWayEasyFormGen.$inject = [
+      '$templateCache', 
+      '$timeout', 
+      'formFieldManage',
+      'controllerModalProxy'];
 		
-		function edaStepWayEasyFormGen($templateCache, $timeout, formFieldManage){
+		function edaStepWayEasyFormGen(
+      $templateCache, 
+      $timeout, 
+      formFieldManage,
+      controllerModalProxy){
       
       /**
        * directive's controller injection is here (before return directive) = to avoid minification errors
@@ -1470,6 +1478,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                 btnSubmitText     : scope.configuration.submitButtonText,
                 btnCancelText     : scope.configuration.cancelButtonText,
                 edaFieldsModel    : scope.configuration.lines,
+                //just as test
+                
+                edaFieldsModelStringified : angular.toJson(scope.configuration.lines),
+                
                 formlyFieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
                 dataModel         : scope.vm.model
               };
@@ -1489,7 +1501,20 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
             scope.configurationLoaded = {};
             
             formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
+            /**
+             * rebind control properties :
+             * 
+             * formly expression properties
+             * Validators
+             * Validation
+             */
+            controllerModalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+            controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
+            controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
+            
+            
             scope.configuration = angular.copy(scope.configurationLoaded);
+            
             
             formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
             
@@ -2095,7 +2120,11 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				getNyASelectFromSelectedLineColumn 			: getNyASelectFromSelectedLineColumn,
 				bindConfigurationModelFromModalReturn 	: bindConfigurationModelFromModalReturn,
 				applyConfigToSelectedControl 						: applyConfigToSelectedControl,
-				resetTemporyConfig 											: resetTemporyConfig
+				resetTemporyConfig 											: resetTemporyConfig,
+				getControlsDefinition 									: getControlsDefinition,
+				refreshControlFormlyExpressionProperties: refreshControlFormlyExpressionProperties,
+				refreshControlFormlyValidators					: refreshControlFormlyValidators,
+				refreshControlFormlyValidation					: refreshControlFormlyValidation,
 			};
 			
 			return service;
@@ -2105,6 +2134,95 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				return resetNyaSelect(nyaSelectObj);
 	    }
 
+			/**
+			 * get all controls definition (nyaSelectObj)
+			 * 
+			 * needed to bind these properties :
+			 * 
+			 * formlyExpressionProperties: {}, 
+			 * formlyValidators: {},
+			 * formlyValidation                       		
+			 */
+			function getControlsDefinition(){
+				var controls = {};
+				resetNyaSelect(controls);	
+				return controls;
+			}
+			
+			/**
+			 * loading forms will not be able to retrieve formlyExpressionProperties
+			 * -> here does the job
+			 */
+			function refreshControlFormlyExpressionProperties(configurationModel){
+				
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyExpressionProperties property											
+										column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+								}
+							});		
+						});
+					});
+				}
+				
+			}
+			/**
+			 * loading forms will not be able to retrieve formlyValidators
+			 * -> here does the job
+			 */			
+			function refreshControlFormlyValidators(configurationModel){
+				
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyValidators property											
+										column.control.formlyValidators = aControl.formlyValidators;
+								}
+							});		
+						});
+					});
+				}				
+				
+			}
+			/**
+			 * loading forms will not be able to retrieve formlyValidation
+			 * -> here does the job
+			 */			
+			function refreshControlFormlyValidation(configurationModel){
+			
+				if (angular.isObject(configurationModel)) {
+					//iterates lines
+					angular.forEach(configurationModel.lines, function(line, indexLine){
+						angular.forEach(line.columns, function(column, controlIndex){
+							//console.dir(column.control);
+							var _controlsDefinition = getControlsDefinition();
+							angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+								if (column.control.type === aControl.formlyType &&
+										column.control.subtype === aControl.formlySubtype) {
+										//----> update control formlyValidation property											
+										column.control.formlyValidation = aControl.formlyValidation;
+								}
+							});		
+						});
+					});
+				}					
+				
+			}
+
+			
 	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	      resetNyaSelect(nyaSelectObj);
 	      /**

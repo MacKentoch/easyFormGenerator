@@ -17,9 +17,17 @@
 		.module('ngwfApp.directives.edaStepWayEasyFormGenDirective', [])
 		.directive('edaStepWayEasyFormGen', edaStepWayEasyFormGen);
 		
-		edaStepWayEasyFormGen.$inject = ['$templateCache', '$timeout', 'formFieldManage'];
+		edaStepWayEasyFormGen.$inject = [
+      '$templateCache', 
+      '$timeout', 
+      'formFieldManage',
+      'controllerModalProxy'];
 		
-		function edaStepWayEasyFormGen($templateCache, $timeout, formFieldManage){
+		function edaStepWayEasyFormGen(
+      $templateCache, 
+      $timeout, 
+      formFieldManage,
+      controllerModalProxy){
       
       /**
        * directive's controller injection is here (before return directive) = to avoid minification errors
@@ -145,6 +153,10 @@
                 btnSubmitText     : scope.configuration.submitButtonText,
                 btnCancelText     : scope.configuration.cancelButtonText,
                 edaFieldsModel    : scope.configuration.lines,
+                //just as test
+                
+                edaFieldsModelStringified : angular.toJson(scope.configuration.lines),
+                
                 formlyFieldsModel : scope.vm.wfFormFieldsOnlyNeededProperties,
                 dataModel         : scope.vm.model
               };
@@ -164,7 +176,20 @@
             scope.configurationLoaded = {};
             
             formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
+            /**
+             * rebind control properties :
+             * 
+             * formly expression properties
+             * Validators
+             * Validation
+             */
+            controllerModalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+            controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
+            controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
+            
+            
             scope.configuration = angular.copy(scope.configurationLoaded);
+            
             
             formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
             
