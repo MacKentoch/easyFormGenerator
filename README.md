@@ -1,4 +1,4 @@
-#Easy form generator 
+#Easy form generator (AngularJS)
 
 [![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -9,40 +9,95 @@
 
 ##What is it?
 
-An *example or preview* is always more talkative than *long speech*.
+- Create forms *in a matter of minutes* :hourglass:
+  - (*you may not need to add "s" to minutes*).
+- *Don't limit* your form *to a single column* template 
+  - (up to 3 controls per line).
+- generated forms *use bootstrap* 
+  - (until now the most popular front end framework)
+- based on amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
+  - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
 
 
-Here is a form *YOU* could *generate* in just 1 minute (_I took time to add description, decoration etc... I could have been faster_) :
+______
 
-![preview.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
+###Easy Form Generator : **Step way**
+
+`Step way version` is the **most accomplished** and **stable version**. 
+- cross browser compatible 
+- responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
+- production friendly
+
+Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
+
+ - **Step way visual preview here** : 
+![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
+
+______
+
+###Easy Form Generator : **drag and drop way** (BETA)
+
+`Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
+- drag control then drop control
+- right click to open edit panel 
+
+Drag and drop way is still in development. 
+
+>`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
+
+have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
+
+- **Drag and drop way visual preview here** :
+![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
+______
+
 
 ##How to use?
 
-_EASY_ : 
+Bower and NPM packages are coming soon so right now (*which means around Sept. 2015*): 
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
- - launch `index.html` in your navigator
- - then you are ready to create forms
 
-_WANT EASIER WAY? OK_ :
 
-- no installation, no clone : just go here : [up to date — rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
+###Step way version (production friendly)
 
-_WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
-- learn about it, train, get a static html with your form you've just created : just go here : [easy form generator website](http://mackentoch.github.io/easyFormGenerator/)
+####All easy form generator just by this small html :
+```html
+<eda-step-way-easy-form-gen></eda-step-way-easy-form-gen>
+```
 
-##the :sparkles: (magic) behind
+####Want to Load/save models?
 
-`easyFormGenerator` gives you access to [angular formly](https://github.com/formly-js/angular-formly) fire power to create amazing forms. 
+Add these attributes to interact with your own controller : 
+- `eda-easy-form-generator-model` : attribute to bind your model
+- `eda-save-form-event` : attribute to bind save form event 
+```html
+<eda-step-way-easy-form-gen 	
+      eda-easy-form-generator-model="_MODEL_"
+      eda-save-form-event="_SAVE_FUNCTION_">
+</eda-step-way-easy-form-gen>
+```
 
-*Why angular formly? See yourself how powerfull it is* :
+####dependencies
 
-- [angular formly applications/examples](http://angular-formly.com)
-- [angular formly documentation](http://docs.angular-formly.com)
+Easy form generator creates bootstrap amazing form thanks to these dependencies :
+- angular formly (where all magic comes from) 
+- bootstrap (css/ jquery)
+- bootswatch (nice theme)
+- jquery
+- angular js (1.3.16 dev/tested)
+- ngAnimate + animate.css
+- textAngular (for rich text editor)
+- nya-bootstrap-select (for basic and grouped select)
+- angular toaster (nice toaster messages)
 
+
+______
 
 ## What is new?
+ 
+ -`step way versions` is now a module easier to interact with your application.  
 
  - :newspaper: `step way` : added `email` control
      + email entered must follow *an email pattern* (validation included)
@@ -52,20 +107,11 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
  
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
 
- - `drag and drop` alternative coming soon
-   - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/indexDragDrop.html))
-     
-    - NOTE :     
-     - open `indexDragDrop.html` in your navigator  : for `drag and drop` version
-     - see `index.html` in your navigator : for current version `step guided generator`
-
- - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
-
-
 
 ##What is coming next?
 
-- developing `drag and drop` alternative (I'm not joking when I tell you under :muscle: (heavy) developements )
+- creating bower, npm for `step way` version
+- developing / fixing browsers compatibility for `drag and drop` version 
 - adding more controls
 - adding more validations 
  - adding tests
