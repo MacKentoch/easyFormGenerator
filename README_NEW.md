@@ -16,16 +16,17 @@
 - generated form *uses bootstrap* 
   - (until now the most popular front end framework)
 - uses amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
-  - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand)
+  - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
 
 
 ______
 
 ###Easy Form Generator : **Step way**
 
-`Step way version` is most accomplished and stable version. 
+`Step way version` is the most accomplished and stable version. 
 - cross browser compatible 
-- responsive (*not sure it will be used a lot but you can create a form on your smartphone with the step way version*).
+- responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
+- production friendly
 
 Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
 
@@ -33,7 +34,7 @@ Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.c
 
 ______
 
-###Easy Form Generator : **drag and drop way**
+###Easy Form Generator : **drag and drop way** (BETA)
 
 `Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
 - drag control then drop control
