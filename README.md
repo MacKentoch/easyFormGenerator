@@ -57,10 +57,15 @@ ______
 Bower and NPM packages are coming soon so right now (*which means around Sept. 2015*): 
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
+ - check html in dist directory : 
+  - `index_DragDropWay.html` is the `drag drop way` (BETA)
+  - `index_StepWay.html` is the `step way` (full easy form html)
+  - `index_StepWay_As_module` is the `step way` (a module more production orientated) 
 
 
 ###Step way version (production friendly)
 
+>demo : `index_StepWay_As_module` in `dist` directory. 
 
 ####All easy form generator just by this small html :
 ```html
@@ -81,7 +86,7 @@ Add these attributes to interact with your own controller :
 
 ####dependencies
 
-Easy form generator creates bootstrap amazing form thanks to these dependencies :
+Easy form generator creates amazing bootstrap forms thanks to these dependencies :
 - angular formly (where all magic comes from) 
 - bootstrap (css/ jquery)
 - bootswatch (nice theme)
