@@ -9,13 +9,13 @@
 
 ##What is it?
 
-- Create forms *in a matter of minutes* 
+- Create forms *in a matter of minutes* :hourglass:
   - (*you may not need to add "s" to minutes*).
-- *Don't limit your form to a single column* — like you may often see with majority of form creator — 
-  - (*I spend so much time trying to find an angular form generator that could generate N columns that I finally found the best one was the `do it yourself` one*. Luckily, you won't need to make your own since I already did it for you).
-- generated form *uses bootstrap* 
+- *Don't limit* your form *to a single column* template 
+  - (up to 3 controls per line).
+- generated forms *use bootstrap* 
   - (until now the most popular front end framework)
-- uses amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
+- based on amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
   - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
 
 
@@ -61,6 +61,36 @@ Bower and NPM packages are coming soon so right now (*which means around Sept. 2
 
 ###Step way version (production friendly)
 
+
+####All easy form generator just by this small html :
+```html
+<eda-step-way-easy-form-gen></eda-step-way-easy-form-gen>
+```
+
+####Want to Load/save models?
+
+Add these attributes to interact with your own controller : 
+- `eda-easy-form-generator-model` : attribute to bind your model
+- `eda-save-form-event` : attribute to bind save form event 
+```html
+<eda-step-way-easy-form-gen 	
+      eda-easy-form-generator-model="_MODEL_"
+      eda-save-form-event="_SAVE_FUNCTION_">
+</eda-step-way-easy-form-gen>
+```
+
+####dependencies
+
+Easy form generator creates bootstrap amazing form thanks to these depencies :
+- angular formly (where all magic comes from) 
+- bootstrap (css/ jquery)
+- bootswatch (nice theme)
+- jquery
+- angular js (1.3.16 dev/tested)
+- ngAnimate + animate.css
+- textAngular (for rich text editor)
+- nya-bootstrap-select (for basic and grouped select)
+- angular toaster (nice toaster messages)
 
 
 ______
