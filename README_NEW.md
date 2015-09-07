@@ -25,7 +25,7 @@ ______
 
 `Step way version` is most accomplished and stable version. 
 - cross browser compatible 
-- responsive (*not sure it will be used a lot but you can create a form on your smartphone with step way version*).
+- responsive (*not sure it will be used a lot but you can create a form on your smartphone with the step way version*).
 
 Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
 
@@ -33,15 +33,15 @@ Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.c
 
 ______
 
-###Easy Form Generator : **drag an drop way**
+###Easy Form Generator : **drag and drop way**
 
-`Drag and drop way version` is more fun and faster to design a form
+`Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
 - drag control then drop control
 - right click to open edit panel 
 
 Drag and drop way is still in development. 
-Major issues comes from browsers defferent behaviours.
->`Chrome` will give you the best experience with drag and drop version. 
+
+>`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
 have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
 
@@ -67,17 +67,6 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 
 
-
-##the :sparkles: (magic) behind
-
-`easyFormGenerator` gives you access to [angular formly](https://github.com/formly-js/angular-formly) fire power to create amazing forms. 
-
-*Why angular formly? See yourself how powerfull it is* :
-
-- [angular formly applications/examples](http://angular-formly.com)
-- [angular formly documentation](http://docs.angular-formly.com)
-
-
 ## What is new?
 
  - :newspaper: `step way` : added `email` control
@@ -101,7 +90,8 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 ##What is coming next?
 
-- developing `drag and drop` alternative (I'm not joking when I tell you under :muscle: (heavy) developements )
+- creating bower, npm for `step way` version
+- developing / fixing browsers compatibility for `drag and drop` version 
 - adding more controls
 - adding more validations 
  - adding tests
