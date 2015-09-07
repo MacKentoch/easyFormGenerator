@@ -9,9 +9,9 @@
 
 ##What is it?
 
-- Create a form *in a matter of minutes* 
+- Create forms *in a matter of minutes* 
   - (*you may not need to add "s" to minutes*).
-- *Don't limit your form to a single column* — like you may often see when searching on the web — 
+- *Don't limit your form to a single column* — like you may often see with majority of form creator — 
   - (*I spend so much time trying to find an angular form generator that could generate N columns that I finally found the best one was the `do it yourself` one*. Luckily, you won't need to make your own since I already did it for you).
 - generated form *uses bootstrap* 
   - (until now the most popular front end framework)
@@ -30,6 +30,7 @@ ______
 
 Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
 
+ - **Step way visual preview here** : 
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
 
 ______
@@ -46,27 +47,23 @@ Drag and drop way is still in development.
 
 have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
 
+- **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
 ______
 
 
 ##How to use?
 
-_EASY_ : 
+Bower and NPM packages are coming soon so right now (*which means around Sept. 2015*): 
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
- - launch `index.html` in your navigator
- - then you are ready to create forms
-
-_WANT EASIER WAY? OK_ :
-
-- no installation, no clone : just go here : [up to date — rawgit link](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
-
-_WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
-
-- learn about it, train, get a static html with your form you've just created : just go here : [easy form generator website](http://mackentoch.github.io/easyFormGenerator/)
 
 
+###Step way version (production friendly)
+
+
+
+______
 
 ## What is new?
 
@@ -77,16 +74,6 @@ _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
      + preview :
  
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
-
- - `drag and drop` alternative coming soon
-   - under heavy developments (**preview daily UPDATED, see here :** [rawgit link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/indexDragDrop.html))
-     
-    - NOTE :     
-     - open `indexDragDrop.html` in your navigator  : for `drag and drop` version
-     - see `index.html` in your navigator : for current version `step guided generator`
-
- - added `anees` branch to show an example[ — rawgit link here — ](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/anees/index.html) for sharing formly models between multiple controllers
-
 
 
 ##What is coming next?
