@@ -49,6 +49,7 @@ have a try here : [Easy for generator **drag and drop way** version](https://cdn
 
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
+ 
 ______
 
 
