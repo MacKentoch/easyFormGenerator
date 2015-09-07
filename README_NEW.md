@@ -9,12 +9,15 @@
 
 ##What is it?
 
-An *example or preview* is always more talkative than *long speech*.
+- Create a form *in a matter of minutes* 
+  - (*you may not need to add "s" to minutes*).
+- *Don't limit your form to a single column* — like you may often see when searching on the web — 
+  - (*I spend so much time trying to find an angular form generator that could generate N columns that I finally found the best one was the `do it yourself` one*. Luckily, you won't need to make your own since I already did it for you).
+- generated form *uses bootstrap* 
+  - (until now the most popular front end framework)
+- uses amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
+  - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand)
 
-
-Here is a form *YOU* could *generate* in just 1 minute (_I took time to add description, decoration etc... I could have been faster_) :
-
-![preview.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
 
 ______
 
@@ -25,6 +28,10 @@ ______
 - responsive (*not sure it will be used a lot but you can create a form on your smartphone with step way version*).
 
 Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
+
+![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
+
+______
 
 ###Easy Form Generator : **drag an drop way**
 
@@ -38,6 +45,7 @@ Major issues comes from browsers defferent behaviours.
 
 have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
 
+![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
 ______
 
 
@@ -56,6 +64,9 @@ _WANT EASIER WAY? OK_ :
 _WANT EVEN EASIER WAY? OK LET'S CHECK EASY FORM GENERATOR WEBSITE_ :
 
 - learn about it, train, get a static html with your form you've just created : just go here : [easy form generator website](http://mackentoch.github.io/easyFormGenerator/)
+
+
+
 
 ##the :sparkles: (magic) behind
 
