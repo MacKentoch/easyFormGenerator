@@ -24,6 +24,9 @@
 ;(function(){
   'use strict';
 
+  //alias module to distinguish the drag and drop way
+  angular
+    .module('eda.easyformGen.stepway', ['ngwfApp']);
 
   angular
     .module('ngwfApp', [  

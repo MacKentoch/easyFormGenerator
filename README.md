@@ -68,6 +68,19 @@ Bower and NPM packages are coming soon so right now (*which means around Sept. 2
 
 >demo : `index_StepWay_As_module` in `dist` directory. 
 
+####Inject easy form generator in your app
+
+Just inject `eda.easyformGen.stepway` in you application :
+
+```javascript
+angular
+  .module('YOUR_APP', [
+    'eda.easyformGen.stepway' //injects easy form generator-step way
+  ])
+
+```
+
+
 ####All easy form generator just by this small html :
 ```html
 <eda-step-way-easy-form-gen></eda-step-way-easy-form-gen>
