@@ -39,7 +39,6 @@
       '$modal',
       '$log', 
       'formFieldManage',
-      'WfFormsByIdServices',
       'controllerModalProxy',
     ];
 
@@ -55,7 +54,6 @@
                                     $modal,
                                     $log, 
                                     formFieldManage, 
-                                    WfFormsByIdServices, 
                                     controllerModalProxy
                                     ){
       /*jshint validthis: true */
@@ -425,7 +423,7 @@
        *  - LOAD from database (list of forms)
        */
       function loadExistingFormsAsList(){
-        // $scope.formlyList = WfFormsByIdServices.query();
+        
       }
       /**
        * saveThisForm 
@@ -460,47 +458,7 @@
                 showCloseButton: true
         });
 
-        
-        var WfForm = new WfFormsByIdServices();
-        
-
-        WfForm.formName = $scope.configuration.formName;
-        WfForm.submitButtonText = $scope.configuration.submitButtonText;
-        WfForm.cancelButtonText = $scope.configuration.cancelButtonText;
-
-        WfForm.formlyField = JSON.stringify($scope.configuration.lines); 
-
-        //------------------------------------------------------------------------------------------------------
-        // UNCOMMENT TO MAKE IT SAVE TO DB 
-        // -> (assuming your service in WfFormsByIdServices is well configurered for your RESTfull server)
-        //------------------------------------------------------------------------------------------------------
-        // save to database here 
-        // WfForm.$save()
-        //             .then(function(res)  {    formSavingIsOK = true;    })
-        //             .catch(function(req) { 
-        //                                   toaster.clear();
-        //                                   formSavingIsOK = false; 
-        //                                   toaster.pop({
-        //                                           type: 'error',
-        //                                           timeout:2000,
-        //                                           title: 'Error while saving form',
-        //                                           body: 'Sorry, an Error occured while saving form.',                
-        //                                           showCloseButton: true
-        //                                     });
-        //             })
-        //             .finally(function()  { 
-        //                                   if (formSavingIsOK === true) {
-        //                                     toaster.clear();  
-        //                                     toaster.pop({
-        //                                             type: 'success',
-        //                                             timeout:2000,
-        //                                             title: 'Form is successfully saved',
-        //                                             body: '',                
-        //                                             showCloseButton: true
-        //                                       });                                         
-        //                                   }
-        //              });
-
+       
         toaster.clear();  
         toaster.pop({
                 type: 'info',

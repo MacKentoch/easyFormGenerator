@@ -18,7 +18,6 @@
 									'ngwfApp.services', [	
 																				'ngwfApp.services.formFieldManage',
 																				'ngwfApp.services.selectOptionManage',
-																				'ngwfApp.services.ngwfWfFormsServices',
 																				'ngwfApp.services.ngwfEditCtrlControllerModalProxy'
 																			]
 								);

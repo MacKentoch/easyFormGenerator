@@ -44,7 +44,6 @@
         '$modal',
         '$log', 
         'formFieldManage',
-        'WfFormsByIdServices',
         'controllerModalProxy',
       ];
       
@@ -221,8 +220,7 @@
                                     $timeout, 
                                     $modal,
                                     $log, 
-                                    formFieldManage, 
-                                    WfFormsByIdServices, 
+                                    formFieldManage,  
                                     controllerModalProxy
                                     ){
       /*jshint validthis: true */
@@ -271,8 +269,6 @@
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
       
-      //disabled here : to load list of saved formly fields from database
-      $scope.loadExistingFormsList    = loadExistingFormsAsList();
       $scope.formlyList               = {};
       $scope.previewLoadedForm        = { fieldsModel:[] };
       $scope.configurationLoaded      = {};   
@@ -285,11 +281,6 @@
 
 
       
-
-
-
-      //load formlyList on init
-      loadExistingFormsAsList();
 
       formFieldManage.initConfigurationEditFromScratch($scope.configuration);
 
@@ -586,15 +577,6 @@
       }            
 
 
-
-
-      /**
-       * loadExistingFormsAsList :
-       *  - LOAD from database (list of forms)
-       */
-      function loadExistingFormsAsList(){
-        // $scope.formlyList = WfFormsByIdServices.query();
-      }
       /**
        * saveThisForm 
        * - SAVE to database (current stringified configuration model === current form)
@@ -628,55 +610,10 @@
                 showCloseButton: true
         });
 
-        
-        var WfForm = new WfFormsByIdServices();
-
-        WfForm.formName = $scope.configuration.formName;
-        WfForm.submitButtonText = $scope.configuration.submitButtonText;
-        WfForm.cancelButtonText = $scope.configuration.cancelButtonText;
-
-        WfForm.formlyField = JSON.stringify($scope.configuration.lines); 
-
-        //------------------------------------------------------------------------------------------------------
-        // UNCOMMENT TO MAKE IT SAVE TO DB 
-        // -> (assuming your service in WfFormsByIdServices is well configurered for your RESTfull server)
-        //------------------------------------------------------------------------------------------------------
-        // save to database here 
-        // WfForm.$save()
-        //             .then(function(res)  {    formSavingIsOK = true;    })
-        //             .catch(function(req) { 
-        //                                   toaster.clear();
-        //                                   formSavingIsOK = false; 
-        //                                   toaster.pop({
-        //                                           type: 'error',
-        //                                           timeout:2000,
-        //                                           title: 'Error while saving form',
-        //                                           body: 'Sorry, an Error occured while saving form.',                
-        //                                           showCloseButton: true
-        //                                     });
-        //             })
-        //             .finally(function()  { 
-        //                                   if (formSavingIsOK === true) {
-        //                                     toaster.clear();  
-        //                                     toaster.pop({
-        //                                             type: 'success',
-        //                                             timeout:2000,
-        //                                             title: 'Form is successfully saved',
-        //                                             body: '',                
-        //                                             showCloseButton: true
-        //                                       });                                         
-        //                                   }
-        //              });
-
+       
         toaster.clear();  
         
-        // toaster.pop({
-        //         type: 'info',
-        //         timeout:2000,
-        //         title: 'Form would be saved if it were not a static example',
-        //         body: '',                
-        //         showCloseButton: true
-        //   }); 
+
         $scope.returnSaveEvent = true;
         return true;
       } 
