@@ -3,10 +3,10 @@
 
 'use strict';
 
-//////////////////////////////////////////////
-// ngwfWfEditController -  unit test
-//////////////////////////////////////////////
-describe('ngwfWfEditController', function() {
+/**
+ * controller : ngwfWfEditController -  unit test 
+ */
+describe('controller : ngwfWfEditController', function() {
     
   
     beforeEach(function(){
