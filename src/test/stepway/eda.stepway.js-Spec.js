@@ -1,9 +1,17 @@
 /* global inject */
+/// <reference path="../../../typings/jasmine/jasmine.d.ts" />
+
+'use strict';
+
 //////////////////////////////////////////////
 // ngwfWfEditController -  unit test
 //////////////////////////////////////////////
 describe('ngwfWfEditController', function() {
-    beforeEach(module('ngwfApp'));
+    
+  
+    beforeEach(function(){
+      module('ngwfApp')
+    });
 
     var $rootScope, $scope, $controller;
 
@@ -66,7 +74,7 @@ describe('ngwfWfEditController', function() {
         //reset scope.configuation before each 
         //inject formFieldManage service to initialize configuration model
         beforeEach(inject(function(_formFieldManage_){
-            formFieldManage = _formFieldManage_;
+            var formFieldManage = _formFieldManage_;
             $scope.configuration = {};
             formFieldManage.initConfigurationEditFromScratch($scope.configuration);          
         }));
@@ -93,7 +101,7 @@ describe('ngwfWfEditController', function() {
         //reset scope.configuation before each 
         //inject formFieldManage service to initialize configuration model
         beforeEach(inject(function(_formFieldManage_){
-            formFieldManage = _formFieldManage_;
+            var formFieldManage = _formFieldManage_;
             $scope.configuration = {};
             formFieldManage.initConfigurationEditFromScratch($scope.configuration);          
         }));
