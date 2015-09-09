@@ -7,6 +7,9 @@
   "installed": {
     "jquery/jquery.d.ts": {
       "commit": "de1bfe2c1de921da660cc17a5af1de6c095b35eb"
+    },
+    "angular-protractor/angular-protractor.d.ts": {
+      "commit": "b3aeee64552e324581fdbe0926f4a96e981e451b"
     }
   }
 }
