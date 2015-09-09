@@ -1,11 +1,20 @@
 {
   "name": "easy-form-generator",
-  "version": "1.0.8",
-  "authors": [
-    "Erwan DATIN (MacKentoch)"
+  "main": "dist/public/js/eda.stepway.js",
+  "version": "1.0.9",
+  "description": "create amazing forms without coding : form editor based on angular formly",
+  "keywords": [
+    "easy",
+    "form",
+    "generator",
+    "angular",
+    "formly"
   ],
   "license": "MIT",
-  "main": "dist/public/js/eda.stepway.js",
+  "homepage": "https://github.com/MacKentoch/easyFormGenerator",
+  "authors": [
+    "Erwan DATIN (MacKentoch)"
+  ],  
   "ignore": [
     "**/.*",
     "node_modules",
@@ -55,6 +64,5 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.4.1"
-  },
-  "homepage": "https://github.com/MacKentoch/easyFormGenerator"
+  }
 }
