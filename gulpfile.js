@@ -585,10 +585,7 @@ gulp.task('dist', [
 	//bower css
   gulp.src(gulpConfig.destDirs.app.css + '/*.css', {cwd: gulpConfig.base.root})
     .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
-		
-	//stepway demo html
-  gulp.src(gulpConfig.bower.html.stepway, {cwd: gulpConfig.base.root})
-    .pipe(gulp.dest(gulpConfig.base.distDir));				
+					
  })
  
  
