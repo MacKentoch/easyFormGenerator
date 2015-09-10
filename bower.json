@@ -1,6 +1,6 @@
 {
   "name": "easy-form-generator",
-  "main": "dist/public/js/eda.stepway.js",
+  "main": "./dist/public/js/eda.stepway.js",
   "version": "1.0.11",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
@@ -50,7 +50,7 @@
     "textAngular": "~1.4.1",
     "angular-loading-bar": "~0.7.1",
     "animate.css": "~3.2.6",
-    "angular-animate": "~1.3.15",
+    "angular-animate": "~1.3.x",
     "angularjs-toaster": "~0.4.13",
     "angular-bootstrap": "~0.13.0",
     "api-check": "~7.2.4",
@@ -58,7 +58,7 @@
     "angular-formly-templates-bootstrap": "~4.3.2",
     "nya-bootstrap-select": "~2.0.10",
     "lodash": "~3.9.3",
-    "angular-resource": "~1.3.15",    
+    "angular-resource": "~1.3.x",    
     "angular-strap": "~2.3.0"
   },
   "devDependencies": {
