@@ -34,6 +34,7 @@ var deleteLines 				= require('gulp-delete-lines');
 var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
 var sourcemaps 					= require('gulp-sourcemaps');
+var rename							= require('gulp-rename');
 
 
 
@@ -527,7 +528,8 @@ gulp.task('build:all', [
  * --------------------------------------------------------------------
  */
 gulp.task('dist', [
-'dist:copy'	
+//'dist:copy'
+'dist:uglify:app:js'	
 ]);
 
 
@@ -536,8 +538,8 @@ gulp.task('dist', [
  //public  - all content  
  gulp.task('dist:copy', 
 	 		[
-			 	'dist:clean', 
-				'dist:uglify:app:js'
+			 	'dist:clean'//, 
+				//'dist:uglify:app:js'
 			], 
 		 function(){
 	//all public dir	 
@@ -556,6 +558,9 @@ gulp.task('dist', [
  
  
  gulp.task('dist:uglify:app:js', 
+	 [
+		 'dist:copy'
+	 ],
 	 function(){
 	 
 	 var appJsFiles = [
@@ -566,14 +571,14 @@ gulp.task('dist', [
 	 //stepway js
 		gulp.src(appJsFiles[0], {cwd : './'})
 			.pipe(sourcemaps.init())
-			.pipe(concat(gulpConfig.destFiles.app.stepwayMin))
+			.pipe(rename({extname: '.min.js'}))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
 		//drag and drop js	
 		gulp.src(appJsFiles[1], {cwd : './'})
 			.pipe(sourcemaps.init())
-			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWayMin))
+			.pipe(rename({extname: '.min.js'}))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));			
