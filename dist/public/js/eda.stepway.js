@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.12 
+  *Version 1.0.13 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -36,7 +36,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.12')
+    .value('easyFormGenVersion', 'v1.0.13')
     .config(configfct);
 
 
