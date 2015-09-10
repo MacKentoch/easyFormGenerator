@@ -562,10 +562,19 @@ gulp.task('dist', [
 		  gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway.js,
 			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js
 	 ];
-	 console.info(appJsFiles);
-		gulp.src(appJsFiles, {cwd : './'})
+	 
+	 //stepway js
+		gulp.src(appJsFiles[0], {cwd : './'})
 			.pipe(sourcemaps.init())
+			.pipe(concat(gulpConfig.destFiles.app.stepwayMin))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
+		//drag and drop js	
+		gulp.src(appJsFiles[1], {cwd : './'})
+			.pipe(sourcemaps.init())
+			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWayMin))
+			.pipe(uglify())
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));			
  });

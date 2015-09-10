@@ -69,10 +69,18 @@ module.exports = {
 				js : 'eda.stepway.js',
 				css: 'eda.stepway.css',
 			},
+			stepwayMin 				: {
+				js : 'eda.stepway.min.js',
+				css: 'eda.stepway.min.css',
+			},			
 			dragAndDropWay 	: {
 				js : 'eda.dragdropway.js',
 				css: 'eda.dragdropway.css',
-			}
+			},
+			dragAndDropWayMin 	: {
+				js : 'eda.dragdropway.min.js',
+				css: 'eda.dragdropway.min.css',
+			}			
 		},
 		vendor : {
 			js 		: 'vendors.js',
