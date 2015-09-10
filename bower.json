@@ -1,7 +1,7 @@
 {
   "name": "easy-form-generator",
-  "main": "public/js/eda.stepway.js",
-  "version": "1.0.10",
+  "main": "dist/public/js/eda.stepway.js",
+  "version": "1.0.11",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
@@ -16,7 +16,6 @@
     "Erwan DATIN (MacKentoch)"
   ],  
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     ".settings",
@@ -42,7 +41,7 @@
     "tsd.json"
   ],
   "dependencies": {
-    "angular": "~1.3.15",
+    "angular": "~1.3.x",
     "bootstrap": "~3.3.5",
     "html5shiv": "~3.7.2",
     "modernizer": "~2.8.2",
