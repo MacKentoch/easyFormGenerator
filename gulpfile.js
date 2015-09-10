@@ -340,8 +340,7 @@ gulp.task('dragdropway:templatecache', function() {
 	//not minified
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
-		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
-		.pipe(cssmin())     
+		.pipe(concat(gulpConfig.destFiles.app.stepway.css))     
 		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))  
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 		
@@ -358,12 +357,22 @@ gulp.task('dragdropway:templatecache', function() {
  gulp.task('app:sass:dragdropway', 
 	 	['dragdropway:clean'], 
 		 function(){
+	
+	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
-		.pipe(cssmin())     
+		.pipe(cssmin()) 
+		.pipe(rename({extname: '.min.css'}))      
 		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
+	
+	//not minified	
+	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))      
+		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));		
 });
 
 
