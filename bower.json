@@ -1,7 +1,7 @@
 {
   "name": "easy-form-generator",
   "main": "public/js/eda.stepway.js",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
