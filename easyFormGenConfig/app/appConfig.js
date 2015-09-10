@@ -12,8 +12,8 @@ module.exports = {
 	
 	//easy form generator verioning
 	version : {
-		stepWay 				: '1.0.13',
-		dragAndDropWay 	: '1.0.13'
+		stepWay 				: '1.0.14',
+		dragAndDropWay 	: '1.0.14'
 	},
 	
 	concatVendorFiles : false

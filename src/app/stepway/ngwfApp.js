@@ -27,7 +27,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.13')
+    .value('easyFormGenVersion', 'v1.0.14')
     .config(configfct);
 
 
