@@ -327,12 +327,26 @@ gulp.task('dragdropway:templatecache', function() {
  gulp.task('app:sass:stepway', 
 	 	['stepway:clean'], 
 		 function(){
+			 
+	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
 		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
 		.pipe(cssmin())     
-		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))    
-		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));	 
+		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))
+		.pipe(rename({extname: '.min.css'}))    
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
+
+	//not minified
+	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
+		.pipe(cssmin())     
+		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))  
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
+		
+		
+			 
  });
  
 /**
