@@ -188,6 +188,11 @@ module.exports = {
 	
 		dragDropWayHtmlFile : {
 			name : 'index_DragDropWay.html'
+		},
+		
+		bower : {
+			js : 'js/',
+			css: 'css/'
 		}	
 	
 }

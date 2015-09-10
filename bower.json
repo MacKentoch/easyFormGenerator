@@ -24,6 +24,7 @@
     ".settings",
     "easyFormGenConfig",
     "./public",
+    "lib",
     "typings",
     "vendor",
     ".gitignore",

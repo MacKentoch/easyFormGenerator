@@ -123,7 +123,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - bootstrap (css/ jquery)
 - bootswatch (nice theme)
 - jquery
-- angular js (1.3.16 dev/tested)
+- angular js (1.3.X dev/tested)
 - ngAnimate + animate.css
 - textAngular (for rich text editor)
 - nya-bootstrap-select (for basic and grouped select)

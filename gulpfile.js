@@ -562,7 +562,7 @@ gulp.task('dist', [
  gulp.task('dist:copy', 
 	 		[
 			 	'dist:clean'//, 
-				//'dist:uglify:app:js'
+				
 			], 
 		 function(){
 	//all public dir	 
@@ -577,6 +577,14 @@ gulp.task('dist', [
 	//html files
 	gulp.src(indexHtmlFiles) 
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
+	
+	//bower js
+  gulp.src(gulpConfig.destDirs.app.js + '/*.js', {base : './'})
+    .pipe(gulp.dest(gulpConfig.bower.js ,{cwd: gulpConfig.base.root}));	
+		
+	//bower css
+  gulp.src(gulpConfig.destDirs.app.css + '/*.css', {base : './'})
+    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.root}));		
  })
  
  
