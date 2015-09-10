@@ -1,7 +1,10 @@
 {
   "name": "easy-form-generator",
-  "main": "./dist/public/js/eda.stepway.js",
-  "version": "1.0.11",
+  "main": [
+    "./dist/public/js/eda.stepway.js",
+    "./dist/public/css/eda.stepway.css"
+   ],
+  "version": "1.0.12",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
@@ -21,13 +24,10 @@
     ".settings",
     "easyFormGenConfig",
     "public",
-    "src",
     "typings",
     "vendor",
     ".gitignore",
     "bower.json",
-    "dragdropway_preview.png",
-    "emailAndValidation.png",
     "gulpfile.js",
     "index.html",
     "index_DragDropWay.html",
@@ -36,12 +36,10 @@
     "indexDragDrop.html",
     "karma.conf.js",
     "package.json",
-    "preview.png",
-    "README.md",
     "tsd.json"
   ],
   "dependencies": {
-    "angular": "~1.3.x",
+    "angular": "~1.3",
     "bootstrap": "~3.3.5",
     "html5shiv": "~3.7.2",
     "modernizer": "~2.8.2",
@@ -50,7 +48,7 @@
     "textAngular": "~1.4.1",
     "angular-loading-bar": "~0.7.1",
     "animate.css": "~3.2.6",
-    "angular-animate": "~1.3.x",
+    "angular-animate": "~1.3",
     "angularjs-toaster": "~0.4.13",
     "angular-bootstrap": "~0.13.0",
     "api-check": "~7.2.4",
@@ -58,7 +56,7 @@
     "angular-formly-templates-bootstrap": "~4.3.2",
     "nya-bootstrap-select": "~2.0.10",
     "lodash": "~3.9.3",
-    "angular-resource": "~1.3.x",    
+    "angular-resource": "~1.3",    
     "angular-strap": "~2.3.0"
   },
   "devDependencies": {
