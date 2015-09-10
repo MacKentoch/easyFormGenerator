@@ -579,12 +579,16 @@ gulp.task('dist', [
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
 	
 	//bower js
-  gulp.src(gulpConfig.destDirs.app.js + '/*.js', {base : './'})
-    .pipe(gulp.dest(gulpConfig.bower.js ,{cwd: gulpConfig.base.root}));	
+  gulp.src(gulpConfig.destDirs.app.js + '/*.js', {cwd: gulpConfig.base.root})
+    .pipe(gulp.dest(gulpConfig.bower.js ,{cwd: gulpConfig.base.distDir}));	
 		
 	//bower css
-  gulp.src(gulpConfig.destDirs.app.css + '/*.css', {base : './'})
-    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.root}));		
+  gulp.src(gulpConfig.destDirs.app.css + '/*.css', {cwd: gulpConfig.base.root})
+    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
+		
+	//stepway demo html
+  gulp.src(gulpConfig.bower.html.stepway, {cwd: gulpConfig.base.root})
+    .pipe(gulp.dest(gulpConfig.base.distDir));				
  })
  
  

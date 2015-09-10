@@ -192,7 +192,11 @@ module.exports = {
 		
 		bower : {
 			js : 'js/',
-			css: 'css/'
+			css: 'css/',
+			html : {
+				stepway : 'EasyFormGenerator-StepWay-DEMO.html',
+				dragdropway : ''
+			}
 		}	
 	
 }
