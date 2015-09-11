@@ -35,6 +35,7 @@ var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
 var sourcemaps 					= require('gulp-sourcemaps');
 var rename							= require('gulp-rename');
+var babel 							= require("gulp-babel")
 
 
 
