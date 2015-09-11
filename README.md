@@ -55,7 +55,23 @@ ______
 
 ##How to use?
 
-Bower and NPM packages are coming soon so right now (*which means around Sept. 2015*): 
+####Bower way :
+
+`bower install easy-form-generator`
+ 
+This way is super easy way since you will be installed all easy form generator dependencies.
+ 
+Then just launch `EasyFormGenerator-StepWay-DEMO.html` in your browser. You will find it in :
+  - bower_components/
+  - |__easy-form-generator/
+  - |____EasyFormGenerator-StepWay-DEMO.html
+
+Finally :
+>Inspire yourself from this demo (considering numerous dependencies it may help). 
+
+
+####Manual way
+ 
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
  - check html in dist directory : 
