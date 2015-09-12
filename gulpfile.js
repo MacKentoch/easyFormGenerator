@@ -513,6 +513,47 @@ gulp.task('app:js:dragdropway',
 
 
 
+/**
+ * -------------------------------
+ * APP JS TASKS (FORMVIEWER)
+ * -------------------------------
+ */
+gulp.task('app:js:formviewer', 
+		[
+			'formviewer:clean',
+			'formviewer:templatecache'
+		],  
+		function() {
+	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
+	if(appConfig.environment.current === 'PROD'){
+		//prod version
+		gulp.src(gulpConfig.srcFiles.app.formViewer.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(sourcemaps.init())	
+			.pipe(uglify()) 
+			.pipe(concat(gulpConfig.destFiles.app.formViewer.js))
+			.pipe(wrap(gulpConfig.decorate.formviewer.templateJS))
+			.pipe(sourcemaps.write('./'))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+		);
+	}else{
+		//dev version (no uglify/no source map)
+		gulp.src(gulpConfig.srcFiles.app.formViewer.js,
+						{cwd: gulpConfig.base.root})
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(concat(gulpConfig.destFiles.app.formViewer.js))
+			.pipe(wrap(gulpConfig.decorate.formviewer.templateJS))
+			.on('error', notify.onError(function (error) { return 'Error: ' + error.message;}))
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+		);
+	}
+
+});
+
 
 
 
