@@ -19,6 +19,7 @@
 		.module('eda.easyFormViewer', [
 			'textAngular',  
 			'formly',  
+			'ngAnimate',
 			'formlyBootstrap', 
 			'ui.bootstrap', 
 			'nya.bootstrap.select', 

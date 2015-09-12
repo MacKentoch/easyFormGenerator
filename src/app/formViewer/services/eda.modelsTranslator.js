@@ -67,10 +67,11 @@
 					angular.forEach(line.columns, function(column, controlIndex){
 						var _controlsDefinition = getControlsDefinition();
 						angular.forEach(_controlsDefinition.controls, function(aControl, aControlIndex){
+							
 							if (column.control.type === aControl.formlyType &&
 									column.control.subtype === aControl.formlySubtype) {
 									//----> update control formlyExpressionProperties property											
-									column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+									column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;									
 							}
 						});		
 					});

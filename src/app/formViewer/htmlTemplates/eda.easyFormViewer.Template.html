@@ -1,18 +1,16 @@
 <div class="easyFormViewer">
 	
 	<form 	ng-submit="vm.onSubmit()"
-					name="vm.form" novalidate> 
+					name="vm.form"> 
 		<formly-form 	model="vm.model" 
 									fields="vm.fields" 
-									options="vm.options" 
 									form="vm.form"> 
-									
-			<button type="submit" class="btn btn-primary submit-button pull-right" 
-							ng-disabled="vm.form.$invalid">{{vm.submitText}}</button>
 			
-			<button type="button" class="btn btn-primary pull-right" 
-							ng-click="vm.options.resetModel()">{{vm.cancelText}}</button>
-			
+			<div class="pull-right">
+				<button type="submit" class="btn btn-primary">{{vm.submitText}}</button>
+				<button type="button" class="btn btn-primary">{{vm.cancelText}}</button>				
+			</div>						
+
 		</formly-form> 
 	</form>
 
