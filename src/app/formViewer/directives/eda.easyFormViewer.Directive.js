@@ -53,22 +53,48 @@
 				
 				scope.vm.model 				= {};
 				scope.vm.fields 			= loadFieldsModel();
-				scope.vm.submitText 	= 'Submit';
-				scope.vm.cancelText 	= 'Cancel';	
+				scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
+				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
 				
-							
-				
+								
 				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
+				scope.$watch(submitBtnTextToWatch, submitBtnTextWatcher, true);
+				scope.$watch(cancelBtnTextToWatch, cancelBtnTextWatcher, true);
+				
 				
 				function fieldsModelToWatch(){
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
+				}
+
+				function submitBtnTextToWatch(){
+					return scope.edaEasyFormViewerSubmitButtonText;
+				}
+				
+				function cancelBtnTextToWatch(){
+					return scope.edaEasyFormViewerCancelButtonText;
 				}
 				
 				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){					
 					scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
 				}
 				
-
+				function submitBtnTextWatcher(newSubmitBtntext, oldSubmitBtntext){
+					if (newSubmitBtntext !== oldSubmitBtntext) {
+						scope.vm.submitText 	= newSubmitBtntext || 'Submit';	
+					}					
+				}				
+			
+				function cancelBtnTextWatcher(newCancelBtntext, oldCancelBtntext){
+					if (newCancelBtntext !== oldCancelBtntext) {
+						scope.vm.cancelText 	= newCancelBtntext || 'Submit';	
+					}					
+				}							
+			
+				/**
+				 * TODO : check if formly or easy form generato fields model
+				 * 
+				 * by default or if both -> easy for generator is chosen
+				 */
 				function loadFieldsModel(){
 					
 					var initialFieldsModel = angular
@@ -175,9 +201,7 @@
 				var vm = this;
 				//default :
 				vm.model 			= {};
-				vm.fields 			= {};
-				vm.submitText 	= 'Submit';
-				vm.cancelText 	= 'Cancel';				
+				vm.fields 			= {};			
 			}
 			
 			
