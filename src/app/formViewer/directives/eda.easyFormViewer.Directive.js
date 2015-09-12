@@ -51,8 +51,6 @@
 			 */
 			function linkFct(scope, element, attrs){
 				
-				console.info('edaEasyFormViewer directive loaded');
-
 				scope.vm.model 				= {};
 				scope.vm.fields 			= loadFieldsModel();
 				scope.vm.submitText 	= 'Submit';
@@ -66,12 +64,8 @@
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
 				}
 				
-				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){
-					console.info('fieldsModel Changed');
-					console.dir(newFieldsModel);
-					
+				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){					
 					scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
-					console.dir(scope.vm.fields);
 				}
 				
 
@@ -95,9 +89,6 @@
 						scope.configurationLoaded = {};
             
             modelsTranslator.bindConfigurationLines(scope.configurationLoaded,configlines);
-						
-						console.dir({'scope.configurationLoaded' : scope.configurationLoaded});
-						
             /**
              * rebind special control properties :
              * 

@@ -236,6 +236,10 @@ module.exports = {
 			name : 'index_DragDropWay.html'
 		},
 		
+		easyFormViewerHtmlFile : {
+			name : 'index_easyFormViewer_Module.html'
+		},		
+		
 		bower : {
 			js : 'js/',
 			css: 'css/',

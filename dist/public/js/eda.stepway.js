@@ -2065,7 +2065,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 								if (column.control.type === aControl.formlyType &&
 										column.control.subtype === aControl.formlySubtype) {
 										//----> update control formlyExpressionProperties property											
-										column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+										column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;										
 								}
 							});		
 						});
