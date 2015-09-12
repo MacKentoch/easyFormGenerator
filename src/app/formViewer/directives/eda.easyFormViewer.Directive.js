@@ -26,7 +26,11 @@
 				restrict : 'E',
 				scope : {
           edaEasyFormViewerDataModel 				: '=?',
-					edaEasyFormViewerfieldsModel 			: '=?',
+					edaEasyFormViewerFieldsModel 			: '=?',
+					
+					edaEasyFormViewerSubmitButtonText : '=?',
+					edaEasyFormViewerCancelButtonText : '=?',
+					
           edaEasyFormViewerSubmitFormEvent  : '&?',
 					edaEasyFormViewerCancelFormEvent	: '&?'
         },
