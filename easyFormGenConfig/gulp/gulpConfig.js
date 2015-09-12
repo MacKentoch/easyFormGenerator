@@ -25,6 +25,11 @@ module.exports = {
 				js 						: appFiles.dragdropway.js,
 				sass 					: 'src/sass/dragdropway/**/*.scss',
 				htmlTemplates : 'src/app/dragdropway/htmlTemplates/**/*.html'				
+			},
+			formViewer : {
+				js 						: appFiles.formviewer.js,
+				sass 					: 'src/sass/formviewer/**/*.scss',
+				htmlTemplates : 'src/app/stepway/htmlTemplates/**/*.html'			
 			}
 		},
 		bowerFiles : {
@@ -80,7 +85,15 @@ module.exports = {
 			dragAndDropWayMin 	: {
 				js : 'eda.dragdropway.min.js',
 				css: 'eda.dragdropway.min.css',
-			}			
+			},
+			formViewer 				: {
+				js : 'eda.easyFormViewer.js',
+				css: 'eda.easyFormViewer.css',
+			},
+			formViewerMin 				: {
+				js : 'eda.easyFormViewer.min.js',
+				css: 'eda.easyFormViewer.min.css',
+			},						
 		},
 		vendor : {
 			js 		: 'vendors.js',
@@ -113,7 +126,17 @@ module.exports = {
 				standAlone: false
 			}			
 		},		
-		
+		formViewer : {
+			sourceDir		: 'src/app/formviewer/htmlTemplates/',
+			sourceFiles : '**/*.html',
+			destDir 		: 'src/app/formviewer/core/',	
+			destFile		: 'eda.fv.templates.js',
+			options 		: {
+				module: 'eda.easyFormViewer',
+				root: '',
+				standAlone: false
+			}			
+		}		
 
 	},
 	
@@ -173,8 +196,31 @@ module.exports = {
 											'*/ \n' +
 											'\n<%= contents %>\n'
 										].join('') 
-			},				
-			
+			},			
+				
+			formviewer  : {
+			templateJS: [
+										'/** \n' , 
+										' *easyFormViewer \n',
+										' *Version ' +  appConfig.version.stepWay + ' \n',
+										' *Author : Erwan Datin (MacKentoch) \n', 
+										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
+										' *License : MIT (2015) \n',
+										'**/ \n',
+										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
+									].join(' '),
+		
+			templateCSS: 	[
+											'/*! \n' + 
+											' * easyFormViewer \n',
+											' * Version ' + appConfig.version.stepWay + ' \n' + 				
+											' * Author : Erwan Datin (MacKentoch) \n' +
+											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' + 
+											' * License : 2015 MIT \n' + 								
+											'*/ \n' +
+											'\n<%= contents %>\n'
+										].join('') 
+			},		
 			
 		},
 		

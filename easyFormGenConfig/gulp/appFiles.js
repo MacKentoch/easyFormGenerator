@@ -23,5 +23,14 @@ module.exports = {
 				'src/app/dragdropway/services/**/*.js',
 				'src/app/dragdropway/filters/**/*.js'			
 		]
-	}
+	},
+	formviewer : {
+			js : [
+				'src/app/formviewer/eda.easyFormViewer.js',
+				'src/app/formviewer/eda.easyFormViewer.config.js',
+				'src/app/formviewer/core/**/*.js',
+				'src/app/formviewer/directives/**/*.js',
+				'src/app/formviewer/services/**/*.js'
+			]
+	},	
 }

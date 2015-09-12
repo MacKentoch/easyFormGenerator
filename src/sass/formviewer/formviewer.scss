@@ -1,0 +1,10 @@
+@import "formviewer_var.scss";
+@import "formviewer_mixins.scss";
+
+body { 
+	margin: 20px;
+	font-family: $font-family-roboto;
+} 
+.formly-field { 
+	margin-bottom: 16px; 
+}
