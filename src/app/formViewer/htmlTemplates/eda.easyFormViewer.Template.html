@@ -7,8 +7,11 @@
 									form="vm.form"> 
 			
 			<div class="pull-right">
-				<button type="submit" class="btn btn-primary" ng-click="edaSubmitThisDataModel()">{{vm.submitText}}</button>
-				<button type="button" class="btn btn-primary" ng-click="edaCancelEvent()">{{vm.cancelText}}</button>				
+				<button type="submit" class="btn btn-primary" 
+								ng-disabled="vm.form.$invalid"
+								ng-click="vm.edaSubmitThisDataModel();">{{vm.submitText}}</button>
+				<button type="button" class="btn btn-primary" 
+								ng-click="vm.edaCancelEvent();">{{vm.cancelText}}</button>				
 			</div>						
 
 		</formly-form> 

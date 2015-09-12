@@ -239,7 +239,7 @@
 
 	
 })();
-angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCache) {$templateCache.put("eda.easyFormViewer.Template.html","<div class=easyFormViewer><form ng-submit=vm.onSubmit() name=vm.form><formly-form model=vm.model fields=vm.fields form=vm.form><div class=pull-right><button type=submit class=\"btn btn-primary\">{{vm.submitText}}</button> <button type=button class=\"btn btn-primary\">{{vm.cancelText}}</button></div></formly-form></form></div>");}]);
+angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCache) {$templateCache.put("eda.easyFormViewer.Template.html","<div class=easyFormViewer><form ng-submit=vm.onSubmit() name=vm.form><formly-form model=vm.model fields=vm.fields form=vm.form><div class=pull-right><button type=submit class=\"btn btn-primary\" ng-disabled=vm.form.$invalid ng-click=vm.edaSubmitThisDataModel();>{{vm.submitText}}</button> <button type=button class=\"btn btn-primary\" ng-click=vm.edaCancelEvent();>{{vm.cancelText}}</button></div></formly-form></form></div>");}]);
 /**
  *  -----------------------------------------------------------------------
  *   easy form viewer directive
@@ -295,22 +295,76 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 				
 				scope.vm.model 				= {};
 				scope.vm.fields 			= loadFieldsModel();
-				scope.vm.submitText 	= 'Submit';
-				scope.vm.cancelText 	= 'Cancel';	
+				scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
+				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
 				
-							
-				
-				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
+								
+				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
+				scope.$watch(submitBtnTextToWatch, 	submitBtnTextWatcher);
+				scope.$watch(cancelBtnTextToWatch, 	cancelBtnTextWatcher);
+				scope.$watch(submitEventToWatch, 		submitEventWatcher);
+				scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
 				
 				function fieldsModelToWatch(){
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
 				}
+
+				function submitBtnTextToWatch(){
+					return scope.edaEasyFormViewerSubmitButtonText;
+				}
+				
+				function cancelBtnTextToWatch(){
+					return scope.edaEasyFormViewerCancelButtonText;
+				}
+				
+				function submitEventToWatch(){
+					return scope.vm.hasJustSumitted;
+				}
+				
+				function cancelEventToWatch(){
+					return scope.vm.hasJustCancelled;
+				}				
 				
 				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){					
 					scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
 				}
 				
-
+				function submitBtnTextWatcher(newSubmitBtntext, oldSubmitBtntext){
+					if (newSubmitBtntext !== oldSubmitBtntext) {
+						scope.vm.submitText 	= newSubmitBtntext || 'Submit';	
+					}					
+				}				
+			
+				function cancelBtnTextWatcher(newCancelBtntext, oldCancelBtntext){
+					if (newCancelBtntext !== oldCancelBtntext) {
+						scope.vm.cancelText 	= newCancelBtntext || 'Submit';	
+					}					
+				}							
+			
+				function submitEventWatcher(newSubmitEvent, oldSubmitEvent){
+					if (newSubmitEvent === true) {
+							if (angular.isFunction(scope.edaEasyFormViewerSubmitFormEvent)) {
+								var _dataModelSubmitted = scope.vm.model ;
+								scope.edaEasyFormViewerSubmitFormEvent({ dataModelSubmitted : _dataModelSubmitted });
+							}
+					}
+					scope.vm.hasJustSumitted = false;					
+				}			
+			
+				function cancelEventWatcher(newCancelEvent, oldCancelEvent){
+					if (newCancelEvent === true) {
+							if (angular.isFunction(scope.edaEasyFormViewerCancelFormEvent)) {
+								scope.edaEasyFormViewerCancelFormEvent();
+							}
+					}
+					scope.vm.hasJustCancelled = false;					
+				}				
+			
+				/**
+				 * TODO : check if formly or easy form generato fields model
+				 * 
+				 * by default or if both -> easy for generator is chosen
+				 */
 				function loadFieldsModel(){
 					
 					var initialFieldsModel = angular
@@ -416,10 +470,20 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 				/* jshint validthis:true */
 				var vm = this;
 				//default :
-				vm.model 			= {};
-				vm.fields 			= {};
-				vm.submitText 	= 'Submit';
-				vm.cancelText 	= 'Cancel';				
+				vm.model 									= {};
+				vm.fields 								= {};
+				vm.hasJustSumitted 				= false;
+				vm.hasJustCancelled 			= false;
+				vm.edaSubmitThisDataModel = edaSubmitThisDataModel;
+				vm.edaCancelEvent 				= edaCancelEvent;
+				
+				function edaSubmitThisDataModel(){
+					vm.hasJustSumitted = true;
+				}
+				function edaCancelEvent(){
+					vm.hasJustCancelled = true;
+				}
+											
 			}
 			
 			

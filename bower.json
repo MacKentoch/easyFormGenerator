@@ -31,6 +31,7 @@
     "bower.json",
     "gulpfile.js",
     "index.html",
+    "index_easyFormViewer_Module.html",
     "indexDragDrop.html",
     "index_DragDropWay.html",
     "index_StepWay_As_Module.html",
