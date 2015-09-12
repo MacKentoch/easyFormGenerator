@@ -54,7 +54,7 @@
 				console.info('edaEasyFormViewer directive loaded');
 
 				scope.vm.model 				= {};
-				scope.vm.fields 			= initFieldsModel();
+				scope.vm.fields 			= loadFieldsModel();
 				scope.vm.submitText 	= 'Submit';
 				scope.vm.cancelText 	= 'Cancel';	
 				
@@ -63,17 +63,19 @@
 				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
 				
 				function fieldsModelToWatch(){
-					return scope.vm.fields;
+					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
 				}
 				
 				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){
 					console.info('fieldsModel Changed');
 					console.dir(newFieldsModel);
 					
-					loadExistingConfigurationModel();
+					scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
+					console.dir(scope.vm.fields);
 				}
 				
-				function initFieldsModel(){
+
+				function loadFieldsModel(){
 					
 					var initialFieldsModel = angular
 																		.isArray(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) ?
@@ -86,13 +88,16 @@
 				
         function loadExistingConfigurationModel(loadedFieldModel){
           
-          if(angular.isArray(scope.edaEasyFormGeneratorModel)){
-            var configlines           = returnAttributeConfigurationLinesIfNotEmpty(); 
-						var formlyFieldsModel 		= {};          
+          if(angular.isArray(loadedFieldModel)){
+            var configlines           = returnAttributeConfigurationLinesIfNotEmpty(loadedFieldModel); 
+						var formlyFieldsModel 		= [];          
             
 						scope.configurationLoaded = {};
             
             modelsTranslator.bindConfigurationLines(scope.configurationLoaded,configlines);
+						
+						console.dir({'scope.configurationLoaded' : scope.configurationLoaded});
+						
             /**
              * rebind special control properties :
              * 
@@ -116,11 +121,11 @@
 			  } 
 	
 	
-	        function returnAttributeConfigurationLinesIfNotEmpty(){
+	        function returnAttributeConfigurationLinesIfNotEmpty(loadedFieldModel){
             var edaEasyFormGeneratorModelToReturn = (
-                angular.isArray(scope.edaEasyFormGeneratorModel.edaFieldsModel) ?  ( 
-                    scope.edaEasyFormGeneratorModel.edaFieldsModel.length > 0 ? 
-                      scope.edaEasyFormGeneratorModel.edaFieldsModel 
+                angular.isArray(loadedFieldModel) ?  ( 
+                    loadedFieldModel.length > 0 ? 
+                      loadedFieldModel 
                     : emptyEdaFieldsModel()
                     ) 
                 : emptyEdaFieldsModel()
