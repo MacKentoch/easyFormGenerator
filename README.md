@@ -139,7 +139,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - bootstrap (css/ jquery)
 - bootswatch (nice theme)
 - jquery
-- angular js (1.3.X dev/tested)
+- angular js (>= 1.3.X dev/tested)
 - ngAnimate + animate.css
 - textAngular (for rich text editor)
 - nya-bootstrap-select (for basic and grouped select)
@@ -149,6 +149,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 ______
 
 ## What is new?
+ - `Fix applied in v1.0.17` : :bug: **[angular bootstrap modal animation issues when using angular > 1.3](https://github.com/angular-ui/bootstrap/issues/3633) ** — *backdrop won't disapear when closing modal* —. Waiting for fix, so untill fix is realeased modal animation is disabled to prevent this issue :disappointed_relieved:.
  
  - `step way versions` is now a module easier to interact with your application.  
 

@@ -55,7 +55,7 @@
     "angular-loading-bar": "~0.7.1",
     "animate.css": "~3.2.6",
     "angularjs-toaster": "~0.4.13",
-    "angular-bootstrap": "~0.13.0",
+    "angular-bootstrap": "~0.13.3",
     "api-check": "~7.2.4",
     "angular-formly": "~6.8.2",
     "angular-formly-templates-bootstrap": "~4.3.2",

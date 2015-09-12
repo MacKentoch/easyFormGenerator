@@ -415,8 +415,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.toggleAnimation = toggleAnimation;
 
       $scope.nyaSelect                = {};
-      
-      $scope.animationsEnabled        = true;
+      //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
+      //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
+      //-> disabling animation untill correction in angular bootstrap 
+      $scope.animationsEnabled        = false;
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -1549,8 +1551,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.toggleAnimation          = toggleAnimation;
 
       $scope.nyaSelect                = {};
-      
-      $scope.animationsEnabled        = true;
+      //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
+      //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
+      //-> disabling animation untill correction in angular bootstrap 
+      $scope.animationsEnabled        = false;
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
