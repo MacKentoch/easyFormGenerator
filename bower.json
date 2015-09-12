@@ -4,7 +4,7 @@
     "./dist/public/js/eda.stepway.js",
     "./dist/public/css/eda.stepway.css"
    ],
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
