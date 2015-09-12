@@ -22,7 +22,8 @@
 			'formlyBootstrap', 
 			'ui.bootstrap', 
 			'nya.bootstrap.select', 
-			'eda.easyFormViewer.Directive'		
+			'eda.easyFormViewer.Directive',
+			'eda.modelsTranslator.Service'		
 		]);
 	
 })();

@@ -216,14 +216,14 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 				restrict : 'E',
 				scope : {
 					
-          edaEasyFormViewerDataModel 				: '=?',
-					edaEasyFormViewerFieldsModel 			: '=?',
+          edaEasyFormViewerDataModel 										: '=?',
+					edaEasyFormViewerEasyFormGeneratorFieldsModel : '=?',
 					
-					edaEasyFormViewerSubmitButtonText : '=?',
-					edaEasyFormViewerCancelButtonText : '=?',
+					edaEasyFormViewerSubmitButtonText 						: '=?',
+					edaEasyFormViewerCancelButtonText 						: '=?',
 					
-          edaEasyFormViewerSubmitFormEvent  : '&?',
-					edaEasyFormViewerCancelFormEvent	: '&?'
+          edaEasyFormViewerSubmitFormEvent  						: '&?',
+					edaEasyFormViewerCancelFormEvent							: '&?'
         },
 				replace 			: false,
 				
@@ -236,15 +236,19 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 			return directive;
 			
 			
-			
+			/**
+			 * directive's link function
+			 */
 			function linkFct(scope, element, attrs){
 				
 				console.info('edaEasyFormViewer directive loaded');
 
-				scope.vm.model 			= {};
-				scope.vm.fields 			= {};
-				scope.vm.submitText 	= 'Submitjhkjh';
-				scope.vm.cancelText 	= 'Cancel';				
+				scope.vm.model 				= {};
+				scope.vm.fields 			= initFieldsModel();
+				scope.vm.submitText 	= 'Submit';
+				scope.vm.cancelText 	= 'Cancel';	
+				
+							
 				
 				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
 				
@@ -259,6 +263,15 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 					loadExistingConfigurationModel();
 				}
 				
+				function initFieldsModel(){
+					
+					var initialFieldsModel = angular
+																		.isArray(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) ?
+						scope.edaEasyFormViewerEasyFormGeneratorFieldsModel
+						: {};
+					
+					return initialFieldsModel;
+				}
 				
 				function loadExistingConfigurationModel(){
 					
@@ -270,7 +283,9 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 			 * directive's controller : controllerAs syntax
 			 */
 			function edaEasyFormViewerCtrl(){
+				/* jshint validthis:true */
 				var vm = this;
+				//default :
 				vm.model 			= {};
 				vm.fields 			= {};
 				vm.submitText 	= 'Submit';
