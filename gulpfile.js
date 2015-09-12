@@ -692,7 +692,8 @@ gulp.task('dist', [
 	 
 	 var appJsFiles = [
 		  gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway.js,
-			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js
+			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
+			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
 	 ];
 	 
 	 //stepway js
@@ -708,5 +709,12 @@ gulp.task('dist', [
 			.pipe(rename({extname: '.min.js'}))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));			
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
+		//formviewer  js	
+		gulp.src(appJsFiles[2], {cwd : './'})
+			.pipe(sourcemaps.init())
+			.pipe(rename({extname: '.min.js'}))
+			.pipe(uglify())
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));						
  });
