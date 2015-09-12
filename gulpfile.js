@@ -625,8 +625,10 @@ gulp.task('build:all', [
 						//app tasks
 						'app:sass:stepway',
 						'app:sass:dragdropway',
+						'app:sass:formviewer',
 						'app:js:stepway',
-						'app:js:dragdropway'
+						'app:js:dragdropway',
+						'app:js:formviewer'
 					 ], function(){
 						 console.info('building app + vendors. \concat vendors param set to : ' + appConfig.concatVendorFiles);
 					 });
