@@ -70,7 +70,7 @@
 				function demoController($timeout){
 					var demoCtrl = this;
 
-					demoCtrl.fieldsModel		= {};
+					demoCtrl.fieldsModel		= testACompleteForm();
 					demoCtrl.dataModel			= {};
 					
 					demoCtrl.submitButtonText = 'Submit this form';
@@ -83,7 +83,7 @@
 					//demo purpose only :
 					//in 3 seconds a new form will be bound to easy form generator : 
 					 
-					timedModelChanged();
+					//timedModelChanged();
 					
 				
 				
@@ -127,7 +127,7 @@
 
 							demoCtrl.fieldsModel = 	testACompleteForm();													
 
-							console.info('timeout : fields model changed');
+							console.info('timeout in demo controller : fields model changed');
 							console.dir(demoCtrl.fieldsModel);
 						}, 3000);
 					}
