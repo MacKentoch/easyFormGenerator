@@ -106,6 +106,13 @@ gulp.task('dragdropway:clean', function (cb) {
 		], cb);
 });
 
+//clean public : formviewer
+gulp.task('formviewer:clean', function (cb) {
+  del([
+		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.formViewer.js,
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.formViewer.css,
+		], cb);
+});
 
 
 
@@ -310,6 +317,17 @@ gulp.task('dragdropway:templatecache', function() {
         .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
 });
 
+gulp.task('formviewer:templatecache', function() {
+    return gulp
+        .src(gulpConfig.templateCache.formViewer.sourceDir + gulpConfig.templateCache.formViewer.sourceFiles, 
+					{ cwd: gulpConfig.base.root })
+        .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
+				.pipe(ngTemplateCache(
+            gulpConfig.templateCache.formViewer.destFile,
+            gulpConfig.templateCache.formViewer.options
+        ))
+        .pipe(gulp.dest(gulpConfig.templateCache.formViewer.destDir, { cwd: gulpConfig.base.root }));
+});
 
 
 
