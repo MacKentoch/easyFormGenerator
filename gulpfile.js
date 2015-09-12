@@ -393,6 +393,33 @@ gulp.task('formviewer:templatecache', function() {
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));		
 });
 
+ 
+/**
+ * -------------------------------
+ * APP SASS TASKS (FORMVIEWER)
+ * -------------------------------
+ */
+ //sass formviewer
+ gulp.task('app:sass:formviewer', 
+	 	['formviewer:clean'], 
+		 function(){
+	
+	//minified		 
+	gulp.src(gulpConfig.srcFiles.app.formViewer.sass, { cwd: gulpConfig.base.root })
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(concat(gulpConfig.destFiles.app.formViewer.css))
+		.pipe(cssmin()) 
+		.pipe(rename({extname: '.min.css'}))      
+		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))    
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
+	
+	//not minified	
+	gulp.src(gulpConfig.srcFiles.app.formViewer.sass, { cwd: gulpConfig.base.root })
+		.pipe(sass().on('error', notify.onError(function (error) { return 'Error: ' + error.message;})))
+		.pipe(concat(gulpConfig.destFiles.app.formViewer.css))    
+		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))    
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));	
+});
 
 
 
