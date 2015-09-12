@@ -30,7 +30,8 @@
 			'formly',  
 			'formlyBootstrap', 
 			'ui.bootstrap', 
-			'nya.bootstrap.select', 		
+			'nya.bootstrap.select', 
+			'eda.easyFormViewer.Directive'		
 		]);
 	
 })();
@@ -186,7 +187,7 @@
 		}
 	
 })();
-angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCache) {$templateCache.put("eda.easyFormViewer.Template.html","<div class=easyFormViewer><form ng-submit=vm.onSubmit() name=vm.form novalidate=\"\"><formly-form model=vm.model fields=vm.fields options=vm.options form=vm.form><button type=submit class=\"btn btn-primary submit-button pull-right\" ng-disabled=vm.form.$invalid>{{vm.buttons.submit}}</button> <button type=button class=\"btn btn-primary pull-right\" ng-click=vm.options.resetModel()>{{vm.buttons.cancel}}</button></formly-form></form></div>");}]);
+angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCache) {$templateCache.put("eda.easyFormViewer.Template.html","<div class=easyFormViewer><form ng-submit=vm.onSubmit() name=vm.form novalidate=\"\"><formly-form model=vm.model fields=vm.fields options=vm.options form=vm.form><button type=submit class=\"btn btn-primary submit-button pull-right\" ng-disabled=vm.form.$invalid>{{vm.submitText}}</button> <button type=button class=\"btn btn-primary pull-right\" ng-click=vm.options.resetModel()>{{vm.cancelText}}</button></formly-form></form></div>");}]);
 /**
  *  -----------------------------------------------------------------------
  *   easy form viewer directive
@@ -214,20 +215,69 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 			var directive = {
 				restrict : 'E',
 				scope : {
+					
           edaEasyFormViewerDataModel 				: '=?',
-					edaEasyFormViewerfieldsModel 			: '=?',
+					edaEasyFormViewerFieldsModel 			: '=?',
+					
+					edaEasyFormViewerSubmitButtonText : '=?',
+					edaEasyFormViewerCancelButtonText : '=?',
+					
           edaEasyFormViewerSubmitFormEvent  : '&?',
 					edaEasyFormViewerCancelFormEvent	: '&?'
         },
-				replace : false,
-				templateUrl : 'eda.easyFormViewer.Template.html',
+				replace 			: false,
+				
+				controller		: edaEasyFormViewerCtrl,
+				controllerAs 	: 'vm',
+				templateUrl 	: 'eda.easyFormViewer.Template.html',
+				
 				link : linkFct
 			};
 			return directive;
 			
+			
+			
 			function linkFct(scope, element, attrs){
+				
 				console.info('edaEasyFormViewer directive loaded');
+
+				scope.vm.model 			= {};
+				scope.vm.fields 			= {};
+				scope.vm.submitText 	= 'Submitjhkjh';
+				scope.vm.cancelText 	= 'Cancel';				
+				
+				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
+				
+				function fieldsModelToWatch(){
+					return scope.vm.fields;
+				}
+				
+				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){
+					console.info('fieldsModel Changed');
+					console.dir(newFieldsModel);
+					
+					loadExistingConfigurationModel();
+				}
+				
+				
+				function loadExistingConfigurationModel(){
+					
+				}
+				
 			}
+			
+			/**
+			 * directive's controller : controllerAs syntax
+			 */
+			function edaEasyFormViewerCtrl(){
+				var vm = this;
+				vm.model 			= {};
+				vm.fields 			= {};
+				vm.submitText 	= 'Submit';
+				vm.cancelText 	= 'Cancel';				
+			}
+			
+			
 			
 		}
 		

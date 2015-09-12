@@ -35,22 +35,30 @@
           edaEasyFormViewerSubmitFormEvent  : '&?',
 					edaEasyFormViewerCancelFormEvent	: '&?'
         },
-				replace : false,
-				templateUrl : 'eda.easyFormViewer.Template.html',
+				replace 			: false,
+				
+				controller		: edaEasyFormViewerCtrl,
+				controllerAs 	: 'vm',
+				templateUrl 	: 'eda.easyFormViewer.Template.html',
+				
 				link : linkFct
 			};
 			return directive;
 			
+			
+			/**
+			 * directive's link function
+			 */
 			function linkFct(scope, element, attrs){
 				
 				console.info('edaEasyFormViewer directive loaded');
+
+				scope.vm.model 			= {};
+				scope.vm.fields 			= {};
+				scope.vm.submitText 	= 'Submitjhkjh';
+				scope.vm.cancelText 	= 'Cancel';				
 				
-				scope.vm.model 					= {};
-				scope.vm.fields 				= {};
-				scope.vm.buttons.submit = 'Submit';
-				scope.vm.buttons.cancel = 'Cancel';
-				
-				scope.watch(fieldsModelToWatch, fieldsModelWatcher, true);
+				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
 				
 				function fieldsModelToWatch(){
 					return scope.vm.fields;
@@ -69,6 +77,19 @@
 				}
 				
 			}
+			
+			/**
+			 * directive's controller : controllerAs syntax
+			 */
+			function edaEasyFormViewerCtrl(){
+				var vm = this;
+				vm.model 			= {};
+				vm.fields 			= {};
+				vm.submitText 	= 'Submit';
+				vm.cancelText 	= 'Cancel';				
+			}
+			
+			
 			
 		}
 		
