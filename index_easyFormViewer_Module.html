@@ -38,11 +38,11 @@
 			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
 			=============================================================-->
 			<eda-easy-form-viewer
-					eda-easy-form-viewer-data-model=""
-					eda-easy-form-viewer-fields-model=""
+					eda-easy-form-viewer-data-model="demoCtrl.dataModel"
+					eda-easy-form-viewer-fields-model="demoCtrl.fieldsModel"
 					
-					eda-easy-form-viewer-submit-button-text=""
-					eda-easy-form-viewer-cancel-button-text=""
+					eda-easy-form-viewer-submit-button-text="demoCtrl.submitButtonText"
+					eda-easy-form-viewer-cancel-button-text="demoCtrl.cancelButtonText"
 					
 					eda-easy-form-viewer-submit-form-event=""
 					eda-easy-form-viewer-cancel-form-event=""> 	
@@ -73,14 +73,17 @@
 					demoCtrl.fieldsModel		= {};
 					demoCtrl.dataModel			= {};
 					
-					demoCtrl.submitForm 		= submitForm;
-
+					demoCtrl.submitButtonText = 'Submit this form';
+					demoCtrl.cancelButtonText = 'Cancel all';
+					
+					demoCtrl.submitFormEvent 	= submitFormEvent;
+					demoCtrl.cancelFormEvent 	= cancelFormEvent;
 
 					
 					//demo purpose only :
 					//in 3 seconds a new form will be bound to easy form generator : 
 					 
-					//timedModelChanged();
+					timedModelChanged();
 					
 				
 				
@@ -89,8 +92,8 @@
 					/**
 					 * when click on save form, will call your save form function :
 					 */
-					function submitForm(dataModel){
-						console.info('-> from here : you can save form data entered by user');							
+					function submitFormEvent(dataModel){
+						console.info('-> Submit Event (in your controller) : you can save form data entered by user.');							
 						
 					/**
 					 * 
@@ -110,7 +113,9 @@
 						
 					}				
 				
-								
+					function cancelFormEvent(){
+						console.info('-> Cacel Event (in your controller) : you can add behaviours if you need to.');
+					}			
 					
 					/**
 					 * to simulate server async load of a form model (3 seconds is eternity I hope your server won't take so much time)
@@ -120,24 +125,10 @@
 					function timedModelChanged(){
 						$timeout(function(){
 
-							demoCtrl
-								.easyFormGeneratorModel
-								.formName = 'DemoForm';
-							
-							demoCtrl
-								.easyFormGeneratorModel
-								.edaFieldsModel = testACompleteForm();
-										
-							demoCtrl
-								.easyFormGeneratorModel
-								.btnSubmitText = 'I Confirm';
-								
-							demoCtrl
-								.easyFormGeneratorModel	
-								.btnCancelText = 'I give up';															
+							demoCtrl.fieldsModel = 	testACompleteForm();													
 
-							console.info('timeout model change');
-							console.dir(demoCtrl.easyFormGeneratorModel);
+							console.info('timeout : fields model changed');
+							console.dir(demoCtrl.fieldsModel);
 						}, 3000);
 					}
 					
