@@ -603,8 +603,10 @@ gulp.task('default', [
 						//app tasks
 						'app:sass:stepway',
 						'app:sass:dragdropway',
+						'app:sass:formviewer',
 						'app:js:stepway',
-						'app:js:dragdropway'
+						'app:js:dragdropway',
+						'app:js:formviewer'
 					 ]);
 					 
 
