@@ -581,7 +581,12 @@ gulp.task('watch', function() {
 									gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles,
 									gulpConfig.srcFiles.app.stepway.js,
 									gulpConfig.srcFiles.app.stepway.sass,
-									'!' + gulpConfig.templateCache.stepway.destDir + gulpConfig.templateCache.stepway.destFile	
+									'!' + gulpConfig.templateCache.stepway.destDir + gulpConfig.templateCache.stepway.destFile,
+									//app : form viewer sources
+									gulpConfig.templateCache.formViewer.sourceDir + gulpConfig.templateCache.formViewer.sourceFiles,
+									gulpConfig.srcFiles.app.formViewer.js,
+									gulpConfig.srcFiles.app.formViewer.sass,
+									'!' + gulpConfig.templateCache.formViewer.destDir + gulpConfig.templateCache.formViewer.destFile										
 								], 
 								[
 									'default'
