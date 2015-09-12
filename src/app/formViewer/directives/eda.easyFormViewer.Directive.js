@@ -57,10 +57,11 @@
 				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
 				
 								
-				scope.$watch(fieldsModelToWatch, fieldsModelWatcher, true);
-				scope.$watch(submitBtnTextToWatch, submitBtnTextWatcher, true);
-				scope.$watch(cancelBtnTextToWatch, cancelBtnTextWatcher, true);
-				
+				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
+				scope.$watch(submitBtnTextToWatch, 	submitBtnTextWatcher);
+				scope.$watch(cancelBtnTextToWatch, 	cancelBtnTextWatcher);
+				scope.$watch(submitEventToWatch, 		submitEventWatcher);
+				scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
 				
 				function fieldsModelToWatch(){
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
@@ -73,6 +74,14 @@
 				function cancelBtnTextToWatch(){
 					return scope.edaEasyFormViewerCancelButtonText;
 				}
+				
+				function submitEventToWatch(){
+					return scope.vm.hasJustSumitted;
+				}
+				
+				function cancelEventToWatch(){
+					return scope.vm.hasJustCancelled;
+				}				
 				
 				function fieldsModelWatcher(newFieldsModel, oldFieldsModel){					
 					scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
@@ -89,6 +98,25 @@
 						scope.vm.cancelText 	= newCancelBtntext || 'Submit';	
 					}					
 				}							
+			
+				function submitEventWatcher(newSubmitEvent, oldSubmitEvent){
+					if (newSubmitEvent === true) {
+							if (angular.isFunction(scope.edaEasyFormViewerSubmitFormEvent)) {
+								var _dataModelSubmitted = scope.vm.model ;
+								scope.edaEasyFormViewerSubmitFormEvent({ dataModelSubmitted : _dataModelSubmitted });
+							}
+					}
+					scope.vm.hasJustSumitted = false;					
+				}			
+			
+				function cancelEventWatcher(newCancelEvent, oldCancelEvent){
+					if (newCancelEvent === true) {
+							if (angular.isFunction(scope.edaEasyFormViewerCancelFormEvent)) {
+								scope.edaEasyFormViewerCancelFormEvent();
+							}
+					}
+					scope.vm.hasJustCancelled = false;					
+				}				
 			
 				/**
 				 * TODO : check if formly or easy form generato fields model
@@ -200,8 +228,20 @@
 				/* jshint validthis:true */
 				var vm = this;
 				//default :
-				vm.model 			= {};
-				vm.fields 			= {};			
+				vm.model 									= {};
+				vm.fields 								= {};
+				vm.hasJustSumitted 				= false;
+				vm.hasJustCancelled 			= false;
+				vm.edaSubmitThisDataModel = edaSubmitThisDataModel;
+				vm.edaCancelEvent 				= edaCancelEvent;
+				
+				function edaSubmitThisDataModel(){
+					vm.hasJustSumitted = true;
+				}
+				function edaCancelEvent(){
+					vm.hasJustCancelled = true;
+				}
+											
 			}
 			
 			

@@ -42,8 +42,8 @@
 					eda-easy-form-viewer-submit-button-text="demoCtrl.submitButtonText"
 					eda-easy-form-viewer-cancel-button-text="demoCtrl.cancelButtonText"
 					
-					eda-easy-form-viewer-submit-form-event=""
-					eda-easy-form-viewer-cancel-form-event=""> 	
+					eda-easy-form-viewer-submit-form-event="demoCtrl.submitFormEvent(dataModelSubmitted)"
+					eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
 			</eda-easy-form-viewer>
 
 		</div>	
@@ -90,9 +90,9 @@
 					/**
 					 * when click on save form, will call your save form function :
 					 */
-					function submitFormEvent(dataModel){
+					function submitFormEvent(dataModelSubmitted){
 						console.info('-> Submit Event (in your controller) : you can save form data entered by user.');							
-						
+						console.dir( {'dataModel' : dataModelSubmitted} );
 					/**
 					 * 
 					 * MORE DETAILS ON 'easyFormGeneratorModel'
