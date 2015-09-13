@@ -6,6 +6,11 @@ body {
 	font-family: $font-family-roboto;
 } 
 
+// textAngular div to apply a margin bottom
+.ta-scroll-window
+{
+  margin-bottom:16px;  
+}
 
 /**
  * formly fields css
