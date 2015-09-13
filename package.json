@@ -1,6 +1,6 @@
 {
   "name": "easy-form-generator",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "scripts": {
     "test": "echo \"Error: no test specified right now\" && exit 1"
