@@ -37,7 +37,7 @@ angular
                         'pageslide-directive'
 	                     ])
 
-  .value('easyFormGenVersion', 'v1.0.18')
+  .value('easyFormGenVersion', 'v1.0.19')
   .run(runfct);
 
 
