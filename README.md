@@ -80,13 +80,15 @@ ______
  
 This way is super easy way since you will be installed all easy form generator dependencies.
  
-Then just launch `EasyFormGenerator-StepWay-DEMO.html` in your browser. You will find it in :
+Then just launch `EasyFormGenerator-StepWay-DEMO.html` and `EasyFormViewer-DEMO.html` in your browser. You will find it in :
   - bower_components/
   - |__easy-form-generator/
   - |____EasyFormGenerator-StepWay-DEMO.html
-
+  - |____EasyFormViewer-DEMO.html
+  
 Finally :
->Inspire yourself from this demo (considering numerous dependencies it may help). 
+>Inspire yourself from these demo (considering numerous dependencies it may help). 
+>Note about easy form viewer : bind `edaFieldsModel` model not formly one. 
 
 
 ####Manual way
