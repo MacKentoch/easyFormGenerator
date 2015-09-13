@@ -22,7 +22,7 @@
 
 And Since v1.0.21 :
 
-*Easy form viewer (*not matter form generator you used, models are same*) :
+*Easy form viewer (*no matter form generator you used, models are the same*) :
 
 - You created a form through `easy form generator`, you have now `easy form viewer` to easily `render` your forms
   - you can still use angular formly directive. But since easy form generator contains amount of custom controls, you may have pain to configure yourself with `formlyConfigProvider`. Just use easy form viewer directive, it embeds angular formly and configure custom controls for you = no more pain.  
@@ -62,7 +62,13 @@ ______
 
 ###Easy form viewer : production ready
 
-![]() 
+Render your form you created with easy form generator (*no matter step way or drag and drop way*) in your application easier.
+
+`Easy form viewer` is a directive which helps you using your created forms
+- when you saved your form you saved `edaFieldsModel` : easy form generator fields model
+- just bind it to easy form viewer directive, then it will render (without all unecessary decoration — generator useful only — :
+![preview](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/easyFormViewerPreview.png) 
+
 ______
 
 
