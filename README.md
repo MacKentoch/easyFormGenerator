@@ -9,6 +9,8 @@
 
 ##What is it?
 
+*Easy form generator (step way or drag and drop way) :* 
+
 - Create forms *in a matter of minutes* :hourglass:
   - (*you may not need to add "s" to minutes*).
 - *Don't limit* your form *to a single column* template 
@@ -18,7 +20,12 @@
 - based on amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
   - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
 
+And Since v1.0.21 :
 
+*Easy form viewer (*not matter form generator you used, models are same*) :
+
+- You created a form through `easy form generator`, you have now `easy form viewer` to easily `render` your forms
+  - you can still use angular formly directive. But since easy form generator contains amount of custom controls, you may have pain to configure yourself with `formlyConfigProvider`. Just use easy form viewer directive, it embeds angular formly and configure custom controls for you = no more pain.  
 ______
 
 ###Easy Form Generator : **Step way**
@@ -50,6 +57,12 @@ have a try here : [Easy for generator **drag and drop way** version](https://cdn
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
  
+ 
+______
+
+###Easy form viewer : production ready
+
+![]() 
 ______
 
 
