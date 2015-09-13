@@ -30,6 +30,9 @@ module.exports = {
 				js 						: appFiles.formviewer.js,
 				sass 					: 'src/sass/formviewer/**/*.scss',
 				htmlTemplates : 'src/app/stepway/htmlTemplates/**/*.html'			
+			},
+			common : {
+				customTextAngularCss : 'src/sass/common/eda.textAngular.min.css'
 			}
 		},
 		bowerFiles : {

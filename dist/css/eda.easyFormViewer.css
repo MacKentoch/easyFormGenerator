@@ -13,6 +13,9 @@ body {
   margin: 20px;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+.ta-scroll-window {
+  margin-bottom: 16px; }
+
 /**
  * formly fields css
  */
