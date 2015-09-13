@@ -35,7 +35,7 @@ ______
 - responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
 - production friendly
 
-Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
+Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
 
  - **Step way visual preview here** : 
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
@@ -52,7 +52,7 @@ Drag and drop way is still in development.
 
 >`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
-have a try here : [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
+have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
 
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
@@ -86,7 +86,7 @@ Then just launch `EasyFormGenerator-StepWay-DEMO.html` and `EasyFormViewer-DEMO.
   
 Finally :
 >Inspire yourself from these demo (considering numerous dependencies it may help). 
->Note about easy form viewer : bind `edaFieldsModel` model not formly one. 
+>Note about easy form viewer : bind `edaFieldsModel` model not the formly one. 
 
 
 ####Manual way
@@ -174,8 +174,7 @@ ______
 
  - :newspaper: `step way` : added `email` control
      + email entered must follow *an email pattern* (validation included)
-     + a validation message is displayed when entered email is invalid (pattern related)
-     + try here : [up to date step way link](https://rawgit.com/MacKentoch/easyFormGenerator/master-before-optim/index.html) 
+     + a validation message is displayed when entered email is invalid (pattern related) 
      + preview :
  
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
