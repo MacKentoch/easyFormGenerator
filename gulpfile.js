@@ -425,9 +425,6 @@ gulp.task('formviewer:templatecache', function() {
 
 
 
-
-
-
 /**
  * -------------------------------
  * APP JS TASKS (STEPWAY WAY)
@@ -682,6 +679,9 @@ gulp.task('dist', [
   gulp.src(gulpConfig.destDirs.app.css + '/*.css', {cwd: gulpConfig.base.root})
     .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
 					
+	//textAngular css fix
+  gulp.src(gulpConfig.srcFiles.app.common.customTextAngularCss, {cwd: gulpConfig.base.root})
+    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));					
  })
  
  
