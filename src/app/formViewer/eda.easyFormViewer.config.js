@@ -16,7 +16,8 @@
 	angular
 		.module('eda.easyFormViewer')
 		.config(configFct);
-		
+    
+		configFct.$inject = ['formlyConfigProvider'];
 		function configFct(formlyConfigProvider){
 	     //////////////////////////////
       // CONFIG HERE (formly...)              

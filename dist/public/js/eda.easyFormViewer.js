@@ -55,7 +55,8 @@
 	angular
 		.module('eda.easyFormViewer')
 		.config(configFct);
-		
+    
+		configFct.$inject = ['formlyConfigProvider'];
 		function configFct(formlyConfigProvider){
 	     //////////////////////////////
       // CONFIG HERE (formly...)              
@@ -264,6 +265,9 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 		edaEasyFormViewer.$inject = ['modelsTranslator'];
 		
 		function edaEasyFormViewer(modelsTranslator){
+			//directive's controller injection is here (before return directive) = to avoid minification errors
+			edaEasyFormViewerCtrl.$inject = [];
+			
 			var directive = {
 				restrict : 'E',
 				scope : {

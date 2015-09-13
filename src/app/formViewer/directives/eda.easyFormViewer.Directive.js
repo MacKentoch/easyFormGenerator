@@ -22,6 +22,9 @@
 		edaEasyFormViewer.$inject = ['modelsTranslator'];
 		
 		function edaEasyFormViewer(modelsTranslator){
+			//directive's controller injection is here (before return directive) = to avoid minification errors
+			edaEasyFormViewerCtrl.$inject = [];
+			
 			var directive = {
 				restrict : 'E',
 				scope : {
