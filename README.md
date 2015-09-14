@@ -165,6 +165,71 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - angular toaster (nice toaster messages)
 
 
+
+###Easy form viewer (production friendly)
+
+>demo : `index_easyFormViewer_Module.html` in `dist` directory. 
+
+####Inject easy form viewer in your app
+
+Just inject `eda.easyFormViewer` in you application :
+
+```javascript
+(function(angular){
+    'use strict';
+    angular
+        .module('app', ['eda.easyFormViewer']) //inject easy form viewer
+        .controller('demoController', demoController);
+    
+    //your controller, here an implementation suggestion
+    demoController.$inject = ['$timeout'];	
+    function demoController($timeout){
+      var demoCtrl = this;
+
+      demoCtrl.fieldsModel    = loadMySavedEdaFieldsModel(); //="edaFieldsModel" - see easy form generator model - 
+      demoCtrl.dataModel			= {}; //data Model : filling form will fill it (submit event will return updated data model) 
+      
+      demoCtrl.submitButtonText = 'Submit this form'; //button text
+      demoCtrl.cancelButtonText = 'Cancel all'; //button text
+      
+      demoCtrl.submitFormEvent 	= submitFormEvent; //event called on form submit
+      demoCtrl.cancelFormEvent 	= cancelFormEvent; //event called on form cancel
+      
+      function loadMySavedEdaFieldsModel(){
+        var mySavedModel = readItWhereISavedIt();
+        return mySavedModel; 
+      }
+      
+      //submit will return updated dataModel in "dataModelSubmitted" parameter
+      function submitFormEvent(dataModelSubmitted){
+        console.info('Submit event : you can manage this event in your controller');
+        console.dir( {'dataModelSubmitted' : dataModelSubmitted} );
+      }
+        
+      function cancelFormEvent(){
+        console.info('Cancel event : you can manage this event in your controller');
+      }
+    } 
+      //...
+```
+
+
+####All easy form viewer directive :
+```html
+<eda-easy-form-viewer
+		eda-easy-form-viewer-data-model="demoCtrl.dataModel"
+		eda-easy-form-viewer-easy-form-generator-fields-model="demoCtrl.fieldsModel"
+		
+		eda-easy-form-viewer-submit-button-text="demoCtrl.submitButtonText"
+		eda-easy-form-viewer-cancel-button-text="demoCtrl.cancelButtonText"
+		
+		eda-easy-form-viewer-submit-form-event="demoCtrl.submitFormEvent(dataModelSubmitted)"
+		eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
+</eda-easy-form-viewer>
+```
+
+
+
 ______
 
 ## What is new?
