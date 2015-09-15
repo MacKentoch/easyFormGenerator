@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — drag and drop way — version 
-  *Version 1.0.22 
+  *Version 1.0.23 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -46,7 +46,7 @@ angular
                         'pageslide-directive'
 	                     ])
 
-  .value('easyFormGenVersion', 'v1.0.22')
+  .value('easyFormGenVersion', 'v1.0.23')
   .run(runfct);
 
 

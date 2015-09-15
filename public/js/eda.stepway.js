@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.22 
+  *Version 1.0.23 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -31,21 +31,27 @@
   angular
     .module('ngwfApp', [  
       'ngwfApp.core',
+      'eda.easyFormSteWayConfigProvider',
       'ngwfApp.controllers',
       'ngwfApp.services', 
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.22')
-    .config(configfct);
+    .value('easyFormGenVersion', 'v1.0.23')
+    .config(formlyConfigFct)
+    .config(easyFromConfigFct);
+
+
+    easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+    function easyFromConfigFct(easyFormSteWayConfigProvider){
+      //disable easy form modal animation (due to angular bootstrap backdrop bug with angular >= 1.4)
+      easyFormSteWayConfigProvider.setModalAnimation = false;
+    }
 
 
 
-
-
-
-    configfct.$inject = ['formlyConfigProvider'];
-    function configfct(formlyConfigProvider){
+    formlyConfigFct.$inject = ['formlyConfigProvider'];
+    function formlyConfigFct(formlyConfigProvider){
       //////////////////////////////
       // CONFIG HERE (formly...)              
       /////////////////////////////
@@ -259,6 +265,18 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		]);
 
 })(); 
+
+/**
+ *  ------------------------------------------------------
+ *  module core : injects core "non app modules"
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
 
 (function(){
 	'use strict';
