@@ -44,8 +44,9 @@
 
     easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
     function easyFromConfigFct(easyFormSteWayConfigProvider){
-      //disable easy form modal animation (due to angular bootstrap backdrop bug with angular >= 1.4)
-      easyFormSteWayConfigProvider.setModalAnimation = false;
+      //enable/disable easy form modal animation 
+      //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
+      easyFormSteWayConfigProvider.setModalAnimation(false);
     }
 
 
@@ -449,6 +450,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       '$log', 
       'formFieldManage',
       'controllerModalProxy',
+      'easyFormSteWayConfig'
     ];
 
     
@@ -463,7 +465,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                                     $modal,
                                     $log, 
                                     formFieldManage, 
-                                    controllerModalProxy
+                                    controllerModalProxy,
+                                    easyFormSteWayConfig
                                     ){
       /*jshint validthis: true */
       $scope.vm                       = this;
@@ -502,13 +505,12 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation = toggleAnimation;
-
       $scope.nyaSelect                = {};
       //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
       //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
       //-> disabling animation untill correction in angular bootstrap 
-      $scope.animationsEnabled        = false;
+      //uses easyFormSteWayConfig provider to easily update setting : 
+      $scope.animationsEnabled        = easyFormSteWayConfig.getModalAnimationValue();
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -821,13 +823,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           //$log.info('Modal dismissed at: ' + new Date());
         });
       } 
-
-      function toggleAnimation() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      }            
-
-
-
 
       /**
        * loadExistingFormsAsList :

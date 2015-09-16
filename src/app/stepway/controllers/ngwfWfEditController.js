@@ -40,6 +40,7 @@
       '$log', 
       'formFieldManage',
       'controllerModalProxy',
+      'easyFormSteWayConfig'
     ];
 
     
@@ -54,7 +55,8 @@
                                     $modal,
                                     $log, 
                                     formFieldManage, 
-                                    controllerModalProxy
+                                    controllerModalProxy,
+                                    easyFormSteWayConfig
                                     ){
       /*jshint validthis: true */
       $scope.vm                       = this;
@@ -93,13 +95,12 @@
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation = toggleAnimation;
-
       $scope.nyaSelect                = {};
       //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
       //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
       //-> disabling animation untill correction in angular bootstrap 
-      $scope.animationsEnabled        = false;
+      //uses easyFormSteWayConfig provider to easily update setting : 
+      $scope.animationsEnabled        = easyFormSteWayConfig.getModalAnimationValue();
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -412,13 +413,6 @@
           //$log.info('Modal dismissed at: ' + new Date());
         });
       } 
-
-      function toggleAnimation() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      }            
-
-
-
 
       /**
        * loadExistingFormsAsList :

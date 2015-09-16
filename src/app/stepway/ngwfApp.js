@@ -35,8 +35,9 @@
 
     easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
     function easyFromConfigFct(easyFormSteWayConfigProvider){
-      //disable easy form modal animation (due to angular bootstrap backdrop bug with angular >= 1.4)
-      easyFormSteWayConfigProvider.setModalAnimation = false;
+      //enable/disable easy form modal animation 
+      //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
+      easyFormSteWayConfigProvider.setModalAnimation(false);
     }
 
 
