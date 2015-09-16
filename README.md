@@ -233,6 +233,8 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
+ - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`
+    + more easy form generator - step way - config. later
  - `Fix applied in v1.0.17` : :bug: **[angular bootstrap modal animation issues when using angular > 1.3](https://github.com/angular-ui/bootstrap/issues/3633) ** — *backdrop won't disapear when closing modal* —. Waiting for fix, so untill fix is realeased modal animation is disabled to prevent this issue :disappointed_relieved:.
  
  - `step way versions` is now a module easier to interact with your application.  
