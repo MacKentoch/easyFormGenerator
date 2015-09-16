@@ -283,15 +283,17 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 	
 	angular
 		.module('eda.easyFormSteWayConfigProvider', [])
-		.provider('easyFormSteWayConfig', easyFormSteWayConfigProvider);
+		.provider('easyFormSteWayConfig', easyFormSteWayConfigFct);
 		
-		easyFormSteWayConfigProvider.$inject = [];
+		easyFormSteWayConfigFct.$inject = [];
 		
-		function easyFormSteWayConfigProvider(){
+		function easyFormSteWayConfigFct(){
+			var _configuration 			=  defaultConfig();
 			/* jshint validthis:true */
-			this.$get = easyFormSteWayConfig;
-			this.configuration = defaultConfig();
-			this.setModalAnimation = setModalAnimation;
+			this.$get 							= easyFormSteWayConfig;
+			this.setModalAnimation 	= setModalAnimation;
+			this.getModalAnimation	= getModalAnimation;
+			this.configuration 			= _configuration;
     	
 			
 			
@@ -307,22 +309,39 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			
 			function setModalAnimation(flagConfig){
 				var valueToApply = (flagConfig === true) ? 
-														  flagConfig 
+														  flagConfig  
 														: (flagConfig === false ? 
 															  flagConfig 
-															: this.configuration.modalAnimated);
+															: _configuration.modalAnimated);
 																	
-				this.configuration.modalAnimated = valueToApply;
+				_configuration.modalAnimated = valueToApply;
 			}
-		
+
+			function getModalAnimation(){																	
+				return _configuration.modalAnimated;
+			}		
+			
 		
 			//$get implementation :
 			easyFormSteWayConfig.$inject = [];
 			function easyFormSteWayConfig(){
+													
 				var service = {
-					setModalAnimation : this.setModalAnimation
+					setModalAnimation 			: setModalAnimationFct,
+					getModalAnimationValue 	: getModalAnimationValue
 				};
 				return service;
+				
+				
+				function getModalAnimationValue(){
+					return _configuration.modalAnimated;
+				}				
+				
+				function setModalAnimationFct(value){
+					setModalAnimation(value);
+				}
+				
+
 				
 			}
 		
@@ -1404,6 +1423,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
         '$log', 
         'formFieldManage',
         'controllerModalProxy',
+        'easyFormSteWayConfig'
       ];
       
       
@@ -1580,7 +1600,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                                     $modal,
                                     $log, 
                                     formFieldManage,  
-                                    controllerModalProxy
+                                    controllerModalProxy,
+                                    easyFormSteWayConfig
                                     ){
       /*jshint validthis: true */
       $scope.vm                       = this;
@@ -1619,13 +1640,13 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation          = toggleAnimation;
+      //$scope.toggleAnimation          = toggleAnimation;
 
       $scope.nyaSelect                = {};
       //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
       //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
       //-> disabling animation untill correction in angular bootstrap 
-      $scope.animationsEnabled        = false;
+      $scope.animationsEnabled        = easyFormSteWayConfig.getModalAnimationValue();
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -1932,11 +1953,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           //$log.info('Modal dismissed at: ' + new Date());
         });
       } 
-
-      function toggleAnimation() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      }            
-
 
       /**
        * saveThisForm 

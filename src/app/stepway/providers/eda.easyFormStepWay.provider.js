@@ -15,15 +15,17 @@
 	
 	angular
 		.module('eda.easyFormSteWayConfigProvider', [])
-		.provider('easyFormSteWayConfig', easyFormSteWayConfigProvider);
+		.provider('easyFormSteWayConfig', easyFormSteWayConfigFct);
 		
-		easyFormSteWayConfigProvider.$inject = [];
+		easyFormSteWayConfigFct.$inject = [];
 		
-		function easyFormSteWayConfigProvider(){
+		function easyFormSteWayConfigFct(){
+			var _configuration 			=  defaultConfig();
 			/* jshint validthis:true */
-			this.$get = easyFormSteWayConfig;
-			this.configuration = defaultConfig();
-			this.setModalAnimation = setModalAnimation;
+			this.$get 							= easyFormSteWayConfig;
+			this.setModalAnimation 	= setModalAnimation;
+			this.getModalAnimation	= getModalAnimation;
+			this.configuration 			= _configuration;
     	
 			
 			
@@ -39,22 +41,39 @@
 			
 			function setModalAnimation(flagConfig){
 				var valueToApply = (flagConfig === true) ? 
-														  flagConfig 
+														  flagConfig  
 														: (flagConfig === false ? 
 															  flagConfig 
-															: this.configuration.modalAnimated);
+															: _configuration.modalAnimated);
 																	
-				this.configuration.modalAnimated = valueToApply;
+				_configuration.modalAnimated = valueToApply;
 			}
-		
+
+			function getModalAnimation(){																	
+				return _configuration.modalAnimated;
+			}		
+			
 		
 			//$get implementation :
 			easyFormSteWayConfig.$inject = [];
 			function easyFormSteWayConfig(){
+													
 				var service = {
-					setModalAnimation : this.setModalAnimation
+					setModalAnimation 			: setModalAnimationFct,
+					getModalAnimationValue 	: getModalAnimationValue
 				};
 				return service;
+				
+				
+				function getModalAnimationValue(){
+					return _configuration.modalAnimated;
+				}				
+				
+				function setModalAnimationFct(value){
+					setModalAnimation(value);
+				}
+				
+
 				
 			}
 		
