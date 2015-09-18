@@ -1,0 +1,633 @@
+<!--<section id="pageWfEdit" ng-controller="edaStepWayEasyFormGenCtrl as vm">-->
+	<section id="pageWfEdit">
+	
+	<div ng-init="">
+		<div class="container">
+
+			<section id="preview">
+				<div id="preview-content">
+					<div class="content-container">
+							<!-- taoster alert -->
+							<toaster-container  toaster-options="{
+																									'position-class': 'toast-top-full-width', 
+																								'extendedTimeout':500,
+																									'timeOut':500,                          
+																									}">
+							</toaster-container>
+
+						<tabset justified="true">
+
+						
+
+							<tab select="tabJustSelected(2)" active="tab.editTab.active" heading="Edit /Create">
+
+								<div class="row">											
+
+								<!-- STEP INDICATOR -->
+								<div class="row stepwizardTopmargin">
+									<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+										
+										<div class="stepwizard">
+												<div class="row stepwizard-row">
+														<div class="stepwizard-step col-md-3">
+																<button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[0], 'btn-default': !configuration.stepIndicators[0]}" >0</button>
+																<p>lines</p>
+														</div>
+														<div class="stepwizard-step col-md-3">
+																<button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[1], 'btn-default': !configuration.stepIndicators[1], 'disabled': (configuration.configStepCounter < 1)}"  >1</button>
+																<p>layout</p>
+														</div>
+														<div class="stepwizard-step col-md-3">
+																<button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[2], 'btn-default': !configuration.stepIndicators[2], 'disabled': (configuration.configStepCounter < 2)}" >2</button>
+																<p>controls</p>
+														</div>
+														<div class="stepwizard-step col-md-3">
+																<button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[3], 'btn-default': !configuration.stepIndicators[3], 'disabled': (configuration.configStepCounter < 3)}" >3</button>
+																<p>save</p>
+														</div>
+												</div>
+										</div>
+									</div>
+								</div>
+
+							
+							</div>
+
+								<div class="row">
+
+								<ul class="pager">
+
+									<li ng-class="{'disabled':stepIndicators[0]}">
+										<button class="btn btn-primary customPagerButton" ng-click="previousConfigStep()" >
+											<i class="fa fa-arrow-left fa-2x pull-left"></i>
+											<span class="pull-right">Prev</span>
+										</button>
+									</li>
+
+									<li ng-class="{'disabled':stepIndicators[3]}">
+										<button class="btn btn-primary customPagerButton" ng-click="nextConfigStep()">
+											<span class="pull-left">Next</span>
+											<i class="fa fa-arrow-right fa-2x pull-right"></i>
+										</button>
+									</li>
+								</ul>
+
+
+									<div class="animate-switch-container" ng-switch on="configuration.listConfigStep[configuration.configStepCounter]">
+
+									<div class="animate-switch" ng-switch-when="init">
+														
+											<div class="col-md-4" >
+													<div id="commandPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+													</div>
+
+
+													<div class="panel-body">
+
+														<div class="row">
+															<div class="col-md-12">
+																<span class="addNewLine">Add a new line :</span>&nbsp;
+																<button class="btn btn-primary" ng-click="addNewline()"><i class="fa fa-plus fa-1x"></i></button>												  			
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+											</div>	    	
+
+											<div class="col-md-8">
+												<div id="visualPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+													</div>
+													<div class="panel-body">
+
+															<!-- lines -->
+														<ul class="list-group">
+															<li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	<!-- columns -->
+																	<div ng-switch on="line.columns.length">
+
+																		<div class="row linesList" ng-switch-when="1">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																			<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																			<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																			</div>
+
+																			<div class="col-md-12">	
+																				<div class="col-md-12 well">		
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>
+																				</div>		
+																			</div>
+																		</div>
+
+																		<div class="row linesList" ng-switch-when="2">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																			<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																			<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																			</div>																    		
+																			<div class="col-md-12">
+																				<div class="col-md-6 well">
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>
+																				</div>
+																				<div class="col-md-6 well">		
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button> 
+																				</div>								    	
+																			</div>
+																		</div>	
+
+
+																		<div class="row linesList" ng-switch-when="3">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
+
+																			<button class="btn btn-warning" ng-hide="$index==(configuration.lines.length-1)" ng-click="downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
+
+																			<button class="btn btn-danger pull-right" ng-click="removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																			</div>																    		
+																			<div class="col-md-12">
+																				<div class="col-md-4 well">			
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>
+																				</div>
+																				<div class="col-md-4 well">				
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button>
+																				</div>
+																				<div class="col-md-4 well">	   
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																					</button> 
+																				</div>		
+																			</div>
+																		</div>									    								    		
+
+																	</div>
+
+															</li>
+														</ul>
+
+
+													</div>
+												</div>
+											</div>
+											</div>
+								</div>
+
+									<div class="animate-switch" ng-switch-when="first">
+												
+										<div class="col-md-4">
+
+											<div id="commandPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+													</div>
+
+													<div class="panel-body">
+
+														<div class="row">
+															<div class="col-md-12">
+																<h4 class="numberOfcolumsText text-center"><i>– Selected line –</i></h4>
+																<h4 class="numberOfcolumsText text-center">number of columns :</h4>
+															</div>
+														</div>
+
+														<div class="row">
+															<div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+																<button class="btn btn-primary pull-right btnMinusColumns" ng-click="decreaseNumberOfColumns()"><i class="fa fa-minus fa-1x"></i></button>
+															</div>
+															<div class="col-xs-2 col-sm-2 col-md-2 text-center">
+																<span class="numberOfColumnsLabel ">{{configuration.lines[configuration.activeLine -1].columns.length}}</span>
+															</div>
+															<div class="col-xs-2 col-sm-2 col-md-2">
+																<button class="btn btn-primary pull-left btnAddColumns" ng-click="increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
+														</div>								   										   		
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											</div>	    	
+
+
+											<div class="col-md-8">
+
+												<div id="visualPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+													</h3>
+													</div>
+													<div class="panel-body">
+
+															<!-- lines / columns -->
+														<ul class="list-group">
+															<li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	<!-- columns -->
+																	<div ng-switch on="line.columns.length">
+
+																		<div class="row linesList" ng-switch-when="1">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>
+																					
+																			</div>
+
+																			<div class="col-md-12">	
+																				<div class="col-md-12 well">
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>
+																					
+																							
+																				</div>		
+																			</div>
+																		</div>
+
+																		<div class="row linesList" ng-switch-when="2">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>	
+																			</div>																    		
+																			<div class="col-md-12">
+																				<div class="col-md-6 well">
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>					
+																				</div>
+																				<div class="col-md-6 well">	
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button>		
+																				</div>								    	
+																			</div>
+																		</div>	
+
+
+																		<div class="row linesList" ng-switch-when="3">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>
+																			</div>																    		
+																			<div class="col-md-12">
+																				<div class="col-md-4 well">			
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>	
+																				</div>
+																				<div class="col-md-4 well">				
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button>	
+																				</div>
+																				<div class="col-md-4 well">	   
+																					<button class="btn btn-lg btn-block  btn-default disabled">
+																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																					</button>	
+																				</div>		
+																			</div>
+																		</div>									    								    		
+																	</div>
+
+															</li>
+														</ul>
+
+													</div>
+												</div>
+											</div>
+
+											</div>
+								</div>
+
+									<div class="animate-switch" ng-switch-when="second">
+														
+											<div class="col-md-4">
+												<div id="commandPanel">
+													<div  class="panel panel-default">
+														<div class="panel-heading">
+															<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+														</div>
+
+														<div class="panel-body">
+
+															<div class="row">
+																<div class="col-md-12">
+																	<h4 class="numberOfcolumsText text-center">– Apply controls to columns –</h4>
+																</div>
+															</div>
+
+															<div class="row">
+
+																<div class="col-lg-12" >
+																	
+																		<hr/>
+
+																		<!-- <p class="numberOfcolumsText text-center"><i class="fa fa-question-circle"></i>&nbsp; <b>How to :</b></p> -->
+
+																		<blockquote>
+																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Click / Tap on column to open control selection.</p> 
+																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Select desired control and valid to apply it to column.</p>
+																</blockquote>												   		
+																</div>
+
+
+																<!-- <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+																	<button class="btn btn-primary pull-right btnMinusColumns" ng-click="decreaseNumberOfColumns()"><i class="fa fa-minus fa-1x"></i></button>
+																</div>
+																<div class="col-xs-2 col-sm-2 col-md-2 text-center">
+																	<span class="numberOfColumnsLabel ">{{configuration.lines[configuration.activeLine -1].columns.length}}</span>
+																</div>
+																<div class="col-xs-2 col-sm-2 col-md-2">
+																	<button class="btn btn-primary pull-left btnAddColumns" ng-click="increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
+															</div>	 -->							   										   		
+															</div>
+
+														</div>
+													</div>
+											</div>
+											</div>	    	
+
+											<div class="col-md-8">
+
+												<div id="visualPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+													</h3>
+													</div>
+													<div class="panel-body">
+
+															<!-- lines / columns -->
+														<ul class="list-group">
+															<li class="list-group-item" ng-repeat="line in configuration.lines track by $index">
+
+																	<!-- columns -->
+																	<div ng-switch on="line.columns.length">
+
+																		<div class="row linesList" ng-switch-when="1">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>
+																					
+																			</div>
+
+																			<div class="col-md-12">
+																				<div class="col-md-12 well">			
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>	
+																				</div>	
+																			</div>
+																		</div>
+
+																		<div class="row linesList" ng-switch-when="2">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>	
+																			</div>	
+																			<div class="col-md-12">															    		
+																				<div class="col-md-6 well">			
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>	
+																				</div>
+																				<div class="col-md-6 well">				
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 1)">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button>	
+																				</div>
+																			</div>	
+																		</div>	
+
+																		<div class="row linesList" ng-switch-when="3">
+																			<div class="col-md-12 lineCommandButtons" ng-show="configuration.lines.length > 1">
+
+																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== configuration.activeLine, 'btn-success': ($index + 1) === configuration.activeLine}" ng-click="setActiveLineNumber($index + 1)">
+
+																					<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== configuration.activeLine, 'fa-check-square-o': ($index + 1) === configuration.activeLine}"></i>
+
+																					</button>
+																			</div>																    		
+																			<div class="col-md-12">
+																				<div class="col-md-4 well">			
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 0)">
+																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
+																					</button>	
+																				</div>
+																				<div class="col-md-4 well">				
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 1)">
+																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
+																					</button>	
+																				</div>
+																				<div class="col-md-4 well">	   
+																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[2].control.edited, 'btn-success': line.columns[2].control.edited}" ng-click="showModalAddCtrlToColumn('', $index, 2)">
+																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
+																					</button>	
+																				</div>		
+																			</div>
+																		</div>									    								    		
+
+																	</div>
+
+															</li>
+														</ul>
+
+													</div>
+												</div>
+											</div>
+
+
+
+
+
+											</div>
+								</div>	
+
+
+								<div class="animate-switch" ng-switch-when="third">
+														
+											<div class="col-md-4">
+													<div id="commandPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;Command</h3>
+													</div>
+													<div class="panel-body">
+
+
+														<div class="row">
+															<div class="col-xs-12">
+																
+																<div class="form-group">
+																	<label for="inputSubmitButtontext" class=" greyText control-label">Customize Submit button Text :</label>
+																	<div class="">
+																		<input type="text" class="form-control" id="inputSubmitButtontext" placeholder="Submit button text" ng-model="configuration.submitButtonText">
+																	</div>
+																</div>								
+															</div>												    
+														</div>
+														<hr/>
+
+														<div class="row">
+															<div class="col-xs-12">
+																
+																<div class="form-group">
+																	<label for="inputCancelButtontext" class=" greyText control-label">Customize Cancel button Text :</label>
+																	<div class="">
+																		<input type="text" class="form-control" id="inputCancelButtontext" placeholder="Cancel button text" ng-model="configuration.cancelButtonText">
+																	</div>
+																</div>								
+															</div>												    
+														</div>
+														<hr/>
+
+														<div class="row">
+															<div class="col-xs-12">
+																
+																<div class="form-group">
+																	<label for="inputNameFormtext" class=" greyText control-label">Name to this form :</label>
+																	<div class="">
+																		<input type="text" class="form-control" id="inputNameFormtext" placeholder="Enter formName" ng-model="configuration.formName">
+																	</div>
+																</div>								
+															</div>												    
+														</div>
+
+														<button class="btn btn-primary btn-block btn-lg" ng-click="saveThisForm()">save this form</button>
+
+													</div>
+												</div>
+											</div>
+											</div>	    	
+
+											<div class="col-md-8">
+												<div id="visualPanel">
+												<div  class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><i class="fa fa-thumbs-o-up"></i>&nbsp;Final Step : form preview</h3>
+													</div>
+													<div class="panel-body">
+
+													<form ng-submit="vm.onSubmit()">
+
+														<formly-form id="saveFormlyFom" model="vm.model" fields="vm.wfFormFields">
+
+															<span class="pull-right">
+															<button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
+															<button class="btn btn-primary" type="cancel">{{configuration.cancelButtonText}}</button>
+															</span>
+
+														</formly-form>
+
+
+													</form>	
+
+													</div>
+												</div>
+											</div>
+											</div>
+								</div>
+
+							</div>
+
+
+								</div>
+							</tab>	
+
+							<tab select="tabJustSelected(1)" active="tab.previewTab.active" heading="Preview">
+
+
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<!-- formly here -->
+									<form ng-submit="vm.onSubmit()">
+										<formly-form id="previewFormlyForm" model="vm.model" fields="vm.wfFormFields">
+
+										<span class="pull-right">
+											<button class="btn btn-primary" type="submit">{{configuration.submitButtonText}}</button>
+											<button class="btn btn-primary" type="cancel">{{configuration.cancelButtonText}}</button>
+											</span>
+
+										</formly-form>
+									</form>	
+
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<p>DATA MODEL</p>
+									<pre>
+										{{vm.model | json}}
+									</pre>
+								</div>
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<p>FIELDS MODEL (ready to save to database one)</p>
+									<pre>
+										{{vm.wfFormFieldsOnlyNeededProperties | json}}
+									</pre>
+								</div>
+							</div>
+
+							</tab>
+						</tabset>
+					</div>
+				</div>
+			</section>
+
+			<hr/>
+			<section>
+				<h6 class="text-right">Easy form generator : {{easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6>
+			</section>
+		</div>
+	</div>
+</section>
