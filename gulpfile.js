@@ -35,7 +35,8 @@ var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
 var sourcemaps 					= require('gulp-sourcemaps');
 var rename							= require('gulp-rename');
-var babel 							= require("gulp-babel")
+var babel 							= require("gulp-babel");
+var exec         				= require('child_process').exec;
 
 
 
@@ -465,6 +466,12 @@ gulp.task('app:js:stepway',
 	}
 
 });
+
+/**
+ * -------------------------------
+ * APP JS TASKS (STEP WAY ES6)
+ * -------------------------------
+ */
 
 
 /**

@@ -27,7 +27,6 @@
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.7.0",
-    "gulp-babel": "^5.2.1",
     "gulp-concat": "^2.5.2",
     "gulp-cssmin": "^0.1.7",
     "gulp-delete-lines": "0.0.7",
@@ -53,7 +52,9 @@
   "homepage": "https://github.com/MacKentoch/easyFormGenerator#readme",
   "jspm": {
     "dependencies": {
-      "angular": "github:angular/bower-angular@1.4.4"
+      "angular": "github:angular/bower-angular@1.4.4",
+      "json": "github:systemjs/plugin-json@^0.1.0",
+      "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
