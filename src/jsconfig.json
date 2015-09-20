@@ -4,6 +4,6 @@
 		"module": "commonjs"
 	},
 	"files": [
-		"typings/angularjs/angular.d.ts"
+		"../typings/angularjs/angular.d.ts"
 	]
 }
