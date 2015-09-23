@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.22 
+  *Version 1.0.23 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -31,21 +31,28 @@
   angular
     .module('ngwfApp', [  
       'ngwfApp.core',
+      'eda.easyFormSteWayConfigProvider',
       'ngwfApp.controllers',
       'ngwfApp.services', 
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.22')
-    .config(configfct);
+    .value('easyFormGenVersion', 'v1.0.23')
+    .config(formlyConfigFct)
+    .config(easyFromConfigFct);
+
+
+    easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+    function easyFromConfigFct(easyFormSteWayConfigProvider){
+      //enable/disable easy form modal animation 
+      //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
+      easyFormSteWayConfigProvider.setModalAnimation(false);
+    }
 
 
 
-
-
-
-    configfct.$inject = ['formlyConfigProvider'];
-    function configfct(formlyConfigProvider){
+    formlyConfigFct.$inject = ['formlyConfigProvider'];
+    function formlyConfigFct(formlyConfigProvider){
       //////////////////////////////
       // CONFIG HERE (formly...)              
       /////////////////////////////
@@ -262,6 +269,90 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 
 /**
  *  ------------------------------------------------------
+ *  module core : injects core "non app modules"
+ *  ------------------------------------------------------
+ *
+ * 
+ * ——————————————————————————————————————————————
+ * MIT (2015) - Erwan Datin (MacKentoch)
+ * https://github.com/MacKentoch/easyFormGenerator
+ * ——————————————————————————————————————————————
+**/
+
+(function(){
+	'use strict';
+	
+	angular
+		.module('eda.easyFormSteWayConfigProvider', [])
+		.provider('easyFormSteWayConfig', easyFormSteWayConfigFct);
+		
+		easyFormSteWayConfigFct.$inject = [];
+		
+		function easyFormSteWayConfigFct(){
+			var _configuration 			=  defaultConfig();
+			/* jshint validthis:true */
+			this.$get 							= easyFormSteWayConfig;
+			this.setModalAnimation 	= setModalAnimation;
+			this.getModalAnimation	= getModalAnimation;
+			this.configuration 			= _configuration;
+    	
+			
+			
+		
+			//set default config
+			function defaultConfig(){
+				var _defaultConfiguration = {
+					modalAnimated : false
+				};
+				return _defaultConfiguration;
+			}
+		
+			
+			function setModalAnimation(flagConfig){
+				var valueToApply = (flagConfig === true) ? 
+														  flagConfig  
+														: (flagConfig === false ? 
+															  flagConfig 
+															: _configuration.modalAnimated);
+																	
+				_configuration.modalAnimated = valueToApply;
+			}
+
+			function getModalAnimation(){																	
+				return _configuration.modalAnimated;
+			}		
+			
+		
+			//$get implementation :
+			easyFormSteWayConfig.$inject = [];
+			function easyFormSteWayConfig(){
+													
+				var service = {
+					setModalAnimation 			: setModalAnimationFct,
+					getModalAnimationValue 	: getModalAnimationValue
+				};
+				return service;
+				
+				
+				function getModalAnimationValue(){
+					return _configuration.modalAnimated;
+				}				
+				
+				function setModalAnimationFct(value){
+					setModalAnimation(value);
+				}
+				
+
+				
+			}
+		
+		}
+		
+		
+		
+})();
+/**
+ *  ------------------------------------------------------
  *  controllers container
  *  ------------------------------------------------------
  *
@@ -359,6 +450,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       '$log', 
       'formFieldManage',
       'controllerModalProxy',
+      'easyFormSteWayConfig'
     ];
 
     
@@ -373,7 +465,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                                     $modal,
                                     $log, 
                                     formFieldManage, 
-                                    controllerModalProxy
+                                    controllerModalProxy,
+                                    easyFormSteWayConfig
                                     ){
       /*jshint validthis: true */
       $scope.vm                       = this;
@@ -412,13 +505,12 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation = toggleAnimation;
-
       $scope.nyaSelect                = {};
       //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
       //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
       //-> disabling animation untill correction in angular bootstrap 
-      $scope.animationsEnabled        = false;
+      //uses easyFormSteWayConfig provider to easily update setting : 
+      $scope.animationsEnabled        = easyFormSteWayConfig.getModalAnimationValue();
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -731,13 +823,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           //$log.info('Modal dismissed at: ' + new Date());
         });
       } 
-
-      function toggleAnimation() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      }            
-
-
-
 
       /**
        * loadExistingFormsAsList :
@@ -1333,6 +1418,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
         '$log', 
         'formFieldManage',
         'controllerModalProxy',
+        'easyFormSteWayConfig'
       ];
       
       
@@ -1509,7 +1595,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                                     $modal,
                                     $log, 
                                     formFieldManage,  
-                                    controllerModalProxy
+                                    controllerModalProxy,
+                                    easyFormSteWayConfig
                                     ){
       /*jshint validthis: true */
       $scope.vm                       = this;
@@ -1548,13 +1635,13 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       $scope.previousConfigStep       = previousConfigStep;
       $scope.stepReachable            = stepReachable;
 
-      $scope.toggleAnimation          = toggleAnimation;
+      //$scope.toggleAnimation          = toggleAnimation;
 
       $scope.nyaSelect                = {};
       //angular bootstrap modal + angular 1.4 issue (backdrop won't disapear on close modal)
       //github issues here : https://github.com/angular-ui/bootstrap/issues/3633
       //-> disabling animation untill correction in angular bootstrap 
-      $scope.animationsEnabled        = false;
+      $scope.animationsEnabled        = easyFormSteWayConfig.getModalAnimationValue();
       //call modal to edit selected control
       $scope.showModalAddCtrlToColumn = showModalAddCtrlToColumn;
 
@@ -1861,11 +1948,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
           //$log.info('Modal dismissed at: ' + new Date());
         });
       } 
-
-      function toggleAnimation() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-      }            
-
 
       /**
        * saveThisForm 

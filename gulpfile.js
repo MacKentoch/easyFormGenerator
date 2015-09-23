@@ -684,6 +684,7 @@ gulp.task('dist', [
 		gulpConfig.base.root + gulpConfig.stepWayHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.stepWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
+		gulpConfig.base.root + gulpConfig.dragDropWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name,
 	];
 	//html files
