@@ -20,12 +20,14 @@
 		edaDragDropWayEasyFormGen.$inject = [
       '$timeout', 
       'formFieldManage',
-      'ddModelConfModelProxyService'];
+      'ddModelConfModelProxyService',
+      'dragDropConfig'];
 		
 		function edaDragDropWayEasyFormGen(
       $timeout, 
       formFieldManage,
-      ddModelConfModelProxyService){
+      ddModelConfModelProxyService,
+      dragDropConfig){
       
       /**
        * directive's controller injection is here (before return directive) = to avoid minification errors
@@ -188,12 +190,11 @@
                                                                         scope.dragDropModel
                                                                         );            
                
-            
-            
+            updateConfigurationClassName(scope.configuration);
             
             
             //apply formly model
-            formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
+            formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.vm.model);          
             
             scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
             scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
@@ -204,15 +205,26 @@
         } 
          
          
+       function updateConfigurationClassName(configModel){
+         angular.forEach(configModel.lines, function(aline){
+          var cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
+          
+          angular.forEach(aline.columns, function(aControl){
+            aControl.control.className = cssClassToApply;
+          }); 
+        });   
           
           
+       }  
           
           
-          
-          
-                   
+      //closing link function             
 			}
     
+    
+      /**
+       * controller :
+       */
       function edaDragDropWayEasyFormGenCtrl(
                   $scope, 
                   easyFormGenVersion,
