@@ -187,22 +187,7 @@
                                                                         scope.configuration, 
                                                                         scope.dragDropModel
                                                                         );            
-            
-            // /**
-            // * TODO to bind model from saved one
-            // * from @krupak issues :fixing loading model bug
-            // */
-            // formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
-            // formFieldManage.applyConfigurationToformlyModel(  
-            //                                                   $scope.configuration, 
-            //                                                   $scope.vm.wfFormFields, 
-            //                                                   $scope.vm.model
-            //                                                 );                   
-            // $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
-            // ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
-            //                                                   $scope.configuration, 
-            //                                                   $scope.dragDropModel
-            //                                                   );               
+               
             
             
             

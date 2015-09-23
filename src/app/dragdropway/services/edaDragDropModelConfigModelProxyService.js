@@ -15,8 +15,9 @@ angular
 	.module('edaApp.services.dragDropModelConfigModelProxyService', [])
 	.factory('ddModelConfModelProxyService', [	'EasyFormGenFormlyBindingModels',
 																							'controllerModalProxy',
+																							'dragDropConfig',
 																							'$parse',
-		function( EasyFormGenFormlyBindingModels, controllerModalProxy, $parse){
+		function( EasyFormGenFormlyBindingModels, controllerModalProxy, dragDropConfig, $parse){
 
 
 			/**
@@ -205,7 +206,7 @@ angular
 							 * control to bind is the previous one
 							 */		
 							if(typeof colValue.key !== 'undefined'){
-								console.warn('debug dragdropModel show this control key : ' + colValue.key);
+								//console.warn('debug dragdropModel show this control key : ' + colValue.key);
 								
 								controlToBind.control = angular.copy(colValue.configModelControl);
 								//update cssClass depending new position:
@@ -280,14 +281,14 @@ angular
 						});
 				});
 
-				console.info('refreshControlsKeys');
-				console.dir(	
-											{
-													'when' 							: 'starting',
-													'configModel is ' 	: angular.copy(configModel),
-													'dragDropModel is ' : angular.copy(dragDropModel)
-											}
-										);
+				// console.info('refreshControlsKeys');
+				// console.dir(	
+				// 							{
+				// 									'when' 							: 'starting',
+				// 									'configModel is ' 	: angular.copy(configModel),
+				// 									'dragDropModel is ' : angular.copy(dragDropModel)
+				// 							}
+				// 						);
 								
 			};
 
@@ -324,55 +325,30 @@ angular
 								}
 							});
 						});
-						
+							
 						dragDropModel[1][aConfigLineIndex].push(dragdropControlRef);
 						
+						//update class depending number of control per line
+						var cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
+						angular.forEach(dragDropModel[1][aConfigLineIndex], function(ddControlToUpdate){
+						ddControlToUpdate.cssClass = cssClassToApply;
+							
+						});
 						
 					});	
 											
-// 						angular.forEach(aConfigLine.columns, function(aConfigControl, aConfigControlIndex){
-// 							//if last control removed from line
-// 							//and dragDrop model did not already removed this line
-// 							if(typeof dragDropModel[1][aConfigLineIndex] !== 'undefined'){
-// 								if(dragDropModel[1][aConfigLineIndex].length > 0){
-// 									
-// 									
-// 									dragDropModel[1][aConfigLineIndex][aConfigControlIndex].key = aConfigControl.control.key;
-// 									//need to save all in dragdropModel as it is a reference
-// 									//configModel still needed 
-// 									// -> to keep coherence (same back model) between all version of easyForm Generator
-// 									// -> is the back model (can be saved to dataBase)
-// 									dragDropModel[1][aConfigLineIndex][aConfigControlIndex].configModelControl = angular.copy(aConfigControl.control);										
-// 									
-// 								}
-// 							
-// 							}else{
-// 								console.warn(angular.copy(dragDropModel[1]));
-// 								//add a new line
-// 								dragDropModel[1].push(
-// 								[
-// 									[
-// 										{
-// 												key: aConfigControl.control.key,
-// 												control: aConfigControl.control.type,
-// 												cssClass: aConfigControl.control.className,
-// 												configModelControl: angular.copy(aConfigControl.control)
-// 										}
-// 									]
-// 								]);
-// 							}
-// 
-// 						});
+											
+											
 				});
 
-				console.info('bindDragDropModelFromConfigurationModel');
-				console.dir(	
-											{
-													'when' 							: 'starting',
-													'configModel is ' 	: angular.copy(configModel),
-													'dragDropModel is ' : angular.copy(dragDropModel)
-											}
-										);
+				// console.info('bindDragDropModelFromConfigurationModel');
+				// console.dir(	
+				// 							{
+				// 									'when' 							: 'starting',
+				// 									'configModel is ' 	: angular.copy(configModel),
+				// 									'dragDropModel is ' : angular.copy(dragDropModel)
+				// 							}
+				// 						);
 								
 			};
 
