@@ -129,74 +129,69 @@ angular
    */
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
   
-  var testModel = [
-'{',
-'"submitButtonText": "submit",',
-'"cancelButtonText": "cancel",',
-'"lines": [',
-'{',
-'"line": 1,',
-'"activeColumn": 1,',
-'"columns": [',
-'{',
-'"numColumn": 1,',
-'"exist": true,',
-'"control": {',
-'"className": "col-xs-12",',
-'"type": "header",',
-'"key": "",',
-'"templateOptions": {',
-'    "label": "",',
-'    "required": false,',
-'    "description": "Welcome",',
-'    "placeholder": "",',
-'    "options": [',
-'],',
-'    "type": ""',
-'},',
-'"selectedControl": "Header",',
-'"subtype": "",',
-'"cssClass": "col-xs-12",',
-'"edited": true',
-'}',
-'}',
-']',
-'},',
-'{',
-'"line": 2,',
-'"activeColumn": 1,',
-'"columns": [',
-'{',
-'"numColumn": 1,',
-'"exist": true,',
-'"control": {',
-'"className": "col-xs-12",',
-'"type": "subTitle",',
-'"key": "",',
-'"templateOptions": {',
-'    "label": "",',
-'    "required": false,',
-'    "description": "Hello",',
-'    "placeholder": "",',
-'   "options": [',
-'],',
-'    "type": ""',
-'},',
-'"selectedControl": "Subtitle",',
-'"subtype": "",',
-'"edited": true',
-'}',
-'}',
-']',
-'}',
-']',
-'}'    
-  ].join('')
+  var testModel =  [
+                    {
+                        "line": 1,
+                        "activeColumn": 1,
+                        "columns": [
+                            {
+                                "numColumn": 1,
+                                "exist": true,
+                                "control": {
+                                    "className": "col-xs-12",
+                                    "type": "header",
+                                    "key": "",
+                                    "templateOptions": {
+                                        "label": "",
+                                        "required": false,
+                                        "description": "Welcome",
+                                        "placeholder": "",
+                                        "options": [
+                            ],
+                                        "type": ""
+                                    },
+                                    "selectedControl": "Header",
+                                    "subtype": "",
+                                    "cssClass": "col-xs-12",
+                                    "edited": true
+                                }
+                }
+            ]
+        },
+                    {
+                        "line": 2,
+                        "activeColumn": 1,
+                        "columns": [
+                            {
+                                "numColumn": 1,
+                                "exist": true,
+                                "control": {
+                                    "className": "col-xs-12",
+                                    "type": "subTitle",
+                                    "key": "",
+                                    "templateOptions": {
+                                        "label": "",
+                                        "required": false,
+                                        "description": "Hello",
+                                        "placeholder": "",
+                                        "options": [
+                            ],
+                                        "type": ""
+                                    },
+                                    "selectedControl": "Subtitle",
+                                    "subtype": "",
+                                    "edited": true
+                                }
+                }
+            ]
+        }
+    ];
   /**
    * TODO to bind model from saved one
    */
-  formFieldManage.bindConfigurationLines($scope.configuration, testModel, false)
-  
+  formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
+  console.dir($scope.configuration);
+  //need to bind dragdrop model now
   
   /**
    * init proxyModel 

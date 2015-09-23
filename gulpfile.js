@@ -35,7 +35,6 @@ var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
 var sourcemaps 					= require('gulp-sourcemaps');
 var rename							= require('gulp-rename');
-var babel 							= require("gulp-babel");
 var exec         				= require('child_process').exec;
 
 
@@ -472,6 +471,19 @@ gulp.task('app:js:stepway',
  * APP JS TASKS (STEP WAY ES6)
  * -------------------------------
  */
+
+gulp.task('stepWayES6:Build:sfx:min', function (cb) {
+  exec('jspm bundle-sfx src/app/bootstrap ./dist/iGotTime.min.js --minify', function (err, stdout, stderr) {
+      cb(err);
+  });
+});
+
+gulp.task('stepWayES6:sfx', function (cb) {
+  exec('jspm bundle-sfx src/app/bootstrap ./dist/iGotTime.js', function (err, stdout, stderr) {
+      cb(err);
+  });
+});
+
 
 
 /**
