@@ -3045,7 +3045,27 @@ angular
    * TODO to bind model from saved one
    */
   formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
-  console.dir($scope.configuration);
+  formFieldManage.applyConfigurationToformlyModel(  
+                                                    $scope.configuration, 
+                                                    $scope.vm.wfFormFields, 
+                                                    $scope.vm.model
+                                                  );                   
+  $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+  ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
+                                                    $scope.configuration, 
+                                                    $scope.dragDropModel
+                                                    );   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //need to bind dragdrop model now
+  
   
   /**
    * init proxyModel 
@@ -6037,7 +6057,90 @@ angular
 								
 			};
 
+			/**
+			 * drag drop model
+			 * -> will be used to bind configuration model
+			 * 	of no key saved, configuration model controls would be reset each drop events
+			 * 
+			 * -> matching key : will prevent to reset existing control
+			 */
+			Service.loadDragDropModelFromConfigurationModel = function(configModel, dragDropModel){				
+				//reset dragdrop fields model NOT all dragDropModel!
+				dragDropModel[1] = [];
+				
+				angular.forEach(configModel.lines, function(aConfigLine, aConfigLineIndex){
+					//add new line
+					dragDropModel[1].push([]);
+					angular.forEach(aConfigLine.columns, function(aConfigControl, aConfigControlIndex){
+						
+						/**
+						 * get control type from configuration.control.selectedControl
+						 */
+						
+						var dragdropControlRef = {
+							control: 'empty',
+							cssClass : 'col-xs-12',
+							label: '<div class="col-md-12"> <div class="form-group"> <div class=""> </div> </div></div>'
+						};
+						
+						angular.forEach(dragDropModel[0], function(groupOfCtrlRef, groupOfCtrlRefIndex){
+							angular.forEach(groupOfCtrlRef, function(aCtrlref, aCtrlRefIndex){
+								if (aCtrlref.control === aConfigControl.control.selectedControl) {
+									dragdropControlRef = angular.copy(aCtrlref);
+								}
+							});
+						});
+						
+						dragDropModel[1][aConfigLineIndex].push(dragdropControlRef);
+						
+						
+					});	
+											
+// 						angular.forEach(aConfigLine.columns, function(aConfigControl, aConfigControlIndex){
+// 							//if last control removed from line
+// 							//and dragDrop model did not already removed this line
+// 							if(typeof dragDropModel[1][aConfigLineIndex] !== 'undefined'){
+// 								if(dragDropModel[1][aConfigLineIndex].length > 0){
+// 									
+// 									
+// 									dragDropModel[1][aConfigLineIndex][aConfigControlIndex].key = aConfigControl.control.key;
+// 									//need to save all in dragdropModel as it is a reference
+// 									//configModel still needed 
+// 									// -> to keep coherence (same back model) between all version of easyForm Generator
+// 									// -> is the back model (can be saved to dataBase)
+// 									dragDropModel[1][aConfigLineIndex][aConfigControlIndex].configModelControl = angular.copy(aConfigControl.control);										
+// 									
+// 								}
+// 							
+// 							}else{
+// 								console.warn(angular.copy(dragDropModel[1]));
+// 								//add a new line
+// 								dragDropModel[1].push(
+// 								[
+// 									[
+// 										{
+// 												key: aConfigControl.control.key,
+// 												control: aConfigControl.control.type,
+// 												cssClass: aConfigControl.control.className,
+// 												configModelControl: angular.copy(aConfigControl.control)
+// 										}
+// 									]
+// 								]);
+// 							}
+// 
+// 						});
+				});
 
+				console.info('bindDragDropModelFromConfigurationModel');
+				console.dir(	
+											{
+													'when' 							: 'starting',
+													'configModel is ' 	: angular.copy(configModel),
+													'dragDropModel is ' : angular.copy(dragDropModel)
+											}
+										);
+								
+			};
 
 			return Service;
 

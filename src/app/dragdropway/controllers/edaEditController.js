@@ -188,10 +188,30 @@ angular
     ];
   /**
    * TODO to bind model from saved one
+   * from @krupak :fixing loading model bug
    */
   formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
-  console.dir($scope.configuration);
+  formFieldManage.applyConfigurationToformlyModel(  
+                                                    $scope.configuration, 
+                                                    $scope.vm.wfFormFields, 
+                                                    $scope.vm.model
+                                                  );                   
+  $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+  ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
+                                                    $scope.configuration, 
+                                                    $scope.dragDropModel
+                                                    );   
+  
+  
+  
+  
+  
+  
+  
+  
+  
   //need to bind dragdrop model now
+  
   
   /**
    * init proxyModel 
