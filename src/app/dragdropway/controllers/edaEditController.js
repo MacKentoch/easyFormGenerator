@@ -129,79 +129,79 @@ angular
    */
   formFieldManage.initConfigurationEditFromScratch($scope.configuration , false);
   
-  var testModel =  [
-                    {
-                        "line": 1,
-                        "activeColumn": 1,
-                        "columns": [
-                            {
-                                "numColumn": 1,
-                                "exist": true,
-                                "control": {
-                                    "className": "col-xs-12",
-                                    "type": "header",
-                                    "key": "",
-                                    "templateOptions": {
-                                        "label": "",
-                                        "required": false,
-                                        "description": "Welcome",
-                                        "placeholder": "",
-                                        "options": [
-                            ],
-                                        "type": ""
-                                    },
-                                    "selectedControl": "Header",
-                                    "subtype": "",
-                                    "cssClass": "col-xs-12",
-                                    "edited": true
-                                }
-                }
-            ]
-        },
-                    {
-                        "line": 2,
-                        "activeColumn": 1,
-                        "columns": [
-                            {
-                                "numColumn": 1,
-                                "exist": true,
-                                "control": {
-                                    "className": "col-xs-12",
-                                    "type": "subTitle",
-                                    "key": "",
-                                    "templateOptions": {
-                                        "label": "",
-                                        "required": false,
-                                        "description": "Hello",
-                                        "placeholder": "",
-                                        "options": [
-                            ],
-                                        "type": ""
-                                    },
-                                    "selectedControl": "Subtitle",
-                                    "subtype": "",
-                                    "edited": true
-                                }
-                }
-            ]
-        }
-    ];
-  /**
-   * TODO to bind model from saved one
-   * from @krupak :fixing loading model bug
-   */
-  formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
-  formFieldManage.applyConfigurationToformlyModel(  
-                                                    $scope.configuration, 
-                                                    $scope.vm.wfFormFields, 
-                                                    $scope.vm.model
-                                                  );                   
-  $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
-  ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
-                                                    $scope.configuration, 
-                                                    $scope.dragDropModel
-                                                    );   
-  
+  // var testModel =  [
+  //                   {
+  //                       "line": 1,
+  //                       "activeColumn": 1,
+  //                       "columns": [
+  //                           {
+  //                               "numColumn": 1,
+  //                               "exist": true,
+  //                               "control": {
+  //                                   "className": "col-xs-12",
+  //                                   "type": "header",
+  //                                   "key": "",
+  //                                   "templateOptions": {
+  //                                       "label": "",
+  //                                       "required": false,
+  //                                       "description": "Welcome",
+  //                                       "placeholder": "",
+  //                                       "options": [
+  //                           ],
+  //                                       "type": ""
+  //                                   },
+  //                                   "selectedControl": "Header",
+  //                                   "subtype": "",
+  //                                   "cssClass": "col-xs-12",
+  //                                   "edited": true
+  //                               }
+  //               }
+  //           ]
+  //       },
+  //                   {
+  //                       "line": 2,
+  //                       "activeColumn": 1,
+  //                       "columns": [
+  //                           {
+  //                               "numColumn": 1,
+  //                               "exist": true,
+  //                               "control": {
+  //                                   "className": "col-xs-12",
+  //                                   "type": "subTitle",
+  //                                   "key": "",
+  //                                   "templateOptions": {
+  //                                       "label": "",
+  //                                       "required": false,
+  //                                       "description": "Hello",
+  //                                       "placeholder": "",
+  //                                       "options": [
+  //                           ],
+  //                                       "type": ""
+  //                                   },
+  //                                   "selectedControl": "Subtitle",
+  //                                   "subtype": "",
+  //                                   "edited": true
+  //                               }
+  //               }
+  //           ]
+  //       }
+  //   ];
+  // /**
+  //  * TODO to bind model from saved one
+  //  * from @krupak :fixing loading model bug
+  //  */
+  // formFieldManage.bindConfigurationLines($scope.configuration, testModel, false);
+  // formFieldManage.applyConfigurationToformlyModel(  
+  //                                                   $scope.configuration, 
+  //                                                   $scope.vm.wfFormFields, 
+  //                                                   $scope.vm.model
+  //                                                 );                   
+  // $scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy($scope.vm.wfFormFields);
+  // ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
+  //                                                   $scope.configuration, 
+  //                                                   $scope.dragDropModel
+  //                                                   );   
+  // 
   
   
   
@@ -460,14 +460,14 @@ angular
             showCloseButton: true
       });
 
-      var wfForm = new formsByIdService();
-      var formSavingIsOK = true;
-
-      wfForm.formName = $scope.configuration.formName;
-      wfForm.submitButtonText = $scope.configuration.submitButtonText;
-      wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
-
-      wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+//       var wfForm = new formsByIdService();
+//       var formSavingIsOK = true;
+// 
+//       wfForm.formName = $scope.configuration.formName;
+//       wfForm.submitButtonText = $scope.configuration.submitButtonText;
+//       wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+// 
+//       wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
 
       // save to database here 
       // wfForm.$save()

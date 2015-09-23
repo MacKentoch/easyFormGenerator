@@ -18,13 +18,11 @@
 		.directive('edaDragdropWayEasyFormGen', edaDragDropWayEasyFormGen);
 		
 		edaDragDropWayEasyFormGen.$inject = [
-      '$templateCache', 
       '$timeout', 
       'formFieldManage',
       'ddModelConfModelProxyService'];
 		
 		function edaDragDropWayEasyFormGen(
-      $templateCache, 
       $timeout, 
       formFieldManage,
       ddModelConfModelProxyService){
@@ -43,7 +41,7 @@
         '$modal',
         '$log', 
         'formFieldManage',
-        'formsByIdService',
+        //'formsByIdService',
         'controllerModalProxy',
         'dragDropItemDecorationService',
         'dragDropConfig',
@@ -240,7 +238,7 @@
                   $modal,
                   $log, 
                   formFieldManage, 
-                  formsByIdService, 
+                  //formsByIdService, 
                   controllerModalProxy,
                   dragDropItemDecorationService,
                   dragDropConfig,
@@ -267,6 +265,8 @@
       /**
       * formly models
       */
+      $scope.returnSaveEvent = false;
+      /*jshint validthis: true */
       $scope.vm = this;
       /**
       * model filled by form :
@@ -579,14 +579,14 @@
                 showCloseButton: true
           });
     
-          var wfForm = new formsByIdService();
-          var formSavingIsOK = true;
-    
-          wfForm.formName = $scope.configuration.formName;
-          wfForm.submitButtonText = $scope.configuration.submitButtonText;
-          wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
-    
-          wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
+          //var wfForm = new formsByIdService();
+    //       var formSavingIsOK = true;
+    // 
+    //       wfForm.formName = $scope.configuration.formName;
+    //       wfForm.submitButtonText = $scope.configuration.submitButtonText;
+    //       wfForm.cancelButtonText = $scope.configuration.cancelButtonText;
+    // 
+    //       wfForm.formlyField = JSON.stringify($scope.configuration.lines); 
     
           // save to database here 
           // wfForm.$save()
@@ -623,6 +623,9 @@
                   body: '',                
                   showCloseButton: true
             }); 
+            
+         //save form event   
+         $scope.returnSaveEvent = true;   
           return true;
       };
     

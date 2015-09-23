@@ -61,9 +61,13 @@
 
 			<!-- Easy Form Generator (here drag and drop way) is now a ridiculous small html :
 			=============================================================-->
-			<eda-dragdrop-way-easy-form-gen 	
+			<!--<eda-dragdrop-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
 						eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
+			</eda-dragdrop-way-easy-form-gen>-->
+			<eda-dragdrop-way-easy-form-gen 	
+						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
+						>
 			</eda-dragdrop-way-easy-form-gen>
 
 		</div>	
@@ -80,7 +84,8 @@
 				'use strict';
 				angular
 					.module('appDemo', [
-						'eda.easyformGen.dragdropway' //injects easy form generator drag and drop way
+						//'eda.easyformGen.dragdropway' //injects easy form generator drag and drop way
+						'edaApp'
 					])
 					.controller('demoController', demoController);
 					
@@ -393,26 +398,42 @@
 			<script type="text/javascript" src="./public/lib/js/bootstrap.min.js"></script>
 			<!-- angular ui bootstrap -->
 			<script type="text/javascript" src="./public/lib/js/ui-bootstrap-tpls.min.js"></script>
+
 			<!-- angular app all concatenated here (app, controllers directives, containers ...) -->
 			<script type="text/javascript" src="./public/js/eda.dragdropway.js"></script>
+
 			<!-- textAngular Includes -->
 			<script src='./public/lib/js/textAngular-rangy.min.js'></script>
 			<script src='./public/lib/js/textAngular-sanitize.min.js'></script>
 			<script src='./public/lib/js/textAngular.min.js'></script> 
+
 			<!-- lodash -->
 			<script src='./public/lib/js/lodash.min.js'></script> 
+
+			<!-- angular-Strap -->
+			<script type="text/javascript" src="./public/lib/js/angular-strap.min.js"></script>
+			<script type="text/javascript" src="./public/lib/js/angular-strap.tpl.min.js"></script>
+
+
+			<script type="text/javascript" src="./public/lib/js/angular-resource.min.js"></script>
+
+			<!-- angular pageSlide directive -->
+			<script type="text/javascript" src="./public/lib/js/angular-pageslide-directive.min.js"></script>
+
 			<!-- angular animate -->
 			<script type="text/javascript" src="./public/lib/js/angular-animate.min.js"></script>
 			<!-- angular toaster -->
 			<script type="text/javascript" src="./public/lib/js/toaster.min.js"></script>
 			<!-- nya select bootstrap -->		
 			<script type="text/javascript" src="./public/lib/js/nya-bs-select.min.js"></script>
+			<!-- angular-drag-drop-lists -->			
+			<script type="text/javascript" src="./public/lib/js/angular-drag-and-drop-lists.min.js"></script> 
 			<!--  api-check = formly needed : IMPORTANT : always before formly -->
 			<script type="text/javascript" src="./public/lib/js/api-check.min.js"></script> 
 			<!-- angular formly -->
 			<script type="text/javascript" src="./public/lib/js/formly.min.js"></script> 
 			<!-- angular formly template bootstrap -->
-			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script>
+			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script> 
 		</footer>
 
 	</body>

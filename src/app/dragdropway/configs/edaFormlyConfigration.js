@@ -18,6 +18,7 @@ angular
 
 	function (formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, dragDropConfigProvider) {
 		
+		console.info('app in config');
 
 		/**
 		 * Add blanck control

@@ -48,6 +48,8 @@ angular
 
   runfct.$inject = ['$templateCache'];
   function runfct($templateCache){
+		
+		
   		
   		 var validEditFooter = validEditFooterTpl();
   		 $templateCache.put('editPanelBlankCtrl-tpls.html', editPanelBlankCtrlTpls());
