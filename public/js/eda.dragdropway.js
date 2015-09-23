@@ -5527,7 +5527,6 @@ angular
         '$modal',
         '$log', 
         'formFieldManage',
-        //'formsByIdService',
         'controllerModalProxy',
         'dragDropItemDecorationService',
         'dragDropConfig',
@@ -5676,13 +5675,16 @@ angular
                
             updateConfigurationClassName(scope.configuration);
             
-            // scope.configuration = angular
-            //                           .copy(ddModelConfModelProxyService
-            //                                   .refreshAllConfigurationFromDragAndDropModel(
-            //                                                                                 scope.configuration, 
-            //                                                                                 scope.dragDropModel
-            //                                                                               )
-            //                               );            
+            ddModelConfModelProxyService.refreshControlsKeys( 
+                                                              scope.configuration, 
+                                                              scope.dragDropModel
+                                                            );             
+            
+            console.info('compare both configuration model');
+            console.dir({
+              'loaded one' : angular.copy(scope.configurationLoaded),
+              'bound one' : angular.copy(scope.configuration) 
+            });
             
             //apply formly model
             formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.vm.model);          
@@ -5726,7 +5728,6 @@ angular
                   $modal,
                   $log, 
                   formFieldManage, 
-                  //formsByIdService, 
                   controllerModalProxy,
                   dragDropItemDecorationService,
                   dragDropConfig,
@@ -5736,7 +5737,7 @@ angular
     
     
       /**
-      * versionning
+      * versioning
       */
       
       $scope.easyFormGeneratorVERSION = easyFormGenVersion;
