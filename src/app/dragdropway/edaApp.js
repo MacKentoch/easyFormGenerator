@@ -16,6 +16,10 @@
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
+  //alias module to distinguish the drag and drop way
+angular
+  .module('eda.easyformGen.dragdropway', ['edaApp']);
+
 
 angular
   .module('edaApp', [

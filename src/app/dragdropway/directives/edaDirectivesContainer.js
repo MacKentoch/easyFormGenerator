@@ -21,5 +21,6 @@ angular
 																	'edaApp.directives.edaDdNoEditableControlDirective',
 																	'edaApp.directives.edaDdContentCounterDirective',
 																	'edaApp.directives.edaRightClickDirective',
+																	'edaApp.directives.edaDragdropWayEasyFormGenDirective'
 	]);
 
