@@ -273,7 +273,7 @@ ______
 
 ## What is new?
 
- - Sept 2015 : `drag and drop way` is now a simple module `eda-dragdrop-way-easy-form-gen`
+ - Sept 2015 : `drag and drop way` is now a simple directive `eda-dragdrop-way-easy-form-gen`
 
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`
   
