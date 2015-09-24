@@ -98,8 +98,9 @@ Finally :
   - `index_StepWay.html` is the `step way` (full easy form html)
   - `index_StepWay_As_module` is the `step way` (a module more production orientated) 
 
+_____
 
-###Step way version (production friendly)
+###Using Step way version (production friendly)
 
 >demo : `index_StepWay_As_module` in `dist` directory. 
 
@@ -164,9 +165,47 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - nya-bootstrap-select (for basic and grouped select)
 - angular toaster (nice toaster messages)
 
+____
 
 
-###Easy form viewer (production friendly)
+###Using Drag and drop way version (BETA)
+
+>demo : `index_DragDropWay_As_Module.html` in `dist` directory. 
+
+####Inject easy form generator in your app
+
+Just inject `eda.easyformGen.dragdropway` in you application :
+
+```javascript
+angular
+  .module('appDemo', [
+    'eda.easyformGen.dragdropway' //injects easy form generator drag and drop way
+   ])
+
+```
+
+
+####All easy form generator just by this small html :
+```html
+<eda-dragdrop-way-easy-form-gen></eda-dragdrop-way-easy-form-gen>
+```
+
+####Want to Load/save models?
+
+Add these attributes to interact with your own controller : 
+- `eda-easy-form-generator-model` : attribute to bind your model
+- `eda-save-form-event` : attribute to bind save form event 
+```html
+<eda-dragdrop-way-easy-form-gen 	
+      eda-easy-form-generator-model="_MODEL_"
+      eda-save-form-event="_SAVE_FUNCTION_">
+</eda-dragdrop-way-easy-form-gen>
+```
+
+
+____
+
+###Using Easy form viewer (production friendly)
 
 >demo : `index_easyFormViewer_Module.html` in `dist` directory. 
 
@@ -233,6 +272,9 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
+
+ - Sept 2015 : `drag and drop way` is now a simple module `eda-dragdrop-way-easy-form-gen`
+
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`
   
  ```javascript
