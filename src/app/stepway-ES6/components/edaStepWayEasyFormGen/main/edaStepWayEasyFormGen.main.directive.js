@@ -1,6 +1,6 @@
 /* global angular */
-import easyformTemplate from 'edaStepWayEasyFormGen.main.template.html!text';
-import edaStepWayEasyFormGenController from  '';
+import easyformTemplate from './edaStepWayEasyFormGen.main.template.html!text';
+import edaStepWayEasyFormGenController from  './edaStepWayEasyFormGen.main.controller';
 
 function edaStepWayEasyFormGenDirective(
 			$templateCache, 
@@ -9,16 +9,16 @@ function edaStepWayEasyFormGenDirective(
       controllerModalProxy){
 	
 	var directive = {
-		restrict : 'E',
-		scope : {
+		restrict 	: 'E',
+		scope 		: {
 			edaEasyFormGeneratorModel : '=',
 			edaSaveFormEvent          : '&edaSaveFormEvent'
 		},
-		controller : edaStepWayEasyFormGenController,
-		controllerAs : 'vm',
-		replace : false,
-		templateUrl : 'edaStepWayEasyFormGeneratorTemplate.html',
-		link : linkFct
+		controller 		: edaStepWayEasyFormGenController,
+		controllerAs 	: 'vm',
+		replace 			: false,
+		templateUrl 	: 'edaStepWayEasyFormGeneratorTemplate.html',
+		link 					: linkFct
 	};
 	return directive;
 	
