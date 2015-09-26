@@ -1,5 +1,0 @@
-const EASY_FORM_VERSION_NAME = 'easyFormGenVersion';
-const EASY_FORM_VERSION_VALUE = 'v1.1.0';
-
-
-export {EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE};

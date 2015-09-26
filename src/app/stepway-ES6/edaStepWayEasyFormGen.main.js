@@ -1,8 +1,10 @@
 import './edaStepWayEasyFormGen.vendor.adapter';
 import edaStepWayEasyFormGenModule from './components/edaStepWayEasyFormGen/main/edaStepWayEasyFormGen.main.module';
-import formlyConfig from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.easyFormConf';
-import easyFormStepWayConfig from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.formly';
-import {EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE} from './config/edaStepWayEasyFormGen.config';
+
+import easyFormStepWayConfig, {EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE} from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.easyFormConf';
+import formlyConfig from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.formly';
+
+
 
 const STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
 
