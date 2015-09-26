@@ -1,3 +1,4 @@
+import './edaStepWayEasyFormGen.vendor.adapter';
 import edaStepWayEasyFormGenModule from './components/edaStepWayEasyFormGen/main/edaStepWayEasyFormGen.main.module';
 import formlyConfig from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.easyFormConf';
 import easyFormStepWayConfig from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.formly';
