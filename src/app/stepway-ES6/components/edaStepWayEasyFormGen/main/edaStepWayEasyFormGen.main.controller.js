@@ -1,4 +1,7 @@
-//controllerAs = vm in html
+import {
+	initDebugModel,
+	initTabModel
+} from './edaStepWayEasyFormGen.main.controller.helpers';
 
 class edaStepWayEasyFormGenController {
 		
@@ -31,8 +34,9 @@ class edaStepWayEasyFormGenController {
 		this.model                 = {};
 		this.wfFormFields          = [];
 		this.wfFormFieldsOnlyNeededProperties = []; 
-		this.easyFormGeneratorVERSION = easyFormGenVersion;
-		
+		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
+		this.debug                    = initDebugModel();
+		this.tab                      = initTabModel();
 		
 	}
 	
