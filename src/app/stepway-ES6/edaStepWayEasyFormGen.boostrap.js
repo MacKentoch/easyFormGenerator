@@ -1,3 +1,4 @@
+/* global angular */
 import mainModule from './edaStepWayEasyFormGen.main';
 
 angular.element(document).ready(function() {

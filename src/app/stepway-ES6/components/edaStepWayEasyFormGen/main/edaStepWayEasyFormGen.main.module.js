@@ -1,4 +1,4 @@
-import edaStepWayEasyFormGenDirective from 'edaStepWayEasyFormGen.main.directive.js';
+import edaStepWayEasyFormGenDirective from './edaStepWayEasyFormGen.main.directive';
 
 const STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
   

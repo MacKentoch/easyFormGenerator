@@ -2,8 +2,5 @@
 	"compilerOptions": {
 		"target": "ES6",
 		"module": "commonjs"
-	},
-	"files": [
-		"../typings/angularjs/angular.d.ts"
-	]
+	}
 }
