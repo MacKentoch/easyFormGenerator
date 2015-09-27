@@ -1,6 +1,8 @@
 import {
 	initDebugModel,
-	initTabModel
+	initTabModel,
+	initColumnTemplate,
+	initLineTemplate
 } from './edaStepWayEasyFormGen.main.controller.helpers';
 
 class edaStepWayEasyFormGenController {
@@ -37,6 +39,14 @@ class edaStepWayEasyFormGenController {
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
 		this.debug                    = initDebugModel();
 		this.tab                      = initTabModel();
+		this.configuration            = {};//configuration model (contains array of lines which contains array of columns)    											
+		this.numberOfColumns          = 1;
+		this.MaxNumberOfColumns       = 3;
+		this.MinNumberOfColumns       = 1;		
+		this.columnTemplate           = initColumnTemplate();
+		this.lineTemplate             = initLineTemplate();
+		//this.resetToZeroModel         = resetToZeroModel; //no more used
+		
 		
 	}
 	
