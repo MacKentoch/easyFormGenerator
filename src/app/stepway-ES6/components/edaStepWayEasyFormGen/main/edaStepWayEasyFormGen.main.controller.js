@@ -1,3 +1,4 @@
+/* global angular */
 import {
 	initDebugModel,
 	initTabModel,
@@ -43,9 +44,9 @@ class edaStepWayEasyFormGenController {
 		this.numberOfColumns          = 1;
 		this.MaxNumberOfColumns       = 3;
 		this.MinNumberOfColumns       = 1;		
-		this.columnTemplate           = initColumnTemplate();
-		this.lineTemplate             = initLineTemplate();
-		//this.resetToZeroModel         = resetToZeroModel; //no more used
+		this.columnTemplate           = initColumnTemplate(); //TODO : check is really needed 
+		this.lineTemplate             = initLineTemplate();   //TODO : check if really needed
+		//this.resetToZeroModel         = resetToZeroModel; //function no more used
 		
 		
 	}
@@ -60,6 +61,79 @@ class edaStepWayEasyFormGenController {
 				showCloseButton: true
 		}); 		
 	}
+	
+	countConfigurationModelLines() {
+		this.debug.configurationModelNumberofLines = this.configuration.lines.length;
+		return this.configuration.lines.length;		
+	}
+	
+	setActiveLineNumber(lineNumber) {
+		if (lineNumber <= this.countConfigurationModelLines()) {
+			this.configuration.activeLine = lineNumber;
+		}		
+	}
+	
+	upThisLine(indexLine) {
+		if (indexLine > -1) {
+			if (this.configuration.lines[indexLine - 1]) {
+				var currentLineObj = this.configuration.lines[indexLine];
+				this.configuration.lines.splice(indexLine , 1);
+				this.configuration.lines.splice((indexLine - 1), 0, currentLineObj);    
+				//manage selected aciveLine
+				this.configuration.activeLine = 1;
+			}
+		}
+			//re-render formfield 
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
+	}
+	
+	downThisLine(indexLine) {
+		if (indexLine > -1) {
+			if (this.configuration.lines[indexLine + 1]) {
+				var currentLineObj = this.configuration.lines[indexLine];
+				this.configuration.lines.splice(indexLine , 1);
+				this.configuration.lines.splice((indexLine + 1), 0, currentLineObj);  
+				//manage selected aciveLine
+				this.configuration.activeLine = 1;
+			}
+		}     
+		//re-render formfield 
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model); 
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
+	}
+	
+	addNewline() {
+		this.configuration.lines.push(initLineTemplate());
+			//re-render formfield 
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
+	} 
+	
+	removeThisLine(index) {
+		if (index > -1) {
+			if (this.configuration.lines.length > 1) {
+					//manage selected aciveLine
+					if (this.configuration.activeLine === index + 1) {
+						this.configuration.activeLine = 1;
+					}
+					this.configuration.lines.splice(index, 1);
+			}else{
+				this.$timeout(function(){
+						this.toaster.pop({
+										type: 'warning',
+										title: 'Last line' ,
+										body: 'Can\'t delete the last line',                
+										showCloseButton: true
+							});
+				}, 100); 
+			}
+		//re-render formfield 
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+		}
+	}
+	
 	
 	
 }
