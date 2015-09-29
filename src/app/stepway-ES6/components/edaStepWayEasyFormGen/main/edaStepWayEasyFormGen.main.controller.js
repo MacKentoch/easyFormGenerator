@@ -46,6 +46,8 @@ class edaStepWayEasyFormGenController {
 		this.MinNumberOfColumns       = 1;		
 		this.columnTemplate           = initColumnTemplate(); //TODO : check is really needed 
 		this.lineTemplate             = initLineTemplate();   //TODO : check if really needed
+		this.nyaSelect              	= {};  
+    this.animationsEnabled        = this.easyFormSteWayConfig.getModalAnimationValue();  //-> disabling animation untill correction in angular bootstrap
 		//this.resetToZeroModel         = resetToZeroModel; //function no more used
 		
 		
@@ -133,6 +135,116 @@ class edaStepWayEasyFormGenController {
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 		}
 	}
+	
+	
+	increaseNumberOfColumns() {
+		if (this
+					.configuration
+					.lines[this.configuration.activeLine -1]
+					.columns.length < this.MaxNumberOfColumns) {
+	
+			var newNumberOfColumns = this
+																	.configuration
+																	.lines[this.configuration.activeLine -1]
+																	.columns
+																	.push(initColumnTemplate());
+			this
+					.configuration
+					.lines[this.configuration.activeLine -1]
+					.columns[newNumberOfColumns - 1]
+					.numColumn = newNumberOfColumns; 
+			}
+				//re-render formfield 
+			this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model); 
+			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+	}
+	
+	
+	decreaseNumberOfColumns() {
+		if (this
+					.configuration
+					.lines[this.configuration.activeLine -1]
+					.columns.length > 1) {
+			this.configuration
+				.lines[this.configuration.activeLine -1]
+				.columns
+				.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
+		}
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);  
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
+	}
+	
+	
+	resetStepCounter() {
+		this.configuration.configStepCounter = 0;
+	} 
+	
+	
+	nextConfigStep() {
+		var configStepCounterMAX = this.configuration.listConfigStep.length -1;
+		if (this.configuration.configStepCounter !== configStepCounterMAX) {
+				this.configuration.configStepCounter ++;
+		}    
+		this.setTrueThisStepIndicator(this.configuration.configStepCounter);
+	}
+	
+	
+	resetAllIndicators(){
+		for (var i = this.configuration.stepIndicators.length - 1; i >= 0; i--) {
+			this.configuration.stepIndicators[i] = false;
+		}
+	}
+	
+	
+	setTrueThisStepIndicator(indexIndicator){
+			this.resetAllIndicators();
+			this.configuration.stepIndicators[indexIndicator] = true;    
+	}
+
+	
+	previousConfigStep() {
+		if (this.configuration.configStepCounter !== 0) {
+			this.configuration.configStepCounter --;
+		}
+		this.setTrueThisStepIndicator(this.configuration.configStepCounter);
+	}
+	
+	
+	stepReachable(indexStep) {
+		if (indexStep < this.configuration.configStepCounter) {
+			return 'disabled';
+		}else{
+			return 'enabled';
+		}
+	}
+	
+	showModalAddCtrlToColumn(size, indexLine, numcolumn) {
+	
+		var modalInstance = this.$modal.open({
+																			animation		: this.animationsEnabled,
+																			templateUrl	: 'editModalTemplate.html',  
+																			controller	: 'ngwfWfEditMODALController',
+																			size				: 'lg',
+																			resolve			: {
+																				nyaSelect : function () {
+																					return this.controllerModalProxy
+																										.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration,indexLine, numcolumn);
+																				}
+																			}
+		});
+	
+		modalInstance.result.then(function (modalAddCtrlModel) {
+				this.controllerModalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
+				this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+				this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+	
+		}, function () {
+			//$log.info('Modal dismissed at: ' + new Date());
+		});
+	} 
+	
+	
+	 		 	 		 	
 	
 	
 	
