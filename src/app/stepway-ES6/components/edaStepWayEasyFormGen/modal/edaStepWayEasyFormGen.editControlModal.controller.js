@@ -1,0 +1,5 @@
+const EDIT_MODAL_CONTROLLER_NAME = 'editControlModal';
+
+
+
+export {EDIT_MODAL_CONTROLLER_NAME};

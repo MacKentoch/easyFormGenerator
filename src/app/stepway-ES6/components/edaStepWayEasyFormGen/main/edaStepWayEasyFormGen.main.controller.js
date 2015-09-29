@@ -6,6 +6,13 @@ import {
 	initLineTemplate
 } from './edaStepWayEasyFormGen.main.controller.helpers';
 
+import editControlModalTemplate from '../modal/edaStepWayEasyFormGen.editControlModal.template.html!text';
+
+import {
+	EDIT_MODAL_CONTROLLER_NAME
+} from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
+
+
 class edaStepWayEasyFormGenController {
 		
 	constructor	(easyFormGenVersion,
@@ -48,6 +55,7 @@ class edaStepWayEasyFormGenController {
 		this.lineTemplate             = initLineTemplate();   //TODO : check if really needed
 		this.nyaSelect              	= {};  
     this.animationsEnabled        = this.easyFormSteWayConfig.getModalAnimationValue();  //-> disabling animation untill correction in angular bootstrap
+		this.editControlModalSize			= 'lg';
 		//this.resetToZeroModel         = resetToZeroModel; //function no more used
 		
 		
@@ -222,9 +230,9 @@ class edaStepWayEasyFormGenController {
 	
 		var modalInstance = this.$modal.open({
 																			animation		: this.animationsEnabled,
-																			templateUrl	: 'editModalTemplate.html',  
-																			controller	: 'ngwfWfEditMODALController',
-																			size				: 'lg',
+																			template		: editControlModalTemplate,  
+																			controller	: EDIT_MODAL_CONTROLLER_NAME,
+																			size				: this.editControlModalSize,
 																			resolve			: {
 																				nyaSelect : function () {
 																					return this.controllerModalProxy
