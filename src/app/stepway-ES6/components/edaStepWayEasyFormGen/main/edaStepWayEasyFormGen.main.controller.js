@@ -54,10 +54,16 @@ class edaStepWayEasyFormGenController {
 		this.columnTemplate           = initColumnTemplate(); //TODO : check is really needed 
 		this.lineTemplate             = initLineTemplate();   //TODO : check if really needed
 		this.nyaSelect              	= {};  
-    this.animationsEnabled        = this.easyFormSteWayConfig.getModalAnimationValue();  //-> disabling animation untill correction in angular bootstrap
+		this.animationsEnabled        = this.easyFormSteWayConfig.getModalAnimationValue();  //-> disabling animation untill correction in angular bootstrap
 		this.editControlModalSize			= 'lg';
+		this.formlyList               = {};
+		this.previewLoadedForm        = { fieldsModel:[] };
+		this.configurationLoaded      = {};
+		this.returnSaveEvent          = false;   		
 		//this.resetToZeroModel         = resetToZeroModel; //function no more used
 		
+		this.formFieldManage.initConfigurationEditFromScratch(this.configuration);	
+		this.controllerModalProxy.initNyaSelect(this.nyaSelect);
 		
 	}
 	
@@ -249,10 +255,52 @@ class edaStepWayEasyFormGenController {
 		}, function () {
 			//$log.info('Modal dismissed at: ' + new Date());
 		});
-	} 
+	}
+	
+	previewExistingform(formlyform) {
+		let configlines = JSON.parse(formlyform.formlyField);
+		//here to replace with $scope.configuration : initialise configuration with lines 
+		this.configurationLoaded = {};
+		this.formFieldManage.bindConfigurationLines(this.configurationLoaded,configlines);
+		this.formFieldManage.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, $scope.vm.model);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+		this.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
+		this.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
+	} 	 
 	
 	
-	 		 	 		 	
+	saveThisForm() {
+		if (typeof this.configuration.formName === 'undefined') {
+		this.toaster.pop({
+						type: 'warning',
+						timeout:2000,
+						title: 'Form name is undefined',
+						body: 'Form has not been saved.',                
+						showCloseButton: true
+			});
+			return false;
+		}
+		if (this.configuration.formName === '') {
+		this.toaster.pop({
+						type: 'warning',
+						timeout:2000,
+						title: 'Form name is required',
+						body: 'Form has not been saved.',                
+						showCloseButton: true
+			});
+			return false;
+		}
+		this.toaster.pop({
+						type: 'wait',
+						timeout:10000,
+						title: 'Form is being saved',
+						body: 'Wait.',                
+						showCloseButton: true
+		});
+		this.toaster.clear();  
+		this.returnSaveEvent = true;
+		return true;
+	} 	 		 	 		 	
 	
 	
 	
