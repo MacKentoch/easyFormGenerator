@@ -6,7 +6,7 @@ function easyFormSteWayConfig() {
 	this.$get 							= easyFormSteWayConfig;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
-	this.configuration 			= _configuration;
+	this.configuration			= _configuration;
 	
 	
 	
@@ -39,7 +39,7 @@ function easyFormSteWayConfig() {
 	easyFormSteWayConfig.$inject = [];
 	function easyFormSteWayConfig(){
 											
-		var service = {
+		let service = {
 			setModalAnimation 			: setModalAnimationFct,
 			getModalAnimationValue 	: getModalAnimationValue
 		};
