@@ -1,7 +1,7 @@
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig() {
-	var _configuration 			=  defaultConfig();
+	let _configuration 			=  defaultConfig();
 	/* jshint validthis:true */
 	this.$get 							= easyFormSteWayConfig;
 	this.setModalAnimation 	= setModalAnimation;
@@ -13,7 +13,7 @@ function easyFormSteWayConfig() {
 	
 	//set default config
 	function defaultConfig(){
-		var _defaultConfiguration = {
+		let  _defaultConfiguration = {
 			modalAnimated : false
 		};
 		return _defaultConfiguration;
@@ -21,7 +21,7 @@ function easyFormSteWayConfig() {
 	
 	
 	function setModalAnimation(flagConfig){
-		var valueToApply = (flagConfig === true) ? 
+		let valueToApply = (flagConfig === true) ? 
 													flagConfig  
 												: (flagConfig === false ? 
 														flagConfig 
