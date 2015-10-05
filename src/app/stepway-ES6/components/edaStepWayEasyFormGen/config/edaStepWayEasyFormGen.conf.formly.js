@@ -1,3 +1,4 @@
+/* global angular */
 import {
 	richTextTemplate,
 	blankTemplate,
