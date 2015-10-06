@@ -12,6 +12,8 @@ import {
 	EDIT_MODAL_CONTROLLER_NAME
 } from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
 
+const STEP_WAY_MAIN_CONTROLLER_NAME = 'edaStepWayEasyFormGenController';
+const STEP_WAY_MAIN_CONTROLLERAS_NAME = 'vm';
 
 class edaStepWayEasyFormGenController {
 		
@@ -322,3 +324,4 @@ const toInject = [
 
 edaStepWayEasyFormGenController.$inject = toInject;
 export default edaStepWayEasyFormGenController;
+export {STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME}

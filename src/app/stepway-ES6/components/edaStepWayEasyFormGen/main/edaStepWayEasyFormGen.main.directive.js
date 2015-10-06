@@ -1,6 +1,9 @@
 /* global angular */
 import easyformTemplate from './edaStepWayEasyFormGen.main.template.html!text';
-import edaStepWayEasyFormGenController from  './edaStepWayEasyFormGen.main.controller';
+import edaStepWayEasyFormGenController, {
+	STEP_WAY_MAIN_CONTROLLER_NAME, 
+	STEP_WAY_MAIN_CONTROLLERAS_NAME
+} from  './edaStepWayEasyFormGen.main.controller';
 
 function edaStepWayEasyFormGenDirective(
 			$templateCache, 
@@ -14,10 +17,10 @@ function edaStepWayEasyFormGenDirective(
 			edaEasyFormGeneratorModel : '=',
 			edaSaveFormEvent          : '&edaSaveFormEvent'
 		},
-		controller 		: edaStepWayEasyFormGenController,
-		controllerAs 	: 'vm',
+		controller 		: STEP_WAY_MAIN_CONTROLLER_NAME,
+		controllerAs 	: STEP_WAY_MAIN_CONTROLLERAS_NAME,
 		replace 			: false,
-		templateUrl 	: 'edaStepWayEasyFormGeneratorTemplate.html',
+		template			: easyformTemplate,
 		link 					: linkFct
 	};
 	return directive;
