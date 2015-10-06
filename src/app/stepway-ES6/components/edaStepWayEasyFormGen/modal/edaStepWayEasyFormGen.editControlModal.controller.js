@@ -429,8 +429,7 @@ class editControlModalController {
 		};   
 	}		
 	
-					
-	
+
 }
 
 
@@ -443,4 +442,5 @@ const toInject =  [
 ] 
 
 editControlModalController.$inject = toInject;
+export default editControlModalController;
 export {EDIT_MODAL_CONTROLLER_NAME};
