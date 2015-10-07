@@ -1,5 +1,7 @@
 /* global angular */
 
+const SELECT_OPTION_MANAGE_NAME = 'selectOptionManage';
+
 class selectOptionManage {
 	
 	constructor() {
@@ -233,4 +235,5 @@ class selectOptionManage {
 selectOptionManage.$inject = [];
 
 export default selectOptionManage;
+export {SELECT_OPTION_MANAGE_NAME};
 
