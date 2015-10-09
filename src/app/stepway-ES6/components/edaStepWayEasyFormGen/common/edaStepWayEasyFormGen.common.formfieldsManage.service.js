@@ -31,7 +31,29 @@ class formFieldManage{
 	}
 	
 	applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel) {
-		
+		this.resetFormlyModel(formlyModel);
+		this.resetDataModel(formlyDataModel);
+		// /**
+		// 	* manage header here line0 
+		// 	*/
+		// var lineNumber = configurationModel.lines.length;
+		// for (var i = 0; i < lineNumber; i++) {
+		// 		//1 column line control
+		// 		if (configurationModel.lines[i].columns.length === 1) {
+		// 			//test if template control = header
+		// 			if (configurationModel.lines[i].columns[0].control.type === 'header') {
+		// 				addOneColumnHeader(formlyModel, configurationModel, i);
+		// 			}else{
+		// 				addOneColumnControl(formlyModel, configurationModel, i);  
+		// 			}          
+		// 		}
+		// 		if (configurationModel.lines[i].columns.length === 2) {
+		// 			addTwoColumnControl(formlyModel, configurationModel,i);
+		// 		}
+		// 		if (configurationModel.lines[i].columns.length === 3) {
+		// 			addThreeColumnControl(formlyModel, configurationModel,i);
+		// 		}
+		// }
 	}
 	
 	getMessageObject(messageTitle, messageBody){
@@ -47,3 +69,4 @@ class formFieldManage{
 
 formFieldManage.$inject = [];
 export default formFieldManage;
+export {FORM_FIELD_MANAGE_SERVICE};
