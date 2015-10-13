@@ -5,76 +5,105 @@ const resetNyaSelect = (nyaSelectObj) => {
 	let newNyaSelectObj = {
 		controls : [
 			{
-				id: 'empty',  
-				name: 'no control', 
-				subtitle: 'no control', 
-				group: 'Blank', 
-				formlyType: 'blank', 
-				formlySubtype: '', 
-				formlyLabel: '', 
-				formlyRequired: false, 
-				formlyDesciption: '', 
-				formlyOptions: [] , 
+				id								: 'empty',  
+				name							: 'no control', 
+				subtitle					: 'no control', 
+				group							: 'Blank', 
+				formlyType				: 'blank', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [] , 
 				formlyExpressionProperties: {}, 
-				formlyValidators: {}, 
-				formlyValidation: {} 
-			},
-	
-			{id: 'Header',  name: 'Header', subtitle: 'no control', group: 'Decoration', formlyType: 'header', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [] , formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
-			{id: 'Subtitle',  name: 'Subtitle', subtitle: 'no control', group: 'Decoration', formlyType: 'subTitle', formlySubtype: '', formlyLabel: '', formlyRequired: false, formlyDesciption: '', formlyOptions: [] , formlyExpressionProperties: {}, formlyValidators: {}, formlyValidation: {}},
-	
-			{
-				id: 'TextInput',  
-				name: 'Text input', 
-				subtitle: 'Text input', 
-				group: 'input', 
-				formlyType: 'input', 
-				formlySubtype: '', 
-				formlyLabel: '', 
-				formlyRequired: false, 
-				formlyDesciption: '', 
-				formlyOptions: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators: {}, 
-				formlyValidation: {
-														messages: {
-																				required: function(viewValue, modelValue, scope) {
-																							//return a required validation message : 
-																							//-> '<label as name> is required '
-																							//-> or if not exists or empty just 'this field is required'
-																							var defaultReturnMsg = 'this Text input field is required';
-																							var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-																							return returnMsg;
-																						}
-																			}
-													}
+				formlyValidators	: {}, 
+				formlyValidation	: {} 
 			},
 	
 			{
-				id: 'Password',  
-				name: 'Password', 
-				subtitle: 'Password', 
-				group: 'input', 
-				formlyType: 'input', 
-				formlySubtype: 'password', 
-				formlyLabel: '', 
-				formlyRequired: false, 
-				formlyDesciption: '', 
-				formlyOptions: [] , 
+				id								: 'Header',  
+				name							: 'Header', 
+				subtitle					: 'no control', 
+				group							: 'Decoration', 
+				formlyType				: 'header', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [] , 
 				formlyExpressionProperties: {}, 
-				formlyValidators: {}, 
-				formlyValidation: {
-													messages: {
-																			required: function(viewValue, modelValue, scope) {
-																						//return a required validation message : 
-																						//-> '<label as name> is required '
-																						//-> or if not exists or empty just 'this field is required'
-																						var defaultReturnMsg = 'this Password field is required';
-																						var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-																						return returnMsg;
-																					}
-																		}
-												}
+				formlyValidators	: {}, 
+				formlyValidation	: {}
+			},
+			
+			{
+				id								: 'Subtitle', 
+				name							: 'Subtitle', 
+				subtitle					: 'no control', 
+				group							: 'Decoration', 
+				formlyType				: 'subTitle', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [] , 
+				formlyExpressionProperties: {}, 
+				formlyValidators	: {}, 
+				formlyValidation	: {}
+			},
+	
+			{
+				id								: 'TextInput',  
+				name							: 'Text input', 
+				subtitle					: 'Text input', 
+				group							: 'input', 
+				formlyType				: 'input', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [] , 
+				formlyExpressionProperties: {}, 
+				formlyValidators	: {}, 
+				formlyValidation	: {
+					messages: {
+						required: function(viewValue, modelValue, scope) {
+							//return a required validation message : 
+							//-> '<label as name> is required '
+							//-> or if not exists or empty just 'this field is required'
+							var defaultReturnMsg 	= 'this Text input field is required';
+							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+							return returnMsg;
+						}
+					}
+				}
+			},
+	
+			{
+				id								: 'Password',  
+				name							: 'Password', 
+				subtitle					: 'Password', 
+				group							: 'input', 
+				formlyType				: 'input', 
+				formlySubtype			: 'password', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [] , 
+				formlyExpressionProperties: {}, 
+				formlyValidators	: {}, 
+				formlyValidation	: {
+					messages: {
+						required: function(viewValue, modelValue, scope) {
+							//return a required validation message : 
+							//-> '<label as name> is required '
+							//-> or if not exists or empty just 'this field is required'
+							var defaultReturnMsg 	= 'this Password field is required';
+							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+							return returnMsg;
+						}
+					}
+				}
 		},
 			
 			{
@@ -91,85 +120,83 @@ const resetNyaSelect = (nyaSelectObj) => {
 				formlyExpressionProperties 	: {}, 
 	
 				formlyValidators 						: {
-																				emailShape : {
-																												expression : function(viewValue, modelValue) {
-																													var value = modelValue || viewValue;
-																													return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
-																												},
-																												message: '$viewValue + \' is not a valid email\''
-																											}
-																			},
-	
+					emailShape : {
+						expression : function(viewValue, modelValue) {
+							var value = modelValue || viewValue;
+							return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
+						},
+						message		: '$viewValue + \' is not a valid email\''
+					}
+				},
 				formlyValidation: {
-														messages: {
-																				required: function(viewValue, modelValue, scope) {
-																							//return a required validation message : 
-																							//-> '<label as name> is required '
-																							//-> or if not exists or empty just 'this field is required'
-																							
-																							var defaultReturnMsg = 'this Email field is required';
-																							var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-																							//check if validation is really dued to require validation 
-																							//and not another validation like emailShape validator
-																							if (scope.to.required) return returnMsg;
-																						}
-																			}
-													}
+					messages: {
+						required: function(viewValue, modelValue, scope) {
+							//return a required validation message : 
+							//-> '<label as name> is required '
+							//-> or if not exists or empty just 'this field is required'		
+							var defaultReturnMsg 	= 'this Email field is required';
+							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+							//check if validation is really dued to require validation 
+							//and not another validation like emailShape validator
+							if (scope.to.required) return returnMsg;
+						}
+					}
+				}
 			},
 			
 			{
-				id: 'Date',  
-				name: 'Date', 
-				subtitle: 'Date', 
-				group: 'input', 
-				formlyType: 'datepicker', 
-				formlySubtype: '', 
-				formlyLabel: '', 
-				formlyRequired: false, 
-				formlyDesciption: '', 
-				formlyOptions: [], 
-				datepickerPopup: 'dd-MMMM-yyyy', 
+				id								: 'Date',  
+				name							: 'Date', 
+				subtitle					: 'Date', 
+				group							: 'input', 
+				formlyType				: 'datepicker', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [], 
+				datepickerPopup		: 'dd-MMMM-yyyy', 
 				formlyExpressionProperties: {}, 
-				formlyValidators: {}, 
-				formlyValidation: {
-														messages: {
-																				required: function(viewValue, modelValue, scope) {
-																							//return a required validation message : 
-																							//-> '<label as name> is required '
-																							//-> or if not exists or empty just 'this field is required'
-																							var defaultReturnMsg = 'this Date field is required';
-																							var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-																							return returnMsg;
-																						}
-																			}
-													}
+				formlyValidators	: {}, 
+				formlyValidation	: {
+					messages: {
+						required: function(viewValue, modelValue, scope) {
+							//return a required validation message : 
+							//-> '<label as name> is required '
+							//-> or if not exists or empty just 'this field is required'
+							var defaultReturnMsg 	= 'this Date field is required';
+							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+							return returnMsg;
+						}
+					}
+				}
 			},
 	
 			{
-				id: 'Texarea', 
-				name: 'Textarea', 
-				subtitle: 'Textarea', 
-				group: 'Textarea', 
-				formlyType: 'textarea', 
-				formlySubtype: '', 
-				formlyLabel: '', 
-				formlyRequired: false, 
-				formlyDesciption: '', 
-				formlyOptions: [], 
+				id								: 'Texarea', 
+				name							: 'Textarea', 
+				subtitle					: 'Textarea', 
+				group							: 'Textarea', 
+				formlyType				: 'textarea', 
+				formlySubtype			: '', 
+				formlyLabel				: '', 
+				formlyRequired		: false, 
+				formlyDesciption	: '', 
+				formlyOptions			: [], 
 				formlyExpressionProperties: {}, 
-				formlyValidators: {}, 
-				formlyValidation: {
-														messages: {
-																				required: function(viewValue, modelValue, scope) {
-																							//return a required validation message : 
-																							//-> '<label as name> is required '
-																							//-> or if not exists or empty just 'this field is required'
-																							var defaultReturnMsg = 'this Textarea field is required';
-																							var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-																							return returnMsg;
-																						}
-																			}
-													}
+				formlyValidators	: {}, 
+				formlyValidation	: {
+					messages	: {
+						required: function(viewValue, modelValue, scope) {
+							//return a required validation message : 
+							//-> '<label as name> is required '
+							//-> or if not exists or empty just 'this field is required'
+							var defaultReturnMsg 	= 'this Textarea field is required';
+							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+							return returnMsg;
+						}
+					}
+				}
 			},
 	
 			{
