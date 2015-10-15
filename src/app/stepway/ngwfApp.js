@@ -39,16 +39,14 @@
       //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
       easyFormSteWayConfigProvider.setModalAnimation(false);
       
-      easyFormSteWayConfigProvider.setControls([
-          {name: 'TextInput', 			enabled: false},
-					{name: 'Password', 				enabled: false},
-					{name: 'Date', 						enabled: false},
-					{name: 'Texarea',	 				enabled: false},
-					{name: 'RichTextEditor', 	enabled: false},
-      ]);
+      //disable control example :
+      //easyFormSteWayConfigProvider.disableControl('TextInput');
       
-      console.info('test config');
-      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
+      //enable control example :
+      //easyFormSteWayConfigProvider.enableControl('TextInput');
+
+   
+      
     }
 
 

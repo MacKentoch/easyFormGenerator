@@ -47,6 +47,21 @@
       //enable/disable easy form modal animation 
       //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
       easyFormSteWayConfigProvider.setModalAnimation(false);
+      
+
+      easyFormSteWayConfigProvider.disableControl('TextInput');
+      easyFormSteWayConfigProvider.disableControl('Password');
+      easyFormSteWayConfigProvider.disableControl('Date');
+      easyFormSteWayConfigProvider.disableControl('Texarea');
+      easyFormSteWayConfigProvider.disableControl('RichTextEditor');
+
+      
+      console.info('test config');
+      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
+      easyFormSteWayConfigProvider.enableControl('RichTextEditor');
+      console.info('test config2');
+      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
+      
     }
 
 
@@ -289,12 +304,16 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		easyFormSteWayConfigFct.$inject = [];
 		
 		function easyFormSteWayConfigFct(){
-			var _configuration 			=  defaultConfig();
+			var _configuration 					=  defaultConfig();
+			var _controlsList						=  controlsList();
 			/* jshint validthis:true */
-			this.$get 							= easyFormSteWayConfig;
-			this.setModalAnimation 	= setModalAnimation;
-			this.getModalAnimation	= getModalAnimation;
-			this.configuration 			= _configuration;
+			this.$get 									= easyFormSteWayConfig;
+			this.setModalAnimation 			= setModalAnimation;
+			this.getModalAnimation			= getModalAnimation;
+			this.configuration 					= _configuration;
+			this.getListEnabledControl 	= getListEnabledControl;
+			this.disableControl					= disableControl;
+			this.enableControl					= enableControl;
     	
 			
 			
@@ -307,6 +326,23 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				return _defaultConfiguration;
 			}
 		
+			function controlsList(){
+				var controls = [
+					{name: 'empty', 					enabled: true},
+					{name: 'Header', 					enabled: true},
+					{name: 'TextInput', 			enabled: true},
+					{name: 'Password', 				enabled: true},
+					{name: 'Date', 						enabled: true},
+					{name: 'Texarea',	 				enabled: true},
+					{name: 'RichTextEditor', 	enabled: true},
+					{name: 'Radio', 					enabled: true},
+					{name: 'Checkbox', 				enabled: true},
+					{name: 'BasicSelect', 		enabled: true},
+					{name: 'GroupedSelect', 	enabled: true}
+				];
+					
+				return controls;
+			}
 			
 			function setModalAnimation(flagConfig){
 				var valueToApply = (flagConfig === true) ? 
@@ -321,6 +357,74 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			function getModalAnimation(){																	
 				return _configuration.modalAnimated;
 			}		
+			
+			
+			function getListEnabledControl(){
+				return _controlsList;
+			}
+			
+			
+			
+			function disableControl(controlName){
+				if (angular.isString(controlName)) {
+					angular.forEach(_controlsList, function(aControl){
+						
+						if (aControl.name === controlName) {
+							aControl.enabled = false;
+							console.log('disable aControl : ' + aControl.name, + '\n ref : ' + controlName);
+						}
+						
+					});						
+				}
+			}
+			
+			function enableControl(controlName){
+				if (angular.isString(controlName)) {
+					angular.forEach(_controlsList, function(aControl){
+						if (aControl.name === controlName) {
+							aControl.enabled = true;
+						}
+					});						
+				}				
+			}
+			
+			
+			
+			
+			
+			// function setControls(controls){	
+			// 	if (angular.isObject(controls)) {
+			// 		angular.forEach(controls.name, function(aControl){
+			// 			if(angular.isObject(controlValid(aControl))){
+			// 				angular.extend(_controlsList, {
+			// 					name 		: aControl.name,
+			// 					enabled : aControl.enabled
+			// 				});		
+			// 			}
+			// 		});
+			// 	}else{
+			// 		throw 'disabledTheseControls needs an object as parameter';
+			// 	}
+			// }
+			// 
+			// /**
+			//  * returns validcontrol (same case as reference) if control has good properties
+			//  * or returns empty object if not valid 
+			//  * */			
+			// function controlValid(thisContrl){
+			// 	var validControl = null;
+			// 	if (angular.isString(thisContrl.name) &&
+			// 			(thisContrl.enabled === true || thisContrl.enabled === false)){
+			// 				angular.forEach(_controlsList, function(aControlRef){
+			// 					if (aControlRef.name.toLocaleLowerCase === thisContrl.name.toLocaleLowerCase) {
+			// 							validControl.name 		= aControlRef.name;
+			// 							validControl.enabled  = aControlRef.enabled;
+			// 					}
+			// 				});
+			// 			}
+			// 	return validControl;
+			// }
+			
 			
 		
 			//$get implementation :
@@ -3487,307 +3591,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 
 
 })(); 
-
-    //}
-
-
-    // .factory('selectOptionManage', [ function(){
-    
-
-    //   return {
-              // testMe: function() {
-              //     return 'selectOptionManage is here.';
-              // },
-
-              // initModel: function(selectObj){
-              //   resetModel(selectObj);
-              // },
-          
-              // isOptionUnique: function(selectObj, textValue){
-              //   for (var i = selectObj.rows.length - 1; i >= 0; i--) {
-
-              //     if (selectObj.rows[i].option === textValue) {
-              //       return false;
-              //     }
-                  
-              //   }
-              //   return true;
-              // },
-
-              //test if not empty string (= full space string is not conidered as valid)
-              // isOptionValidFormat: function(textValue){
-              //   if (textValue !== '') {
-              //     return true;
-              //   }
-              //   return false;                    
-              // },
-
-              // addNewOptionRadio: function(selectObj, newOptionText){
-              //   var fullResponse = {
-              //                         resultFlag : false,
-              //                         details : ''
-              //                       };
-
-              //   var checkResult = validOption(selectObj, newOptionText);  
-
-              //   //console.info(checkResult);
-
-              //   if (checkResult.resultFlag === true){
-
-              //       var newOption = {
-              //                           option: newOptionText,
-              //                           order: selectObj.rows.length
-              //                       };
-
-              //       selectObj.rows.push(newOption);
-              //       fullResponse.resultFlag = true;
-              //       fullResponse.details = "";
-              //       return fullResponse;
-              //   }else{
-
-              //         angular.copy(checkResult, fullResponse);                    
-              //         return fullResponse;                        
-              //   }
-
-
-              // },
-
-
-              // addNewOptionBasicSelect: function(selectObj, newOptionText){
-              //   var fullResponse = {
-              //                         resultFlag : false,
-              //                         details : ''
-              //                       };
-
-              //   var checkResult = validOption(selectObj, newOptionText);  
-
-              //   //console.info(checkResult);
-
-              //   if (checkResult.resultFlag === true){
-
-              //       var newOption = {
-              //                           option: newOptionText,
-              //                           order: selectObj.rows.length
-              //                       };
-
-              //       selectObj.rows.push(newOption);
-              //       fullResponse.resultFlag = true;
-              //       fullResponse.details = '';
-              //       return fullResponse;
-              //   }else{
-
-              //         angular.copy(checkResult, fullResponse);                    
-              //         return fullResponse;                        
-              //   }
-
-
-              // },
-
-              // addNewOptionGroupedSelect: function(selectObj, newOptionText, newOptionGroup){
-              //   var fullResponse = {
-              //                         resultFlag : false,
-              //                         details : ''
-              //                       };
-
-              //   // if (typeof newOptionGroup === "undefined") {
-
-              //   //     fullResponse.resultFlag = false;
-              //   //     fullResponse.details = "Group option is undefined";
-              //   //     return fullResponse;
-              //   // }
-
-              //   // if (newOptionGroup === "") {
-
-              //   //     fullResponse.resultFlag = false;
-              //   //     fullResponse.details = "Group option is undefined";
-              //   //     return fullResponse;
-              //   // }
-
-              //   var checkResult = validOption(selectObj, newOptionText);  
-
-            
-              //   if (checkResult.resultFlag === true){
-
-              //       var newOption = {
-              //                           option: newOptionText,
-              //                           group: newOptionGroup,
-              //                           order: selectObj.rows.length
-              //                       };
-
-              //       selectObj.rows.push(newOption);
-              //       fullResponse.resultFlag = true;
-              //       fullResponse.details = '';
-              //       return fullResponse;
-              //   }else{
-
-              //         angular.copy(checkResult, fullResponse);                    
-              //         return fullResponse;                        
-              //   }
-
-              // },
-
-
-              // removeOption:  function(selectObj, AtIndex) {
-              //   var fullResponse = {
-              //                       resultFlag : false,
-              //                       details : ''
-              //                     };
-
-              //   if (AtIndex !== -1) {
-              //       selectObj.rows.splice(AtIndex, 1);
-              //       fullResponse.resultFlag = true;
-              //       fullResponse.details= '';
-              //       return fullResponse;
-              //   }else{
-              //       fullResponse.resultFlag = false;
-              //       fullResponse.details= 'Option index not valid';
-              //       return fullResponse;
-              //   }
-              // },
-
-            //   upthisOption : function(selectObj, indexOption){
-            //     var fullResponse = {
-            //                         resultFlag : false,
-            //                         details : ''
-            //                       };  
-
-            //     if (indexOption > -1) {
-
-            //       if (indexOption > 0) {
-
-            //         if (selectObj.rows[indexOption - 1]) {
-            //           var currentOption = selectObj.rows[indexOption];
-            //           selectObj.rows.splice(indexOption , 1);
-            //           selectObj.rows.splice((indexOption - 1), 0, currentOption); 
-
-            //           fullResponse.resultFlag = true;
-            //           fullResponse.details = '';
-            //           return fullResponse;
-            //         }else{
-            //           fullResponse.resultFlag = false;
-            //           fullResponse.details = 'Can\'t retreive option from option index';
-            //           return fullResponse;
-            //         }
-            //       }else{
-            //           fullResponse.resultFlag = true;
-            //           fullResponse.details = '';
-            //           return fullResponse;
-            //       }  
-
-            //     }else{
-            //       fullResponse.resultFlag = false;
-            //       fullResponse.details = 'Option index not valid';
-            //       return fullResponse;
-            //     }
-            // },
-
-            // downthisOption : function(selectObj, indexOption){
-            //     var fullResponse = {
-            //                         resultFlag : false,
-            //                         details : ''
-            //                       };
-
-            //     if (indexOption > -1) {
-    
-
-            //       if (indexOption < selectObj.rows.length - 1){
-                    
-
-            //         if (selectObj.rows[indexOption + 1]) {
-                      
-
-            //           var currentOption = selectObj.rows[indexOption];
-                      
-            //           selectObj.rows.splice(indexOption , 1);
-            //           selectObj.rows.splice((indexOption + 1), 0, currentOption);  
-
-            //           fullResponse.resultFlag = true;
-            //           fullResponse.details = '';
-            //           return fullResponse;  
-
-            //         }else{
-            //           fullResponse.resultFlag = false;
-            //           fullResponse.details = 'Can\'t retreive option from option index';
-            //           return fullResponse;
-            //         }
-            //       }else{
-
-                    
-            //           fullResponse.resultFlag = true;
-            //           fullResponse.details = '';
-            //         return fullResponse;
-            //       }
-
-
-            //     }else{
-            //       fullResponse.resultFlag = false;
-            //       fullResponse.details = 'Option index not valid';
-            //       return fullResponse;
-            //     }
-
-            // }
-
-        
-
-
-
-  //         };
-
-
-
-
-  // function validOption(selectObj, newOptionText){
-  //     var fullResponse = {
-  //                           resultFlag : false,
-  //                           details : ""
-  //                         };
-
-  //     if (typeof newOptionText === 'undefined') {
-  //         fullResponse.resultFlag = false;
-  //         fullResponse.details = 'Entered option is empty';
-  //         return fullResponse;
-  //     }
-
-  //     if (newOptionText !== '') {
-  //           for (var i = selectObj.rows.length - 1; i >= 0; i--) {
-  //             if (selectObj.rows[i].option === newOptionText) {
-  //               fullResponse.resultFlag = false;
-  //               fullResponse.details = 'Entered option is not unique';
-  //               return fullResponse;
-  //             }
-  //           }
-  //           fullResponse.resultFlag = true;
-  //           fullResponse.details = '';
-  //           return fullResponse;
-  //     }
-  //     fullResponse.resultFlag = false;     
-  //     fullResponse.details = 'Entered option is empty';
-  //     return fullResponse;
-  // }
-
-  // function resetModel(selectObj){
-  //   var zeroModel = { 
-  //                       rows:
-  //                       [
-  //                       ]
-  //                     };
-
-    
-  //   angular.copy(zeroModel, selectObj);
-  // }
-
-  
-
-  // }]);
-
-
-
-
-
-
-
-
-
 /**
  *  ------------------------------------------------------
  *  module = "services" container
