@@ -28,6 +28,7 @@
 			this.getModalAnimation			= getModalAnimation;
 			this.configuration 					= _configuration;
 			this.getListEnabledControl 	= getListEnabledControl;
+			this.setControls						= setControls;
     	
 			
 			
@@ -75,6 +76,40 @@
 			
 			function getListEnabledControl(){
 				return _controlsList;
+			}
+			
+			
+			function setControls(controls){	
+				if (angular.isObject(controls)) {
+					angular.forEach(controls.name, function(aControl){
+						if(angular.isObject(controlValid(aControl))){
+							angular.extend(_controlsList, {
+								name 		: aControl.name,
+								enabled : aControl.enabled
+							})		
+						}
+					});
+				}else{
+					throw 'disabledTheseControls needs an object as parameter';
+				}
+			}
+			
+			/**
+			 * returns validcontrol (same case as reference) if control has good properties
+			 * or returns empty object if not valid 
+			 * */			
+			function controlValid(thisContrl){
+				var validControl = null;
+				if (angular.isString(thisContrl.name) &&
+						(thisContrl.enabled === true || thisContrl.enabled === false)){
+							angular.forEach(_controlsList, function(aControlRef){
+								if (aControlRef.name.toLocaleLowerCase === thisContrl.name.toLocaleLowerCase) {
+										validControl.name 		= aControlRef.name;
+										validControl.enabled  = aControlRef.enabled;
+								}
+							})
+						}
+				return validControl;
 			}
 			
 			

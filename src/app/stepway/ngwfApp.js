@@ -38,6 +38,17 @@
       //enable/disable easy form modal animation 
       //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
       easyFormSteWayConfigProvider.setModalAnimation(false);
+      
+      easyFormSteWayConfigProvider.setControls([
+          {name: 'TextInput', 			enabled: false},
+					{name: 'Password', 				enabled: false},
+					{name: 'Date', 						enabled: false},
+					{name: 'Texarea',	 				enabled: false},
+					{name: 'RichTextEditor', 	enabled: false},
+      ]);
+      
+      console.info('test config');
+      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
     }
 
 
