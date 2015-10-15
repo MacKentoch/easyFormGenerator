@@ -57,13 +57,16 @@ class controllerModalProxy{
 		configurationObj.lines[indexLine].columns[numcolumn].control.type 							= extractedProps.formlyType;
 		configurationObj.lines[indexLine].columns[numcolumn].control.subtype 						= extractedProps.formlySubtype;
 		//reset templateOptions
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions 		= {
-																																												label: '',
-																																												required: false,
-																																												description: '',
-																																												placeholder: '',
-																																												options: []
-																																											};
+		configurationObj
+			.lines[indexLine]
+			.columns[numcolumn]
+			.control.templateOptions 		= {
+																			label: '',
+																			required: false,
+																			description: '',
+																			placeholder: '',
+																			options: []
+																		};
 			//then bind templateOptions                                                                                   
 		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			 = extractedProps.formlyLabel;
 		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 	 = extractedProps.formlyRequired;
@@ -107,6 +110,27 @@ class controllerModalProxy{
 		configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
 	}	
 	
+	
+	applyConfigToSelectedControl(nyaSelectObj){
+		/**
+			* used in modal (edit control) 
+			*/
+		for (let i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
+			if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
+	
+					nyaSelectObj.controls[i].formlyLabel 								= nyaSelectObj.temporyConfig.formlyLabel;
+					nyaSelectObj.controls[i].formlyRequired 						= nyaSelectObj.temporyConfig.formlyRequired;
+					nyaSelectObj.controls[i].formlyDesciption 					= nyaSelectObj.temporyConfig.formlyDesciption;
+					nyaSelectObj.controls[i].formlyPlaceholder 					= nyaSelectObj.temporyConfig.formlyPlaceholder;
+					nyaSelectObj.controls[i].formlyOptions 							= nyaSelectObj.temporyConfig.formlyOptions;
+	
+					if (nyaSelectObj.controls[i].id ==='Date' ) {
+						nyaSelectObj.controls[i].datepickerPopup 					= nyaSelectObj.temporyConfig.datepickerPopup;
+					}
+				
+				}
+		}
+	}	
 	
 	
 	
