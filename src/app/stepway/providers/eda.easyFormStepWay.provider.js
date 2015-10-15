@@ -20,12 +20,14 @@
 		easyFormSteWayConfigFct.$inject = [];
 		
 		function easyFormSteWayConfigFct(){
-			var _configuration 			=  defaultConfig();
+			var _configuration 					=  defaultConfig();
+			var _controlsList						=  controlsList();
 			/* jshint validthis:true */
-			this.$get 							= easyFormSteWayConfig;
-			this.setModalAnimation 	= setModalAnimation;
-			this.getModalAnimation	= getModalAnimation;
-			this.configuration 			= _configuration;
+			this.$get 									= easyFormSteWayConfig;
+			this.setModalAnimation 			= setModalAnimation;
+			this.getModalAnimation			= getModalAnimation;
+			this.configuration 					= _configuration;
+			this.getListEnabledControl 	= getListEnabledControl;
     	
 			
 			
@@ -38,6 +40,23 @@
 				return _defaultConfiguration;
 			}
 		
+			function controlsList(){
+				var controls = [
+					{name: 'empty', 					enabled: true},
+					{name: 'Header', 					enabled: true},
+					{name: 'TextInput', 			enabled: true},
+					{name: 'Password', 				enabled: true},
+					{name: 'Date', 						enabled: true},
+					{name: 'Texarea',	 				enabled: true},
+					{name: 'RichTextEditor', 	enabled: true},
+					{name: 'Radio', 					enabled: true},
+					{name: 'Checkbox', 				enabled: true},
+					{name: 'BasicSelect', 		enabled: true},
+					{name: 'GroupedSelect', 	enabled: true}
+				];
+					
+				return controls;
+			}
 			
 			function setModalAnimation(flagConfig){
 				var valueToApply = (flagConfig === true) ? 
@@ -52,6 +71,12 @@
 			function getModalAnimation(){																	
 				return _configuration.modalAnimated;
 			}		
+			
+			
+			function getListEnabledControl(){
+				return _controlsList;
+			}
+			
 			
 		
 			//$get implementation :
