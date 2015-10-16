@@ -28,7 +28,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.23')
+    .value('easyFormGenVersion', 'v1.0.24')
     .config(formlyConfigFct)
     .config(easyFromConfigFct);
 
@@ -38,6 +38,15 @@
       //enable/disable easy form modal animation 
       //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
       easyFormSteWayConfigProvider.setModalAnimation(false);
+      
+      //disable control example :
+      //easyFormSteWayConfigProvider.disableControl('TextInput');
+      
+      //enable control example :
+      //easyFormSteWayConfigProvider.enableControl('TextInput');
+
+   
+      
     }
 
 

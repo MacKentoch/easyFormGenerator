@@ -27,7 +27,9 @@
 			this.setModalAnimation 			= setModalAnimation;
 			this.getModalAnimation			= getModalAnimation;
 			this.configuration 					= _configuration;
-			this.getListEnabledControl 	= getListEnabledControl;
+			this.getEnabledControls 		= getEnabledControls;
+			this.disableControl					= disableControl;
+			this.enableControl					= enableControl;
     	
 			
 			
@@ -73,11 +75,36 @@
 			}		
 			
 			
-			function getListEnabledControl(){
+			function getEnabledControls(){
 				return _controlsList;
 			}
 			
 			
+			
+			function disableControl(controlName){
+				if (angular.isString(controlName)) {
+					angular.forEach(_controlsList, function(aControl){
+						
+						if (aControl.name === controlName) {
+							aControl.enabled = false;
+							console.log('disable aControl : ' + aControl.name, + '\n ref : ' + controlName);
+						}
+						
+					});						
+				}
+			}
+			
+			function enableControl(controlName){
+				if (angular.isString(controlName)) {
+					angular.forEach(_controlsList, function(aControl){
+						if (aControl.name === controlName) {
+							aControl.enabled = true;
+						}
+					});						
+				}				
+			}
+			
+				
 		
 			//$get implementation :
 			easyFormSteWayConfig.$inject = [];
@@ -85,7 +112,8 @@
 													
 				var service = {
 					setModalAnimation 			: setModalAnimationFct,
-					getModalAnimationValue 	: getModalAnimationValue
+					getModalAnimationValue 	: getModalAnimationValue,
+					getListEnabledControl		: getListEnabledControl
 				};
 				return service;
 				
@@ -96,6 +124,10 @@
 				
 				function setModalAnimationFct(value){
 					setModalAnimation(value);
+				}
+				
+				function getListEnabledControl(){
+					return angular.copy(_controlsList);
 				}
 				
 

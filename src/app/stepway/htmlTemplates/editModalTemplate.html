@@ -13,7 +13,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
 						<ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-model="modelNyaSelect" data-live-search="false">
-								<li nya-bs-option="option in nyaSelect.controls group by option.group">
+								<li nya-bs-option="option in nyaSelectFiltered.controls group by option.group">
 									<span class="dropdown-header greyText">{{$group}}</span> <!-- group header cannot be searched -->
 									<a ng-click="selectThisControl(option.id)">
 										<span>{{ option.name }}</span> 

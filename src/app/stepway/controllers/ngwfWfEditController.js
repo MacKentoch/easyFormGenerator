@@ -396,7 +396,7 @@
                                           controller: 'ngwfWfEditMODALController',
                                           size: 'lg',
                                           resolve: {
-                                            nyaSelect: function () {
+                                            nyaSelect: function () {                                              
                                               return controllerModalProxy
                                                         .getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
                                             }
