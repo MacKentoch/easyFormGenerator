@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.23 
+  *Version 1.0.24 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -37,7 +37,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.23')
+    .value('easyFormGenVersion', 'v1.0.24')
     .config(formlyConfigFct)
     .config(easyFromConfigFct);
 
@@ -49,8 +49,7 @@
       easyFormSteWayConfigProvider.setModalAnimation(false);
       
       //disable control example :
-      easyFormSteWayConfigProvider.disableControl('TextInput');
-      easyFormSteWayConfigProvider.disableControl('Password');
+      //easyFormSteWayConfigProvider.disableControl('TextInput');
       
       //enable control example :
       //easyFormSteWayConfigProvider.enableControl('TextInput');
@@ -1054,23 +1053,15 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       today();
       //init nyaSelect model depending selected control
       initNyaSelectConformingSelectedControl();
-
-
-      console.dir({'nyaSelect in modal': $scope.nyaSelect});
-    
     
       function initNyaSelectFiltered(){
-        $scope.nyaSelectFiltered                  = {};
-        //$scope.nyaSelectFiltered.controls         = [].concat(controllerModalProxy.getFilteredNyaSelectObject());
-        //$scope.nyaSelectFiltered.selectedControl  = $scope.nyaSelect.selectedControl;
-        //$scope.nyaSelectFiltered.temporyConfig    = $scope.nyaSelect.temporyConfig;
-        var obj = [].concat(controllerModalProxy.getFilteredNyaSelectObject());
+        $scope.nyaSelectFiltered = {};
+        var listCtrl = [].concat(controllerModalProxy.getFilteredNyaSelectObject());
         angular.extend($scope.nyaSelectFiltered,{
-          'controls'        : obj,
+          'controls'        : listCtrl,
           'selectedControl' : $scope.nyaSelect.selectedControl,
           'temporyConfig'   : $scope.nyaSelect.temporyConfig 
         }); 
-        
       }
     
     
@@ -2308,8 +2299,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			
 	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	      resetNyaSelect(nyaSelectObj);
-				
-				console.dir({'getNyASelectFromSelectedLineColumn' : nyaSelectObj});
 	      /**
 	       * data send to modal controller                                           
 	       */
@@ -2758,7 +2747,6 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		    };
 
 		    //reset
-				console.dir({'filtered nyaSelectObj' : filterDisabledControl(angular.copy(newNyaSelectObj))});
 		  	return angular.copy(filterDisabledControl(angular.copy(newNyaSelectObj)));
 				
 			}

@@ -28,7 +28,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.23')
+    .value('easyFormGenVersion', 'v1.0.24')
     .config(formlyConfigFct)
     .config(easyFromConfigFct);
 
@@ -40,8 +40,7 @@
       easyFormSteWayConfigProvider.setModalAnimation(false);
       
       //disable control example :
-      easyFormSteWayConfigProvider.disableControl('TextInput');
-      easyFormSteWayConfigProvider.disableControl('Password');
+      //easyFormSteWayConfigProvider.disableControl('TextInput');
       
       //enable control example :
       //easyFormSteWayConfigProvider.enableControl('TextInput');

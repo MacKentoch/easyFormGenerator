@@ -273,6 +273,40 @@ ______
 
 ## What is new?
 
+ - October 2015 : `Easy form Generator step way` : enable or disabel control in your easy form generator step way version.
+ 
+ ```javascript 
+  angular
+    .module('YOURAPP', ['...'])
+    .config(easyFromConfigFct);
+  
+  //inject easyFormSteWayConfigProvider
+  easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+  function easyFromConfigFct(easyFormSteWayConfigProvider){
+  
+    //disable basic TextInput :
+    easyFormSteWayConfigProvider.disableControl('TextInput');
+  
+    //enable Date input : 
+    //(NOTE : by default all controls are enabled 
+    //-> so this example is no other use than illustration)
+    easyFormSteWayConfigProvider.enableControl('Date');
+  
+    // List of all easy form generator (step way version) controls :  
+    // 'empty'
+    // 'Header'
+    // 'TextInput'
+    // 'Password'
+    // 'Date'
+    // 'Texarea'
+    // 'RichTextEditor'
+    // 'Radio'
+    // 'Checkbox'
+    // 'BasicSelect'
+    // 'GroupedSelect'
+ ```
+ 
+
  - Sept 2015 : `drag and drop way` is now a simple directive `eda-dragdrop-way-easy-form-gen`
 
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`

@@ -129,8 +129,6 @@
 			
 	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	      resetNyaSelect(nyaSelectObj);
-				
-				console.dir({'getNyASelectFromSelectedLineColumn' : nyaSelectObj});
 	      /**
 	       * data send to modal controller                                           
 	       */
@@ -579,7 +577,6 @@
 		    };
 
 		    //reset
-				console.dir({'filtered nyaSelectObj' : filterDisabledControl(angular.copy(newNyaSelectObj))});
 		  	return angular.copy(filterDisabledControl(angular.copy(newNyaSelectObj)));
 				
 			}
