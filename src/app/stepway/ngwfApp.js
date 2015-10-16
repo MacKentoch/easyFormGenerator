@@ -40,7 +40,8 @@
       easyFormSteWayConfigProvider.setModalAnimation(false);
       
       //disable control example :
-      //easyFormSteWayConfigProvider.disableControl('TextInput');
+      easyFormSteWayConfigProvider.disableControl('TextInput');
+      easyFormSteWayConfigProvider.disableControl('Password');
       
       //enable control example :
       //easyFormSteWayConfigProvider.enableControl('TextInput');

@@ -27,7 +27,7 @@
 			this.setModalAnimation 			= setModalAnimation;
 			this.getModalAnimation			= getModalAnimation;
 			this.configuration 					= _configuration;
-			this.getListEnabledControl 	= getListEnabledControl;
+			this.getEnabledControls 		= getEnabledControls;
 			this.disableControl					= disableControl;
 			this.enableControl					= enableControl;
     	
@@ -75,7 +75,7 @@
 			}		
 			
 			
-			function getListEnabledControl(){
+			function getEnabledControls(){
 				return _controlsList;
 			}
 			
@@ -112,7 +112,8 @@
 													
 				var service = {
 					setModalAnimation 			: setModalAnimationFct,
-					getModalAnimationValue 	: getModalAnimationValue
+					getModalAnimationValue 	: getModalAnimationValue,
+					getListEnabledControl		: getListEnabledControl
 				};
 				return service;
 				
@@ -123,6 +124,10 @@
 				
 				function setModalAnimationFct(value){
 					setModalAnimation(value);
+				}
+				
+				function getListEnabledControl(){
+					return angular.copy(_controlsList);
 				}
 				
 

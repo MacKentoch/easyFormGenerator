@@ -48,19 +48,14 @@
       //HERE : disabling animation due to angular bootstrap backdrop bug with angular >= 1.4
       easyFormSteWayConfigProvider.setModalAnimation(false);
       
-
+      //disable control example :
       easyFormSteWayConfigProvider.disableControl('TextInput');
       easyFormSteWayConfigProvider.disableControl('Password');
-      easyFormSteWayConfigProvider.disableControl('Date');
-      easyFormSteWayConfigProvider.disableControl('Texarea');
-      easyFormSteWayConfigProvider.disableControl('RichTextEditor');
-
       
-      console.info('test config');
-      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
-      easyFormSteWayConfigProvider.enableControl('RichTextEditor');
-      console.info('test config2');
-      console.dir(easyFormSteWayConfigProvider.getListEnabledControl());
+      //enable control example :
+      //easyFormSteWayConfigProvider.enableControl('TextInput');
+
+   
       
     }
 
@@ -311,7 +306,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			this.setModalAnimation 			= setModalAnimation;
 			this.getModalAnimation			= getModalAnimation;
 			this.configuration 					= _configuration;
-			this.getListEnabledControl 	= getListEnabledControl;
+			this.getEnabledControls 		= getEnabledControls;
 			this.disableControl					= disableControl;
 			this.enableControl					= enableControl;
     	
@@ -359,7 +354,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			}		
 			
 			
-			function getListEnabledControl(){
+			function getEnabledControls(){
 				return _controlsList;
 			}
 			
@@ -388,44 +383,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				}				
 			}
 			
-			
-			
-			
-			
-			// function setControls(controls){	
-			// 	if (angular.isObject(controls)) {
-			// 		angular.forEach(controls.name, function(aControl){
-			// 			if(angular.isObject(controlValid(aControl))){
-			// 				angular.extend(_controlsList, {
-			// 					name 		: aControl.name,
-			// 					enabled : aControl.enabled
-			// 				});		
-			// 			}
-			// 		});
-			// 	}else{
-			// 		throw 'disabledTheseControls needs an object as parameter';
-			// 	}
-			// }
-			// 
-			// /**
-			//  * returns validcontrol (same case as reference) if control has good properties
-			//  * or returns empty object if not valid 
-			//  * */			
-			// function controlValid(thisContrl){
-			// 	var validControl = null;
-			// 	if (angular.isString(thisContrl.name) &&
-			// 			(thisContrl.enabled === true || thisContrl.enabled === false)){
-			// 				angular.forEach(_controlsList, function(aControlRef){
-			// 					if (aControlRef.name.toLocaleLowerCase === thisContrl.name.toLocaleLowerCase) {
-			// 							validControl.name 		= aControlRef.name;
-			// 							validControl.enabled  = aControlRef.enabled;
-			// 					}
-			// 				});
-			// 			}
-			// 	return validControl;
-			// }
-			
-			
+				
 		
 			//$get implementation :
 			easyFormSteWayConfig.$inject = [];
@@ -433,7 +391,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 													
 				var service = {
 					setModalAnimation 			: setModalAnimationFct,
-					getModalAnimationValue 	: getModalAnimationValue
+					getModalAnimationValue 	: getModalAnimationValue,
+					getListEnabledControl		: getListEnabledControl
 				};
 				return service;
 				
@@ -444,6 +403,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				
 				function setModalAnimationFct(value){
 					setModalAnimation(value);
+				}
+				
+				function getListEnabledControl(){
+					return angular.copy(_controlsList);
 				}
 				
 
@@ -2199,8 +2162,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
 		.factory('controllerModalProxy', controllerModalProxy);
 
-		controllerModalProxy.$inject = [];
-		function controllerModalProxy(){
+		controllerModalProxy.$inject = ['easyFormSteWayConfig'];
+		function controllerModalProxy(easyFormSteWayConfig){
 			
 			var service = {
 				initNyaSelect 													: initNyaSelect,
@@ -2760,8 +2723,32 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 
 		    //reset
 		  	angular.copy(newNyaSelectObj, nyaSelectObj);
+				nyaSelectObj = filterDisabledControl(nyaSelectObj);
+				//test
+				console.info('test filtered controls');
+				console.dir(nyaSelectObj);
+				
 		    return true;
 		  }
+			
+			function filterDisabledControl(nyaSelectObj){
+				var listAllEnabledControl = easyFormSteWayConfig.getListEnabledControl();
+				var filteredNyaList = [];
+				
+				angular.forEach(listAllEnabledControl, function(enabledControl){
+					
+					angular.forEach(nyaSelectObj.controls, function(nyaControl){
+											
+						if ((nyaControl.id === enabledControl.name) &&
+								(enabledControl.enabled === true)) {
+							filteredNyaList = filteredNyaList.concat(nyaControl);
+						}
+						
+					});
+					
+				});
+				return filteredNyaList;
+			}
 		  /**
 		   * data passed back to parent controller 
 		   * after control being finsihed editing in modal

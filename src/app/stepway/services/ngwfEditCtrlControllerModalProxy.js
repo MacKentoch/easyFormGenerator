@@ -18,8 +18,8 @@
 		.module('ngwfApp.services.ngwfEditCtrlControllerModalProxy', [])
 		.factory('controllerModalProxy', controllerModalProxy);
 
-		controllerModalProxy.$inject = [];
-		function controllerModalProxy(){
+		controllerModalProxy.$inject = ['easyFormSteWayConfig'];
+		function controllerModalProxy(easyFormSteWayConfig){
 			
 			var service = {
 				initNyaSelect 													: initNyaSelect,
@@ -579,8 +579,29 @@
 
 		    //reset
 		  	angular.copy(newNyaSelectObj, nyaSelectObj);
+				nyaSelectObj = filterDisabledControl(nyaSelectObj);
+								
 		    return true;
 		  }
+			
+			function filterDisabledControl(nyaSelectObj){
+				var listAllEnabledControl = easyFormSteWayConfig.getListEnabledControl();
+				var filteredNyaList = [];
+				
+				angular.forEach(listAllEnabledControl, function(enabledControl){
+					
+					angular.forEach(nyaSelectObj.controls, function(nyaControl){
+											
+						if ((nyaControl.id === enabledControl.name) &&
+								(enabledControl.enabled === true)) {
+							filteredNyaList = filteredNyaList.concat(nyaControl);
+						}
+						
+					});
+					
+				});
+				return filteredNyaList;
+			}
 		  /**
 		   * data passed back to parent controller 
 		   * after control being finsihed editing in modal
