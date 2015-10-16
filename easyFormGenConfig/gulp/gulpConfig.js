@@ -150,7 +150,7 @@ module.exports = {
 			destDir 		: 'src/app/stepway/core/',	
 			destFile		: 'eda.stepway.translate.js',
 			options			: {
-				'module' : 'eda.translate' 
+				module : 'eda.easyFormGenerator.translate' 
 			}
 		},
 		dragAndDropWay 	: {
@@ -159,7 +159,7 @@ module.exports = {
 			destDir 		: 'src/app/dragdropway/core/',	
 			destFile		: 'eda.dragdropway.translate.js',
 			options			: {
-				'module' : 'eda.translate' 
+				module : 'eda.easyFormGenerator.translate' 
 			}						
 		},
 		formViewer 			: {
@@ -168,7 +168,7 @@ module.exports = {
 			destDir 		: 'src/app/formviewer/core/',	
 			destFile		: 'eda.formviewer.translate.js',
 			options			: {
-				'module' : 'eda.translate' 
+				module : 'eda.easyFormGenerator.translate' 
 			}					
 		}
 	},

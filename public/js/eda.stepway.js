@@ -31,6 +31,7 @@
   angular
     .module('ngwfApp', [  
       'ngwfApp.core',
+      'eda.easyFormGenerator.translate',
       'eda.easyFormSteWayConfigProvider',
       'ngwfApp.controllers',
       'ngwfApp.services', 
@@ -54,8 +55,11 @@
       //enable control example :
       //easyFormSteWayConfigProvider.enableControl('TextInput');
 
-   
-      
+      //example get current language
+      console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
+      //example set currrent language
+      easyFormSteWayConfigProvider.setLanguage('fr');
+      console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
     }
 
 
@@ -271,10 +275,32 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 	    'formly', 
 	    'formlyBootstrap',
 	    'ui.bootstrap',
-	    'nya.bootstrap.select'
+	    'nya.bootstrap.select',
+			'pascalprecht.translate'
 		]);
 
 })(); 
+
+angular.module("eda.easyFormGenerator.translate", []).config(["$translateProvider", function($translateProvider) {
+$translateProvider.translations("de", {
+    "TITLE"	: "Hallo",
+    "FOO"		: "Das ist leer hier"
+});
+
+$translateProvider.translations("en", {
+    "TITLE"	: "Hello",
+    "FOO"		: "This is a empty for now"
+});
+
+$translateProvider.translations("fr", {
+    "TITLE"	: "Bonjour",
+    "FOO"		: "c'est vide ici"
+});
+
+$translateProvider.translations("jp", {
+    "TITLE"	: "こんにちは"
+});
+}]);
 
 /**
  *  ------------------------------------------------------
@@ -295,11 +321,13 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		.module('eda.easyFormSteWayConfigProvider', [])
 		.provider('easyFormSteWayConfig', easyFormSteWayConfigFct);
 		
-		easyFormSteWayConfigFct.$inject = [];
+		easyFormSteWayConfigFct.$inject = ['$translateProvider'];
 		
-		function easyFormSteWayConfigFct(){
-			var _configuration 					=  defaultConfig();
-			var _controlsList						=  controlsList();
+		function easyFormSteWayConfigFct($translateProvider){
+			var _configuration 					= defaultConfig();
+			var _controlsList						= controlsList();
+			var _defaultLanguage				= getDefaultLanguage();
+			var _currentLanguage				= initDefaultLanguage();
 			/* jshint validthis:true */
 			this.$get 									= easyFormSteWayConfig;
 			this.setModalAnimation 			= setModalAnimation;
@@ -308,8 +336,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			this.getEnabledControls 		= getEnabledControls;
 			this.disableControl					= disableControl;
 			this.enableControl					= enableControl;
+			this.setLanguage						= setLanguage;
+			this.getCurrentLanguage			= getCurrentLanguage;
     	
-			
+		
 			
 		
 			//set default config
@@ -319,6 +349,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				};
 				return _defaultConfiguration;
 			}
+
 		
 			function controlsList(){
 				var controls = [
@@ -382,6 +413,36 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 				}				
 			}
 			
+		
+			function getDefaultLanguage(){
+				var lang = 'en';
+				return lang;
+			}
+			
+			function initDefaultLanguage(){
+				$translateProvider.preferredLanguage(_defaultLanguage);
+				return _defaultLanguage;
+			}			
+			
+			
+			function setDefaultLanguage(){
+				_currentLanguage = _defaultLanguage;
+				$translateProvider.preferredLanguage(_currentLanguage);
+				return _currentLanguage;
+			}
+			
+			function setLanguage(language){
+				if (angular.isString(language)) {
+					_currentLanguage = language;
+					$translateProvider.preferredLanguage(language);
+				}else{
+					setDefaultLanguage();
+				}
+			}
+			
+			function getCurrentLanguage(){
+				 return _currentLanguage;
+			}
 				
 		
 			//$get implementation :

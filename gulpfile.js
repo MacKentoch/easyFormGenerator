@@ -341,7 +341,7 @@ gulp.task('stepway:translate', function() {
     return gulp
         .src(gulpConfig.translateFiles.stepway.sourceDir + gulpConfig.translateFiles.stepway.sourceFiles, 
 					{ cwd: gulpConfig.base.root })
-				.pipe(angularTranslate())	
+				.pipe(angularTranslate(gulpConfig.translateFiles.stepway.options))	
         .pipe(gulp.dest(gulpConfig.translateFiles.stepway.destDir, { cwd: gulpConfig.base.root }));
 });
 

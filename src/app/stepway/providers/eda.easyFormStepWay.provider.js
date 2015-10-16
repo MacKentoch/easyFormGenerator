@@ -17,11 +17,13 @@
 		.module('eda.easyFormSteWayConfigProvider', [])
 		.provider('easyFormSteWayConfig', easyFormSteWayConfigFct);
 		
-		easyFormSteWayConfigFct.$inject = [];
+		easyFormSteWayConfigFct.$inject = ['$translateProvider'];
 		
-		function easyFormSteWayConfigFct(){
-			var _configuration 					=  defaultConfig();
-			var _controlsList						=  controlsList();
+		function easyFormSteWayConfigFct($translateProvider){
+			var _configuration 					= defaultConfig();
+			var _controlsList						= controlsList();
+			var _defaultLanguage				= getDefaultLanguage();
+			var _currentLanguage				= initDefaultLanguage();
 			/* jshint validthis:true */
 			this.$get 									= easyFormSteWayConfig;
 			this.setModalAnimation 			= setModalAnimation;
@@ -30,8 +32,10 @@
 			this.getEnabledControls 		= getEnabledControls;
 			this.disableControl					= disableControl;
 			this.enableControl					= enableControl;
+			this.setLanguage						= setLanguage;
+			this.getCurrentLanguage			= getCurrentLanguage;
     	
-			
+		
 			
 		
 			//set default config
@@ -41,6 +45,7 @@
 				};
 				return _defaultConfiguration;
 			}
+
 		
 			function controlsList(){
 				var controls = [
@@ -104,6 +109,36 @@
 				}				
 			}
 			
+		
+			function getDefaultLanguage(){
+				var lang = 'en';
+				return lang;
+			}
+			
+			function initDefaultLanguage(){
+				$translateProvider.preferredLanguage(_defaultLanguage);
+				return _defaultLanguage;
+			}			
+			
+			
+			function setDefaultLanguage(){
+				_currentLanguage = _defaultLanguage;
+				$translateProvider.preferredLanguage(_currentLanguage);
+				return _currentLanguage;
+			}
+			
+			function setLanguage(language){
+				if (angular.isString(language)) {
+					_currentLanguage = language;
+					$translateProvider.preferredLanguage(language);
+				}else{
+					setDefaultLanguage();
+				}
+			}
+			
+			function getCurrentLanguage(){
+				 return _currentLanguage;
+			}
 				
 		
 			//$get implementation :
