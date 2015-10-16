@@ -88,7 +88,7 @@
       initNyaSelectConformingSelectedControl();
 
 
-    
+      console.dir({'nyaSelect in modal': $scope.nyaSelect});
     
       function addNewOptionRadio(){
         var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
@@ -438,6 +438,10 @@
 
       function initNyaSelectConformingSelectedControl(){
         //place nya-select to selection if not none :
+        
+        
+        var unFilteredNyaSelectObjList = controllerModalProxy.getUnFilteredNyaSelectObject();
+        
         if (nyaSelect.selectedControl !== 'none') {
           for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
              if ($scope.nyaSelect.controls[i].id === nyaSelect.selectedControl) {

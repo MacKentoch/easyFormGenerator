@@ -873,7 +873,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
                                           controller: 'ngwfWfEditMODALController',
                                           size: 'lg',
                                           resolve: {
-                                            nyaSelect: function () {
+                                            nyaSelect: function () {                                              
                                               return controllerModalProxy
                                                         .getNyASelectFromSelectedLineColumn($scope.nyaSelect, $scope.configuration,indexLine, numcolumn);
                                             }
@@ -1055,7 +1055,7 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
       initNyaSelectConformingSelectedControl();
 
 
-    
+      console.dir({'nyaSelect in modal': $scope.nyaSelect});
     
       function addNewOptionRadio(){
         var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
@@ -2272,6 +2272,8 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 			
 	    function getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
 	      resetNyaSelect(nyaSelectObj);
+				
+				console.dir({'getNyASelectFromSelectedLineColumn' : nyaSelectObj});
 	      /**
 	       * data send to modal controller                                           
 	       */
@@ -2722,12 +2724,10 @@ $templateCache.put("editModalTemplate.html","<div class=modal-header><h3 class=\
 		    };
 
 		    //reset
-		  	angular.copy(newNyaSelectObj, nyaSelectObj);
-				nyaSelectObj = filterDisabledControl(nyaSelectObj);
-				//test
-				console.info('test filtered controls');
-				console.dir(nyaSelectObj);
-				
+		  	//angular.copy(newNyaSelectObj, nyaSelectObj);
+				nyaSelectObj = filterDisabledControl(angular.copy(newNyaSelectObj));
+				console.dir({'filtered nyaSelectObj' : nyaSelectObj});
+								
 		    return true;
 		  }
 			
