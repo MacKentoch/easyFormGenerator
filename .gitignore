@@ -7,3 +7,5 @@ jspm_packages/
 *.log
 
 build/
+
+.idea
