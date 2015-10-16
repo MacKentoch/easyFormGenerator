@@ -273,7 +273,7 @@ ______
 
 ## What is new?
 
- - October 2015 : `Easy form Generator step way` : enable or disabel control in your easy form generator step way version.
+ - October 2015 : `Easy form Generator step way` : enable or disable control in your easy form generator step way version.
  
  ```javascript 
   angular
