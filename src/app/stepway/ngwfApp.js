@@ -47,10 +47,10 @@
       //easyFormSteWayConfigProvider.enableControl('TextInput');
 
       //example get current language
-      console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
+      //console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
       //example set currrent language
-      easyFormSteWayConfigProvider.setLanguage('fr');
-      console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
+      //easyFormSteWayConfigProvider.setLanguage('fr');
+      
     }
 
 

@@ -1,4 +1,38 @@
 {
-    "TITLE"	: "Bonjour",
-    "FOO"		: "c'est vide ici"
+    "SAY_HI"	           : "Bonjour",
+    
+    "EDIT_TAB"            : "Edition / Creation",
+    "PREVIEW_TAB"         : "Aperçu",
+    
+    "WIZARD_LINES"        : "lignes",
+    "WIZARD_LAYOUT"       : "disposition",
+    "WIZARD_CONTROLS"     : "contrôles",
+    "WIZARD_SAVE"         : "sauvegarder",
+    
+    "PAGER_PREVIOUS"      : "Prec",
+    "PAGER_NEXT"          : "Suiv",
+    
+    "COMMAND_PANEL"       : "Commandes",
+    "VISUAL_PANEL"        : "Visuel",
+    
+    "ADD_NEW_LINE"        : "Ajouter une nouvelle ligne",
+    
+    "SELECTED_LINE"       : "– Ligne sélectionnée –",
+    
+    "NUMBER_OF_COLUMN"    : "nombre de colonnes",
+    "APPLY_CTRL2COL"      : "– Appliquer les contrôles aux colonnes –",
+    
+    "CLIC_TAP_2_OPEN"     : "Cliquer sur une colonne pour ouvrir le menu d'édition",
+    "SELECT_2_APPLY_COL"  : "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Personnaliser le texte du bouton envoie",
+    "CUSTOM_CANCEL_BTN"   : "Personnaliser le texte du bouton annuler",
+    "NAME_THIS_FORM"      : "Nommer le formulaire",
+    "SAVE_THIS_FORM"      : "sauvegarder le formulaire",
+    
+    "FINAL_STEP"          : "Dernière étape : aperçu du formulaire",
+    
+    "DATA_MODEL"          : "MODELE DE DONNEES",
+    "FIELDS_MODEL"        : "MODELE DES CHAMPS (modèle compatible base de données)"
+        
 }

@@ -116,6 +116,7 @@
 			}
 			
 			function initDefaultLanguage(){
+  			$translateProvider.useSanitizeValueStrategy('escape'); //security : Enable escaping of HTML
 				$translateProvider.preferredLanguage(_defaultLanguage);
 				return _defaultLanguage;
 			}			
