@@ -116,7 +116,8 @@
 			}
 			
 			function initDefaultLanguage(){
-  			$translateProvider.useSanitizeValueStrategy('escape'); //security : Enable escaping of HTML
+  			$translateProvider.useSanitizeValueStrategy('escape'); 	//security : Enable escaping of HTML
+				$translateProvider.fallbackLanguage(_defaultLanguage);	//fallback language to default language
 				$translateProvider.preferredLanguage(_defaultLanguage);
 				return _defaultLanguage;
 			}			
@@ -128,7 +129,7 @@
 				return _currentLanguage;
 			}
 			
-			function setLanguage(language){
+			function setLanguage(language){				
 				if (angular.isString(language)) {
 					_currentLanguage = language;
 					$translateProvider.preferredLanguage(language);
@@ -143,13 +144,16 @@
 				
 		
 			//$get implementation :
-			easyFormSteWayConfig.$inject = [];
-			function easyFormSteWayConfig(){
+			easyFormSteWayConfig.$inject = ['$translate'];
+			function easyFormSteWayConfig($translate){
 													
 				var service = {
 					setModalAnimation 			: setModalAnimationFct,
 					getModalAnimationValue 	: getModalAnimationValue,
-					getListEnabledControl		: getListEnabledControl
+					getListEnabledControl		: getListEnabledControl,
+					setLanguage 						: switchLanguage,
+					getCurrentLanguage			: getCurrentLanguage
+					
 				};
 				return service;
 				
@@ -165,6 +169,15 @@
 				function getListEnabledControl(){
 					return angular.copy(_controlsList);
 				}
+				
+				function switchLanguage(language){
+					if (angular.isString(language)) {
+						_currentLanguage = language;
+						$translate.use(language);
+					}else{
+						setDefaultLanguage();
+					}
+				}				
 				
 
 				

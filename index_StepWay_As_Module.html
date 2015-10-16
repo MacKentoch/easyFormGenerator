@@ -59,10 +59,10 @@
 											Switch language 
 											<span class="caret"></span></a>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">English</a></li>
-											<li><a href="#">French</a></li>
-											<li><a href="#">German</a></li>
-											<li><a href="#">japanese</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('en')">English</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('fr')">French</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('de')">German</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('jp')">japanese</a></li>
 										</ul>
 									</li>									
 																		
@@ -106,22 +106,36 @@
 					])
 					.controller('demoController', demoController);
 					
-				demoController.$inject = ['$timeout'];	
-				function demoController($timeout){
+				demoController.$inject = ['$timeout', 'easyFormSteWayConfig'];	
+				function demoController($timeout, easyFormSteWayConfig){
 					var demoCtrl = this;
 
 					demoCtrl.easyFormGeneratorModel	= {};
 					demoCtrl.saveForm 							= saveForm;
+					demoCtrl.currentLangue					= refreshCurrentLanguage();
+					demoCtrl.switchLanguage					= switchLanguage;
 
+					
 
 					
 					//demo purpose only :
 					//in 3 seconds a new form will be bound to easy form generator :  
 					timedModelChanged();
 					
+					console.info('Current language is ' + demoCtrl.currentLangue);
+
+					function switchLanguage(toLanguage){
+						if(angular.isString){
+							easyFormSteWayConfig.setLanguage(toLanguage);
+							refreshCurrentLanguage();
+							
+							console.info('language changed to ' + demoCtrl.currentLangue);
+						}
+					}
 				
-				
-				
+					function refreshCurrentLanguage(){
+						demoCtrl.currentLangue = easyFormSteWayConfig.getCurrentLanguage();
+					}
 					
 					/**
 					 * when click on save form, will call your save form function :
