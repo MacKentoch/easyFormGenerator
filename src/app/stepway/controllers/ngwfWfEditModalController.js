@@ -79,6 +79,7 @@
       $scope.selectThisControl          = selectThisControl;
       $scope.ok                         = okfct;
       $scope.cancel                     = cancelfct;
+      $scope.nyaSelectFiltered          = {};
 
 
 
@@ -86,9 +87,18 @@
       today();
       //init nyaSelect model depending selected control
       initNyaSelectConformingSelectedControl();
-
-
-      console.dir({'nyaSelect in modal': $scope.nyaSelect});
+    
+      function initNyaSelectFiltered(){
+        $scope.nyaSelectFiltered = {};
+        var listCtrl = [].concat(controllerModalProxy.getFilteredNyaSelectObject());
+        angular.extend($scope.nyaSelectFiltered,{
+          'controls'        : listCtrl,
+          'selectedControl' : $scope.nyaSelect.selectedControl,
+          'temporyConfig'   : $scope.nyaSelect.temporyConfig 
+        }); 
+      }
+    
+    
     
       function addNewOptionRadio(){
         var result = selectOptionManage.addNewOptionRadio($scope.radioRowCollection, $scope.newOptionRadio.saisie);
@@ -307,6 +317,7 @@
         };
       }
 
+
       function selectThisControl(controlName){
         $scope.nyaSelect.selectedControl = 'none';
         resetTemporyConfig();
@@ -321,6 +332,8 @@
           initDatePicker();
         }
       }  
+
+
 
       function okfct() {
         if ($scope.nyaSelect.selectedControl === 'BasicSelect') {
@@ -438,9 +451,8 @@
 
       function initNyaSelectConformingSelectedControl(){
         //place nya-select to selection if not none :
+        //$scope.modelNyaSelect = nyaSelect.controls[0];
         
-        
-        var unFilteredNyaSelectObjList = controllerModalProxy.getUnFilteredNyaSelectObject();
         
         if (nyaSelect.selectedControl !== 'none') {
           for (var i = $scope.nyaSelect.controls.length - 1; i >= 0; i--) {
@@ -458,10 +470,22 @@
             bindRadioFromNYA();
           }    
         }
+        initNyaSelectFiltered();
       }
 
+      // //OLD
+      // function resetTemporyConfig(){
+      //   $scope.nyaSelect.temporyConfig = {
+      //     formlyLabel: '', 
+      //     formlyRequired: false, 
+      //     formlyPlaceholder: '',
+      //     formlyDesciption: '',
+      //     formlyOptions: []
+      //   };   
+      // }
+
       function resetTemporyConfig(){
-        $scope.nyaSelect.temporyConfig = {
+        $scope.nyaSelectFiltered.temporyConfig = {
           formlyLabel: '', 
           formlyRequired: false, 
           formlyPlaceholder: '',
@@ -469,7 +493,6 @@
           formlyOptions: []
         };   
       }
-
 
     }
 

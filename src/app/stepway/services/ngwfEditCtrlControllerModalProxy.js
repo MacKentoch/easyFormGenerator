@@ -31,7 +31,7 @@
 				refreshControlFormlyExpressionProperties: refreshControlFormlyExpressionProperties,
 				refreshControlFormlyValidators					: refreshControlFormlyValidators,
 				refreshControlFormlyValidation					: refreshControlFormlyValidation,
-				getUnFilteredNyaSelectObject						: getUnFilteredNyaSelectObject
+				getFilteredNyaSelectObject							: getFilteredNyaSelectObject
 			};
 			
 			return service;
@@ -247,9 +247,9 @@
 		  }
 
 	    /**
-	     * init object : return unfiltered list of controls object true (if not true, you may have problem^^)
+	     * return filtered list of controls object
 	     */
-			function getUnFilteredNyaSelectObject(){
+			function getFilteredNyaSelectObject(){
 		    var newNyaSelectObj = {
 
 		                    controls : [
@@ -579,12 +579,13 @@
 		    };
 
 		    //reset
-		  	return angular.copy(newNyaSelectObj);
+				console.dir({'filtered nyaSelectObj' : filterDisabledControl(angular.copy(newNyaSelectObj))});
+		  	return angular.copy(filterDisabledControl(angular.copy(newNyaSelectObj)));
 				
 			}
 
 	    /**
-	     * init object : return filtered (from config) list of controls object true (if not true, you may have problem^^)
+	     * init object : return unfiltered (from config) list of controls object true (if not true, you may have problem^^)
 	     */
 		  function resetNyaSelect(nyaSelectObj){
 		    var newNyaSelectObj = {
@@ -916,10 +917,7 @@
 		    };
 
 		    //reset
-		  	//angular.copy(newNyaSelectObj, nyaSelectObj);
-				nyaSelectObj = filterDisabledControl(angular.copy(newNyaSelectObj));
-				console.dir({'filtered nyaSelectObj' : nyaSelectObj});
-								
+		  	angular.copy(newNyaSelectObj, nyaSelectObj);
 		    return true;
 		  }
 			
