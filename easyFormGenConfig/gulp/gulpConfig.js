@@ -143,6 +143,36 @@ module.exports = {
 
 	},
 	
+	translateFiles :{
+		stepway 				: {
+			sourceDir		: 'src/app/stepway/i18n/',
+			sourceFiles : '**/local-*.json',
+			destDir 		: 'src/app/stepway/core/',	
+			destFile		: 'eda.stepway.translate.js',
+			options			: {
+				'module' : 'eda.translate' 
+			}
+		},
+		dragAndDropWay 	: {
+			sourceDir		: 'src/app/dragdropway/i18n/',
+			sourceFiles : '**/local-*.json',
+			destDir 		: 'src/app/dragdropway/core/',	
+			destFile		: 'eda.dragdropway.translate.js',
+			options			: {
+				'module' : 'eda.translate' 
+			}						
+		},
+		formViewer 			: {
+			sourceDir		: 'src/app/formviewer/i18n/',
+			sourceFiles : '**/local-*.json',
+			destDir 		: 'src/app/formviewer/core/',	
+			destFile		: 'eda.formviewer.translate.js',
+			options			: {
+				'module' : 'eda.translate' 
+			}					
+		}
+	},
+	
 	//minify html
 	minifyHtmlOpts : {
 		conditionals : true,
@@ -245,7 +275,9 @@ module.exports = {
 		
 		easyFormViewerHtmlFile : {
 			name : 'index_easyFormViewer_Module.html'
-		},		
+		},
+		
+				
 		
 		bower : {
 			js : 'js/',

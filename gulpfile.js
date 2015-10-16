@@ -35,6 +35,7 @@ var ngTemplateCache 		= require('gulp-angular-templatecache');
 var minifyHtml					= require('gulp-minify-html');
 var sourcemaps 					= require('gulp-sourcemaps');
 var rename							= require('gulp-rename');
+var angularTranslate 		= require('gulp-angular-translate');
 var exec         				= require('child_process').exec;
 
 
@@ -331,6 +332,18 @@ gulp.task('formviewer:templatecache', function() {
 
 
 
+/**
+ * -------------------------------
+ * APP ANGULAR TRANSLATE
+ * -------------------------------
+ */
+gulp.task('stepway:translate', function() {
+    return gulp
+        .src(gulpConfig.translateFiles.stepway.sourceDir + gulpConfig.translateFiles.stepway.sourceFiles, 
+					{ cwd: gulpConfig.base.root })
+				.pipe(angularTranslate())	
+        .pipe(gulp.dest(gulpConfig.translateFiles.stepway.destDir, { cwd: gulpConfig.base.root }));
+});
 
 
 
@@ -433,7 +446,8 @@ gulp.task('formviewer:templatecache', function() {
 gulp.task('app:js:stepway', 
 		[
 			'stepway:clean',
-			'stepway:templatecache'
+			'stepway:templatecache',
+			'stepway:translate'
 		], 
 		function() {
 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
