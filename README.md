@@ -273,6 +273,13 @@ ______
 
 ## What is new?
 
+ - October 2015 : `Easy form Generator step way` : new languages added 
+     - french
+     - german
+     - japaneese
+  []()    
+ 
+
  - October 2015 : `Easy form Generator step way` : enable or disable control in your easy form generator step way version.
  
  ```javascript 
@@ -306,7 +313,6 @@ ______
     // 'GroupedSelect'
  ```
  
-
  - Sept 2015 : `drag and drop way` is now a simple directive `eda-dragdrop-way-easy-form-gen`
 
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`
