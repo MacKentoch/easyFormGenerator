@@ -1,7 +1,91 @@
 angular.module("eda.easyFormGenerator.translate", []).config(["$translateProvider", function($translateProvider) {
 $translateProvider.translations("de", {
-    "TITLE"	: "Hallo",
-    "FOO"		: "Das ist leer hier"
+    "SAY_HI"	            : "Hallo",
+    
+    "EDIT_TAB"		        : "Bearbeiten / Schaffen",
+    "PREVIEW_TAB"         : "Vorschau",
+    
+    "WIZARD_LINES"        : "Linien",
+    "WIZARD_LAYOUT"       : "Layout",
+    "WIZARD_CONTROLS"     : "Steuerung",
+    "WIZARD_SAVE"         : "sparen",    
+   
+    "PAGER_PREVIOUS"      : "Vor.",
+    "PAGER_NEXT"          : "Neb.",
+    
+    "COMMAND_PANEL"       : "Anweisung",
+    "VISUAL_PANEL"        : "visuell",   
+    
+    "ADD_NEW_LINE"        : "Hinzufügen neuer Leitung",
+    "SELECTED_LINE"       : "ausgewählte Linie",
+    
+    "NUMBER_OF_COLUMN"    : "Anzahl von Spalten",
+    "APPLY_CTRL2COL"      : "gelten diese Steuer Spalte",
+    
+    "CLIC_TAP_2_OPEN"     : "klicken Sie auf Spalte zur Steuerungsauswahl öffnen",
+    "SELECT_2_APPLY_COL"  : "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Passen Submit-Button Text",
+    "CUSTOM_CANCEL_BTN"   : "Passen Cancel-Button Text",
+    "NAME_THIS_FORM"      : "Nennen dieses Formular",
+    "SAVE_THIS_FORM"      : "Speichern dieses Formular",
+    
+    "FINAL_STEP"          : "Endschritt : Formular Vorschau",
+    
+    "DATA_MODEL"          : "DATEN MODELL", 
+    "FIELDS_MODEL"        : "FELDER MODELL (Datenbank-kompatibel)", 
+    
+    "SELECT_A_CTRL"       : "Wählen Sie ein Steuer",
+    "SELECT_CTRL_IN_LIST" : "Wählen Sie ein Steuer aus der Liste unten",
+    "COL_WILL_BE_BLANK"   : "die Spalte werde leer sein",  
+    
+    "EDIT_PROPERTIES"     : "Anzeigen",
+    
+    "HEADER_TEXT"         : "Kopftext",
+    "ADD_EDIT_HEADER_HERE": "Kopftext ändern", 
+    
+    "SUBTITLE_TEXT"       : "Untertitel",
+    "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern",
+    
+    "LABEL_TEXT"          : "Etikett",
+    "ADD_EDIT_LABEL_HERE" : "Etikett ändern",    
+    
+    "PLACEHOLDER"         : "placeholder",
+    "ADD_EDIT_PLACEHOLD"  : "placeholder ändern",
+    
+    "REQUIRED"            : "erforderlich",
+    
+    "DESCRIPTION"         : "Beschreibung",
+    "ADDEDIT_DESCRIPTION" : "Beschreibung ändern", 
+    
+    "DATE_FORMAT"         : "Datumsformat", 
+    
+    "ADD_NEW_RADIO"       : "Radiobutton hinzufügen", 
+    "ADD_RADIO_PLACEHOLD" : "Radiobutton hinzufügen",
+    "EDIT_REMOVE_RADIO"   : "Radiobutton ändern",
+    "NO_RADIO_ADD_NEW"    : "kein Radiobutton : Radiobutton hinzufügen", 
+    
+    "SEARCH_4_OPTION"     : "option suchen",   
+    
+    "ADD"                 : "hinzufügen",
+    "ORDER"               : "bestellen",
+    "OPTION"              : "Option",
+    "GROUP"               : "Gruppe",    
+    
+    "ADD_NEW_OPTIONS"     : "Optionen hinzufügen",
+    "ADD_A_NEW_OPTION"    : "Option hinzufügen",
+    "EDIT_REMOVE_OPTIONS" : "Optionen ändern",
+    "NO_OPTION_ADD_NEW"   : "kein option : Option hinzufügen",              
+         
+         
+    "ADD_NEW_GROUPS"      : "Gruppen hinzufügen",
+    "ADD_A_NEW_GROUP"     : "Gruppe hinzufügen",
+    "EDIT_GROUPS_OPTIONS" : "Gruppen ändern",
+    "NO_GROUP_ADD_NEW"    : "keine Gruppe : Gruppe hinzufügen",  
+    
+    "OK"                  : "bestätigen",
+    "CANCEL"              : "stornieren"    
+           
 });
 
 $translateProvider.translations("en", {
@@ -23,10 +107,10 @@ $translateProvider.translations("en", {
     
     "ADD_NEW_LINE"        : "Add a new line",
     
-    "SELECTED_LINE"       : "– Selected line –",
+    "SELECTED_LINE"       : "Selected line",
     
     "NUMBER_OF_COLUMN"    : "number of columns",
-    "APPLY_CTRL2COL"      : "– Apply controls to columns –",
+    "APPLY_CTRL2COL"      : "Apply controls to columns",
     
     "CLIC_TAP_2_OPEN"     : "Click / Tap on column to open control selection",
     "SELECT_2_APPLY_COL"  : "Select desired control and valid to apply it to column",
@@ -89,8 +173,8 @@ $translateProvider.translations("en", {
     "EDIT_GROUPS_OPTIONS" : "Edit/Remove options/groups",
     "NO_GROUP_ADD_NEW"    : "add new groups",
     
-    "OK"                : "OK",
-    "CANCEL"            : "Cancel"
+    "OK"                  : "OK",
+    "CANCEL"              : "Cancel"
 });
 
 $translateProvider.translations("fr", {
@@ -112,10 +196,10 @@ $translateProvider.translations("fr", {
     
     "ADD_NEW_LINE"        : "Ajouter une nouvelle ligne",
     
-    "SELECTED_LINE"       : "– Ligne sélectionnée –",
+    "SELECTED_LINE"       : "Ligne sélectionnée",
     
     "NUMBER_OF_COLUMN"    : "nombre de colonnes",
-    "APPLY_CTRL2COL"      : "– Appliquer les contrôles aux colonnes –",
+    "APPLY_CTRL2COL"      : "Appliquer les contrôles aux colonnes",
     
     "CLIC_TAP_2_OPEN"     : "Cliquer sur une colonne pour ouvrir le menu d'édition",
     "SELECT_2_APPLY_COL"  : "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",

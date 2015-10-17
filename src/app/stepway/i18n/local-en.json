@@ -17,10 +17,10 @@
     
     "ADD_NEW_LINE"        : "Add a new line",
     
-    "SELECTED_LINE"       : "– Selected line –",
+    "SELECTED_LINE"       : "Selected line",
     
     "NUMBER_OF_COLUMN"    : "number of columns",
-    "APPLY_CTRL2COL"      : "– Apply controls to columns –",
+    "APPLY_CTRL2COL"      : "Apply controls to columns",
     
     "CLIC_TAP_2_OPEN"     : "Click / Tap on column to open control selection",
     "SELECT_2_APPLY_COL"  : "Select desired control and valid to apply it to column",
@@ -83,6 +83,6 @@
     "EDIT_GROUPS_OPTIONS" : "Edit/Remove options/groups",
     "NO_GROUP_ADD_NEW"    : "add new groups",
     
-    "OK"                : "OK",
-    "CANCEL"            : "Cancel"
+    "OK"                  : "OK",
+    "CANCEL"              : "Cancel"
 }

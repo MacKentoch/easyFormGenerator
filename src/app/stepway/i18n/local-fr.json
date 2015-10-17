@@ -17,10 +17,10 @@
     
     "ADD_NEW_LINE"        : "Ajouter une nouvelle ligne",
     
-    "SELECTED_LINE"       : "– Ligne sélectionnée –",
+    "SELECTED_LINE"       : "Ligne sélectionnée",
     
     "NUMBER_OF_COLUMN"    : "nombre de colonnes",
-    "APPLY_CTRL2COL"      : "– Appliquer les contrôles aux colonnes –",
+    "APPLY_CTRL2COL"      : "Appliquer les contrôles aux colonnes",
     
     "CLIC_TAP_2_OPEN"     : "Cliquer sur une colonne pour ouvrir le menu d'édition",
     "SELECT_2_APPLY_COL"  : "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
