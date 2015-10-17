@@ -60,10 +60,29 @@
     "ADDEDIT_DESCRIPTION" : "Add / edit description here",
     
     "DATE_FORMAT"         : "Date format",
-    ""                : "",
-    ""                : "",
-    ""                : "",
-    ""                : "",
-    ""                : "",
-    ""                : ""
+    
+    "ADD_NEW_RADIO"       : "Add new radio",
+    "ADD_RADIO_PLACEHOLD" : "add new radio",
+    "EDIT_REMOVE_RADIO"   : "Edit/Remove radio",
+    "NO_RADIO_ADD_NEW"    : "no radio : add new radio values",
+    
+    "SEARCH_4_OPTION"     : "search for option",
+    
+    "ADD"                 : "add",
+    "ORDER"               : "order",
+    "OPTION"              : "option",
+    "GROUP"               : "group",
+    
+    "ADD_NEW_OPTIONS"     : "Add new options",
+    "ADD_A_NEW_OPTION"    : "add new option",
+    "EDIT_REMOVE_OPTIONS" : "Edit/Remove options",
+    "NO_OPTION_ADD_NEW"   : "no option : add new options",
+    
+    "ADD_NEW_GROUPS"      : "Add new groups",
+    "ADD_A_NEW_GROUP"     : "Add new group",
+    "EDIT_GROUPS_OPTIONS" : "Edit/Remove options/groups",
+    "NO_GROUP_ADD_NEW"    : "add new groups",
+    
+    "OK"                : "OK",
+    "CANCEL"            : "Cancel"
 }
