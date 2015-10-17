@@ -39,8 +39,17 @@ $translateProvider.translations("en", {
     "FINAL_STEP"          : "Final Step : form preview",
     
     "DATA_MODEL"          : "DATA MODEL",
-    "FIELDS_MODEL"        : "FIELDS MODEL (ready to save to database one)"
+    "FIELDS_MODEL"        : "FIELDS MODEL (ready to save to database one)",
     
+    
+    "SELECT_A_CTRL"       : "Select a control",
+    "SELECT_CTRL_IN_LIST" : "Select a control in the list below",
+    "COL_WILL_BE_BLANK"   : "Column will be blank",
+    "EDIT_PROPERTIES"     : "Edit properties",
+    "HEADER_TEXT"         : "Header text",
+    "ADD_EDIT_HEADER_HERE": "Add / edit header text here",
+    "SUBTITLE_TEXT"       : "Subtitle text",
+    "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here"
 });
 
 $translateProvider.translations("fr", {
