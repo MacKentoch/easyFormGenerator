@@ -277,8 +277,24 @@ ______
      - french
      - german
      - japaneese
-  []()    
+  ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    
+  
+ ```javascript 
+  angular
+    .module('YOURAPP', ['...'])
+    .config(easyFromConfigFct);
+  
+  //inject easyFormSteWayConfigProvider
+  easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+  function easyFromConfigFct(easyFormSteWayConfigProvider){
+  
+    //example get current language (by default = english)
+    easyFormSteWayConfigProvider.getCurrentLanguage();
+    //set language to french :
+    easyFormSteWayConfigProvider.setLanguage('fr');
  
+ ```
+
 
  - October 2015 : `Easy form Generator step way` : enable or disable control in your easy form generator step way version.
  
