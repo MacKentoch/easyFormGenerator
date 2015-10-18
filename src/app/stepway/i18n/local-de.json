@@ -9,8 +9,8 @@
     "WIZARD_CONTROLS"     : "Steuerung",
     "WIZARD_SAVE"         : "sparen",    
    
-    "PAGER_PREVIOUS"      : "Vor.",
-    "PAGER_NEXT"          : "Neb.",
+    "PAGER_PREVIOUS"      : "vorher.",
+    "PAGER_NEXT"          : "nächste",
     
     "COMMAND_PANEL"       : "Anweisung",
     "VISUAL_PANEL"        : "visuell",   

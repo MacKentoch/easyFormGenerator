@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.25 
+  *Version 1.0.26 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -293,8 +293,8 @@ $translateProvider.translations("de", {
     "WIZARD_CONTROLS"     : "Steuerung",
     "WIZARD_SAVE"         : "sparen",    
    
-    "PAGER_PREVIOUS"      : "Vor.",
-    "PAGER_NEXT"          : "Neb.",
+    "PAGER_PREVIOUS"      : "vorher.",
+    "PAGER_NEXT"          : "nächste",
     
     "COMMAND_PANEL"       : "Anweisung",
     "VISUAL_PANEL"        : "visuell",   
@@ -382,7 +382,7 @@ $translateProvider.translations("en", {
     "WIZARD_CONTROLS"     : "controls",
     "WIZARD_SAVE"         : "save",
     
-    "PAGER_PREVIOUS"      : "Prev",
+    "PAGER_PREVIOUS"      : "Previous",
     "PAGER_NEXT"          : "Next",
     
     "COMMAND_PANEL"       : "Command",
@@ -560,8 +560,8 @@ $translateProvider.translations("fr", {
     "WIZARD_CONTROLS"     : "contrôles",
     "WIZARD_SAVE"         : "sauvegarder",
     
-    "PAGER_PREVIOUS"      : "Prec",
-    "PAGER_NEXT"          : "Suiv",
+    "PAGER_PREVIOUS"      : "Précédent",
+    "PAGER_NEXT"          : "Suivant",
     
     "COMMAND_PANEL"       : "Commandes",
     "VISUAL_PANEL"        : "Visuel",
