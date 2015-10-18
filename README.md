@@ -272,6 +272,8 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
+ 
+ - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_As_Module.html)
 
  - October 2015 : `Easy form Generator step way` : new languages added 
      - french
