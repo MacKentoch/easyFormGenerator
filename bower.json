@@ -3,7 +3,7 @@
   "main": [
     "./dist/public/js/eda.stepway.js",
     "./dist/public/css/eda.stepway.css"
-   ],
+  ],
   "version": "1.0.24",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
@@ -17,7 +17,7 @@
   "homepage": "https://github.com/MacKentoch/easyFormGenerator",
   "authors": [
     "Erwan DATIN (MacKentoch)"
-  ],  
+  ],
   "ignore": [
     "node_modules",
     "bower_components",
@@ -46,7 +46,7 @@
   "dependencies": {
     "angular": "~1.4.5",
     "angular-resource": "~1.4.5",
-    "angular-animate": "~1.4.5",     
+    "angular-animate": "~1.4.5",
     "bootstrap": "~3.3.5",
     "html5shiv": "~3.7.2",
     "modernizer": "~2.8.2",
@@ -61,13 +61,14 @@
     "angular-formly": "~6.8.2",
     "angular-formly-templates-bootstrap": "~4.3.2",
     "nya-bootstrap-select": "~2.0.10",
-    "lodash": "~3.9.3",   
-    "angular-strap": "~2.3.0"
-  },  
+    "lodash": "~3.9.3",
+    "angular-strap": "~2.3.0",
+    "angular-translate": "~2.8.1"
+  },
   "devDependencies": {
     "angular-mocks": "~1.4.1"
   },
   "resolutions": {
     "angular": "1.4.5"
-  }  
+  }
 }
