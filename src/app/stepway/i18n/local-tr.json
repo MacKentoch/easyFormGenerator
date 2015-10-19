@@ -1,0 +1,88 @@
+{
+    "SAY_HI"	           : "Merhaba",
+    
+    "EDIT_TAB"            : "Düzenle / Oluþtur",
+    "PREVIEW_TAB"         : "Önizleme",
+    
+    "WIZARD_LINES"        : "satýrlar",
+    "WIZARD_LAYOUT"       : "düzen",
+    "WIZARD_CONTROLS"     : "kontroller",
+    "WIZARD_SAVE"         : "kaydet",
+    
+    "PAGER_PREVIOUS"      : "Geri",
+    "PAGER_NEXT"          : "Ýleri",
+    
+    "COMMAND_PANEL"       : "Komut",
+    "VISUAL_PANEL"        : "Görsel",
+    
+    "ADD_NEW_LINE"        : "Yeni satýr ekle",
+    
+    "SELECTED_LINE"       : "Seçili satýr",
+    
+    "NUMBER_OF_COLUMN"    : "sütun sayýsý",
+    "APPLY_CTRL2COL"      : "Sütunlara form ögesi ekle",
+    
+    "CLIC_TAP_2_OPEN"     : "Form ögesi eklemek için sütunlara týkla",
+    "SELECT_2_APPLY_COL"  : "Ýstediðin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Gönder butonu yazýsýný düzenle",
+    "CUSTOM_CANCEL_BTN"   : "Ýptal butonu yazýsýný düzenle",
+    "NAME_THIS_FORM"      : "Forma isim ver",
+    "SAVE_THIS_FORM"      : "formu kaydet",
+    
+    "FINAL_STEP"          : "Son aþama : form önizlemesi",
+    
+    "DATA_MODEL"          : "VERÝ MODELÝ",
+    "FIELDS_MODEL"        : "ALAN MODELÝ (veritabanýna kaydetmeye hazýr)",
+    
+    
+    "SELECT_A_CTRL"       : "Form ögesi seç",
+    "SELECT_CTRL_IN_LIST" : "Verilen listeden bir form ögesi seç",
+    "COL_WILL_BE_BLANK"   : "Sütun boþ kalacak",
+    
+    "EDIT_PROPERTIES"     : "Özellikleri düzenle",
+    
+    "HEADER_TEXT"         : "Baþlýk yazýsý",
+    "ADD_EDIT_HEADER_HERE": "Baþlýk yazýsýný ekle / düzenle",
+    
+    "SUBTITLE_TEXT"       : "Altyazý",
+    "ADD_EDIT_SUBTIL_HERE": "Altyazý ekle / düzenle",
+    
+    "LABEL_TEXT"          : "Form ögesinin adý",
+    "ADD_EDIT_LABEL_HERE" : "Ad ekle / düzenle",
+    
+    "PLACEHOLDER"         : "Form ögesinin içine geçici yazý ekle",
+    "ADD_EDIT_PLACEHOLD"  : "Geçici yazý ekle / düzenle",
+    
+    "REQUIRED"            : "Gerekli",
+    
+    "DESCRIPTION"         : "Açýklama",
+    "ADDEDIT_DESCRIPTION" : "Açýklama ekle / düzenle",
+    
+    "DATE_FORMAT"         : "Tarih formatý",
+    
+    "ADD_NEW_RADIO"       : "Radio butonu ekle",
+    "ADD_RADIO_PLACEHOLD" : "radio butonu ekle",
+    "EDIT_REMOVE_RADIO"   : "Radio butonunu ekle / düzenle",
+    "NO_RADIO_ADD_NEW"    : "radio butonu yok : yeni buton ekle",
+    
+    "SEARCH_4_OPTION"     : "seçenek ara",
+    
+    "ADD"                 : "ekle",
+    "ORDER"               : "sýra",
+    "OPTION"              : "seçenek",
+    "GROUP"               : "grup",
+    
+    "ADD_NEW_OPTIONS"     : "Yeni seçenek ekle",
+    "ADD_A_NEW_OPTION"    : "yeni seçenek ekle",
+    "EDIT_REMOVE_OPTIONS" : "Seçenekleri düzenle/sil",
+    "NO_OPTION_ADD_NEW"   : "seçenek yok : yeni seçenek ekle",
+    
+    "ADD_NEW_GROUPS"      : "Yeni grup ekle",
+    "ADD_A_NEW_GROUP"     : "Yeni grup ekle",
+    "EDIT_GROUPS_OPTIONS" : "Seçenek/Grup Ekle/sil",
+    "NO_GROUP_ADD_NEW"    : "yeni grup ekle",
+    
+    "OK"                  : "TAMAM",
+    "CANCEL"              : "Ýptal"
+}
