@@ -1,14 +1,16 @@
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
-function easyFormSteWayConfig() {
+function easyFormSteWayConfig($translateProvider) {
 	let _configuration 			= defaultConfig();
 	let _controlsList				= controlsList();
-	var _defaultLanguage		= getDefaultLanguage();
+	let _defaultLanguage		= getDefaultLanguage();
+	let _currentLanguage		= initDefaultLanguage();
 	/* jshint validthis:true */
 	this.$get 							= easyFormSteWayConfig;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
 	this.configuration			= _configuration;
+	this.getEnabledControls = getEnabledControls;
 	
 	
 	
@@ -43,8 +45,18 @@ function easyFormSteWayConfig() {
 	function getDefaultLanguage(){
 		let lang = 'en';
 		return lang;
-	}		
+	}
 	
+	function initDefaultLanguage(){
+		$translateProvider.useSanitizeValueStrategy('escape'); 	//security : Enable escaping of HTML
+		$translateProvider.fallbackLanguage(_defaultLanguage);	//fallback language to default language
+		$translateProvider.preferredLanguage(_defaultLanguage);
+		return _defaultLanguage;
+	}
+	
+	function getEnabledControls(){
+		return _controlsList;
+	}				
 	
 	function setModalAnimation(flagConfig){
 		let valueToApply = (flagConfig === true) ? 
@@ -86,7 +98,7 @@ function easyFormSteWayConfig() {
 	
 }
 
-easyFormSteWayConfig.$inject = [];
+easyFormSteWayConfig.$inject = ['$translateProvider'];
 export default easyFormSteWayConfig;
 
 export {EASY_FORM_STEP_WAY_CONFIG_NAME};
