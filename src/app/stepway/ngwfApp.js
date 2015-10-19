@@ -22,6 +22,7 @@
   angular
     .module('ngwfApp', [  
       'ngwfApp.core',
+      'eda.easyFormGenerator.translate',
       'eda.easyFormSteWayConfigProvider',
       'ngwfApp.controllers',
       'ngwfApp.services', 
@@ -45,7 +46,10 @@
       //enable control example :
       //easyFormSteWayConfigProvider.enableControl('TextInput');
 
-   
+      //example get current language
+      //console.info('lang = ' + easyFormSteWayConfigProvider.getCurrentLanguage());
+      //example set currrent language
+      //easyFormSteWayConfigProvider.setLanguage('fr');
       
     }
 

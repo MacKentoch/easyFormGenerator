@@ -1,0 +1,88 @@
+{
+    "SAY_HI"	           : "Hola",
+    
+    "EDIT_TAB"            : "Editar / Crear",
+    "PREVIEW_TAB"         : "Previsualizar",
+    
+    "WIZARD_LINES"        : "lineas",
+    "WIZARD_LAYOUT"       : "diseño",
+    "WIZARD_CONTROLS"     : "controles",
+    "WIZARD_SAVE"         : "guardar",
+    
+    "PAGER_PREVIOUS"      : "Anterior",
+    "PAGER_NEXT"          : "Siguiente",
+    
+    "COMMAND_PANEL"       : "Comando",
+    "VISUAL_PANEL"        : "Visual",
+    
+    "ADD_NEW_LINE"        : "Agregar nueva linea",
+    
+    "SELECTED_LINE"       : "Linea seleccionada",
+    
+    "NUMBER_OF_COLUMN"    : "numero de columnas",
+    "APPLY_CTRL2COL"      : "Aplicar controles a columnas",
+    
+    "CLIC_TAP_2_OPEN"     : "Click / Toque en la columna para seleccionar controles",
+    "SELECT_2_APPLY_COL"  : "Selecciona el control deseado para aplicarlo a la columna",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Personalizar texto de boton Enviar",
+    "CUSTOM_CANCEL_BTN"   : "Personalizar texto de boton Cancelar",
+    "NAME_THIS_FORM"      : "Nombrar formulario",
+    "SAVE_THIS_FORM"      : "guardar formulario",
+    
+    "FINAL_STEP"          : "Ultimo paso : previsualizar formulario",
+    
+    "DATA_MODEL"          : "MODELO DE DATOS",
+    "FIELDS_MODEL"        : "MODELO DE CAMPOS (listo para guardar en base de datos uno)",
+    
+    
+    "SELECT_A_CTRL"       : "Selecciona un control",
+    "SELECT_CTRL_IN_LIST" : "Selecciona un control de la lista",
+    "COL_WILL_BE_BLANK"   : "Columna sera vacia",
+    
+    "EDIT_PROPERTIES"     : "Editar propiedades",
+    
+    "HEADER_TEXT"         : "Texto de encabezado",
+    "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui",
+    
+    "SUBTITLE_TEXT"       : "Texto de subtitulo",
+    "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui",
+    
+    "LABEL_TEXT"          : "Texto de etiqueta",
+    "ADD_EDIT_LABEL_HERE" : "Agregar / editar texto de etiqueta aqui",
+    
+    "PLACEHOLDER"         : "Marcador",
+    "ADD_EDIT_PLACEHOLD"  : "Agregar / editar texto de marcador aqui",
+    
+    "REQUIRED"            : "Requerido",
+    
+    "DESCRIPTION"         : "Descripcion",
+    "ADDEDIT_DESCRIPTION" : "Agregar / editar descripcion aqui",
+    
+    "DATE_FORMAT"         : "Formato de fecha",
+    
+    "ADD_NEW_RADIO"       : "Agregar nuevo radio",
+    "ADD_RADIO_PLACEHOLD" : "agregar nuevo radio",
+    "EDIT_REMOVE_RADIO"   : "Editar/Eliminar radio",
+    "NO_RADIO_ADD_NEW"    : "sin radio : agregar nuevos valores de radio",
+    
+    "SEARCH_4_OPTION"     : "buscar opcion",
+    
+    "ADD"                 : "agregar",
+    "ORDER"               : "orden",
+    "OPTION"              : "opcion",
+    "GROUP"               : "grupo",
+    
+    "ADD_NEW_OPTIONS"     : "agregar nuevas opciones",
+    "ADD_A_NEW_OPTION"    : "agregar nueva opcione",
+    "EDIT_REMOVE_OPTIONS" : "Editar/Eliminar opciones",
+    "NO_OPTION_ADD_NEW"   : "sin opcion : agregar nuevas opciones",
+    
+    "ADD_NEW_GROUPS"      : "Agregar nuevos grupos",
+    "ADD_A_NEW_GROUP"     : "Agregar nuevo grupo",
+    "EDIT_GROUPS_OPTIONS" : "Editar/Eliminar opciones/grupos",
+    "NO_GROUP_ADD_NEW"    : "agregar nuevos grupos",
+    
+    "OK"                  : "OK",
+    "CANCEL"              : "Cancelar"
+}

@@ -1,7 +1,9 @@
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig() {
-	let _configuration 			=  defaultConfig();
+	let _configuration 			= defaultConfig();
+	let _controlsList				= controlsList();
+	var _defaultLanguage		= getDefaultLanguage();
 	/* jshint validthis:true */
 	this.$get 							= easyFormSteWayConfig;
 	this.setModalAnimation 	= setModalAnimation;
@@ -18,6 +20,30 @@ function easyFormSteWayConfig() {
 		};
 		return _defaultConfiguration;
 	}
+	
+	//list of controls
+	function controlsList(){
+		let controls = [
+			{name: 'empty', 					enabled: true},
+			{name: 'Header', 					enabled: true},
+			{name: 'TextInput', 			enabled: true},
+			{name: 'Password', 				enabled: true},
+			{name: 'Date', 						enabled: true},
+			{name: 'Texarea',	 				enabled: true},
+			{name: 'RichTextEditor', 	enabled: true},
+			{name: 'Radio', 					enabled: true},
+			{name: 'Checkbox', 				enabled: true},
+			{name: 'BasicSelect', 		enabled: true},
+			{name: 'GroupedSelect', 	enabled: true}
+		];
+		return controls;
+	}
+	
+	//language : set default to english
+	function getDefaultLanguage(){
+		let lang = 'en';
+		return lang;
+	}		
 	
 	
 	function setModalAnimation(flagConfig){

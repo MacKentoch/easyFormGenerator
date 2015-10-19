@@ -1,5 +1,4 @@
-<!--<section id="pageWfEdit" ng-controller="edaStepWayEasyFormGenCtrl as vm">-->
-	<section id="pageWfEdit">
+<section id="pageWfEdit">
 	
 	<div ng-init="">
 		<div class="container">
@@ -10,7 +9,7 @@
 							<!-- taoster alert -->
 							<toaster-container  toaster-options="{
 																									'position-class': 'toast-top-full-width', 
-																								'extendedTimeout':500,
+																									'extendedTimeout':500,
 																									'timeOut':500,                          
 																									}">
 							</toaster-container>
@@ -19,7 +18,7 @@
 
 						
 
-							<tab select="tabJustSelected(2)" active="tab.editTab.active" heading="Edit /Create">
+							<tab select="tabJustSelected(2)" active="tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
 
 								<div class="row">											
 
@@ -31,19 +30,19 @@
 												<div class="row stepwizard-row">
 														<div class="stepwizard-step col-md-3">
 																<button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[0], 'btn-default': !configuration.stepIndicators[0]}" >0</button>
-																<p>lines</p>
+																<p>{{'WIZARD_LINES' | translate}}</p>
 														</div>
 														<div class="stepwizard-step col-md-3">
 																<button type="button" class="btn btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[1], 'btn-default': !configuration.stepIndicators[1], 'disabled': (configuration.configStepCounter < 1)}"  >1</button>
-																<p>layout</p>
+																<p>{{'WIZARD_LAYOUT' | translate}}</p>
 														</div>
 														<div class="stepwizard-step col-md-3">
 																<button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[2], 'btn-default': !configuration.stepIndicators[2], 'disabled': (configuration.configStepCounter < 2)}" >2</button>
-																<p>controls</p>
+																<p>{{'WIZARD_CONTROLS' | translate}}</p>
 														</div>
 														<div class="stepwizard-step col-md-3">
 																<button type="button" class="btn btn-default btn-circle" ng-class="{'btn-primary': configuration.stepIndicators[3], 'btn-default': !configuration.stepIndicators[3], 'disabled': (configuration.configStepCounter < 3)}" >3</button>
-																<p>save</p>
+																<p>{{'WIZARD_SAVE' | translate}}</p>
 														</div>
 												</div>
 										</div>
@@ -60,13 +59,13 @@
 									<li ng-class="{'disabled':stepIndicators[0]}">
 										<button class="btn btn-primary customPagerButton" ng-click="previousConfigStep()" >
 											<i class="fa fa-arrow-left fa-2x pull-left"></i>
-											<span class="pull-right">Prev</span>
+											<span class="pull-right">{{'PAGER_PREVIOUS' | translate}}</span>
 										</button>
 									</li>
 
 									<li ng-class="{'disabled':stepIndicators[3]}">
 										<button class="btn btn-primary customPagerButton" ng-click="nextConfigStep()">
-											<span class="pull-left">Next</span>
+											<span class="pull-left">{{'PAGER_NEXT' | translate}}</span>
 											<i class="fa fa-arrow-right fa-2x pull-right"></i>
 										</button>
 									</li>
@@ -81,7 +80,7 @@
 													<div id="commandPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>
 													</div>
 
 
@@ -89,7 +88,7 @@
 
 														<div class="row">
 															<div class="col-md-12">
-																<span class="addNewLine">Add a new line :</span>&nbsp;
+																<span class="addNewLine">{{'ADD_NEW_LINE' | translate}} :</span>&nbsp;
 																<button class="btn btn-primary" ng-click="addNewline()"><i class="fa fa-plus fa-1x"></i></button>												  			
 															</div>
 														</div>
@@ -103,7 +102,7 @@
 												<div id="visualPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+														<h3 class="panel-title"><i class="fa fa-eye"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>
 													</div>
 													<div class="panel-body">
 
@@ -202,15 +201,15 @@
 											<div id="commandPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>
 													</div>
 
 													<div class="panel-body">
 
 														<div class="row">
 															<div class="col-md-12">
-																<h4 class="numberOfcolumsText text-center"><i>– Selected line –</i></h4>
-																<h4 class="numberOfcolumsText text-center">number of columns :</h4>
+																<h4 class="numberOfcolumsText text-center"><i>- {{'SELECTED_LINE' | translate}} -</i></h4>
+																<h4 class="numberOfcolumsText text-center">{{'NUMBER_OF_COLUMN' | translate}} :</h4>
 															</div>
 														</div>
 
@@ -238,7 +237,7 @@
 												<div id="visualPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+														<h3 class="panel-title"><i class="fa fa-eye"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>
 													</h3>
 													</div>
 													<div class="panel-body">
@@ -342,14 +341,14 @@
 												<div id="commandPanel">
 													<div  class="panel panel-default">
 														<div class="panel-heading">
-															<h3 class="panel-title"><i class="fa fa-keyboard-o"></i> Command</h3>
+															<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>
 														</div>
 
 														<div class="panel-body">
 
 															<div class="row">
 																<div class="col-md-12">
-																	<h4 class="numberOfcolumsText text-center">– Apply controls to columns –</h4>
+																	<h4 class="numberOfcolumsText text-center">- {{'APPLY_CTRL2COL' | translate}} -</h4>
 																</div>
 															</div>
 
@@ -359,24 +358,12 @@
 																	
 																		<hr/>
 
-																		<!-- <p class="numberOfcolumsText text-center"><i class="fa fa-question-circle"></i>&nbsp; <b>How to :</b></p> -->
-
 																		<blockquote>
-																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Click / Tap on column to open control selection.</p> 
-																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; Select desired control and valid to apply it to column.</p>
+																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; {{'CLIC_TAP_2_OPEN' | translate}}.</p> 
+																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; {{'SELECT_2_APPLY_COL' | translate}}.</p>
 																</blockquote>												   		
 																</div>
-
-
-																<!-- <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
-																	<button class="btn btn-primary pull-right btnMinusColumns" ng-click="decreaseNumberOfColumns()"><i class="fa fa-minus fa-1x"></i></button>
-																</div>
-																<div class="col-xs-2 col-sm-2 col-md-2 text-center">
-																	<span class="numberOfColumnsLabel ">{{configuration.lines[configuration.activeLine -1].columns.length}}</span>
-																</div>
-																<div class="col-xs-2 col-sm-2 col-md-2">
-																	<button class="btn btn-primary pull-left btnAddColumns" ng-click="increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
-															</div>	 -->							   										   		
+						   										   		
 															</div>
 
 														</div>
@@ -389,7 +376,7 @@
 												<div id="visualPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-eye"></i> Visual</h3>
+														<h3 class="panel-title"><i class="fa fa-eye"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>
 													</h3>
 													</div>
 													<div class="panel-body">
@@ -496,7 +483,7 @@
 													<div id="commandPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;Command</h3>
+														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>
 													</div>
 													<div class="panel-body">
 
@@ -505,7 +492,7 @@
 															<div class="col-xs-12">
 																
 																<div class="form-group">
-																	<label for="inputSubmitButtontext" class=" greyText control-label">Customize Submit button Text :</label>
+																	<label for="inputSubmitButtontext" class=" greyText control-label">{{'CUSTOM_SUBMIT_BTN' | translate}} :</label>
 																	<div class="">
 																		<input type="text" class="form-control" id="inputSubmitButtontext" placeholder="Submit button text" ng-model="configuration.submitButtonText">
 																	</div>
@@ -518,7 +505,7 @@
 															<div class="col-xs-12">
 																
 																<div class="form-group">
-																	<label for="inputCancelButtontext" class=" greyText control-label">Customize Cancel button Text :</label>
+																	<label for="inputCancelButtontext" class=" greyText control-label">{{'CUSTOM_CANCEL_BTN' | translate}} :</label>
 																	<div class="">
 																		<input type="text" class="form-control" id="inputCancelButtontext" placeholder="Cancel button text" ng-model="configuration.cancelButtonText">
 																	</div>
@@ -531,7 +518,7 @@
 															<div class="col-xs-12">
 																
 																<div class="form-group">
-																	<label for="inputNameFormtext" class=" greyText control-label">Name to this form :</label>
+																	<label for="inputNameFormtext" class=" greyText control-label">{{'NAME_THIS_FORM' | translate}} :</label>
 																	<div class="">
 																		<input type="text" class="form-control" id="inputNameFormtext" placeholder="Enter formName" ng-model="configuration.formName">
 																	</div>
@@ -539,7 +526,7 @@
 															</div>												    
 														</div>
 
-														<button class="btn btn-primary btn-block btn-lg" ng-click="saveThisForm()">save this form</button>
+														<button class="btn btn-primary btn-block btn-lg" ng-click="saveThisForm()">{{'SAVE_THIS_FORM' | translate}}</button>
 
 													</div>
 												</div>
@@ -550,7 +537,7 @@
 												<div id="visualPanel">
 												<div  class="panel panel-default">
 													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-thumbs-o-up"></i>&nbsp;Final Step : form preview</h3>
+														<h3 class="panel-title"><i class="fa fa-thumbs-o-up"></i>&nbsp;{{'FINAL_STEP' | translate}}</h3>
 													</div>
 													<div class="panel-body">
 
@@ -580,7 +567,7 @@
 								</div>
 							</tab>	
 
-							<tab select="tabJustSelected(1)" active="tab.previewTab.active" heading="Preview">
+							<tab select="tabJustSelected(1)" active="tab.previewTab.active" heading="{{'PREVIEW_TAB' | translate}}">
 
 
 							<div class="panel panel-default">
@@ -602,7 +589,7 @@
 
 							<div class="panel panel-default">
 								<div class="panel-body">
-									<p>DATA MODEL</p>
+									<p>{{'DATA_MODEL' | translate}}</p>
 									<pre>
 										{{vm.model | json}}
 									</pre>
@@ -611,7 +598,7 @@
 
 							<div class="panel panel-default">
 								<div class="panel-body">
-									<p>FIELDS MODEL (ready to save to database one)</p>
+									<p>{{'FIELDS_MODEL' | translate}}</p>
 									<pre>
 										{{vm.wfFormFieldsOnlyNeededProperties | json}}
 									</pre>

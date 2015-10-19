@@ -272,6 +272,31 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
+ 
+ - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_As_Module.html)
+
+ - October 2015 : `Easy form Generator step way` : new languages added 
+     - french
+     - german
+     - japaneese
+  ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    
+  
+ ```javascript 
+  angular
+    .module('YOURAPP', ['...'])
+    .config(easyFromConfigFct);
+  
+  //inject easyFormSteWayConfigProvider
+  easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+  function easyFromConfigFct(easyFormSteWayConfigProvider){
+  
+    //example get current language (by default = english)
+    easyFormSteWayConfigProvider.getCurrentLanguage();
+    //set language to french :
+    easyFormSteWayConfigProvider.setLanguage('fr');
+ 
+ ```
+
 
  - October 2015 : `Easy form Generator step way` : enable or disable control in your easy form generator step way version.
  
@@ -306,7 +331,6 @@ ______
     // 'GroupedSelect'
  ```
  
-
  - Sept 2015 : `drag and drop way` is now a simple directive `eda-dragdrop-way-easy-form-gen`
 
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`

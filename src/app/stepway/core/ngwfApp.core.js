@@ -22,7 +22,8 @@
 	    'formly', 
 	    'formlyBootstrap',
 	    'ui.bootstrap',
-	    'nya.bootstrap.select'
+	    'nya.bootstrap.select',
+			'pascalprecht.translate'
 		]);
 
 })(); 

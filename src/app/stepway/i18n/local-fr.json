@@ -1,0 +1,88 @@
+{
+    "SAY_HI"	           : "Bonjour",
+    
+    "EDIT_TAB"            : "Edition / Creation",
+    "PREVIEW_TAB"         : "Aperçu",
+    
+    "WIZARD_LINES"        : "lignes",
+    "WIZARD_LAYOUT"       : "disposition",
+    "WIZARD_CONTROLS"     : "contrôles",
+    "WIZARD_SAVE"         : "sauvegarder",
+    
+    "PAGER_PREVIOUS"      : "Précédent",
+    "PAGER_NEXT"          : "Suivant",
+    
+    "COMMAND_PANEL"       : "Commandes",
+    "VISUAL_PANEL"        : "Visuel",
+    
+    "ADD_NEW_LINE"        : "Ajouter une nouvelle ligne",
+    
+    "SELECTED_LINE"       : "Ligne sélectionnée",
+    
+    "NUMBER_OF_COLUMN"    : "nombre de colonnes",
+    "APPLY_CTRL2COL"      : "Appliquer les contrôles aux colonnes",
+    
+    "CLIC_TAP_2_OPEN"     : "Cliquer sur une colonne pour ouvrir le menu d'édition",
+    "SELECT_2_APPLY_COL"  : "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Personnaliser le texte du bouton envoie",
+    "CUSTOM_CANCEL_BTN"   : "Personnaliser le texte du bouton annuler",
+    "NAME_THIS_FORM"      : "Nommer le formulaire",
+    "SAVE_THIS_FORM"      : "sauvegarder le formulaire",
+    
+    "FINAL_STEP"          : "Dernière étape : aperçu du formulaire",
+    
+    "DATA_MODEL"          : "MODELE DE DONNEES",
+    "FIELDS_MODEL"        : "MODELE DES CHAMPS (modèle compatible base de données)",
+
+  
+    "SELECT_A_CTRL"       : "Sélectionner un contrôle",
+    "SELECT_CTRL_IN_LIST" : "Sélectionner un contrôle dans la liste ci-dessous",
+    "COL_WILL_BE_BLANK"   : "La colonne sera vide",
+    
+    "EDIT_PROPERTIES"     : "Editer les propriétés",
+    
+    "HEADER_TEXT"         : "Texte du titre principal",
+    "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal",
+    
+    "SUBTITLE_TEXT"       : "Texte du sous-titre",
+    "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre",
+    
+    "LABEL_TEXT"          : "Texte de l'étiquette",
+    "ADD_EDIT_LABEL_HERE" : "Editer le texte de l'étiquette",
+    
+    "PLACEHOLDER"         : "placeholder",
+    "ADD_EDIT_PLACEHOLD"  : "Editer le placeholder",
+    
+    "REQUIRED"            : "Requis",
+    
+    "DESCRIPTION"         : "Description",
+    "ADDEDIT_DESCRIPTION" : "Ajouter / editer la description",
+    
+    "DATE_FORMAT"         : "Format de la date",
+    
+    "ADD_NEW_RADIO"       : "Ajouter un nouveau choix à cocher",
+    "ADD_RADIO_PLACEHOLD" : "Ajouter un nouveau choix à cocher",
+    "EDIT_REMOVE_RADIO"   : "Editer / supprimer un choix à cocher",
+    "NO_RADIO_ADD_NEW"    : "aucun choix à cocher : en ajouter un",
+    
+    "SEARCH_4_OPTION"     : "rechercher une option",
+    
+    "ADD"                 : "ajouter",
+    "ORDER"               : "ordre",
+    "OPTION"              : "option",
+    "GROUP"               : "groupe",
+    
+    "ADD_NEW_OPTIONS"     : "Ajouter de nouvelles options",
+    "ADD_A_NEW_OPTION"    : "ajoutre une option",
+    "EDIT_REMOVE_OPTIONS" : "Editer / supprimer des options",
+    "NO_OPTION_ADD_NEW"   : "aucune option : en ajouter",
+    
+    "ADD_NEW_GROUPS"      : "Ajouter de nouveaux groupes",
+    "ADD_A_NEW_GROUP"     : "Ajouter un nouveau groupe",
+    "EDIT_GROUPS_OPTIONS" : "Editer / supprimer les groupes et options",
+    "NO_GROUP_ADD_NEW"    : "ajouter de nouveaux groupes",
+    
+    "OK"                : "Valider",
+    "CANCEL"            : "Annuler"        
+}
