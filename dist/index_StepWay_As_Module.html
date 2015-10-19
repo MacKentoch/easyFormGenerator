@@ -106,8 +106,25 @@
 					.module('appDemo', [
 						'eda.easyformGen.stepway' //injects easy form generator-step way
 					])
+					.config(configFct)
 					.controller('demoController', demoController);
-					
+				
+				/**
+				 * config
+				 */
+				configFct.$inject = ['easyFormSteWayConfigProvider'];
+				function configFct(easyFormSteWayConfigProvider){
+					//show/hide preview panel => default is true
+					easyFormSteWayConfigProvider.showPreviewPanel(true);
+					//show/hide models in preview panel => default is true
+					easyFormSteWayConfigProvider.showPreviewModels(true);
+				}
+				
+				
+				
+				/**
+				 * controller 
+				 **/	
 				demoController.$inject = ['$timeout', 'easyFormSteWayConfig'];	
 				function demoController($timeout, easyFormSteWayConfig){
 					var demoCtrl = this;

@@ -24,6 +24,8 @@
 			var _controlsList						= controlsList();
 			var _defaultLanguage				= getDefaultLanguage();
 			var _currentLanguage				= initDefaultLanguage();
+			var _showPreviewPanel				= getDefaultshowPreviewPanel();
+			var _showPreviewModels			= getDefaultShowPreviewModel();
 			/* jshint validthis:true */
 			this.$get 									= easyFormSteWayConfig;
 			this.setModalAnimation 			= setModalAnimation;
@@ -34,6 +36,8 @@
 			this.enableControl					= enableControl;
 			this.setLanguage						= setLanguage;
 			this.getCurrentLanguage			= getCurrentLanguage;
+			this.showPreviewPanel				= showPreviewPanel;
+			this.showPreviewModels			= showPreviewModels;
     	
 		
 			
@@ -45,7 +49,16 @@
 				};
 				return _defaultConfiguration;
 			}
-
+			
+			//show preview panel by default
+			function getDefaultshowPreviewPanel(){
+			 	return true;
+			}
+			
+			//show preview data, fields models in preview panel
+			function getDefaultShowPreviewModel(){
+				return true;
+			}
 		
 			function controlsList(){
 				var controls = [
@@ -97,6 +110,20 @@
 						
 					});						
 				}
+			}
+			
+			function showPreviewPanel(wantToShow){
+				if (angular.isDefined(wantToShow)) {
+					if(wantToShow === true) 	_showPreviewPanel 	= true;
+					if(wantToShow === false) 	_showPreviewPanel 	= false;
+				}
+			}
+			
+			function showPreviewModels(wantToShow){
+				if (angular.isDefined(wantToShow)) {
+					if(wantToShow === true) 	_showPreviewModels 	= true;
+					if(wantToShow === false) 	_showPreviewModels 	= false;
+				}				
 			}
 			
 			function enableControl(controlName){
@@ -152,8 +179,10 @@
 					getModalAnimationValue 	: getModalAnimationValue,
 					getListEnabledControl		: getListEnabledControl,
 					setLanguage 						: switchLanguage,
-					getCurrentLanguage			: getCurrentLanguage
-					
+					getCurrentLanguage			: getCurrentLanguage,
+					isPreviewPanelVisible		: isPreviewPanelVisible,
+					arePreviewModelsVisible	: arePreviewModelsVisible
+ 					
 				};
 				return service;
 				
@@ -169,6 +198,14 @@
 				function getListEnabledControl(){
 					return angular.copy(_controlsList);
 				}
+				
+				function isPreviewPanelVisible(){
+					return _showPreviewPanel;
+				}
+				
+				function arePreviewModelsVisible(){
+					return _showPreviewModels;
+				}				
 				
 				function switchLanguage(language){
 					if (angular.isString(language)) {

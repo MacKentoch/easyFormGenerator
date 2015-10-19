@@ -273,12 +273,41 @@ ______
 
 ## What is new?
  
+ - October 2015 : `Easy form Generator step way` : new config available with `easyFormSteWayConfigProvider` : 
+    - show/hide preview panel
+    - show hide models (in prevew panel)
+    
+```javascript
+  
+  angular
+    .module('appDemo', [
+      'eda.easyformGen.stepway' //injects easy form generator-step way
+    ])
+    .config(configFct)
+    .controller('demoController', demoController);
+  
+  /**
+    * config
+    */
+  configFct.$inject = ['easyFormSteWayConfigProvider'];
+  function configFct(easyFormSteWayConfigProvider){
+    //show/hide preview panel => default is true
+    easyFormSteWayConfigProvider.showPreviewPanel(true);
+    //show/hide models in preview panel => default is true
+    easyFormSteWayConfigProvider.showPreviewModels(true);
+  }
+
+```
+  
+ 
  - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_As_Module.html)
 
  - October 2015 : `Easy form Generator step way` : new languages added 
      - french
      - german
      - japaneese
+     - spanish (thx to **Benjamin Orozco** :thumbsup:)
+     - turkish (thx to **Serhat Can** :thumbsup:)
   ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    
   
  ```javascript 

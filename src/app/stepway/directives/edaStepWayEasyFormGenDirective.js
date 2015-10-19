@@ -279,6 +279,8 @@
       $scope.previewExistingform      = previewExistingform;
       $scope.saveThisForm             = saveThisForm; //should save to database (commented here)
       $scope.returnSaveEvent          = false;
+      
+     
 
 
    
@@ -300,10 +302,20 @@
       }
 
       function initTabModel(){
-        return {
-          editTab : {active : true},
-          previewTab : {active : false}
+        var _tabInitialized = {
+          
+          editTab     : {
+            active : true
+          },
+          
+          previewTab  : {
+            active        : false,  
+            tabVisible    : easyFormSteWayConfig.isPreviewPanelVisible(),
+            modelsVisible : easyFormSteWayConfig.arePreviewModelsVisible()
+           }
+           
         };
+        return _tabInitialized;
       }
 
       function previewExistingform(formlyform){

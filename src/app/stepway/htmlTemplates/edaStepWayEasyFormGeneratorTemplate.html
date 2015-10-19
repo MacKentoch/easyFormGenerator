@@ -18,7 +18,7 @@
 
 						
 
-							<tab select="tabJustSelected(2)" active="tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
+							<tab active="tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
 
 								<div class="row">											
 
@@ -567,7 +567,7 @@
 								</div>
 							</tab>	
 
-							<tab select="tabJustSelected(1)" active="tab.previewTab.active" heading="{{'PREVIEW_TAB' | translate}}">
+							<tab active="tab.previewTab.active" ng-if="tab.previewTab.tabVisible" heading="{{'PREVIEW_TAB' | translate}}">
 
 
 							<div class="panel panel-default">
@@ -586,8 +586,8 @@
 
 								</div>
 							</div>
-
-							<div class="panel panel-default">
+							
+							<div ng-if="tab.previewTab.modelsVisible" class="panel panel-default">
 								<div class="panel-body">
 									<p>{{'DATA_MODEL' | translate}}</p>
 									<pre>
@@ -596,7 +596,7 @@
 								</div>
 							</div>
 
-							<div class="panel panel-default">
+							<div ng-if="tab.previewTab.modelsVisible" class="panel panel-default">
 								<div class="panel-body">
 									<p>{{'FIELDS_MODEL' | translate}}</p>
 									<pre>
