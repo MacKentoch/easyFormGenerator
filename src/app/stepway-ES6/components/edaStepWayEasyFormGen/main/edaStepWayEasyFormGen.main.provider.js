@@ -1,3 +1,4 @@
+/* global angular */
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig($translateProvider) {
@@ -5,12 +6,18 @@ function easyFormSteWayConfig($translateProvider) {
 	let _controlsList				= controlsList();
 	let _defaultLanguage		= getDefaultLanguage();
 	let _currentLanguage		= initDefaultLanguage();
+	let _showPreviewPanel		= getDefaultshowPreviewPanel();
+	let _showPreviewModels	= getDefaultShowPreviewModel();	
 	/* jshint validthis:true */
 	this.$get 							= easyFormSteWayConfig;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
 	this.configuration			= _configuration;
 	this.getEnabledControls = getEnabledControls;
+	this.disableControl			= disableControl;
+	this.enableControl			= enableControl;
+	this.setLanguage				= setLanguage;
+	this.getCurrentLanguage	= getCurrentLanguage;
 	
 	
 	
@@ -22,6 +29,20 @@ function easyFormSteWayConfig($translateProvider) {
 		};
 		return _defaultConfiguration;
 	}
+
+	//show preview panel by default
+	function getDefaultshowPreviewPanel(){
+		return true;
+	}	
+	
+	//show preview data, fields models in preview panel
+	function getDefaultShowPreviewModel(){
+		return true;
+	}	
+	
+	function getCurrentLanguage(){
+			return _currentLanguage;
+	}	
 	
 	//list of controls
 	function controlsList(){
@@ -47,6 +68,21 @@ function easyFormSteWayConfig($translateProvider) {
 		return lang;
 	}
 	
+	function setDefaultLanguage(){
+		_currentLanguage = _defaultLanguage;
+		$translateProvider.preferredLanguage(_currentLanguage);
+		return _currentLanguage;
+	}	
+	
+	function setLanguage(language){				
+		if (angular.isString(language)) {
+			_currentLanguage = language;
+			$translateProvider.preferredLanguage(language);
+		}else{
+			setDefaultLanguage();
+		}
+	}
+	
 	function initDefaultLanguage(){
 		$translateProvider.useSanitizeValueStrategy('escape'); 	//security : Enable escaping of HTML
 		$translateProvider.fallbackLanguage(_defaultLanguage);	//fallback language to default language
@@ -56,7 +92,23 @@ function easyFormSteWayConfig($translateProvider) {
 	
 	function getEnabledControls(){
 		return _controlsList;
-	}				
+	}
+	
+	function disableControl(controlName){
+		if (angular.isString(controlName)) {
+			angular.forEach(_controlsList, (aControl) => {
+				if (aControl.name === controlName) aControl.enabled = false;
+			});						
+		}
+	}
+	
+	function enableControl(controlName){
+		if (angular.isString(controlName)) {
+			angular.forEach(_controlsList, (aControl) => {
+				if (aControl.name === controlName) aControl.enabled = true;
+			});						
+		}				
+	}						
 	
 	function setModalAnimation(flagConfig){
 		let valueToApply = (flagConfig === true) ? 
