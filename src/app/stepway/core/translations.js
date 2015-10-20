@@ -117,7 +117,7 @@ $translateProvider.translations("en", {
     
     "CUSTOM_SUBMIT_BTN"   : "Customize Submit button Text",
     "CUSTOM_CANCEL_BTN"   : "Customize Cancel button Text",
-    "NAME_THIS_FORM"      : "Name to this form",
+    "NAME_THIS_FORM"      : "Name this form",
     "SAVE_THIS_FORM"      : "save this form",
     
     "FINAL_STEP"          : "Final Step : form preview",
