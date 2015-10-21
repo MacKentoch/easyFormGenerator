@@ -74,6 +74,6 @@
     "angular-mocks": "~1.4.1"
   },
   "resolutions": {
-    "angular": "^1.2.9"
+    "angular": "^1.4.7"
   }
 }
