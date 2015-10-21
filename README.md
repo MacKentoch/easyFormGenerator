@@ -34,7 +34,11 @@ ______
 - cross browser compatible 
 - responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
 - multi-language support
-- friendly configurable
+- friendly configurable thanks to a single provider `easyFormSteWayConfig` provider
+  - enable / disable modal animation
+  - enable / disable controls (ex : hide rich text from editor)
+  - set current language (default is english)
+  - show hide preview model and / or preview panel in editor   
 - production friendly
 
 Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)

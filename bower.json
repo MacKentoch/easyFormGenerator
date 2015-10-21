@@ -1,8 +1,8 @@
 {
   "name": "easy-form-generator",
   "main": [
-    "./dist/public/js/eda.stepway.js",
-    "./dist/public/css/eda.stepway.css"
+    "./dist/js/eda.stepway.min.js",
+    "./dist/css/eda.stepway.min.css"
   ],
   "version": "1.0.28",
   "description": "create amazing forms without coding : form editor based on angular formly",
@@ -32,6 +32,7 @@
     "gulpfile.js",
     "index.html",
     "index_easyFormViewer_Module.html",
+    "index_DragDropWay_As_Module.html",
     "indexDragDrop.html",
     "index_DragDropWay.html",
     "index_StepWay_As_Module.html",
@@ -41,7 +42,9 @@
     "preview.png",
     "karma.conf.js",
     "package.json",
-    "tsd.json"
+    "tsd.json",
+    "languages.png",
+    "easyFormViewerPreview.png"
   ],
   "dependencies": {
     "angular": "~1.4.5",

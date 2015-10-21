@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="appDemo">
     <head>
     <title>Easy form generator</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
+    <meta name="author" content="Erwan Datin (MacKentoch)">
 
         <!-- head dep. : all css -->
     <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,13 +20,61 @@
     <link href='../nya-bootstrap-select/dist/css/nya-bs-select.min.css' rel='stylesheet' >  
     <link href="../easy-form-generator/dist/css/eda.stepway.min.css" rel="stylesheet">
   <head>
-  <body>  
+  <body ng-controller="demoController as demoCtrl" ng-cloak>  
     
+			<!-- navigation : just for decoration it is not easy form generator
+			=============================================================-->
+			<header id="pageHeader" >	
+				<div class="navbar navbar-default navbar-fixed-top">
+			      <div class="container">
+			        <div class="navbar-header">
+			          <a class="navbar-brand" href="#">Easy form generator</a>
+			          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			        </div>
+							
+			        <div class="navbar-collapse collapse" id="navbar-main">
+			          <ul class="nav navbar-nav">
+			          </ul>
+								
+								<ul class="nav navbar-nav navbar-left">
+									
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+											Switch language 
+											<span class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('en')">English</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('fr')">French</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('es')">Spanish</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('de')">German</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('jp')">Japanese</a></li>
+											<li><a href="#" ng-click="demoCtrl.switchLanguage('tr')">Turkish</a></li>
+										</ul>
+									</li>									
+																		
+								</ul>
+								
+			          <ul class="nav navbar-nav navbar-right">
+			          	<li><a class="socialIcon" target="_blank" href="https://github.com/MacKentoch"><span class="text-center"><i class="fa fa-github"></i></span></a></li>
+			          </ul>
+			        </div>
+							
+							
+			      </div>
+			    </div>
+			</header>   		
         
         
         
     <!-- Easy form generator: Step Way -->
-    <eda-step-way-easy-form-gen></eda-step-way-easy-form-gen>
+    <eda-step-way-easy-form-gen 	
+          eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
+          eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
+    </eda-step-way-easy-form-gen>
 
 
 
@@ -44,7 +90,79 @@
     (function(angular){
         'use strict';
         angular
-            .module('app', ['eda.easyformGen.stepway']);
+            .module('appDemo', ['eda.easyformGen.stepway'])
+            .config(configFct)
+            .controller('demoController', demoController);
+            
+				/**
+				 * config
+				 */
+				configFct.$inject = ['easyFormSteWayConfigProvider'];
+				function configFct(easyFormSteWayConfigProvider){
+          //example get current language (by default = english)
+          console.info('- from config - language is ' + easyFormSteWayConfigProvider.getCurrentLanguage());
+          
+          //set language to french :
+          //easyFormSteWayConfigProvider.setLanguage('fr');          
+          
+					//show/hide preview panel => default is true 
+					easyFormSteWayConfigProvider.showPreviewPanel(true);
+					//show/hide models in preview panel => default is true
+					easyFormSteWayConfigProvider.showPreviewModels(true);
+				}
+        
+			
+				/**
+				 * controller 
+				 **/	
+				demoController.$inject = ['$timeout', 'easyFormSteWayConfig'];	
+				function demoController($timeout, easyFormSteWayConfig){
+					var demoCtrl = this;
+
+					demoCtrl.easyFormGeneratorModel	= {}; // TIP : save a form then look at the console to get a better idea of this model
+					demoCtrl.saveForm 							= saveForm;
+					demoCtrl.currentLangue					= refreshCurrentLanguage();
+					demoCtrl.switchLanguage					= switchLanguage;
+
+					//get current language
+					console.info('Current language is ' + demoCtrl.currentLangue);
+
+
+
+					function switchLanguage(toLanguage){
+						if(angular.isString){
+							easyFormSteWayConfig.setLanguage(toLanguage);
+							refreshCurrentLanguage();
+							
+							console.info('language changed to ' + demoCtrl.currentLangue);
+						}
+					}
+				
+					function refreshCurrentLanguage(){
+						demoCtrl.currentLangue = easyFormSteWayConfig.getCurrentLanguage();
+					}
+					
+					/**
+					 * when click on save form, will call your save form function :
+					 */
+					function saveForm(easyFormGeneratorModel){
+						console.info('-> from here : you can save models to database (your controller)');							
+						console.dir({
+								'What is it?' : 'this log shows you easy form returned model on save event',
+								'easyFormGeneratorModel' : easyFormGeneratorModel
+						});		
+         } 
+         
+        } 
+        // easyFormGeneratorModel properties should be         
+        // formName :                   {string}  - stores form name, default is empty string
+        // btnSubmitText :              {string}  - stores submit button name, default is 'Submit'
+        // btnCancelText :              {string}  - stores submit button name, default is 'Cancel'
+        // edaFieldsModel :             {array}   - easy form generator fields model that describe form
+        // edaFieldsModelStringified :  {string}  - edaFieldsModel but stringified (then easy to save fields model to any database)
+        // formlyFieldsModel :          {object}  - angular formly fields model (filled by easy form generator from edaFieldsModel)
+        // dataModel :                  {object}  - filling the form feeds dataModel         
+            
     })(angular);
     </script>
     
