@@ -254,13 +254,17 @@ Just inject `eda.easyFormViewer` in you application :
 
 
 ####All easy form viewer directive :
+
+**UPDATE** : since v1.0.28 : attibutes eda-easy-form-viewer-submit-button-text and eda-easy-form-viewer-cancel-button-text are now waiting a string. See html below for correct up to date declaration.
+
+
 ```html
 <eda-easy-form-viewer
 		eda-easy-form-viewer-data-model="demoCtrl.dataModel"
 		eda-easy-form-viewer-easy-form-generator-fields-model="demoCtrl.fieldsModel"
 		
-		eda-easy-form-viewer-submit-button-text="demoCtrl.submitButtonText"
-		eda-easy-form-viewer-cancel-button-text="demoCtrl.cancelButtonText"
+		eda-easy-form-viewer-submit-button-text="{{demoCtrl.submitButtonText}}"
+		eda-easy-form-viewer-cancel-button-text="{{demoCtrl.cancelButtonText}}"
 		
 		eda-easy-form-viewer-submit-form-event="demoCtrl.submitFormEvent(dataModelSubmitted)"
 		eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
