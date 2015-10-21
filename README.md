@@ -33,6 +33,8 @@ ______
 `Step way version` is the **most accomplished** and **stable version**. 
 - cross browser compatible 
 - responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
+- multi-language support
+- friendly configurable
 - production friendly
 
 Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_StepWay.html)
