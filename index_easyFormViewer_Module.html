@@ -46,6 +46,15 @@
 					eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
 			</eda-easy-form-viewer>
 
+			<div ng-if="demoCtrl.showDataModel" class="row">
+				<div class="col-md-12">
+					<pre>
+						{{demoCtrl.dataModel}}
+					</pre>		
+				</div>
+			</div>
+			
+
 		</div>	
 
 
@@ -68,6 +77,8 @@
 				function demoController($timeout){
 					var demoCtrl = this;
 
+					demoCtrl.showDataModel = true; //demo purpose only : to show data model in html
+					
 					demoCtrl.fieldsModel		= testACompleteForm();
 					demoCtrl.dataModel			= {};
 					

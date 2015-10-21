@@ -61,10 +61,17 @@
 				
 								
 				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
+				scope.$watch(dataModelToWatch,			dataModelWatcher,			true);
 				scope.$watch(submitBtnTextToWatch, 	submitBtnTextWatcher);
 				scope.$watch(cancelBtnTextToWatch, 	cancelBtnTextWatcher);
 				scope.$watch(submitEventToWatch, 		submitEventWatcher);
 				scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
+				
+				
+				function dataModelToWatch(){
+					return scope.vm.model;
+				}
+				
 				
 				function fieldsModelToWatch(){
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
@@ -100,7 +107,11 @@
 					if (newCancelBtntext !== oldCancelBtntext) {
 						scope.vm.cancelText 	= newCancelBtntext || 'Submit';	
 					}					
-				}							
+				}	
+				
+				function dataModelWatcher(newDataModel, PreiousDataModel){
+					scope.edaEasyFormViewerDataModel = newDataModel;
+				}						
 			
 				function submitEventWatcher(newSubmitEvent, oldSubmitEvent){
 					if (newSubmitEvent === true) {
