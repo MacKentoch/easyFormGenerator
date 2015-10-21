@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — drag and drop way — version 
-  *Version 1.0.27 
+  *Version 1.0.28 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 

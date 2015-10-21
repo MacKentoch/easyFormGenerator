@@ -1,6 +1,6 @@
 /** 
   *easyFormViewer 
-  *Version 1.0.27 
+  *Version 1.0.28 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -275,8 +275,8 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
           edaEasyFormViewerDataModel 										: '=?',
 					edaEasyFormViewerEasyFormGeneratorFieldsModel : '=?',
 					
-					edaEasyFormViewerSubmitButtonText 						: '=?',
-					edaEasyFormViewerCancelButtonText 						: '=?',
+					edaEasyFormViewerSubmitButtonText 						: '@?',
+					edaEasyFormViewerCancelButtonText 						: '@?',
 					
           edaEasyFormViewerSubmitFormEvent  						: '&?',
 					edaEasyFormViewerCancelFormEvent							: '&?'
@@ -301,13 +301,19 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 				scope.vm.fields 			= loadFieldsModel();
 				scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
-				
 								
 				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
+				scope.$watch(dataModelToWatch,			dataModelWatcher,			true);
 				scope.$watch(submitBtnTextToWatch, 	submitBtnTextWatcher);
 				scope.$watch(cancelBtnTextToWatch, 	cancelBtnTextWatcher);
 				scope.$watch(submitEventToWatch, 		submitEventWatcher);
 				scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
+				
+				
+				function dataModelToWatch(){
+					return scope.vm.model;
+				}
+				
 				
 				function fieldsModelToWatch(){
 					return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
@@ -343,7 +349,11 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 					if (newCancelBtntext !== oldCancelBtntext) {
 						scope.vm.cancelText 	= newCancelBtntext || 'Submit';	
 					}					
-				}							
+				}	
+				
+				function dataModelWatcher(newDataModel, PreiousDataModel){
+					scope.edaEasyFormViewerDataModel = newDataModel;
+				}						
 			
 				function submitEventWatcher(newSubmitEvent, oldSubmitEvent){
 					if (newSubmitEvent === true) {

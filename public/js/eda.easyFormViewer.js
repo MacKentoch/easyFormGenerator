@@ -1,6 +1,6 @@
 /** 
   *easyFormViewer 
-  *Version 1.0.27 
+  *Version 1.0.28 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -275,8 +275,8 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
           edaEasyFormViewerDataModel 										: '=?',
 					edaEasyFormViewerEasyFormGeneratorFieldsModel : '=?',
 					
-					edaEasyFormViewerSubmitButtonText 						: '=?',
-					edaEasyFormViewerCancelButtonText 						: '=?',
+					edaEasyFormViewerSubmitButtonText 						: '@?',
+					edaEasyFormViewerCancelButtonText 						: '@?',
 					
           edaEasyFormViewerSubmitFormEvent  						: '&?',
 					edaEasyFormViewerCancelFormEvent							: '&?'
@@ -301,7 +301,6 @@ angular.module("eda.easyFormViewer").run(["$templateCache", function($templateCa
 				scope.vm.fields 			= loadFieldsModel();
 				scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
-				
 								
 				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
 				scope.$watch(dataModelToWatch,			dataModelWatcher,			true);

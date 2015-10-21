@@ -32,8 +32,8 @@
           edaEasyFormViewerDataModel 										: '=?',
 					edaEasyFormViewerEasyFormGeneratorFieldsModel : '=?',
 					
-					edaEasyFormViewerSubmitButtonText 						: '=?',
-					edaEasyFormViewerCancelButtonText 						: '=?',
+					edaEasyFormViewerSubmitButtonText 						: '@?',
+					edaEasyFormViewerCancelButtonText 						: '@?',
 					
           edaEasyFormViewerSubmitFormEvent  						: '&?',
 					edaEasyFormViewerCancelFormEvent							: '&?'
@@ -58,7 +58,6 @@
 				scope.vm.fields 			= loadFieldsModel();
 				scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 				scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';	
-				
 								
 				scope.$watch(fieldsModelToWatch, 		fieldsModelWatcher, 	true);
 				scope.$watch(dataModelToWatch,			dataModelWatcher,			true);
