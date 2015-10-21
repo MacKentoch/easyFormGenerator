@@ -205,8 +205,9 @@
 				
 				function arePreviewModelsVisible(){
 					return _showPreviewModels;
-				}				
+				}	
 				
+										
 				function switchLanguage(language){
 					if (angular.isString(language)) {
 						_currentLanguage = language;

@@ -330,7 +330,7 @@ ______
   function easyFromConfigFct(easyFormSteWayConfigProvider){
   
     //example get current language (by default = english)
-    easyFormSteWayConfigProvider.getCurrentLanguage();
+    console.info(easyFormSteWayConfigProvider.getCurrentLanguage());
     //set language to french :
     easyFormSteWayConfigProvider.setLanguage('fr');
  
