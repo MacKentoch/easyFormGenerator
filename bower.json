@@ -44,7 +44,8 @@
     "package.json",
     "tsd.json",
     "languages.png",
-    "easyFormViewerPreview.png"
+    "easyFormViewerPreview.png",
+    "config.js"
   ],
   "dependencies": {
     "angular": "~1.4.5",
