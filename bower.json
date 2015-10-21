@@ -4,7 +4,7 @@
     "./dist/js/eda.stepway.min.js",
     "./dist/css/eda.stepway.min.css"
   ],
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
@@ -74,6 +74,6 @@
     "angular-mocks": "~1.4.1"
   },
   "resolutions": {
-    "angular": "^1.4.7"
+    "angular": "1.4.7"
   }
 }

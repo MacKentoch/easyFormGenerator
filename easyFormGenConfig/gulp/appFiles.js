@@ -21,7 +21,8 @@ module.exports = {
 				'src/app/dragdropway/controllers/**/*.js',
 				'src/app/dragdropway/directives/**/*.js',
 				'src/app/dragdropway/services/**/*.js',
-				'src/app/dragdropway/filters/**/*.js'			
+				'src/app/dragdropway/filters/**/*.js',
+				'src/app/dragdropway/vendors/**/*.js'			
 		]
 	},
 	formviewer : {
