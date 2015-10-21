@@ -154,15 +154,21 @@
          } 
          
         } 
-        // easyFormGeneratorModel properties should be         
-        // formName :                   {string}  - stores form name, default is empty string
-        // btnSubmitText :              {string}  - stores submit button name, default is 'Submit'
-        // btnCancelText :              {string}  - stores submit button name, default is 'Cancel'
-        // edaFieldsModel :             {array}   - easy form generator fields model that describe form
-        // edaFieldsModelStringified :  {string}  - edaFieldsModel but stringified (then easy to save fields model to any database)
-        // formlyFieldsModel :          {object}  - angular formly fields model (filled by easy form generator from edaFieldsModel)
-        // dataModel :                  {object}  - filling the form feeds dataModel         
-            
+        /**
+          * 
+          * MORE DETAILS ON 'easyFormGeneratorModel'
+          * ----------------------------------------
+          * 
+          * easy form generator model properties:
+          * 
+          * - formName 									  : {string} (at save step you name your form)
+          * - btnSubmitText 							: {string} (if 'Submit' does not suits to you change submit button name)
+          * - btnCancelText							  : {string} (if 'Cancel' does not suits to you change cancel button name)
+          * - edaFieldsModel 						  : {array} - easy form generator model that describe form
+          * - edaFieldsModelStringified 	: {string} - exactly same as edaFieldsModel it is just stringified
+          * - formlyFieldsModel 					: {object} - easy form generator model translate by itself 'edaFieldsModel' to 'angular formly fields model' -> usefull is you just need a formly directive
+          * - dataModel									  : {object} - this object is filled when filling form. 
+          */
     })(angular);
     </script>
     
