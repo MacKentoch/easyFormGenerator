@@ -30,8 +30,7 @@ module.exports = {
 		'bower_components/angular-strap/dist/angular-strap.tpl.min.js',
 		'vendor/js/angular-pageslide-directive.min.js',
 		'bower_components/angular-messages/angular-messages.min.js',
-		'bower_components/angular-translate/angular-translate.min.js',
-		'bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.min.js',
+		'bower_components/angular-translate/angular-translate.min.js'
 		
 	],
 

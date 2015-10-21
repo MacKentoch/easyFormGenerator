@@ -1,6 +1,6 @@
 /** 
   *easyFormViewer 
-  *Version 1.0.29 
+  *Version 1.0.31 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 

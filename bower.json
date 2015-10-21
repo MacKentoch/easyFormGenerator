@@ -4,7 +4,7 @@
     "./dist/js/eda.stepway.min.js",
     "./dist/css/eda.stepway.min.css"
   ],
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "create amazing forms without coding : form editor based on angular formly",
   "keywords": [
     "easy",
@@ -67,13 +67,12 @@
     "nya-bootstrap-select": "~2.0.10",
     "lodash": "~3.9.3",
     "angular-strap": "~2.3.0",
-    "angular-translate": "~2.8.1",
-    "angular-pageslide-directive": "~1.0.5"
+    "angular-translate": "~2.8.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.1"
   },
   "resolutions": {
-    "angular": "1.4.7"
+    "angular": "^1.4.7"
   }
 }
