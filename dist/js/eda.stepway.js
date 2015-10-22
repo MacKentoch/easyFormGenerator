@@ -38,7 +38,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.31')
+    .value('easyFormGenVersion', 'v1.0.32')
     .config(formlyConfigFct)
     .config(easyFromConfigFct);
 
@@ -924,7 +924,6 @@ $translateProvider.translations("tr", {
 						
 						if (aControl.name === controlName) {
 							aControl.enabled = false;
-							console.log('disable aControl : ' + aControl.name, + '\n ref : ' + controlName);
 						}
 						
 					});						

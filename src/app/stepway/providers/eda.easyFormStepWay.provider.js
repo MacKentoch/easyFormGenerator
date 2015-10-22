@@ -105,7 +105,6 @@
 						
 						if (aControl.name === controlName) {
 							aControl.enabled = false;
-							console.log('disable aControl : ' + aControl.name, + '\n ref : ' + controlName);
 						}
 						
 					});						
