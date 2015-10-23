@@ -58,7 +58,7 @@ Drag and drop way is still in development.
 
 >`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
-have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/dist/index_DragDropWay.html)
+have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_DragDropWay_As_Module.html)
 
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
