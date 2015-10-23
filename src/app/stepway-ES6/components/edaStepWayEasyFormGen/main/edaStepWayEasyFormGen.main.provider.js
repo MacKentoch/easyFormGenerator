@@ -18,7 +18,8 @@ function easyFormSteWayConfig($translateProvider) {
 	this.enableControl			= enableControl;
 	this.setLanguage				= setLanguage;
 	this.getCurrentLanguage	= getCurrentLanguage;
-	
+	this.showPreviewPanel		= showPreviewPanel;
+	this.showPreviewModels	= showPreviewModels;	
 	
 	
 	
@@ -29,6 +30,7 @@ function easyFormSteWayConfig($translateProvider) {
 		};
 		return _defaultConfiguration;
 	}
+	
 
 	//show preview panel by default
 	function getDefaultshowPreviewPanel(){
@@ -61,6 +63,20 @@ function easyFormSteWayConfig($translateProvider) {
 		];
 		return controls;
 	}
+	
+	function showPreviewPanel(wantToShow){
+		if (angular.isDefined(wantToShow)) {
+			if(wantToShow === true) 	_showPreviewPanel 	= true;
+			if(wantToShow === false) 	_showPreviewPanel 	= false;
+		}
+	}
+	
+	function showPreviewModels(wantToShow){
+		if (angular.isDefined(wantToShow)) {
+			if(wantToShow === true) 	_showPreviewModels 	= true;
+			if(wantToShow === false) 	_showPreviewModels 	= false;
+		}				
+	}		
 	
 	//language : set default to english
 	function getDefaultLanguage(){
@@ -126,12 +142,17 @@ function easyFormSteWayConfig($translateProvider) {
 	
 	
 	//$get implementation :
-	easyFormSteWayConfig.$inject = [];
-	function easyFormSteWayConfig(){
+	easyFormSteWayConfig.$inject = ['$translate'];
+	function easyFormSteWayConfig($translate){
 											
 		let service = {
 			setModalAnimation 			: setModalAnimationFct,
-			getModalAnimationValue 	: getModalAnimationValue
+			getModalAnimationValue 	: getModalAnimationValue,
+			getListEnabledControl		: getListEnabledControl,
+			setLanguage 						: switchLanguage,
+			getCurrentLanguage			: getCurrentLanguage,
+			isPreviewPanelVisible		: isPreviewPanelVisible,
+			arePreviewModelsVisible	: arePreviewModelsVisible
 		};
 		return service;
 		
@@ -144,7 +165,26 @@ function easyFormSteWayConfig($translateProvider) {
 			setModalAnimation(value);
 		}
 		
-	
+		function getListEnabledControl(){
+			return angular.copy(_controlsList);
+		}
+		
+		function switchLanguage(language){
+			if (angular.isString(language)) {
+				_currentLanguage = language;
+				$translate.use(language);
+			}else{
+				setDefaultLanguage();
+			}
+		}					
+
+		function isPreviewPanelVisible(){
+			return _showPreviewPanel;
+		}
+		
+		function arePreviewModelsVisible(){
+			return _showPreviewModels;
+		}				
 		
 	}
 	
