@@ -12,8 +12,8 @@ const STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
 function edaStepWayEasyFormGenDirective(
 			$templateCache, 
       $timeout, 
-      formFieldManage,
-      controllerModalProxy){
+      $formlyProxy,
+      $modalProxy){
 	
 	var directive = {
 		restrict 	: 'E',
@@ -61,7 +61,7 @@ function edaStepWayEasyFormGenDirective(
 				let configlines           = returnAttributeConfigurationLinesIfNotEmpty();           
 				scope.configurationLoaded = {};
 				
-				formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines);
+				$formlyProxy.bindConfigurationLines(scope.configurationLoaded,configlines);
 				/**
 					* rebind special control properties :
 					* 
@@ -69,13 +69,13 @@ function edaStepWayEasyFormGenDirective(
 					* Validators
 					* Validation
 					*/
-				controllerModalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
-				controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
-				controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
+				$modalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+				$modalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
+				$modalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
 				//apply configuration model
 				scope.configuration = angular.copy(scope.configurationLoaded);
 				//apply formly model
-				formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
+				$formlyProxy.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
 				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
 				scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
 				scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
@@ -140,8 +140,8 @@ function edaStepWayEasyFormGenDirective(
 edaStepWayEasyFormGenDirective.$inject = [
 	'$templateCache', 
 	'$timeout', 
-	'formFieldManage',
-	'controllerModalProxy'
+	'$formlyProxy',
+	'$modalProxy'
 ];
 		
 

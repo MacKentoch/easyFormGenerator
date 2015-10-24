@@ -9,13 +9,13 @@ class editControlModalController {
 								nyaSelect, 
 								toaster,
 								selectOptionManage,
-								controllerModalProxy) {
+								$modalProxy) {
 									
 		this.$modalInstance 			= $modalInstance;
 		this.nyaSelect 						= nyaSelect;
 		this.toaster 							= toaster;
 		this.selectOptionManage 	= selectOptionManage;
-		this.controllerModalProxy = controllerModalProxy;
+		this.$modalProxy = $modalProxy;
 		
 		this.init();
 		
@@ -362,7 +362,7 @@ class editControlModalController {
 			this.bindRadioToNya();
 		}  
 		//save config to control
-		this.controllerModalProxy.applyConfigToSelectedControl(this.nyaSelect);
+		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);
 		//return current model to parent controller :
 		this.$modalInstance.close(this.nyaSelect);
 	}	
@@ -438,7 +438,7 @@ const toInject =  [
 	'nyaSelect',
 	'toaster' ,
 	'selectOptionManage',
-	'controllerModalProxy',	
+	'$modalProxy',	
 ]; 
 
 editControlModalController.$inject = toInject;

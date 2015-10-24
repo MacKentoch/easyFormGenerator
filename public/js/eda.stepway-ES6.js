@@ -588,21 +588,7 @@ $__System.register('2', [], function (_export) {
 		}
 	};
 });
-$__System.register('3', [], function (_export) {
-	/* global angular */
-	'use strict';
-
-	var CORE_MODULES;
-	return {
-		setters: [],
-		execute: function () {
-			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'pascalprecht.translate'];
-
-			_export('default', angular.module('edaStepWayEasyFormGen.core', CORE_MODULES));
-		}
-	};
-});
-$__System.register("4", [], function (_export) {
+$__System.register("3", [], function (_export) {
 	"use strict";
 
 	var richTextTemplate, blankTemplate, subTitleTemplate, basicSelectTemplate, groupedSelectTemplate, datepickerTemplate, validationTemplate;
@@ -633,7 +619,7 @@ $__System.register("4", [], function (_export) {
 		}
 	};
 });
-$__System.register('5', ['4'], function (_export) {
+$__System.register('4', ['3'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -751,6 +737,20 @@ $__System.register('5', ['4'], function (_export) {
 		}
 	};
 });
+$__System.register('5', [], function (_export) {
+	/* global angular */
+	'use strict';
+
+	var CORE_MODULES;
+	return {
+		setters: [],
+		execute: function () {
+			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'pascalprecht.translate'];
+
+			_export('default', angular.module('edaStepWayEasyFormGen.core', CORE_MODULES));
+		}
+	};
+});
 $__System.register('b', [], function (_export) {
 	'use strict';
 
@@ -847,14 +847,14 @@ $__System.register('d', ['9', 'a'], function (_export) {
 			EDIT_MODAL_CONTROLLERAS_NAME = 'editControlModCtrl';
 
 			editControlModalController = (function () {
-				function editControlModalController($modalInstance, nyaSelect, toaster, selectOptionManage, controllerModalProxy) {
+				function editControlModalController($modalInstance, nyaSelect, toaster, selectOptionManage, $modalProxy) {
 					_classCallCheck(this, editControlModalController);
 
 					this.$modalInstance = $modalInstance;
 					this.nyaSelect = nyaSelect;
 					this.toaster = toaster;
 					this.selectOptionManage = selectOptionManage;
-					this.controllerModalProxy = controllerModalProxy;
+					this.$modalProxy = $modalProxy;
 
 					this.init();
 				}
@@ -1211,7 +1211,7 @@ $__System.register('d', ['9', 'a'], function (_export) {
 							this.bindRadioToNya();
 						}
 						//save config to control
-						this.controllerModalProxy.applyConfigToSelectedControl(this.nyaSelect);
+						this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);
 						//return current model to parent controller :
 						this.$modalInstance.close(this.nyaSelect);
 					}
@@ -1286,7 +1286,7 @@ $__System.register('d', ['9', 'a'], function (_export) {
 				return editControlModalController;
 			})();
 
-			toInject = ['$modalInstance', 'nyaSelect', 'toaster', 'selectOptionManage', 'controllerModalProxy'];
+			toInject = ['$modalInstance', 'nyaSelect', 'toaster', 'selectOptionManage', '$modalProxy'];
 
 			editControlModalController.$inject = toInject;
 
@@ -1322,7 +1322,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 			STEP_WAY_MAIN_CONTROLLERAS_NAME = 'vm';
 
 			edaStepWayEasyFormGenController = (function () {
-				function edaStepWayEasyFormGenController(easyFormGenVersion, $filter, toaster, $timeout, $modal, $log, formFieldManage, controllerModalProxy, easyFormSteWayConfig) {
+				function edaStepWayEasyFormGenController(easyFormGenVersion, $filter, toaster, $timeout, $modal, $log, $formlyProxy, $modalProxy, easyFormSteWayConfig) {
 					_classCallCheck(this, edaStepWayEasyFormGenController);
 
 					this.easyFormGenVersion = easyFormGenVersion;
@@ -1331,8 +1331,8 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 					this.$timeout = $timeout;
 					this.$modal = $modal;
 					this.$log = $log;
-					this.formFieldManage = formFieldManage;
-					this.controllerModalProxy = controllerModalProxy;
+					this.$formlyProxy = $formlyProxy;
+					this.$modalProxy = $modalProxy;
 					this.easyFormSteWayConfig = easyFormSteWayConfig;
 
 					this.init();
@@ -1363,8 +1363,8 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 						this.returnSaveEvent = false;
 						//this.resetToZeroModel         = resetToZeroModel; //function no more used
 
-						this.formFieldManage.initConfigurationEditFromScratch(this.configuration);
-						this.controllerModalProxy.initNyaSelect(this.nyaSelect);
+						this.$formlyProxy.initConfigurationEditFromScratch(this.configuration);
+						this.$modalProxy.initNyaSelect(this.nyaSelect);
 					}
 				}, {
 					key: 'onSubmit',
@@ -1404,7 +1404,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 							}
 						}
 						//re-render formfield
-						this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 					}
 				}, {
@@ -1420,7 +1420,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 							}
 						}
 						//re-render formfield
-						this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 					}
 				}, {
@@ -1428,7 +1428,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 					value: function addNewline() {
 						this.configuration.lines.push(initLineTemplate());
 						//re-render formfield
-						this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 					}
 				}, {
@@ -1452,7 +1452,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 								}, 100);
 							}
 							//re-render formfield
-							this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+							this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 							this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 						}
 					}
@@ -1465,7 +1465,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 							this.configuration.lines[this.configuration.activeLine - 1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns;
 						}
 						//re-render formfield
-						this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 					}
 				}, {
@@ -1474,7 +1474,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 						if (this.configuration.lines[this.configuration.activeLine - 1].columns.length > 1) {
 							this.configuration.lines[this.configuration.activeLine - 1].columns.splice(this.configuration.lines[this.configuration.activeLine - 1].columns.length - 1, 1);
 						}
-						this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 					}
 				}, {
@@ -1532,14 +1532,14 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 							size: this.editControlModalSize,
 							resolve: {
 								nyaSelect: function nyaSelect() {
-									return this.controllerModalProxy.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration, indexLine, numcolumn);
+									return this.$modalProxy.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration, indexLine, numcolumn);
 								}
 							}
 						});
 
 						modalInstance.result.then(function (modalAddCtrlModel) {
-							this.controllerModalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
-							this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+							this.$modalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
+							this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 							this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 						}, function () {
 							//$log.info('Modal dismissed at: ' + new Date());
@@ -1551,8 +1551,8 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 						var configlines = JSON.parse(formlyform.formlyField);
 						//here to replace with $scope.configuration : initialise configuration with lines
 						this.configurationLoaded = {};
-						this.formFieldManage.bindConfigurationLines(this.configurationLoaded, configlines);
-						this.formFieldManage.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, this.model);
+						this.$formlyProxy.bindConfigurationLines(this.configurationLoaded, configlines);
+						this.$formlyProxy.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, this.model);
 						this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 						this.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
 						this.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
@@ -1596,7 +1596,7 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 				return edaStepWayEasyFormGenController;
 			})();
 
-			toInject = ['easyFormGenVersion', '$filter', 'toaster', '$timeout', '$modal', '$log', 'formFieldManage', 'controllerModalProxy', 'easyFormSteWayConfig'];
+			toInject = ['easyFormGenVersion', '$filter', 'toaster', '$timeout', '$modal', '$log', '$formlyProxy', '$modalProxy', 'easyFormSteWayConfig'];
 
 			edaStepWayEasyFormGenController.$inject = toInject;
 
@@ -1614,7 +1614,7 @@ $__System.register('10', ['f', 'e'], function (_export) {
 
 	var easyformTemplate, edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, STEP_WAY_DIRECTIVE_NAME;
 
-	function edaStepWayEasyFormGenDirective($templateCache, $timeout, formFieldManage, controllerModalProxy) {
+	function edaStepWayEasyFormGenDirective($templateCache, $timeout, $formlyProxy, $modalProxy) {
 
 		var directive = {
 			restrict: 'E',
@@ -1664,7 +1664,7 @@ $__System.register('10', ['f', 'e'], function (_export) {
 					var configlines = returnAttributeConfigurationLinesIfNotEmpty();
 					scope.configurationLoaded = {};
 
-					formFieldManage.bindConfigurationLines(scope.configurationLoaded, configlines);
+					$formlyProxy.bindConfigurationLines(scope.configurationLoaded, configlines);
 					/**
      	* rebind special control properties :
      	* 
@@ -1672,13 +1672,13 @@ $__System.register('10', ['f', 'e'], function (_export) {
      	* Validators
      	* Validation
      	*/
-					controllerModalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
-					controllerModalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
-					controllerModalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
+					$modalProxy.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+					$modalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
+					$modalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
 					//apply configuration model
 					scope.configuration = angular.copy(scope.configurationLoaded);
 					//apply formly model
-					formFieldManage.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);
+					$formlyProxy.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);
 					scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
 					scope.vm.model = returnAttributeDataModelIfNotEmpty;
 					scope.configuration.formName = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
@@ -1729,7 +1729,7 @@ $__System.register('10', ['f', 'e'], function (_export) {
 		}],
 		execute: function () {
 			STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
-			edaStepWayEasyFormGenDirective.$inject = ['$templateCache', '$timeout', 'formFieldManage', 'controllerModalProxy'];
+			edaStepWayEasyFormGenDirective.$inject = ['$templateCache', '$timeout', '$formlyProxy', '$modalProxy'];
 
 			_export('default', edaStepWayEasyFormGenDirective);
 
@@ -2551,258 +2551,7 @@ $__System.register('16', ['15'], function (_export) {
 																		}
 									};
 });
-$__System.register('17', ['9', 'a'], function (_export) {
-	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
-
-	return {
-		setters: [function (_) {
-			_createClass = _['default'];
-		}, function (_a) {
-			_classCallCheck = _a['default'];
-		}],
-		execute: function () {
-			/* global angular */
-
-			'use strict';
-
-			SELECT_OPTION_MANAGE_NAME = 'selectOptionManage';
-
-			selectOptionManage = (function () {
-				function selectOptionManage() {
-					_classCallCheck(this, selectOptionManage);
-				}
-
-				_createClass(selectOptionManage, [{
-					key: 'initModel',
-					value: function initModel(selectObj) {
-						this.resetModel(selectObj);
-					}
-				}, {
-					key: 'resetModel',
-					value: function resetModel(selectObj) {
-						var zeroModel = { rows: [] };
-						angular.copy(zeroModel, selectObj);
-					}
-				}, {
-					key: 'isOptionUnique',
-					value: function isOptionUnique(selectObj, textValue) {
-						for (var i = selectObj.rows.length - 1; i >= 0; i--) {
-							if (selectObj.rows[i].option === textValue) return false;
-						}
-						return true;
-					}
-				}, {
-					key: 'isOptionValidFormat',
-					value: function isOptionValidFormat(textValue) {
-						if (textValue !== '') return true;
-						return false;
-					}
-				}, {
-					key: 'addNewOptionRadio',
-					value: function addNewOptionRadio(selectObj, newOptionText) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-						var checkResult = this.validOption(selectObj, newOptionText);
-						if (checkResult.resultFlag === true) {
-
-							var newOption = {
-								option: newOptionText,
-								order: selectObj.rows.length
-							};
-
-							selectObj.rows.push(newOption);
-							fullResponse.resultFlag = true;
-							fullResponse.details = '';
-							return fullResponse;
-						} else {
-							angular.copy(checkResult, fullResponse);
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'addNewOptionBasicSelect',
-					value: function addNewOptionBasicSelect(selectObj, newOptionText) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						var checkResult = this.validOption(selectObj, newOptionText);
-						if (checkResult.resultFlag === true) {
-
-							var newOption = {
-								option: newOptionText,
-								order: selectObj.rows.length
-							};
-
-							selectObj.rows.push(newOption);
-							fullResponse.resultFlag = true;
-							fullResponse.details = '';
-
-							return fullResponse;
-						} else {
-							angular.copy(checkResult, fullResponse);
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'addNewOptionGroupedSelect',
-					value: function addNewOptionGroupedSelect(selectObj, newOptionText, newOptionGroup) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						var checkResult = this.validOption(selectObj, newOptionText);
-
-						if (checkResult.resultFlag === true) {
-
-							var newOption = {
-								option: newOptionText,
-								group: newOptionGroup,
-								order: selectObj.rows.length
-							};
-
-							selectObj.rows.push(newOption);
-							fullResponse.resultFlag = true;
-							fullResponse.details = '';
-							return fullResponse;
-						} else {
-							angular.copy(checkResult, fullResponse);
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'removeOption',
-					value: function removeOption(selectObj, AtIndex) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						if (AtIndex !== -1) {
-							selectObj.rows.splice(AtIndex, 1);
-							fullResponse.resultFlag = true;
-							fullResponse.details = '';
-							return fullResponse;
-						} else {
-							fullResponse.resultFlag = false;
-							fullResponse.details = 'Option index not valid';
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'upthisOption',
-					value: function upthisOption(selectObj, indexOption) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						if (indexOption > -1) {
-							if (indexOption > 0) {
-								if (selectObj.rows[indexOption - 1]) {
-									var currentOption = selectObj.rows[indexOption];
-									selectObj.rows.splice(indexOption, 1);
-									selectObj.rows.splice(indexOption - 1, 0, currentOption);
-									fullResponse.resultFlag = true;
-									fullResponse.details = '';
-									return fullResponse;
-								} else {
-									fullResponse.resultFlag = false;
-									fullResponse.details = 'Can\'t retreive option from option index';
-									return fullResponse;
-								}
-							} else {
-								fullResponse.resultFlag = true;
-								fullResponse.details = '';
-								return fullResponse;
-							}
-						} else {
-							fullResponse.resultFlag = false;
-							fullResponse.details = 'Option index not valid';
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'downthisOption',
-					value: function downthisOption(selectObj, indexOption) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						if (indexOption > -1) {
-							if (indexOption < selectObj.rows.length - 1) {
-								if (selectObj.rows[indexOption + 1]) {
-									var currentOption = selectObj.rows[indexOption];
-									selectObj.rows.splice(indexOption, 1);
-									selectObj.rows.splice(indexOption + 1, 0, currentOption);
-									fullResponse.resultFlag = true;
-									fullResponse.details = '';
-									return fullResponse;
-								} else {
-									fullResponse.resultFlag = false;
-									fullResponse.details = 'Can\'t retreive option from option index';
-									return fullResponse;
-								}
-							} else {
-								fullResponse.resultFlag = true;
-								fullResponse.details = '';
-								return fullResponse;
-							}
-						} else {
-							fullResponse.resultFlag = false;
-							fullResponse.details = 'Option index not valid';
-							return fullResponse;
-						}
-					}
-				}, {
-					key: 'validOption',
-					value: function validOption(selectObj, newOptionText) {
-						var fullResponse = {
-							resultFlag: false,
-							details: ''
-						};
-
-						if (typeof newOptionText === 'undefined') {
-							fullResponse.resultFlag = false;
-							fullResponse.details = 'Entered option is empty';
-							return fullResponse;
-						}
-
-						if (newOptionText !== '') {
-							for (var i = selectObj.rows.length - 1; i >= 0; i--) {
-								if (selectObj.rows[i].option === newOptionText) {
-									fullResponse.resultFlag = false;
-									fullResponse.details = 'Entered option is not unique';
-									return fullResponse;
-								}
-							}
-							fullResponse.resultFlag = true;
-							fullResponse.details = '';
-							return fullResponse;
-						}
-						fullResponse.resultFlag = false;
-						fullResponse.details = 'Entered option is empty';
-						return fullResponse;
-					}
-				}]);
-
-				return selectOptionManage;
-			})();
-
-			selectOptionManage.$inject = [];
-
-			_export('default', selectOptionManage);
-
-			_export('SELECT_OPTION_MANAGE_NAME', SELECT_OPTION_MANAGE_NAME);
-		}
-	};
-});
-$__System.register('18', [], function (_export) {
+$__System.register('17', [], function (_export) {
 	'use strict';
 
 	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl;
@@ -3156,8 +2905,8 @@ $__System.register('18', [], function (_export) {
 		}
 	};
 });
-$__System.register('19', ['9', '18', 'a'], function (_export) {
-	var _createClass, configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, _classCallCheck, FORM_FIELD_MANAGE_SERVICE, formFieldManage;
+$__System.register('18', ['9', '17', 'a'], function (_export) {
+	var _createClass, configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, _classCallCheck, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
 		setters: [function (_) {
@@ -3188,16 +2937,16 @@ $__System.register('19', ['9', '18', 'a'], function (_export) {
 			/* global angular */
 			'use strict';
 
-			FORM_FIELD_MANAGE_SERVICE = 'formFieldManage';
+			FORMLY_PROXY_SERVICE = '$formlyProxy';
 
-			formFieldManage = (function () {
-				function formFieldManage() {
-					_classCallCheck(this, formFieldManage);
+			$formlyProxy = (function () {
+				function $formlyProxy() {
+					_classCallCheck(this, $formlyProxy);
 
 					this.init();
 				}
 
-				_createClass(formFieldManage, [{
+				_createClass($formlyProxy, [{
 					key: 'init',
 					value: function init() {}
 				}, {
@@ -3256,77 +3005,344 @@ $__System.register('19', ['9', '18', 'a'], function (_export) {
 					}
 				}]);
 
-				return formFieldManage;
+				return $formlyProxy;
 			})();
 
-			formFieldManage.$inject = [];
+			$formlyProxy.$inject = [];
 
-			_export('default', formFieldManage);
+			_export('default', $formlyProxy);
 
-			_export('FORM_FIELD_MANAGE_SERVICE', FORM_FIELD_MANAGE_SERVICE);
+			_export('FORMLY_PROXY_SERVICE', FORMLY_PROXY_SERVICE);
 		}
 	};
 });
-$__System.register('1a', ['17', '19'], function (_export) {
+$__System.register('19', ['18'], function (_export) {
 									/* global angular */
 									'use strict';
 
-									var selectOptionManage, SELECT_OPTION_MANAGE_NAME, formFieldManage, FORM_FIELD_MANAGE_SERVICE, COMMON_MODULE_NAME;
+									var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
 									return {
 																		setters: [function (_) {
-																											selectOptionManage = _['default'];
-																											SELECT_OPTION_MANAGE_NAME = _.SELECT_OPTION_MANAGE_NAME;
-																		}, function (_2) {
-																											formFieldManage = _2['default'];
-																											FORM_FIELD_MANAGE_SERVICE = _2.FORM_FIELD_MANAGE_SERVICE;
+																											$formlyProxy = _['default'];
+																											FORMLY_PROXY_SERVICE = _.FORMLY_PROXY_SERVICE;
+																		}],
+																		execute: function () {
+																											FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
+
+																											_export('default', angular.module(FORMLY_PROXY_MODULE_NAME, []).service(FORMLY_PROXY_SERVICE, $formlyProxy));
+																		}
+									};
+});
+$__System.register('1a', ['9', 'a'], function (_export) {
+	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
+
+	return {
+		setters: [function (_) {
+			_createClass = _['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
+		}],
+		execute: function () {
+			/* global angular */
+
+			'use strict';
+
+			SELECT_OPTION_MANAGE_NAME = 'selectOptionManage';
+
+			selectOptionManage = (function () {
+				function selectOptionManage() {
+					_classCallCheck(this, selectOptionManage);
+				}
+
+				_createClass(selectOptionManage, [{
+					key: 'initModel',
+					value: function initModel(selectObj) {
+						this.resetModel(selectObj);
+					}
+				}, {
+					key: 'resetModel',
+					value: function resetModel(selectObj) {
+						var zeroModel = { rows: [] };
+						angular.copy(zeroModel, selectObj);
+					}
+				}, {
+					key: 'isOptionUnique',
+					value: function isOptionUnique(selectObj, textValue) {
+						for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+							if (selectObj.rows[i].option === textValue) return false;
+						}
+						return true;
+					}
+				}, {
+					key: 'isOptionValidFormat',
+					value: function isOptionValidFormat(textValue) {
+						if (textValue !== '') return true;
+						return false;
+					}
+				}, {
+					key: 'addNewOptionRadio',
+					value: function addNewOptionRadio(selectObj, newOptionText) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+						var checkResult = this.validOption(selectObj, newOptionText);
+						if (checkResult.resultFlag === true) {
+
+							var newOption = {
+								option: newOptionText,
+								order: selectObj.rows.length
+							};
+
+							selectObj.rows.push(newOption);
+							fullResponse.resultFlag = true;
+							fullResponse.details = '';
+							return fullResponse;
+						} else {
+							angular.copy(checkResult, fullResponse);
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'addNewOptionBasicSelect',
+					value: function addNewOptionBasicSelect(selectObj, newOptionText) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						var checkResult = this.validOption(selectObj, newOptionText);
+						if (checkResult.resultFlag === true) {
+
+							var newOption = {
+								option: newOptionText,
+								order: selectObj.rows.length
+							};
+
+							selectObj.rows.push(newOption);
+							fullResponse.resultFlag = true;
+							fullResponse.details = '';
+
+							return fullResponse;
+						} else {
+							angular.copy(checkResult, fullResponse);
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'addNewOptionGroupedSelect',
+					value: function addNewOptionGroupedSelect(selectObj, newOptionText, newOptionGroup) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						var checkResult = this.validOption(selectObj, newOptionText);
+
+						if (checkResult.resultFlag === true) {
+
+							var newOption = {
+								option: newOptionText,
+								group: newOptionGroup,
+								order: selectObj.rows.length
+							};
+
+							selectObj.rows.push(newOption);
+							fullResponse.resultFlag = true;
+							fullResponse.details = '';
+							return fullResponse;
+						} else {
+							angular.copy(checkResult, fullResponse);
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'removeOption',
+					value: function removeOption(selectObj, AtIndex) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						if (AtIndex !== -1) {
+							selectObj.rows.splice(AtIndex, 1);
+							fullResponse.resultFlag = true;
+							fullResponse.details = '';
+							return fullResponse;
+						} else {
+							fullResponse.resultFlag = false;
+							fullResponse.details = 'Option index not valid';
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'upthisOption',
+					value: function upthisOption(selectObj, indexOption) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						if (indexOption > -1) {
+							if (indexOption > 0) {
+								if (selectObj.rows[indexOption - 1]) {
+									var currentOption = selectObj.rows[indexOption];
+									selectObj.rows.splice(indexOption, 1);
+									selectObj.rows.splice(indexOption - 1, 0, currentOption);
+									fullResponse.resultFlag = true;
+									fullResponse.details = '';
+									return fullResponse;
+								} else {
+									fullResponse.resultFlag = false;
+									fullResponse.details = 'Can\'t retreive option from option index';
+									return fullResponse;
+								}
+							} else {
+								fullResponse.resultFlag = true;
+								fullResponse.details = '';
+								return fullResponse;
+							}
+						} else {
+							fullResponse.resultFlag = false;
+							fullResponse.details = 'Option index not valid';
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'downthisOption',
+					value: function downthisOption(selectObj, indexOption) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						if (indexOption > -1) {
+							if (indexOption < selectObj.rows.length - 1) {
+								if (selectObj.rows[indexOption + 1]) {
+									var currentOption = selectObj.rows[indexOption];
+									selectObj.rows.splice(indexOption, 1);
+									selectObj.rows.splice(indexOption + 1, 0, currentOption);
+									fullResponse.resultFlag = true;
+									fullResponse.details = '';
+									return fullResponse;
+								} else {
+									fullResponse.resultFlag = false;
+									fullResponse.details = 'Can\'t retreive option from option index';
+									return fullResponse;
+								}
+							} else {
+								fullResponse.resultFlag = true;
+								fullResponse.details = '';
+								return fullResponse;
+							}
+						} else {
+							fullResponse.resultFlag = false;
+							fullResponse.details = 'Option index not valid';
+							return fullResponse;
+						}
+					}
+				}, {
+					key: 'validOption',
+					value: function validOption(selectObj, newOptionText) {
+						var fullResponse = {
+							resultFlag: false,
+							details: ''
+						};
+
+						if (typeof newOptionText === 'undefined') {
+							fullResponse.resultFlag = false;
+							fullResponse.details = 'Entered option is empty';
+							return fullResponse;
+						}
+
+						if (newOptionText !== '') {
+							for (var i = selectObj.rows.length - 1; i >= 0; i--) {
+								if (selectObj.rows[i].option === newOptionText) {
+									fullResponse.resultFlag = false;
+									fullResponse.details = 'Entered option is not unique';
+									return fullResponse;
+								}
+							}
+							fullResponse.resultFlag = true;
+							fullResponse.details = '';
+							return fullResponse;
+						}
+						fullResponse.resultFlag = false;
+						fullResponse.details = 'Entered option is empty';
+						return fullResponse;
+					}
+				}]);
+
+				return selectOptionManage;
+			})();
+
+			selectOptionManage.$inject = [];
+
+			_export('default', selectOptionManage);
+
+			_export('SELECT_OPTION_MANAGE_NAME', SELECT_OPTION_MANAGE_NAME);
+		}
+	};
+});
+$__System.register('1b', ['1a'], function (_export) {
+									/* global angular */
+									'use strict';
+
+									var selectOptionManage, SELECT_OPTION_MANAGE_NAME, COMMON_MODULE_NAME;
+									return {
+																		setters: [function (_a) {
+																											selectOptionManage = _a['default'];
+																											SELECT_OPTION_MANAGE_NAME = _a.SELECT_OPTION_MANAGE_NAME;
 																		}],
 																		execute: function () {
 																											COMMON_MODULE_NAME = 'commonModule';
 
-																											_export('default', angular.module(COMMON_MODULE_NAME, []).service(SELECT_OPTION_MANAGE_NAME, selectOptionManage).service(FORM_FIELD_MANAGE_SERVICE, formFieldManage));
+																											_export('default', angular.module(COMMON_MODULE_NAME, []).service(SELECT_OPTION_MANAGE_NAME, selectOptionManage));
 																		}
 									};
 });
-$__System.register('1b', ['2', '3', '5', '12', '13', '16', '1a'], function (_export) {
+$__System.register('1c', ['2', '4', '5', '12', '13', '16', '19', '1b'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, easyFormStepWayCoreModule, formlyConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwaymodalProxyModule, easyFormServices, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepWayCoreModule, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, easyFormStepwayFormlyProxyModule, easyFormStepwayCommonModules, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
 	return {
 		setters: [function (_) {
 			easyFormStepWayConfig = _['default'];
 			EASY_FORM_VERSION_NAME = _.EASY_FORM_VERSION_NAME;
 			EASY_FORM_VERSION_VALUE = _.EASY_FORM_VERSION_VALUE;
 		}, function (_2) {
-			easyFormStepWayCoreModule = _2['default'];
+			formlyConfig = _2['default'];
 		}, function (_3) {
-			formlyConfig = _3['default'];
+			easyFormStepWayCoreModule = _3['default'];
 		}, function (_4) {
 			easyFormStepwayMainModule = _4['default'];
 		}, function (_5) {
 			easyFormStepwayModalModule = _5['default'];
 		}, function (_6) {
-			easyFormStepwaymodalProxyModule = _6['default'];
-		}, function (_a) {
-			easyFormServices = _a['default'];
+			easyFormStepwayModalProxyModule = _6['default'];
+		}, function (_7) {
+			easyFormStepwayFormlyProxyModule = _7['default'];
+		}, function (_b) {
+			easyFormStepwayCommonModules = _b['default'];
 		}],
 		execute: function () {
 			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
-			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwaymodalProxyModule.name];
+			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwayCommonModules.name];
 			mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
 
 			_export('default', mainModule);
 		}
 	};
 });
-$__System.register('1', ['1b'], function (_export) {
+$__System.register('1', ['1c'], function (_export) {
   /* global angular */
   'use strict';
 
   var mainModule;
   return {
-    setters: [function (_b) {
-      mainModule = _b['default'];
+    setters: [function (_c) {
+      mainModule = _c['default'];
     }],
     execute: function () {
 

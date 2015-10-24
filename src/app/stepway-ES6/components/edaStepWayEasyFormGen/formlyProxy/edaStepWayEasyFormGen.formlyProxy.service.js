@@ -16,18 +16,21 @@ import {
 	extractTemplateOptionDescription,
 	
 	addDatepickerPopupProperty,
+
 	addOneColumnHeader,
 	addOneColumnControl,
 	addTwoColumnControl,
 	addThreeColumnControl	
+
 	
-} from './edaStepWayEasyFormGen.common.configurationModelHelpers';
+} from './edaStepWayEasyFormGen.formlyProxy.service.helpers';
 
 
 
-const FORM_FIELD_MANAGE_SERVICE = 'formFieldManage';
 
-class formFieldManage {
+const FORMLY_PROXY_SERVICE = '$formlyProxy';
+
+class $formlyProxy {
 	
 	constructor() {
 		this.init();
@@ -89,6 +92,6 @@ class formFieldManage {
 	
 }
 
-formFieldManage.$inject = [];
-export default formFieldManage;
-export {FORM_FIELD_MANAGE_SERVICE};
+$formlyProxy.$inject = [];
+export default $formlyProxy;
+export {FORMLY_PROXY_SERVICE};

@@ -3,7 +3,7 @@ import {
 	resetNyaSelect,
 	returnControlFromAddCtrlModalModel,
 	validKeyUniqueness	
-} from './edaStepWayEasyFormGen.modalProxy.helpers.js';
+} from './edaStepWayEasyFormGen.modalProxy.service.helpers.js';
 
 const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
