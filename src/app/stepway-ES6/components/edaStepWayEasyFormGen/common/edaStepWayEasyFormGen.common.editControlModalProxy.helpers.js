@@ -356,7 +356,7 @@ const resetNyaSelect = (nyaSelectObj) => {
 	//reset
 	angular.copy(newNyaSelectObj, nyaSelectObj);
 	return true;
-}
+};
 
 
 /**

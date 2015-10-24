@@ -7,9 +7,10 @@ const CORE_MODULES = [
 	'formly', 
 	'formlyBootstrap',
 	'ui.bootstrap',
-	'nya.bootstrap.select'
+	'nya.bootstrap.select',
+	'pascalprecht.translate'
 ];
 
 export default angular
-								.module('edaStepWayEasyFormGen.core', CORE_MODULES)
+								.module('edaStepWayEasyFormGen.core', CORE_MODULES);
 								

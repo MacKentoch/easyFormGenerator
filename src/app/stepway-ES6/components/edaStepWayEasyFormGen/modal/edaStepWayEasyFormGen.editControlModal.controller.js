@@ -439,7 +439,7 @@ const toInject =  [
 	'toaster' ,
 	'selectOptionManage',
 	'controllerModalProxy',	
-] 
+]; 
 
 editControlModalController.$inject = toInject;
 export default editControlModalController;

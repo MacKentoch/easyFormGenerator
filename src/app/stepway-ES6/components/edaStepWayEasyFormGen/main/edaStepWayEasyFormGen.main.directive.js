@@ -5,6 +5,10 @@ import edaStepWayEasyFormGenController, {
 	STEP_WAY_MAIN_CONTROLLERAS_NAME
 } from  './edaStepWayEasyFormGen.main.controller';
 
+
+
+const STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
+
 function edaStepWayEasyFormGenDirective(
 			$templateCache, 
       $timeout, 
@@ -92,6 +96,17 @@ function edaStepWayEasyFormGenDirective(
 				return edaEasyFormGeneratorModelToReturn;  
 		}
 		
+		function returnAttributeDataModelIfNotEmpty(){
+			var dataModelToReturn = (
+					angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  ( 
+							scope.edaEasyFormGeneratorModel.dataModel.length > 0 ? 
+							scope.edaEasyFormGeneratorModel.dataModel 
+							: []
+							) 
+					: []
+			);
+				return dataModelToReturn;  
+		} 		
 		
 		/**
 			* empty fields model : to display at least an empty line
@@ -126,7 +141,9 @@ edaStepWayEasyFormGenDirective.$inject = [
 	'$templateCache', 
 	'$timeout', 
 	'formFieldManage',
-	'controllerModalProxy'];
+	'controllerModalProxy'
+];
 		
 
 export default edaStepWayEasyFormGenDirective;
+export {STEP_WAY_DIRECTIVE_NAME};

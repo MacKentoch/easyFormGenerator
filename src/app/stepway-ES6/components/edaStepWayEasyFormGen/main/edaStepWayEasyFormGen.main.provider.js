@@ -9,7 +9,7 @@ function easyFormSteWayConfig($translateProvider) {
 	let _showPreviewPanel		= getDefaultshowPreviewPanel();
 	let _showPreviewModels	= getDefaultShowPreviewModel();	
 	/* jshint validthis:true */
-	this.$get 							= easyFormSteWayConfig;
+	this.$get 							= easyFormStepWayConfigGET;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
 	this.configuration			= _configuration;
@@ -142,8 +142,8 @@ function easyFormSteWayConfig($translateProvider) {
 	
 	
 	//$get implementation :
-	easyFormSteWayConfig.$inject = ['$translate'];
-	function easyFormSteWayConfig($translate){
+	easyFormStepWayConfigGET.$inject = ['$translate'];
+	function easyFormStepWayConfigGET($translate){
 											
 		let service = {
 			setModalAnimation 			: setModalAnimationFct,

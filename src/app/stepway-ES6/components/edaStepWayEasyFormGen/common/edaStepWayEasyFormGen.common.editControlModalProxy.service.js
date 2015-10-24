@@ -5,6 +5,8 @@ import {
 	validKeyUniqueness	
 } from './edaStepWayEasyFormGen.common.editControlModalProxy.helpers';
 
+const CONTROLLER_MODAL_PROXY_SERVICE = 'controllerModalProxy';
+
 class controllerModalProxy{
 	
 	constructor() {
@@ -138,3 +140,4 @@ class controllerModalProxy{
 
 controllerModalProxy.$inject= [];
 export default controllerModalProxy;
+export {CONTROLLER_MODAL_PROXY_SERVICE};

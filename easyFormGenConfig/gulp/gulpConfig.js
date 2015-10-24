@@ -33,6 +33,11 @@ module.exports = {
 			},
 			common : {
 				customTextAngularCss : 'src/sass/common/eda.textAngular.min.css'
+			},
+			ES6 : {
+				stepway : {
+					js		: 'src/app/stepway-ES6/**/*.js'
+				}
 			}
 		},
 		bowerFiles : {

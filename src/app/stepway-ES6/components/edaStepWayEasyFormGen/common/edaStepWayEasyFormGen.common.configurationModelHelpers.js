@@ -64,52 +64,52 @@ const configurationModelResult =  {
 
 const isTemplateOptionDefined = (obj)=>{
 	return typeof obj.templateOptions !== 'undefined' ? true : false;
-}
+};
 
 const extractTemplateOptionLabel = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
-}
+};
 
 const extractTemplateOptionDatepickerPopup= (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
-}
+};
 
 const extractFormlyExpressionProperties = (obj)=>{
 	return  typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
-}
+};
 
 const extractFormlyValidators = (obj)=>{
 	return  typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators): {};
-}
+};
 
 const extractFormlyValidation = (obj)=>{
 	return  typeof obj.formlyValidation !== 'undefined' ?  angular.copy(obj.formlyValidation) : {};
-}
+};
 
 const extractTemplateOptionRequired = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.required !== 'undefined'? obj.templateOptions.required: '') : '';
-}
+};
 
 const extractTemplateOptionOptions = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.options !== 'undefined'? obj.templateOptions.options: '') : '';
-}
+};
 
 const extractTemplateOptionType = (obj)=>{
 	return  typeof obj.subtype !== 'undefined'? obj.subtype: '';
-}
+};
 
 const extractTemplateOptionPlaceholder = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.placeholder !== 'undefined'? obj.templateOptions.placeholder: '') : '';
-}
+};
 
 const extractTemplateOptionDescription = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.description !== 'undefined'? obj.templateOptions.description: '') : '';
-}
+};
 
 
 const addDatepickerPopupProperty = (fieldToPush, configurationModel,lineIndex) => {
 		fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
-}
+};
 
 
 const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
@@ -125,7 +125,7 @@ const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 														: '<div></div>') 
 													: '<div></div>'
 	});
-}
+};
 
 
 
@@ -154,7 +154,7 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	}     
 
 	formlyModel.push(fieldToPush);
-}    
+};    
 
 
 
@@ -350,7 +350,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		className: 'row', 
 		fieldGroup: FieldGroup
 	});
-}
+};
 
 
 

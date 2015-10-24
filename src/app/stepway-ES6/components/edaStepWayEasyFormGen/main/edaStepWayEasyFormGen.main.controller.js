@@ -6,27 +6,27 @@ import {
 	initLineTemplate
 } from './edaStepWayEasyFormGen.main.controller.helpers';
 
-import editControlModalTemplate from '../modal/edaStepWayEasyFormGen.editControlModal.template.html!text';
+import editControlModalTemplate 		from '../modal/edaStepWayEasyFormGen.editControlModal.template.html!text';
+import {EDIT_MODAL_CONTROLLER_NAME} from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
 
-import {
-	EDIT_MODAL_CONTROLLER_NAME
-} from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
 
-const STEP_WAY_MAIN_CONTROLLER_NAME = 'edaStepWayEasyFormGenController';
+
+const STEP_WAY_MAIN_CONTROLLER_NAME 	= 'edaStepWayEasyFormGenController';
 const STEP_WAY_MAIN_CONTROLLERAS_NAME = 'vm';
 
 class edaStepWayEasyFormGenController {
 		
-	constructor	(easyFormGenVersion,
-							$filter,
-							toaster,
-							$timeout, 
-							$modal,
-							$log, 
-							formFieldManage,  
-							controllerModalProxy,
-							easyFormSteWayConfig){
-														
+	constructor	(
+		easyFormGenVersion,
+		$filter,
+		toaster, 
+		$timeout,
+		$modal,
+		$log, 
+		formFieldManage,
+		controllerModalProxy,
+		easyFormSteWayConfig){
+																						
 		this.easyFormGenVersion = easyFormGenVersion;
 		this.$filter = $filter;
 		this.toaster = toaster;
@@ -264,7 +264,7 @@ class edaStepWayEasyFormGenController {
 		//here to replace with $scope.configuration : initialise configuration with lines 
 		this.configurationLoaded = {};
 		this.formFieldManage.bindConfigurationLines(this.configurationLoaded,configlines);
-		this.formFieldManage.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, $scope.vm.model);
+		this.formFieldManage.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, this.model);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 		this.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
 		this.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
@@ -310,7 +310,6 @@ class edaStepWayEasyFormGenController {
 
 
 const toInject = [
-	"$scope", 
 	'easyFormGenVersion',
 	'$filter',
 	'toaster', 
@@ -324,4 +323,4 @@ const toInject = [
 
 edaStepWayEasyFormGenController.$inject = toInject;
 export default edaStepWayEasyFormGenController;
-export {STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME}
+export {STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME};

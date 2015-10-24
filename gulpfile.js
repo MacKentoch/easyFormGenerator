@@ -15,6 +15,10 @@
  * 
  * 3) want to dist, use :
  * - $ gulp dist 
+ * 
+ * 4) stepway ES6 
+ * - $ gulp build:stepWay:ES6
+ * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
@@ -375,8 +379,7 @@ gulp.task('stepway:translate', function() {
 		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))  
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 		
-		
-			 
+	 
  });
  
 /**
@@ -486,6 +489,12 @@ gulp.task('app:js:stepway',
  * -------------------------------
  */
 
+gulp.task('build:ES6:jshint', function(){
+  return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
+    .pipe(jshint({esnext : true}))
+    .pipe(jshint.reporter('default'))
+});
+
 gulp.task('stepWayES6:sfx:min', function (cb) {
   exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.boostrap ./public/js/eda.stepway-ES6.min.js --minify', function (err, stdout, stderr) {
       cb(err);
@@ -497,6 +506,11 @@ gulp.task('stepWayES6:sfx', function (cb) {
       cb(err);
   });
 });
+
+gulp.task('build:stepWay:ES6', [
+	'build:ES6:jshint',
+	'stepWayES6:sfx'
+]);
 
 
 
