@@ -40,11 +40,11 @@ function edaStepWayEasyFormGenDirective(
 		scope.$watch(() => scope.returnSaveEvent, (newValue, oldValue) => {
 			if (newValue === true) {
 				let _easyFormGeneratorModel = {
-					formName          				: scope.configuration.formName,
-					btnSubmitText     				: scope.configuration.submitButtonText,
-					btnCancelText     				: scope.configuration.cancelButtonText,
-					edaFieldsModel    				: scope.configuration.lines,
-					edaFieldsModelStringified : angular.toJson(scope.configuration.lines),
+					formName          				: scope.vm.configuration.formName,
+					btnSubmitText     				: scope.vm.configuration.submitButtonText,
+					btnCancelText     				: scope.vm.configuration.cancelButtonText,
+					edaFieldsModel    				: scope.vm.configuration.lines,
+					edaFieldsModelStringified : angular.toJson(scope.vm.configuration.lines),
 					formlyFieldsModel 				: scope.vm.wfFormFieldsOnlyNeededProperties,
 					dataModel         				: scope.vm.model
 				};
@@ -60,7 +60,6 @@ function edaStepWayEasyFormGenDirective(
 			if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
 				let configlines           = returnAttributeConfigurationLinesIfNotEmpty();           
 				scope.configurationLoaded = {};
-				
 				$formlyProxy.bindConfigurationLines(scope.configurationLoaded,configlines);
 				/**
 					* rebind special control properties :
@@ -73,14 +72,14 @@ function edaStepWayEasyFormGenDirective(
 				$modalProxy.refreshControlFormlyValidators(scope.configurationLoaded);
 				$modalProxy.refreshControlFormlyValidation(scope.configurationLoaded);
 				//apply configuration model
-				scope.configuration = angular.copy(scope.configurationLoaded);
+				scope.vm.configuration = angular.copy(scope.configurationLoaded);
 				//apply formly model
 				$formlyProxy.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
 				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
 				scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
-				scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
-				scope.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText) ? scope.edaEasyFormGeneratorModel.btnSubmitText : 'Submit'; 
-				scope.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText) ? scope.edaEasyFormGeneratorModel.btnCancelText : 'Cancel';
+				scope.vm.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) 			? scope.edaEasyFormGeneratorModel.formName 			: '';
+				scope.vm.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText)	? scope.edaEasyFormGeneratorModel.btnSubmitText	: 'Submit'; 
+				scope.vm.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText)	? scope.edaEasyFormGeneratorModel.btnCancelText	: 'Cancel';
 			}  
 		}
 		
