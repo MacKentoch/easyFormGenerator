@@ -359,6 +359,18 @@ const resetNyaSelect = (nyaSelectObj) => {
 };
 
 
+const getResetConfig = () => {
+	let emptyConfig = {};
+	angular.extend(emptyConfig, {
+			formlyLabel				: '', 
+			formlyRequired		: false, 
+			formlyPlaceholder	: '',
+			formlyDesciption	: '',
+			formlyOptions			: []
+	});
+	return emptyConfig;		  	
+};
+
 /**
 	* data passed back to parent controller 
 	* after control being finsihed editing in modal
@@ -407,6 +419,8 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
 };
 
 
+
+
 /**
 	* validKeyUniqueness
 	* to be sure the "keys" are unique (in same formly field model)
@@ -429,6 +443,7 @@ const validKeyUniqueness = (thisKey, configurationObj) => {
 export {
 	resetNyaSelect,
 	returnControlFromAddCtrlModalModel,
-	validKeyUniqueness
+	validKeyUniqueness,
+	getResetConfig
 	
 };

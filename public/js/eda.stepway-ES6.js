@@ -1966,7 +1966,7 @@ $__System.register('14', [], function (_export) {
 
 	'use strict';
 
-	var resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness;
+	var resetNyaSelect, getResetConfig, returnControlFromAddCtrlModalModel, validKeyUniqueness;
 	return {
 		setters: [],
 		execute: function () {
@@ -2303,6 +2303,18 @@ $__System.register('14', [], function (_export) {
 				return true;
 			};
 
+			getResetConfig = function getResetConfig() {
+				var emptyConfig = {};
+				angular.extend(emptyConfig, {
+					formlyLabel: '',
+					formlyRequired: false,
+					formlyPlaceholder: '',
+					formlyDesciption: '',
+					formlyOptions: []
+				});
+				return emptyConfig;
+			};
+
 			/**
    	* data passed back to parent controller 
    	* after control being finsihed editing in modal
@@ -2374,11 +2386,13 @@ $__System.register('14', [], function (_export) {
 			_export('returnControlFromAddCtrlModalModel', returnControlFromAddCtrlModalModel);
 
 			_export('validKeyUniqueness', validKeyUniqueness);
+
+			_export('getResetConfig', getResetConfig);
 		}
 	};
 });
 $__System.register('15', ['9', '14', 'a'], function (_export) {
-	var _createClass, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, _classCallCheck, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
+	var _createClass, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, _classCallCheck, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
 
 	return {
 		setters: [function (_) {
@@ -2387,6 +2401,7 @@ $__System.register('15', ['9', '14', 'a'], function (_export) {
 			resetNyaSelect = _2.resetNyaSelect;
 			returnControlFromAddCtrlModalModel = _2.returnControlFromAddCtrlModalModel;
 			validKeyUniqueness = _2.validKeyUniqueness;
+			getResetConfig = _2.getResetConfig;
 		}, function (_a) {
 			_classCallCheck = _a['default'];
 		}],
@@ -2520,6 +2535,106 @@ $__System.register('15', ['9', '14', 'a'], function (_export) {
 								}
 							}
 						}
+					}
+				}, {
+					key: 'resetTemporyConfig',
+					value: function resetTemporyConfig() {
+						return getResetConfig();
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyExpressionProperties
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyExpressionProperties',
+					value: function refreshControlFormlyExpressionProperties(configurationModel) {
+						var _this = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyExpressionProperties property											
+											column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+										}
+									});
+								});
+							});
+						}
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyValidators
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyValidators',
+					value: function refreshControlFormlyValidators(configurationModel) {
+						var _this2 = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this2.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyValidators property											
+											column.control.formlyValidators = aControl.formlyValidators;
+										}
+									});
+								});
+							});
+						}
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyValidation
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyValidation',
+					value: function refreshControlFormlyValidation(configurationModel) {
+						var _this3 = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this3.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyValidation property											
+											column.control.formlyValidation = aControl.formlyValidation;
+										}
+									});
+								});
+							});
+						}
+					}
+				}, {
+					key: 'filterDisabledControl',
+					value: function filterDisabledControl(nyaSelectObj) {
+						var listAllEnabledControl = this.easyFormSteWayConfig.getListEnabledControl();
+						var filteredNyaList = [];
+						angular.forEach(listAllEnabledControl, function (enabledControl) {
+							angular.forEach(nyaSelectObj.controls, function (nyaControl) {
+								if (nyaControl.id === enabledControl.name && enabledControl.enabled === true) {
+									filteredNyaList = filteredNyaList.concat(nyaControl);
+								}
+							});
+						});
+						return filteredNyaList;
+					}
+				}, {
+					key: 'getFilteredNyaSelectObject',
+					value: function getFilteredNyaSelectObject() {
+						var newNyaSelectObj = resetNyaSelect();
+						return angular.copy(this.filterDisabledControl(angular.copy(newNyaSelectObj)));
 					}
 				}]);
 

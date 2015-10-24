@@ -2,7 +2,8 @@
 import {
 	resetNyaSelect,
 	returnControlFromAddCtrlModalModel,
-	validKeyUniqueness	
+	validKeyUniqueness,
+	getResetConfig	
 } from './edaStepWayEasyFormGen.modalProxy.service.helpers.js';
 
 const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
@@ -133,8 +134,98 @@ class $modalProxy{
 				}
 		}
 	}	
+
+	resetTemporyConfig(){
+		return getResetConfig();
+	}
+	
+	/**
+		* loading forms will not be able to retrieve formlyExpressionProperties
+		* -> here does the job
+		*/
+	refreshControlFormlyExpressionProperties(configurationModel){
+		if (angular.isObject(configurationModel)) {
+			//iterates lines
+			angular.forEach(configurationModel.lines, (line, indexLine) => {
+				angular.forEach(line.columns, (column, controlIndex) => {
+					let _controlsDefinition = this.getControlsDefinition();
+					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+						if (column.control.type === aControl.formlyType &&
+								column.control.subtype === aControl.formlySubtype) {
+								//----> update control formlyExpressionProperties property											
+								column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;										
+						}
+					});		
+				});
+			});
+		}
+	}		
 	
 	
+	/**
+		* loading forms will not be able to retrieve formlyValidators
+		* -> here does the job
+		*/			
+	refreshControlFormlyValidators(configurationModel){	
+		if (angular.isObject(configurationModel)) {
+			//iterates lines
+			angular.forEach(configurationModel.lines, (line, indexLine) => {
+				angular.forEach(line.columns, (column, controlIndex) => {
+					let _controlsDefinition = this.getControlsDefinition();
+					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+						if (column.control.type === aControl.formlyType &&
+								column.control.subtype === aControl.formlySubtype) {
+								//----> update control formlyValidators property											
+								column.control.formlyValidators = aControl.formlyValidators;
+						}
+					});		
+				});
+			});
+		}				
+	}	
+	
+	
+	/**
+		* loading forms will not be able to retrieve formlyValidation
+		* -> here does the job
+		*/			
+	refreshControlFormlyValidation(configurationModel){
+		if (angular.isObject(configurationModel)) {
+			//iterates lines
+			angular.forEach(configurationModel.lines, (line, indexLine) => {
+				angular.forEach(line.columns, (column, controlIndex) => {
+					let _controlsDefinition = this.getControlsDefinition();
+					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+						if (column.control.type === aControl.formlyType &&
+								column.control.subtype === aControl.formlySubtype) {
+								//----> update control formlyValidation property											
+								column.control.formlyValidation = aControl.formlyValidation;
+						}
+					});		
+				});
+			});
+		}					
+	}
+	
+	
+	filterDisabledControl(nyaSelectObj){
+		let listAllEnabledControl = this.easyFormSteWayConfig.getListEnabledControl();
+		let filteredNyaList = [];
+		angular.forEach(listAllEnabledControl, (enabledControl) => {
+			angular.forEach(nyaSelectObj.controls, (nyaControl) => {					
+				if ((nyaControl.id === enabledControl.name) &&
+						(enabledControl.enabled === true)) {
+					filteredNyaList = filteredNyaList.concat(nyaControl);
+				}
+			});
+		});
+		return filteredNyaList;
+	}	
+	
+	getFilteredNyaSelectObject(){
+		let newNyaSelectObj = resetNyaSelect();
+		return angular.copy(this.filterDisabledControl(angular.copy(newNyaSelectObj)));	
+	}
 	
 }
 
