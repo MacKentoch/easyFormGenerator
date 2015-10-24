@@ -7,7 +7,9 @@ import {
 } from './edaStepWayEasyFormGen.main.controller.helpers';
 
 import editControlModalTemplate 		from '../modal/edaStepWayEasyFormGen.editControlModal.template.html!text';
-import {EDIT_MODAL_CONTROLLER_NAME} from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
+import {
+	EDIT_MODAL_CONTROLLER_NAME, 
+	EDIT_MODAL_CONTROLLERAS_NAME} 		from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
 
 
 
@@ -27,15 +29,15 @@ class edaStepWayEasyFormGenController {
 		$modalProxy,
 		easyFormSteWayConfig){
 																						
-		this.easyFormGenVersion = easyFormGenVersion;
-		this.$filter = $filter;
-		this.toaster = toaster;
-		this.$timeout = $timeout;
-		this.$modal = $modal;
-		this.$log = $log;
-		this.$formlyProxy = $formlyProxy;
-		this.$modalProxy = $modalProxy;
-		this.easyFormSteWayConfig = easyFormSteWayConfig;
+		this.easyFormGenVersion		= easyFormGenVersion;
+		this.$filter 							= $filter;
+		this.toaster 							= toaster;
+		this.$timeout 						= $timeout;
+		this.$modal 							= $modal;
+		this.$log 								= $log;
+		this.$formlyProxy 				= $formlyProxy;
+		this.$modalProxy 					= $modalProxy;
+		this.easyFormSteWayConfig	= easyFormSteWayConfig;
 		
 		this.init();
 			
@@ -48,7 +50,7 @@ class edaStepWayEasyFormGenController {
 		this.wfFormFieldsOnlyNeededProperties = []; 
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
 		this.debug                    = initDebugModel();
-		this.tab                      = initTabModel();
+		this.tab                      = initTabModel(this.easyFormSteWayConfig.isPreviewPanelVisible(), this.easyFormSteWayConfig.arePreviewModelsVisible());
 		this.configuration            = {};//configuration model (contains array of lines which contains array of columns)    											
 		this.numberOfColumns          = 1;
 		this.MaxNumberOfColumns       = 3;
@@ -235,28 +237,29 @@ class edaStepWayEasyFormGenController {
 	}
 	
 	showModalAddCtrlToColumn(size, indexLine, numcolumn) {
-	
-		var modalInstance = this.$modal.open({
-																			animation		: this.animationsEnabled,
-																			template		: editControlModalTemplate,  
-																			controller	: EDIT_MODAL_CONTROLLER_NAME,
-																			size				: this.editControlModalSize,
-																			resolve			: {
-																				nyaSelect : function () {
-																					return this.$modalProxy
-																										.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration,indexLine, numcolumn);
-																				}
-																			}
+		let editControlModal = {};
+		angular.extend(editControlModal, {
+			animation		: this.animationsEnabled,
+			template		: editControlModalTemplate,  
+			controller	: EDIT_MODAL_CONTROLLER_NAME,
+			controllerAs: EDIT_MODAL_CONTROLLERAS_NAME,
+			size				: this.editControlModalSize,
+			resolve			: {
+				nyaSelect :  () => this.$modalProxy.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration,indexLine, numcolumn)
+			}			
 		});
-	
-		modalInstance.result.then(function (modalAddCtrlModel) {
+		
+		let modalInstance = this.$modal.open(editControlModal);
+		modalInstance.result.then(
+			(modalAddCtrlModel) => {
 				this.$modalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
 				this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 				this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-	
-		}, function () {
-			//$log.info('Modal dismissed at: ' + new Date());
-		});
+			}, 
+			() => {
+				//$log.info('Modal dismissed at: ' + new Date());
+			});
+			
 	}
 	
 	previewExistingform(formlyform) {

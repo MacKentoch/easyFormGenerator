@@ -49,19 +49,11 @@ class editControlModalController {
 		//place nya-select to selection if not none :
 		if (this.nyaSelect.selectedControl !== 'none') {
 			for (let i = this.nyaSelect.controls.length - 1; i >= 0; i--) {
-					if (this.nyaSelect.controls[i].id === this.nyaSelect.selectedControl) {
-						this.modelNyaSelect = this.nyaSelect.controls[i];
-					}
+				if (this.nyaSelect.controls[i].id === this.nyaSelect.selectedControl) this.modelNyaSelect = this.nyaSelect.controls[i];
 			}
-			if (this.nyaSelect.selectedControl === 'BasicSelect') {
-				this.bindBasicSelectFromNYA();
-			}
-			if (this.nyaSelect.selectedControl === 'GroupedSelect') {
-				this.bindGroupedSelectFromNYA();
-			} 
-			if (this.nyaSelect.selectedControl === 'Radio') {
-				this.bindRadioFromNYA();
-			}    
+			if (this.nyaSelect.selectedControl === 'BasicSelect') this.bindBasicSelectFromNYA();
+			if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectFromNYA();
+			if (this.nyaSelect.selectedControl === 'Radio') this.bindRadioFromNYA();
 		}
 	}
 	
@@ -320,7 +312,7 @@ class editControlModalController {
 		this.demodt.dt = null;
 	} 
 	
-	openfct($event){
+	open($event){
 		$event.preventDefault();
 		$event.stopPropagation();
 		this.demodt.opened = true;
@@ -351,7 +343,7 @@ class editControlModalController {
 	}	
 	
 	
-	okfct() {
+	ok() {
 		if (this.nyaSelect.selectedControl === 'BasicSelect') {
 			this.bindBasicSelectToNya();
 		}
@@ -367,7 +359,7 @@ class editControlModalController {
 		this.$modalInstance.close(this.nyaSelect);
 	}	
 	
-	cancelfct() {
+	cancel() {
 		this.$modalInstance.dismiss('cancel');
 	} 	
 	
@@ -429,7 +421,6 @@ class editControlModalController {
 		};   
 	}		
 	
-
 }
 
 
@@ -443,4 +434,6 @@ const toInject =  [
 
 editControlModalController.$inject = toInject;
 export default editControlModalController;
-export {EDIT_MODAL_CONTROLLER_NAME};
+export {
+	EDIT_MODAL_CONTROLLER_NAME,
+	EDIT_MODAL_CONTROLLERAS_NAME};

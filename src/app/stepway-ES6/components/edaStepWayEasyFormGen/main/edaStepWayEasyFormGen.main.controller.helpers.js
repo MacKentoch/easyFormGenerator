@@ -1,3 +1,4 @@
+/* global angular */
 const DEBUG_MODEL = {
 	showDebug : false,
 	configurationModelNumberofLines : 1        
@@ -6,11 +7,25 @@ const initDebugModel = () => DEBUG_MODEL;
 
 
 
-const TAB_MODEL = {
-	editTab : {active : true},
-	previewTab : {active : false}
+const DEFAULT_TAB_MODEL = {
+	editTab			: {
+		active : true
+	},
+	previewTab 	: {
+		active 				: false,
+		tabVisible 		: true,
+		modelsVisible : true
+	}
 };
-const initTabModel = () => TAB_MODEL;
+
+const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
+	let _tabModel = DEFAULT_TAB_MODEL;
+	angular.extend(_tabModel.previewTab, {
+		tabVisible 		: isPreviewPanelVisible,
+		modelsVisible : arePreviewModelsVisible		
+	});
+	return _tabModel;
+};
 
 
 const COLUMN_TEMPLATE =  {
