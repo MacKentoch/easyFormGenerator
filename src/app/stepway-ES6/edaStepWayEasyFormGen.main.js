@@ -1,8 +1,10 @@
 /* global angular */
+import './edaStepWayEasyFormGen.vendor.adapter';
 import easyFormStepWayConfig, {
 		EASY_FORM_VERSION_NAME, 
 		EASY_FORM_VERSION_VALUE } 					from './components/edaStepWayEasyFormGen/config/easyFormGenerator/edaStepWayEasyFormGen.conf.easyFormConf';
 import formlyConfig 										from './components/edaStepWayEasyFormGen/config/formly/edaStepWayEasyFormGen.conf.formly';
+import translateConfig									from './components/edaStepWayEasyFormGen/translate/edaStepWayEasyFormGen.translate.module';
 
 import easyFormStepWayCoreModule 				from './components/edaStepWayEasyFormGen/core/edaStepWayEasyFormGen.core.module';		
 
@@ -16,6 +18,7 @@ import easyFormStepwayCommonModules			from './components/edaStepWayEasyFormGen/c
 const STEP_WAY_MODULE_NAME 		= 'eda.easyformGen.stepway';
 const STEP_WAY_MODULES_INJECT = [
 	easyFormStepWayCoreModule.name, 
+	translateConfig.name,
 	easyFormStepwayMainModule.name,
 	easyFormStepwayModalModule.name,
 	easyFormStepwayModalProxyModule.name,

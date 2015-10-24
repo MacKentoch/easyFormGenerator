@@ -451,6 +451,426 @@ $__System.registerDynamic("6", [], true, function(require, exports, module) {
   var global = this,
       __define = global.define;
   global.define = undefined;
+  module.exports = {
+    "SAY_HI": "Hello",
+    "EDIT_TAB": "Edit / Create",
+    "PREVIEW_TAB": "Preview",
+    "WIZARD_LINES": "lines",
+    "WIZARD_LAYOUT": "layout",
+    "WIZARD_CONTROLS": "controls",
+    "WIZARD_SAVE": "save",
+    "PAGER_PREVIOUS": "Previous",
+    "PAGER_NEXT": "Next",
+    "COMMAND_PANEL": "Command",
+    "VISUAL_PANEL": "Visual",
+    "ADD_NEW_LINE": "Add a new line",
+    "SELECTED_LINE": "Selected line",
+    "NUMBER_OF_COLUMN": "number of columns",
+    "APPLY_CTRL2COL": "Apply controls to columns",
+    "CLIC_TAP_2_OPEN": "Click / Tap on column to open control selection",
+    "SELECT_2_APPLY_COL": "Select desired control and valid to apply it to column",
+    "CUSTOM_SUBMIT_BTN": "Customize Submit button Text",
+    "CUSTOM_CANCEL_BTN": "Customize Cancel button Text",
+    "NAME_THIS_FORM": "Name this form",
+    "SAVE_THIS_FORM": "save this form",
+    "FINAL_STEP": "Final Step : form preview",
+    "DATA_MODEL": "DATA MODEL",
+    "FIELDS_MODEL": "FIELDS MODEL (ready to save to database one)",
+    "SELECT_A_CTRL": "Select a control",
+    "SELECT_CTRL_IN_LIST": "Select a control in the list below",
+    "COL_WILL_BE_BLANK": "Column will be blank",
+    "EDIT_PROPERTIES": "Edit properties",
+    "HEADER_TEXT": "Header text",
+    "ADD_EDIT_HEADER_HERE": "Add / edit header text here",
+    "SUBTITLE_TEXT": "Subtitle text",
+    "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here",
+    "LABEL_TEXT": "Label text",
+    "ADD_EDIT_LABEL_HERE": "Add / edit control label here",
+    "PLACEHOLDER": "placeholder",
+    "ADD_EDIT_PLACEHOLD": "Add / edit placeholder text here",
+    "REQUIRED": "Required",
+    "DESCRIPTION": "Description",
+    "ADDEDIT_DESCRIPTION": "Add / edit description here",
+    "DATE_FORMAT": "Date format",
+    "ADD_NEW_RADIO": "Add new radio",
+    "ADD_RADIO_PLACEHOLD": "add new radio",
+    "EDIT_REMOVE_RADIO": "Edit/Remove radio",
+    "NO_RADIO_ADD_NEW": "no radio : add new radio values",
+    "SEARCH_4_OPTION": "search for option",
+    "ADD": "add",
+    "ORDER": "order",
+    "OPTION": "option",
+    "GROUP": "group",
+    "ADD_NEW_OPTIONS": "Add new options",
+    "ADD_A_NEW_OPTION": "add new option",
+    "EDIT_REMOVE_OPTIONS": "Edit/Remove options",
+    "NO_OPTION_ADD_NEW": "no option : add new options",
+    "ADD_NEW_GROUPS": "Add new groups",
+    "ADD_A_NEW_GROUP": "Add new group",
+    "EDIT_GROUPS_OPTIONS": "Edit/Remove options/groups",
+    "NO_GROUP_ADD_NEW": "add new groups",
+    "OK": "OK",
+    "CANCEL": "Cancel"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("7", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "SAY_HI": "Bonjour",
+    "EDIT_TAB": "Edition / Creation",
+    "PREVIEW_TAB": "Aperçu",
+    "WIZARD_LINES": "lignes",
+    "WIZARD_LAYOUT": "disposition",
+    "WIZARD_CONTROLS": "contrôles",
+    "WIZARD_SAVE": "sauvegarder",
+    "PAGER_PREVIOUS": "Précédent",
+    "PAGER_NEXT": "Suivant",
+    "COMMAND_PANEL": "Commandes",
+    "VISUAL_PANEL": "Visuel",
+    "ADD_NEW_LINE": "Ajouter une nouvelle ligne",
+    "SELECTED_LINE": "Ligne sélectionnée",
+    "NUMBER_OF_COLUMN": "nombre de colonnes",
+    "APPLY_CTRL2COL": "Appliquer les contrôles aux colonnes",
+    "CLIC_TAP_2_OPEN": "Cliquer sur une colonne pour ouvrir le menu d'édition",
+    "SELECT_2_APPLY_COL": "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
+    "CUSTOM_SUBMIT_BTN": "Personnaliser le texte du bouton envoie",
+    "CUSTOM_CANCEL_BTN": "Personnaliser le texte du bouton annuler",
+    "NAME_THIS_FORM": "Nommer le formulaire",
+    "SAVE_THIS_FORM": "sauvegarder le formulaire",
+    "FINAL_STEP": "Dernière étape : aperçu du formulaire",
+    "DATA_MODEL": "MODELE DE DONNEES",
+    "FIELDS_MODEL": "MODELE DES CHAMPS (modèle compatible base de données)",
+    "SELECT_A_CTRL": "Sélectionner un contrôle",
+    "SELECT_CTRL_IN_LIST": "Sélectionner un contrôle dans la liste ci-dessous",
+    "COL_WILL_BE_BLANK": "La colonne sera vide",
+    "EDIT_PROPERTIES": "Editer les propriétés",
+    "HEADER_TEXT": "Texte du titre principal",
+    "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal",
+    "SUBTITLE_TEXT": "Texte du sous-titre",
+    "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre",
+    "LABEL_TEXT": "Texte de l'étiquette",
+    "ADD_EDIT_LABEL_HERE": "Editer le texte de l'étiquette",
+    "PLACEHOLDER": "placeholder",
+    "ADD_EDIT_PLACEHOLD": "Editer le placeholder",
+    "REQUIRED": "Requis",
+    "DESCRIPTION": "Description",
+    "ADDEDIT_DESCRIPTION": "Ajouter / editer la description",
+    "DATE_FORMAT": "Format de la date",
+    "ADD_NEW_RADIO": "Ajouter un nouveau choix à cocher",
+    "ADD_RADIO_PLACEHOLD": "Ajouter un nouveau choix à cocher",
+    "EDIT_REMOVE_RADIO": "Editer / supprimer un choix à cocher",
+    "NO_RADIO_ADD_NEW": "aucun choix à cocher : en ajouter un",
+    "SEARCH_4_OPTION": "rechercher une option",
+    "ADD": "ajouter",
+    "ORDER": "ordre",
+    "OPTION": "option",
+    "GROUP": "groupe",
+    "ADD_NEW_OPTIONS": "Ajouter de nouvelles options",
+    "ADD_A_NEW_OPTION": "ajoutre une option",
+    "EDIT_REMOVE_OPTIONS": "Editer / supprimer des options",
+    "NO_OPTION_ADD_NEW": "aucune option : en ajouter",
+    "ADD_NEW_GROUPS": "Ajouter de nouveaux groupes",
+    "ADD_A_NEW_GROUP": "Ajouter un nouveau groupe",
+    "EDIT_GROUPS_OPTIONS": "Editer / supprimer les groupes et options",
+    "NO_GROUP_ADD_NEW": "ajouter de nouveaux groupes",
+    "OK": "Valider",
+    "CANCEL": "Annuler"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("8", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "SAY_HI": "Hola",
+    "EDIT_TAB": "Editar / Crear",
+    "PREVIEW_TAB": "Previsualizar",
+    "WIZARD_LINES": "lineas",
+    "WIZARD_LAYOUT": "diseño",
+    "WIZARD_CONTROLS": "controles",
+    "WIZARD_SAVE": "guardar",
+    "PAGER_PREVIOUS": "Anterior",
+    "PAGER_NEXT": "Siguiente",
+    "COMMAND_PANEL": "Comando",
+    "VISUAL_PANEL": "Visual",
+    "ADD_NEW_LINE": "Agregar nueva linea",
+    "SELECTED_LINE": "Linea seleccionada",
+    "NUMBER_OF_COLUMN": "numero de columnas",
+    "APPLY_CTRL2COL": "Aplicar controles a columnas",
+    "CLIC_TAP_2_OPEN": "Click / Toque en la columna para seleccionar controles",
+    "SELECT_2_APPLY_COL": "Selecciona el control deseado para aplicarlo a la columna",
+    "CUSTOM_SUBMIT_BTN": "Personalizar texto de boton Enviar",
+    "CUSTOM_CANCEL_BTN": "Personalizar texto de boton Cancelar",
+    "NAME_THIS_FORM": "Nombrar formulario",
+    "SAVE_THIS_FORM": "guardar formulario",
+    "FINAL_STEP": "Ultimo paso : previsualizar formulario",
+    "DATA_MODEL": "MODELO DE DATOS",
+    "FIELDS_MODEL": "MODELO DE CAMPOS (listo para guardar en base de datos uno)",
+    "SELECT_A_CTRL": "Selecciona un control",
+    "SELECT_CTRL_IN_LIST": "Selecciona un control de la lista",
+    "COL_WILL_BE_BLANK": "Columna sera vacia",
+    "EDIT_PROPERTIES": "Editar propiedades",
+    "HEADER_TEXT": "Texto de encabezado",
+    "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui",
+    "SUBTITLE_TEXT": "Texto de subtitulo",
+    "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui",
+    "LABEL_TEXT": "Texto de etiqueta",
+    "ADD_EDIT_LABEL_HERE": "Agregar / editar texto de etiqueta aqui",
+    "PLACEHOLDER": "Marcador",
+    "ADD_EDIT_PLACEHOLD": "Agregar / editar texto de marcador aqui",
+    "REQUIRED": "Requerido",
+    "DESCRIPTION": "Descripcion",
+    "ADDEDIT_DESCRIPTION": "Agregar / editar descripcion aqui",
+    "DATE_FORMAT": "Formato de fecha",
+    "ADD_NEW_RADIO": "Agregar nuevo radio",
+    "ADD_RADIO_PLACEHOLD": "agregar nuevo radio",
+    "EDIT_REMOVE_RADIO": "Editar/Eliminar radio",
+    "NO_RADIO_ADD_NEW": "sin radio : agregar nuevos valores de radio",
+    "SEARCH_4_OPTION": "buscar opcion",
+    "ADD": "agregar",
+    "ORDER": "orden",
+    "OPTION": "opcion",
+    "GROUP": "grupo",
+    "ADD_NEW_OPTIONS": "agregar nuevas opciones",
+    "ADD_A_NEW_OPTION": "agregar nueva opcione",
+    "EDIT_REMOVE_OPTIONS": "Editar/Eliminar opciones",
+    "NO_OPTION_ADD_NEW": "sin opcion : agregar nuevas opciones",
+    "ADD_NEW_GROUPS": "Agregar nuevos grupos",
+    "ADD_A_NEW_GROUP": "Agregar nuevo grupo",
+    "EDIT_GROUPS_OPTIONS": "Editar/Eliminar opciones/grupos",
+    "NO_GROUP_ADD_NEW": "agregar nuevos grupos",
+    "OK": "OK",
+    "CANCEL": "Cancelar"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("9", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "SAY_HI": "Hallo",
+    "EDIT_TAB": "Bearbeiten / Schaffen",
+    "PREVIEW_TAB": "Vorschau",
+    "WIZARD_LINES": "Linien",
+    "WIZARD_LAYOUT": "Layout",
+    "WIZARD_CONTROLS": "Steuerung",
+    "WIZARD_SAVE": "sparen",
+    "PAGER_PREVIOUS": "vorher.",
+    "PAGER_NEXT": "nächste",
+    "COMMAND_PANEL": "Anweisung",
+    "VISUAL_PANEL": "visuell",
+    "ADD_NEW_LINE": "Hinzufügen neuer Leitung",
+    "SELECTED_LINE": "ausgewählte Linie",
+    "NUMBER_OF_COLUMN": "Anzahl von Spalten",
+    "APPLY_CTRL2COL": "gelten diese Steuer Spalte",
+    "CLIC_TAP_2_OPEN": "klicken Sie auf Spalte zur Steuerungsauswahl öffnen",
+    "SELECT_2_APPLY_COL": "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden",
+    "CUSTOM_SUBMIT_BTN": "Passen Submit-Button Text",
+    "CUSTOM_CANCEL_BTN": "Passen Cancel-Button Text",
+    "NAME_THIS_FORM": "Nennen dieses Formular",
+    "SAVE_THIS_FORM": "Speichern dieses Formular",
+    "FINAL_STEP": "Endschritt : Formular Vorschau",
+    "DATA_MODEL": "DATEN MODELL",
+    "FIELDS_MODEL": "FELDER MODELL (Datenbank-kompatibel)",
+    "SELECT_A_CTRL": "Wählen Sie ein Steuer",
+    "SELECT_CTRL_IN_LIST": "Wählen Sie ein Steuer aus der Liste unten",
+    "COL_WILL_BE_BLANK": "die Spalte werde leer sein",
+    "EDIT_PROPERTIES": "Anzeigen",
+    "HEADER_TEXT": "Kopftext",
+    "ADD_EDIT_HEADER_HERE": "Kopftext ändern",
+    "SUBTITLE_TEXT": "Untertitel",
+    "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern",
+    "LABEL_TEXT": "Etikett",
+    "ADD_EDIT_LABEL_HERE": "Etikett ändern",
+    "PLACEHOLDER": "placeholder",
+    "ADD_EDIT_PLACEHOLD": "placeholder ändern",
+    "REQUIRED": "erforderlich",
+    "DESCRIPTION": "Beschreibung",
+    "ADDEDIT_DESCRIPTION": "Beschreibung ändern",
+    "DATE_FORMAT": "Datumsformat",
+    "ADD_NEW_RADIO": "Radiobutton hinzufügen",
+    "ADD_RADIO_PLACEHOLD": "Radiobutton hinzufügen",
+    "EDIT_REMOVE_RADIO": "Radiobutton ändern",
+    "NO_RADIO_ADD_NEW": "kein Radiobutton : Radiobutton hinzufügen",
+    "SEARCH_4_OPTION": "option suchen",
+    "ADD": "hinzufügen",
+    "ORDER": "bestellen",
+    "OPTION": "Option",
+    "GROUP": "Gruppe",
+    "ADD_NEW_OPTIONS": "Optionen hinzufügen",
+    "ADD_A_NEW_OPTION": "Option hinzufügen",
+    "EDIT_REMOVE_OPTIONS": "Optionen ändern",
+    "NO_OPTION_ADD_NEW": "kein option : Option hinzufügen",
+    "ADD_NEW_GROUPS": "Gruppen hinzufügen",
+    "ADD_A_NEW_GROUP": "Gruppe hinzufügen",
+    "EDIT_GROUPS_OPTIONS": "Gruppen ändern",
+    "NO_GROUP_ADD_NEW": "keine Gruppe : Gruppe hinzufügen",
+    "OK": "bestätigen",
+    "CANCEL": "stornieren"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("a", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "SAY_HI": "Merhaba",
+    "EDIT_TAB": "Düzenle / Oluştur",
+    "PREVIEW_TAB": "Önizleme",
+    "WIZARD_LINES": "satırlar",
+    "WIZARD_LAYOUT": "düzen",
+    "WIZARD_CONTROLS": "kontroller",
+    "WIZARD_SAVE": "kaydet",
+    "PAGER_PREVIOUS": "Geri",
+    "PAGER_NEXT": "İleri",
+    "COMMAND_PANEL": "Komut",
+    "VISUAL_PANEL": "Görsel",
+    "ADD_NEW_LINE": "Yeni satır ekle",
+    "SELECTED_LINE": "Seçili satır",
+    "NUMBER_OF_COLUMN": "sütun sayısı",
+    "APPLY_CTRL2COL": "Sütunlara form ögesi ekle",
+    "CLIC_TAP_2_OPEN": "Form ögesi eklemek için sütunlara tıkla",
+    "SELECT_2_APPLY_COL": "İstediğin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet",
+    "CUSTOM_SUBMIT_BTN": "Gönder butonu yazısını düzenle",
+    "CUSTOM_CANCEL_BTN": "İptal butonu yazısını düzenle",
+    "NAME_THIS_FORM": "Forma isim ver",
+    "SAVE_THIS_FORM": "formu kaydet",
+    "FINAL_STEP": "Son aşama : form önizlemesi",
+    "DATA_MODEL": "VERİ MODELİ",
+    "FIELDS_MODEL": "ALAN MODELİ (veritabanına kaydetmeye hazır)",
+    "SELECT_A_CTRL": "Form ögesi seç",
+    "SELECT_CTRL_IN_LIST": "Verilen listeden bir form ögesi seç",
+    "COL_WILL_BE_BLANK": "Sütun boş kalacak",
+    "EDIT_PROPERTIES": "Özellikleri düzenle",
+    "HEADER_TEXT": "Başlık yazısı",
+    "ADD_EDIT_HEADER_HERE": "Başlık yazısını ekle / düzenle",
+    "SUBTITLE_TEXT": "Altyazı",
+    "ADD_EDIT_SUBTIL_HERE": "Altyazı ekle / düzenle",
+    "LABEL_TEXT": "Form ögesinin adı",
+    "ADD_EDIT_LABEL_HERE": "Ad ekle / düzenle",
+    "PLACEHOLDER": "Form ögesinin içine geçici yazı ekle",
+    "ADD_EDIT_PLACEHOLD": "Geçici yazı ekle / düzenle",
+    "REQUIRED": "Gerekli",
+    "DESCRIPTION": "Açıklama",
+    "ADDEDIT_DESCRIPTION": "Açıklama ekle / düzenle",
+    "DATE_FORMAT": "Tarih formatı",
+    "ADD_NEW_RADIO": "Radio butonu ekle",
+    "ADD_RADIO_PLACEHOLD": "radio butonu ekle",
+    "EDIT_REMOVE_RADIO": "Radio butonunu ekle / düzenle",
+    "NO_RADIO_ADD_NEW": "radio butonu yok : yeni buton ekle",
+    "SEARCH_4_OPTION": "seçenek ara",
+    "ADD": "ekle",
+    "ORDER": "sıra",
+    "OPTION": "seçenek",
+    "GROUP": "grup",
+    "ADD_NEW_OPTIONS": "Yeni seçenek ekle",
+    "ADD_A_NEW_OPTION": "yeni seçenek ekle",
+    "EDIT_REMOVE_OPTIONS": "Seçenekleri düzenle/sil",
+    "NO_OPTION_ADD_NEW": "seçenek yok : yeni seçenek ekle",
+    "ADD_NEW_GROUPS": "Yeni grup ekle",
+    "ADD_A_NEW_GROUP": "Yeni grup ekle",
+    "EDIT_GROUPS_OPTIONS": "Seçenek/Grup Ekle/sil",
+    "NO_GROUP_ADD_NEW": "yeni grup ekle",
+    "OK": "TAMAM",
+    "CANCEL": "İptal"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("b", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "SAY_HI": "こんにちわ",
+    "EDIT_TAB": "編集 / 作成",
+    "PREVIEW_TAB": "プレビュー",
+    "WIZARD_LINES": "ライン",
+    "WIZARD_LAYOUT": "レイアウト",
+    "WIZARD_CONTROLS": "コントロール",
+    "WIZARD_SAVE": "サーブ",
+    "PAGER_PREVIOUS": "前",
+    "PAGER_NEXT": "次",
+    "COMMAND_PANEL": "コマンド",
+    "VISUAL_PANEL": "ビジュアル",
+    "ADD_NEW_LINE": "新しいライン追加",
+    "SELECTED_LINE": "選択されたライン",
+    "NUMBER_OF_COLUMN": "カラムの数",
+    "APPLY_CTRL2COL": "カラムにコントロール適用",
+    "CLIC_TAP_2_OPEN": "コントロール選択を広げるには列をクリック",
+    "SELECT_2_APPLY_COL": "好きなコントロールを選び適用",
+    "CUSTOM_SUBMIT_BTN": "適用ボタンの文字変更する場合",
+    "CUSTOM_CANCEL_BTN": "キャンセルボタンの文字変更する場合",
+    "NAME_THIS_FORM": "形式に名前を付ける",
+    "SAVE_THIS_FORM": "形式をサーブ",
+    "FINAL_STEP": "ファイナルステップ : プレビュー形式",
+    "DATA_MODEL": "データーモデル",
+    "FIELDS_MODEL": "モデルフィールド",
+    "SELECT_A_CTRL": "コントロールを選び選択",
+    "SELECT_CTRL_IN_LIST": "以下のリストからコントロールを選び選択",
+    "COL_WILL_BE_BLANK": "空になる列",
+    "EDIT_PROPERTIES": "プロパティの変更",
+    "HEADER_TEXT": "ヘッダーテキスト",
+    "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更",
+    "SUBTITLE_TEXT": "サブタイトル　テキスト",
+    "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更",
+    "LABEL_TEXT": "ラベルテキスト",
+    "ADD_EDIT_LABEL_HERE": "ラベルテキスト文字変更",
+    "PLACEHOLDER": "プレースホルダー",
+    "ADD_EDIT_PLACEHOLD": "プレースホルダー文字変更",
+    "REQUIRED": "必須",
+    "DESCRIPTION": "説明",
+    "ADDEDIT_DESCRIPTION": "説明の変更",
+    "DATE_FORMAT": "日付の形式",
+    "ADD_NEW_RADIO": "新ラジオボタンを追加",
+    "ADD_RADIO_PLACEHOLD": "新ラジオボタンを追加",
+    "EDIT_REMOVE_RADIO": "ラジオボタン変更",
+    "NO_RADIO_ADD_NEW": "ラジオ無し : 新ラジオボタン追加",
+    "SEARCH_4_OPTION": "オプション検索",
+    "ADD": "追加",
+    "ORDER": "順番",
+    "OPTION": "オプション",
+    "GROUP": "グループ",
+    "ADD_NEW_OPTIONS": "新しいオプション追加",
+    "ADD_A_NEW_OPTION": "新しいオプション追加",
+    "EDIT_REMOVE_OPTIONS": "オプションの変更",
+    "NO_OPTION_ADD_NEW": "オプション無し : 新しいオプション追加",
+    "ADD_NEW_GROUPS": "新しいグループ追加",
+    "ADD_A_NEW_GROUP": "新しいグループ追加",
+    "EDIT_GROUPS_OPTIONS": "グループを変更",
+    "NO_GROUP_ADD_NEW": "グループを追加",
+    "OK": "オッケー",
+    "CANCEL": "キャンセル"
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.registerDynamic("f", [], true, function(require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
   var $Object = Object;
   module.exports = {
     create: $Object.create,
@@ -468,12 +888,12 @@ $__System.registerDynamic("6", [], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("7", ["6"], true, function(require, exports, module) {
+$__System.registerDynamic("10", ["f"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = require("6");
+  var $ = require("f");
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -481,26 +901,26 @@ $__System.registerDynamic("7", ["6"], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("8", ["7"], true, function(require, exports, module) {
+$__System.registerDynamic("11", ["10"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": require("7"),
+    "default": require("10"),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("9", ["8"], true, function(require, exports, module) {
+$__System.registerDynamic("12", ["11"], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   "use strict";
-  var _Object$defineProperty = require("8")["default"];
+  var _Object$defineProperty = require("11")["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -525,7 +945,7 @@ $__System.registerDynamic("9", ["8"], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("a", [], true, function(require, exports, module) {
+$__System.registerDynamic("13", [], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -541,7 +961,7 @@ $__System.registerDynamic("a", [], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("c", [], true, function(require, exports, module) {
+$__System.registerDynamic("15", [], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -551,7 +971,7 @@ $__System.registerDynamic("c", [], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("f", [], true, function(require, exports, module) {
+$__System.registerDynamic("18", [], true, function(require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -561,7 +981,17 @@ $__System.registerDynamic("f", [], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.register('2', [], function (_export) {
+$__System.register("2", [], function (_export) {
+  "use strict";
+
+  return {
+    setters: [],
+    execute: function () {
+      _export("default", window.angular);
+    }
+  };
+});
+$__System.register('3', [], function (_export) {
 	'use strict';
 
 	var EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, ACTIVE_MODAL_ANIMATION;
@@ -588,7 +1018,7 @@ $__System.register('2', [], function (_export) {
 		}
 	};
 });
-$__System.register("3", [], function (_export) {
+$__System.register("4", [], function (_export) {
 	"use strict";
 
 	var richTextTemplate, blankTemplate, subTitleTemplate, basicSelectTemplate, groupedSelectTemplate, datepickerTemplate, validationTemplate;
@@ -619,7 +1049,7 @@ $__System.register("3", [], function (_export) {
 		}
 	};
 });
-$__System.register('4', ['3'], function (_export) {
+$__System.register('5', ['4'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -737,7 +1167,62 @@ $__System.register('4', ['3'], function (_export) {
 		}
 	};
 });
-$__System.register('5', [], function (_export) {
+$__System.register('c', ['6', '7', '8', '9', 'a', 'b'], function (_export) {
+	'use strict';
+
+	var localEn, localFr, localEs, localDe, localTr, localJp, TRANSLATE_CONFIG;
+
+	function translateConfig($translateProvider) {
+		$translateProvider.translations('en', localEn);
+		$translateProvider.translations('fr', localFr);
+		$translateProvider.translations('es', localEs);
+		$translateProvider.translations('de', localDe);
+		$translateProvider.translations('tr', localTr);
+		$translateProvider.translations('jp', localJp);
+	}
+
+	return {
+		setters: [function (_) {
+			localEn = _['default'];
+		}, function (_2) {
+			localFr = _2['default'];
+		}, function (_3) {
+			localEs = _3['default'];
+		}, function (_4) {
+			localDe = _4['default'];
+		}, function (_a) {
+			localTr = _a['default'];
+		}, function (_b) {
+			localJp = _b['default'];
+		}],
+		execute: function () {
+			TRANSLATE_CONFIG = 'easyFormTranslateConfig';
+			translateConfig.$inject = ['$translateProvider'];
+
+			_export('default', translateConfig);
+
+			_export('TRANSLATE_CONFIG', TRANSLATE_CONFIG);
+		}
+	};
+});
+$__System.register('d', ['c'], function (_export) {
+								/* global angular */
+								'use strict';
+
+								var translateConfig, TRANSLATE_CONFIG, TRANSLATE_MODULE;
+								return {
+																setters: [function (_c) {
+																								translateConfig = _c['default'];
+																								TRANSLATE_CONFIG = _c.TRANSLATE_CONFIG;
+																}],
+																execute: function () {
+																								TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
+
+																								_export('default', angular.module(TRANSLATE_MODULE, []).config(translateConfig));
+																}
+								};
+});
+$__System.register('e', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -751,7 +1236,7 @@ $__System.register('5', [], function (_export) {
 		}
 	};
 });
-$__System.register('b', [], function (_export) {
+$__System.register('14', [], function (_export) {
 	'use strict';
 
 	var DEBUG_MODEL, initDebugModel, TAB_MODEL, initTabModel, COLUMN_TEMPLATE, initColumnTemplate, LINE_TEMPLATE, initLineTemplate;
@@ -829,14 +1314,14 @@ $__System.register('b', [], function (_export) {
 		}
 	};
 });
-$__System.register('d', ['9', 'a'], function (_export) {
+$__System.register('16', ['12', '13'], function (_export) {
 	var _createClass, _classCallCheck, EDIT_MODAL_CONTROLLER_NAME, EDIT_MODAL_CONTROLLERAS_NAME, editControlModalController, toInject;
 
 	return {
 		setters: [function (_2) {
 			_createClass = _2['default'];
-		}, function (_a) {
-			_classCallCheck = _a['default'];
+		}, function (_3) {
+			_classCallCheck = _3['default'];
 		}],
 		execute: function () {
 			/* global angular */
@@ -1296,23 +1781,23 @@ $__System.register('d', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
+$__System.register('17', ['12', '13', '14', '15', '16'], function (_export) {
 	var _createClass, _classCallCheck, initDebugModel, initTabModel, initColumnTemplate, initLineTemplate, editControlModalTemplate, EDIT_MODAL_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, edaStepWayEasyFormGenController, toInject;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_a) {
-			_classCallCheck = _a['default'];
-		}, function (_b) {
-			initDebugModel = _b.initDebugModel;
-			initTabModel = _b.initTabModel;
-			initColumnTemplate = _b.initColumnTemplate;
-			initLineTemplate = _b.initLineTemplate;
-		}, function (_c) {
-			editControlModalTemplate = _c['default'];
-		}, function (_d) {
-			EDIT_MODAL_CONTROLLER_NAME = _d.EDIT_MODAL_CONTROLLER_NAME;
+		}, function (_2) {
+			_classCallCheck = _2['default'];
+		}, function (_3) {
+			initDebugModel = _3.initDebugModel;
+			initTabModel = _3.initTabModel;
+			initColumnTemplate = _3.initColumnTemplate;
+			initLineTemplate = _3.initLineTemplate;
+		}, function (_4) {
+			editControlModalTemplate = _4['default'];
+		}, function (_5) {
+			EDIT_MODAL_CONTROLLER_NAME = _5.EDIT_MODAL_CONTROLLER_NAME;
 		}],
 		execute: function () {
 			/* global angular */
@@ -1608,11 +2093,11 @@ $__System.register('e', ['9', 'a', 'b', 'c', 'd'], function (_export) {
 		}
 	};
 });
-$__System.register('10', ['f', 'e'], function (_export) {
+$__System.register('19', ['17', '18'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var easyformTemplate, edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, STEP_WAY_DIRECTIVE_NAME;
+	var edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, easyformTemplate, STEP_WAY_DIRECTIVE_NAME;
 
 	function edaStepWayEasyFormGenDirective($templateCache, $timeout, $formlyProxy, $modalProxy) {
 
@@ -1720,12 +2205,12 @@ $__System.register('10', ['f', 'e'], function (_export) {
 	}
 
 	return {
-		setters: [function (_f) {
-			easyformTemplate = _f['default'];
-		}, function (_e) {
-			edaStepWayEasyFormGenController = _e['default'];
-			STEP_WAY_MAIN_CONTROLLER_NAME = _e.STEP_WAY_MAIN_CONTROLLER_NAME;
-			STEP_WAY_MAIN_CONTROLLERAS_NAME = _e.STEP_WAY_MAIN_CONTROLLERAS_NAME;
+		setters: [function (_2) {
+			edaStepWayEasyFormGenController = _2['default'];
+			STEP_WAY_MAIN_CONTROLLER_NAME = _2.STEP_WAY_MAIN_CONTROLLER_NAME;
+			STEP_WAY_MAIN_CONTROLLERAS_NAME = _2.STEP_WAY_MAIN_CONTROLLERAS_NAME;
+		}, function (_) {
+			easyformTemplate = _['default'];
 		}],
 		execute: function () {
 			STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
@@ -1737,7 +2222,7 @@ $__System.register('10', ['f', 'e'], function (_export) {
 		}
 	};
 });
-$__System.register('11', [], function (_export) {
+$__System.register('1a', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -1921,21 +2406,21 @@ $__System.register('11', [], function (_export) {
 		}
 	};
 });
-$__System.register('12', ['10', '11', 'e'], function (_export) {
+$__System.register('1b', ['17', '19', '1a'], function (_export) {
   /* global angular */
   'use strict';
 
-  var edaStepWayEasyFormGenDirective, STEP_WAY_DIRECTIVE_NAME, easyFormSteWayConfig, EASY_FORM_STEP_WAY_CONFIG_NAME, edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_MODULE;
+  var edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenDirective, STEP_WAY_DIRECTIVE_NAME, easyFormSteWayConfig, EASY_FORM_STEP_WAY_CONFIG_NAME, STEP_WAY_MAIN_MODULE;
   return {
     setters: [function (_) {
-      edaStepWayEasyFormGenDirective = _['default'];
-      STEP_WAY_DIRECTIVE_NAME = _.STEP_WAY_DIRECTIVE_NAME;
+      edaStepWayEasyFormGenController = _['default'];
+      STEP_WAY_MAIN_CONTROLLER_NAME = _.STEP_WAY_MAIN_CONTROLLER_NAME;
     }, function (_2) {
-      easyFormSteWayConfig = _2['default'];
-      EASY_FORM_STEP_WAY_CONFIG_NAME = _2.EASY_FORM_STEP_WAY_CONFIG_NAME;
-    }, function (_e) {
-      edaStepWayEasyFormGenController = _e['default'];
-      STEP_WAY_MAIN_CONTROLLER_NAME = _e.STEP_WAY_MAIN_CONTROLLER_NAME;
+      edaStepWayEasyFormGenDirective = _2['default'];
+      STEP_WAY_DIRECTIVE_NAME = _2.STEP_WAY_DIRECTIVE_NAME;
+    }, function (_a) {
+      easyFormSteWayConfig = _a['default'];
+      EASY_FORM_STEP_WAY_CONFIG_NAME = _a.EASY_FORM_STEP_WAY_CONFIG_NAME;
     }],
     execute: function () {
       STEP_WAY_MAIN_MODULE = 'easyFormStepwayMainModule';
@@ -1944,15 +2429,15 @@ $__System.register('12', ['10', '11', 'e'], function (_export) {
     }
   };
 });
-$__System.register('13', ['d'], function (_export) {
+$__System.register('1c', ['16'], function (_export) {
 	/* global angular */
 	'use strict';
 
 	var editModalController, EDIT_MODAL_CONTROLLER_NAME, EDIT_CONTROLE_MODAL_NAME;
 	return {
-		setters: [function (_d) {
-			editModalController = _d['default'];
-			EDIT_MODAL_CONTROLLER_NAME = _d.EDIT_MODAL_CONTROLLER_NAME;
+		setters: [function (_) {
+			editModalController = _['default'];
+			EDIT_MODAL_CONTROLLER_NAME = _.EDIT_MODAL_CONTROLLER_NAME;
 		}],
 		execute: function () {
 			EDIT_CONTROLE_MODAL_NAME = 'editControlModalModule';
@@ -1961,7 +2446,7 @@ $__System.register('13', ['d'], function (_export) {
 		}
 	};
 });
-$__System.register('14', [], function (_export) {
+$__System.register('1d', [], function (_export) {
 	/* global angular */
 
 	'use strict';
@@ -2391,19 +2876,19 @@ $__System.register('14', [], function (_export) {
 		}
 	};
 });
-$__System.register('15', ['9', '14', 'a'], function (_export) {
-	var _createClass, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, _classCallCheck, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
+$__System.register('1e', ['12', '13', '1d'], function (_export) {
+	var _createClass, _classCallCheck, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
 		}, function (_2) {
-			resetNyaSelect = _2.resetNyaSelect;
-			returnControlFromAddCtrlModalModel = _2.returnControlFromAddCtrlModalModel;
-			validKeyUniqueness = _2.validKeyUniqueness;
-			getResetConfig = _2.getResetConfig;
-		}, function (_a) {
-			_classCallCheck = _a['default'];
+			_classCallCheck = _2['default'];
+		}, function (_d) {
+			resetNyaSelect = _d.resetNyaSelect;
+			returnControlFromAddCtrlModalModel = _d.returnControlFromAddCtrlModalModel;
+			validKeyUniqueness = _d.validKeyUniqueness;
+			getResetConfig = _d.getResetConfig;
 		}],
 		execute: function () {
 			/* global angular */
@@ -2649,15 +3134,15 @@ $__System.register('15', ['9', '14', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('16', ['15'], function (_export) {
+$__System.register('1f', ['1e'], function (_export) {
 									/* global angular */
 									'use strict';
 
 									var $modalProxy, CONTROLLER_MODAL_PROXY_SERVICE, MODAL_PROXY_MODULE_NAME;
 									return {
-																		setters: [function (_) {
-																											$modalProxy = _['default'];
-																											CONTROLLER_MODAL_PROXY_SERVICE = _.CONTROLLER_MODAL_PROXY_SERVICE;
+																		setters: [function (_e) {
+																											$modalProxy = _e['default'];
+																											CONTROLLER_MODAL_PROXY_SERVICE = _e.CONTROLLER_MODAL_PROXY_SERVICE;
 																		}],
 																		execute: function () {
 																											MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
@@ -2666,7 +3151,7 @@ $__System.register('16', ['15'], function (_export) {
 																		}
 									};
 });
-$__System.register('17', [], function (_export) {
+$__System.register('20', [], function (_export) {
 	/* global angular */
 
 	'use strict';
@@ -3037,35 +3522,35 @@ $__System.register('17', [], function (_export) {
 		}
 	};
 });
-$__System.register('18', ['9', '17', 'a'], function (_export) {
-	var _createClass, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, _classCallCheck, FORMLY_PROXY_SERVICE, $formlyProxy;
+$__System.register('21', ['12', '13', '20'], function (_export) {
+	var _createClass, _classCallCheck, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
 		}, function (_2) {
-			configurationModelInit = _2.configurationModelInit;
-			configurationModelResult = _2.configurationModelResult;
-			resetDataModel = _2.resetDataModel;
-			resetFormlyModel = _2.resetFormlyModel;
-			isTemplateOptionDefined = _2.isTemplateOptionDefined;
-			extractTemplateOptionLabel = _2.extractTemplateOptionLabel;
-			extractTemplateOptionDatepickerPopup = _2.extractTemplateOptionDatepickerPopup;
-			extractFormlyExpressionProperties = _2.extractFormlyExpressionProperties;
-			extractFormlyValidators = _2.extractFormlyValidators;
-			extractFormlyValidation = _2.extractFormlyValidation;
-			extractTemplateOptionRequired = _2.extractTemplateOptionRequired;
-			extractTemplateOptionOptions = _2.extractTemplateOptionOptions;
-			extractTemplateOptionType = _2.extractTemplateOptionType;
-			extractTemplateOptionPlaceholder = _2.extractTemplateOptionPlaceholder;
-			extractTemplateOptionDescription = _2.extractTemplateOptionDescription;
-			addDatepickerPopupProperty = _2.addDatepickerPopupProperty;
-			addOneColumnHeader = _2.addOneColumnHeader;
-			addOneColumnControl = _2.addOneColumnControl;
-			addTwoColumnControl = _2.addTwoColumnControl;
-			addThreeColumnControl = _2.addThreeColumnControl;
-		}, function (_a) {
-			_classCallCheck = _a['default'];
+			_classCallCheck = _2['default'];
+		}, function (_3) {
+			configurationModelInit = _3.configurationModelInit;
+			configurationModelResult = _3.configurationModelResult;
+			resetDataModel = _3.resetDataModel;
+			resetFormlyModel = _3.resetFormlyModel;
+			isTemplateOptionDefined = _3.isTemplateOptionDefined;
+			extractTemplateOptionLabel = _3.extractTemplateOptionLabel;
+			extractTemplateOptionDatepickerPopup = _3.extractTemplateOptionDatepickerPopup;
+			extractFormlyExpressionProperties = _3.extractFormlyExpressionProperties;
+			extractFormlyValidators = _3.extractFormlyValidators;
+			extractFormlyValidation = _3.extractFormlyValidation;
+			extractTemplateOptionRequired = _3.extractTemplateOptionRequired;
+			extractTemplateOptionOptions = _3.extractTemplateOptionOptions;
+			extractTemplateOptionType = _3.extractTemplateOptionType;
+			extractTemplateOptionPlaceholder = _3.extractTemplateOptionPlaceholder;
+			extractTemplateOptionDescription = _3.extractTemplateOptionDescription;
+			addDatepickerPopupProperty = _3.addDatepickerPopupProperty;
+			addOneColumnHeader = _3.addOneColumnHeader;
+			addOneColumnControl = _3.addOneColumnControl;
+			addTwoColumnControl = _3.addTwoColumnControl;
+			addThreeColumnControl = _3.addThreeColumnControl;
 		}],
 		execute: function () {
 			/* global angular */
@@ -3150,7 +3635,7 @@ $__System.register('18', ['9', '17', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('19', ['18'], function (_export) {
+$__System.register('22', ['21'], function (_export) {
 									/* global angular */
 									'use strict';
 
@@ -3167,14 +3652,14 @@ $__System.register('19', ['18'], function (_export) {
 																		}
 									};
 });
-$__System.register('1a', ['9', 'a'], function (_export) {
+$__System.register('23', ['12', '13'], function (_export) {
 	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_a) {
-			_classCallCheck = _a['default'];
+		}, function (_2) {
+			_classCallCheck = _2['default'];
 		}],
 		execute: function () {
 			/* global angular */
@@ -3418,15 +3903,15 @@ $__System.register('1a', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('1b', ['1a'], function (_export) {
+$__System.register('24', ['23'], function (_export) {
 									/* global angular */
 									'use strict';
 
 									var selectOptionManage, SELECT_OPTION_MANAGE_NAME, COMMON_MODULE_NAME;
 									return {
-																		setters: [function (_a) {
-																											selectOptionManage = _a['default'];
-																											SELECT_OPTION_MANAGE_NAME = _a.SELECT_OPTION_MANAGE_NAME;
+																		setters: [function (_) {
+																											selectOptionManage = _['default'];
+																											SELECT_OPTION_MANAGE_NAME = _.SELECT_OPTION_MANAGE_NAME;
 																		}],
 																		execute: function () {
 																											COMMON_MODULE_NAME = 'commonModule';
@@ -3435,56 +3920,41 @@ $__System.register('1b', ['1a'], function (_export) {
 																		}
 									};
 });
-$__System.register('1c', ['2', '4', '5', '12', '13', '16', '19', '1b'], function (_export) {
+$__System.register('1', ['2', '3', '5', '22', '24', 'd', 'e', '1b', '1c', '1f'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepWayCoreModule, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, easyFormStepwayFormlyProxyModule, easyFormStepwayCommonModules, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayFormlyProxyModule, easyFormStepwayCommonModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
 	return {
-		setters: [function (_) {
-			easyFormStepWayConfig = _['default'];
-			EASY_FORM_VERSION_NAME = _.EASY_FORM_VERSION_NAME;
-			EASY_FORM_VERSION_VALUE = _.EASY_FORM_VERSION_VALUE;
-		}, function (_2) {
-			formlyConfig = _2['default'];
+		setters: [function (_) {}, function (_2) {
+			easyFormStepWayConfig = _2['default'];
+			EASY_FORM_VERSION_NAME = _2.EASY_FORM_VERSION_NAME;
+			EASY_FORM_VERSION_VALUE = _2.EASY_FORM_VERSION_VALUE;
 		}, function (_3) {
-			easyFormStepWayCoreModule = _3['default'];
+			formlyConfig = _3['default'];
 		}, function (_4) {
-			easyFormStepwayMainModule = _4['default'];
+			easyFormStepwayFormlyProxyModule = _4['default'];
 		}, function (_5) {
-			easyFormStepwayModalModule = _5['default'];
-		}, function (_6) {
-			easyFormStepwayModalProxyModule = _6['default'];
-		}, function (_7) {
-			easyFormStepwayFormlyProxyModule = _7['default'];
+			easyFormStepwayCommonModules = _5['default'];
+		}, function (_d) {
+			translateConfig = _d['default'];
+		}, function (_e) {
+			easyFormStepWayCoreModule = _e['default'];
 		}, function (_b) {
-			easyFormStepwayCommonModules = _b['default'];
+			easyFormStepwayMainModule = _b['default'];
+		}, function (_c) {
+			easyFormStepwayModalModule = _c['default'];
+		}, function (_f) {
+			easyFormStepwayModalProxyModule = _f['default'];
 		}],
 		execute: function () {
 			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
-			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwayCommonModules.name];
+			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, translateConfig.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwayCommonModules.name];
 			mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
 
 			_export('default', mainModule);
 		}
 	};
-});
-$__System.register('1', ['1c'], function (_export) {
-  /* global angular */
-  'use strict';
-
-  var mainModule;
-  return {
-    setters: [function (_c) {
-      mainModule = _c['default'];
-    }],
-    execute: function () {
-
-      angular.element(document).ready(function () {
-        angular.bootstrap(document, [mainModule.name], { strictDi: true });
-      });
-    }
-  };
 });
 })
 (function(factory) {

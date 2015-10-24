@@ -496,13 +496,13 @@ gulp.task('build:ES6:jshint', function(){
 });
 
 gulp.task('stepWayES6:sfx:min', function (cb) {
-  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.boostrap ./public/js/eda.stepway-ES6.min.js --minify', function (err, stdout, stderr) {
+  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.min.js --minify', function (err, stdout, stderr) {
       cb(err);
   });
 });
 
 gulp.task('stepWayES6:sfx', function (cb) {
-  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.boostrap ./public/js/eda.stepway-ES6.js', function (err, stdout, stderr) {
+  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.js', function (err, stdout, stderr) {
       cb(err);
   });
 });

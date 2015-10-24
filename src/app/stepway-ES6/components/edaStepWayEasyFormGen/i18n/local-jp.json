@@ -1,0 +1,88 @@
+{
+    "SAY_HI"	           : "こんにちわ",
+    
+    "EDIT_TAB"            : "編集 / 作成",
+    "PREVIEW_TAB"         : "プレビュー",
+    
+    "WIZARD_LINES"        : "ライン",
+    "WIZARD_LAYOUT"       : "レイアウト",
+    "WIZARD_CONTROLS"     : "コントロール",
+    "WIZARD_SAVE"         : "サーブ",
+    
+    "PAGER_PREVIOUS"      : "前",
+    "PAGER_NEXT"          : "次",
+    
+    "COMMAND_PANEL"       : "コマンド",
+    "VISUAL_PANEL"        : "ビジュアル",
+    
+    "ADD_NEW_LINE"        : "新しいライン追加",
+    
+    "SELECTED_LINE"       : "選択されたライン",
+    
+    "NUMBER_OF_COLUMN"    : "カラムの数",
+    "APPLY_CTRL2COL"      : "カラムにコントロール適用",
+    
+    "CLIC_TAP_2_OPEN"     : "コントロール選択を広げるには列をクリック",
+    "SELECT_2_APPLY_COL"  : "好きなコントロールを選び適用",
+    
+    "CUSTOM_SUBMIT_BTN"   : "適用ボタンの文字変更する場合",
+    "CUSTOM_CANCEL_BTN"   : "キャンセルボタンの文字変更する場合",
+    "NAME_THIS_FORM"      : "形式に名前を付ける",
+    "SAVE_THIS_FORM"      : "形式をサーブ",
+    
+    "FINAL_STEP"          : "ファイナルステップ : プレビュー形式",
+    
+    "DATA_MODEL"          : "データーモデル",
+    "FIELDS_MODEL"        : "モデルフィールド",
+    
+    
+    "SELECT_A_CTRL"       : "コントロールを選び選択",
+    "SELECT_CTRL_IN_LIST" : "以下のリストからコントロールを選び選択",
+    "COL_WILL_BE_BLANK"   : "空になる列",
+    
+    "EDIT_PROPERTIES"     : "プロパティの変更",
+    
+    "HEADER_TEXT"         : "ヘッダーテキスト",
+    "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更",
+    
+    "SUBTITLE_TEXT"       : "サブタイトル　テキスト",
+    "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更",
+    
+    "LABEL_TEXT"          : "ラベルテキスト",
+    "ADD_EDIT_LABEL_HERE" : "ラベルテキスト文字変更",
+    
+    "PLACEHOLDER"         : "プレースホルダー",
+    "ADD_EDIT_PLACEHOLD"  : "プレースホルダー文字変更",
+    
+    "REQUIRED"            : "必須",
+    
+    "DESCRIPTION"         : "説明",
+    "ADDEDIT_DESCRIPTION" : "説明の変更",
+    
+    "DATE_FORMAT"         : "日付の形式",
+    
+    "ADD_NEW_RADIO"       : "新ラジオボタンを追加",
+    "ADD_RADIO_PLACEHOLD" : "新ラジオボタンを追加",
+    "EDIT_REMOVE_RADIO"   : "ラジオボタン変更",
+    "NO_RADIO_ADD_NEW"    : "ラジオ無し : 新ラジオボタン追加",
+    
+    "SEARCH_4_OPTION"     : "オプション検索",
+    
+    "ADD"                 : "追加",
+    "ORDER"               : "順番",
+    "OPTION"              : "オプション",
+    "GROUP"               : "グループ",
+    
+    "ADD_NEW_OPTIONS"     : "新しいオプション追加",
+    "ADD_A_NEW_OPTION"    : "新しいオプション追加",
+    "EDIT_REMOVE_OPTIONS" : "オプションの変更",
+    "NO_OPTION_ADD_NEW"   : "オプション無し : 新しいオプション追加",
+    
+    "ADD_NEW_GROUPS"      : "新しいグループ追加",
+    "ADD_A_NEW_GROUP"     : "新しいグループ追加",
+    "EDIT_GROUPS_OPTIONS" : "グループを変更",
+    "NO_GROUP_ADD_NEW"    : "グループを追加",
+    
+    "OK"                : "オッケー",
+    "CANCEL"            : "キャンセル"
+}
