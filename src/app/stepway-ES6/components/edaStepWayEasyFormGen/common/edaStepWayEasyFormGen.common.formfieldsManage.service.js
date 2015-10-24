@@ -27,7 +27,7 @@ import {
 
 const FORM_FIELD_MANAGE_SERVICE = 'formFieldManage';
 
-class formFieldManage{
+class formFieldManage {
 	
 	constructor() {
 		this.init();

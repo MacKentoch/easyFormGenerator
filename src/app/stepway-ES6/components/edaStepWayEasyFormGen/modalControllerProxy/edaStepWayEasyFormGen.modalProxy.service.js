@@ -3,11 +3,11 @@ import {
 	resetNyaSelect,
 	returnControlFromAddCtrlModalModel,
 	validKeyUniqueness	
-} from './edaStepWayEasyFormGen.common.editControlModalProxy.helpers';
+} from './edaStepWayEasyFormGen.modalProxy.helpers.js';
 
-const CONTROLLER_MODAL_PROXY_SERVICE = 'controllerModalProxy';
+const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
-class controllerModalProxy{
+class $modalProxy{
 	
 	constructor() {
 		
@@ -138,6 +138,6 @@ class controllerModalProxy{
 	
 }
 
-controllerModalProxy.$inject= [];
-export default controllerModalProxy;
+$modalProxy.$inject= [];
+export default $modalProxy;
 export {CONTROLLER_MODAL_PROXY_SERVICE};

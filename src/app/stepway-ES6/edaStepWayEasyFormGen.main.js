@@ -1,19 +1,20 @@
 /* global angular */
 import easyFormStepWayConfig, {
 		EASY_FORM_VERSION_NAME, 
-		EASY_FORM_VERSION_VALUE } 					from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.easyFormConf';
-		
+		EASY_FORM_VERSION_VALUE } 					from './components/edaStepWayEasyFormGen/config/easyFormGenerator/edaStepWayEasyFormGen.conf.easyFormConf';
 import easyFormStepWayCoreModule 				from './components/edaStepWayEasyFormGen/core/edaStepWayEasyFormGen.core.module';		
-import formlyConfig 										from './components/edaStepWayEasyFormGen/config/edaStepWayEasyFormGen.conf.formly';
+import formlyConfig 										from './components/edaStepWayEasyFormGen/config/formly/edaStepWayEasyFormGen.conf.formly';
 import easyFormStepwayMainModule 				from './components/edaStepWayEasyFormGen/main/edaStepWayEasyFormGen.main.module';
 import easyFormStepwayModalModule 			from './components/edaStepWayEasyFormGen/modal/edaStepWayEasyFormGen.editControlModal.module';
+import easyFormStepwaymodalProxyModule	from './components/edaStepWayEasyFormGen/modalControllerProxy/edaStepWayFormGen.modalProxy.module';
 import easyFormServices									from './components/edaStepWayEasyFormGen/common/edaStepWayEasyFormGen.common.module';
 
 const STEP_WAY_MODULE_NAME 		= 'eda.easyformGen.stepway';
 const STEP_WAY_MODULES_INJECT = [
 	easyFormStepWayCoreModule.name, 
 	easyFormStepwayMainModule.name,
-	easyFormStepwayModalModule.name
+	easyFormStepwayModalModule.name,
+	easyFormStepwaymodalProxyModule.name
 ];
 
 let mainModule = angular
