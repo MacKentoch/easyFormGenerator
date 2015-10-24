@@ -2,6 +2,8 @@
 import {
 	configurationModelInit,
 	configurationModelResult,
+	resetDataModel,
+	resetFormlyModel,
 	
 	isTemplateOptionDefined,
 	extractTemplateOptionLabel,
@@ -56,8 +58,8 @@ class $formlyProxy {
 	}
 	
 	applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel) {
-		this.resetFormlyModel(formlyModel);
-		this.resetDataModel(formlyDataModel);
+		resetFormlyModel(formlyModel);
+		resetDataModel(formlyDataModel);
 		/**
 			* manage header here line0 
 			*/

@@ -1,3 +1,4 @@
+/* global angular */
 
 const configurationModelInit = {
 	activeLine: 1,   
@@ -353,7 +354,17 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 };
 
 
+const resetDataModel = (obj) => {
+	let emptyDataModel = {};
+	angular.copy(emptyDataModel, obj);
+	return true;
+};
 
+
+const resetFormlyModel = (formlyModel) => {
+	let resetformly = [];
+	angular.copy(resetformly, formlyModel);
+};
 
 
 
@@ -361,6 +372,8 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 export {
 	configurationModelInit,
 	configurationModelResult,
+	resetDataModel,
+	resetFormlyModel,
 	
 	isTemplateOptionDefined,
 	extractTemplateOptionLabel,

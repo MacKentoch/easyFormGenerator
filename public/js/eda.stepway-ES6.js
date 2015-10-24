@@ -2667,9 +2667,11 @@ $__System.register('16', ['15'], function (_export) {
 									};
 });
 $__System.register('17', [], function (_export) {
+	/* global angular */
+
 	'use strict';
 
-	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl;
+	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, resetDataModel, resetFormlyModel;
 	return {
 		setters: [],
 		execute: function () {
@@ -2982,9 +2984,24 @@ $__System.register('17', [], function (_export) {
 				});
 			};
 
+			resetDataModel = function resetDataModel(obj) {
+				var emptyDataModel = {};
+				angular.copy(emptyDataModel, obj);
+				return true;
+			};
+
+			resetFormlyModel = function resetFormlyModel(formlyModel) {
+				var resetformly = [];
+				angular.copy(resetformly, formlyModel);
+			};
+
 			_export('configurationModelInit', configurationModelInit);
 
 			_export('configurationModelResult', configurationModelResult);
+
+			_export('resetDataModel', resetDataModel);
+
+			_export('resetFormlyModel', resetFormlyModel);
 
 			_export('isTemplateOptionDefined', isTemplateOptionDefined);
 
@@ -3021,7 +3038,7 @@ $__System.register('17', [], function (_export) {
 	};
 });
 $__System.register('18', ['9', '17', 'a'], function (_export) {
-	var _createClass, configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, _classCallCheck, FORMLY_PROXY_SERVICE, $formlyProxy;
+	var _createClass, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, _classCallCheck, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
 		setters: [function (_) {
@@ -3029,6 +3046,8 @@ $__System.register('18', ['9', '17', 'a'], function (_export) {
 		}, function (_2) {
 			configurationModelInit = _2.configurationModelInit;
 			configurationModelResult = _2.configurationModelResult;
+			resetDataModel = _2.resetDataModel;
+			resetFormlyModel = _2.resetFormlyModel;
 			isTemplateOptionDefined = _2.isTemplateOptionDefined;
 			extractTemplateOptionLabel = _2.extractTemplateOptionLabel;
 			extractTemplateOptionDatepickerPopup = _2.extractTemplateOptionDatepickerPopup;
@@ -3084,8 +3103,8 @@ $__System.register('18', ['9', '17', 'a'], function (_export) {
 				}, {
 					key: 'applyConfigurationToformlyModel',
 					value: function applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel) {
-						this.resetFormlyModel(formlyModel);
-						this.resetDataModel(formlyDataModel);
+						resetFormlyModel(formlyModel);
+						resetDataModel(formlyDataModel);
 						/**
       	* manage header here line0 
       	*/
