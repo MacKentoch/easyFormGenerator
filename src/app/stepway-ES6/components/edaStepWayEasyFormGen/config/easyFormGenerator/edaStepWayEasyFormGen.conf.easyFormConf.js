@@ -1,5 +1,7 @@
+import easyFormConfig 	from '../../../../../easyFormConfig.json!json';
+
 const EASY_FORM_VERSION_NAME 	= 'easyFormGenVersion';
-const EASY_FORM_VERSION_VALUE = 'v1.1.0';
+let 	EASY_FORM_VERSION_VALUE = easyFormConfig.stepway.version;
 const ACTIVE_MODAL_ANIMATION 	= false;
    
 function easyFromConfig(easyFormSteWayConfigProvider){

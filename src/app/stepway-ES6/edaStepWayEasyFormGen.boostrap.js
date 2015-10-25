@@ -2,7 +2,7 @@
 
 import mainModule from './edaStepWayEasyFormGen.main';
 
-angular.element(document).ready(function() {
+angular.element(document).ready(() => {
   angular.bootstrap(document, [mainModule.name], { strictDi: true });
 });
 
