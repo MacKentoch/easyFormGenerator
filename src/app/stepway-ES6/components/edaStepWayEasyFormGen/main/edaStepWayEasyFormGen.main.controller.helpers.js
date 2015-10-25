@@ -3,7 +3,7 @@ const DEBUG_MODEL = {
 	showDebug : false,
 	configurationModelNumberofLines : 1        
 };
-const initDebugModel = () => DEBUG_MODEL;
+const initDebugModel = () => angular.copy(DEBUG_MODEL);
 
 
 
@@ -19,7 +19,7 @@ const DEFAULT_TAB_MODEL = {
 };
 
 const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
-	let _tabModel = DEFAULT_TAB_MODEL;
+	let _tabModel = angular.copy(DEFAULT_TAB_MODEL);
 	angular.extend(_tabModel.previewTab, {
 		tabVisible 		: isPreviewPanelVisible,
 		modelsVisible : arePreviewModelsVisible		
@@ -29,12 +29,12 @@ const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
 
 
 const COLUMN_TEMPLATE =  {
-	numColumn: -1,
-	exist:true, 
-	control: {
-		type:'none',
-		key: 'none',
-		subtype: 'none',
+	numColumn		: -1,
+	exist				:true, 
+	control			: {
+		type		:'none',
+		key			: 'none',
+		subtype	: 'none',
 		// templateOptions: {
 		//                     label: 'none',
 		//                     placeholder: 'none',
@@ -43,7 +43,7 @@ const COLUMN_TEMPLATE =  {
 		//                   }
 	}
 }; 
-const initColumnTemplate = () => COLUMN_TEMPLATE;
+const initColumnTemplate = () => angular.copy(COLUMN_TEMPLATE);
 
 
 const LINE_TEMPLATE = {
@@ -66,7 +66,7 @@ const LINE_TEMPLATE = {
 			}
 		]
 };
-const initLineTemplate = () => LINE_TEMPLATE;
+const initLineTemplate = () => angular.copy(LINE_TEMPLATE);
 
 
 

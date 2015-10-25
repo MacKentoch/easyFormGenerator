@@ -54,7 +54,7 @@ class $modalProxy{
 	
 
 	bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
-						
+								
 		let extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
 		configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 		= extractedProps.selectedControl;
 		configurationObj.lines[indexLine].columns[numcolumn].control.type 							= extractedProps.formlyType;

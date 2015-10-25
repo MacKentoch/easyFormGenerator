@@ -51,7 +51,7 @@ class edaStepWayEasyFormGenController {
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
 		this.debug                    = initDebugModel();
 		this.tab                      = initTabModel(this.easyFormSteWayConfig.isPreviewPanelVisible(), this.easyFormSteWayConfig.arePreviewModelsVisible());
-		this.configuration            = {};//configuration model (contains array of lines which contains array of columns)    											
+		this.configuration            = {}; //configuration model (contains array of lines which contains array of columns)    											
 		this.numberOfColumns          = 1;
 		this.MaxNumberOfColumns       = 3;
 		this.MinNumberOfColumns       = 1;		
@@ -88,9 +88,7 @@ class edaStepWayEasyFormGenController {
 	}
 	
 	setActiveLineNumber(lineNumber) {
-		if (lineNumber <= this.countConfigurationModelLines()) {
-			this.configuration.activeLine = lineNumber;
-		}		
+		if (lineNumber <= this.countConfigurationModelLines()) this.configuration.activeLine = lineNumber;	
 	}
 	
 	upThisLine(indexLine) {
@@ -134,9 +132,7 @@ class edaStepWayEasyFormGenController {
 		if (index > -1) {
 			if (this.configuration.lines.length > 1) {
 					//manage selected aciveLine
-					if (this.configuration.activeLine === index + 1) {
-						this.configuration.activeLine = 1;
-					}
+					if (this.configuration.activeLine === index + 1) this.configuration.activeLine = 1;
 					this.configuration.lines.splice(index, 1);
 			}else{
 				this.$timeout(function(){
@@ -156,23 +152,24 @@ class edaStepWayEasyFormGenController {
 	
 	
 	increaseNumberOfColumns() {
+		let lineIndex = this.configuration.activeLine -1;		
 		if (this
 					.configuration
-					.lines[this.configuration.activeLine -1]
+					.lines[lineIndex]
 					.columns.length < this.MaxNumberOfColumns) {
 	
 			var newNumberOfColumns = this
 																	.configuration
-																	.lines[this.configuration.activeLine -1]
+																	.lines[lineIndex]
 																	.columns
-																	.push(initColumnTemplate());
+																	.push(angular.copy(initColumnTemplate()));
 			this
 					.configuration
-					.lines[this.configuration.activeLine -1]
+					.lines[lineIndex]
 					.columns[newNumberOfColumns - 1]
 					.numColumn = newNumberOfColumns; 
 			}
-				//re-render formfield 
+			//re-render formfield 
 			this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model); 
 			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 	}
@@ -248,10 +245,10 @@ class edaStepWayEasyFormGenController {
 				nyaSelect :  () => this.$modalProxy.getNyASelectFromSelectedLineColumn(this.nyaSelect, this.configuration,indexLine, numcolumn)
 			}			
 		});
-		
+
 		let modalInstance = this.$modal.open(editControlModal);
 		modalInstance.result.then(
-			(modalAddCtrlModel) => {
+			(modalAddCtrlModel) => {				
 				this.$modalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
 				this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
 				this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);

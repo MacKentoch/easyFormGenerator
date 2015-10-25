@@ -38,6 +38,7 @@ class editControlModalController {
 		this.demodt.formats 						= ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		this.nyaSelect.selectedControl  = this.nyaSelect.temporyConfig.selectedControl;
 		this.nyaSelectFiltered 					= {};
+		this.modelNyaSelect							= {};
       
 		//init today date
 		this.today();
@@ -57,6 +58,8 @@ class editControlModalController {
 			if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioFromNYA();
 		}
 		this.initNyaSelectFiltered();
+		
+		console.dir(this.nyaSelect);
 	}
 	
 	initNyaSelectFiltered(){
@@ -353,7 +356,7 @@ class editControlModalController {
 		if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectToNya();
 		if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioToNya(); 
 		//save config to control
-		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);
+		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);		
 		//return current model to parent controller :
 		this.$modalInstance.close(this.nyaSelect);
 	}	
