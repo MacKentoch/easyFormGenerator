@@ -15,7 +15,7 @@ class editControlModalController {
 		this.nyaSelect 						= nyaSelect;
 		this.toaster 							= toaster;
 		this.selectOptionManage 	= selectOptionManage;
-		this.$modalProxy = $modalProxy;
+		this.$modalProxy 					= $modalProxy;
 		
 		this.init();
 		
@@ -37,6 +37,7 @@ class editControlModalController {
 		this.dateOptions    						= this.dateOptionsInit(); 
 		this.demodt.formats 						= ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		this.nyaSelect.selectedControl  = this.nyaSelect.temporyConfig.selectedControl;
+		this.nyaSelectFiltered 					= {};
       
 		//init today date
 		this.today();
@@ -51,11 +52,21 @@ class editControlModalController {
 			for (let i = this.nyaSelect.controls.length - 1; i >= 0; i--) {
 				if (this.nyaSelect.controls[i].id === this.nyaSelect.selectedControl) this.modelNyaSelect = this.nyaSelect.controls[i];
 			}
-			if (this.nyaSelect.selectedControl === 'BasicSelect') this.bindBasicSelectFromNYA();
+			if (this.nyaSelect.selectedControl === 'BasicSelect') 	this.bindBasicSelectFromNYA();
 			if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectFromNYA();
-			if (this.nyaSelect.selectedControl === 'Radio') this.bindRadioFromNYA();
+			if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioFromNYA();
 		}
+		this.initNyaSelectFiltered();
 	}
+	
+	initNyaSelectFiltered(){
+		let listCtrl = [].concat(this.$modalProxy.getFilteredNyaSelectObject());
+		angular.extend(this.nyaSelectFiltered,{
+			'controls'        : listCtrl,
+			'selectedControl' : this.nyaSelect.selectedControl,
+			'temporyConfig'   : this.nyaSelect.temporyConfig 
+		}); 
+	}	
 	
 	bindBasicSelectFromNYA(){
 		if (this.nyaSelect.temporyConfig.formlyOptions.length > 0) {
@@ -220,7 +231,7 @@ class editControlModalController {
 	
 	addNewGroupToGroupedSelect(){
 		if (this.newGroupGroupedSelect.saisie !== '') {
-			for (var i = this.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
+			for (let i = this.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
 				if (this.GroupedSelectGroups.list[i] === this.newGroupGroupedSelect.saisie) {
 					this.toaster.pop({
 						type		: 'warning',
@@ -247,7 +258,7 @@ class editControlModalController {
 
 
 	addNewOptionGroupedSelect() {
-		var result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, $scope.newOptionGroupedSelect.saisie, '');
+		let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, $scope.newOptionGroupedSelect.saisie, '');
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -265,7 +276,7 @@ class editControlModalController {
 	
 	
 	removeGroupedSelectRow(index) {
-		var result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
+		let result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -279,7 +290,7 @@ class editControlModalController {
 	
 
 	upThisGroupedSelectRow(index){
-		var result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
+		let result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -292,7 +303,7 @@ class editControlModalController {
 	}
 	
 	downThisGroupedSelectRow(index){
-		var result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
+		let result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -330,29 +341,17 @@ class editControlModalController {
 	selectThisControl(controlName) {
 		this.nyaSelect.selectedControl = 'none';
 		this.resetTemporyConfig();
-	
-		for (var i = this.nyaSelect.controls.length - 1; i >= 0; i--) {
-			if (this.nyaSelect.controls[i].id === controlName) {
-				this.nyaSelect.selectedControl = this.nyaSelect.controls[i].id;         
-			}
+		for (let i = this.nyaSelect.controls.length - 1; i >= 0; i--) {
+			if (this.nyaSelect.controls[i].id === controlName) this.nyaSelect.selectedControl = this.nyaSelect.controls[i].id;
 		}
-	
-		if (this.nyaSelect.selectedControl === 'Date') {
-			this.initDatePicker();
-		}
+		if (this.nyaSelect.selectedControl === 'Date') this.initDatePicker();
 	}	
 	
 	
 	ok() {
-		if (this.nyaSelect.selectedControl === 'BasicSelect') {
-			this.bindBasicSelectToNya();
-		}
-		if (this.nyaSelect.selectedControl === 'GroupedSelect') {
-			this.bindGroupedSelectToNya();
-		}  
-		if (this.nyaSelect.selectedControl === 'Radio') {
-			this.bindRadioToNya();
-		}  
+		if (this.nyaSelect.selectedControl === 'BasicSelect') 	this.bindBasicSelectToNya();
+		if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectToNya();
+		if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioToNya(); 
 		//save config to control
 		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);
 		//return current model to parent controller :
@@ -411,15 +410,18 @@ class editControlModalController {
 		this.nyaSelect.temporyConfig.datepickerPopup = this.demodt.formats[0];  
 	} 	
 	
+	
 	resetTemporyConfig(){
-		this.nyaSelect.temporyConfig = {
+		this.nyaSelectFiltered.temporyConfig = {
 			formlyLabel				: '', 
 			formlyRequired		: false, 
 			formlyPlaceholder	: '',
 			formlyDesciption	: '',
 			formlyOptions			: []
 		};   
-	}		
+	}	
+	
+			
 	
 }
 

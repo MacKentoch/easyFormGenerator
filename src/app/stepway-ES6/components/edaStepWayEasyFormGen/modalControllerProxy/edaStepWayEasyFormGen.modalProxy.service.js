@@ -10,8 +10,8 @@ const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
 class $modalProxy{
 	
-	constructor() {
-		
+	constructor(easyFormSteWayConfig) {
+		this.easyFormSteWayConfig	=	easyFormSteWayConfig;
 	}
 	
 	initNyaSelect(nyaSelectObj){
@@ -229,6 +229,6 @@ class $modalProxy{
 	
 }
 
-$modalProxy.$inject= [];
+$modalProxy.$inject= ['easyFormSteWayConfig'];
 export default $modalProxy;
 export {CONTROLLER_MODAL_PROXY_SERVICE};
