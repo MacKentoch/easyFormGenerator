@@ -223,8 +223,10 @@ class $modalProxy{
 	}	
 	
 	getFilteredNyaSelectObject(){
-		let newNyaSelectObj = resetNyaSelect();
-		return angular.copy(this.filterDisabledControl(angular.copy(newNyaSelectObj)));	
+		let newNyaSelectObj = {};
+		resetNyaSelect(newNyaSelectObj);
+		return angular.copy(this.filterDisabledControl(angular.copy(newNyaSelectObj)));
+		//return angular.copy(angular.copy(newNyaSelectObj));	
 	}
 	
 }
