@@ -1,6 +1,6 @@
 /** 
   *easyFormGenerator — step way — version 
-  *Version 1.0.31 
+  *Version 1.0.33 
   *Author : Erwan Datin (MacKentoch) 
   *Link: https://github.com/MacKentoch/easyFormGenerator 
   *License : MIT (2015) 
@@ -38,7 +38,7 @@
       'ngwfApp.filters',
       'ngwfApp.directives'
     ])
-    .value('easyFormGenVersion', 'v1.0.32')
+    .value('easyFormGenVersion', 'v1.0.33')
     .config(formlyConfigFct)
     .config(easyFromConfigFct);
 
@@ -883,6 +883,7 @@ $translateProvider.translations("tr", {
 				var controls = [
 					{name: 'empty', 					enabled: true},
 					{name: 'Header', 					enabled: true},
+					{name: 'Subtitle', 				enabled: true},
 					{name: 'TextInput', 			enabled: true},
 					{name: 'Password', 				enabled: true},
 					{name: 'Date', 						enabled: true},

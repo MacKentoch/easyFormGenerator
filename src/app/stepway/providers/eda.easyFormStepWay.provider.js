@@ -64,6 +64,7 @@
 				var controls = [
 					{name: 'empty', 					enabled: true},
 					{name: 'Header', 					enabled: true},
+					{name: 'Subtitle', 				enabled: true},
 					{name: 'TextInput', 			enabled: true},
 					{name: 'Password', 				enabled: true},
 					{name: 'Date', 						enabled: true},
