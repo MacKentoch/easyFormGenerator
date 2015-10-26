@@ -17,7 +17,7 @@
  * - $ gulp dist 
  * 
  * 4) stepway ES6 
- * - $ gulp build:stepWay:ES6
+ * - $ gulp build:stepWay:ES6 (or gulp build:stepWay:ES6:min for min version) 
  * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
@@ -512,6 +512,10 @@ gulp.task('build:stepWay:ES6', [
 	'stepWayES6:sfx'
 ]);
 
+gulp.task('build:stepWay:ES6:min', [
+	'build:ES6:jshint',
+	'stepWayES6:sfx:min'
+]);
 
 
 /**
