@@ -7,8 +7,9 @@ import {
 	returnAttributeConfigurationLinesIfNotEmpty
 	}																		from './eda.easyFormViewer.main.directive.helpers';
 	
-import easyFormViewerController, 
-{easyFormViewerControllerAs} 					from './eda.easyFormViewer.main.controller';
+import easyFormViewerController, {
+	easyFormViewerControllerAs
+} 																		from './eda.easyFormViewer.main.controller';
 
 const EASY_FORM_VIEWER_DIRECTIVE_NAME = 'edaEasyFormViewer';
 
