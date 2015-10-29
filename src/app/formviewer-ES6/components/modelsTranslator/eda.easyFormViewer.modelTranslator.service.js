@@ -1,7 +1,11 @@
 /* global angular */
 import {
 	resetNyaSelect,
-	getConfigurationModelInit
+	getConfigurationModelInit,
+	getEmptyConfigModelResult,
+	resetDataModel,
+	getErrorObject,
+	getMessageObject
 }		from './eda.easyFormViewer.modelTranslator.service.helpers';
 
 const MODEL_TRANSLATOR_SERVICE = '$modelsTranslator';
@@ -106,6 +110,20 @@ class $modelsTranslator{
 	initConfigurationEditFromScratch(configurationModel){
 		configurationModel = angular.copy(getConfigurationModelInit());
 	}	
+	
+	
+	bindConfigurationLines(configurationModel, lines){
+		if(angular.isArray(lines)){	
+			let configurationModelResult 		= getEmptyConfigModelResult();
+			configurationModelResult.lines	= [].concat(lines);  
+			angular.copy(configurationModelResult, configurationModel);                                         
+			return getMessageObject(`configuration model is bound`,`lines are bound to configuration model.`);
+		}else{
+			return getErrorObject(`lines is not an array`, `Checks lines type, it is not an array.`);
+		}
+	}	
+	
+	
 	
 		
 	

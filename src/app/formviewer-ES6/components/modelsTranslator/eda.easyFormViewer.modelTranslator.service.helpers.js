@@ -405,9 +405,68 @@ const getConfigurationModelInit = () => {
 	return configurationModelInit;                         
 }
 
+const getEmptyConfigModelResult = () => {
+	let configurationModelResult = {
+		activeLine: 1,   
+		listConfigStep: [
+											'init',
+											'first',
+											'second',
+											'third'
+										],
+		stepIndicators:  [
+												true,
+												false,
+												false,
+												false
+											], 
+		configStepCounter: 0, 
+		submitButtonText : 'submit',
+		cancelButtonText: 'cancel',
+		lines: []
+	};
+	return angular.copy(configurationModelResult);	
+}
+
+
+
+const resetDataModel = (obj) => {
+	let emptyDataModel = {};
+	angular.copy(emptyDataModel, obj);
+	return true;
+}
+
+
+const getErrorObject = (errorTitle, errorMessage) => {
+	let messageObj = {
+		noError : false,
+		title		: '',
+		Message	: ''  
+	};
+	messageObj.noError	= false;
+	messageObj.title 		= errorTitle;
+	messageObj.Message 	= errorMessage;
+	return messageObj;
+}
+
+const getMessageObject = (messageTitle, messageBody) => {
+	let messageObj = {
+		noError 	: false,
+		title			: '',
+		Message		: ''  
+	};
+	messageObj.noError	= true;
+	messageObj.title 		= messageTitle;
+	messageObj.Message 	= messageBody;
+	return messageObj;
+} 
 
 
 export {
 	resetNyaSelect,
-	getConfigurationModelInit
+	getConfigurationModelInit,
+	getEmptyConfigModelResult,
+	resetDataModel,
+	getErrorObject,
+	getMessageObject
 };
