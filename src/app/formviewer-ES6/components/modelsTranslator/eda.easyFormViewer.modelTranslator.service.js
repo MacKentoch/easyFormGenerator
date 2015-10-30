@@ -5,7 +5,8 @@ import {
 	getEmptyConfigModelResult,
 	resetDataModel,
 	getErrorObject,
-	getMessageObject
+	getMessageObject,
+	resetFormlyModel
 }		from './eda.easyFormViewer.modelTranslator.service.helpers';
 
 const MODEL_TRANSLATOR_SERVICE = '$modelsTranslator';
@@ -123,7 +124,32 @@ class $modelsTranslator{
 		}
 	}	
 	
-	
+
+	applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel){
+		resetFormlyModel(formlyModel);
+		resetDataModel(formlyDataModel);
+		/**
+			* manage header here line0 
+			*/
+		var lineNumber = configurationModel.lines.length;
+		for (let i = 0; i < lineNumber; i++) {
+				//1 column line control
+				if (configurationModel.lines[i].columns.length === 1) {
+					//test if template control = header
+					if (configurationModel.lines[i].columns[0].control.type === 'header') {
+						addOneColumnHeader(formlyModel, configurationModel, i);
+					}else{
+						addOneColumnControl(formlyModel, configurationModel, i);  
+					}          
+				}
+				if (configurationModel.lines[i].columns.length === 2) {
+					addTwoColumnControl(formlyModel, configurationModel,i);
+				}
+				if (configurationModel.lines[i].columns.length === 3) {
+					addThreeColumnControl(formlyModel, configurationModel,i);
+				}
+		}
+	}	
 	
 		
 	

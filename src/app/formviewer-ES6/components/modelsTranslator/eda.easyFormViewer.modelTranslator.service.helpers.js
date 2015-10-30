@@ -461,6 +461,10 @@ const getMessageObject = (messageTitle, messageBody) => {
 	return messageObj;
 } 
 
+const resetFormlyModel = (formlyModel) => {
+	var resetformly = [];
+	angular.copy(resetformly, formlyModel);
+}
 
 export {
 	resetNyaSelect,
@@ -468,5 +472,6 @@ export {
 	getEmptyConfigModelResult,
 	resetDataModel,
 	getErrorObject,
-	getMessageObject
+	getMessageObject,
+	resetFormlyModel
 };
