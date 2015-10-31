@@ -466,6 +466,49 @@ const resetFormlyModel = (formlyModel) => {
 	angular.copy(resetformly, formlyModel);
 }
 
+const extractTemplateOptionDescription = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.description !== 'undefined'? obj.templateOptions.description: '') : '';
+
+const extractTemplateOptionPlaceholder = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.placeholder !== 'undefined'? obj.templateOptions.placeholder: '') : '';
+
+const extractTemplateOptionType = (obj) => typeof obj.subtype !== 'undefined'? obj.subtype: '';
+
+const isTemplateOptionDefined = (obj) => typeof obj.templateOptions !== 'undefined' ? true : false;
+
+const extractTemplateOptionLabel = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
+
+const extractTemplateOptionDatepickerPopup = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
+
+const extractFormlyExpressionProperties = (obj) => typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
+
+const extractFormlyValidators = (obj) => typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators): {};
+
+const extractFormlyValidation = (obj) => typeof obj.formlyValidation !== 'undefined' ?  angular.copy(obj.formlyValidation) : {};
+
+const extractTemplateOptionRequired = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.required !== 'undefined'? obj.templateOptions.required: '') : '';
+
+const extractTemplateOptionOptions = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.options !== 'undefined'? obj.templateOptions.options: '') : '';
+
+
+const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
+	/**
+		* text header is stored in "description" in templateOtion model 
+		*/
+	let headerTemplateCol0 = `<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control)}<h2></div></div><hr/>`;
+	formlyModel.push(
+		{
+			template: typeof configurationModel
+													.lines[lineIndex]
+													.columns[0]
+													.control
+													.type !== 'undefined' ? 
+														(configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? 
+															headerTemplateCol0 
+															: '<div></div>') 
+														: '<div></div>'
+		}
+	);
+};
+
 export {
 	resetNyaSelect,
 	getConfigurationModelInit,
