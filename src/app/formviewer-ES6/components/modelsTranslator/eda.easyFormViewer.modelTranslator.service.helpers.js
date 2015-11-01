@@ -488,6 +488,8 @@ const extractTemplateOptionRequired = (obj) => typeof obj.templateOptions !== 'u
 
 const extractTemplateOptionOptions = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.options !== 'undefined'? obj.templateOptions.options: '') : '';
 
+const addDatepickerPopupProperty = (fieldToPush, configurationModel,lineIndex) => fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+
 
 const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 	/**
@@ -516,5 +518,6 @@ export {
 	resetDataModel,
 	getErrorObject,
 	getMessageObject,
-	resetFormlyModel
+	resetFormlyModel,
+	addOneColumnHeader
 };
