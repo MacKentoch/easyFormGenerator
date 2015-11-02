@@ -511,6 +511,32 @@ const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 	);
 };
 
+
+const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
+	let fieldToPush = {
+		className	: 'col-xs-12',
+		type	: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+		key		: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+		templateOptions: {
+			type                  : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+			label                 : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+			required              : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+			placeholder           : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+			description           : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+			options               : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+		},
+		expressionProperties  : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+		validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+		validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+	};
+	//////////////////////////////////////////////                  
+	//datepicker additionnal particular property  
+	//////////////////////////////////////////////                  
+	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);     
+	
+	formlyModel.push(fieldToPush);
+};
+
 export {
 	resetNyaSelect,
 	getConfigurationModelInit,
@@ -519,5 +545,6 @@ export {
 	getErrorObject,
 	getMessageObject,
 	resetFormlyModel,
-	addOneColumnHeader
+	addOneColumnHeader,
+	addOneColumnControl
 };
