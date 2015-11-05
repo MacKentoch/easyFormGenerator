@@ -6,7 +6,11 @@ import {
 	resetDataModel,
 	getErrorObject,
 	getMessageObject,
-	resetFormlyModel
+	resetFormlyModel,
+	addOneColumnHeader,
+	addOneColumnControl,
+	addTwoColumnControl,
+	addThreeColumnControl
 }		from './eda.easyFormViewer.modelTranslator.service.helpers';
 
 const MODEL_TRANSLATOR_SERVICE = '$modelsTranslator';

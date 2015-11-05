@@ -291,6 +291,24 @@ module.exports = {
 				stepway : 'EasyFormGenerator-StepWay-DEMO.html',
 				dragdropway : ''
 			}
+		},
+		
+		jspm : {
+			stepWay : {
+				src 			: 'src/app/stepway-ES6/edaStepWayEasyFormGen.main',
+				bundle 		: './public/js/eda.stepway-ES6.js',
+				bundleMin	: './public/js/eda.stepway-ES6.min.js'
+			},
+			formViewer : {
+				src 			: 'src/app/formviewer-ES6/eda.easyFormViewer.main',
+				bundle 		: './public/js/eda.easyFormViewer-ES6.js',
+				bundleMin	: './public/js/eda.easyFormViewer-ES6.min.js'
+			},
+			 	dragDropWay : {
+				src 			: '',
+				bundle 		:	'',
+				bundleMin	: ''
+			}			
 		}	
 	
 }

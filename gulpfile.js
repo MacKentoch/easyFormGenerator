@@ -19,6 +19,9 @@
  * 4) stepway ES6 
  * - $ gulp build:stepWay:ES6 (or gulp build:stepWay:ES6:min for min version) 
  * 
+ * 5) formViewer ES6 
+ * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) *
+ *  
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
@@ -495,15 +498,18 @@ gulp.task('build:ES6:jshint', function(){
     .pipe(jshint.reporter('default'))
 });
 
+//stepWay
 gulp.task('stepWayES6:sfx:min', function (cb) {
   exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.min.js --minify', function (err, stdout, stderr) {
       cb(err);
+			console.log(stdout);
   });
 });
 
 gulp.task('stepWayES6:sfx', function (cb) {
   exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.js', function (err, stdout, stderr) {
       cb(err);
+			console.log(stdout);
   });
 });
 
@@ -515,6 +521,46 @@ gulp.task('build:stepWay:ES6', [
 gulp.task('build:stepWay:ES6:min', [
 	'build:ES6:jshint',
 	'stepWayES6:sfx:min'
+]);
+
+
+
+//formViewer
+gulp.task('formViewer:ES6:sfx', function (cb) {
+  exec([
+		'jspm bundle-sfx ', 
+		gulpConfig.jspm.formViewer.src,
+		' ',
+		gulpConfig.jspm.formViewer.bundle
+	].join(' '), function (err, stdout, stderr) {
+      cb(err);
+			console.log(stdout);
+  });
+});
+
+
+gulp.task('formViewer:ES6:sfx:min', function (cb) {
+  exec([
+		'jspm bundle-sfx ', 
+		gulpConfig.jspm.formViewer.src,
+		' ',
+		gulpConfig.jspm.formViewer.bundleMin,
+		' ',
+		'--minify'
+	].join(' '), function (err, stdout, stderr) {
+      cb(err);
+			console.log(stdout);
+  });
+});
+
+gulp.task('build:formViewer:ES6', [
+	'build:ES6:jshint',
+	'formViewer:ES6:sfx'
+]);
+
+gulp.task('build:formViewer:ES6:min', [
+	'build:ES6:jshint',
+	'formViewer:ES6:sfx:min'
 ]);
 
 
