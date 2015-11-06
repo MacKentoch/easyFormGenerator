@@ -20,8 +20,11 @@
  * - $ gulp build:stepWay:ES6 (or gulp build:stepWay:ES6:min for min version) 
  * 
  * 5) formViewer ES6 
- * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) *
+ * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) 
  *  
+ * 6)
+ * - $ gulp build:dragdropway:ES6 (or gulp build:dragdropway:ES6:min for min version)
+ * 
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
@@ -525,6 +528,45 @@ gulp.task('build:stepWay:ES6:min', [
 
 
 
+//drag and drop way
+gulp.task('dragdropway:ES6:sfx', function (cb) {
+  exec([
+		'jspm bundle-sfx ', 
+		gulpConfig.jspm.dragDropWay.src,
+		' ',
+		gulpConfig.jspm.dragDropWay.bundle
+	].join(' '), function (err, stdout, stderr) {
+      cb(err);
+			console.log(stdout);
+  });
+});
+
+
+gulp.task('dragdropway:ES6:sfx:min', function (cb) {
+  exec([
+		'jspm bundle-sfx ', 
+		gulpConfig.jspm.dragDropWay.src,
+		' ',
+		gulpConfig.jspm.dragDropWay.bundleMin,
+		' ',
+		'--minify'
+	].join(' '), function (err, stdout, stderr) {
+      cb(err);
+			console.log(stdout);
+  });
+});
+
+gulp.task('build:dragdropway:ES6', [
+	'build:ES6:jshint',
+	'dragdropway:ES6:sfx'
+]);
+
+gulp.task('build:dragdropway:ES6:min', [
+	'build:ES6:jshint',
+	'dragdropway:ES6:sfx:min'
+]);
+
+
 //formViewer
 gulp.task('formViewer:ES6:sfx', function (cb) {
   exec([
@@ -562,7 +604,6 @@ gulp.task('build:formViewer:ES6:min', [
 	'build:ES6:jshint',
 	'formViewer:ES6:sfx:min'
 ]);
-
 
 /**
  * -------------------------------
