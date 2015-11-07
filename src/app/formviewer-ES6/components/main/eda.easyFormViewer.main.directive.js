@@ -1,5 +1,5 @@
 /* global angular */
-import easyFormViewerTemplate 				from './eda.easyFormViewer.main.template.html';
+import easyFormViewerTemplate 				from './eda.easyFormViewer.main.template.html!text';
 
 import {
 	emptyEdaFieldsModel,
@@ -7,8 +7,9 @@ import {
 	returnAttributeConfigurationLinesIfNotEmpty
 	}																		from './eda.easyFormViewer.main.directive.helpers';
 	
-import easyFormViewerController, {
-	easyFormViewerControllerAs
+import edaEasyFormViewerController, {
+	EASY_FORM_VIEWER_CONTROLLER,
+	EASY_FORM_VIEWER_CONTROLLERAS
 } 																		from './eda.easyFormViewer.main.controller';
 
 const EASY_FORM_VIEWER_DIRECTIVE_NAME = 'edaEasyFormViewer';
@@ -25,8 +26,8 @@ function edaFormViewerDirective(modelsTranslator){
 				edaEasyFormViewerCancelFormEvent							: '&?'
 			},
 			replace 			: false,
-			controller		: easyFormViewerController,
-			controllerAs 	: easyFormViewerControllerAs,
+			controller		: EASY_FORM_VIEWER_CONTROLLER,
+			controllerAs 	: EASY_FORM_VIEWER_CONTROLLERAS,
 			templateUrl 	: easyFormViewerTemplate,
 			link 					: linkFct
 		};
