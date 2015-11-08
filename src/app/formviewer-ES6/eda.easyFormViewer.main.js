@@ -1,7 +1,7 @@
 /* global angular */
 import './eda.easyFormViewer.vendors.adapaters';
 import edaFormViewerMainModule 						from './components/main/eda.easyFormViewer.main.module';
-import edaFormViewerCoreModule						from './components/core/eda.eda.easyFormViewer.core';
+import edaFormViewerCoreModule						from './components/core/eda.easyFormViewer.core.module';
 import edaFormViewerModelTranslatorModule	from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module'; 
 
 

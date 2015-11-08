@@ -671,7 +671,7 @@ $__System.registerDynamic("9", [], true, function(require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic("d", [], false, function(__require, __exports, __module) {
+$__System.registerDynamic("e", [], false, function(__require, __exports, __module) {
   var _retrieveGlobal = $__System.get("@@global-helpers").prepareGlobal(__module.id, null, null);
   (function() {})();
   return _retrieveGlobal();
@@ -978,19 +978,36 @@ $__System.register('c', ['b'], function (_export) {
 		}
 	};
 });
-$__System.register('1', ['2', 'c', 'd'], function (_export) {
+$__System.register('d', [], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var edaFormViewerMainModule, edaFormViewerModelTranslatorModule, DEP_TO_INJECT_IN_MAIN, MAIN_MODULE_NAME, mainModule;
+	var CORE_MODULES, FORMVIEWER_CORE_MODULE_NAME;
+	return {
+		setters: [],
+		execute: function () {
+			CORE_MODULES = ['textAngular', 'formly', 'ngAnimate', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select'];
+			FORMVIEWER_CORE_MODULE_NAME = 'edaEasyFormViewerCoreModule';
+
+			_export('default', angular.module('edaEasyFormViewerCoreModule.core', CORE_MODULES));
+		}
+	};
+});
+$__System.register('1', ['2', 'c', 'd', 'e'], function (_export) {
+	/* global angular */
+	'use strict';
+
+	var edaFormViewerMainModule, edaFormViewerCoreModule, edaFormViewerModelTranslatorModule, DEP_TO_INJECT_IN_MAIN, MAIN_MODULE_NAME, mainModule;
 	return {
 		setters: [function (_) {}, function (_c) {
 			edaFormViewerMainModule = _c['default'];
 		}, function (_d) {
-			edaFormViewerModelTranslatorModule = _d['default'];
+			edaFormViewerCoreModule = _d['default'];
+		}, function (_e) {
+			edaFormViewerModelTranslatorModule = _e['default'];
 		}],
 		execute: function () {
-			DEP_TO_INJECT_IN_MAIN = [edaFormViewerMainModule.name, edaFormViewerModelTranslatorModule.name];
+			DEP_TO_INJECT_IN_MAIN = [edaFormViewerMainModule.name, edaFormViewerCoreModule.name, edaFormViewerModelTranslatorModule.name];
 			MAIN_MODULE_NAME = 'eda.easyFormViewer';
 			mainModule = angular.module(MAIN_MODULE_NAME, DEP_TO_INJECT_IN_MAIN);
 
