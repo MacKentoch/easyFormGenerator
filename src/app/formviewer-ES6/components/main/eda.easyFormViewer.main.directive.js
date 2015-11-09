@@ -14,7 +14,7 @@ import edaEasyFormViewerController, {
 
 const EASY_FORM_VIEWER_DIRECTIVE_NAME = 'edaEasyFormViewer';
 
-function edaFormViewerDirective(modelsTranslator){
+function edaFormViewerDirective($modelsTranslator){
 		var directive = {
 			restrict 	: 'E',
 			scope 		: {
@@ -28,7 +28,7 @@ function edaFormViewerDirective(modelsTranslator){
 			replace 			: false,
 			controller		: EASY_FORM_VIEWER_CONTROLLER,
 			controllerAs 	: EASY_FORM_VIEWER_CONTROLLERAS,
-			templateUrl 	: easyFormViewerTemplate,
+			template 			: easyFormViewerTemplate,
 			link 					: linkFct
 		};
 	return directive;
@@ -135,7 +135,7 @@ function edaFormViewerDirective(modelsTranslator){
 				
 				scope.configurationLoaded = {};
 				
-				modelsTranslator.bindConfigurationLines(scope.configurationLoaded,configlines);
+				$modelsTranslator.bindConfigurationLines(scope.configurationLoaded,configlines);
 				/**
 					* rebind special control properties :
 					* 
@@ -143,15 +143,15 @@ function edaFormViewerDirective(modelsTranslator){
 					* Validators
 					* Validation
 					*/
-				modelsTranslator.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
-				modelsTranslator.refreshControlFormlyValidators(scope.configurationLoaded);
-				modelsTranslator.refreshControlFormlyValidation(scope.configurationLoaded);
+				$modelsTranslator.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+				$modelsTranslator.refreshControlFormlyValidators(scope.configurationLoaded);
+				$modelsTranslator.refreshControlFormlyValidation(scope.configurationLoaded);
 				
 				//apply configuration model
 				scope.configuration = angular.copy(scope.configurationLoaded);
 				
 				//apply formly model
-				modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);          
+				$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);          
 				
 				return  formlyFieldsModel;
 			}  
@@ -167,7 +167,7 @@ function edaFormViewerDirective(modelsTranslator){
 }
 
 edaFormViewerDirective.$inject = [
-	'modelsTranslator'
+	'$modelsTranslator'
 ];
 export default edaFormViewerDirective;
 export {EASY_FORM_VIEWER_DIRECTIVE_NAME};

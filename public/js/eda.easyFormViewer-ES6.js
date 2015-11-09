@@ -446,126 +446,6 @@
 
 (['1'], [], function($__System) {
 
-(function(__global) {
-  var loader = $__System;
-  var hasOwnProperty = Object.prototype.hasOwnProperty;
-  var indexOf = Array.prototype.indexOf || function(item) {
-    for (var i = 0, l = this.length; i < l; i++)
-      if (this[i] === item)
-        return i;
-    return -1;
-  }
-
-  function readMemberExpression(p, value) {
-    var pParts = p.split('.');
-    while (pParts.length)
-      value = value[pParts.shift()];
-    return value;
-  }
-
-  // bare minimum ignores for IE8
-  var ignoredGlobalProps = ['_g', 'sessionStorage', 'localStorage', 'clipboardData', 'frames', 'external', 'mozAnimationStartTime', 'webkitStorageInfo', 'webkitIndexedDB'];
-
-  var globalSnapshot;
-
-  function forEachGlobal(callback) {
-    if (Object.keys)
-      Object.keys(__global).forEach(callback);
-    else
-      for (var g in __global) {
-        if (!hasOwnProperty.call(__global, g))
-          continue;
-        callback(g);
-      }
-  }
-
-  function forEachGlobalValue(callback) {
-    forEachGlobal(function(globalName) {
-      if (indexOf.call(ignoredGlobalProps, globalName) != -1)
-        return;
-      try {
-        var value = __global[globalName];
-      }
-      catch (e) {
-        ignoredGlobalProps.push(globalName);
-      }
-      callback(globalName, value);
-    });
-  }
-
-  loader.set('@@global-helpers', loader.newModule({
-    prepareGlobal: function(moduleName, exportName, globals) {
-      // disable module detection
-      var curDefine = __global.define;
-       
-      __global.define = undefined;
-      __global.exports = undefined;
-      if (__global.module && __global.module.exports)
-        __global.module = undefined;
-
-      // set globals
-      var oldGlobals;
-      if (globals) {
-        oldGlobals = {};
-        for (var g in globals) {
-          oldGlobals[g] = globals[g];
-          __global[g] = globals[g];
-        }
-      }
-
-      // store a complete copy of the global object in order to detect changes
-      if (!exportName) {
-        globalSnapshot = {};
-
-        forEachGlobalValue(function(name, value) {
-          globalSnapshot[name] = value;
-        });
-      }
-
-      // return function to retrieve global
-      return function() {
-        var globalValue;
-
-        if (exportName) {
-          globalValue = readMemberExpression(exportName, __global);
-        }
-        else {
-          var singleGlobal;
-          var multipleExports;
-          var exports = {};
-
-          forEachGlobalValue(function(name, value) {
-            if (globalSnapshot[name] === value)
-              return;
-            if (typeof value == 'undefined')
-              return;
-            exports[name] = value;
-
-            if (typeof singleGlobal != 'undefined') {
-              if (!multipleExports && singleGlobal !== value)
-                multipleExports = true;
-            }
-            else {
-              singleGlobal = value;
-            }
-          });
-          globalValue = multipleExports ? exports : singleGlobal;
-        }
-
-        // revert globals
-        if (oldGlobals) {
-          for (var g in oldGlobals)
-            __global[g] = oldGlobals[g];
-        }
-        __global.define = curDefine;
-
-        return globalValue;
-      };
-    }
-  }));
-
-})(typeof self != 'undefined' ? self : global);
-
 $__System.registerDynamic("3", [], true, function(require, exports, module) {
   ;
   var global = this,
@@ -669,12 +549,6 @@ $__System.registerDynamic("9", [], true, function(require, exports, module) {
   exports.__esModule = true;
   global.define = __define;
   return module.exports;
-});
-
-$__System.registerDynamic("e", [], false, function(__require, __exports, __module) {
-  var _retrieveGlobal = $__System.get("@@global-helpers").prepareGlobal(__module.id, null, null);
-  (function() {})();
-  return _retrieveGlobal();
 });
 
 $__System.register("2", [], function (_export) {
@@ -797,7 +671,7 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
 
 	var easyFormViewerTemplate, emptyEdaFieldsModel, returnAttributeDataModelIfNotEmpty, returnAttributeConfigurationLinesIfNotEmpty, edaEasyFormViewerController, EASY_FORM_VIEWER_CONTROLLER, EASY_FORM_VIEWER_CONTROLLERAS, EASY_FORM_VIEWER_DIRECTIVE_NAME;
 
-	function edaFormViewerDirective(modelsTranslator) {
+	function edaFormViewerDirective($modelsTranslator) {
 		var directive = {
 			restrict: 'E',
 			scope: {
@@ -811,7 +685,7 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
 			replace: false,
 			controller: EASY_FORM_VIEWER_CONTROLLER,
 			controllerAs: EASY_FORM_VIEWER_CONTROLLERAS,
-			templateUrl: easyFormViewerTemplate,
+			template: easyFormViewerTemplate,
 			link: linkFct
 		};
 		return directive;
@@ -915,7 +789,7 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
 
 					scope.configurationLoaded = {};
 
-					modelsTranslator.bindConfigurationLines(scope.configurationLoaded, configlines);
+					$modelsTranslator.bindConfigurationLines(scope.configurationLoaded, configlines);
 					/**
      	* rebind special control properties :
      	* 
@@ -923,15 +797,15 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
      	* Validators
      	* Validation
      	*/
-					modelsTranslator.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
-					modelsTranslator.refreshControlFormlyValidators(scope.configurationLoaded);
-					modelsTranslator.refreshControlFormlyValidation(scope.configurationLoaded);
+					$modelsTranslator.refreshControlFormlyExpressionProperties(scope.configurationLoaded);
+					$modelsTranslator.refreshControlFormlyValidators(scope.configurationLoaded);
+					$modelsTranslator.refreshControlFormlyValidation(scope.configurationLoaded);
 
 					//apply configuration model
 					scope.configuration = angular.copy(scope.configurationLoaded);
 
 					//apply formly model
-					modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);
+					$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);
 
 					return formlyFieldsModel;
 				}
@@ -953,7 +827,7 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
 		}],
 		execute: function () {
 			EASY_FORM_VIEWER_DIRECTIVE_NAME = 'edaEasyFormViewer';
-			edaFormViewerDirective.$inject = ['modelsTranslator'];
+			edaFormViewerDirective.$inject = ['$modelsTranslator'];
 
 			_export('default', edaFormViewerDirective);
 
@@ -961,20 +835,23 @@ $__System.register('b', ['3', '4', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('c', ['b'], function (_export) {
+$__System.register('c', ['b', 'a'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var edaFormViewerDirective, EASY_FORM_VIEWER_DIRECTIVE_NAME, FORM_VIEWER_MAIN_MODULE_NAME;
+	var edaFormViewerDirective, EASY_FORM_VIEWER_DIRECTIVE_NAME, edaEasyFormViewerController, EASY_FORM_VIEWER_CONTROLLER, FORM_VIEWER_MAIN_MODULE_NAME;
 	return {
 		setters: [function (_b) {
 			edaFormViewerDirective = _b['default'];
 			EASY_FORM_VIEWER_DIRECTIVE_NAME = _b.EASY_FORM_VIEWER_DIRECTIVE_NAME;
+		}, function (_a) {
+			edaEasyFormViewerController = _a['default'];
+			EASY_FORM_VIEWER_CONTROLLER = _a.EASY_FORM_VIEWER_CONTROLLER;
 		}],
 		execute: function () {
 			FORM_VIEWER_MAIN_MODULE_NAME = 'edaFormViewerMainModule';
 
-			_export('default', angular.module(FORM_VIEWER_MAIN_MODULE_NAME, []).directive(EASY_FORM_VIEWER_DIRECTIVE_NAME, edaFormViewerDirective));
+			_export('default', angular.module(FORM_VIEWER_MAIN_MODULE_NAME, []).directive(EASY_FORM_VIEWER_DIRECTIVE_NAME, edaFormViewerDirective).controller());
 		}
 	};
 });
@@ -993,18 +870,934 @@ $__System.register('d', [], function (_export) {
 		}
 	};
 });
-$__System.register('1', ['2', 'c', 'd', 'e'], function (_export) {
+$__System.register('e', [], function (_export) {
+	/* global angular */
+
+	'use strict';
+
+	var resetNyaSelect, getConfigurationModelInit, getEmptyConfigModelResult, resetDataModel, getErrorObject, getMessageObject, resetFormlyModel, extractTemplateOptionDescription, extractTemplateOptionPlaceholder, extractTemplateOptionType, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl;
+	return {
+		setters: [],
+		execute: function () {
+			resetNyaSelect = function resetNyaSelect(nyaSelectObj) {
+
+				var newNyaSelectObj = {
+					controls: [{
+						id: 'empty',
+						name: 'no control',
+						subtitle: 'no control',
+						group: 'Blank',
+						formlyType: 'blank',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {}
+					}, {
+						id: 'Header',
+						name: 'Header',
+						subtitle: 'no control',
+						group: 'Decoration',
+						formlyType: 'header',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {}
+					}, {
+						id: 'Subtitle',
+						name: 'Subtitle',
+						subtitle: 'no control',
+						group: 'Decoration',
+						formlyType: 'subTitle',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {}
+					}, {
+						id: 'TextInput',
+						name: 'Text input',
+						subtitle: 'Text input',
+						group: 'input',
+						formlyType: 'input',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Text input field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Password',
+						name: 'Password',
+						subtitle: 'Password',
+						group: 'input',
+						formlyType: 'input',
+						formlySubtype: 'password',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Password field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Email',
+						name: 'Email',
+						subtitle: 'Email',
+						group: 'input',
+						formlyType: 'input',
+						formlySubtype: 'email',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+
+						formlyValidators: {
+							emailShape: {
+								expression: function expression(viewValue, modelValue) {
+									var value = modelValue || viewValue;
+									return (/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value)
+									);
+								},
+								message: '$viewValue + \' is not a valid email\''
+							}
+						},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'		
+									var defaultReturnMsg = 'this Email field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									//check if validation is really dued to require validation
+									//and not another validation like emailShape validator
+									if (scope.to.required) return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Date',
+						name: 'Date',
+						subtitle: 'Date',
+						group: 'input',
+						formlyType: 'datepicker',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						datepickerPopup: 'dd-MMMM-yyyy',
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Date field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Texarea',
+						name: 'Textarea',
+						subtitle: 'Textarea',
+						group: 'Textarea',
+						formlyType: 'textarea',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Textarea field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'RichTextEditor',
+						name: 'RichTextEditor',
+						subtitle: 'RichTextEditor',
+						group: 'Textarea',
+						formlyType: 'richEditor',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this RichTextEditor field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Radio',
+						name: 'Radio',
+						subtitle: 'Radio',
+						options: [],
+						group: 'Radio',
+						formlyType: 'radio',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Password field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'Checkbox',
+						name: 'Checkbox',
+						subtitle: 'Checkbox',
+						group: 'Checkbox',
+						formlyType: 'checkbox',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Checkbox field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'BasicSelect',
+						name: 'Basic select',
+						subtitle: 'Basic select',
+						options: [],
+						group: 'Select',
+						formlyType: 'basicSelect',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Basic select field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'GroupedSelect',
+						name: 'Grouped Select',
+						subtitle: 'Grouped Select',
+						options: [],
+						group: 'Select',
+						formlyType: 'groupedSelect',
+						formlySubtype: '',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									//return a required validation message :
+									//-> '<label as name> is required '
+									//-> or if not exists or empty just 'this field is required'
+									var defaultReturnMsg = 'this Grouped Select field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+									return returnMsg;
+								}
+							}
+						}
+					}],
+					selectedControl: 'none',
+					temporyConfig: {
+						selectedControl: 'none',
+						formlyLabel: 'label',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyPlaceholder: '',
+						formlyOptions: [],
+						//expressions/validation fields
+						formlyExpressionProperties: {},
+						formlyValidators: {},
+						formlyValidation: {}
+					}
+
+				};
+
+				//reset
+				angular.copy(newNyaSelectObj, nyaSelectObj);
+				return true;
+			};
+
+			/**
+   	* equivalent to formFielManage service in easy form generator
+   	*/
+
+			getConfigurationModelInit = function getConfigurationModelInit() {
+				var configurationModelInit = {
+					activeLine: 1,
+					listConfigStep: ['init', 'first', 'second', 'third'],
+					stepIndicators: [true, false, false, false],
+					configStepCounter: 0,
+					submitButtonText: 'submit',
+					cancelButtonText: 'cancel',
+					lines: [{
+						line: 1,
+						activeColumn: 1,
+						columns: [{
+							numColumn: 1,
+							exist: true,
+							control: {
+								type: 'none',
+								key: 'none'
+							}
+						}]
+					}]
+				};
+				// templateOptions: {
+				//                     label: 'none',
+				//                     placeholder: 'none',
+				//                     required: false,
+				//                     description: 'Descriptive text'
+				//                   }
+				return configurationModelInit;
+			};
+
+			getEmptyConfigModelResult = function getEmptyConfigModelResult() {
+				var configurationModelResult = {
+					activeLine: 1,
+					listConfigStep: ['init', 'first', 'second', 'third'],
+					stepIndicators: [true, false, false, false],
+					configStepCounter: 0,
+					submitButtonText: 'submit',
+					cancelButtonText: 'cancel',
+					lines: []
+				};
+				return angular.copy(configurationModelResult);
+			};
+
+			resetDataModel = function resetDataModel(obj) {
+				var emptyDataModel = {};
+				angular.copy(emptyDataModel, obj);
+				return true;
+			};
+
+			getErrorObject = function getErrorObject(errorTitle, errorMessage) {
+				var messageObj = {
+					noError: false,
+					title: '',
+					Message: ''
+				};
+				messageObj.noError = false;
+				messageObj.title = errorTitle;
+				messageObj.Message = errorMessage;
+				return messageObj;
+			};
+
+			getMessageObject = function getMessageObject(messageTitle, messageBody) {
+				var messageObj = {
+					noError: false,
+					title: '',
+					Message: ''
+				};
+				messageObj.noError = true;
+				messageObj.title = messageTitle;
+				messageObj.Message = messageBody;
+				return messageObj;
+			};
+
+			resetFormlyModel = function resetFormlyModel(formlyModel) {
+				var resetformly = [];
+				angular.copy(resetformly, formlyModel);
+			};
+
+			extractTemplateOptionDescription = function extractTemplateOptionDescription(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.description !== 'undefined' ? obj.templateOptions.description : '' : '';
+			};
+
+			extractTemplateOptionPlaceholder = function extractTemplateOptionPlaceholder(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.placeholder !== 'undefined' ? obj.templateOptions.placeholder : '' : '';
+			};
+
+			extractTemplateOptionType = function extractTemplateOptionType(obj) {
+				return typeof obj.subtype !== 'undefined' ? obj.subtype : '';
+			};
+
+			isTemplateOptionDefined = function isTemplateOptionDefined(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? true : false;
+			};
+
+			extractTemplateOptionLabel = function extractTemplateOptionLabel(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.label !== 'undefined' ? obj.templateOptions.label : '' : '';
+			};
+
+			extractTemplateOptionDatepickerPopup = function extractTemplateOptionDatepickerPopup(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.datepickerPopup !== 'undefined' ? obj.templateOptions.datepickerPopup : '' : '';
+			};
+
+			extractFormlyExpressionProperties = function extractFormlyExpressionProperties(obj) {
+				return typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
+			};
+
+			extractFormlyValidators = function extractFormlyValidators(obj) {
+				return typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators) : {};
+			};
+
+			extractFormlyValidation = function extractFormlyValidation(obj) {
+				return typeof obj.formlyValidation !== 'undefined' ? angular.copy(obj.formlyValidation) : {};
+			};
+
+			extractTemplateOptionRequired = function extractTemplateOptionRequired(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.required !== 'undefined' ? obj.templateOptions.required : '' : '';
+			};
+
+			extractTemplateOptionOptions = function extractTemplateOptionOptions(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.options !== 'undefined' ? obj.templateOptions.options : '' : '';
+			};
+
+			addDatepickerPopupProperty = function addDatepickerPopupProperty(fieldToPush, configurationModel, lineIndex) {
+				return fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+			};
+
+			addOneColumnHeader = function addOneColumnHeader(formlyModel, configurationModel, lineIndex) {
+				/**
+    	* text header is stored in "description" in templateOtion model 
+    	*/
+				var headerTemplateCol0 = '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2></div></div><hr/>';
+				formlyModel.push({
+					template: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? headerTemplateCol0 : '<div></div>' : '<div></div>'
+				});
+			};
+
+			addOneColumnControl = function addOneColumnControl(formlyModel, configurationModel, lineIndex) {
+				var fieldToPush = {
+					className: 'col-xs-12',
+					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+				};
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(fieldToPush, configurationModel, lineIndex);
+
+				formlyModel.push(fieldToPush);
+			};
+
+			addTwoColumnControl = function addTwoColumnControl(formlyModel, configurationModel, lineIndex) {
+
+				//text header is stored in "description" in templateOtion model
+				var headerTemplateCol0 = {
+					className: 'col-xs-6',
+					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+				};
+
+				var headerTemplateCol1 = {
+					className: 'col-xs-6',
+					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+				};
+
+				var controlCol0 = {
+					className: 'col-xs-6',
+					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+				};
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel, lineIndex);
+
+				var controlCol1 = {
+					className: 'col-xs-6',
+					type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+				};
+
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel, lineIndex);
+
+				var FieldGroup = [];
+
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+					FieldGroup.push(headerTemplateCol0);
+				} else {
+					FieldGroup.push(controlCol0);
+				}
+
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+					FieldGroup.push(headerTemplateCol1);
+				} else {
+					FieldGroup.push(controlCol1);
+				}
+
+				formlyModel.push({
+					className: 'row',
+					fieldGroup: FieldGroup
+				});
+			};
+
+			addThreeColumnControl = function addThreeColumnControl(formlyModel, configurationModel, lineIndex) {
+				//text header is stored in "description" in templateOtion model
+				var headerTemplateCol0 = {
+					className: 'col-xs-4',
+					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+				};
+
+				var headerTemplateCol1 = {
+					className: 'col-xs-4',
+					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+				};
+
+				var headerTemplateCol2 = {
+					className: 'col-xs-4',
+					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control) + '<h2><hr/></div></div>'
+				};
+
+				var controlCol0 = {
+					className: 'col-xs-4',
+					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+				};
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel, lineIndex);
+
+				var controlCol1 = {
+					className: 'col-xs-4',
+					type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+				};
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel, lineIndex);
+
+				var controlCol2 = {
+					className: 'col-xs-4',
+					type: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[2].control.type : 'blank',
+					key: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
+					templateOptions: {
+						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
+						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
+						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
+						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
+						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
+						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
+					},
+					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
+					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
+					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
+				};
+				//////////////////////////////////////////////                 
+				//datepicker additionnal particular property 
+				//////////////////////////////////////////////                 
+				if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') addDatepickerPopupProperty(controlCol2, configurationModel, lineIndex);
+
+				var FieldGroup = [];
+
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+					FieldGroup.push(headerTemplateCol0);
+				} else {
+					FieldGroup.push(controlCol0);
+				}
+
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+					FieldGroup.push(headerTemplateCol1);
+				} else {
+					FieldGroup.push(controlCol1);
+				}
+
+				if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
+					FieldGroup.push(headerTemplateCol2);
+				} else {
+					FieldGroup.push(controlCol2);
+				}
+
+				formlyModel.push({
+					className: 'row',
+					fieldGroup: FieldGroup
+				});
+			};
+
+			_export('resetNyaSelect', resetNyaSelect);
+
+			_export('getConfigurationModelInit', getConfigurationModelInit);
+
+			_export('getEmptyConfigModelResult', getEmptyConfigModelResult);
+
+			_export('resetDataModel', resetDataModel);
+
+			_export('getErrorObject', getErrorObject);
+
+			_export('getMessageObject', getMessageObject);
+
+			_export('resetFormlyModel', resetFormlyModel);
+
+			_export('addOneColumnHeader', addOneColumnHeader);
+
+			_export('addOneColumnControl', addOneColumnControl);
+
+			_export('addTwoColumnControl', addTwoColumnControl);
+
+			_export('addThreeColumnControl', addThreeColumnControl);
+		}
+	};
+});
+$__System.register('f', ['8', '9', 'e'], function (_export) {
+	var _createClass, _classCallCheck, resetNyaSelect, getConfigurationModelInit, getEmptyConfigModelResult, resetDataModel, getErrorObject, getMessageObject, resetFormlyModel, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, MODEL_TRANSLATOR_SERVICE, $modelsTranslator;
+
+	return {
+		setters: [function (_) {
+			_createClass = _['default'];
+		}, function (_2) {
+			_classCallCheck = _2['default'];
+		}, function (_e) {
+			resetNyaSelect = _e.resetNyaSelect;
+			getConfigurationModelInit = _e.getConfigurationModelInit;
+			getEmptyConfigModelResult = _e.getEmptyConfigModelResult;
+			resetDataModel = _e.resetDataModel;
+			getErrorObject = _e.getErrorObject;
+			getMessageObject = _e.getMessageObject;
+			resetFormlyModel = _e.resetFormlyModel;
+			addOneColumnHeader = _e.addOneColumnHeader;
+			addOneColumnControl = _e.addOneColumnControl;
+			addTwoColumnControl = _e.addTwoColumnControl;
+			addThreeColumnControl = _e.addThreeColumnControl;
+		}],
+		execute: function () {
+			/* global angular */
+			'use strict';
+
+			MODEL_TRANSLATOR_SERVICE = '$modelsTranslator';
+
+			$modelsTranslator = (function () {
+				function $modelsTranslator() {
+					_classCallCheck(this, $modelsTranslator);
+				}
+
+				_createClass($modelsTranslator, [{
+					key: 'initNyaSelect',
+					value: function initNyaSelect(nyaSelectObj) {
+						return resetNyaSelect(nyaSelectObj);
+					}
+
+					/**
+     	* get all controls definition (nyaSelectObj)
+     	* 
+     	* needed to bind these properties :
+     	* 
+     	* formlyExpressionProperties: {}, 
+     	* formlyValidators: {},
+     	* formlyValidation                       		
+     	*/
+				}, {
+					key: 'getControlsDefinition',
+					value: function getControlsDefinition() {
+						var controls = {};
+						resetNyaSelect(controls);
+						return controls;
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyExpressionProperties
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyExpressionProperties',
+					value: function refreshControlFormlyExpressionProperties(configurationModel) {
+						var _this = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyExpressionProperties property											
+											column.control.formlyExpressionProperties = aControl.formlyExpressionProperties;
+										}
+									});
+								});
+							});
+						}
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyValidators
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyValidators',
+					value: function refreshControlFormlyValidators(configurationModel) {
+						var _this2 = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this2.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyValidators property											
+											column.control.formlyValidators = aControl.formlyValidators;
+										}
+									});
+								});
+							});
+						}
+					}
+
+					/**
+     	* loading forms will not be able to retrieve formlyValidation
+     	* -> here does the job
+     	*/
+				}, {
+					key: 'refreshControlFormlyValidation',
+					value: function refreshControlFormlyValidation(configurationModel) {
+						var _this3 = this;
+
+						if (angular.isObject(configurationModel)) {
+							//iterates lines
+							angular.forEach(configurationModel.lines, function (line, indexLine) {
+								angular.forEach(line.columns, function (column, controlIndex) {
+									var _controlsDefinition = _this3.getControlsDefinition();
+									angular.forEach(_controlsDefinition.controls, function (aControl, aControlIndex) {
+										if (column.control.type === aControl.formlyType && column.control.subtype === aControl.formlySubtype) {
+											//----> update control formlyValidation property											
+											column.control.formlyValidation = aControl.formlyValidation;
+										}
+									});
+								});
+							});
+						}
+					}
+				}, {
+					key: 'initConfigurationEditFromScratch',
+					value: function initConfigurationEditFromScratch(configurationModel) {
+						configurationModel = angular.copy(getConfigurationModelInit());
+					}
+				}, {
+					key: 'bindConfigurationLines',
+					value: function bindConfigurationLines(configurationModel, lines) {
+						if (angular.isArray(lines)) {
+							var configurationModelResult = getEmptyConfigModelResult();
+							configurationModelResult.lines = [].concat(lines);
+							angular.copy(configurationModelResult, configurationModel);
+							return getMessageObject('configuration model is bound', 'lines are bound to configuration model.');
+						} else {
+							return getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
+						}
+					}
+				}, {
+					key: 'applyConfigurationToformlyModel',
+					value: function applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel) {
+						resetFormlyModel(formlyModel);
+						resetDataModel(formlyDataModel);
+						/**
+      	* manage header here line0 
+      	*/
+						var lineNumber = configurationModel.lines.length;
+						for (var i = 0; i < lineNumber; i++) {
+							//1 column line control
+							if (configurationModel.lines[i].columns.length === 1) {
+								//test if template control = header
+								if (configurationModel.lines[i].columns[0].control.type === 'header') {
+									addOneColumnHeader(formlyModel, configurationModel, i);
+								} else {
+									addOneColumnControl(formlyModel, configurationModel, i);
+								}
+							}
+							if (configurationModel.lines[i].columns.length === 2) {
+								addTwoColumnControl(formlyModel, configurationModel, i);
+							}
+							if (configurationModel.lines[i].columns.length === 3) {
+								addThreeColumnControl(formlyModel, configurationModel, i);
+							}
+						}
+					}
+				}]);
+
+				return $modelsTranslator;
+			})();
+
+			$modelsTranslator.$inject = [];
+
+			_export('default', $modelsTranslator);
+
+			_export('MODEL_TRANSLATOR_SERVICE', MODEL_TRANSLATOR_SERVICE);
+		}
+	};
+});
+$__System.register('10', ['f'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var edaFormViewerMainModule, edaFormViewerCoreModule, edaFormViewerModelTranslatorModule, DEP_TO_INJECT_IN_MAIN, MAIN_MODULE_NAME, mainModule;
+	var $modelsTranslator, MODEL_TRANSLATOR_SERVICE, FORM_VIEWER_MODEL_TRANSLATOR_MODULE_NAME;
 	return {
-		setters: [function (_) {}, function (_c) {
+		setters: [function (_f) {
+			$modelsTranslator = _f['default'];
+			MODEL_TRANSLATOR_SERVICE = _f.MODEL_TRANSLATOR_SERVICE;
+		}],
+		execute: function () {
+			FORM_VIEWER_MODEL_TRANSLATOR_MODULE_NAME = 'edaFormViewerModelTranslatorModule';
+
+			_export('default', angular.module(FORM_VIEWER_MODEL_TRANSLATOR_MODULE_NAME, []).service(MODEL_TRANSLATOR_SERVICE, $modelsTranslator));
+		}
+	};
+});
+$__System.register('1', ['2', '10', 'c', 'd'], function (_export) {
+	/* global angular */
+	'use strict';
+
+	var edaFormViewerModelTranslatorModule, edaFormViewerMainModule, edaFormViewerCoreModule, DEP_TO_INJECT_IN_MAIN, MAIN_MODULE_NAME, mainModule;
+	return {
+		setters: [function (_) {}, function (_2) {
+			edaFormViewerModelTranslatorModule = _2['default'];
+		}, function (_c) {
 			edaFormViewerMainModule = _c['default'];
 		}, function (_d) {
 			edaFormViewerCoreModule = _d['default'];
-		}, function (_e) {
-			edaFormViewerModelTranslatorModule = _e['default'];
 		}],
 		execute: function () {
 			DEP_TO_INJECT_IN_MAIN = [edaFormViewerMainModule.name, edaFormViewerCoreModule.name, edaFormViewerModelTranslatorModule.name];
