@@ -54,6 +54,7 @@ function easyFormSteWayConfig($translateProvider) {
 			{name: 'Subtitle', 				enabled: true},
 			{name: 'TextInput', 			enabled: true},
 			{name: 'Password', 				enabled: true},
+			{name: 'Email', 					enabled: true},
 			{name: 'Date', 						enabled: true},
 			{name: 'Texarea',	 				enabled: true},
 			{name: 'RichTextEditor', 	enabled: true},
