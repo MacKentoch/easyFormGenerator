@@ -45,7 +45,7 @@ class edaStepWayEasyFormGenController {
 	
 	init() {
 		
-		this.model                 = {};
+		this.model                 = [];
 		this.wfFormFields          = [];
 		this.wfFormFieldsOnlyNeededProperties = []; 
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;

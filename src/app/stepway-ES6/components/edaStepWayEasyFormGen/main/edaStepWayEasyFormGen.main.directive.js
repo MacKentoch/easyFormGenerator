@@ -36,8 +36,8 @@ function edaStepWayEasyFormGenDirective(
 			loadExistingConfigurationModel();
 			}, true);          
 		
-		//watch "scope.returnSaveEvent"" = catch saving form event  
-		scope.$watch(() => scope.returnSaveEvent, (newValue, oldValue) => {
+		//watch "scope.vm.returnSaveEvent"" = catch saving form event  
+		scope.$watch(() => scope.vm.returnSaveEvent, (newValue, oldValue) => {
 			if (newValue === true) {
 				let _easyFormGeneratorModel = {
 					formName          				: scope.vm.configuration.formName,
@@ -77,9 +77,9 @@ function edaStepWayEasyFormGenDirective(
 				$formlyProxy.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
 				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
 				scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
-				scope.vm.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) 			? scope.edaEasyFormGeneratorModel.formName 			: '';
-				scope.vm.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText)	? scope.edaEasyFormGeneratorModel.btnSubmitText	: 'Submit'; 
-				scope.vm.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText)	? scope.edaEasyFormGeneratorModel.btnCancelText	: 'Cancel';
+				scope.vm.configuration.formName           = angular.isString(scope.edaEasyFormGeneratorModel.formName) 			? scope.edaEasyFormGeneratorModel.formName 			: '';
+				scope.vm.configuration.submitButtonText   = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText)	? scope.edaEasyFormGeneratorModel.btnSubmitText	: 'Submit'; 
+				scope.vm.configuration.cancelButtonText   = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText)	? scope.edaEasyFormGeneratorModel.btnCancelText	: 'Cancel';
 			}  
 		}
 		
