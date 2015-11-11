@@ -283,6 +283,8 @@ ______
 
 ## What is new?
  
+ - November 2015 : v1.1.0 coming soon : migration to ES6
+ 
  - October 2015 : `Easy form Generator step way` : new config available with `easyFormSteWayConfigProvider` : 
     - show/hide preview panel
     - show hide models (in prevew panel)
