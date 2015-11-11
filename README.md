@@ -308,7 +308,7 @@ ______
   }
 
 ```
-  
+ - November 2015 : v1.1.0 coming soon : migration to ES6
  
  - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_As_Module.html)
 

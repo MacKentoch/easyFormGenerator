@@ -206,7 +206,7 @@
             formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.vm.model);          
             
             scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
-            scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
+            scope.vm.model                            = returnAttributeDataModelIfNotEmpty();  
             scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
             scope.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText) ? scope.edaEasyFormGeneratorModel.btnSubmitText : 'Submit'; 
             scope.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText) ? scope.edaEasyFormGeneratorModel.btnCancelText : 'Cancel';
