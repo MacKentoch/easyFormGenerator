@@ -118,7 +118,7 @@ class editControlModalController {
 	
 	
 	addNewOptionRadio() {
-		let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, $scope.newOptionRadio.saisie);
+		let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -175,7 +175,7 @@ class editControlModalController {
 
 
 	addNewOptionBasicSelect() {
-		let result = this.selectOptionManage.addNewOptionBasicSelect(this.basicSelectRowCollection, $scope.newOptionBasicSelect.saisie);
+		let result = this.selectOptionManage.addNewOptionBasicSelect(this.basicSelectRowCollection, this.newOptionBasicSelect.saisie);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -261,7 +261,7 @@ class editControlModalController {
 
 
 	addNewOptionGroupedSelect() {
-		let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, $scope.newOptionGroupedSelect.saisie, '');
+		let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, this.newOptionGroupedSelect.saisie, '');
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',

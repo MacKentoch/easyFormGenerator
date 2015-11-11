@@ -315,7 +315,7 @@ ______
  - October 2015 : `Easy form Generator step way` : new languages added 
      - french
      - german
-     - japaneese
+     - japanese
      - spanish (thx to **Benjamin Orozco** :thumbsup:)
      - turkish (thx to **Serhat Can** :thumbsup:)
   ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    

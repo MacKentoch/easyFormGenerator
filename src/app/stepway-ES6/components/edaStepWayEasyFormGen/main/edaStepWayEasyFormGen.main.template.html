@@ -417,7 +417,7 @@
 													</div>
 													<div class="panel-body">
 													<form ng-submit="vm.onSubmit()">
-														<formly-form id="saveFormlyFom" model="vm.model" fields="vm.wfFormFields">
+														<formly-form id="saveFormlyFom" model="vm.dataModel" fields="vm.wfFormFields">
 															<span class="pull-right">
 															<button class="btn btn-primary" type="submit">{{vm.configuration.submitButtonText}}</button>
 															<button class="btn btn-primary" type="cancel">{{vm.configuration.cancelButtonText}}</button>
@@ -438,7 +438,7 @@
 								<div class="panel-body">
 									<!-- formly here -->
 									<form ng-submit="vm.onSubmit()">
-										<formly-form id="previewFormlyForm" model="vm.model" fields="vm.wfFormFields">
+										<formly-form id="previewFormlyForm" model="vm.dataModel" fields="vm.wfFormFields">
 										<span class="pull-right">
 											<button class="btn btn-primary" type="submit">{{vm.configuration.submitButtonText}}</button>
 											<button class="btn btn-primary" type="cancel">{{vm.configuration.cancelButtonText}}</button>
@@ -451,7 +451,7 @@
 								<div class="panel-body">
 									<p>{{'DATA_MODEL' | translate}}</p>
 									<pre>
-										{{vm.model | json}}
+										{{vm.dataModel | json}}
 									</pre>
 								</div>
 							</div>

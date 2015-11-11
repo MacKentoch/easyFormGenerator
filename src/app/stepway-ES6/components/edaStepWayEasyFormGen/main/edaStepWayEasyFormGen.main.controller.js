@@ -45,7 +45,7 @@ class edaStepWayEasyFormGenController {
 	
 	init() {
 		
-		this.model                 = [];
+		this.dataModel                 = {};
 		this.wfFormFields          = [];
 		this.wfFormFieldsOnlyNeededProperties = []; 
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
@@ -72,7 +72,7 @@ class edaStepWayEasyFormGenController {
 	}
 	
 	onSubmit() {
-		let JSONedModel = this.$filter('json')(this.model, 4);
+		let JSONedModel = this.$filter('json')(this.dataModel, 4);
 		this.toaster.pop({
 				type 		: 'info',
 				timeout : 2000,
@@ -102,7 +102,7 @@ class edaStepWayEasyFormGenController {
 			}
 		}
 			//re-render formfield 
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
 	}
 	
@@ -117,14 +117,14 @@ class edaStepWayEasyFormGenController {
 			}
 		}     
 		//re-render formfield 
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model); 
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
 	}
 	
 	addNewline() {
 		this.configuration.lines.push(initLineTemplate());
 			//re-render formfield 
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);		
 	} 
 	
@@ -145,7 +145,7 @@ class edaStepWayEasyFormGenController {
 				}, 100); 
 			}
 		//re-render formfield 
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 		}
 	}
@@ -170,7 +170,7 @@ class edaStepWayEasyFormGenController {
 					.numColumn = newNumberOfColumns; 
 			}
 			//re-render formfield 
-			this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model); 
+			this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
 			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 	}
 	
@@ -185,7 +185,7 @@ class edaStepWayEasyFormGenController {
 				.columns
 				.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
 		}
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);  
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);  
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
 	}
 	
@@ -250,7 +250,7 @@ class edaStepWayEasyFormGenController {
 		modalInstance.result.then(
 			(modalAddCtrlModel) => {				
 				this.$modalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
-				this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.model);
+				this.$formlyProxy.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
 				this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 			}, 
 			() => {
@@ -264,7 +264,7 @@ class edaStepWayEasyFormGenController {
 		//here to replace with $scope.configuration : initialise configuration with lines 
 		this.configurationLoaded = {};
 		this.$formlyProxy.bindConfigurationLines(this.configurationLoaded,configlines);
-		this.$formlyProxy.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, this.model);
+		this.$formlyProxy.applyConfigurationToformlyModel(this.configurationLoaded, this.previewLoadedForm.fieldsModel, this.dataModel);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 		this.previewLoadedForm.cancelButtonText = formlyform.cancelButtonText;
 		this.previewLoadedForm.submitButtonText = formlyform.submitButtonText;

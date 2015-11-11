@@ -46,7 +46,7 @@ function edaStepWayEasyFormGenDirective(
 					edaFieldsModel    				: scope.vm.configuration.lines,
 					edaFieldsModelStringified : angular.toJson(scope.vm.configuration.lines),
 					formlyFieldsModel 				: scope.vm.wfFormFieldsOnlyNeededProperties,
-					dataModel         				: scope.vm.model
+					dataModel         				: scope.vm.dataModel
 				};
 				scope.edaSaveFormEvent({ edaEasyFormGeneratorModel : _easyFormGeneratorModel });
 				//back to false, waiting next save event
@@ -76,7 +76,7 @@ function edaStepWayEasyFormGenDirective(
 				//apply formly model
 				$formlyProxy.applyConfigurationToformlyModel(scope.configurationLoaded, scope.vm.wfFormFields, scope.vm.model);          
 				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
-				scope.vm.model                            = returnAttributeDataModelIfNotEmpty;  
+				scope.vm.dataModel                            = returnAttributeDataModelIfNotEmpty();  
 				scope.vm.configuration.formName           = angular.isString(scope.edaEasyFormGeneratorModel.formName) 			? scope.edaEasyFormGeneratorModel.formName 			: '';
 				scope.vm.configuration.submitButtonText   = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText)	? scope.edaEasyFormGeneratorModel.btnSubmitText	: 'Submit'; 
 				scope.vm.configuration.cancelButtonText   = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText)	? scope.edaEasyFormGeneratorModel.btnCancelText	: 'Cancel';
@@ -100,9 +100,9 @@ function edaStepWayEasyFormGenDirective(
 					angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  ( 
 							scope.edaEasyFormGeneratorModel.dataModel.length > 0 ? 
 							scope.edaEasyFormGeneratorModel.dataModel 
-							: []
+							: {}
 							) 
-					: []
+					: {}
 			);
 				return dataModelToReturn;  
 		} 		
