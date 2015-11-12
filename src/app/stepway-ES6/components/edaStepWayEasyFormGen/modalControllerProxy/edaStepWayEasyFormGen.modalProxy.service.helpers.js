@@ -340,7 +340,7 @@ const resetNyaSelect = (nyaSelectObj) => {
 			selectedControl : 'none' ,
 			temporyConfig 	: {
 				selectedControl		: 'none',
-				formlyLabel				: 'label', 
+				formlyLabel				: '', 
 				formlyRequired		: false, 
 				formlyDesciption	: '',
 				formlyPlaceholder	: '',

@@ -18,27 +18,27 @@ const configurationModelInit = {
 	submitButtonText  : 'submit',
 	cancelButtonText  : 'cancel',
 	lines: [
-					{
-						line:1,                                       
-						activeColumn : 1,
-						columns: [
-											{  
-												numColumn: 1,
-												exist:true, 
-												control: {
-																		type:'none',
-																		key: 'none',
-																		// templateOptions: {
-																		//                     label: 'none',
-																		//                     placeholder: 'none',
-																		//                     required: false,
-																		//                     description: 'Descriptive text'
-																		//                   }
-																	}
-												}
-											]
-						}                                 
-			]
+	{
+		line					:1,                                       
+		activeColumn 	: 1,
+		columns				: [
+		{  
+			numColumn: 1,
+			exist:true, 
+			control: {
+				type:'none',
+				key: 'none',
+				// templateOptions: {
+				//                     label: 'none',
+				//                     placeholder: 'none',
+				//                     required: false,
+				//                     description: 'Descriptive text'
+				//                   }
+			}
+			}
+		]
+		}                                 
+	]
 }; 
  
 const configurationModelResult =  {
@@ -55,9 +55,9 @@ const configurationModelResult =  {
 											false,
 											false
 										], 
-	configStepCounter: 0, 
-	submitButtonText : 'submit',
-	cancelButtonText: 'cancel',
+	configStepCounter	: 0, 
+	submitButtonText 	: 'submit',
+	cancelButtonText	: 'cancel',
 	lines: []
 };
 

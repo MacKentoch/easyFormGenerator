@@ -59,6 +59,7 @@ class editControlModalController {
 		}
 		this.initNyaSelectFiltered();
 		
+		console.info(`modal controller : nyaSelect`);
 		console.dir(this.nyaSelect);
 	}
 	
