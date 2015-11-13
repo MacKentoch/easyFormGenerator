@@ -110,7 +110,6 @@ class editControlModalController {
 				};
 				this.groupedSelectRowCollection.rows.push(newOption);            
 			}
-			//grouplist : thx to lodash it is easy
 			var filteredgroup = _.uniq(_.pluck(this.groupedSelectRowCollection.rows, 'group'));
 			angular.copy(filteredgroup, this.GroupedSelectGroups.list); 
 		}
