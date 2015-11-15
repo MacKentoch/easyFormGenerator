@@ -1262,7 +1262,7 @@
 																				</tr>
 																				</thead>
 																				<tbody>
-																				<tr ng-repeat="groupedSelectRow in groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow">
+																				<tr ng-repeat="groupedSelectRow in groupedSelectRowCollection.rows | filter:groupedSelectFilter as oneGroupedSelectRow">
 																						<td st-ratio="20">{{$index}}</td>
 																						<td st-ratio="25">
 																								<div ng-if="groupSelectGroupClick.showList === true">          
@@ -1272,7 +1272,7 @@
 																								</div>
 
 																								<div ng-if="GroupedSelectGroups.list.length > 0">
-																										<ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect" ng-model="groupedSelectRow.group" id="modelGroupedOptionGroupedChoose"
+																										<ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect" ng-model="oneGroupedSelectRow.group" id="modelGroupedOptionGroupedChoose"
 																										disabled="GroupedSelectGroups.list.length === 0">
 																											<li class="nya-bs-option" nya-bs-option="GroupedSelectGroup in GroupedSelectGroups.list" value="GroupedSelectGroup">
 																												<a>{{GroupedSelectGroup}}</a>
@@ -1282,10 +1282,10 @@
 																								
 																								</div>
 																								<div ng-if="groupSelectGroupClick.showList === false">
-																								{{groupedSelectRow.group}}
+																								{{oneGroupedSelectRow.group}}
 																								</div>
 																						</td>
-																						<td st-ratio="30">{{groupedSelectRow.option}}</td>
+																						<td st-ratio="30">{{oneGroupedSelectRow.option}}</td>
 																						<td st-ratio="25">
 																							
 																								<div class="pull-right">
