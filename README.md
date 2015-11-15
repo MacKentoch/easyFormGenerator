@@ -41,7 +41,7 @@ ______
   - show hide preview model and / or preview panel in editor   
 - production friendly
 
-Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_ES6.html)
+Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_ES6.html)
 
  - **Step way visual preview here** : 
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
@@ -311,7 +311,7 @@ ______
 
 ```
  
- - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_ES6.html)
+ - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_ES6.html)
 
  - October 2015 : `Easy form Generator step way` : new languages added 
      - french
