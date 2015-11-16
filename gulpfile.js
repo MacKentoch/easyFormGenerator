@@ -501,19 +501,29 @@ gulp.task('build:ES6:jshint', function(){
     .pipe(jshint.reporter('default'))
 });
 
-//stepWay
+
 gulp.task('stepWayES6:sfx:min', function (cb) {
-  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.min.js --minify', function (err, stdout, stderr) {
+  exec([
+   'jspm bundle-sfx ',
+   gulpConfig.jspm.stepWay.src,
+   gulpConfig.jspm.stepWay.bundleMin,
+	 '--minify'
+  ].join(' '), function (err, stdout, stderr) {
       cb(err);
-			console.log(stdout);
-  });
+      console.log(stdout);
+   });
 });
 
+
 gulp.task('stepWayES6:sfx', function (cb) {
-  exec('jspm bundle-sfx src/app/stepway-ES6/edaStepWayEasyFormGen.main ./public/js/eda.stepway-ES6.js', function (err, stdout, stderr) {
+  exec([
+   'jspm bundle-sfx ',
+   gulpConfig.jspm.stepWay.src,
+   gulpConfig.jspm.stepWay.bundle,
+  ].join(' '), function (err, stdout, stderr) {
       cb(err);
-			console.log(stdout);
-  });
+      console.log(stdout);
+   });
 });
 
 gulp.task('build:stepWay:ES6', [
