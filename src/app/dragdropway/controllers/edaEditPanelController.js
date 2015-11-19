@@ -17,7 +17,8 @@ angular
                                           '$timeout',
                                           'selectOptionManage',
                                           'controllerModalProxy',
-		function(	$scope,  
+		function(	
+							$scope,  
               toaster,
               $timeout,
               selectOptionManage,
