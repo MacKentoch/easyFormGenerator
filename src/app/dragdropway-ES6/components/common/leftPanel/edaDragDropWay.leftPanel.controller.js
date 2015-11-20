@@ -31,8 +31,39 @@ class leftPanelController{
 		this.radioRowCollection 				= this.controllerModalProxy.radioRowCollection;
 		this.newOptionRadio 						= this.controllerModalProxy.newOptionRadio;
 		
-		this.controllerModalProxy.resetAllTemporyModels();						
+		this.controllerModalProxy.resetAllTemporyModels();
+		this.initNyaSelectConformingSelectedControl();						
 	}
+	
+	initNyaSelectConformingSelectedControl(){
+		//place proxyModel to selection if not none :
+		if (this.proxyModel.temporyConfig.selectedControl !== 'none') {
+			for (let i = this.proxyModel.controls.length - 1; i >= 0; i--) {
+					if (this.proxyModel.controls[i].id === this.proxyModel.temporyConfig.selectedControl) this.modelproxyModel = this.proxyModel.controls[i];
+			}
+			if (this.proxyModel.temporyConfig.selectedControl === 'BasicSelect') this.$modalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
+			if (this.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') this.$modalProxy.bindGroupedSelectFromProxyModel(this.groupedSelectRowCollection, this.GroupedSelectGroups);
+			if (this.proxyModel.temporyConfig.selectedControl === 'Radio') this.$modalProxy.bindRadioFromProxyModel(this.radioRowCollection);		
+		}	
+	}	
+	
+	updateSpecialControl(){		
+		//refresh service data for particular controls as selects and radio
+		this.proxyModel.basicSelectRowCollection 		= this.basicSelectRowCollection;
+		this.proxyModel.newOptionBasicSelect 				= this.newOptionBasicSelect;
+		this.proxyModel.groupedSelectRowCollection 	= this.groupedSelectRowCollection;
+		this.proxyModel.newOptionGroupedSelect 			= this.newOptionGroupedSelect;
+		this.proxyModel.GroupedSelectGroups 				= this.GroupedSelectGroups;
+		this.proxyModel.newGroupGroupedSelect 			= this.newGroupGroupedSelect;
+		this.proxyModel.groupSelectGroupClick 			= this.groupSelectGroupClick;
+		this.proxyModel.radioRowCollection 					= this.radioRowCollection;
+		this.proxyModel.newOptionRadio 							= this.newOptionRadio;			
+		//force apply update proxyModel
+		this.proxyModel.bindSpecialCtrlTemporyModelsToProxyModel(); 
+		return true; 	
+	}	
+	
+	
 }
 
 leftPanelController.$inject = [
