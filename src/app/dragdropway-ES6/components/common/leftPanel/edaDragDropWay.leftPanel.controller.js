@@ -63,6 +63,42 @@ class leftPanelController{
 		return true; 	
 	}	
 	
+	resetTemporyConfig(){
+		this.proxyModel.temporyConfig = {
+			formlyLabel				: '', 
+			formlyRequired		: false, 
+			formlyPlaceholder	: '',
+			formlyDesciption	: '',
+			formlyOptions			: []
+		};   
+	}
+	
+	resetControl(){
+		this.proxyModel.temporyConfig.formlyLabel 			= '';
+		this.proxyModel.temporyConfig.formlyRequired 		= false;
+		this.proxyModel.temporyConfig.formlyPlaceholder	= '';
+		this.proxyModel.temporyConfig.formlyDesciption 	= '';
+		this.proxyModel.temporyConfig.formlyOptions 		= [];
+		this.proxyModel.temporyConfig.datepickerPopup   = this.initDatePicker();
+	}		
+
+	initDatePicker(){
+		this.proxyModel.temporyConfig.datepickerPopup = this.demodt.formats[0];  
+	}
+	
+	selectThisControl(controlName){
+		this.proxyModel.selectedControl = 'none';
+		this.resetTemporyConfig();
+		for (let i = this.proxyModel.controls.length - 1; i >= 0; i--) {
+			if (this.proxyModel.controls[i].id === controlName) {
+				this.proxyModel.selectedControl = this.proxyModel.controls[i].id;         
+			}
+		}
+		if (this.proxyModel.selectedControl === 'Date') this.initDatePicker();
+	}	
+	
+	
+	
 	
 }
 
