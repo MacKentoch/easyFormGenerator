@@ -98,7 +98,69 @@ class leftPanelController{
 	}	
 	
 	
-	
+	/**
+		* ==============================================================
+		* specific controls management 
+		* (display, properties.... : ex : grouped Select)
+		* ==============================================================
+		*/
+
+		addNewOptionRadio(){
+			let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+						type		: 'warning',
+						timeout	: 2000,
+						title		: result.details,
+						body		: `'${this.newOptionRadio.saisie}' cannot be added.`,                
+						showCloseButton: true
+					});
+			}
+			//reset input
+			this.newOptionRadio = {saisie: ''};
+		}	
+
+		removeRadioRow(index) {
+			let result = this.selectOptionManage.removeOption(this.radioRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type			: 'warning',
+					timeout		: 2000,
+					title			: result.details,
+					body			: 'Delete was cancelled.',                
+					showCloseButton: true
+				});
+			}      
+		}
+		
+		upThisRadioRow(index){
+			let result = this.selectOptionManage.upthisOption(this.radioRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Operation cancelled.',                
+					showCloseButton: true
+				});
+			}       
+		}
+
+		downThisRadioRow(index){
+			let result = this.selectOptionManage.downthisOption(this.radioRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Operation cancelled.',                
+					showCloseButton: true
+				});
+			}
+		}		
+		
+					
+
 	
 }
 
