@@ -104,7 +104,6 @@ class leftPanelController{
 		* (display, properties.... : ex : grouped Select)
 		* ==============================================================
 		*/
-
 		addNewOptionRadio(){
 			let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
 			if (result.resultFlag === false) {
@@ -158,8 +157,64 @@ class leftPanelController{
 				});
 			}
 		}		
-		
+
+		addNewOptionBasicSelect(){
+			let result = this.selectOptionManage.addNewOptionBasicSelect(this.basicSelectRowCollection, this.newOptionBasicSelect.saisie);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type			: 'warning',
+					timeout		: 2000,
+					title			: result.details,
+					body			: `'${this.newOptionBasicSelect.saisie}' cannot be added.`,              
+					showCloseButton: true
+				});
+			}
+			this.newOptionBasicSelect = {saisie: ''}; //reset input
+		}
 					
+		removeRow(index) {
+			let result = this.selectOptionManage.removeOption(this.basicSelectRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Delete was cancelled.',                
+					showCloseButton: true
+				});
+			}      
+		}
+
+		upThisRow(index){
+				let result = this.selectOptionManage.upthisOption(this.basicSelectRowCollection, index);
+				if (result.resultFlag === false) {
+					this.toaster.pop({
+						type		: 'warning',
+						timeout	: 2000,
+						title		: result.details,
+						body		: 'Operation cancelled.',                
+						showCloseButton: true
+					});
+				}       
+		}
+
+		downThisRow(index){
+			let result = this.selectOptionManage.downthisOption(this.basicSelectRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Operation cancelled.',                
+					showCloseButton: true
+				});
+			}
+		}
+
+		showGroupListToChoose(){
+			this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
+		}			
+
 
 	
 }
