@@ -215,6 +215,50 @@ class leftPanelController{
 			this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
 		}			
 
+		addNewGroupToGroupedSelect(){
+			if (this.newGroupGroupedSelect.saisie !== '') {
+				for (let i = this.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
+					if (this.GroupedSelectGroups.list[i] === this.newGroupGroupedSelect.saisie) {
+						this.toaster.pop({
+							type			: 'warning',
+							timeout		: 2000,
+							title			: 'Group already exists',
+							body			: 'No group added.',                
+							showCloseButton: true
+						});          
+					}
+				}
+				this.GroupedSelectGroups.list.push(this.newGroupGroupedSelect.saisie);
+			}else{
+				this.toaster.pop({
+					type			: 'warning',
+					timeout		: 2000,
+					title			: 'Not a valid group to add',
+					body			: 'No group added.',                
+					showCloseButton: true
+				});
+			}
+			this.newGroupGroupedSelect.saisie = '';
+		}
+		
+		
+		addNewOptionGroupedSelect(){
+			let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, this.newOptionGroupedSelect.saisie, '');
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type			: 'warning',
+					timeout		: 2000,
+					title			: result.details,
+					body			: `'${this.newOptionGroupedSelect.saisie}' cannot be added.`,               
+					showCloseButton: true
+				});
+			}
+			//bind nya : dont bind here $apply is not done fast enough
+			//bindGroupedSelectToNya();
+			//reset input
+			this.newOptionGroupedSelect = {saisie: ''};
+		};		
+		
 
 	
 }
