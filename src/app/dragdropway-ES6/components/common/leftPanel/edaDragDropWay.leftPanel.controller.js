@@ -31,6 +31,8 @@ class leftPanelController{
 		this.radioRowCollection 				= this.controllerModalProxy.radioRowCollection;
 		this.newOptionRadio 						= this.controllerModalProxy.newOptionRadio;
 		
+		this.demodt 										= {};
+		
 		this.controllerModalProxy.resetAllTemporyModels();
 		this.initNyaSelectConformingSelectedControl();						
 	}
@@ -257,8 +259,47 @@ class leftPanelController{
 			//bindGroupedSelectToNya();
 			//reset input
 			this.newOptionGroupedSelect = {saisie: ''};
-		};		
-		
+		}		
+
+
+		removeGroupedSelectRow(index) {
+			let result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Delete was cancelled.',                
+					showCloseButton: true
+				});
+			}   
+		} 		
+
+	upThisGroupedSelectRow(index){
+		let result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
+		if (result.resultFlag === false) {
+			this.toaster.pop({
+				type		: 'warning',
+				timeout	: 2000,
+				title		: result.details,
+				body		: 'Operation cancelled.',                
+				showCloseButton: true
+			});
+		} 
+	}
+
+	downThisGroupedSelectRow(index){
+			let result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
+			if (result.resultFlag === false) {
+				this.toaster.pop({
+					type		: 'warning',
+					timeout	: 2000,
+					title		: result.details,
+					body		: 'Operation cancelled.',                
+					showCloseButton: true
+				});
+			} 
+	}
 
 	
 }
