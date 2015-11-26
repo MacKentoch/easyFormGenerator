@@ -1,3 +1,10 @@
+/* global angular */
+import {
+	dateFormats,
+	setToday,
+	clearDateTime
+} 									from './edaDragDropWay.leftPanel.controller.helpers';
+
 const LEFT_PANEL_CONTROLLER 	=	'leftPanelController';
 const LEFT_PANEL_CONTROLLERAS	= 'leftPanelCtrl';
 
@@ -32,9 +39,22 @@ class leftPanelController{
 		this.newOptionRadio 						= this.controllerModalProxy.newOptionRadio;
 		
 		this.demodt 										= {};
+		this.demodt.formats							= dateFormats;
+		this.dateOptions								= this.getDateOptions();
 		
 		this.controllerModalProxy.resetAllTemporyModels();
-		this.initNyaSelectConformingSelectedControl();						
+		this.initNyaSelectConformingSelectedControl();
+							
+	}
+	
+	getDateOptions() {
+		let dateOptions =  {
+			formatYear	: 'yy',
+			startingDay	: 1,
+			showWeeks		: true,
+			initDate		: null			
+		};
+		return dateOptions;
 	}
 	
 	initNyaSelectConformingSelectedControl(){
@@ -287,6 +307,7 @@ class leftPanelController{
 			});
 		} 
 	}
+	
 
 	downThisGroupedSelectRow(index){
 			let result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
@@ -300,6 +321,24 @@ class leftPanelController{
 				});
 			} 
 	}
+	
+	
+	today(){
+		setToday(this.demodt);	
+	}
+	
+	
+	clear(){
+		clearDateTime(this.demodt);	
+	}
+	
+	
+	open($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		this.demodt.opened = true;
+	}	
+	
 
 	
 }
