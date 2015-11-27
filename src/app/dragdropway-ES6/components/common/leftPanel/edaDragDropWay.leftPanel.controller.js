@@ -350,3 +350,10 @@ leftPanelController.$inject = [
 	'selectOptionManage',
 	'$modalProxy'	
 ];
+
+export default leftPanelController;
+
+export {
+	LEFT_PANEL_CONTROLLER,
+	LEFT_PANEL_CONTROLLERAS
+};
