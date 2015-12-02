@@ -61,6 +61,9 @@ function ddDecorDropZone(){
 	
 }
 
+
+ddDecorDropZone.$inject = [];
+
 export default ddDecorDropZone;
 
 export {
