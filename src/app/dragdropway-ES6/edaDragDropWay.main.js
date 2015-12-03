@@ -2,8 +2,8 @@
 import './edaDragDropWay.vendors.adapter';
 import coreModule				from './core/edaDragDropWay.core.module';
 import leftPanelModule 	from './components/common/leftPanel/edaDragDropWay.leftPanel.module';
-import dragdropModule		from './components/common/dragdrop/edaDragDropWay.dragdrop.module';
-import rightClickModule	from './components/common/rightclick/edaDragDropWay.rightClick.module';
+import dragdropModule		from './components/dragdrop/edaDragDropWay.dragdrop.module';
+import rightClickModule	from './components/rightclick/edaDragDropWay.rightClick.module';
 
 const DRAG_DROP_WAY_MODULE_NAME 	= 'eda.easyformGen.dragDropWay';
 

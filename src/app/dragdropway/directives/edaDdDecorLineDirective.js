@@ -24,7 +24,7 @@ angular
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
-                                '  <div id="lineDirectiveTranscludeHere"></<div>',
+                                '  <div id="lineDirectiveTranscludeHere"></div>',
                                 ].join(' ');
         
         return {
@@ -78,7 +78,7 @@ angular
                  *  - addClass / remove/class ; will make line in a shake movement
                  *  - call "removeLine function to delete the line (if it was rwice double clicked)
                  */
-               $scope.removeMe= function(event){
+               $scope.removeMe = function(event){
                     event.preventDefault();
                     event.stopPropagation();
 
