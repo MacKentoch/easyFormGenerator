@@ -14,7 +14,9 @@ import ddDecorDropZone, {
 import ddDecorItem, {
 	DRAG_DROP_DECOR_ITEM
 } 																		from './ddDecorItem/edaDragDropWay.dragdrop.ddDecorItem.directive';
-
+import ddNoEditableControl, {
+	DRAG_DROP_NO_EDITABLE_CONTROL
+} 																		from './/ddNoEditableControl/edaDragDropWay.dragdrop.ddNoEditableControl.directive';
 
 const DRAGDROP_MODULE = 'edaDragDropWay.dragdrop.module';
 
@@ -25,4 +27,5 @@ export default angular
 								.controller(DD_DECOR_CONTAINER_CONTROLLER_NAME, ddDecorContainerController)
 								.directive(DD_DECOR_CONTAINER_DIRECTIVE, ddDecorContainerDirective)
 								.directive(DD_DECOR_DROPZONE_DIRECTIVE, ddDecorDropZone)
-								.directive(DRAG_DROP_DECOR_ITEM, ddDecorItem);
+								.directive(DRAG_DROP_DECOR_ITEM, ddDecorItem)
+								.directive(DRAG_DROP_NO_EDITABLE_CONTROL, ddNoEditableControl);
