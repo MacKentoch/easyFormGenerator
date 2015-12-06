@@ -42,7 +42,7 @@ module.exports = function(config) {
 
         'bower_components/lodash/lodash.js',
          
-        'public/js/**/eda.stepway.js',
+        'public/js/**/eda.stepway-ES6.js',
         'src/test/**/*.js'
     ],
 

@@ -45,7 +45,8 @@ angular
 																			}
 																			
 																			return isToCount;	
-																		};																	
+																		};
+																																			
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
 																	  if (typeof fullModel 			!== 		'undefined' &&
 																	  	  typeof listCssToApply !== 		'undefined' &&
