@@ -1,7 +1,7 @@
 /* global angular */
 import './edaDragDropWay.vendors.adapter';
 import coreModule				from './core/edaDragDropWay.core.module';
-import leftPanelModule 	from './components/common/leftPanel/edaDragDropWay.leftPanel.module';
+import leftPanelModule 	from './components/leftPanel/edaDragDropWay.leftPanel.module';
 import dragdropModule		from './components/dragdrop/edaDragDropWay.dragdrop.module';
 import rightClickModule	from './components/rightclick/edaDragDropWay.rightClick.module';
 
