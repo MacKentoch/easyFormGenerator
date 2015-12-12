@@ -71,8 +71,8 @@ class edaStepWayEasyFormGenController {
 		
 		this.$modalProxy.initNyaSelect(this.nyaSelect);
 		
-		console.info(`main controller : init nyaSelect model`);
-		console.dir(angular.copy(this.nyaSelect));
+		//console.info(`main controller : init nyaSelect model`);
+		//console.dir(angular.copy(this.nyaSelect));
 	}
 	
 	onSubmit() {

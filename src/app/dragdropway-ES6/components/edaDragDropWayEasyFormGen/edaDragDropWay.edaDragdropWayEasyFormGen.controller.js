@@ -1,3 +1,10 @@
+import {
+	initDebugModel,
+	initTabModel,
+	initColumnTemplate,
+	initLineTemplate
+}												from './edaDragDropWay.edaDragdropWayEasyFormGen.controller.helpers.js';
+
 const DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER 		= 'edaDragDropWayEasyFormGenCtrl';
 const DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS 	= 'vm';
 
@@ -17,7 +24,8 @@ class edaDragDropWayEasyFormGenCtrl{
 		dragDropItemDecorationService,
 		dragDropConfig,
 		ddModelConfModelProxyService,
-		ddItemRightClickedManager		
+		ddItemRightClickedManager,
+		easyFormDragWayConfig		
 	){
 		this.easyFormGenVersion 							= easyFormGenVersion;
 		this.$filter													= $filter;
@@ -32,12 +40,14 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.dragDropConfig										= dragDropConfig;
 		this.ddModelConfModelProxyService			= ddModelConfModelProxyService;
 		this.ddItemRightClickedManager				= ddItemRightClickedManager;
+		this.easyFormDragWayConfig						= easyFormDragWayConfig;
+		
 		this.init();
 	}
 	
 	init(){
 		this.easyFormGeneratorVERSION = this.easyFormGenVersion;
-		
+		this.tab                      = initTabModel(this.easyFormDragWayConfig.isPreviewPanelVisible(), this.easyFormDragWayConfig.arePreviewModelsVisible());
 	}
 	
 	
@@ -56,7 +66,8 @@ edaDragDropWayEasyFormGenCtrl.$inject = [
 		'dragDropItemDecorationService',
 		'dragDropConfig',
 		'ddModelConfModelProxyService',
-		'ddItemRightClickedManager'	
+		'ddItemRightClickedManager'	,
+		'easyFormDragWayConfig'
 ];
 
 export default edaDragDropWayEasyFormGenCtrl;
