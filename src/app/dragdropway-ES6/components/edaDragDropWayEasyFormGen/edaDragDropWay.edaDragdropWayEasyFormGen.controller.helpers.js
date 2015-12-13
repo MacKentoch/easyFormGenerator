@@ -69,10 +69,22 @@ const LINE_TEMPLATE = {
 const initLineTemplate = () => angular.copy(LINE_TEMPLATE);
 
 
+const DEFAULT_IHM_MODEL = {
+	preview : {
+			formlyModelViewExpanded 			: true,
+			formlyFieldsViewExpanded 			: true,
+			customizeFormButtonsExpanded 	: true,
+			saveThisFormExpanded 					: true  
+	}
+};
+
+
+const initIhmModel = () => angular.copy(DEFAULT_IHM_MODEL);
 
 export {
 	initDebugModel,
 	initTabModel,
 	initColumnTemplate,
-	initLineTemplate
+	initLineTemplate,
+	initIhmModel
 };
