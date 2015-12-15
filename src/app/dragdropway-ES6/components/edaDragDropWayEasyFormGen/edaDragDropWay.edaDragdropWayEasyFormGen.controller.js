@@ -61,6 +61,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.MaxNumberOfColumns 							= 3;
     this.MinNumberOfColumns 							= 1;
 		this.configuration 										= {};
+		this.animationsEnabled        				= this.easyFormSteWayConfig.getModalAnimationValue(); 
 		
 		this.formFieldManage.initConfigurationEditFromScratch(this.configuration , false);
 		this.controllerModalProxy.initProxyModel();
@@ -135,7 +136,7 @@ class edaDragDropWayEasyFormGenCtrl{
 					this.toaster.pop({
 						type						: 'warning',
 						title						: 'Last line' ,
-						body						: `Can't delete the last line`,
+						body						: 'Can\'t delete the last line',
 						showCloseButton	: true
 					});
 				}, 100);
@@ -144,7 +145,59 @@ class edaDragDropWayEasyFormGenCtrl{
 			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 		}
 	}
+	
+	increaseNumberOfColumns(){
+		if (this.configuration.lines[this.configuration.activeLine -1].columns.length < this.MaxNumberOfColumns) {
+			let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());		
+			this.configuration.lines[this.configuration.activeLine -1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns; 
+		}
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+	}	
 
+
+	decreaseNumberOfColumns(indexLine, indexColumn){
+		if (this.configuration.lines[this.configuration.activeLine -1].columns.length > 1) {
+			this.configuration.lines[this.configuration.activeLine -1].columns.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
+		}
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);  
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
+	}
+
+	saveThisForm() {
+		if (typeof this.configuration.formName === 'undefined') {
+		this.toaster.pop({
+				type		: 'warning',
+				timeout	: 2000,
+				title		: 'Form name is undefined',
+				body		: 'Form has not been saved.',                
+				showCloseButton : true
+			});
+			return false;
+		}
+		if (this.configuration.formName === '') {
+		this.toaster.pop({
+				type		: 'warning',
+				timeout	: 2000,
+				title		: 'Form name is required',
+				body		: 'Form has not been saved.',                
+				showCloseButton : true
+			});
+			return false;
+		}
+		this.toaster.pop({
+			type		: 'wait',
+			timeout	: 10000,
+			title		: 'Form is being saved',
+			body		: 'Wait.',                
+			showCloseButton : true
+		});
+		this.toaster.clear();  
+		this.returnSaveEvent = true;
+		return true;
+	} 
+	
+	
 
 }
 
