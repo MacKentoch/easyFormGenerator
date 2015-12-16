@@ -14,6 +14,7 @@ const DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS 	= 'vm';
 class edaDragDropWayEasyFormGenCtrl{
 	
 	constructor(
+		$scope,
 		easyFormGenVersion,
 		$filter,
 		$anchorScroll,
@@ -29,6 +30,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		ddItemRightClickedManager,
 		easyFormDragWayConfig		
 	){
+		this.$scope														= $scope;
 		this.easyFormGenVersion 							= easyFormGenVersion;
 		this.$filter													= $filter;
 		this.$anchorScroll 										= $anchorScroll;
@@ -197,11 +199,49 @@ class edaDragDropWayEasyFormGenCtrl{
 		return true;
 	} 
 	
+	dragoverCallbackContainer(parentparentIndex, parentIndex, index){
+		//prevent container in layout column to be drag to control select contianer 
+		if (index === 0) return false;
+		return true;
+	}
+	
+	dropCallback(event, index, item, external, type, allowedType) {
+		if (external) {
+				if (allowedType === 'itemType'      && !item.label)             return false;
+				if (allowedType === 'containerType' && !angular.isArray(item))  return false; 
+		}
+		//set a timeout befire binding since ddModel may not be called when already full updated
+		let timerRefreshDDToConfig = this.$timeout(()=>{
+			this.configuration = angular.copy(this.ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel(this.configuration, this.dragDropModel));
+			this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);                                            
+			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+			this.ddModelConfModelProxyService.refreshControlsKeys(this.configuration, this.dragDropModel);            
+		}, 200);
+		this.$scope.$on('$destroy', ()=>this.$timeout.cancel(timerRefreshDDToConfig));
+		return item;
+	}	
+	
+	dndItemMoved(parentParentIndex, parentIndex, itemIndex){
+		//prevent item from first container to disapear when dropped on other container
+		if (parentParentIndex > 0) this.dragDropModel[parentParentIndex][parentIndex].splice(itemIndex, 1);
+	}	
+	
+	dragoverCallbackItems(ParentParentIndex, parentIndex, index, external){
+		//prevent items in layout column to be drag to control select  
+		if (parentIndex === 0) return false;
+		return true;
+	}
+	
+	//TODO : will replace in html : dnd-disable-if="items.length > 2"
+	disableItemDropIf(){
+
+	}	
 	
 
 }
 
 edaDragDropWayEasyFormGenCtrl.$inject = [ 
+		'$scope',
 		'easyFormGenVersion',
 		'$filter',
 		'$anchorScroll',
