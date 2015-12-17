@@ -49,6 +49,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.init();
 	}
 	
+	
 	init(){
 		this.easyFormGeneratorVERSION 				= this.easyFormGenVersion;
 		this.tab                      				= initTabModel(this.easyFormDragWayConfig.isPreviewPanelVisible(), this.easyFormDragWayConfig.arePreviewModelsVisible());
@@ -64,10 +65,12 @@ class edaDragDropWayEasyFormGenCtrl{
     this.MinNumberOfColumns 							= 1;
 		this.configuration 										= {};
 		this.animationsEnabled        				= this.easyFormSteWayConfig.getModalAnimationValue(); 
+		this.editPanelModel 									= { toggle : false }
 		
 		this.formFieldManage.initConfigurationEditFromScratch(this.configuration , false);
 		this.controllerModalProxy.initProxyModel();
 	}
+	
 	
 	collapseAllGroupControl(allExceptThisGroupIndex){        
 		angular.forEach(this.easyFormDragDropProperties.containerConfig.decoration, (value)=>{
@@ -86,6 +89,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		});
 	}
 	
+	
 	resetToZeroModel(){
 		this.configuration.activeLine = 1;
 		if (this.configuration.lines.length > 1) this.configuration.lines.splice(1, this.configuration.lines.length - 2);
@@ -97,9 +101,11 @@ class edaDragDropWayEasyFormGenCtrl{
 		return this.configuration.lines.length;
 	}
 
+
 	setActiveLineNumber(lineNumber){
 		if (lineNumber <= this.countConfigurationModelLines()) this.configuration.activeLine = lineNumber;
 	}
+
 
 	upThisLine(indexLine){
 		if (indexLine > -1) {
@@ -115,6 +121,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 	}
 
+
 	downThisLine(indexLine){
 		if (indexLine > -1) {
 			if (this.configuration.lines[indexLine + 1]) {
@@ -127,6 +134,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 	}
+
 
 	removeThisLine(index){
 		if (index > -1) {
@@ -148,6 +156,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		}
 	}
 	
+	
 	increaseNumberOfColumns(){
 		if (this.configuration.lines[this.configuration.activeLine -1].columns.length < this.MaxNumberOfColumns) {
 			let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());		
@@ -165,6 +174,7 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);  
 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
 	}
+
 
 	saveThisForm() {
 		if (typeof this.configuration.formName === 'undefined') {
@@ -199,11 +209,13 @@ class edaDragDropWayEasyFormGenCtrl{
 		return true;
 	} 
 	
+	
 	dragoverCallbackContainer(parentparentIndex, parentIndex, index){
 		//prevent container in layout column to be drag to control select contianer 
 		if (index === 0) return false;
 		return true;
 	}
+	
 	
 	dropCallback(event, index, item, external, type, allowedType) {
 		if (external) {
@@ -237,6 +249,59 @@ class edaDragDropWayEasyFormGenCtrl{
 
 	}	
 	
+	dropCallbackItems(event, index, realIndex, parentIndex, parentParentIndex, parentParentParentIndex, item, external, type, allowedType){
+		if (external) {
+			if (allowedType === 'itemType' && !item.label) 									return false;
+			if (allowedType === 'containerType' && !angular.isArray(item)) 	return false; 
+		}
+		//set a timeout before binding since ddModel may not be called when already full updated 
+		let timerRefreshDDToConfig = this.$timeout(()=>{		
+				this.configuration = angular.copy(this.ddModelConfModelProxyService.refreshAllConfigurationFromDragAndDropModel(this.configuration, this.dragDropModel));																																																
+				this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+				this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields); 	
+				// refresh controls key in dragDrop Model to persist already exists controls between refreshes when item drop events
+				this.ddModelConfModelProxyService.refreshControlsKeys(this.configuration, this.dragDropModel);        
+			}, 200);
+		// add/set rightCliked property to false (will help edaRightClick directive)
+		this.ddItemRightClickedManager.setUnRightClicked(item);
+		// timerRefreshDDToConfig timer destruction
+		this.$scope.$on('$destroy', ()=>this.$timeout.cancel(timerRefreshDDToConfig));
+		return item;
+	}
+	
+	
+	saveFromEditPanel(){
+		/**
+		* TODO : 
+		* should be called from edit panel
+		*
+		* AND
+		*
+		* should call all these methods
+		*
+		* need to get  : 
+		* 
+		* - line index
+		* - column index
+		* - basicSelectRowCollection (from edpitpanelcontroller)   --> maybe in controllerModalProxy service
+		* - groupedSelectRowCollection (from edpitpanelcontroller) --> maybe in controllerModalProxy service
+		* - radioRowCollection (from edpitpanelcontroller)         --> maybe in controllerModalProxy service
+		*/				
+		this.controllerModalProxy.bindSpecialCtrlTemporyModelsToProxyModel();		
+		//save config to control
+		//controllerModalProxy.applyConfigToSelectedControl(self.proxyModel);
+		//return current model to parent controller :
+	
+		//update configuration model and formly model
+		this.controllerModalProxy.bindConfigurationModelFromProxyModel(this.controllerModalProxy.getEditPanelModelLineIndex(), this.controllerModalProxy.getEditPanelModelColumnIndex(), this.configuration);
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.vm.wfFormFields, this.dataModel);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields); 
+		this.ddModelConfModelProxyService.refreshControlsKeys(this.configuration, this.dragDropModel);    
+		this.controllerModalProxy.setEditPanelModelToggle(false);
+		this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();  
+		this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
+	};	
+		
 
 }
 
