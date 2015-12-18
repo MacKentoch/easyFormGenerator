@@ -1,4 +1,11 @@
 /* global angular */
+
+	///////////////////////////////////////////////////////////////////////
+ 	// TODO : 
+ 	// - check no use methods that come from step way and delete if not needed
+ 	// - check other TODO (a lot of fixes are needed)
+	///////////////////////////////////////////////////////////////////////
+	
 import {
 	initDebugModel,
 	initTabModel,
@@ -66,6 +73,8 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.configuration 										= {};
 		this.animationsEnabled        				= this.easyFormSteWayConfig.getModalAnimationValue(); 
 		this.editPanelModel 									= { toggle : false }
+		this.debugProxyModel 									= this.controllerModalProxy.ProxyModel;
+		this.model 														= [];
 		
 		this.formFieldManage.initConfigurationEditFromScratch(this.configuration , false);
 		this.controllerModalProxy.initProxyModel();
@@ -96,84 +105,84 @@ class edaDragDropWayEasyFormGenCtrl{
 		return this.countConfigurationModelLines();
 	}
 
-
+	//TO CHECK if does not come from step way :
 	countConfigurationModelLines(){
 		return this.configuration.lines.length;
 	}
 
+	//  //TO CHECK THEN TO DELETE : should come from step way...
+	// setActiveLineNumber(lineNumber){
+	// 	if (lineNumber <= this.countConfigurationModelLines()) this.configuration.activeLine = lineNumber;
+	// }
 
-	setActiveLineNumber(lineNumber){
-		if (lineNumber <= this.countConfigurationModelLines()) this.configuration.activeLine = lineNumber;
-	}
+//  //TO CHECK THEN TO DELETE : should come from step way...
+// 	upThisLine(indexLine){
+// 		if (indexLine > -1) {
+// 			if (this.configuration.lines[indexLine - 1]) {
+// 				let currentLineObj = this.configuration.lines[indexLine];
+// 				this.configuration.lines.splice(indexLine , 1);
+// 				this.configuration.lines.splice((indexLine - 1), 0, currentLineObj);
+// 				this.configuration.activeLine = 1;
+// 			}
+// 		}
+// 
+// 		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+// 		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+// 	}
 
+	//  //TO CHECK THEN TO DELETE : should come from step way...
+	// downThisLine(indexLine){
+	// 	if (indexLine > -1) {
+	// 		if (this.configuration.lines[indexLine + 1]) {
+	// 			let currentLineObj = this.configuration.lines[indexLine];
+	// 			this.configuration.lines.splice(indexLine , 1);
+	// 			this.configuration.lines.splice((indexLine + 1), 0, currentLineObj);
+	// 			this.configuration.activeLine = 1;
+	// 		}
+	// 	}
+	// 	this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+	// 	this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+	// }
 
-	upThisLine(indexLine){
-		if (indexLine > -1) {
-			if (this.configuration.lines[indexLine - 1]) {
-				let currentLineObj = this.configuration.lines[indexLine];
-				this.configuration.lines.splice(indexLine , 1);
-				this.configuration.lines.splice((indexLine - 1), 0, currentLineObj);
-				this.configuration.activeLine = 1;
-			}
-		}
-
-		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
-		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-	}
-
-
-	downThisLine(indexLine){
-		if (indexLine > -1) {
-			if (this.configuration.lines[indexLine + 1]) {
-				let currentLineObj = this.configuration.lines[indexLine];
-				this.configuration.lines.splice(indexLine , 1);
-				this.configuration.lines.splice((indexLine + 1), 0, currentLineObj);
-				this.configuration.activeLine = 1;
-			}
-		}
-		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
-		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-	}
-
-
-	removeThisLine(index){
-		if (index > -1) {
-			if (this.configuration.lines.length > 1) {
-				if (this.configuration.activeLine === index + 1) this.configuration.activeLine = 1;
-				this.configuration.lines.splice(index, 1);
-			}else{
-				this.$timeout(()=>{
-					this.toaster.pop({
-						type						: 'warning',
-						title						: 'Last line' ,
-						body						: 'Can\'t delete the last line',
-						showCloseButton	: true
-					});
-				}, 100);
-			}
-			this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
-			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-		}
-	}
+//  //TO CHECK THEN TO DELETE : should come from step way...
+// 	removeThisLine(index){
+// 		if (index > -1) {
+// 			if (this.configuration.lines.length > 1) {
+// 				if (this.configuration.activeLine === index + 1) this.configuration.activeLine = 1;
+// 				this.configuration.lines.splice(index, 1);
+// 			}else{
+// 				this.$timeout(()=>{
+// 					this.toaster.pop({
+// 						type						: 'warning',
+// 						title						: 'Last line' ,
+// 						body						: 'Can\'t delete the last line',
+// 						showCloseButton	: true
+// 					});
+// 				}, 100);
+// 			}
+// 			this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+// 			this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+// 		}
+// 	}
 	
-	
-	increaseNumberOfColumns(){
-		if (this.configuration.lines[this.configuration.activeLine -1].columns.length < this.MaxNumberOfColumns) {
-			let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());		
-			this.configuration.lines[this.configuration.activeLine -1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns; 
-		}
-		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
-		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-	}	
+	//  //TO CHECK THEN TO DELETE : should come from step way...	
+	// increaseNumberOfColumns(){
+	// 	if (this.configuration.lines[this.configuration.activeLine -1].columns.length < this.MaxNumberOfColumns) {
+	// 		let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());		
+	// 		this.configuration.lines[this.configuration.activeLine -1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns; 
+	// 	}
+	// 	this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
+	// 	this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
+	// }	
 
-
-	decreaseNumberOfColumns(indexLine, indexColumn){
-		if (this.configuration.lines[this.configuration.activeLine -1].columns.length > 1) {
-			this.configuration.lines[this.configuration.activeLine -1].columns.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
-		}
-		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);  
-		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
-	}
+	//  //TO CHECK THEN TO DELETE : should come from step way...	
+	// decreaseNumberOfColumns(indexLine, indexColumn){
+	// 	if (this.configuration.lines[this.configuration.activeLine -1].columns.length > 1) {
+	// 		this.configuration.lines[this.configuration.activeLine -1].columns.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
+	// 	}
+	// 	this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);  
+	// 	this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
+	// }
 
 
 	saveThisForm() {
@@ -300,8 +309,112 @@ class edaDragDropWayEasyFormGenCtrl{
 		this.controllerModalProxy.setEditPanelModelToggle(false);
 		this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();  
 		this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
-	};	
+	}
+	
+	
+	closeEditPanel(){
+		// reset all rightClicked control properties to false
+		this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
 		
+		/**
+		* TODO : refresh configuration model 
+		* uncomment after update these next 3 lines
+		* 
+		* NOTE : indexLine AND  numcolumn should be stored in service and
+		* updated when togle sidepanel
+		*/
+		//this.controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
+		//this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);    
+		//this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);     
+		
+		this.controllerModalProxy.setEditPanelModelToggle(false);
+		this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();
+	}		
+	
+    
+    
+	toggleEditPanel(event, lineIndex, colIndex, item){
+		this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
+		// already opened (could be another control edit)
+		if (this.controllerModalProxy.getEditPanelModelToggle()) {
+			// -> immediate close and refresh configuration model + formly model 
+			this.controllerModalProxy.setEditPanelModelToggle(false);
+			this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle(); 
+			
+			//TODO : for refreshing
+			//this.controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
+			//this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);    
+			//this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);    
+	
+			// check if new control right clicked otherwise just toggle side panel
+			if (typeof this.controllerModalProxy.getEditPanelModelLineIndex()    !== 'undefined' &&
+					typeof this.controllerModalProxy.getEditPanelModelColumnIndex()  !== 'undefined' &&
+					typeof this.controllerModalProxy.getEditPanelModelControl()      !== 'undefined') {
+				if (this.controllerModalProxy.getEditPanelModelLineIndex()   === lineIndex &&
+						this.controllerModalProxy.getEditPanelModelColumnIndex() === colIndex  &&
+					angular.equals(this.controllerModalProxy.getEditPanelModelControl(), item)) {
+					//console.info('already opened for SAME ctrl : so close - no re-open');
+				}else{
+					//console.info('already opened for DIFFERENT ctrl : so re-open');
+					item.rightCliked = true;
+					// set a timeout before re-opening, 500ms is ok for a ps-size="400px"
+					let timerCloseOpenedEditPanel = this.$timeout(()=>{                
+						this.controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
+						this.controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
+						this.controllerModalProxy.setEditPanelModelControl(item);
+						// control model passed to Service : controllerModalProxy
+						this.controllerModalProxy.setProxyModelFromConfigurationSelection(this.configuration, lineIndex, colIndex);
+						this.controllerModalProxy.setEditPanelModelToggle(true);
+						this.$scope.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();                                         
+					}, 200);
+					this.$scope.$on('$destroy', ()=>this.$timeout.cancel(timerCloseOpenedEditPanel));
+				}
+			}
+		}else{
+			// previous state = closed = immediate open 
+			//console.info('NOT already opened : so open');
+			item.rightCliked = true;
+				
+			this.controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
+			this.controllerModalProxy.setEditPanelModelColumnIndex(colIndex);
+			this.controllerModalProxy.setEditPanelModelControl(item);
+			// control model passed to Service : controllerModalProxy
+			this.controllerModalProxy.setProxyModelFromConfigurationSelection(this.configuration, lineIndex, colIndex);
+			this.controllerModalProxy.setEditPanelModelToggle(true);
+			this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();
+		}                       
+	}
+	
+	// // refreshModels : to call after drag and drop events
+	// refreshModels(){
+	//   this.$timeout(()=>{
+	//   	console.info('refreshing models');
+	//    formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+	//    this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields); 
+	//   }, 10);	
+  // }
+
+
+	removeThisLine(lineIndex){
+		this.dragDropModel[1].splice(lineIndex,1);
+	}
+	
+	
+	//TODO : to fix
+	addNewline(){
+		// re-render formfield
+		// TODO : to fix
+		this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+		this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields); 
+	}
+	
+	insertNewLine(){
+		this.addNewline();
+		this.dragDropModel[1].push([]);
+	}
+
+			
+
 
 }
 
