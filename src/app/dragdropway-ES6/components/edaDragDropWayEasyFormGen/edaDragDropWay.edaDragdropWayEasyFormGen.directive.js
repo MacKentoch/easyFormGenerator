@@ -44,7 +44,7 @@ function edaDragdropWayEasyFormGen(
 		//watch "scope.returnSaveEvent"" = catch saving form event  
 		scope.$watch(()=>scope.returnSaveEvent, (newValue, oldValue)=>{
 			if (newValue === true) {
-				var _easyFormGeneratorModel = {
+				let _easyFormGeneratorModel = {
 					formName          				: scope.configuration.formName,
 					btnSubmitText     				: scope.configuration.submitButtonText,
 					btnCancelText     				: scope.configuration.cancelButtonText,
@@ -64,15 +64,15 @@ function edaDragdropWayEasyFormGen(
 
 
 		function returnAttributeConfigurationLinesIfNotEmpty(){
-			var edaEasyFormGeneratorModelToReturn = (
-					angular.isArray(scope.edaEasyFormGeneratorModel.edaFieldsModel) ?  ( 
-							scope.edaEasyFormGeneratorModel.edaFieldsModel.length > 0 ? 
-								scope.edaEasyFormGeneratorModel.edaFieldsModel 
-							: emptyEdaFieldsModel()
-							) 
+			let edaEasyFormGeneratorModelToReturn = (
+				angular.isArray(scope.edaEasyFormGeneratorModel.edaFieldsModel) ?  ( 
+					scope.edaEasyFormGeneratorModel.edaFieldsModel.length > 0 ? 
+						scope.edaEasyFormGeneratorModel.edaFieldsModel 
 					: emptyEdaFieldsModel()
+					) 
+				: emptyEdaFieldsModel()
 			);
-				return edaEasyFormGeneratorModelToReturn;  
+			return edaEasyFormGeneratorModelToReturn;  
 		}
           
 		/**
@@ -82,15 +82,15 @@ function edaDragdropWayEasyFormGen(
 		function emptyEdaFieldsModel(){
 			let emptyModel = [
 				{
-					"line": 1,
-					"activeColumn": 1,
-					"columns": [
+					"line"					: 1,
+					"activeColumn"	: 1,
+					"columns"				: [
 						{
-							"numColumn": 1,
-							"exist": true,
-							"control": {
-								"type": "none",
-								"key": "none"
+							"numColumn"	: 1,
+							"exist"			: true,
+							"control"		: {
+								"type"	: "none",
+								"key"		: "none"
 							}
 						}
 					]
@@ -98,78 +98,51 @@ function edaDragdropWayEasyFormGen(
 			];
 			return emptyModel;
 		}
-          
+     
+		      
 		function returnAttributeDataModelIfNotEmpty(){
-			var dataModelToReturn = (
-					angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  ( 
-							scope.edaEasyFormGeneratorModel.dataModel.length > 0 ? 
-							scope.edaEasyFormGeneratorModel.dataModel 
-							: []
-							) 
+			let dataModelToReturn = (
+				angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  ( 
+					scope.edaEasyFormGeneratorModel.dataModel.length > 0 ? 
+					scope.edaEasyFormGeneratorModel.dataModel 
 					: []
+					) 
+				: []
 			);
-				return dataModelToReturn;  
-		}          
+			return dataModelToReturn;  
+		}         
  
-          
-        
-                  
-	function loadExistingConfigurationModel(){
-		
-		if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
-			var configlines           = returnAttributeConfigurationLinesIfNotEmpty();           
-			scope.configurationLoaded = {};
-			
-			formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines, false);
-			
-			//apply configuration model
-			scope.configuration = angular.copy(scope.configurationLoaded);
-			
-			
-			//apply ddModel
-			ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel( 
-																																	scope.configuration, 
-																																	scope.dragDropModel
-																																	);            
-					
-			updateConfigurationClassName(scope.configuration);
-			
-			ddModelConfModelProxyService.refreshControlsKeys( 
-																												scope.configuration, 
-																												scope.dragDropModel
-																											);             
-			
-			console.info('compare both configuration model');
-			console.dir({
-				'loaded one' : angular.copy(scope.configurationLoaded),
-				'bound one' : angular.copy(scope.configuration) 
-			});
-			
-			//apply formly model
-			formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.dataModel);          
-			
-			scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
-			scope.dataModel                            = returnAttributeDataModelIfNotEmpty();  
-			scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
-			scope.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText) ? scope.edaEasyFormGeneratorModel.btnSubmitText : 'Submit'; 
-			scope.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText) ? scope.edaEasyFormGeneratorModel.btnCancelText : 'Cancel';
-		}  
-	} 
+              
+		function loadExistingConfigurationModel(){
+			if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
+				let configlines           = returnAttributeConfigurationLinesIfNotEmpty();           
+				scope.configurationLoaded = {};
+				formFieldManage.bindConfigurationLines(scope.configurationLoaded,configlines, false);
+				//apply configuration model
+				scope.configuration = angular.copy(scope.configurationLoaded);
+				//apply ddModel
+				ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel(scope.configuration, scope.dragDropModel);            
+				updateConfigurationClassName(scope.configuration);
+				ddModelConfModelProxyService.refreshControlsKeys(scope.configuration, scope.dragDropModel);             
+				//apply formly model
+				formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.dataModel);          
+				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
+				scope.dataModel                           = returnAttributeDataModelIfNotEmpty();  
+				scope.configuration.formName              = angular.isString(scope.edaEasyFormGeneratorModel.formName) ? scope.edaEasyFormGeneratorModel.formName : '';
+				scope.configuration.submitButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnSubmitText) ? scope.edaEasyFormGeneratorModel.btnSubmitText : 'Submit'; 
+				scope.configuration.cancelButtonText      = angular.isString(scope.edaEasyFormGeneratorModel.btnCancelText) ? scope.edaEasyFormGeneratorModel.btnCancelText : 'Cancel';
+			}  
+		} 
          
          
 		function updateConfigurationClassName(configModel){
-			angular.forEach(configModel.lines, function(aline){
-			var cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
-			
-			angular.forEach(aline.columns, function(aControl){
-				aControl.control.className = cssClassToApply;
-			}); 
-		});   
+			angular.forEach(configModel.lines, (aline)=>{
+				let cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
+				angular.forEach(aline.columns, (aControl)=> {aControl.control.className = cssClassToApply}); 
+			});         
+		}  
           
-          
-	}  
-          
-          
+      
       //closing link function             
 }	
 	
