@@ -11,12 +11,12 @@ const LEFT_PANEL_CONTROLLERAS	= 'leftPanelCtrl';
 class leftPanelController{
 	constructor(toaster,
 							$timeout,
-							selectOptionManage,
+							$selectOptionMange,
 							$modalProxy){
 								
 		this.toaster  						= toaster;
 		this.$timeout  						= $timeout;
-		this.selectOptionManage  	= selectOptionManage;
+		this.$selectOptionMange  	= $selectOptionMange;
 		this.$modalProxy  				= $modalProxy;
 		
 		this.init();
@@ -127,7 +127,7 @@ class leftPanelController{
 		* ==============================================================
 		*/
 		addNewOptionRadio(){
-			let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
+			let result = this.$selectOptionMange.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 						type		: 'warning',
@@ -142,7 +142,7 @@ class leftPanelController{
 		}	
 
 		removeRadioRow(index) {
-			let result = this.selectOptionManage.removeOption(this.radioRowCollection, index);
+			let result = this.$selectOptionMange.removeOption(this.radioRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type			: 'warning',
@@ -155,7 +155,7 @@ class leftPanelController{
 		}
 		
 		upThisRadioRow(index){
-			let result = this.selectOptionManage.upthisOption(this.radioRowCollection, index);
+			let result = this.$selectOptionMange.upthisOption(this.radioRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -168,7 +168,7 @@ class leftPanelController{
 		}
 
 		downThisRadioRow(index){
-			let result = this.selectOptionManage.downthisOption(this.radioRowCollection, index);
+			let result = this.$selectOptionMange.downthisOption(this.radioRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -181,7 +181,7 @@ class leftPanelController{
 		}		
 
 		addNewOptionBasicSelect(){
-			let result = this.selectOptionManage.addNewOptionBasicSelect(this.basicSelectRowCollection, this.newOptionBasicSelect.saisie);
+			let result = this.$selectOptionMange.addNewOptionBasicSelect(this.basicSelectRowCollection, this.newOptionBasicSelect.saisie);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type			: 'warning',
@@ -195,7 +195,7 @@ class leftPanelController{
 		}
 					
 		removeRow(index) {
-			let result = this.selectOptionManage.removeOption(this.basicSelectRowCollection, index);
+			let result = this.$selectOptionMange.removeOption(this.basicSelectRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -208,7 +208,7 @@ class leftPanelController{
 		}
 
 		upThisRow(index){
-				let result = this.selectOptionManage.upthisOption(this.basicSelectRowCollection, index);
+				let result = this.$selectOptionMange.upthisOption(this.basicSelectRowCollection, index);
 				if (result.resultFlag === false) {
 					this.toaster.pop({
 						type		: 'warning',
@@ -221,7 +221,7 @@ class leftPanelController{
 		}
 
 		downThisRow(index){
-			let result = this.selectOptionManage.downthisOption(this.basicSelectRowCollection, index);
+			let result = this.$selectOptionMange.downthisOption(this.basicSelectRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -265,7 +265,7 @@ class leftPanelController{
 		
 		
 		addNewOptionGroupedSelect(){
-			let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, this.newOptionGroupedSelect.saisie, '');
+			let result = this.$selectOptionMange.addNewOptionGroupedSelect(this.groupedSelectRowCollection, this.newOptionGroupedSelect.saisie, '');
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type			: 'warning',
@@ -283,7 +283,7 @@ class leftPanelController{
 
 
 		removeGroupedSelectRow(index) {
-			let result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
+			let result = this.$selectOptionMange.removeOption(this.groupedSelectRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -296,7 +296,7 @@ class leftPanelController{
 		} 		
 
 	upThisGroupedSelectRow(index){
-		let result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
+		let result = this.$selectOptionMange.upthisOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
 			this.toaster.pop({
 				type		: 'warning',
@@ -310,7 +310,7 @@ class leftPanelController{
 	
 
 	downThisGroupedSelectRow(index){
-			let result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
+			let result = this.$selectOptionMange.downthisOption(this.groupedSelectRowCollection, index);
 			if (result.resultFlag === false) {
 				this.toaster.pop({
 					type		: 'warning',
@@ -347,7 +347,7 @@ leftPanelController.$inject = [
 	'$scope',  
 	'toaster',
 	'$timeout',
-	'selectOptionManage',
+	'$selectOptionMange',
 	'$modalProxy'	
 ];
 
