@@ -69,9 +69,65 @@ class ddModelConfModelProxyService{
   } 
   
    
+  refreshControlsKeys(configModel, dragDropModel){				
+    angular.forEach(configModel.lines, (aConfigLine, aConfigLineIndex)=>{						
+        angular.forEach(aConfigLine.columns, (aConfigControl, aConfigControlIndex)=>{
+          //if last control removed from line - and dragDrop model did not already removed this line
+          if(typeof dragDropModel[1][aConfigLineIndex] !== 'undefined'){
+            if(dragDropModel[1][aConfigLineIndex].length > 0){
+              dragDropModel[1][aConfigLineIndex][aConfigControlIndex].key = aConfigControl.control.key;
+              //need to save all in dragdropModel as it is a reference
+              //configModel still needed 
+              // -> to keep coherence (same back model) between all version of easyForm Generator
+              // -> is the back model (can be saved to dataBase)
+              dragDropModel[1][aConfigLineIndex][aConfigControlIndex].configModelControl = angular.copy(aConfigControl.control);										
+            }
+          }
+        });
+    });     
+  }
 
 
-
+  /**
+   * drag drop model
+   * -> will be used to bind configuration model
+   * 	of no key saved, configuration model controls would be reset each drop events
+   * 
+   * -> matching key : will prevent to reset existing control
+   */
+  loadDragDropModelFromConfigurationModel(configModel, dragDropModel){				
+    //reset dragdrop fields model NOT all dragDropModel!
+    dragDropModel[1] = [];
+    angular.forEach(configModel.lines, (aConfigLine, aConfigLineIndex)=>{
+      //add new line
+      dragDropModel[1].push([]);
+      angular.forEach(aConfigLine.columns, (aConfigControl, aConfigControlIndex)=>{
+        // get control type from configuration.control.selectedControl
+        let dragdropControlRef = {
+          control   : 'empty',
+          cssClass  : 'col-xs-12',
+          label     : '<div class="col-md-12"> <div class="form-group"> <div class=""> </div> </div></div>'
+        };
+        angular.forEach(dragDropModel[0], (groupOfCtrlRef, groupOfCtrlRefIndex)=>{
+          angular.forEach(groupOfCtrlRef, (aCtrlref, aCtrlRefIndex)=>{
+            if (aCtrlref.control === aConfigControl.control.selectedControl) dragdropControlRef = angular.copy(aCtrlref);
+          });
+        });
+        dragDropModel[1][aConfigLineIndex].push(dragdropControlRef);
+        //update class depending number of control per line
+        let cssClassToApply = this.dragDropConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
+        angular.forEach(dragDropModel[1][aConfigLineIndex], (ddControlToUpdate)=>ddControlToUpdate.cssClass = cssClassToApply);
+      });	            
+    });
+    // console.info('bindDragDropModelFromConfigurationModel');
+    // console.dir(	
+    // 							{
+    // 									'when' 							: 'starting',
+    // 									'configModel is ' 	: angular.copy(configModel),
+    // 									'dragDropModel is ' : angular.copy(dragDropModel)
+    // 							}
+    // 						);     
+  }
 
 
 
