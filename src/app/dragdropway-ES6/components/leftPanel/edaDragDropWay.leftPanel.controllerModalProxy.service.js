@@ -15,8 +15,14 @@ class controllerModalProxy{
   }
   
   init(){
-    this.ProxyModel = {};
+    this.ProxyModel     = {};
     this.resetProxyModel();
+    this.editPanelModel = {
+      toggle      : false,
+      lineIndex   : -1,
+      columnIndex : -1,
+      control     : {}
+    };
   }
   
  
@@ -26,102 +32,9 @@ class controllerModalProxy{
   }  
   
   
-  /**
-   * return nyaSelectModel from Selected control in configuration model
-   * 
-   * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
-   * 				-> in drag and drop version : use 'setProxyModelFromConfigurationSelection' instead 
-   * 					to set private object that will be readable to side edit panel
-   */  
-  getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
-    this.resetNyaSelect(nyaSelectObj);  
-    // data send to modal controller
-    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
-      nyaSelectObj.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
-      nyaSelectObj.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-      nyaSelectObj.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-      nyaSelectObj.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-      nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-      nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
-      // particular case : datepicker
-      if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-        nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
-      }
-    }
-    return nyaSelectObj;
-  }  
-  
-
-  /**
-   * deprecated in drag and drop version : 
-   * 	use bindConfigurationModelFromProxyModel to refresh configuration after control update in side panel
-   * 
-   * will be used in closePanel
-   */
-  bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
-            
-    let extractedProps = this.returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-
-    configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
-    configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
-    configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
-    // templateOptions
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
-      label				: '',
-      required		: false,
-      description	: '',
-      placeholder	: '',
-      options			: []
-    };
-    // then bind template option
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
-
-    /**
-     * add additionnal — particular — properties :
-     * -> datepicker : datepickerPopup
-     */
-    if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
-    }	
-
-    /**
-     * unique key (set only first time) in this model is formly control type + Date.now(); 
-     */
-    var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-    if (this.validKeyUniqueness(newKey, configurationObj) === true){
-      configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-    }else{
-      newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-      if (this.validKeyUniqueness(newKey, configurationObj) === true){
-        configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-      }else{
-        newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-      }
-    }                                                                     
-    configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
-  }  
-  
- 
-  applyConfigToSelectedControl(nyaSelectObj){
-    for (let i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
-      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
-        nyaSelectObj.controls[i].formlyLabel 				= nyaSelectObj.temporyConfig.formlyLabel;
-        nyaSelectObj.controls[i].formlyRequired 		= nyaSelectObj.temporyConfig.formlyRequired;
-        nyaSelectObj.controls[i].formlyDesciption 	= nyaSelectObj.temporyConfig.formlyDesciption;
-        nyaSelectObj.controls[i].formlyPlaceholder 	= nyaSelectObj.temporyConfig.formlyPlaceholder;
-        nyaSelectObj.controls[i].formlyOptions 			= nyaSelectObj.temporyConfig.formlyOptions;
-        if (nyaSelectObj.controls[i].id ==='Date' ) {
-          nyaSelectObj.controls[i].datepickerPopup 	= nyaSelectObj.temporyConfig.datepickerPopup;  	
-        }
-      }
-    }
-  } 
-  
+  initProxyModel(thisProxyModelToInit){
+    return this.resetProxyModel(thisProxyModelToInit);
+  }
   
   
   // deprecated : in drag and drop version, use "resetProxyModel()""
@@ -138,6 +51,7 @@ class controllerModalProxy{
     return true;
   }  
  
+ 
   returnControlFromAddCtrlModalModel(CtrlModalModel){
     let modelToReturn = {
           selectedControl		: 'none',
@@ -149,7 +63,6 @@ class controllerModalProxy{
           formlyPlaceholder	: '',
           formlyOptions			: []
     };
-
     for (let i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
       if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
 
@@ -169,34 +82,125 @@ class controllerModalProxy{
   }  
   
 
-    validKeyUniqueness(thisKey, configurationObj){
-	    let isUnique = true;
-	    for (let i = configurationObj.lines.length - 1; i >= 0; i--) {
-	      for (let j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
-	        if (configurationObj.lines[i].columns[j].control.key === thisKey) {
-	          isUnique = false;
-	        }
-	      } 
-	    }
-	    return isUnique;  
-	  }
+  validKeyUniqueness(thisKey, configurationObj){
+    let isUnique = true;
+    for (let i = configurationObj.lines.length - 1; i >= 0; i--) {
+      for (let j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
+        if (configurationObj.lines[i].columns[j].control.key === thisKey) {
+          isUnique = false;
+        }
+      } 
+    }
+    return isUnique;  
+  }
 
 
-    getSelectedProxyModel(configurationSelectedCtrl){
-	  	var selectedProxyModelControl = 'none';
-	  	var listProxyModelCTRL        = angular.copy(this.EasyFormGenFormlyBindingModels.getEasyFormListControls().controls);
+  getSelectedProxyModel(configurationSelectedCtrl){
+    var selectedProxyModelControl = 'none';
+    var listProxyModelCTRL        = angular.copy(this.EasyFormGenFormlyBindingModels.getEasyFormListControls().controls);
 
-	  	listProxyModelCTRL.forEach(function(control){
-	  		if (control.formlyType 		=== configurationSelectedCtrl.type &&
-	  				control.formlySubtype === configurationSelectedCtrl.subtype) {
-          selectedProxyModelControl = control.id;
-          return selectedProxyModelControl;
-	  		}
-	  	});
-	  	return selectedProxyModelControl;
-	  }
+    listProxyModelCTRL.forEach(function(control){
+      if (control.formlyType 		=== configurationSelectedCtrl.type &&
+          control.formlySubtype === configurationSelectedCtrl.subtype) {
+        selectedProxyModelControl = control.id;
+        return selectedProxyModelControl;
+      }
+    });
+    return selectedProxyModelControl;
+  }
+    
+    
+  // to refresh configuration model from edit panel
+  bindConfigurationModelFromProxyModel(indexLine, numcolumn, configurationObj){          
+    let extractedProps = angular.copy(this.proxyModel.temporyConfig);
+    
+    configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
+    configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
+    configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
+    // templateOptions
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
+      label				: '',
+      required		: false,
+      description	: '',
+      placeholder	: '',
+      options			: []
+    };
+    // then bind template option
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
+    // add additionnal — particular — properties : -> datepicker : datepickerPopup
+    if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
+    }	
+    // unique key (set only first time) in this model is formly control type + Date.now(); 
+    let newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+
+    if (this.validKeyUniqueness(newKey, configurationObj) === true){
+      configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+    }else{
+      newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+      if (this.validKeyUniqueness(newKey, configurationObj) === true){
+        configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+      }else{
+        newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+      }
+    }                                                                     
+    configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+  }  
+
+
+  /**
+   * set local proxyModel from Selected control in configuration model
+   * 
+   * replace deprecated "getNyASelectFromSelectedLineColumn"
+   * -model is now named "proxyModel"
+   * -model is stored in this service 
+   * 
+   * -> it has just more sence!
+   */
+  setProxyModelFromConfigurationSelection(configurationObj, indexLine, numcolumn){
+    // data send to modal controller
+    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control != 'undefined') {
+      // determine selected control from indexes and control.type and control.subtype in configuration model 
+      this.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? this.getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+      this.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? this.getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+      this.proxyModel.temporyConfig.formlyType 				  = typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type: 'none';
+      this.proxyModel.temporyConfig.formlySubtype 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.subtype != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.subtype : 'none';
+      this.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+      this.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+      this.proxyModel.temporyConfig.formlyDesciption 	  = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+      this.proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+      this.proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+      // particular case : datepicker
+      if (this.proxyModel.temporyConfig.selectedControl === 'Date') {
+        this.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
+      }
+    }
+    return this.proxyModel;
+  }
   
   
+	getProxyModel(){
+    return this.proxyModel;
+  }  
+  
+  
+  /**
+   * ============================================================
+   * following methods for "editPanelModel"
+   * 
+   * Note this model : 
+   * - to manage side edit control panel
+   * ============================================================
+   */  
+
+  // getter : editPanelModel (whole model => type = object)			 
+  getEditPanelModelAllModel(){
+    return this.editPanelModel;
+  }  
   
   
 }

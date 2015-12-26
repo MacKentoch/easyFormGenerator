@@ -4344,7 +4344,8 @@ angular
                                           '$timeout',
                                           'selectOptionManage',
                                           'controllerModalProxy',
-		function(	$scope,  
+		function(	
+							$scope,  
               toaster,
               $timeout,
               selectOptionManage,
@@ -5248,7 +5249,7 @@ angular
                                 ' <button ng-show="deleteLine.readyToDelete === true" type="button"  class="btn btn-danger pull-right buttonCloseLine" >',
                                 '   <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>',
                                 '</div>',
-                                '  <div id="lineDirectiveTranscludeHere"></<div>',
+                                '  <div id="lineDirectiveTranscludeHere"></div>',
                                 ].join(' ');
         
         return {
@@ -5302,7 +5303,7 @@ angular
                  *  - addClass / remove/class ; will make line in a shake movement
                  *  - call "removeLine function to delete the line (if it was rwice double clicked)
                  */
-               $scope.removeMe= function(event){
+               $scope.removeMe = function(event){
                     event.preventDefault();
                     event.stopPropagation();
 
@@ -6713,7 +6714,8 @@ angular
 																			}
 																			
 																			return isToCount;	
-																		};																	
+																		};
+																																			
 		Service.updateLineItemCss = function(fullModel, listCssToApply, columIndex, lineIndex, realCount){
 																	  if (typeof fullModel 			!== 		'undefined' &&
 																	  	  typeof listCssToApply !== 		'undefined' &&
@@ -7267,10 +7269,10 @@ angular
 		 */
 		Service.ProxyModel = {};//angular.copy(EasyFormGenFormlyBindingModels.getEasyFormListControls());
 		resetProxyModel();
-		/**
-		 * deprecated : in drag and drop version
-		 * 							use "resetProxyModel()"" 
-		 */
+// 		/**
+// 		 * deprecated : in drag and drop version
+// 		 * 							use "resetProxyModel()"" 
+// 		 */
 	  function resetNyaSelect(nyaSelectObj){
 
 	    var newNyaSelectObj = EasyFormGenFormlyBindingModels.getEasyFormListControls();
@@ -7339,151 +7341,151 @@ angular
 	    return isUnique;  
 	  }
 
-	  /**
-	   * return selected control ID (proxyModel)
-	   * -> from configuration model selected indexes (line, column) 
-	   * 		+ control.formlyType 
-	   *   	+ control.formlySubtype
-	   */
-	  function getSelectedProxyModel(configurationSelectedCtrl){
-	  	var selectedProxyModelControl = 'none';
-	  	var listProxyModelCTRL = angular.copy(EasyFormGenFormlyBindingModels
-	  																					.getEasyFormListControls().controls);
-
-	  	listProxyModelCTRL.forEach(function(control){
-	  		if (control.formlyType 		=== configurationSelectedCtrl.type &&
-	  				control.formlySubtype === configurationSelectedCtrl.subtype) {
-
-	  				selectedProxyModelControl = control.id;
-	  				
-	  				return selectedProxyModelControl;
-
-	  		}
-	  	});
-
-
-	  	return selectedProxyModelControl;
-	  }
-
-		/**
-		 * deprecated in drag and drop version
-		 * 
-		 * use initProxyModel insead
-		 */
+// 	  /**
+// 	   * return selected control ID (proxyModel)
+// 	   * -> from configuration model selected indexes (line, column) 
+// 	   * 		+ control.formlyType 
+// 	   *   	+ control.formlySubtype
+// 	   */
+// 	  function getSelectedProxyModel(configurationSelectedCtrl){
+// 	  	var selectedProxyModelControl = 'none';
+// 	  	var listProxyModelCTRL = angular.copy(EasyFormGenFormlyBindingModels
+// 	  																					.getEasyFormListControls().controls);
+// 
+// 	  	listProxyModelCTRL.forEach(function(control){
+// 	  		if (control.formlyType 		=== configurationSelectedCtrl.type &&
+// 	  				control.formlySubtype === configurationSelectedCtrl.subtype) {
+// 
+// 	  				selectedProxyModelControl = control.id;
+// 	  				
+// 	  				return selectedProxyModelControl;
+// 
+// 	  		}
+// 	  	});
+// 
+// 
+// 	  	return selectedProxyModelControl;
+// 	  }
+// 
+// 		/**
+// 		 * deprecated in drag and drop version
+// 		 * 
+// 		 * use initProxyModel insead
+// 		 */
 		Service.initNyaSelect = function(nyaSelectObj){
     	return resetNyaSelect(nyaSelectObj);
     };
-
-		/**
-		 * return nyaSelectModel from Selected control in configuration model
-		 * 
-		 * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
-		 * 				-> in drag and drop version : use 'setProxyModelFromConfigurationSelection' instead 
-		 * 					to set private object that will be readable to side edit panel
-		 */
-    Service.getNyASelectFromSelectedLineColumn = function(nyaSelectObj, configurationObj, indexLine, numcolumn){
-	    resetNyaSelect(nyaSelectObj);  
-	    /**
-	     * data send to modal controller
-	     */
-	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
-
-	      nyaSelectObj.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
-	      nyaSelectObj.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-	      nyaSelectObj.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-	      nyaSelectObj.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-	      nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-	      nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
-	      /**
-	       * particular case : datepicker
-	       */
-	      if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-	      	nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
-	      }
-	    }
-	    return nyaSelectObj;
-		};
-	
-		
-		/**
-		 * deprecated in drag and drop version : 
-		 * 	use bindConfigurationModelFromProxyModel to refresh configuration after control update in side panel
-		 * 
-		 * will be used in closePanel
-		 */
-		Service.bindConfigurationModelFromModalReturn =  function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
-				      
-				      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-
-				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
-				      /**
-				       * templateOptions
-				       */
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
-		                                                                                            label				: '',
-		                                                                                            required		: false,
-		                                                                                            description	: '',
-		                                                                                            placeholder	: '',
-		                                                                                            options			: []
-				                                                                                      };
-				       /**
-				        * then bind template option
-				        */
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
-				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
-
-				      /**
-				       * add additionnal — particular — properties :
-				       * 
-				       * -> datepicker : datepickerPopup
-				       */
-				      if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-				       	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
-				      }	
-
-				      /**
-				       * unique key (set only first time) in this model is formly control type + Date.now(); 
-				       */
-				      var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-			        if (validKeyUniqueness(newKey, configurationObj) === true){
-			          configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-			        }else{
-			          newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-			          if (validKeyUniqueness(newKey, configurationObj) === true){
-			            configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-			          }else{
-			            newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-			          }
-			        }                                                                     
-
-				      configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
-
-		};
-
-		Service.applyConfigToSelectedControl = function(nyaSelectObj){
-				  	
-				    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
-				      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
-
-				          nyaSelectObj.controls[i].formlyLabel 				= nyaSelectObj.temporyConfig.formlyLabel;
-				          nyaSelectObj.controls[i].formlyRequired 		= nyaSelectObj.temporyConfig.formlyRequired;
-				          nyaSelectObj.controls[i].formlyDesciption 	= nyaSelectObj.temporyConfig.formlyDesciption;
-				          nyaSelectObj.controls[i].formlyPlaceholder 	= nyaSelectObj.temporyConfig.formlyPlaceholder;
-				          nyaSelectObj.controls[i].formlyOptions 			= nyaSelectObj.temporyConfig.formlyOptions;
-
-				          if (nyaSelectObj.controls[i].id ==='Date' ) {
-				          	nyaSelectObj.controls[i].datepickerPopup 	= nyaSelectObj.temporyConfig.datepickerPopup;  	
-				          }
-				        
-				       }
-				    }
-		};
+// 
+// 		/**
+// 		 * return nyaSelectModel from Selected control in configuration model
+// 		 * 
+// 		 * note : deprecated in drag and drop version since no modal involved so just set private nyasSelect object.
+// 		 * 				-> in drag and drop version : use 'setProxyModelFromConfigurationSelection' instead 
+// 		 * 					to set private object that will be readable to side edit panel
+// 		 */
+//     Service.getNyASelectFromSelectedLineColumn = function(nyaSelectObj, configurationObj, indexLine, numcolumn){
+// 	    resetNyaSelect(nyaSelectObj);  
+// 	    /**
+// 	     * data send to modal controller
+// 	     */
+// 	    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
+// 
+// 	      nyaSelectObj.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
+// 	      nyaSelectObj.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
+// 	      nyaSelectObj.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
+// 	      nyaSelectObj.temporyConfig.formlyDesciption 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+// 	      nyaSelectObj.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
+// 	      nyaSelectObj.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
+// 	      /**
+// 	       * particular case : datepicker
+// 	       */
+// 	      if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
+// 	      	nyaSelectObj.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
+// 	      }
+// 	    }
+// 	    return nyaSelectObj;
+// 		};
+// 	
+// 		
+// 		/**
+// 		 * deprecated in drag and drop version : 
+// 		 * 	use bindConfigurationModelFromProxyModel to refresh configuration after control update in side panel
+// 		 * 
+// 		 * will be used in closePanel
+// 		 */
+// 		Service.bindConfigurationModelFromModalReturn =  function(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
+// 				      
+// 				      var extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
+// 
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.type 						= extractedProps.formlyType;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.subtype 					= extractedProps.formlySubtype;
+// 				      /**
+// 				       * templateOptions
+// 				       */
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions = {
+// 		                                                                                            label				: '',
+// 		                                                                                            required		: false,
+// 		                                                                                            description	: '',
+// 		                                                                                            placeholder	: '',
+// 		                                                                                            options			: []
+// 				                                                                                      };
+// 				       /**
+// 				        * then bind template option
+// 				        */
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
+// 
+// 				      /**
+// 				       * add additionnal — particular — properties :
+// 				       * 
+// 				       * -> datepicker : datepickerPopup
+// 				       */
+// 				      if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
+// 				       	configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup = extractedProps.datepickerPopup;
+// 				      }	
+// 
+// 				      /**
+// 				       * unique key (set only first time) in this model is formly control type + Date.now(); 
+// 				       */
+// 				      var newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+// 
+// 			        if (validKeyUniqueness(newKey, configurationObj) === true){
+// 			          configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+// 			        }else{
+// 			          newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+// 			          if (validKeyUniqueness(newKey, configurationObj) === true){
+// 			            configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
+// 			          }else{
+// 			            newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+// 			          }
+// 			        }                                                                     
+// 
+// 				      configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+// 
+// 		};
+// 
+// 		Service.applyConfigToSelectedControl = function(nyaSelectObj){
+// 				  	
+// 				    for (var i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
+// 				      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
+// 
+// 				          nyaSelectObj.controls[i].formlyLabel 				= nyaSelectObj.temporyConfig.formlyLabel;
+// 				          nyaSelectObj.controls[i].formlyRequired 		= nyaSelectObj.temporyConfig.formlyRequired;
+// 				          nyaSelectObj.controls[i].formlyDesciption 	= nyaSelectObj.temporyConfig.formlyDesciption;
+// 				          nyaSelectObj.controls[i].formlyPlaceholder 	= nyaSelectObj.temporyConfig.formlyPlaceholder;
+// 				          nyaSelectObj.controls[i].formlyOptions 			= nyaSelectObj.temporyConfig.formlyOptions;
+// 
+// 				          if (nyaSelectObj.controls[i].id ==='Date' ) {
+// 				          	nyaSelectObj.controls[i].datepickerPopup 	= nyaSelectObj.temporyConfig.datepickerPopup;  	
+// 				          }
+// 				        
+// 				       }
+// 				    }
+// 		};
 
 		/**
 		 * ============================================================
