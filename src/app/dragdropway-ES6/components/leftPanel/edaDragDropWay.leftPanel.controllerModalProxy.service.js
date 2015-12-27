@@ -202,6 +202,51 @@ class controllerModalProxy{
     return this.editPanelModel;
   }  
   
+  // setter : editPanelModel (whole model => type = object)
+  setEditPanelModelControl(newEditPanelModel){
+    let successfullDone  = false;
+    if (typeof newEditPanelModel !== 'undefined') {
+      this.editPanelModel = angular.copy(newEditPanelModel);
+      successfullDone     = true;	
+    }
+    return successfullDone;
+  }  
+  
+  
+  // getter : editPanelModel.columnIndex
+  getEditPanelModelColumnIndex(){
+	 return this.editPanelModel.columnIndex;
+  }
+  
+  
+  // setter : editPanelModel.columnIndex
+  setEditPanelModelColumnIndex(newColumnIndex){
+    let successfullDone  = false;
+    if (typeof newColumnIndex !== 'undefined') {
+      this.editPanelModel.columnIndex = newColumnIndex;
+      successfullDone                 = true;	
+    }
+    return successfullDone;
+  }  
+  
+  
+  // getter : editPanelModel.lineIndex
+  getEditPanelModelLineIndex(){
+    return this.editPanelModel.lineIndex;
+  } 
+  
+  
+  // setter : editPanelModel.lineIndex
+  setEditPanelModelLineIndex(newLineIndex){
+    let successfullDone  = false;
+    if (typeof newLineIndex !== 'undefined') {
+      this.editPanelModel.lineIndex = newLineIndex;
+      successfullDone = true;	
+    }  
+    return successfullDone;
+  }  
+  
+  // getter : editPanelModel.control  
   
 }
 
