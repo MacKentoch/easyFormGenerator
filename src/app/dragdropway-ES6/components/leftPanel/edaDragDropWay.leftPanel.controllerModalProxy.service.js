@@ -247,6 +247,25 @@ class controllerModalProxy{
   }  
   
   // getter : editPanelModel.control  
+  getEditPanelModelControl(){
+    return this.editPanelModel.control;
+  }
+  
+  // getter : editPanelModel.toggle
+  getEditPanelModelToggle(){
+    return this.editPanelModel.toggle;
+  }  
+  
+  // setter : editPanelModel.toggle 
+  setEditPanelModelToggle(newToggleValue){
+    let successfullDone  = false;
+    if (typeof newToggleValue !== 'undefined') {
+      this.editPanelModel.toggle  = newToggleValue;
+      successfullDone             = true;	
+    }
+    return successfullDone;
+  }  
+  
   
 }
 
