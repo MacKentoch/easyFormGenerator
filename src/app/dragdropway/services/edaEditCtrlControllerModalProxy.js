@@ -596,9 +596,6 @@ angular
 		/**
 		 * basic select
 		 */
-		
-
-
 		Service.bindBasicSelectFromProxyModel = function(basicSelectRowCollection){		
 		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){

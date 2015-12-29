@@ -3,9 +3,11 @@
 /**
  * TODO : 
  * - clean deprecated functions
+ * - method 'resetAllTemporyModels' -> remove no use angular.copy to optimize
  */
 
-const CONTROLLER_MODAL_PROXY = 'controllerModalProxy';
+const CONTROLLER_MODAL_PROXY  = 'controllerModalProxy';
+const INIT_OPTION_MODEL       = { rows : [] };
 
 class controllerModalProxy{
   
@@ -23,6 +25,17 @@ class controllerModalProxy{
       columnIndex : -1,
       control     : {}
     };
+    this.basicSelectRowCollection   = angular.copy(INIT_OPTION_MODEL);
+		this.newOptionBasicSelect 			= angular.copy({ saisie: '' });
+
+		this.groupedSelectRowCollection = angular.copy(INIT_OPTION_MODEL);
+		this.newOptionGroupedSelect 		= angular.copy({ saisie: '' });
+		this.GroupedSelectGroups 				= angular.copy({ list:[] });
+		this.newGroupGroupedSelect 			= angular.copy({ saisie: '' });
+		this.groupSelectGroupClick 			= angular.copy({ showList : false });
+
+		this.radioRowCollection 				= angular.copy(INIT_OPTION_MODEL);
+		this.newOptionRadio 						= angular.copy({ saisie: '' });    
   }
   
  
@@ -265,6 +278,71 @@ class controllerModalProxy{
     }
     return successfullDone;
   }  
+  
+  resetAllTemporyModels(){
+    this.basicSelectRowCollection 	= angular.copy(INIT_OPTION_MODEL);
+    this.newOptionBasicSelect 			= angular.copy({ saisie: '' });
+
+    this.groupedSelectRowCollection = angular.copy(INIT_OPTION_MODEL);
+    this.newOptionGroupedSelect 		= angular.copy({ saisie: '' });
+    this.GroupedSelectGroups 				= angular.copy({ list:[] });
+    this.newGroupGroupedSelect 			= angular.copy({ saisie: '' });
+    this.groupSelectGroupClick 			= angular.copy({ showList : false });
+
+    this.radioRowCollection 				= angular.copy(INIT_OPTION_MODEL);
+    this.newOptionRadio 						= angular.copy({ saisie: '' });
+    return true;
+  }  
+  
+	/**
+	 * bindSpecialCtrlTemporyModelsToProxyModel: needed when validating after editing a control
+	 * tempory models applied to proxyModel if control is one of these
+	 *
+	 * example : if selected control is a basic select options 
+	 * -> so its tempory models are bound to proxyModel
+	 */
+	bindSpecialCtrlTemporyModelsToProxyModel(){
+		if (this.proxyModel.selectedControl === 'BasicSelect') {
+		  this.bindBasicSelectToProxyModel(this.basicSelectRowCollection);
+		}
+		if (this.proxyModel.selectedControl === 'GroupedSelect') {
+		  this.bindGroupedSelectToProxyModel(this.groupedSelectRowCollection);
+		}  
+		if (this.proxyModel.selectedControl === 'Radio') {
+		  this.bindRadioToProxyModel(this.radioRowCollection);
+		}  
+	}
+  
+  // basic select
+  bindBasicSelectFromProxyModel(basicSelectRowCollection){		
+    if (this.proxyModel.temporyConfig.formlyOptions.length > 0) {
+      for (let i = 0; i <= this.proxyModel.temporyConfig.formlyOptions.length-1; i++){
+        let newOption = {
+          'option' 	: this.proxyModel.temporyConfig.formlyOptions[i].name,
+          'order' 	: i,
+          'group' 	: ''
+        };
+        basicSelectRowCollection.rows.push(newOption);
+      }    
+    }
+  }    
+ 
+  bindBasicSelectToProxyModel(basicSelectRowCollection){
+    var resetNyASelectOptions = [];
+    this.proxyModel.temporyConfig.formlyOptions = resetNyASelectOptions;
+    if (basicSelectRowCollection.rows.length > 0) {
+      for (let i = 0; i <= basicSelectRowCollection.rows.length - 1; i++){
+        let newOption = {
+          'name' : basicSelectRowCollection.rows[i].option,
+          'value': i,
+          'group': ''
+        };
+        this.proxyModel.temporyConfig.formlyOptions.push(newOption);
+      }      
+    }
+  } 
+  
+  
   
   
 }
