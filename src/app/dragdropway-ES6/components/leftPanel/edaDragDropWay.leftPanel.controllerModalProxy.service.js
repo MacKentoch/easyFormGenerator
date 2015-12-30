@@ -1,4 +1,5 @@
-/* global angular */
+/// <reference path="../../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../../../typings/lodash/lodash.d.ts" />
 
 /**
  * TODO : 
@@ -328,7 +329,7 @@ class controllerModalProxy{
   }    
  
   bindBasicSelectToProxyModel(basicSelectRowCollection){
-    var resetNyASelectOptions = [];
+    let resetNyASelectOptions = [];
     this.proxyModel.temporyConfig.formlyOptions = resetNyASelectOptions;
     if (basicSelectRowCollection.rows.length > 0) {
       for (let i = 0; i <= basicSelectRowCollection.rows.length - 1; i++){
@@ -342,8 +343,37 @@ class controllerModalProxy{
     }
   } 
   
+  //* grouped select  
+  bindGroupedSelectFromProxyModel(groupedSelectRowCollection, GroupedSelectGroups){
+    if (this.proxyModel.temporyConfig.formlyOptions.length > 0) {
+      for (let i = 0; i <= this.proxyModel.temporyConfig.formlyOptions.length-1; i++){		
+        let newOption = {
+          'option' 	: this.proxyModel.temporyConfig.formlyOptions[i].name,
+          'order'		: i,
+          'group'		: this.proxyModel.temporyConfig.formlyOptions[i].group
+        };
+        groupedSelectRowCollection.rows.push(newOption);            
+       }
+       //grouplist : thx to lodash it is easy
+       let filteredgroup = _.uniq(_.pluck(groupedSelectRowCollection.rows, 'group'));
+       angular.copy(filteredgroup, GroupedSelectGroups.list); 		
+    }
+  }
   
+
+  bindGroupedSelectToProxyModel(groupedSelectRowCollection){
+    this.proxyModel.temporyConfig.formlyOptions = [];
+    for (let i = 0; i <= groupedSelectRowCollection.rows.length - 1; i++){
+      let newOption = {
+        'name' 	: groupedSelectRowCollection.rows[i].option,
+        'value'	: i,
+        'group'	: groupedSelectRowCollection.rows[i].group
+      };
+      this.proxyModel.temporyConfig.formlyOptions.push(newOption);   
+    }
+  } 
   
+     
   
 }
 
