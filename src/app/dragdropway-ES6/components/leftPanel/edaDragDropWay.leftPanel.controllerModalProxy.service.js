@@ -373,7 +373,38 @@ class controllerModalProxy{
     }
   } 
   
-     
+  // radio
+	bindRadioFromProxyModel(radioRowCollection){
+    if (this.proxyModel.temporyConfig.formlyOptions.length > 0) {
+      for (let i = 0; i <= this.proxyModel.temporyConfig.formlyOptions.length-1; i++){
+          let newOption = { 
+            'option'	: this.proxyModel.temporyConfig.formlyOptions[i].name,
+            'order'		: i,
+            'group'		: ''
+          };
+          radioRowCollection.rows.push(newOption);
+      }    
+    }
+	}  
+ 
+  bindRadioToProxyModel(radioRowCollection){
+    let resetproxyModelOptions = [];
+    this.proxyModel.temporyConfig.formlyOptions = resetproxyModelOptions;
+    if (radioRowCollection.rows.length > 0) {
+      for (let i = 0; i <= radioRowCollection.rows.length - 1; i++){
+        let newOption = {
+          'name'		: radioRowCollection.rows[i].option,
+          'value'		: i,
+          'group'		: ''
+        };
+        this.proxyModel.temporyConfig.formlyOptions.push(newOption);   
+      }       
+    }
+  }  
+       
+  
+  
+  
   
 }
 
