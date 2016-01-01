@@ -405,15 +405,16 @@ ______
 
 ##What is coming next?
 
-- creating bower, npm for `step way` version
-- developing / fixing browsers compatibility for `drag and drop` version 
-- adding more controls
-- adding more validations 
- - adding tests
-   - unit test (in progress - already in `branch master` not finished)
-   - E2E (coming soon)
- - optimization / factorization (coming soon)
-  
+- [ ] migrating ES6 / optimization / factorization (currently doing)
+- [x] create bower 
+- [ ] create npm 
+- [ ] developing / fixing browsers compatibility for `drag and drop` version 
+- [x] adding more controls
+- [x] adding more validations 
+- [ ] adding tests
+   - [ ] unit test (in progress - already in `branch master` not finished)
+   - [ ] E2E (coming soon)
+   
 ##License
 
 The MIT License (MIT)
