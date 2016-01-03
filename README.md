@@ -21,7 +21,7 @@
   - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
 
 
-[Complementary information to better understand easy form generator](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/README_TOO.md)
+[Complementary information to better understand easy form generator](https://github.com/MacKentoch/easyFormGenerator/blob/master/README_TOO.md)
 
 And Since v1.0.21 :
 
