@@ -16,6 +16,13 @@ function EasyFormGenFormlyBindingModels(){
   
   this.getAllParticularControlProperties                      = getAllParticularControlProperties;
   this.addParticularControlProperties                         = addParticularControlProperties;
+  this.getEasyFormListControls                                = getEasyFormListControls;
+  this.addEasyFormControlToList                               = addEasyFormControlToList;
+  this.getHeaderTemplates                                     = getHeaderTemplates;
+  this.addHeaderTemplateCssClass                              = addHeaderTemplateCssClass;
+  this.getFormlyControlTemplate                               = getFormlyControlTemplate;
+  this.addformlyControlTemplatesCssClass                      = addformlyControlTemplatesCssClass;
+  this.setFormlyControlTemplate                               = setFormlyControlTemplate;
   
   function getAllParticularControlProperties(){
     return _particularControlProperties;
@@ -41,10 +48,48 @@ function EasyFormGenFormlyBindingModels(){
     return _particularControlProperties;			
   }  
 
-
+  function getEasyFormListControls() {
+    return _easyFormListControls;
+  }
  
-
-
+  function addEasyFormControlToList(controlDeclaration) {
+    if (typeof controlDeclaration !== 'undefined'){
+      _easyFormListControls.controls.push(controlDeclaration);
+    }
+  }
+  
+  function getHeaderTemplates() {
+    return _headerTemplates;
+  }
+  
+  function addHeaderTemplateCssClass(cssClassToAdd){
+    if (typeof cssClassToAdd !== 'undefined') {
+      _headerTemplates.cssClass.push(cssClassToAdd);
+    }
+  }
+  
+  function getFormlyControlTemplate() {
+    return _formlyControlTemplates;
+  }
+  
+  function addformlyControlTemplatesCssClass(cssClassToAdd){
+    if (typeof cssClassToAdd !== 'undefined') {
+      _formlyControlTemplates.className.push(cssClassToAdd);
+    }
+  }  
+  
+  function setFormlyControlTemplate(newFormlyControlTemplate) {
+    if (('className'				in newFormlyControlTemplate) &&
+        ('type' 						in newFormlyControlTemplate) &&
+        ('key' 							in newFormlyControlTemplate) &&
+        ('templateOptions') in newFormlyControlTemplate) {
+      _formlyControlTemplates = angular.copy(newFormlyControlTemplate);
+    }
+    return true;
+  }  
+  
+  
+  
 }
 
 
