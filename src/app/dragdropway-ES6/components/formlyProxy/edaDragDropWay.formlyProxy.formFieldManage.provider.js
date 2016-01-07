@@ -23,6 +23,7 @@ function EasyFormGenFormlyBindingModels(){
   this.getFormlyControlTemplate                               = getFormlyControlTemplate;
   this.addformlyControlTemplatesCssClass                      = addformlyControlTemplatesCssClass;
   this.setFormlyControlTemplate                               = setFormlyControlTemplate;
+  this.$get                                                   = getFct;
   
   function getAllParticularControlProperties(){
     return _particularControlProperties;
@@ -88,6 +89,82 @@ function EasyFormGenFormlyBindingModels(){
     return true;
   }  
   
+  getFct.$inject = [];
+  function getFct(){
+    let service = {
+      getEasyFormListControls                   : getEasyFormListControlsFct,
+      getEasyFormInitialStateConfigurationModel : getEasyFormInitialStateConfigurationModel,
+      getEasyFormReloadConfigurationModel       : getEasyFormReloadConfigurationModel,
+      getEasyFormEmptyConfigurationLineModel    : getEasyFormEmptyConfigurationLineModel,
+      getEasyFormConfigurationEmptyControlModel : getEasyFormConfigurationEmptyControlModel,
+      getRawHeaderTemplates                     : getRawHeaderTemplates,
+      getHeaderTemplateForNcolumnLine           : getHeaderTemplateForNcolumnLine,
+    };
+    return service;
+    
+    function getEasyFormListControlsFct() {
+      return _easyFormListControls;
+    }
+    
+    function getEasyFormInitialStateConfigurationModel(addStepWayProperties) {
+      let initialConfigurationModel = angular.copy(_easyFormInitialStateConfigurationModel);
+      if (typeof addStepWayProperties !== 'undefined') {
+        if (addStepWayProperties) {
+           // add properties specific to step way
+          angular.extend(initialConfigurationModel, _easyFormInitialStateConfigurationModelAddOnForStepWay);
+        }
+      }
+      return initialConfigurationModel;      
+    }
+    
+    function getEasyFormReloadConfigurationModel(addStepWayProperties) {
+      let initialConfigurationModel = angular.copy(_easyFormReloadConfigurationModel);
+      if (typeof addStepWayProperties !== 'undefined') {
+        if (addStepWayProperties) {
+          // add properties specific to step way
+          angular.extend(initialConfigurationModel, _easyFormInitialStateConfigurationModelAddOnForStepWay);
+        }
+      }
+      return initialConfigurationModel;      
+    }
+    
+    function getEasyFormEmptyConfigurationLineModel() {
+      return _easyFormEmptyConfigurationLineModel;      
+    }
+    
+    function getEasyFormConfigurationEmptyControlModel() {
+      return _emptyControlFieldModel;      
+    }
+    
+    function getRawHeaderTemplates() {
+      return _headerTemplates;
+    }
+    
+    function getHeaderTemplateForNcolumnLine(nbColInLines, textContent) {
+      if (typeof nbColInLines !== 'undefined' &&
+          typeof textContent 	!== 'undefined') {
+        if (nbColInLines === parseInt(nbColInLines, 10)) {
+          if (nbColInLines <=  _headerTemplates.cssClass.length) {
+            let headerToReturn        = {};
+            headerToReturn.className  = _headerTemplates.cssClass[nbColInLines - 1];
+            // header html property depends this property dont forget to set it before reading html property
+            _headerTemplates.textContent = textContent;
+            _headerTemplates.selectedClass = headerToReturn.className;
+            headerToReturn.template = [
+              _headerTemplates.simpleHtml1,
+              textContent,
+              _headerTemplates.simpleHtml2
+            ].join('');
+            return headerToReturn;
+          }
+        }
+      }      
+    }
+    
+    
+    
+    
+  }
   
   
 }
