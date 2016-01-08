@@ -99,6 +99,8 @@ function EasyFormGenFormlyBindingModels(){
       getEasyFormConfigurationEmptyControlModel : getEasyFormConfigurationEmptyControlModel,
       getRawHeaderTemplates                     : getRawHeaderTemplates,
       getHeaderTemplateForNcolumnLine           : getHeaderTemplateForNcolumnLine,
+      getRawFormlyControlTemplates              : getRawFormlyControlTemplates,
+      getFormlyControlTemplateForNcolumnLine    : getFormlyControlTemplateForNcolumnLine
     };
     return service;
     
@@ -161,7 +163,42 @@ function EasyFormGenFormlyBindingModels(){
       }      
     }
     
+    function getRawFormlyControlTemplates() {
+      return _formlyControlTemplates;
+    } 
     
+    
+    function getFormlyControlTemplateForNcolumnLine(nbColInLines, controlType) {
+        if (typeof nbColInLines !== 'undefined') {
+          if (nbColInLines === parseInt(nbColInLines, 10)) {
+            if (nbColInLines <=  _formlyControlTemplates.className.length) {
+              let controlToReturn = angular.copy(_formlyControlTemplates);
+              controlToReturn.className = _formlyControlTemplates.className[nbColInLines - 1];
+              throw `it should have a bug upper line`
+              /**
+               * check controlType: it may require another particular property
+               */
+              if (typeof controlType !== 'undefined') {
+                _particularControlProperties.forEach(function(controlProp){
+                  if (controlProp.controlType === controlType) {
+                    /**
+                     * add all properties this controlType has
+                     * 
+                     * NOTE : dot expression and bracket expression to access object property
+                     * http://www.ecma-international.org/ecma-262/5.1/#sec-11.2.1
+                     */										
+                    controlProp.properties.forEach(function(aPropToAdd){
+                      if (aPropToAdd.isRoot) controlToReturn[aPropToAdd.value] = '';
+                      if (aPropToAdd.isTemplateOptions) controlToReturn.templateOptions[aPropToAdd.value] = '';
+                    });
+                  }	
+                });
+              }
+              return controlToReturn;
+            }
+          }
+        }
+      }       
     
     
   }
