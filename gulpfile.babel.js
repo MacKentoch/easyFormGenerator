@@ -34,7 +34,8 @@
 
 import gulp 								from 'gulp';
 import del    							from 'del';
-import jshint 							from 'gulp-jshint';
+import eslint 							from 'gulp-eslint';
+import jslint               from 'gulp-eslint';
 import concat 							from 'gulp-concat';
 import uglify 							from 'gulp-uglify';
 import cssmin 							from 'gulp-cssmin';
@@ -57,9 +58,8 @@ const exec = childProcess.exec;
  * CONFIGS
  * ////////////////////////////////////////////////////////////////
  */
-const appConfig   = require('./easyFormGenConfig/app/appConfig');
-const gulpConfig  = require('./easyFormGenConfig/gulp/gulpConfig');
-
+import appConfig            from './easyFormGenConfig/app/appConfig';
+import gulpConfig           from './easyFormGenConfig/gulp/gulpConfig';
 
 
 
@@ -468,6 +468,16 @@ gulp.task('build:ES6:jshint', () => {
   return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
     .pipe(jshint({esnext : true}))
     .pipe(jshint.reporter('default'))
+});
+
+/**
+ * eslint JSX and ES6   - uses .eslintrc file
+ */
+gulp.task('eslint:jsx:es6', () => {
+  return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
+    .pipe(eslint({ useEslintrc: true }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 
