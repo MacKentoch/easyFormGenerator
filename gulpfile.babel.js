@@ -471,10 +471,30 @@ gulp.task('build:ES6:jshint', () => {
 });
 
 /**
- * eslint JSX and ES6   - uses .eslintrc file
+ * eslint stepway ES6   - uses .eslintrc file
  */
-gulp.task('eslint:jsx:es6', () => {
+gulp.task('eslint:stepway:es6', () => {
   return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
+    .pipe(eslint({ useEslintrc: true }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+/**
+ * eslint drag and drop way ES6   - uses .eslintrc file
+ */
+gulp.task('eslint:dragdropway:es6', () => {
+  return gulp.src(gulpConfig.srcFiles.app.ES6.dragAndDropWay.js)
+    .pipe(eslint({ useEslintrc: true }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+/**
+ * eslint form viewer ES6   - uses .eslintrc file
+ */
+gulp.task('eslint:formviewer:es6', () => {
+  return gulp.src(gulpConfig.srcFiles.app.ES6.formViewer.js)
     .pipe(eslint({ useEslintrc: true }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -506,12 +526,12 @@ gulp.task('stepWayES6:sfx', cb => {
 });
 
 gulp.task('build:stepWay:ES6', [
-	'build:ES6:jshint',
+	'eslint:stepway:es6',
 	'stepWayES6:sfx'
 ]);
 
 gulp.task('build:stepWay:ES6:min', [
-	'build:ES6:jshint',
+	'eslint:stepway:es6',
 	'stepWayES6:sfx:min'
 ]);
 
@@ -546,12 +566,12 @@ gulp.task('dragdropway:ES6:sfx:min', cb => {
 });
 
 gulp.task('build:dragdropway:ES6', [
-	'build:ES6:jshint',
+	'eslint:dragdropway:es6',
 	'dragdropway:ES6:sfx'
 ]);
 
 gulp.task('build:dragdropway:ES6:min', [
-	'build:ES6:jshint',
+	'eslint:dragdropway:es6',
 	'dragdropway:ES6:sfx:min'
 ]);
 
@@ -585,12 +605,12 @@ gulp.task('formViewer:ES6:sfx:min', cb => {
 });
 
 gulp.task('build:formViewer:ES6', [
-	'build:ES6:jshint',
+	'eslint:formviewer:es6',
 	'formViewer:ES6:sfx'
 ]);
 
 gulp.task('build:formViewer:ES6:min', [
-	'build:ES6:jshint',
+	'beslint:formviewer:es6',
 	'formViewer:ES6:sfx:min'
 ]);
 

@@ -37,6 +37,12 @@ module.exports = {
 			ES6 : {
 				stepway : {
 					js		: 'src/app/stepway-ES6/**/*.js'
+				},
+				dragAndDropWay : {
+					js		: 'src/app/dragdropway-ES6/**/*.js'
+				},
+				formViewer : {
+					js		: 'src/app/formviewer-ES6/**/*.js'
 				}
 			}
 		},
