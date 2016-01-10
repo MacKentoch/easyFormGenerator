@@ -137,28 +137,26 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        'label' 	: [  
-                      '<div class="col-md-12">',
-                      '<div class="form-group">',
-                      '  <label for="inputText" class="control-label textControlLabel pull-left">',
-                      '   title for text input<span class="textControlLabel ng-scope">*</span>',
-                      '  </label>',
-                      '  <div class="">',
-                      '    <input type="text" disabled class="form-control fakeControl" id="inputText" placeholder="basic input">',
-                      '    <p class="help-block pull-left">Description</p>',
-                      '  </div>',
-                      '</div>',
-                      '</div>'
-                    ].join(''),
-
-        'control'	: 'TextInput',
-        'cssClass': 'col-xs-12'
-      },
-      {
-        addToGroupCtrl : 'inputs'
-      }  	      
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+      'label' 	: [  
+        `<div class="col-md-12">
+        <div class="form-group">
+          <label for="inputText" class="control-label textControlLabel pull-left">
+            title for text input<span class="textControlLabel ng-scope">*</span>
+          </label>
+          <div class="">
+            <input type="text" disabled class="form-control fakeControl" id="inputText" placeholder="basic input">
+            <p class="help-block pull-left">Description</p>
+          </div>
+        </div>
+        </div>`
+      ].join(''),
+      'control'	: 'TextInput',
+      'cssClass': 'col-xs-12'
+    },
+    {
+      addToGroupCtrl : 'inputs'
+    }  	      
   );			
 
   /**
@@ -169,19 +167,18 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *
     * just declare in EasyFormGenFormlyBindingModelsProvider
     */
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'Password',  
-        name 							: 'Password', 
-        subtitle 					: 'Password', 
-        group 						: 'input', 
-        formlyType 				: 'input', 
-        formlySubtype 		: 'password', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+      id 								: 'Password',  
+      name 							: 'Password', 
+      subtitle 					: 'Password', 
+      group 						: 'input', 
+      formlyType 				: 'input', 
+      formlySubtype 		: 'password', 
+      formlyLabel 			: '', 
+      formlyRequired 		: false, 
+      formlyDesciption 	: '', 
+      formlyOptions 		: []
+    }
   );
   /**
    * drag and drop text input — password —control template
@@ -191,30 +188,26 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-
-        'label' 	: [
-                      '<div class="col-md-12">',
-                      '<div class="form-group">',
-                      '  <label for="inputPass" class="control-label textControlLabel ng-binding pull-left">',
-                      '   title for password input<span class="textControlLabel ng-scope">*</span>',
-                      '  </label>',
-                      '  <div class="">',
-                      '    <input type="password" disabled class="form-control fakeControl" id="inputPass" placeholder="password input">',
-                      '    <p class="help-block ng-binding pull-left">Description</p>',
-                      '  </div>',
-                      '</div>',
-                      '</div>'
-                    ].join(''),
-
-        'control'	: 'Password',
-        'cssClass': 'col-xs-12'
-      },
-      {
-        addToGroupCtrl : 'inputs'
-      } 
-
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+      'label' 	: [
+        `<div class="col-md-12">
+          <div class="form-group">
+            <label for="inputPass" class="control-label textControlLabel ng-binding pull-left">
+            title for password input<span class="textControlLabel ng-scope">*</span>
+            </label>
+            <div class="">
+              <input type="password" disabled class="form-control fakeControl" id="inputPass" placeholder="password input">
+              <p class="help-block ng-binding pull-left">Description</p>
+            </div>
+          </div>
+        </div>`
+      ].join(''),
+      'control'	: 'Password',
+      'cssClass': 'col-xs-12'
+    },
+    {
+      addToGroupCtrl : 'inputs'
+    } 
   );		
 
   /**
@@ -222,55 +215,46 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
    *
     * thx Kent C. Dodds for formly config template (since it was a huge config)
     */
-  var attributes =	[
-                      'date-disabled',
-                      'custom-class',
-                      'show-weeks',
-                      'starting-day',
-                      'init-date',
-                      'min-mode',
-                      'max-mode',
-                      'format-day',
-                      'format-month',
-                      'format-year',
-                      'format-day-header',
-                      'format-day-title',
-                      'format-month-title',
-                      'year-range',
-                      'shortcut-propagation',
-                      'datepicker-popup',
-                      'show-button-bar',
-                      'current-text',
-                      'clear-text',
-                      'close-text',
-                      'close-on-date-selection',
-                      'datepicker-append-to-body'
-                    ];
+  const attributes =	[
+    'date-disabled',
+    'custom-class',
+    'show-weeks',
+    'starting-day',
+    'init-date',
+    'min-mode',
+    'max-mode',
+    'format-day',
+    'format-month',
+    'format-year',
+    'format-day-header',
+    'format-day-title',
+    'format-month-title',
+    'year-range',
+    'shortcut-propagation',
+    'datepicker-popup',
+    'show-button-bar',
+    'current-text',
+    'clear-text',
+    'close-text',
+    'close-on-date-selection',
+    'datepicker-append-to-body'
+  ];
 
-  var bindings =	[
-                    'datepicker-mode',
-                    'min-date',
-                    'max-date'
-                  ];
+  const bindings =	[
+    'datepicker-mode',
+    'min-date',
+    'max-date'
+  ];
 
-  var ngModelAttrs = {};
+  let ngModelAttrs = {};
 
-  angular.forEach(attributes, function(attr) {
-    ngModelAttrs[camelize(attr)] = {attribute: attr};
-  });
-
-  angular.forEach(bindings, function(binding) {
-    ngModelAttrs[camelize(binding)] = {bound: binding};
-  });
+  angular.forEach(attributes, (attr) => ngModelAttrs[camelize(attr)] = {attribute: attr});
+  angular.forEach(bindings, (binding) => ngModelAttrs[camelize(binding)] = {bound: binding});
 
   function camelize(string) {
-    string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {
-      return chr ? chr.toUpperCase() : '';
-    });
+    string = string.replace(/[\-_\s]+(.)?/g, (match, chr) => chr ? chr.toUpperCase() : '');
     // Ensure 1st char is always lowercase
-    return string.replace(/^([A-Z])/, function(match, chr) {
-      return chr ? chr.toLowerCase() : '';
-    });
+    return string.replace(/^([A-Z])/, (match, chr) => chr ? chr.toLowerCase() : '');
   } 		
 
   var angularUIDatePickerTemplate =	[

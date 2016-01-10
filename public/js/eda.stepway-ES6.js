@@ -1878,8 +1878,8 @@ $__System.register('18', ['13', '14', '15', '16', '17'], function (_export) {
 
 						this.$modalProxy.initNyaSelect(this.nyaSelect);
 
-						console.info('main controller : init nyaSelect model');
-						console.dir(angular.copy(this.nyaSelect));
+						//console.info(`main controller : init nyaSelect model`);
+						//console.dir(angular.copy(this.nyaSelect));
 					}
 				}, {
 					key: 'onSubmit',

@@ -410,6 +410,9 @@ ______
 ##What is coming next?
 
 - [ ] migrating ES6 / optimization / factorization (*in progress*)
+- [x] migrating Babel6+
+- [x] migrating gulp to ES6 
+- [ ] migrating ES6 / optimization / factorization (*in progress*)
 - [x] create bower 
 - [ ] create npm 
 - [ ] developing / fixing browsers compatibility for `drag and drop` version 

@@ -7592,8 +7592,8 @@ angular
 	    	 * and control.type and control.subtype in configuration model
 	    	 */
 
-	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
-	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+	    	Service.proxyModel.selectedControl 									= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? this.getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
+	      Service.proxyModel.temporyConfig.selectedControl 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? this.getSelectedProxyModel(configurationObj.lines[indexLine].columns[numcolumn].control) : 'none';
 				
 				Service.proxyModel.temporyConfig.formlyType 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.type != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.type: 'none';
 				Service.proxyModel.temporyConfig.formlySubtype 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.subtype != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.subtype : 'none';
@@ -7833,9 +7833,6 @@ angular
 		/**
 		 * basic select
 		 */
-		
-
-
 		Service.bindBasicSelectFromProxyModel = function(basicSelectRowCollection){		
 		    if (Service.proxyModel.temporyConfig.formlyOptions.length > 0) {
 		      for (var i = 0; i <= Service.proxyModel.temporyConfig.formlyOptions.length-1; i++){

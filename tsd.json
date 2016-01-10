@@ -6,10 +6,25 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "de1bfe2c1de921da660cc17a5af1de6c095b35eb"
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
     },
     "angular-protractor/angular-protractor.d.ts": {
       "commit": "b3aeee64552e324581fdbe0926f4a96e981e451b"
+    },
+    "gulp/gulp.d.ts": {
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
+    },
+    "q/Q.d.ts": {
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
+    },
+    "node/node.d.ts": {
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
+    },
+    "orchestrator/orchestrator.d.ts": {
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "b4646ff708f39d2896bcb3e3974667f92e26c5a4"
     }
   }
 }
