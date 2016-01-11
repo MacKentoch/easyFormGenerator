@@ -35,7 +35,7 @@
 import gulp 								from 'gulp';
 import del    							from 'del';
 import eslint 							from 'gulp-eslint';
-import jslint               from 'gulp-eslint';
+import jshint               from 'gulp-jshint';
 import concat 							from 'gulp-concat';
 import uglify 							from 'gulp-uglify';
 import cssmin 							from 'gulp-cssmin';
@@ -75,7 +75,7 @@ import gulpConfig           from './easyFormGenConfig/gulp/gulpConfig';
  * - public (only dragdropway)
  */
 
-//clean all dist
+// clean all dist
 gulp.task('dist:clean',  cb => del([`${gulpConfig.base.distDir}**/*`], cb));
 
 //clean all public : NOT USED -> use other cleaning tasks (safer)
@@ -94,15 +94,15 @@ gulp.task('public:vendor:fonts:clean', cb => del([gulpConfig.base.root + gulpCon
 gulp.task('stepway:clean', cb => {
   del([
 		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.stepway.js,
-		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.stepway.css,
-		], cb);
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.stepway.css
+  ], cb);
 });
 
 //clean public : dragdropway
 gulp.task('dragdropway:clean', cb => {
   del([
 		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.dragAndDropWay.js,
-		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.dragAndDropWay.css,
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.dragAndDropWay.css
 		], cb);
 });
 
@@ -110,7 +110,7 @@ gulp.task('dragdropway:clean', cb => {
 gulp.task('formviewer:clean', cb => {
   del([
 		gulpConfig.base.publicDir + 'js/' + gulpConfig.destFiles.app.formViewer.js,
-		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.formViewer.css,
+		gulpConfig.base.publicDir + 'css/' + gulpConfig.destFiles.app.formViewer.css
 		], cb);
 });
 
@@ -148,7 +148,7 @@ gulp.task('vendor:css:specialCases',
 		.pipe(concat(gulpConfig.srcFiles.bowerFiles.css.toMinify.destfileName))
 		.pipe(cssmin())
 		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
-		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
+		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
 		
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify.srcFile, { cwd: gulpConfig.base.root })
 		.pipe(deleteLines({ 'filters': [/^@import url/] }))
@@ -156,7 +156,7 @@ gulp.task('vendor:css:specialCases',
 		.pipe(cssmin())
 		.on('error', notify.onError(error => 'Error: ' + error.message))
 		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
-		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))
+		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
 				
 });
 
@@ -164,8 +164,8 @@ gulp.task('vendor:css:specialCases',
 
 
 
-//vendor:css TASK : css, copyt to public dir
-//NOTE : depending 'appConfig.js' : could concat vendor css
+// vendor:css TASK : css, copyt to public dir
+// NOTE : depending 'appConfig.js' : could concat vendor css
 gulp.task('vendor:css', 
 	['vendor:css:specialCases'],  
 	() => {
@@ -193,7 +193,7 @@ gulp.task('vendor:fonts',
 			['public:vendor:fonts:clean'], 
 			() => {	
  gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, { cwd: gulpConfig.base.root })
- .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }))
+ .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }));
 });
 
 
@@ -209,13 +209,12 @@ gulp.task('vendor:fonts',
  * VENDOR JS TASKS (SCRIPTS for HEADER : jquery, angular....)
  * ------------------------------------------------------------
  * 
- * NOTE these vendor js never concatenate
+ *  NOTE these vendor js never concatenate
  */
 gulp.task('vendor:header:js', 
 		['public:vendor:js:clean'], 
 		() => {
-	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, 
- 				{ cwd: gulpConfig.base.root }) 
+	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, { cwd: gulpConfig.base.root }) 
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
 });
 
@@ -226,9 +225,7 @@ gulp.task('vendor:header:js',
  * 
  * NOTE : depending 'appConfig.js' : could concat footer vendor js
  */
- gulp.task('vendor:footer:js', 
-	 	['public:vendor:js:clean'], 
-		 () => {
+ gulp.task('vendor:footer:js', ['public:vendor:js:clean'], () => {
 			if(appConfig.concatVendorFiles === true){			 
 				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
 							{ cwd: gulpConfig.base.root })
@@ -246,10 +243,7 @@ gulp.task('vendor:header:js',
  * VENDOR JS TASKS (combine all vendor js tasks)
  * ------------------------------------------------------------
  */
- gulp.task('vendor:js', [
-	 'vendor:header:js',
-	 'vendor:footer:js'
-	]);
+ gulp.task('vendor:js', ['vendor:header:js','vendor:footer:js']);
 
 
 
@@ -262,12 +256,10 @@ gulp.task('vendor:header:js',
  * VENDOR MAP TASKS
  * ------------------------------------------------------------
  */
- gulp.task('vendor:map', 
-	 	//['public:clean'], 
-		 () => {
-	gulp.src(	gulpConfig.srcFiles.bowerFiles.maps, 
- 				{ cwd: gulpConfig.base.root })	  
- 	.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	 
+ gulp.task('vendor:map', () => {
+	gulp
+    .src(	gulpConfig.srcFiles.bowerFiles.maps, { cwd: gulpConfig.base.root })
+    .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	 
  });
 
 
@@ -345,9 +337,7 @@ gulp.task('stepway:translate', () => {
  */
 
  //sass : stepway
- gulp.task('app:sass:stepway', 
-	 	['stepway:clean'], 
-		 () => {
+ gulp.task('app:sass:stepway', ['stepway:clean'], () => {
 	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
@@ -501,29 +491,22 @@ gulp.task('eslint:formviewer:es6', () => {
 });
 
 
-gulp.task('stepWayES6:sfx:min', cb => {
-  exec([
-   'jspm bundle-sfx ',
-   gulpConfig.jspm.stepWay.src,
-   gulpConfig.jspm.stepWay.bundleMin,
-	 '--minify'
-  ].join(' '), (err, stdout, stderr) => {
-      cb(err);
-      console.log(stdout);
-   });
-});
-
-
+const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle}`;
 gulp.task('stepWayES6:sfx', cb => {
-  exec([
-   'jspm bundle-sfx ',
-   gulpConfig.jspm.stepWay.src,
-   gulpConfig.jspm.stepWay.bundle,
-  ].join(' '), (err, stdout, stderr) => {
-      cb(err);
-      console.log(stdout);
+  exec(stepWaySfxNoMinifyCMD, (err, stdout) => {
+    cb(err);
+    console.log(stdout);
    });
 });
+
+const stepWaySfxMinifyCMD  = `${stepWaySfxNoMinifyCMD} --minify`;
+gulp.task('stepWayES6:sfx:min', cb => {
+  exec(stepWaySfxMinifyCMD, (err, stdout) => {
+    cb(err);
+    console.log(stdout);
+   });
+});
+
 
 gulp.task('build:stepWay:ES6', [
 	'eslint:stepway:es6',
@@ -538,30 +521,19 @@ gulp.task('build:stepWay:ES6:min', [
 
 
 //drag and drop way
+const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle}`;
 gulp.task('dragdropway:ES6:sfx', cb => {
-  exec([
-		'jspm bundle-sfx ', 
-		gulpConfig.jspm.dragDropWay.src,
-		' ',
-		gulpConfig.jspm.dragDropWay.bundle
-	].join(' '), (err, stdout, stderr) => {
-      cb(err);
-			console.log(stdout);
+  exec(dragAndDropWaySfxNoMinifyCMD, (err, stdout) => {
+    cb(err);
+  	console.log(stdout);
   });
 });
 
-
+const dragAndDropWaySfxMinifyCMD  = `${dragAndDropWaySfxNoMinifyCMD} --minify`;
 gulp.task('dragdropway:ES6:sfx:min', cb => {
-  exec([
-		'jspm bundle-sfx ', 
-		gulpConfig.jspm.dragDropWay.src,
-		' ',
-		gulpConfig.jspm.dragDropWay.bundleMin,
-		' ',
-		'--minify'
-	].join(' '), (err, stdout, stderr) => {
-      cb(err);
-			console.log(stdout);
+  exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
+    cb(err);
+  	console.log(stdout);
   });
 });
 
@@ -577,30 +549,19 @@ gulp.task('build:dragdropway:ES6:min', [
 
 
 //formViewer
+const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle}`;
 gulp.task('formViewer:ES6:sfx', cb => {
-  exec([
-		'jspm bundle-sfx ', 
-		gulpConfig.jspm.formViewer.src,
-		' ',
-		gulpConfig.jspm.formViewer.bundle
-	].join(' '), (err, stdout, stderr) => {
-      cb(err);
-			console.log(stdout);
+  exec(formViewerSfxNoMinifyCMD, (err, stdout) => {
+    cb(err);
+  	console.log(stdout);
   });
 });
 
-
+const formViewerSfxMinifyCMD  = `${formViewerSfxNoMinifyCMD} --minify`;
 gulp.task('formViewer:ES6:sfx:min', cb => {
-  exec([
-		'jspm bundle-sfx ', 
-		gulpConfig.jspm.formViewer.src,
-		' ',
-		gulpConfig.jspm.formViewer.bundleMin,
-		' ',
-		'--minify'
-	].join(' '), (err, stdout, stderr) => {
-      cb(err);
-			console.log(stdout);
+  exec(formViewerSfxMinifyCMD, (err, stdout) => {
+    cb(err);
+  	console.log(stdout);
   });
 });
 
