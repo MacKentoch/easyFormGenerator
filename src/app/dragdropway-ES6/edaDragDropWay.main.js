@@ -1,6 +1,9 @@
 /* global angular */
 import './edaDragDropWay.vendors.adapter';
 
+import formlyConfigFunct        from './config/edaDragDropWay.formlyConfig.function';
+import dragDropConfigFunt       from './config/edaDragDropWay.dragDropConfig.function';
+
 import coreModule								from './core/edaDragDropWay.core.module';
 import leftPanelModule 					from './components/leftPanel/edaDragDropWay.leftPanel.module';
 import formlyProxyModule        from './components/formlyProxy/edaDragDropWay.formlyProxy.formFieldManage.module';
@@ -24,6 +27,8 @@ const DRAG_DROP_MODULES_INJECT 		= [
 ];
 
 let mainModule = angular
-									.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT);
+									.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT)
+                  .config(dragDropConfigFunt)
+                  .config(formlyConfigFunct);
 									
 export default mainModule;

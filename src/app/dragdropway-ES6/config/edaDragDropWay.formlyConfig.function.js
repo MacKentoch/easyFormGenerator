@@ -1,4 +1,3 @@
-
 function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, dragDropConfigProvider) {
 
   formlyConfigProvider.setType({
@@ -140,15 +139,15 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
   dragDropConfigProvider.addControlToDragDropPresentationModel({
       'label' 	: [  
         `<div class="col-md-12">
-        <div class="form-group">
-          <label for="inputText" class="control-label textControlLabel pull-left">
-            title for text input<span class="textControlLabel ng-scope">*</span>
-          </label>
-          <div class="">
-            <input type="text" disabled class="form-control fakeControl" id="inputText" placeholder="basic input">
-            <p class="help-block pull-left">Description</p>
+          <div class="form-group">
+            <label for="inputText" class="control-label textControlLabel pull-left">
+              title for text input<span class="textControlLabel ng-scope">*</span>
+            </label>
+            <div class="">
+              <input type="text" disabled class="form-control fakeControl" id="inputText" placeholder="basic input">
+              <p class="help-block pull-left">Description</p>
+            </div>
           </div>
-        </div>
         </div>`
       ].join(''),
       'control'	: 'TextInput',
@@ -257,61 +256,53 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     return string.replace(/^([A-Z])/, (match, chr) => chr ? chr.toLowerCase() : '');
   } 		
 
-  var angularUIDatePickerTemplate =	[
-                                      '<input ',
-                                      '      id="{{id}}" ',
-                                      '      class="form-control" ',
-                                      '      ng-click="open($event)"',
-                                      '      ng-model="model[options.key || index]" is-open="to.isOpen"',
-                                      '      ng-click="to.isOpen = true" ',
-                                      '      datepicker-options="to.datepickerOptions"',
-                                      '/>'
-                                    ].join(' ');
+  const angularUIDatePickerTemplate =	
+    `<input 
+        id="{{id}}" 
+        class="form-control" 
+        ng-click="open($event)"
+        ng-model="model[options.key || index]" is-open="to.isOpen"
+        ng-click="to.isOpen = true" 
+        datepicker-options="to.datepickerOptions"/>`;
 
   formlyConfigProvider.setType({
     name 				: 'datepicker',
     template 		: angularUIDatePickerTemplate,
     wrapper 		: ['bootstrapLabel', 'bootstrapHasError'],
-    controller 	: [	'$scope', 
-                    function($scope) {
-                                $scope.open = function($event) {
-                                $event.preventDefault();
-                                $event.stopPropagation();
-                                $scope.opened = true;
-                              };
-                    }
-                  ],
+    controller 	: [	'$scope', ($scope) => {
+          $scope.open = ($event) => {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.opened = true;
+        };
+      }
+    ],
     defaultOptions : {
-                      ngModelAttrs 		: ngModelAttrs,
-                      templateOptions : {
-                                          addonLeft: {
-                                            class: 'glyphicon glyphicon-calendar',
-                                            onClick: function(options) {
-                                              options.templateOptions.isOpen = !options.templateOptions.isOpen;
-                                            }
-                                          },       
-                                          onFocus: function($viewValue, $modelValue, scope) {
-                                            scope.to.isOpen = !scope.to.isOpen;
-                                          },
-                                          datepickerOptions: {}
-                                      }
+      ngModelAttrs 		: ngModelAttrs,
+      templateOptions : {
+        addonLeft: {
+          class   : 'glyphicon glyphicon-calendar',
+          onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
+        },       
+        onFocus   : ($viewValue, $modelValue, scope) => scope.to.isOpen = !scope.to.isOpen,
+        datepickerOptions: {}
+      }
     }
   });
 
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'Date',  
-        name 							: 'Date', 
-        subtitle 					: 'Date', 
-        group 						: 'input', 
-        formlyType 				: 'datepicker', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: [], 
-        datepickerPopup 	: 'dd-MMMM-yyyy'
-      }
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+      id 								: 'Date',  
+      name 							: 'Date', 
+      subtitle 					: 'Date', 
+      group 						: 'input', 
+      formlyType 				: 'datepicker', 
+      formlySubtype 		: '', 
+      formlyLabel 			: '', 
+      formlyRequired 		: false, 
+      formlyDesciption 	: '', 
+      formlyOptions 		: [], 
+      datepickerPopup 	: 'dd-MMMM-yyyy'
+    }
   );
   /**
    * drag and drop text input — date — control template (using angular UI datepicker)
@@ -321,34 +312,28 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-                label 	: [
-                            '<div class="col-md-12">',        
-                            '<div class="form-group">',
-
-                            '  <label for="inputDate" class="control-label textControlLabel ng-binding pull-left">',
-                            '   title for date input<span class="textControlLabel ng-scope">*</span>',
-                            '  </label>',
-
-                            '          <div class="col-xs-12 col-sm-12 col-md-12 demoddDatepicker">',  
-                            '  					<div class="input-group">',
-                            '    					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>',
-                            '    					<input type="text" disabled class="form-control fakeControl">',
-                            '  					</div>',
-                            '					</div>',
-
-                            '           <p class="help-block pull-left">description</p>',
-
-                            '</div>',
-                            '</div>'
-                          ].join(''),
-                control	: 'Date',
-                cssClass: 'col-xs-12'
-      },
-      {
-        addToGroupCtrl : 'inputs'
-      } 				
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    label 	:
+      `<div class="col-md-12">
+        <div class="form-group">
+          <label for="inputDate" class="control-label textControlLabel ng-binding pull-left">
+           title for date input<span class="textControlLabel ng-scope">*</span>
+          </label>
+          <div class="col-xs-12 col-sm-12 col-md-12 demoddDatepicker">
+  					<div class="input-group">
+    					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    					<input type="text" disabled class="form-control fakeControl">
+  					</div>
+					</div>
+          <p class="help-block pull-left">description</p>
+        </div>
+       </div>`,
+      control	: 'Date',
+      cssClass: 'col-xs-12'
+    },
+    {
+      addToGroupCtrl : 'inputs'
+    } 				
   );
 
   /**
@@ -359,19 +344,18 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *
     * just declare in EasyFormGenFormlyBindingModelsProvider
     */
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'Texarea', 
-        name 							: 'Textarea', 
-        subtitle 					: 'Textarea', 
-        group 						: 'Textarea', 
-        formlyType 				: 'textarea', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+      id 								: 'Texarea', 
+      name 							: 'Textarea', 
+      subtitle 					: 'Textarea', 
+      group 						: 'Textarea', 
+      formlyType 				: 'textarea', 
+      formlySubtype 		: '', 
+      formlyLabel 			: '', 
+      formlyRequired 		: false, 
+      formlyDesciption 	: '', 
+      formlyOptions 		: []
+    }
   );
   /**
    * drag and drop textarea control template
