@@ -111,14 +111,10 @@ function formlyConfig(formlyConfigProvider){
 			ngModelAttrs: ngModelAttrs,
 			templateOptions: {
 				addonLeft: {
-					class: 'glyphicon glyphicon-calendar',
-					onClick: function(options, scope) {
-						options.templateOptions.isOpen = !options.templateOptions.isOpen;
-					}
+					class 	: 'glyphicon glyphicon-calendar',
+					onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
 				},       
-				onFocus: function($viewValue, $modelValue, scope) {
-					scope.to.isOpen = !scope.to.isOpen;
-				},
+				onFocus : ($viewValue, $modelValue, scope) => scope.to.isOpen = !scope.to.isOpen,
 				datepickerOptions: {}
 			}
 		}

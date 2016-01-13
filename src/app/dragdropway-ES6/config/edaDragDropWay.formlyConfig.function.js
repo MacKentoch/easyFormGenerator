@@ -19,14 +19,13 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
   });
 
   dragDropConfigProvider.addControlToDragDropPresentationModel({
-    label 	: [  
+    label 	:   
       `<div class="col-md-12">
           <div class="form-group">                                          
             <div class="">
             </div>
           </div>
-      </div>`
-      ].join(''),          
+      </div>`,          
     control : 'empty',
     cssClass: 'col-xs-12'
     },
@@ -69,14 +68,13 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     });
 
 
-  const subTitleTemplate =	[
-    `<div class="row"> 
+  const subTitleTemplate = `
+    <div class="row"> 
       <div class=""> 
         <h4 class="text-center">{{options.templateOptions.placeholder}}<h4> 
         <hr/>
       </div>
-    </div>`
-  ].join(' ');
+    </div>`;
 
   formlyConfigProvider.setType({
     name 			: 'subTitle',
@@ -97,7 +95,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
   });
   
   dragDropConfigProvider.addControlToDragDropPresentationModel({
-    'label' 	: [  
+    'label' 	:  
       `<div class="col-md-12">
           <div class="form-group">                                          
             <div class="">
@@ -105,8 +103,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
               <hr/>
             </div>
           </div>
-      </div>`
-    ].join(''),
+      </div>`,
     'control'	: 'Subtitle',
     'cssClass': 'col-xs-12'
     },
@@ -137,7 +134,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
   dragDropConfigProvider.addControlToDragDropPresentationModel({
-      'label' 	: [  
+      'label' 	:  
         `<div class="col-md-12">
           <div class="form-group">
             <label for="inputText" class="control-label textControlLabel pull-left">
@@ -148,8 +145,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
               <p class="help-block pull-left">Description</p>
             </div>
           </div>
-        </div>`
-      ].join(''),
+        </div>`,
       'control'	: 'TextInput',
       'cssClass': 'col-xs-12'
     },
@@ -188,7 +184,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
   dragDropConfigProvider.addControlToDragDropPresentationModel({
-      'label' 	: [
+      'label' 	:
         `<div class="col-md-12">
           <div class="form-group">
             <label for="inputPass" class="control-label textControlLabel ng-binding pull-left">
@@ -199,8 +195,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
               <p class="help-block ng-binding pull-left">Description</p>
             </div>
           </div>
-        </div>`
-      ].join(''),
+        </div>`,
       'control'	: 'Password',
       'cssClass': 'col-xs-12'
     },
@@ -256,21 +251,21 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     return string.replace(/^([A-Z])/, (match, chr) => chr ? chr.toLowerCase() : '');
   } 		
 
-  const angularUIDatePickerTemplate =	
-    `<input 
-        id="{{id}}" 
-        class="form-control" 
-        ng-click="open($event)"
-        ng-model="model[options.key || index]" is-open="to.isOpen"
-        ng-click="to.isOpen = true" 
-        datepicker-options="to.datepickerOptions"/>`;
+  const angularUIDatePickerTemplate =	`
+    <input 
+      id="{{id}}" 
+      class="form-control" 
+      ng-click="open($event)"
+      ng-model="model[options.key || index]" is-open="to.isOpen"
+      ng-click="to.isOpen = true" 
+      datepicker-options="to.datepickerOptions"/>`;
 
   formlyConfigProvider.setType({
     name 				: 'datepicker',
     template 		: angularUIDatePickerTemplate,
     wrapper 		: ['bootstrapLabel', 'bootstrapHasError'],
     controller 	: [	'$scope', ($scope) => {
-          $scope.open = ($event) => {
+          $scope.open = $event => {
             $event.preventDefault();
             $event.stopPropagation();
             $scope.opened = true;
@@ -313,28 +308,27 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
   dragDropConfigProvider.addControlToDragDropPresentationModel({
-    label 	:
-      `<div class="col-md-12">
-        <div class="form-group">
-          <label for="inputDate" class="control-label textControlLabel ng-binding pull-left">
-           title for date input<span class="textControlLabel ng-scope">*</span>
-          </label>
-          <div class="col-xs-12 col-sm-12 col-md-12 demoddDatepicker">
-  					<div class="input-group">
-    					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-    					<input type="text" disabled class="form-control fakeControl">
-  					</div>
+    label 	:`
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="inputDate" class="control-label textControlLabel ng-binding pull-left">
+         title for date input<span class="textControlLabel ng-scope">*</span>
+        </label>
+        <div class="col-xs-12 col-sm-12 col-md-12 demoddDatepicker">
+					<div class="input-group">
+  					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+  					<input type="text" disabled class="form-control fakeControl">
 					</div>
-          <p class="help-block pull-left">description</p>
-        </div>
-       </div>`,
-      control	: 'Date',
-      cssClass: 'col-xs-12'
-    },
-    {
-      addToGroupCtrl : 'inputs'
-    } 				
-  );
+				</div>
+        <p class="help-block pull-left">description</p>
+      </div>
+     </div>`,
+    control	: 'Date',
+    cssClass: 'col-xs-12'
+  },
+  {
+    addToGroupCtrl : 'inputs'
+  });
 
   /**
    * Add textarea
@@ -345,18 +339,17 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * just declare in EasyFormGenFormlyBindingModelsProvider
     */
   EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
-      id 								: 'Texarea', 
-      name 							: 'Textarea', 
-      subtitle 					: 'Textarea', 
-      group 						: 'Textarea', 
-      formlyType 				: 'textarea', 
-      formlySubtype 		: '', 
-      formlyLabel 			: '', 
-      formlyRequired 		: false, 
-      formlyDesciption 	: '', 
-      formlyOptions 		: []
-    }
-  );
+    id 								: 'Texarea', 
+    name 							: 'Textarea', 
+    subtitle 					: 'Textarea', 
+    group 						: 'Textarea', 
+    formlyType 				: 'textarea', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '', 
+    formlyOptions 		: []
+  });
   /**
    * drag and drop textarea control template
    *
@@ -365,59 +358,52 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        'label' 	: [
-                      '<div class="col-md-12">',
-                      '    <div class="form-group">', 
-                      '      <label for="textArea" class="control-label ',
-                      '							textControlLabel pull-left">title for textarea <span class="textControlLabel">*</span></label>', 
-                      '      <div class="">',
-                      '        <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
-                      '        <p class="help-block pull-left">description</p>',          
-                      '      </div>',
-                      '    </div>',                    
-                      '</div>'                                  
-                    ].join(''),
-        'control'	: 'Texarea',
-        'cssClass': 'col-xs-12'          
-      },
-      {
-        addToGroupCtrl : 'textareas'
-      }					
-  );				
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    'label' 	: `
+      <div class="col-md-12">
+          <div class="form-group">
+            <label for="textArea" class="control-label 
+      							textControlLabel pull-left">title for textarea <span class="textControlLabel">*</span></label> 
+            <div class="">
+              <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>
+              <p class="help-block pull-left">description</p>        
+            </div>
+          </div>                    
+      </div>`,
+    'control'	: 'Texarea',
+    'cssClass': 'col-xs-12'          
+  },
+  {
+    addToGroupCtrl : 'textareas'
+  });				
 
   /**
    * Add rich text editor control (using textAngular)
    *
     */
-  var richTexEditorTemplate =	[
-                                '<text-angular name="{{id}}" ', 
-                                '              class="richTextAngular" ',
-                                '              ng-model="model[options.key || index]">', 
-                                '</text-angular>'
-                              ].join(' ');
-  formlyConfigProvider.setType(
-    {
-      name     	: 'richEditor',
-      template 	: richTexEditorTemplate
-    }
-  );
+  let richTexEditorTemplate =`
+    <text-angular name="{{id}}" 
+                  class="richTextAngular" 
+                  ng-model="model[options.key || index]">
+    </text-angular>`;
 
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'RichTextEditor', 
-        name 							: 'RichTextEditor', 
-        subtitle 					: 'RichTextEditor', 
-        group 						: 'Textarea', 
-        formlyType 				: 'richEditor', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
-  );
+  formlyConfigProvider.setType({
+    name     	: 'richEditor',
+    template 	: richTexEditorTemplate
+  });
+
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+    id 								: 'RichTextEditor', 
+    name 							: 'RichTextEditor', 
+    subtitle 					: 'RichTextEditor', 
+    group 						: 'Textarea', 
+    formlyType 				: 'richEditor', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '', 
+    formlyOptions 		: []
+  });
   /**
    * drag and drop rich text editor control template (using textAngular)
    *
@@ -426,27 +412,24 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        label 	: [
-                    '<div class="col-md-12">', 
-                    '    <div class="form-group">', 
-                    '      <label for="textArea" class="control-label ',
-                    '							textControlLabel pull-left">title for rich text editor <span class="textControlLabel">*</span></label>', 
-                    '      <div class="">',
-                    '        <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>',
-                    '        <p class="help-block">description</p>',
-                    '      </div>',
-                    '    </div>',
-                    '</div>'
-                  ].join(''),
-        control	: 'RichTextEditor',
-        cssClass: 'col-xs-12'
-      },
-      {
-        addToGroupCtrl : 'textareas'
-      }				
-  );
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    label 	: `
+      <div class="col-md-12">
+          <div class="form-group">
+            <label for="textArea" class="control-label 
+      							textControlLabel pull-left">title for rich text editor <span class="textControlLabel">*</span></label>
+            <div class="">
+              <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>
+              <p class="help-block">description</p>
+            </div>
+          </div>
+      </div>`,
+    control	: 'RichTextEditor',
+    cssClass: 'col-xs-12'
+  },
+  {
+    addToGroupCtrl : 'textareas'
+  });
 
   /**
    * Add radio
@@ -456,21 +439,19 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *
     * just declare in EasyFormGenFormlyBindingModelsProvider
     */
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'Radio', 
-        name 							: 'Radio', 
-        subtitle 					: 'Radio', 
-        options 					: [], 
-        group 						: 'Radio', 
-        formlyType 				: 'radio', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '' , 
-        formlyOptions 		: []
-      }
-  );
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+    id 								: 'Radio', 
+    name 							: 'Radio', 
+    subtitle 					: 'Radio', 
+    options 					: [], 
+    group 						: 'Radio', 
+    formlyType 				: 'radio', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '' , 
+    formlyOptions 		: []
+  });
   /**
    * drag and drop radio control template (using textAngular)
    *
@@ -479,37 +460,35 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        'label' 	: [
-                      '<div class="col-md-12">',        
-                      '  <div class="form-group">',
-                      '    <label for="vertRadio" class="control-label textControlLabel pull-left">title for radio <span class="textControlLabel">*</span></label>',
-                      '    <div class="interligne"></div>',
-                      '    <div class="pull-left">',
-                      '      <div class="radio">',
-                      '        <label class="fakeCheck">',
-                      '          <input type="radio" disabled name="optionsRadios" class="fakeCheck" id="optionsRadio-0" value="verticalRadio0" checked="">',
-                      '          option1',
-                      '        </label>',
-                      '      </div><div class="radio">',
-                      '        <label class="fakeCheck">',
-                      '          <input type="radio" disabled name="optionsRadios" class="fakeCheck"  id="optionsRadio-1" value="verticalRadio1" checked="">',
-                      '          option2',
-                      '        </label>',
-                      '      </div>',
-                      '      <p class="help-block pull-left">description</p>',
-                      '    </div>',
-                      '  </div>',                            
-                      '</div>'
-                    ].join(''),
-        'control'	: 'Radio',
-        'cssClass': 'col-xs-12'            
-      },
-      {
-        addToGroupCtrl : 'radios'
-      }	
-  );				
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    'label' 	: `
+      <div class="col-md-12">       
+        <div class="form-group">
+          <label for="vertRadio" class="control-label textControlLabel pull-left">title for radio <span class="textControlLabel">*</span></label>
+          <div class="interligne"></div>
+          <div class="pull-left">
+            <div class="radio">
+              <label class="fakeCheck">
+                <input type="radio" disabled name="optionsRadios" class="fakeCheck" id="optionsRadio-0" value="verticalRadio0" checked="">
+                option1
+              </label>
+            </div>
+            <div class="radio">
+              <label class="fakeCheck">
+                <input type="radio" disabled name="optionsRadios" class="fakeCheck"  id="optionsRadio-1" value="verticalRadio1" checked="">
+                option2
+              </label>
+            </div>
+            <p class="help-block pull-left">description</p>
+          </div>
+        </div>                           
+      </div>`,
+    'control'	: 'Radio',
+    'cssClass': 'col-xs-12'            
+  },
+  {
+    addToGroupCtrl : 'radios'
+  });				
 
   /**
    * Add checkbox
@@ -519,20 +498,18 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *
     * just declare in EasyFormGenFormlyBindingModelsProvider
     */
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'Checkbox', 
-        name 							: 'Checkbox', 
-        subtitle 					: 'Checkbox', 
-        group 						: 'Checkbox', 
-        formlyType 				: 'checkbox', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
-  );
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+    id 								: 'Checkbox', 
+    name 							: 'Checkbox', 
+    subtitle 					: 'Checkbox', 
+    group 						: 'Checkbox', 
+    formlyType 				: 'checkbox', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '', 
+    formlyOptions 		: []
+  });
   /**
    * drag and drop checkbox control template (using textAngular)
    *
@@ -541,67 +518,59 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-
-        label 	: [
-                    '<div class="col-md-12">',                               
-                    '<div class="checkbox">',
-                    '  <label class="fakeCheck">',
-                    '    <input type="checkbox" disabled class="fakeCheck" id="checkBox">',
-                    '		<span class="blackText ng-binding">label for checkbox </span>',
-                    '		<span class="textControlLabel ng-scope">*</span>',
-                    '  </label>', 
-                    '</div>',
-                    '<p class="help-block ng-binding">description</p>',
-                    '</div>' 
-                  ].join(''),
-        control	: 'Checkbox',
-        cssClass: 'col-xs-12' 
-      },
-      {
-        addToGroupCtrl : 'checkboxes'
-      }					
-  );
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    label 	: `
+    <div class="col-md-12">
+      <div class="checkbox">
+        <label class="fakeCheck">
+          <input type="checkbox" disabled class="fakeCheck" id="checkBox">
+      		<span class="blackText ng-binding">label for checkbox </span>
+      		<span class="textControlLabel ng-scope">*</span>
+        </label>
+      </div>
+      <p class="help-block ng-binding">description</p>
+    </div>`,
+    control	: 'Checkbox',
+    cssClass: 'col-xs-12' 
+  },
+  {
+    addToGroupCtrl : 'checkboxes'
+  });
 
   /**
    * Add basic Select control
    *
     * using nya-bs-select
     */
-  var basicSelectTemplate =	[
-                              ' <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ', 
-                              '		ng-model="model[options.key || index]"  ', 
-                              '		id="{{id}}"  ', 
-                              '		disabled="options.templateOptions.options.length === 0"> ',
-                              '   <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> ',
-                              '     <a>{{option.name}}</a> ',
-                              '   </li> ',
-                              ' </ol> '
-                            ].join(''); 	
+  let basicSelectTemplate =	`
+   <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" 
+  		ng-model="model[options.key || index]" 
+  		id="{{id}}" 
+  		disabled="options.templateOptions.options.length === 0"> 
+     <li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options"> 
+       <a>{{option.name}}</a> 
+     </li>
+   </ol> `; 	
 
-  formlyConfigProvider.setType(
-    {
-      name 			: 'basicSelect',
-      template 	: basicSelectTemplate
-    }
-  );
+  formlyConfigProvider.setType({
+    name 			: 'basicSelect',
+    template 	: basicSelectTemplate
+  });
 
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'BasicSelect', 
-        name 							: 'Basic select', 
-        subtitle 					: 'Basic select',
-        options 					: [], 
-        group 						: 'Select', 
-        formlyType 				: 'basicSelect', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
-  );	
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+    id 								: 'BasicSelect', 
+    name 							: 'Basic select', 
+    subtitle 					: 'Basic select',
+    options 					: [], 
+    group 						: 'Select', 
+    formlyType 				: 'basicSelect', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '', 
+    formlyOptions 		: []
+  });	
+
   /**
    * drag and drop basic select control template (using textAngular)
    *
@@ -611,32 +580,31 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
   dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        label 	: [
-                    '<div class="col-md-12">',
-                    '    <div class="form-group">',
+  {
+    label 	: `
+      <div class="col-md-12">
+        <div class="form-group">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">
 
-                    '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">',
-                    '<ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"', 
-                    '	ng-model="fakeModelNyaSelectBasic"', 
-                    '	data-live-search="false">',
-                    '   <button class="btn btn-default dropdown-toggle" disabled type="button">',
-                    '		 <span class="pull-left filter-option">',
-                    '			 <span class="ng-binding">Basic select</span>',
-                    '		</span>',
-                    '		&nbsp;<span class="caret"></span>',
-                    '</button>',
-
-                    '    </div>',
-                    '</div>' 
-                  ].join(''),
-        control	: 'BasicSelect',
-        cssClass: 'col-xs-12' 	
-      },
-      {
-        addToGroupCtrl : 'selects'
-      }					
-  );	
+      <ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"
+      	ng-model="fakeModelNyaSelectBasic"
+      	data-live-search="false">
+      
+         <button class="btn btn-default dropdown-toggle" disabled type="button">
+      		 <span class="pull-left filter-option">
+      			 <span class="ng-binding">Basic select</span>
+      		</span>
+      		&nbsp;<span class="caret"></span>
+        </button>
+        
+      </div>
+      </div>`,
+    control	: 'BasicSelect',
+    cssClass: 'col-xs-12' 	
+  },
+  {
+    addToGroupCtrl : 'selects'
+  });	
 
   /**
    * Add Grouped Select control
