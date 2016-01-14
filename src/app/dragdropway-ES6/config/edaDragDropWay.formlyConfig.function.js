@@ -596,7 +596,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
       		</span>
       		&nbsp;<span class="caret"></span>
         </button>
-        
+
       </div>
       </div>`,
     control	: 'BasicSelect',
@@ -611,42 +611,38 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
    *
     * using nya-bs-select
     */
-  var groupedSelectTemplate =	[
-                                  '  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" ',
-                                  '		   ng-model="model[options.key || index]" ',
-                                  '      data-live-search="true" ',
-                                  '      disabled="options.templateOptions.options.length === 0">',
-                                  '      <li nya-bs-option="option in  options.templateOptions.options group by option.group">  ',
-                                  '        <span class="dropdown-header">{{$group}}</span>',
-                                  '        <a>',
-                                  '          <span>{{option.name}}</span>',
-                                  '          <span class="glyphicon glyphicon-ok check-mark"></span>',
-                                  '        </a>',
-                                  '      </li>',
-                                  '  </ol>'
-                                ].join(' ');
-  formlyConfigProvider.setType(
-    {
-      name   		: 'groupedSelect',
-      template 	: groupedSelectTemplate
-    }
-  );
+  let groupedSelectTemplate =	`
+  <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
+		   ng-model="model[options.key || index]"
+      data-live-search="true" 
+      disabled="options.templateOptions.options.length === 0">
+      <li nya-bs-option="option in  options.templateOptions.options group by option.group">
+        <span class="dropdown-header">{{$group}}</span>
+        <a>
+          <span>{{option.name}}</span>
+          <span class="glyphicon glyphicon-ok check-mark"></span>
+        </a>
+      </li>
+  </ol>`;
 
-  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList(
-      {
-        id 								: 'GroupedSelect', 
-        name 							: 'Grouped Select', 
-        subtitle 					: 'Grouped Select',
-        options 					: [], 
-        group 						: 'Select', 
-        formlyType 				: 'groupedSelect', 
-        formlySubtype 		: '', 
-        formlyLabel 			: '', 
-        formlyRequired 		: false, 
-        formlyDesciption 	: '', 
-        formlyOptions 		: []
-      }
-  );
+  formlyConfigProvider.setType({
+    name   		: 'groupedSelect',
+    template 	: groupedSelectTemplate
+  });
+
+  EasyFormGenFormlyBindingModelsProvider.addEasyFormControlToList({
+    id 								: 'GroupedSelect', 
+    name 							: 'Grouped Select', 
+    subtitle 					: 'Grouped Select',
+    options 					: [], 
+    group 						: 'Select', 
+    formlyType 				: 'groupedSelect', 
+    formlySubtype 		: '', 
+    formlyLabel 			: '', 
+    formlyRequired 		: false, 
+    formlyDesciption 	: '', 
+    formlyOptions 		: []
+  });
   /**
    * drag and drop grouped select control template (using textAngular)
    *
@@ -655,33 +651,28 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
-      {
-        label 	: [
-                    '<div class="col-md-12">',
-                    '    <div class="form-group">',
-
-                    '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">',
-                    '<ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"', 
-                    '	ng-model="fakeModelNyaSelectBasic"', 
-                    '	data-live-search="false">',
-                    '   <button class="btn btn-default dropdown-toggle" disabled type="button">',
-                    '		 <span class="pull-left filter-option">',
-                    '			 <span class="ng-binding">Grouped select</span>',
-                    '		</span>',
-                    '		&nbsp;<span class="caret"></span>',
-                    '</button>',
-
-                    '    </div>',
-                    '</div>' 
-                  ].join(''),
-        control	: 'GroupedSelect',
-        cssClass: 'col-xs-12' 
-      },
-      {
-        addToGroupCtrl : 'selects'
-      }				
-  );			
+  dragDropConfigProvider.addControlToDragDropPresentationModel({
+    label 	: `
+      <div class="col-md-12">
+          <div class="form-group">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">
+      <ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"
+      	ng-model="fakeModelNyaSelectBasic"
+      	data-live-search="false">
+         <button class="btn btn-default dropdown-toggle" disabled type="button">
+      		 <span class="pull-left filter-option">
+      			 <span class="ng-binding">Grouped select</span>
+      		</span>
+      		&nbsp;<span class="caret"></span>
+      </button>
+      </div>
+      </div>`,
+    control	: 'GroupedSelect',
+    cssClass: 'col-xs-12' 
+  },
+  {
+    addToGroupCtrl : 'selects'
+  });			
 
   
 }
