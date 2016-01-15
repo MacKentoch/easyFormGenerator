@@ -380,7 +380,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
   /**
    * Add rich text editor control (using textAngular)
    *
-    */
+   */
   let richTexEditorTemplate =`
     <text-angular name="{{id}}" 
                   class="richTextAngular" 
