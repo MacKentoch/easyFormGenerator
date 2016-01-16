@@ -8,7 +8,7 @@
 						</toaster-container>
 						<tabset justified="true">
 							<tab 
-								select="tabJustSelected(2)" 
+								select="vm.tabJustSelected(2)" 
 								active="vm.tab.editTab.active" 
 								heading="Edit /Create">
 								<div class="row">
@@ -34,8 +34,8 @@
 															dnd-list="containers"
 															dnd-allowed-types="['containerType']"
 															dnd-external-sources="true"
-															dnd-dragover="dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
-															dnd-drop="dropCallback(event, index, item, external, type, 'containerType');"
+															dnd-dragover="vm.dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);"
+															dnd-drop="vm.dropCallback(event, index, item, external, type, 'containerType');"
 															class="row">
 															<li 
 																ng-repeat="items in containers"
@@ -49,31 +49,31 @@
 																<div 	
 																	class="container-element box box-blue"
 																	dd-decor-container
-																	dd-container-properties="easyFormDragDropProperties.containerConfig.decoration[$index]"
-																	dd-container-is-collpased="easyFormDragDropProperties.containerConfig.decoration[$index].isCollapsed"
-																	dd-container-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
+																	dd-container-properties="vm.easyFormDragDropProperties.containerConfig.decoration[$index]"
+																	dd-container-is-collpased="vm.easyFormDragDropProperties.containerConfig.decoration[$index].isCollapsed"
+																	dd-container-verbose-mode="{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}"
 																	dd-container-current-index="{{$parent.$index}}" 
-																	dd-collapse-all="collapseAllGroupControl(exceptThisOne)">
+																	dd-collapse-all="vm.collapseAllGroupControl(exceptThisOne)">
 																	<div dd-decor-include-container-here>	
 																		<div
 																			dd-decor-line
-																			dd-line-verbose-mode="{{easyFormDragDropProperties.containerConfig.verboseMode}}"
+																			dd-line-verbose-mode="{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}"
 																			dd-line-current-index="{{$index}}"
 																			dd-line-parent-index="{{$parent.$index}}"
-																			dd-remove-line="removeThisLine($index)">
+																			dd-remove-line="vm.removeThisLine($index)">
 																			<ul 
 																				dnd-list="items"
 																				dnd-allowed-types="['itemType']"
 																				dnd-horizontal-list="true"
 																				dnd-external-sources="true"
 																				dnd-disable-if="items.length > 2"
-																				dnd-dragover="dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
-																				dnd-drop="dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');"
+																				dnd-dragover="vm.dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);"
+																				dnd-drop="vm.dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');"
 																				class="itemlist"
 																				dd-content-counter
 																				dd-value-when-placeholder="dndPlaceholder"
 																				dd-value-when-dragging="dndDraggingSource"
-																				dd-full-model = "dragDropModel"
+																				dd-full-model = "vm.dragDropModel"
 																				dd-content-counter-current-index="{{$index}}"
 																				dd-content-counter-parent-index="{{$parent.$index}}"
 																				dd-content-counter-force-css-refresh = "command.forceRefresh">
@@ -83,10 +83,10 @@
 																					dnd-type="'itemType'"
 																					dnd-effect-allowed="copyMove"
 																					dnd-dragstart=""
-																					dnd-moved="dndItemMoved($parent.$parent.$index, $parent.$index, $index);"
+																					dnd-moved="vm.dndItemMoved($parent.$parent.$index, $parent.$index, $index);"
 																					dnd-copied=""
 																					dd-decor-item
-																					dd-item-verbose-mode="{{easyFormDragDropProperties.itemConfig.verboseMode}}"
+																					dd-item-verbose-mode="{{vm.easyFormDragDropProperties.itemConfig.verboseMode}}"
 																					dd-item-current-index="{{$index}}"
 																					dd-item-parent-index="{{$parent.$index}}"
 																					dd-item-parent-parent-index = "{{$parent.$parent.$index}}"
@@ -98,7 +98,7 @@
 																							class="rightClickCtrl" 
 																							ng-class="{rightClickCtrlSelected : item.rightCliked === true}"
 																							eda-set-right-clicked="setRightClicked(previousState, item)"
-																							eda-right-click="toggleEditPanel($event, $parent.$index, $index, item)"
+																							eda-right-click="vm.toggleEditPanel($event, $parent.$index, $index, item)"
 																							eda-selected-class="rightClickCtrlSelected"
 																							eda-is-selected="{{item.rightCliked}}"
 																							eda-right-click-col-index = "{{$parent.$parent.$index}}">
@@ -121,26 +121,26 @@
 								</div>
 							</tab>	
 							<tab 
-								select="tabJustSelected(1)" 
-								active="tab.previewTab.active" 
+								select="vm.tabJustSelected(1)" 
+								active="vm.tab.previewTab.active" 
 								heading="Preview">
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<form ng-submit="vm.onSubmit()">
-											<formly-form i
-												d="previewFormlyForm" 
+											<formly-form 
+												id="previewFormlyForm" 
 												model="vm.model" 
 												fields="vm.wfFormFields">
 												<span class="pull-right">
 													<button 
 														class="btn btn-primary" 
 														type="submit">
-														{{configuration.submitButtonText}}
+														{{vm.configuration.submitButtonText}}
 													</button>
 													<button 
 														class="btn btn-primary" 
 														type="cancel">
-														{{configuration.cancelButtonText}}
+														{{vm.configuration.cancelButtonText}}
 													</button>
 												</span>
 											</formly-form>
@@ -150,12 +150,12 @@
 								<div  class="panel panel-default">
 									<div 
 										class="panel-heading heading-preview" 
-										ng-click="ihm.preview.customizeFormButtonsExpanded =!ihm.preview.customizeFormButtonsExpanded">
+										ng-click="vm.ihm.preview.customizeFormButtonsExpanded =!vm.ihm.preview.customizeFormButtonsExpanded">
 										<h3 class="panel-title">
 											<button class="btn btn-primary btn-xs" >
 												<i 
 													class="fa" 
-													ng-class="{'fa-angle-down':!ihm.preview.customizeFormButtonsExpanded, 'fa-angle-up' : ihm.preview.customizeFormButtonsExpanded}">
+													ng-class="{'fa-angle-down':!vm.ihm.preview.customizeFormButtonsExpanded, 'fa-angle-up' : vm.ihm.preview.customizeFormButtonsExpanded}">
 												</i>
 											</button>
 											&nbsp;
@@ -165,7 +165,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="ihm.preview.customizeFormButtonsExpanded">
+										<div collapse="vm.ihm.preview.customizeFormButtonsExpanded">
 											<div class="row">
 												<div class="col-xs-6">
 													<div class="form-group">
@@ -180,7 +180,7 @@
 																class="form-control" 
 																id="inputSubmitButtontext" 
 																placeholder="Submit button text" 
-																ng-model="configuration.submitButtonText">
+																ng-model="vm.configuration.submitButtonText">
 														</div>
 													</div>								
 												</div>
@@ -197,7 +197,7 @@
 																class="form-control" 
 																id="inputCancelButtontext" 
 																placeholder="Cancel button text" 
-																ng-model="configuration.cancelButtonText">
+																ng-model="vm.configuration.cancelButtonText">
 														</div>
 													</div>								
 												</div>
@@ -208,12 +208,12 @@
 								<div class="panel panel-default">
 									<div  
 										class="panel-heading heading-preview" 
-										ng-click="ihm.preview.formlyModelViewExpanded =!ihm.preview.formlyModelViewExpanded">
+										ng-click="vm.ihm.preview.formlyModelViewExpanded =!vm.ihm.preview.formlyModelViewExpanded">
 										<h3 class="panel-title">
 												<button class="btn btn-primary btn-xs">
 													<i 
 														class="fa" 
-														ng-class="{'fa-angle-down':!ihm.preview.formlyModelViewExpanded, 'fa-angle-up' : ihm.preview.formlyModelViewExpanded}">
+														ng-class="{'fa-angle-down':!vm.ihm.preview.formlyModelViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyModelViewExpanded}">
 													</i>
 												</button>
 												&nbsp;
@@ -247,7 +247,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="ihm.preview.formlyFieldsViewExpanded">
+										<div collapse="vm.ihm.preview.formlyFieldsViewExpanded">
 											<pre>
 												{{vm.wfFormFieldsOnlyNeededProperties | json}}
 											</pre>

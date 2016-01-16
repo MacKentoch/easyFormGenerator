@@ -22,7 +22,7 @@
  * 5) formViewer ES6 
  * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) 
  *  
- * 6)
+ * 6) drad and drop way ES6
  * - $ gulp build:dragdropway:ES6 (or gulp build:dragdropway:ES6:min for min version)
  * 
  * ——————————————————————————————————————————————
