@@ -1,6 +1,6 @@
 /* global angular */
 import ddDecorContainerTemplate 			from './edaDragDropWay.dragdrop.ddDecorContainer.template!text';
-import ddDecorContainerController, {
+import {
 	DD_DECOR_CONTAINER_CONTROLLER_NAME,
 	DD_DECOR_CONTAINER_CONTROLLERAS_NAME
 }																			from './edaDragDropWay.dragdrop.ddDecorContainer.controller';
@@ -51,15 +51,16 @@ function ddDecorContainer(){
 		if (verboseModeActive !== '') {
 			var verbose = angular.lowercase(verboseModeActive);
 			if (verbose === 'true' || verbose === '1') {
-					console.dir({
-						whoAmI              :   'I am verbose from ddDecorContainer link',
-						verbodeMode         :   verbose,
-						ParentParentIndex   :   $scope.$parent.$parent.$index,
-						ParentIndex         :   $scope.$parent.$index,
-						currentIndex        :   currentIndex,
-						styleParam          :   $scope.ddDecorContainerCtrl.styleParam,
-						columnindex         :   $scope.$parent.$parent.$parent.$parent.$index
-					});
+				/* eslint no-console:0 */
+				console.dir({
+					whoAmI              :   'I am verbose from ddDecorContainer link',
+					verbodeMode         :   verbose,
+					ParentParentIndex   :   $scope.$parent.$parent.$index,
+					ParentIndex         :   $scope.$parent.$index,
+					currentIndex        :   currentIndex,
+					styleParam          :   $scope.ddDecorContainerCtrl.styleParam,
+					columnindex         :   $scope.$parent.$parent.$parent.$parent.$index
+				});
 			}                    
 		}
 				

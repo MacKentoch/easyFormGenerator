@@ -35,12 +35,13 @@ function ddDecorLine($timeout){
 		if (verboseModeActive !== '') {
 			let verbose = angular.lowercase(verboseModeActive);
 			if (verbose === 'true' || verbose === '1') {
+				/* eslint no-console:0 */
 				console.dir({
 					whoAmI              : 'I am verbose from ddDecorLine directive link',
 					verbodeMode         : verbose,
 					ParentParentIndex   : $scope.$parent.$parent.$index,
 					ParentIndex         : parentIndex,
-					currentIndex        : currentIndex,
+					currentIndex        : currentIndex
 				});
 			}                    
 		}
@@ -102,7 +103,7 @@ function ddDecorLine($timeout){
 			* to prevent it to interfere with double click sequence 
 			* -> set a time out (shaking line to delete will automaticallly end shaking after timeout : 2 seconds)
 			*/
-		$scope.cancelDelete = (event)=>{
+		$scope.cancelDelete = ()=>{
 			//event.preventDefault();
 			//event.stopPropagation();
 			timer = $timeout(()=>{

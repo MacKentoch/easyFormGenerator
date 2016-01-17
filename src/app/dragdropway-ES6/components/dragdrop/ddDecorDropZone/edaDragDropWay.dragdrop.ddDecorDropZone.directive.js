@@ -34,6 +34,7 @@ function ddDecorDropZone(){
 		if (verboseModeActive !== '') {
 			let verbose = angular.lowercase(verboseModeActive);
 			if (verbose === 'true' || verbose === '1') {
+				/* eslint no-console:0 */
 				console.dir({
 					whoAmI              : 'I am verbose from ddDecorDropZone link',
 					verbodeMode         : verbose,

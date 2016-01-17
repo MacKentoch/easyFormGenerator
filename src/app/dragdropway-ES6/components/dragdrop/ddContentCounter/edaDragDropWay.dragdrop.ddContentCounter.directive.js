@@ -47,10 +47,9 @@ function ddContentCounter(dragDropItemCounterService, $timeout){
 				* timer destruction to prevent from bad UI experience
 				*/
 			$scope.$on('$destroy', ()=>{
-				//console.warn('ddContentCounter timer destruction!');
-				$timeout.cancel(timer);
-			});
-			 			
+				// console.warn('ddContentCounter timer destruction!');
+				$timeout.cancel(timer);}
+			);
 		}
 		
 }

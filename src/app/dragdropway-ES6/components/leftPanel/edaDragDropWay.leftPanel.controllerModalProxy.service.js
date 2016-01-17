@@ -229,10 +229,9 @@ class controllerModalProxy{
   
   // getter : editPanelModel.columnIndex
   getEditPanelModelColumnIndex(){
-	 return this.editPanelModel.columnIndex;
+    return this.editPanelModel.columnIndex;
   }
-  
-  
+
   // setter : editPanelModel.columnIndex
   setEditPanelModelColumnIndex(newColumnIndex){
     let successfullDone  = false;
@@ -304,14 +303,14 @@ class controllerModalProxy{
 	 */
 	bindSpecialCtrlTemporyModelsToProxyModel(){
 		if (this.proxyModel.selectedControl === 'BasicSelect') {
-		  this.bindBasicSelectToProxyModel(this.basicSelectRowCollection);
-		}
+      this.bindBasicSelectToProxyModel(this.basicSelectRowCollection);
+    }
 		if (this.proxyModel.selectedControl === 'GroupedSelect') {
-		  this.bindGroupedSelectToProxyModel(this.groupedSelectRowCollection);
-		}  
+      this.bindGroupedSelectToProxyModel(this.groupedSelectRowCollection);
+    }
 		if (this.proxyModel.selectedControl === 'Radio') {
-		  this.bindRadioToProxyModel(this.radioRowCollection);
-		}  
+      this.bindRadioToProxyModel(this.radioRowCollection);
+    }
 	}
   
   // basic select

@@ -51,6 +51,7 @@ function ddDecorItem(dragDropConfig){
 		if (verboseModeActive !== '') {
 			let verbose = angular.lowercase(verboseModeActive);
 			if (verbose === 'true' || verbose === '1') {
+				/* eslint no-console:0 */
 				console.dir({
 					whoAmI              : 'I am verbose from ddDecorItem directive link',
 					verbodeMode         : verbose,
@@ -93,4 +94,5 @@ export default ddDecorItem;
 
 export {
 	DRAG_DROP_DECOR_ITEM
-}
+};
+
