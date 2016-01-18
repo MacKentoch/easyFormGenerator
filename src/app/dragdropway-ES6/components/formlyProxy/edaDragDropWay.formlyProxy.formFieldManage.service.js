@@ -82,7 +82,7 @@ class formFieldManage{
     let indexFormlyModel =  formlyModel.push(rawFormlyModel) - 1 ;        
 
     // iterates through controls in the line      
-    configurationModel.lines[lineIndex].columns.forEach(function(column, columnIndex){
+    configurationModel.lines[lineIndex].columns.forEach( (column) => {
       let controlTemplate = {};
       if (typeof controlTemplate  !== 'undefined' &&
           // column.control.type     !== 'header'    && 

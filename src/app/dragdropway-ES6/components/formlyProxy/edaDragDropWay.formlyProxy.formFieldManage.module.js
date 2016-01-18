@@ -4,7 +4,7 @@ import formFieldManage, {
 
 import EasyFormGenFormlyBindingModels, {
   EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER
-}                         from './edaDragDropWay.formlyProxy.formFieldManage.provider'
+}                         from './edaDragDropWay.formlyProxy.formFieldManage.provider';
 
 
 

@@ -26,13 +26,13 @@ export const initEasyFormEmptyConfigurationLineModel = () => {
       }
     }]
   };      
-}
+};
   
 export const initEmptyControlFieldModel = () => {
   return {
     'control' 		: {
       'type'  : 'none',
-      'key'   : 'none',
+      'key'   : 'none'
     }	
   };  
 };
@@ -62,7 +62,7 @@ export const initEasyFormInitialStateConfigurationModelAddOnForStepWay = () => {
       false,
       false
     ], 
-    configStepCounter : 0,     	
+    configStepCounter : 0  	
   };
 };
   
@@ -77,7 +77,7 @@ export const initHeaderTemplates = () => {
     cssClass 		: ['col-xs-12', 'col-xs-6', 'col-xs-4'],
     textContent : '',
     html_part1 	: [
-                    '  <div class="',
+                    '  <div class="'
                     ].join(''),
     selectedClass : '',
     html_part2 	: [
@@ -88,14 +88,14 @@ export const initHeaderTemplates = () => {
     html_part4 	:  [ 
                     '    <h2>',
                     '    <hr/>',
-                    '  </div>',
+                    '  </div>'
                     ].join(''), 
     simpleHtml1 : 	[
                     '<h2 class="text-center">'
                     ].join(''),
     simpleHtml2 : 	[
                     '    <h2>',
-                    '    <hr/>',																
+                    '    <hr/>'																
                     ].join('')						 
   };    
 };

@@ -6,7 +6,7 @@ const setToday = (datetimePickerModel)=>{
 
 const clearDateTime = (datetimePickerModel)=>{
 	datetimePickerModel.dt = new Date();
-}
+};
 
 export{
 	dateFormats,

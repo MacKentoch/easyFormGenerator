@@ -1,4 +1,4 @@
-/* global angular */`
+/* global angular */
 
 
 //TODO : to bindToController
@@ -37,12 +37,12 @@ function edaDragdropWayEasyFormGen(
 	
 	
 	
-	function linkFct(scope, element, attrs){              
-		//watch "scope.easyFormGeneratorModel"
-		scope.$watch(()=>scope.edaEasyFormGeneratorModel, (newValue, oldValue)=>loadExistingConfigurationModel(), true);
-		  
-		//watch "scope.returnSaveEvent"" = catch saving form event  
-		scope.$watch(()=>scope.returnSaveEvent, (newValue, oldValue)=>{
+	function linkFct(scope){              
+		// watch "scope.easyFormGeneratorModel"
+		scope.$watch(()=>scope.edaEasyFormGeneratorModel, ()=>loadExistingConfigurationModel(), true);
+
+		// watch "scope.returnSaveEvent"" = catch saving form event  
+		scope.$watch(()=>scope.returnSaveEvent, (newValue)=>{
 			if (newValue === true) {
 				let _easyFormGeneratorModel = {
 					formName          				: scope.configuration.formName,
@@ -82,15 +82,15 @@ function edaDragdropWayEasyFormGen(
 		function emptyEdaFieldsModel(){
 			let emptyModel = [
 				{
-					"line"					: 1,
-					"activeColumn"	: 1,
-					"columns"				: [
+					'line'					: 1,
+					'activeColumn'	: 1,
+					'columns'				: [
 						{
-							"numColumn"	: 1,
-							"exist"			: true,
-							"control"		: {
-								"type"	: "none",
-								"key"		: "none"
+							'numColumn'	: 1,
+							'exist'			: true,
+							'control'		: {
+								'type'	: 'none',
+								'key'		: 'none'
 							}
 						}
 					]
@@ -98,8 +98,7 @@ function edaDragdropWayEasyFormGen(
 			];
 			return emptyModel;
 		}
-     
-		      
+
 		function returnAttributeDataModelIfNotEmpty(){
 			let dataModelToReturn = (
 				angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  ( 
@@ -138,12 +137,10 @@ function edaDragdropWayEasyFormGen(
 		function updateConfigurationClassName(configModel){
 			angular.forEach(configModel.lines, (aline)=>{
 				let cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
-				angular.forEach(aline.columns, (aControl)=> {aControl.control.className = cssClassToApply}); 
+				angular.forEach(aline.columns, (aControl)=> aControl.control.className = cssClassToApply); 
 			});         
-		}  
-          
-      
-      //closing link function             
+		}
+
 }	
 	
 	
