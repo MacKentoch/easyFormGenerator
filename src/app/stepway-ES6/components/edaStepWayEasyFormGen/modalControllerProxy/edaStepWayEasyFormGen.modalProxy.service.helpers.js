@@ -94,7 +94,7 @@ const resetNyaSelect = (nyaSelectObj) => {
 				formlyValidators	: {}, 
 				formlyValidation	: {
 					messages: {
-						required: function(viewValue, modelValue, scope) {
+						required: (viewValue, modelValue, scope) => {
 							//return a required validation message : 
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
@@ -118,10 +118,9 @@ const resetNyaSelect = (nyaSelectObj) => {
 				formlyDesciption 						: '', 
 				formlyOptions 							: [], 
 				formlyExpressionProperties 	: {}, 
-	
 				formlyValidators 						: {
 					emailShape : {
-						expression : function(viewValue, modelValue) {
+						expression : (viewValue, modelValue) => {
 							var value = modelValue || viewValue;
 							return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
 						},

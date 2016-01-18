@@ -1,5 +1,3 @@
-/* global angular */
-
 import './edaStepWayEasyFormGen.vendor.adapter';
 import easyFormStepWayConfig, {
 		EASY_FORM_VERSION_NAME, 

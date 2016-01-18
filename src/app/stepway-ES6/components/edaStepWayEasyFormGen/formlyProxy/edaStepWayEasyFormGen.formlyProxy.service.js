@@ -47,7 +47,7 @@ class $formlyProxy {
 	}
 	
 	bindConfigurationLines(configurationModel, lines) {
-		if(angular.isArray(lines)){
+		if(angular.isArray(lines)) {
 			let configModelResult = configurationModelResult;
 			configModelResult.lines = [].concat(lines);  
 			angular.copy(configModelResult, configurationModel);
@@ -83,7 +83,7 @@ class $formlyProxy {
 		}
 	}
 	
-	getMessageObject(messageTitle, messageBody){
+	getMessageObject(messageTitle, messageBody) {
 		let messageObj = {
 			noError : true,
 			title		: messageTitle,

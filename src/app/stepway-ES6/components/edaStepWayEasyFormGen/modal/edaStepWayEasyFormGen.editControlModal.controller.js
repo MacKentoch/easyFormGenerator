@@ -1,7 +1,5 @@
-/* global angular */
-/* global _ */
-const EDIT_MODAL_CONTROLLER_NAME = 'editControlModalController';
-const EDIT_MODAL_CONTROLLERAS_NAME = 'editControlModCtrl';
+const EDIT_MODAL_CONTROLLER_NAME 		= 'editControlModalController';
+const EDIT_MODAL_CONTROLLERAS_NAME 	= 'editControlModCtrl';
 
 class editControlModalController {
 	

@@ -3,9 +3,8 @@ const DEBUG_MODEL = {
 	showDebug : false,
 	configurationModelNumberofLines : 1        
 };
+
 const initDebugModel = () => angular.copy(DEBUG_MODEL);
-
-
 
 const DEFAULT_TAB_MODEL = {
 	editTab			: {
@@ -27,7 +26,6 @@ const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
 	return _tabModel;
 };
 
-
 const COLUMN_TEMPLATE =  {
 	numColumn		: -1,
 	exist				:true, 
@@ -43,8 +41,8 @@ const COLUMN_TEMPLATE =  {
 		//                   }
 	}
 }; 
-const initColumnTemplate = () => angular.copy(COLUMN_TEMPLATE);
 
+const initColumnTemplate = () => angular.copy(COLUMN_TEMPLATE);
 
 const LINE_TEMPLATE = {
 	line:-1, 
@@ -67,8 +65,6 @@ const LINE_TEMPLATE = {
 		]
 };
 const initLineTemplate = () => angular.copy(LINE_TEMPLATE);
-
-
 
 export {
 	initDebugModel,

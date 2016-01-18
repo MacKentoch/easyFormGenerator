@@ -15,8 +15,8 @@ function formlyConfig(formlyConfigProvider){
 	formlyConfigProvider.setType(
 		{
 			name: 'richEditor',
-			//wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-			template: richTextTemplate
+			template: richTextTemplate,
+			wrapper: ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
@@ -36,15 +36,17 @@ function formlyConfig(formlyConfigProvider){
 
 	formlyConfigProvider.setType(
 		{
-			name: 'basicSelect',
-			template: basicSelectTemplate
+			name 			: 'basicSelect',
+			template 	: basicSelectTemplate,
+			wrapper: ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
 	formlyConfigProvider.setType(
 		{
-			name: 'groupedSelect',
-			template: groupedSelectTemplate
+			name 			: 'groupedSelect',
+			template 	: groupedSelectTemplate,
+			wrapper: ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
@@ -86,21 +88,21 @@ function formlyConfig(formlyConfigProvider){
 
 	let ngModelAttrs = {};
 
-	angular.forEach(attributes, function(attr) {
+	angular.forEach(attributes, (attr) => {
 		ngModelAttrs[camelize(attr)] = {attribute: attr};
 	});
 
-	angular.forEach(bindings, function(binding) {
+	angular.forEach(bindings, (binding) => {
 		ngModelAttrs[camelize(binding)] = {bound: binding};
 	});
 
  
 	formlyConfigProvider.setType({
-		name: 'datepicker',
-		template: datepickerTemplate,
-		wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-		controller: ['$scope', function($scope) {
-				$scope.open = function($event) {
+		name 			: 'datepicker',
+		template 	: datepickerTemplate,
+		wrapper 	: ['bootstrapLabel', 'bootstrapHasError'],
+		controller: ['$scope', ($scope) => {
+				$scope.open = ($event) => {
 				$event.preventDefault();
 				$event.stopPropagation();
 				$scope.opened = true;
@@ -108,9 +110,9 @@ function formlyConfig(formlyConfigProvider){
 			
 			}],
 		defaultOptions: {
-			ngModelAttrs: ngModelAttrs,
-			templateOptions: {
-				addonLeft: {
+			ngModelAttrs 		: ngModelAttrs,
+			templateOptions : {
+				addonLeft : {
 					class 	: 'glyphicon glyphicon-calendar',
 					onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
 				},       

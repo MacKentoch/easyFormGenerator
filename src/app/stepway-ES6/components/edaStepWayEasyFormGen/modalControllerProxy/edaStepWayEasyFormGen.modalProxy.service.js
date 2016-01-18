@@ -1,4 +1,3 @@
-/* global angular */
 import {
 	resetNyaSelect,
 	returnControlFromAddCtrlModalModel,
@@ -14,17 +13,17 @@ class $modalProxy{
 		this.easyFormSteWayConfig	=	easyFormSteWayConfig;
 	}
 	
-	initNyaSelect(nyaSelectObj){
+	initNyaSelect(nyaSelectObj) {
 		return resetNyaSelect(nyaSelectObj);
 	}	
 	
-	getControlsDefinition(){
+	getControlsDefinition() {
 		let controls = {};
 		resetNyaSelect(controls);	
 		return controls;
 	}	
 
-	getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn){
+	getNyASelectFromSelectedLineColumn(nyaSelectObj, configurationObj, indexLine, numcolumn) {
 		resetNyaSelect(nyaSelectObj);
 		/**
 			* data send to modal controller                                           
@@ -42,9 +41,7 @@ class $modalProxy{
 			nyaSelectObj.temporyConfig.formlyValidators 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
 			nyaSelectObj.temporyConfig.formlyValidation 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 										!= 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
 			
-			/**
-				* particular case : datepicker 
-				*/
+			// particular case : datepicker 
 			if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
 				nyaSelectObj.temporyConfig.datepickerPopup 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
 			}
@@ -63,23 +60,22 @@ class $modalProxy{
 		configurationObj
 			.lines[indexLine]
 			.columns[numcolumn]
-			.control.templateOptions 		= {
-																			label: '',
-																			required: false,
-																			description: '',
-																			placeholder: '',
-																			options: []
-																		};
+			.control.templateOptions 	= {
+				label: '',
+				required: false,
+				description: '',
+				placeholder: '',
+				options: []
+			};
 			//then bind templateOptions                                                                                   
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			 = extractedProps.formlyLabel;
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 	 = extractedProps.formlyRequired;
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description = extractedProps.formlyDesciption;
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder = extractedProps.formlyPlaceholder;
-		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		 = extractedProps.formlyOptions;
-	
-		configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties = angular.copy(extractedProps.formlyExpressionProperties);
-		configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 					= angular.copy(extractedProps.formlyValidators);
-		configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 					= angular.copy(extractedProps.formlyValidation);
+		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 			 	= extractedProps.formlyLabel;
+		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 	 	= extractedProps.formlyRequired;
+		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
+		configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 		 	= extractedProps.formlyOptions;	
+		configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties 	= angular.copy(extractedProps.formlyExpressionProperties);
+		configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators 						= angular.copy(extractedProps.formlyValidators);
+		configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation 						= angular.copy(extractedProps.formlyValidation);
 	
 		//////////////////////////////////////////
 		// add additionnal particular properties

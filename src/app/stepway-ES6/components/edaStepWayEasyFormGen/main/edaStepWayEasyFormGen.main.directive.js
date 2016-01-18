@@ -1,4 +1,3 @@
-/* global angular */
 import easyformTemplate from './edaStepWayEasyFormGen.main.template.html!text';
 import edaStepWayEasyFormGenController, {
 	STEP_WAY_MAIN_CONTROLLER_NAME, 
@@ -15,7 +14,7 @@ function edaStepWayEasyFormGenDirective(
       $formlyProxy,
       $modalProxy){
 	
-	var directive = {
+	let directive = {
 		restrict 	: 'E',
 		scope 		: {
 			edaEasyFormGeneratorModel : '=',
@@ -32,8 +31,9 @@ function edaStepWayEasyFormGenDirective(
 	function linkFct(scope){
 		
 		//watch "scope.easyFormGeneratorModel"
-		scope.$watch(() => scope.edaEasyFormGeneratorModel, (newValue, oldValue) => {
-			loadExistingConfigurationModel();
+		scope.$watch(() => scope.edaEasyFormGeneratorModel, 
+			(newValue, oldValue) => {
+				loadExistingConfigurationModel();
 			}, true);          
 		
 		//watch "scope.vm.returnSaveEvent"" = catch saving form event  
@@ -53,8 +53,6 @@ function edaStepWayEasyFormGenDirective(
 				scope.returnSaveEvent = false;
 			}
 		});
-		
-		
 		
 		function loadExistingConfigurationModel(){
 			if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
