@@ -27,9 +27,9 @@ class ddDecorContainerController{
 	
 	currentIconClass(){
 		if (this.isCollapsed) {
-				return this.icons.closedClass;
+			return this.icons.closedClass;
 		}else{
-				return this.icons.opened;
+			return this.icons.opened;
 		}
 	}	
 	

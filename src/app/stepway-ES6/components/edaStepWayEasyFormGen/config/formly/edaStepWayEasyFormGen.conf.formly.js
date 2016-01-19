@@ -14,22 +14,22 @@ function formlyConfig(formlyConfigProvider){
 	
 	formlyConfigProvider.setType(
 		{
-			name: 'richEditor',
+			name  	: 'richEditor',
 			template: richTextTemplate,
-			wrapper: ['bootstrapLabel', 'bootstrapHasError']
+			wrapper : ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
 	formlyConfigProvider.setType(
 		{
-			name: 'blank',
+			name 		: 'blank',
 			template: blankTemplate
 		}
 	);
 													
 	formlyConfigProvider.setType(
 		{
-			name: 'subTitle',
+			name 		: 'subTitle',
 			template: subTitleTemplate
 		}
 	);
@@ -38,7 +38,7 @@ function formlyConfig(formlyConfigProvider){
 		{
 			name 			: 'basicSelect',
 			template 	: basicSelectTemplate,
-			wrapper: ['bootstrapLabel', 'bootstrapHasError']
+			wrapper 	: ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
@@ -46,7 +46,7 @@ function formlyConfig(formlyConfigProvider){
 		{
 			name 			: 'groupedSelect',
 			template 	: groupedSelectTemplate,
-			wrapper: ['bootstrapLabel', 'bootstrapHasError']
+			wrapper 	: ['bootstrapLabel', 'bootstrapHasError']
 		}
 	);
 
