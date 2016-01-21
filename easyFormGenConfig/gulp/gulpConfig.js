@@ -302,8 +302,8 @@ module.exports = {
 		jspm : {
 			stepWay : {
 				src 			: 'src/app/stepway-ES6/edaStepWayEasyFormGen.main',
-				bundle 		: './public/js/eda.stepway-ES6.js',
-				bundleMin	: './public/js/eda.stepway-ES6.min.js'
+				bundle 		: './public/js/eda.stepway.js',
+				bundleMin	: './public/js/eda.stepway.min.js'
 			},
 			formViewer : {
 				src 			: 'src/app/formviewer-ES6/eda.easyFormViewer.main',

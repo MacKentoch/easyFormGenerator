@@ -8,7 +8,7 @@ import edaDragDropWayEasyFormGenCtrl, {
 }																			from './edaDragDropWay.edaDragdropWayEasyFormGen.controller';
 import edaDragdropWayEasyFormGen, {
 	EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE
-}																			from './edaDragDropWay.edaDragdropWayEasyFormGen.direcive';
+}																			from './edaDragDropWay.edaDragdropWayEasyFormGen.directive';
 
 																			
 const DRAGDROP_MODULE = 'edaDragDropWay.main.module';

@@ -1,6 +1,6 @@
 import trustThis, {
   TRUST_THIS_FILTER_NAME
-} from './';
+} from './edaDragDropWay.trustThis.filter';
 
 
 const TRUST_THIS_FILTER_MODULE = 'edaDragDropWay.trustThis.filter';

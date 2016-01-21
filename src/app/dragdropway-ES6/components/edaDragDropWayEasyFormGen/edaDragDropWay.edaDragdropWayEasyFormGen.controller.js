@@ -369,7 +369,7 @@ class edaDragDropWayEasyFormGenCtrl{
           }, 200);
           this.$scope.$on('$destroy', ()=>this.$timeout.cancel(timerCloseOpenedEditPanel));
         }
-      }¨
+      }
     }else{
       // previous state = closed = immediate open 
       //console.info('NOT already opened : so open');

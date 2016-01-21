@@ -24,7 +24,7 @@
 		<!-- nya select bootstrap -->
 		<link rel='stylesheet' href='./public/lib/css/nya-bs-select.min.css'>	
 		<!-- Custom styles for this template -->
-		<link href="./public/css/eda.stepway.css" rel="stylesheet">
+		<link href="./public/css/eda.dragdropway.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="./public/lib/html5shiv/dist/html5shiv.min.js"></script>
@@ -47,48 +47,62 @@
 			            <span class="icon-bar"></span>
 			          </button>
 			        </div>
-							
 			        <div class="navbar-collapse collapse" id="navbar-main">
 			          <ul class="nav navbar-nav">
 			          </ul>
-								
-								<ul class="nav navbar-nav navbar-left">
-									
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-											Switch language 
-											<span class="caret"></span></a>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('en')">English</a></li>
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('fr')">French</a></li>
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('es')">Spanish</a></li>
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('de')">German</a></li>
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('jp')">Japanese</a></li>
-											<li><a href="#" ng-click="demoCtrl.switchLanguage('tr')">Turkish</a></li>
-										</ul>
-									</li>									
-																		
-								</ul>
-								
 			          <ul class="nav navbar-nav navbar-right">
 			          	<li><a class="socialIcon" target="_blank" href="https://github.com/MacKentoch"><span class="text-center"><i class="fa fa-github"></i></span></a></li>
 			          	<li><a class="socialIcon" target="_blank" href="https://twitter.com/erwan_datin"><span class="text-center"><i class="fa fa-twitter"></i></span></a></li>
 			          </ul>
 			        </div>
-							
-							
 			      </div>
 			    </div>
 			</header>   		
 
 
+			<div class="jumbotron">
+				<h1>Easy Form Generator : Drag and drop way</h1>
+				<p class="text-center">This is currently in development (BETA).</p>
+				<p class="text-center">It may change so I can't tell you this will look like the same when released.</p>
+				<p class="text-center"><a class="btn btn-primary btn-lg" href="https://github.com/MacKentoch/easyFormGenerator"><i class="fa fa-github"></i>&nbsp;go github</a></p>
+				
+				<div class="well">
+					<h3>
+						How to :
+					</h3>
+					<ul>
+						<li>
+							<h5>
+								expand a group of control (left column)
+							</h5>
+						</li>
+						<li><h5>drag controls from left column then drop into right column</h5></li>
+						<li><h5>drag and drop controls within right column to re-order controls</h5></li>
+						<li><h5>drag and drop lines of controls within right column to re-order lines</h5></li>
+						<li><h5>right click controls (right column) to edit and customize it</h5></li>
+						<li><h5>Check your form anytime (preview tab - upper right)</h5></li>
+					</ul>
+					<br/>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="alert alert-warning" role="alert">
+							<h4>This version is still in BETA so better use chrome to have a nice experience.</h4>
+						</div>                              
+					</div>
+				
+				</div>
+			</div>
+			<hr/>
 
-			<!-- Easy Form Generator (here step way) is now a ridiculous small html :
+
+
+
+
+			<!-- Easy Form Generator (here drag and drop way) is now a ridiculous small html :
 			=============================================================-->
-			<eda-step-way-easy-form-gen 	
+			<eda-dragdrop-way-easy-form-gen 	
 						eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
 						eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
-			</eda-step-way-easy-form-gen>
+			</eda-dragdrop-way-easy-form-gen>
 
 		</div>	
 
@@ -104,63 +118,26 @@
 				'use strict';
 				angular
 					.module('appDemo', [
-						'eda.easyformGen.stepway' //injects easy form generator-step way
+						'eda.easyformGen.dragdropway' //injects easy form generator drag and drop way
 					])
-					.config(configFct)
 					.controller('demoController', demoController);
-				
-				/**
-				 * config
-				 */
-				configFct.$inject = ['easyFormSteWayConfigProvider'];
-				function configFct(easyFormSteWayConfigProvider){
-					
-					//enable/disable modal animation
-					easyFormSteWayConfigProvider.setModalAnimation(true);
-					
-					//show/hide preview panel => default is true
-					easyFormSteWayConfigProvider.showPreviewPanel(true);
-					
-					//show/hide models in preview panel => default is true
-					easyFormSteWayConfigProvider.showPreviewModels(true);
-					
-				}
-				
-				
-				
-				/**
-				 * controller 
-				 **/	
-				demoController.$inject = ['$timeout', 'easyFormSteWayConfig'];	
-				function demoController($timeout, easyFormSteWayConfig){
+									
+				demoController.$inject = ['$timeout'];	
+				function demoController($timeout){
 					var demoCtrl = this;
 
 					demoCtrl.easyFormGeneratorModel	= {};
 					demoCtrl.saveForm 							= saveForm;
-					demoCtrl.currentLangue					= refreshCurrentLanguage();
-					demoCtrl.switchLanguage					= switchLanguage;
 
-					
 
 					
 					//demo purpose only :
 					//in 3 seconds a new form will be bound to easy form generator :  
-					//timedModelChanged();
+					timedModelChanged();
 					
-					console.info('Current language is ' + demoCtrl.currentLangue);
-
-					function switchLanguage(toLanguage){
-						if(angular.isString){
-							easyFormSteWayConfig.setLanguage(toLanguage);
-							refreshCurrentLanguage();
-							
-							console.info('language changed to ' + demoCtrl.currentLangue);
-						}
-					}
 				
-					function refreshCurrentLanguage(){
-						return easyFormSteWayConfig.getCurrentLanguage();
-					}
+				
+				
 					
 					/**
 					 * when click on save form, will call your save form function :
@@ -454,28 +431,37 @@
 			<script type="text/javascript" src="./public/lib/js/bootstrap.min.js"></script>
 			<!-- angular ui bootstrap -->
 			<script type="text/javascript" src="./public/lib/js/ui-bootstrap-tpls.min.js"></script>
+
 			<!-- angular app all concatenated here (app, controllers directives, containers ...) -->
-			<script type="text/javascript" src="./public/js/eda.stepway-ES6.js"></script>
+			<script type="text/javascript" src="./public/js/eda.dragdropway.js"></script>
+
 			<!-- textAngular Includes -->
-			<script type="text/javascript" src='./public/lib/js/textAngular-rangy.min.js'></script>
-			<script type="text/javascript" src='./public/lib/js/textAngular-sanitize.min.js'></script>
-			<script type="text/javascript" src='./public/lib/js/textAngular.min.js'></script> 
+			<script src='./public/lib/js/textAngular-rangy.min.js'></script>
+			<script src='./public/lib/js/textAngular-sanitize.min.js'></script>
+			<script src='./public/lib/js/textAngular.min.js'></script> 
+
 			<!-- lodash -->
-			<script type="text/javascript" src='./public/lib/js/lodash.min.js'></script>
-			<!--angular-translate -->
-			<script type="text/javascript" src='./public/lib/js/angular-translate.min.js'></script>
+			<script src='./public/lib/js/lodash.min.js'></script> 
+
+			<!-- angular-Strap -->
+			<script type="text/javascript" src="./public/lib/js/angular-strap.min.js"></script>
+			<script type="text/javascript" src="./public/lib/js/angular-strap.tpl.min.js"></script>
+
+
+			<script type="text/javascript" src="./public/lib/js/angular-resource.min.js"></script>
 			<!-- angular animate -->
 			<script type="text/javascript" src="./public/lib/js/angular-animate.min.js"></script>
 			<!-- angular toaster -->
 			<script type="text/javascript" src="./public/lib/js/toaster.min.js"></script>
 			<!-- nya select bootstrap -->		
 			<script type="text/javascript" src="./public/lib/js/nya-bs-select.min.js"></script>
+ 
 			<!--  api-check = formly needed : IMPORTANT : always before formly -->
 			<script type="text/javascript" src="./public/lib/js/api-check.min.js"></script> 
 			<!-- angular formly -->
 			<script type="text/javascript" src="./public/lib/js/formly.min.js"></script> 
 			<!-- angular formly template bootstrap -->
-			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script>
+			<script type="text/javascript" src="./public/lib/js/angular-formly-templates-bootstrap.min.js"></script> 
 		</footer>
 
 	</body>

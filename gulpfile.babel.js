@@ -16,13 +16,11 @@
  * 3) want to dist, use :
  * - $ gulp dist 
  * 
- * 4) stepway ES6 
- * - $ gulp build:stepWay:ES6 (or gulp build:stepWay:ES6:min for min version) 
  * 
- * 5) formViewer ES6 
+ * tmp1) formViewer ES6 
  * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) 
  *  
- * 6) drad and drop way ES6
+ * tmp2) drad and drop way ES6
  * - $ gulp build:dragdropway:ES6 (or gulp build:dragdropway:ES6:min for min version)
  * 
  * ——————————————————————————————————————————————
@@ -276,17 +274,17 @@ gulp.task('vendor:header:js',
  * APP ANGULAR TEMPLATES CACHE  TASKS
  * -------------------------------
  */
-gulp.task('stepway:templatecache', () => {
-  return gulp
-      .src(gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles, 
-        { cwd: gulpConfig.base.root })
-      .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
-      .pipe(ngTemplateCache(
-          gulpConfig.templateCache.stepway.destFile,
-          gulpConfig.templateCache.stepway.options
-      ))
-      .pipe(gulp.dest(gulpConfig.templateCache.stepway.destDir, { cwd: gulpConfig.base.root }));
-});
+// gulp.task('stepway:templatecache', () => {
+//   return gulp
+//       .src(gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles, 
+//         { cwd: gulpConfig.base.root })
+//       .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
+//       .pipe(ngTemplateCache(
+//           gulpConfig.templateCache.stepway.destFile,
+//           gulpConfig.templateCache.stepway.options
+//       ))
+//       .pipe(gulp.dest(gulpConfig.templateCache.stepway.destDir, { cwd: gulpConfig.base.root }));
+// });
 
 gulp.task('dragdropway:templatecache', () => {
   return gulp
@@ -319,13 +317,13 @@ gulp.task('formviewer:templatecache', () => {
  * APP ANGULAR TRANSLATE
  * -------------------------------
  */
-gulp.task('stepway:translate', () => {
-  return gulp
-      .src(gulpConfig.translateFiles.stepway.sourceDir + gulpConfig.translateFiles.stepway.sourceFiles, 
-        { cwd: gulpConfig.base.root })
-      .pipe(angularTranslate(gulpConfig.translateFiles.stepway.options))	
-      .pipe(gulp.dest(gulpConfig.translateFiles.stepway.destDir, { cwd: gulpConfig.base.root }));
-});
+// gulp.task('stepway:translate', () => {
+//   return gulp
+//       .src(gulpConfig.translateFiles.stepway.sourceDir + gulpConfig.translateFiles.stepway.sourceFiles, 
+//         { cwd: gulpConfig.base.root })
+//       .pipe(angularTranslate(gulpConfig.translateFiles.stepway.options))	
+//       .pipe(gulp.dest(gulpConfig.translateFiles.stepway.destDir, { cwd: gulpConfig.base.root }));
+// });
 
 
 
@@ -411,42 +409,42 @@ gulp.task('stepway:translate', () => {
  * APP JS TASKS (STEPWAY WAY)
  * -------------------------------
  */
-gulp.task('app:js:stepway', 
-		[
-			'stepway:clean',
-			'stepway:templatecache',
-			'stepway:translate'
-		], 
-		() => {
-	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
-	if(appConfig.environment.current === 'PROD'){
-		//prod version
-		gulp.src(gulpConfig.srcFiles.app.stepway.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(sourcemaps.init())	
-			.pipe(uglify()) 
-			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
-			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
-			.pipe(sourcemaps.write('./'))
-			.on('error', notify.onError(error => 'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}else{
-		//dev version (no uglify/no source map)
-		gulp.src(gulpConfig.srcFiles.app.stepway.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
-			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
-			.on('error', notify.onError(error =>'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}
+// gulp.task('app:js:stepway', 
+// 		[
+// 			'stepway:clean',
+// 			'stepway:templatecache',
+// 			'stepway:translate'
+// 		], 
+// 		() => {
+// 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
+// 	if(appConfig.environment.current === 'PROD'){
+// 		//prod version
+// 		gulp.src(gulpConfig.srcFiles.app.stepway.js,
+// 						{cwd: gulpConfig.base.root})
+// 			.pipe(jshint())
+// 			.pipe(jshint.reporter('default'))
+// 			.pipe(sourcemaps.init())	
+// 			.pipe(uglify()) 
+// 			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
+// 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
+// 			.pipe(sourcemaps.write('./'))
+// 			.on('error', notify.onError(error => 'Error: ' + error.message))
+// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+// 		);
+// 	}else{
+// 		//dev version (no uglify/no source map)
+// 		gulp.src(gulpConfig.srcFiles.app.stepway.js,
+// 						{cwd: gulpConfig.base.root})
+// 			.pipe(jshint())
+// 			.pipe(jshint.reporter('default'))
+// 			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
+// 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
+// 			.on('error', notify.onError(error =>'Error: ' + error.message))
+// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+// 		);
+// 	}
 
-});
+// });
 
 /**
  * -------------------------------
@@ -492,7 +490,9 @@ gulp.task('eslint:formviewer:es6', () => {
 
 
 const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle}`;
-gulp.task('stepWayES6:sfx', cb => {
+gulp.task('stepWayES6:sfx', 
+  ['stepway:clean'], 
+  cb => {
   exec(stepWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
     console.log(stdout);
@@ -500,7 +500,9 @@ gulp.task('stepWayES6:sfx', cb => {
 });
 
 const stepWaySfxMinifyCMD  = `${stepWaySfxNoMinifyCMD} --minify`;
-gulp.task('stepWayES6:sfx:min', cb => {
+gulp.task('stepWayES6:sfx:min', 
+  ['stepway:clean'], 
+  cb => {
   exec(stepWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
     console.log(stdout);
@@ -511,6 +513,11 @@ gulp.task('stepWayES6:sfx:min', cb => {
 gulp.task('build:stepWay:ES6', [
 	'eslint:stepway:es6',
 	'stepWayES6:sfx'
+]);
+
+gulp.task('app:js:stepway', [
+  'eslint:stepway:es6',
+  'stepWayES6:sfx',
 ]);
 
 gulp.task('build:stepWay:ES6:min', [
