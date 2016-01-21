@@ -273,7 +273,7 @@ module.exports = {
 		},
 	
 		stepWayAsModuleHtmlFile : {
-			name : 'index_StepWay_As_Module.html'
+			name : 'index_StepWay.html'
 		},
 	
 		dragDropWayHtmlFile : {

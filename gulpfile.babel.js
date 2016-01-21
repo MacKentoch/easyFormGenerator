@@ -274,17 +274,7 @@ gulp.task('vendor:header:js',
  * APP ANGULAR TEMPLATES CACHE  TASKS
  * -------------------------------
  */
-// gulp.task('stepway:templatecache', () => {
-//   return gulp
-//       .src(gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles, 
-//         { cwd: gulpConfig.base.root })
-//       .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
-//       .pipe(ngTemplateCache(
-//           gulpConfig.templateCache.stepway.destFile,
-//           gulpConfig.templateCache.stepway.options
-//       ))
-//       .pipe(gulp.dest(gulpConfig.templateCache.stepway.destDir, { cwd: gulpConfig.base.root }));
-// });
+
 
 gulp.task('dragdropway:templatecache', () => {
   return gulp
@@ -310,20 +300,6 @@ gulp.task('formviewer:templatecache', () => {
       .pipe(gulp.dest(gulpConfig.templateCache.formViewer.destDir, { cwd: gulpConfig.base.root }));
 });
 
-
-
-/**
- * -------------------------------
- * APP ANGULAR TRANSLATE
- * -------------------------------
- */
-// gulp.task('stepway:translate', () => {
-//   return gulp
-//       .src(gulpConfig.translateFiles.stepway.sourceDir + gulpConfig.translateFiles.stepway.sourceFiles, 
-//         { cwd: gulpConfig.base.root })
-//       .pipe(angularTranslate(gulpConfig.translateFiles.stepway.options))	
-//       .pipe(gulp.dest(gulpConfig.translateFiles.stepway.destDir, { cwd: gulpConfig.base.root }));
-// });
 
 
 
@@ -404,47 +380,6 @@ gulp.task('formviewer:templatecache', () => {
 
 
 
-/**
- * -------------------------------
- * APP JS TASKS (STEPWAY WAY)
- * -------------------------------
- */
-// gulp.task('app:js:stepway', 
-// 		[
-// 			'stepway:clean',
-// 			'stepway:templatecache',
-// 			'stepway:translate'
-// 		], 
-// 		() => {
-// 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
-// 	if(appConfig.environment.current === 'PROD'){
-// 		//prod version
-// 		gulp.src(gulpConfig.srcFiles.app.stepway.js,
-// 						{cwd: gulpConfig.base.root})
-// 			.pipe(jshint())
-// 			.pipe(jshint.reporter('default'))
-// 			.pipe(sourcemaps.init())	
-// 			.pipe(uglify()) 
-// 			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
-// 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
-// 			.pipe(sourcemaps.write('./'))
-// 			.on('error', notify.onError(error => 'Error: ' + error.message))
-// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-// 		);
-// 	}else{
-// 		//dev version (no uglify/no source map)
-// 		gulp.src(gulpConfig.srcFiles.app.stepway.js,
-// 						{cwd: gulpConfig.base.root})
-// 			.pipe(jshint())
-// 			.pipe(jshint.reporter('default'))
-// 			.pipe(concat(gulpConfig.destFiles.app.stepway.js))
-// 			.pipe(wrap(gulpConfig.decorate.stepway.templateJS))
-// 			.on('error', notify.onError(error =>'Error: ' + error.message))
-// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-// 		);
-// 	}
-
-// });
 
 /**
  * -------------------------------
@@ -753,8 +688,8 @@ gulp.task('build:all', [
  * --------------------------------------------------------------------
  */
 gulp.task('dist', [
-  //'dist:copy'
-  'dist:uglify:app:js'	
+  'dist:uglify:app:js',
+  'stepWayES6:sfx:min'
 ]);
 
 
@@ -794,30 +729,23 @@ gulp.task('dist', [
  gulp.task('dist:uglify:app:js', ['dist:copy'],() => {
 	 
 	 const appJsFiles = [
-		  gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.stepway.js,
 			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
 			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
 	 ];
 	 
-	 //stepway js
+		//drag and drop js	
 		gulp.src(appJsFiles[0], {cwd : './'})
 			.pipe(sourcemaps.init())
 			.pipe(rename({extname: '.min.js'}))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
-		//drag and drop js	
-		gulp.src(appJsFiles[1], {cwd : './'})
-			.pipe(sourcemaps.init())
-			.pipe(rename({extname: '.min.js'}))
-			.pipe(uglify())
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
 		//formviewer  js	
-		gulp.src(appJsFiles[2], {cwd : './'})
+		gulp.src(appJsFiles[1], {cwd : './'})
 			.pipe(sourcemaps.init())
 			.pipe(rename({extname: '.min.js'}))
 			.pipe(uglify())
 			.pipe(sourcemaps.write('./'))
 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));						
  });
+ 
