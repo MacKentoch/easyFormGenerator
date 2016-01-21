@@ -45,7 +45,7 @@ ______
   - show hide preview model and / or preview panel in editor   
 - production friendly
 
-Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay.html)
+Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay.html)
 
  - **Step way visual preview here** : 
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
