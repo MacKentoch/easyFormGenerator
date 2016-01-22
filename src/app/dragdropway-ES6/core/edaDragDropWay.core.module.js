@@ -1,4 +1,3 @@
-/* global angular */
 const CORE_MODULES = [	
 	'textAngular',
 	'textAngularSetup',

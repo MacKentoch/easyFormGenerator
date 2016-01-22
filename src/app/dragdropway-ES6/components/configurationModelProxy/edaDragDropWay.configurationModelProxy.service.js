@@ -1,6 +1,3 @@
-/* global angular */
-//import * as helpers from '';
-
 const DRAG_DROP_CONFIG_PROXY_SERVICE = 'ddModelConfModelProxyService';
 
 class ddModelConfModelProxyService{
