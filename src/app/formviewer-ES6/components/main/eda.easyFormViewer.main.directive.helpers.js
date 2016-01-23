@@ -2,15 +2,15 @@
 
 const EMPTY_FIELD_MODEL = [
 	{
-		"line": 1,
-		"activeColumn": 1,
-		"columns": [
+		'line': 1,
+		'activeColumn': 1,
+		'columns': [
 			{
-				"numColumn": 1,
-				"exist": true,
-				"control": {
-					"type": "none",
-					"key": "none"
+				'numColumn': 1,
+				'exist': true,
+				'control': {
+					'type': 'none',
+					'key': 'none'
 				}
 			}
 		]

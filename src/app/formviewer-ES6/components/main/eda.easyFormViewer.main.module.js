@@ -12,4 +12,4 @@ const FORM_VIEWER_MAIN_MODULE_NAME = 'edaFormViewerMainModule';
 export default angular
 								.module(FORM_VIEWER_MAIN_MODULE_NAME, [])
 								.directive(EASY_FORM_VIEWER_DIRECTIVE_NAME, edaFormViewerDirective)
-								.controller();
+								.controller(EASY_FORM_VIEWER_CONTROLLER, edaEasyFormViewerController);

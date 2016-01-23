@@ -2,12 +2,10 @@
 import easyFormViewerTemplate 				from './eda.easyFormViewer.main.template.html!text';
 
 import {
-	emptyEdaFieldsModel,
-	returnAttributeDataModelIfNotEmpty,
 	returnAttributeConfigurationLinesIfNotEmpty
 	}																		from './eda.easyFormViewer.main.directive.helpers';
 	
-import edaEasyFormViewerController, {
+import  {
 	EASY_FORM_VIEWER_CONTROLLER,
 	EASY_FORM_VIEWER_CONTROLLERAS
 } 																		from './eda.easyFormViewer.main.controller';
@@ -34,7 +32,7 @@ function edaFormViewerDirective($modelsTranslator){
 	return directive;
 	
 
-	function linkFct(scope, element, attrs){
+	function linkFct(scope) {
 		
 		scope.vm.model 				= {};
 		scope.vm.fields 			= loadFieldsModel();
@@ -72,7 +70,7 @@ function edaFormViewerDirective($modelsTranslator){
 			return scope.vm.hasJustCancelled;
 		}				
 		
-		function fieldsModelWatcher(newFieldsModel, oldFieldsModel){					
+		function fieldsModelWatcher(newFieldsModel){					
 			scope.vm.fields = loadExistingConfigurationModel(newFieldsModel);
 		}
 		
@@ -88,11 +86,11 @@ function edaFormViewerDirective($modelsTranslator){
 			}					
 		}	
 		
-		function dataModelWatcher(newDataModel, PreiousDataModel){
+		function dataModelWatcher(newDataModel){
 			scope.edaEasyFormViewerDataModel = newDataModel;
 		}						
 	
-		function submitEventWatcher(newSubmitEvent, oldSubmitEvent){
+		function submitEventWatcher(newSubmitEvent){
 			if (newSubmitEvent === true) {
 					if (angular.isFunction(scope.edaEasyFormViewerSubmitFormEvent)) {
 						let _dataModelSubmitted = scope.vm.model ;
@@ -102,7 +100,7 @@ function edaFormViewerDirective($modelsTranslator){
 			scope.vm.hasJustSumitted = false;					
 		}			
 	
-		function cancelEventWatcher(newCancelEvent, oldCancelEvent){
+		function cancelEventWatcher(newCancelEvent){
 			if (newCancelEvent === true) {
 					if (angular.isFunction(scope.edaEasyFormViewerCancelFormEvent)) {
 						scope.edaEasyFormViewerCancelFormEvent();

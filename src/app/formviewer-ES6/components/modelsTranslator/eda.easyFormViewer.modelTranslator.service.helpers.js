@@ -389,7 +389,7 @@ const getConfigurationModelInit = () => {
 													exist:true, 
 													control: {
 																			type:'none',
-																			key: 'none',
+																			key: 'none'
 																			// templateOptions: {
 																			//                     label: 'none',
 																			//                     placeholder: 'none',
@@ -403,7 +403,7 @@ const getConfigurationModelInit = () => {
 				]
 	};
 	return configurationModelInit;                         
-}
+};
 
 const getEmptyConfigModelResult = () => {
 	let configurationModelResult = {
@@ -426,7 +426,7 @@ const getEmptyConfigModelResult = () => {
 		lines: []
 	};
 	return angular.copy(configurationModelResult);	
-}
+};
 
 
 
@@ -434,7 +434,7 @@ const resetDataModel = (obj) => {
 	let emptyDataModel = {};
 	angular.copy(emptyDataModel, obj);
 	return true;
-}
+};
 
 
 const getErrorObject = (errorTitle, errorMessage) => {
@@ -447,7 +447,7 @@ const getErrorObject = (errorTitle, errorMessage) => {
 	messageObj.title 		= errorTitle;
 	messageObj.Message 	= errorMessage;
 	return messageObj;
-}
+};
 
 const getMessageObject = (messageTitle, messageBody) => {
 	let messageObj = {
@@ -459,12 +459,12 @@ const getMessageObject = (messageTitle, messageBody) => {
 	messageObj.title 		= messageTitle;
 	messageObj.Message 	= messageBody;
 	return messageObj;
-} 
+};
 
 const resetFormlyModel = (formlyModel) => {
 	var resetformly = [];
 	angular.copy(resetformly, formlyModel);
-}
+};
 
 const extractTemplateOptionDescription = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.description !== 'undefined'? obj.templateOptions.description: '') : '';
 
@@ -472,7 +472,7 @@ const extractTemplateOptionPlaceholder = (obj) => typeof obj.templateOptions !==
 
 const extractTemplateOptionType = (obj) => typeof obj.subtype !== 'undefined'? obj.subtype: '';
 
-const isTemplateOptionDefined = (obj) => typeof obj.templateOptions !== 'undefined' ? true : false;
+// const isTemplateOptionDefined = (obj) => typeof obj.templateOptions !== 'undefined' ? true : false;
 
 const extractTemplateOptionLabel = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
 
@@ -675,7 +675,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	//datepicker additionnal particular property  
 	//////////////////////////////////////////////                  
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
-	                  
+
 	let controlCol2 =  {
 			className	: 'col-xs-4',
 			type			: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
@@ -723,7 +723,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 				fieldGroup: FieldGroup
 	});
 	
-}
+};
 
 
 

@@ -1,7 +1,7 @@
 /* global angular */
 import {
 	resetNyaSelect,
-	getConfigurationModelInit,
+	// getConfigurationModelInit,
 	getEmptyConfigModelResult,
 	resetDataModel,
 	getErrorObject,
@@ -50,10 +50,10 @@ class $modelsTranslator{
 	refreshControlFormlyExpressionProperties(configurationModel){
 		if (angular.isObject(configurationModel)) {
 			//iterates lines
-			angular.forEach(configurationModel.lines, (line, indexLine) => {
-				angular.forEach(line.columns, (column, controlIndex) => {
+			angular.forEach(configurationModel.lines, (line) => {
+				angular.forEach(line.columns, (column) => {
 					let _controlsDefinition = this.getControlsDefinition();
-					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+					angular.forEach(_controlsDefinition.controls, (aControl) => {
 						if (column.control.type === aControl.formlyType &&
 								column.control.subtype === aControl.formlySubtype) {
 								//----> update control formlyExpressionProperties property											
@@ -73,10 +73,10 @@ class $modelsTranslator{
 	refreshControlFormlyValidators(configurationModel){
 		if (angular.isObject(configurationModel)) {
 			//iterates lines
-			angular.forEach(configurationModel.lines, (line, indexLine) => {
-				angular.forEach(line.columns, (column, controlIndex) => {
+			angular.forEach(configurationModel.lines, (line) => {
+				angular.forEach(line.columns, (column) => {
 					let _controlsDefinition = this.getControlsDefinition();
-					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+					angular.forEach(_controlsDefinition.controls, (aControl) => {
 						if (column.control.type === aControl.formlyType &&
 								column.control.subtype === aControl.formlySubtype) {
 								//----> update control formlyValidators property											
@@ -96,10 +96,10 @@ class $modelsTranslator{
 	refreshControlFormlyValidation(configurationModel){
 		if (angular.isObject(configurationModel)) {
 			//iterates lines
-			angular.forEach(configurationModel.lines, (line, indexLine) => {
-				angular.forEach(line.columns, (column, controlIndex) => {
+			angular.forEach(configurationModel.lines, (line) => {
+				angular.forEach(line.columns, (column) => {
 					let _controlsDefinition = this.getControlsDefinition();
-					angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+					angular.forEach(_controlsDefinition.controls, (aControl) => {
 						if (column.control.type === aControl.formlyType &&
 								column.control.subtype === aControl.formlySubtype) {
 								//----> update control formlyValidation property											
@@ -112,9 +112,9 @@ class $modelsTranslator{
 	}
 	
 	
-	initConfigurationEditFromScratch(configurationModel){
-		configurationModel = angular.copy(getConfigurationModelInit());
-	}	
+	// initConfigurationEditFromScratch(configurationModel) {
+	// 	configurationModel = angular.copy(getConfigurationModelInit());
+	// }	
 	
 	
 	bindConfigurationLines(configurationModel, lines){

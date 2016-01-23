@@ -434,7 +434,8 @@ gulp.task('stepWayES6:sfx',
    });
 });
 
-const stepWaySfxMinifyCMD  = `${stepWaySfxNoMinifyCMD} --minify`;
+
+const stepWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundleMin} --minify`;
 gulp.task('stepWayES6:sfx:min', 
   ['stepway:clean'], 
   cb => {
@@ -471,7 +472,8 @@ gulp.task('dragdropway:ES6:sfx', cb => {
   });
 });
 
-const dragAndDropWaySfxMinifyCMD  = `${dragAndDropWaySfxNoMinifyCMD} --minify`;
+
+const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin} --minify`;
 gulp.task('dragdropway:ES6:sfx:min', cb => {
   exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -499,7 +501,7 @@ gulp.task('formViewer:ES6:sfx', cb => {
   });
 });
 
-const formViewerSfxMinifyCMD  = `${formViewerSfxNoMinifyCMD} --minify`;
+const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin} --minify`;
 gulp.task('formViewer:ES6:sfx:min', cb => {
   exec(formViewerSfxMinifyCMD, (err, stdout) => {
     cb(err);
