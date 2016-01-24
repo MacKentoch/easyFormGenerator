@@ -2,6 +2,9 @@
 import ddContentCounter, {
  DD_CONTENT_COUNTER_DIRECTIVE	
 }																			from './ddContentCounter/edaDragDropWay.dragdrop.ddContentCounter.directive';
+import dragDropItemCounterService, {
+	DRAG_DROP_ITEM_COUNTER_SERVICE
+}																			from './ddContentCounter/edaDragDropWay.dragdrop.ddContentCounter.service';
 import ddDecorContainerDirective, {
 	DD_DECOR_CONTAINER_DIRECTIVE
 } 																		from './ddDecorContainer/edaDragDropWay.dragdrop.ddDecorContainer.directive';
@@ -17,12 +20,14 @@ import ddDecorItem, {
 import dragDropItemDecorationService, {
 	DRAG_DROP_ITEM_DECOR_SERVICE
 }																			from './ddDecorItem/edaDragDropWay.dragdrop.ddDecorItem.service';
+import ddDecorLine, {
+	DRAG_DROP_DECOR_LINE
+} 																		from './ddDecorLine/edaDragDropWay.dragdrop.ddDecorLine.directive';
+
 import ddNoEditableControl, {
 	DRAG_DROP_NO_EDITABLE_CONTROL
 } 																		from './ddNoEditableControl/edaDragDropWay.dragdrop.ddNoEditableControl.directive';
-import dragDropItemCounterService, {
-	DRAG_DROP_ITEM_COUNTER_SERVICE
-}																			from './ddContentCounter/edaDragDropWay.dragdrop.ddContentCounter.service';
+
 
 const DRAGDROP_MODULE = 'edaDragDropWay.dragdrop.module';
 
@@ -36,4 +41,5 @@ export default angular
 								.service(DRAG_DROP_ITEM_DECOR_SERVICE, dragDropItemDecorationService)
 								.directive(DRAG_DROP_NO_EDITABLE_CONTROL, ddNoEditableControl)
 								.service(DRAG_DROP_ITEM_COUNTER_SERVICE, dragDropItemCounterService)
+								.directive(DRAG_DROP_DECOR_LINE, ddDecorLine)
 							;

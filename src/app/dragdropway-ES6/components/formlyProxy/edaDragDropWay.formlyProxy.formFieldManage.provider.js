@@ -174,7 +174,9 @@ function EasyFormGenFormlyBindingModels(){
             if (nbColInLines <=  _formlyControlTemplates.className.length) {
               let controlToReturn       = angular.copy(_formlyControlTemplates);
               controlToReturn.className = _formlyControlTemplates.className[nbColInLines - 1];
-              throw `it should have a bug upper line`;
+              // throw `it should have a bug upper line`;
+              /* eslint no-console:0 */
+              console.warn(`it should have a bug upper line`);
               /**
                * check controlType: it may require another particular property
                */

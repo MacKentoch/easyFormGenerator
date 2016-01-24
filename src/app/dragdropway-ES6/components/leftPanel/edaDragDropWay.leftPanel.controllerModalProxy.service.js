@@ -8,7 +8,7 @@
  */
 
 const CONTROLLER_MODAL_PROXY  = 'controllerModalProxy';
-const INIT_OPTION_MODEL       = { rows : [] };
+const INIT_OPTION_MODEL       = { rows : [] }; 
 
 class controllerModalProxy{
   

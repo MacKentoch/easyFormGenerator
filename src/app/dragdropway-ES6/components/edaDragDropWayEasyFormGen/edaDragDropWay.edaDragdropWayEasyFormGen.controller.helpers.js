@@ -34,7 +34,7 @@ const COLUMN_TEMPLATE =  {
 	control			: {
 		type		:'none',
 		key			: 'none',
-		subtype	: 'none',
+		subtype	: 'none'
 		// templateOptions: {
 		//                     label: 'none',
 		//                     placeholder: 'none',
@@ -55,7 +55,7 @@ const LINE_TEMPLATE = {
 			exist:true, 
 			control: {
 				type:'none',
-				key: 'none',
+				key: 'none'
 				// templateOptions: {
 				//                     label: 'none',
 				//                     placeholder: 'none',

@@ -25,27 +25,27 @@ class ddModelConfModelProxyService{
      * previousConfigurationModel = a backup of configuration model 'configModel 'before resetting it
      * -> dragDrop model contains unique keys of already existing controls : these controls must not be reset / overwritten  
      */
-    let previousConfigurationModel = angular.copy(configModel); 
+    // let previousConfigurationModel = angular.copy(configModel); 
     configModel.lines = [];
     // iterates line config model
     angular.forEach(ddModel[1], (lineValue, keyValue)=>{
       // add empty line 1st - if line is empty -> it will be enough 
       configModel.lines.push(angular.copy(this.EasyFormGenFormlyBindingModels.getEasyFormEmptyConfigurationLineModel()));
       // update line value field
-      applyThisLine(keyValue + 1, keyValue, configModel);
+      this.applyThisLine(keyValue + 1, keyValue, configModel);
       // iterate through columns and add them if control exists	
       angular.forEach(lineValue, (colValue, colIndex)=>{
         // push an empty control model but relative to dradrop : model control type - (if datepicker so additionnal properties are added) 	
         let controlToBind = {
-          control : angular.copy(this.EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType))
+          control : angular.copy(this.EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, this.getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType))
         };
-        let formlyDetailedControlModel = getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]);
+        let formlyDetailedControlModel = this.getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]);
         // controls alreadys existed so do not reset it - control to bind is the previous one		
         if(typeof colValue.key !== 'undefined'){
           //console.warn('debug dragdropModel show this control key : ' + colValue.key);
           controlToBind.control = angular.copy(colValue.configModelControl);
           //update cssClass depending new position:
-          var newClassName = this.EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType);
+          var newClassName = this.EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(lineValue.length, this.getFormlyDetailedControlModelFromDragDropObject(lineValue[colIndex]).formlyType);
           controlToBind.control.className = newClassName.className;
           //test if header nee this one
           controlToBind.control.cssClass = newClassName.className;
@@ -53,7 +53,7 @@ class ddModelConfModelProxyService{
           }else{
             // controls did not exists before : control to bind is a new one
             // bind dragdrop control properties to configuration model through controlToBind var
-            bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailedControlModel, controlToBind, configModel);
+            this.bindConfigCtrlModelFromFormlyDetailedCtrlModel(formlyDetailedControlModel, controlToBind, configModel);
           }	
           // apply controlToBind var to configuration model control
           if (typeof configModel.lines[keyValue].columns[colIndex] === 'undefined') configModel.lines[keyValue].columns.push(angular.copy(this.EasyFormGenFormlyBindingModels.getEasyFormConfigurationEmptyControlModel())); 
@@ -98,15 +98,15 @@ class ddModelConfModelProxyService{
     angular.forEach(configModel.lines, (aConfigLine, aConfigLineIndex)=>{
       //add new line
       dragDropModel[1].push([]);
-      angular.forEach(aConfigLine.columns, (aConfigControl, aConfigControlIndex)=>{
+      angular.forEach(aConfigLine.columns, (aConfigControl)=>{
         // get control type from configuration.control.selectedControl
         let dragdropControlRef = {
           control   : 'empty',
           cssClass  : 'col-xs-12',
           label     : '<div class="col-md-12"> <div class="form-group"> <div class=""> </div> </div></div>'
         };
-        angular.forEach(dragDropModel[0], (groupOfCtrlRef, groupOfCtrlRefIndex)=>{
-          angular.forEach(groupOfCtrlRef, (aCtrlref, aCtrlRefIndex)=>{
+        angular.forEach(dragDropModel[0], (groupOfCtrlRef)=>{
+          angular.forEach(groupOfCtrlRef, (aCtrlref)=>{
             if (aCtrlref.control === aConfigControl.control.selectedControl) dragdropControlRef = angular.copy(aCtrlref);
           });
         });

@@ -1,4 +1,3 @@
-/* global angular */
 import './edaDragDropWay.vendors.adapter';
 
 import formlyConfigFunct        from './config/edaDragDropWay.formlyConfig.function';

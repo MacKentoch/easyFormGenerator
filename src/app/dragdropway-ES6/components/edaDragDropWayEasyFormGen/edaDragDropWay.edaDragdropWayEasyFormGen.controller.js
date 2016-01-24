@@ -7,10 +7,7 @@
   ///////////////////////////////////////////////////////////////////////
   
 import {
-  initDebugModel,
   initTabModel,
-  initColumnTemplate,
-  initLineTemplate,
   initIhmModel
 }                       from './edaDragDropWay.edaDragdropWayEasyFormGen.controller.helpers.js';
 
@@ -72,10 +69,10 @@ class edaDragDropWayEasyFormGenCtrl{
     this.MinNumberOfColumns               = 1;
     this.configuration                    = {};
     this.animationsEnabled                = this.easyFormSteWayConfig.getModalAnimationValue(); 
-    this.editPanelModel                   = { toggle : false }
+    this.editPanelModel                   = { toggle : false };
     this.debugProxyModel                  = this.controllerModalProxy.ProxyModel;
     this.model                            = [];
-    
+
     this.formFieldManage.initConfigurationEditFromScratch(this.configuration , false);
     this.controllerModalProxy.initProxyModel();
   }
@@ -247,7 +244,7 @@ class edaDragDropWayEasyFormGenCtrl{
     if (parentParentIndex > 0) this.dragDropModel[parentParentIndex][parentIndex].splice(itemIndex, 1);
   } 
   
-  dragoverCallbackItems(ParentParentIndex, parentIndex, index, external){
+  dragoverCallbackItems(ParentParentIndex, parentIndex){
     //prevent items in layout column to be drag to control select  
     if (parentIndex === 0) return false;
     return true;
