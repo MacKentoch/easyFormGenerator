@@ -3,7 +3,7 @@ import {
 	LEFT_PANEL_CONTROLLERAS
 }																from './edaDragDropWay.leftPanel.controller';
 
-import leftPanelTemplate from '';
+import leftPanelTemplate from './edaDragDropWay.leftPanel.template.html!text';
 
 const LEFT_PANEL_DIRECTIVE = 'leftPanel';
 

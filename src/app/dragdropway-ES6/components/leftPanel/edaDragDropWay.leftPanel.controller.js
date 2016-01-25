@@ -1,4 +1,3 @@
-/* global angular */
 import {
 	dateFormats,
 	setToday,

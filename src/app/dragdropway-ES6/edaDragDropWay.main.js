@@ -1,7 +1,7 @@
 import './edaDragDropWay.vendors.adapter';
 
-import formlyConfigFunct        from './config/edaDragDropWay.formlyConfig.function';
-import dragDropConfigFunt       from './config/edaDragDropWay.dragDropConfig.function';
+import formlyConfigFunct        from './config/edaDragDropWay.formlyConfig.config';
+import dragDropConfigFunt       from './config/edaDragDropWay.dragDropConfig.config';
 
 import coreModule								from './core/edaDragDropWay.core.module';
 import leftPanelModule 					from './components/leftPanel/edaDragDropWay.leftPanel.module';

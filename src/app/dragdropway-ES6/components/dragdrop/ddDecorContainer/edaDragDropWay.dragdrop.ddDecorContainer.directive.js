@@ -1,5 +1,5 @@
 /* global angular */
-import ddDecorContainerTemplate 			from './edaDragDropWay.dragdrop.ddDecorContainer.template!text';
+import ddDecorContainerTemplate 			from './edaDragDropWay.dragdrop.ddDecorContainer.template.html!text';
 import {
 	DD_DECOR_CONTAINER_CONTROLLER_NAME,
 	DD_DECOR_CONTAINER_CONTROLLERAS_NAME
