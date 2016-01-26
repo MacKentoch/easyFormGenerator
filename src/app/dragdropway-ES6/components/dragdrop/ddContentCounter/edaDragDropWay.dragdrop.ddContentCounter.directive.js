@@ -17,12 +17,10 @@ function ddContentCounter(dragDropItemCounterService, $timeout){
 		
 		function linkfct($scope, element){
 			let timer;
-			/**
-				* watch children length change : to update css item class
-				*/
+			// watch children length change : to update css item class
 			$scope.$watch(()=>element[0].children.length,(newValue, oldValue)=>{
 				if (newValue !== oldValue) {
-					let newRealCount= 0;
+					let newRealCount 				= 0;
 					let listClassForThisRow = [];
 					for (let i = element[0].children.length - 1; i >= 0; i--) {						
 						if(dragDropItemCounterService.isHtmlElementToCount(element[0].children[i].classList)){
@@ -33,21 +31,15 @@ function ddContentCounter(dragDropItemCounterService, $timeout){
 						} 
 					}
 					$scope.contentRealCount = newRealCount;
-					/**
-						* a timer otherwise won't refresh everytime
-						*/
-					timer = $timeout(()=>{
+					// a timer otherwise won't refresh everytime
+					timer = $timeout(() => {
 						dragDropItemCounterService.updateLineItemCss($scope.fullModel, listClassForThisRow, $scope.parentIndex, $scope.currentIndex, newRealCount);				        	
 					}, 20);
 					
 				}
 			});
 	
-			/**
-				* timer destruction to prevent from bad UI experience
-				*/
 			$scope.$on('$destroy', ()=>{
-				// console.warn('ddContentCounter timer destruction!');
 				$timeout.cancel(timer);}
 			);
 		}

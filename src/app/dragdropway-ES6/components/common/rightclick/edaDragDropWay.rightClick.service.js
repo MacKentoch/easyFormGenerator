@@ -1,4 +1,3 @@
-/* global angular */
 const EDA_RIGHT_CLICKED_MANAGER_SERVICE = 'ddItemRightClickedManager';
 
 class ddItemRightClickedManager{

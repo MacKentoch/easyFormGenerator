@@ -1,5 +1,5 @@
-/* global inject */
-/// <reference path="../../../typings/jasmine/jasmine.d.ts" />
+/*eslint-env node, jasmine */
+/*global inject module:true*/
 
 'use strict';
 
@@ -10,7 +10,7 @@ describe('controller : ngwfWfEditController', function() {
     
   
     beforeEach(function(){
-      module('ngwfApp')
+      module('ngwfApp');
     });
 
     var $rootScope, $scope, $controller;
@@ -22,7 +22,7 @@ describe('controller : ngwfWfEditController', function() {
       $controller = _$controller_;
       
       $controller('ngwfWfEditController', {
-                                            '$scope': $scope, 
+                                            '$scope': $scope 
                                           }
                   );
     }));
@@ -48,7 +48,7 @@ describe('controller : ngwfWfEditController', function() {
 
             //mock countConfigurationModelLines() called by setActiveLineNumber()
             spyOn($scope, 'countConfigurationModelLines').and.callFake(function() {
-              return 3
+              return 3;
             });
 
             $scope.setActiveLineNumber(2);          
@@ -61,7 +61,7 @@ describe('controller : ngwfWfEditController', function() {
 
             //mock countConfigurationModelLines() called by setActiveLineNumber()
             spyOn($scope, 'countConfigurationModelLines').and.callFake(function() {
-              return 1
+              return 1;
             });
 
             $scope.setActiveLineNumber(2);          

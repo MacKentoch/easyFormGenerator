@@ -1,5 +1,3 @@
-/* global angular */
-
 import ddModelConfModelProxyService, {
 	DRAG_DROP_CONFIG_PROXY_SERVICE
 }														from './edaDragDropWay.configurationModelProxy.service';

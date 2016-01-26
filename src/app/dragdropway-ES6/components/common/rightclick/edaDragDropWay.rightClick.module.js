@@ -1,4 +1,3 @@
-/* global angular */
 import edaRightClick, {
 	EDA_RIGHT_CLICK_DIRECTIVE
 }														from './edaDragDropWay.rightClick.directive';

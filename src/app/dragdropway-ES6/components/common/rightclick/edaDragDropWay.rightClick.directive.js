@@ -25,8 +25,6 @@ function edaRightClick($parse){
       });
     });	
 
-
-    
   }
   
 }

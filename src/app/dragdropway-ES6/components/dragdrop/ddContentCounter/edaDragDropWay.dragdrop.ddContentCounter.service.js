@@ -1,4 +1,3 @@
-/* global angular */
 const DRAG_DROP_ITEM_COUNTER_SERVICE = 'dragDropItemCounterService';
 
 class dragDropItemCounterService{
