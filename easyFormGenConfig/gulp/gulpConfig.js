@@ -86,28 +86,28 @@ module.exports = {
 		app : {
 			stepway 				: {
 				js : 'eda.stepway.js',
-				css: 'eda.stepway.css',
+				css: 'eda.stepway.css'
 			},
 			stepwayMin 				: {
 				js : 'eda.stepway.min.js',
-				css: 'eda.stepway.min.css',
+				css: 'eda.stepway.min.css'
 			},			
 			dragAndDropWay 	: {
 				js : 'eda.dragdropway.js',
-				css: 'eda.dragdropway.css',
+				css: 'eda.dragdropway.css'
 			},
 			dragAndDropWayMin 	: {
 				js : 'eda.dragdropway.min.js',
-				css: 'eda.dragdropway.min.css',
+				css: 'eda.dragdropway.min.css'
 			},
 			formViewer 				: {
 				js : 'eda.easyFormViewer.js',
-				css: 'eda.easyFormViewer.css',
+				css: 'eda.easyFormViewer.css'
 			},
 			formViewerMin 				: {
 				js : 'eda.easyFormViewer.min.js',
-				css: 'eda.easyFormViewer.min.css',
-			},						
+				css: 'eda.easyFormViewer.min.css'
+			}						
 		},
 		vendor : {
 			js 		: 'vendors.js',
@@ -264,8 +264,7 @@ module.exports = {
 											'*/ \n' +
 											'\n<%= contents %>\n'
 										].join('') 
-			},		
-			
+			}		
 		},
 		
 		stepWayHtmlFile : {
@@ -310,12 +309,11 @@ module.exports = {
 				bundle 		: './public/js/eda.easyFormViewer-ES6.js',
 				bundleMin	: './public/js/eda.easyFormViewer-ES6.min.js'
 			},
-			 	dragDropWay : {
-				src 			: 'src/app/dragdropway-ES6/edaDragDropWay.main',
+				dragDropWay : {
+				src 			: './src/app/dragdropway-ES6/edaDragDropWay.main',
 				bundle 		:	'./public/js/eda.dragdropway-ES6.js',
 				bundleMin	: './public/js/eda.dragdropway-ES6.min.js'
 			}			
 		}	
-	
-}
+};
 

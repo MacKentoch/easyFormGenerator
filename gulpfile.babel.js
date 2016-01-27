@@ -45,7 +45,6 @@ import ngTemplateCache 		  from 'gulp-angular-templatecache';
 import minifyHtml					  from 'gulp-minify-html';
 import sourcemaps 					from 'gulp-sourcemaps';
 import rename							  from 'gulp-rename';
-import angularTranslate 		from 'gulp-angular-translate';
 import childProcess         from 'child_process';
 
 const exec = childProcess.exec;
@@ -172,11 +171,11 @@ gulp.task('vendor:css',
       gulp.src( sources 
                 ,{ cwd: gulpConfig.base.root })
           .pipe(concat(gulpConfig.destFiles.vendor.css))
-          .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
+          .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));			
 		}else{		
 			gulp.src( sources 
 								,{ cwd: gulpConfig.base.root })
-					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }))			
+					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));			
 		}
 });
 
@@ -390,7 +389,7 @@ gulp.task('formviewer:templatecache', () => {
 gulp.task('build:ES6:jshint', () => {
   return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
     .pipe(jshint({esnext : true}))
-    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('default'));
 });
 
 /**
@@ -430,6 +429,7 @@ gulp.task('stepWayES6:sfx',
   cb => {
   exec(stepWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
+    /* eslint no-console:0 */
     console.log(stdout);
    });
 });
@@ -453,7 +453,7 @@ gulp.task('build:stepWay:ES6', [
 
 gulp.task('app:js:stepway', [
   'eslint:stepway:es6',
-  'stepWayES6:sfx',
+  'stepWayES6:sfx'
 ]);
 
 gulp.task('build:stepWay:ES6:min', [
@@ -468,7 +468,8 @@ const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDro
 gulp.task('dragdropway:ES6:sfx', cb => {
   exec(dragAndDropWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
-  	console.log(stdout);
+    /* eslint no-console:0 */
+    console.log(stdout);
   });
 });
 
@@ -477,7 +478,8 @@ const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropW
 gulp.task('dragdropway:ES6:sfx:min', cb => {
   exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
-  	console.log(stdout);
+    /* eslint no-console:0 */
+    console.log(stdout);
   });
 });
 
@@ -497,7 +499,8 @@ const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.
 gulp.task('formViewer:ES6:sfx', cb => {
   exec(formViewerSfxNoMinifyCMD, (err, stdout) => {
     cb(err);
-  	console.log(stdout);
+    /* eslint no-console:0 */
+    console.log(stdout);
   });
 });
 
@@ -505,7 +508,8 @@ const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.sr
 gulp.task('formViewer:ES6:sfx:min', cb => {
   exec(formViewerSfxMinifyCMD, (err, stdout) => {
     cb(err);
-  	console.log(stdout);
+    /* eslint no-console:0 */
+    console.log(stdout);
   });
 });
 
@@ -659,7 +663,6 @@ gulp.task('default', [
   'app:js:dragdropway',
   'app:js:formviewer'
 ]);
-					 
 
 /**
  * ------------------------------------------------------------
@@ -681,7 +684,6 @@ gulp.task('build:all', [
   'app:js:dragdropway',
   'app:js:formviewer'
 ], () =>console.info(`building app + vendors. Concat vendors param set to : ${appConfig.concatVendorFiles}`));
-					 
 
 
 /**
@@ -708,7 +710,7 @@ gulp.task('dist', [
 		gulpConfig.base.root + gulpConfig.stepWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.dragDropWayAsModuleHtmlFile.name,
-		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name,
+		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name
 	];
 	//html files
 	gulp.src(indexHtmlFiles) 
@@ -725,29 +727,28 @@ gulp.task('dist', [
 	//textAngular css fix
   gulp.src(gulpConfig.srcFiles.app.common.customTextAngularCss, {cwd: gulpConfig.base.root})
     .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));					
- })
+ });
  
  
  gulp.task('dist:uglify:app:js', ['dist:copy'],() => {
-	 
-	 const appJsFiles = [
-			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
-			gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
-	 ];
-	 
-		//drag and drop js	
-		gulp.src(appJsFiles[0], {cwd : './'})
-			.pipe(sourcemaps.init())
-			.pipe(rename({extname: '.min.js'}))
-			.pipe(uglify())
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
-		//formviewer  js	
-		gulp.src(appJsFiles[1], {cwd : './'})
-			.pipe(sourcemaps.init())
-			.pipe(rename({extname: '.min.js'}))
-			.pipe(uglify())
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));						
+  const appJsFiles = [
+    gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
+    gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
+  ];
+
+	// drag and drop js	
+	gulp.src(appJsFiles[0], {cwd : './'})
+		.pipe(sourcemaps.init())
+		.pipe(rename({extname: '.min.js'}))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
+	// formviewer  js	
+	gulp.src(appJsFiles[1], {cwd : './'})
+		.pipe(sourcemaps.init())
+		.pipe(rename({extname: '.min.js'}))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));						
  });
  
