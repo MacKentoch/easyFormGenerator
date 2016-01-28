@@ -9,6 +9,7 @@ import formlyProxyModule        from './components/formlyProxy/edaDragDropWay.fo
 import dragdropModule						from './components/dragdrop/edaDragDropWay.dragdrop.module';
 import rightClickModule					from './components/common/rightclick/edaDragDropWay.rightClick.module';
 import configProxyModule        from './components/configurationModelProxy/edaDragDropWay.configurationModelProxy.module';
+
 import easyFormDragDropModule 	from './components/edaDragDropWayEasyFormGen/edaDragDropWay.edaDragdropWayEasyFormGen.module';
 import trustThisFilterModule    from './components/common/edaTrustThisFilter/edaDragDropWay.trustThis.module';
 

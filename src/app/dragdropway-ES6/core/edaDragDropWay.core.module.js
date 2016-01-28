@@ -14,4 +14,4 @@ const CORE_MODULES = [
 ];
 
 export default angular
-								.module('edaStepWayEasyFormGen.core', CORE_MODULES);
+								.module('easyFormGen.dragDropWay.core', CORE_MODULES);
