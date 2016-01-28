@@ -530,7 +530,7 @@ gulp.task('build:formViewer:ES6:min', [
  */
 gulp.task('app:js:dragdropway', 
 		[
-			'dragdropway:clean',
+			//'dragdropway:clean',
 			'dragdropway:templatecache'
 		],  
 		() => {
