@@ -8,7 +8,7 @@ const clearDateTime = (datetimePickerModel)=>{
 	datetimePickerModel.dt = new Date();
 };
 
-export{
+export {
 	dateFormats,
 	setToday,
 	clearDateTime
