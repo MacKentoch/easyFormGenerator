@@ -412,7 +412,7 @@ ______
 - [ ] migrating ES6 / optimization / factorization (*in progress*)
     - [x] easy form generator - step way
     - [ ] easy form generator - drag and drop way
-    - [ ] easy form viewer 
+    - [x] easy form viewer 
 - [x] migrating Babel6+
 - [x] migrating gulp to ES6 
 - [x] create bower 
