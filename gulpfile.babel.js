@@ -465,7 +465,9 @@ gulp.task('build:stepWay:ES6:min', [
 
 //drag and drop way
 const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle}`;
-gulp.task('dragdropway:ES6:sfx', cb => {
+gulp.task('dragdropway:ES6:sfx', 
+  ['dragdropway:clean'], 
+  cb => {
   exec(dragAndDropWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
     /* eslint no-console:0 */
@@ -475,7 +477,9 @@ gulp.task('dragdropway:ES6:sfx', cb => {
 
 
 const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin} --minify`;
-gulp.task('dragdropway:ES6:sfx:min', cb => {
+gulp.task('dragdropway:ES6:sfx:min', 
+  ['dragdropway:clean'], 
+  cb => {
   exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
     /* eslint no-console:0 */
@@ -496,7 +500,9 @@ gulp.task('build:dragdropway:ES6:min', [
 
 //formViewer
 const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle}`;
-gulp.task('formViewer:ES6:sfx', cb => {
+gulp.task('formViewer:ES6:sfx', 
+  ['formviewer:clean'], 
+  cb => {
   exec(formViewerSfxNoMinifyCMD, (err, stdout) => {
     cb(err);
     /* eslint no-console:0 */
@@ -505,7 +511,9 @@ gulp.task('formViewer:ES6:sfx', cb => {
 });
 
 const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin} --minify`;
-gulp.task('formViewer:ES6:sfx:min', cb => {
+gulp.task('formViewer:ES6:sfx:min', 
+  ['formviewer:clean'], 
+  cb => {
   exec(formViewerSfxMinifyCMD, (err, stdout) => {
     cb(err);
     /* eslint no-console:0 */
@@ -516,6 +524,11 @@ gulp.task('formViewer:ES6:sfx:min', cb => {
 gulp.task('build:formViewer:ES6', [
 	'eslint:formviewer:es6',
 	'formViewer:ES6:sfx'
+]);
+
+gulp.task('app:js:formviewer', [
+  'eslint:formviewer:es6',
+  'formViewer:ES6:sfx'
 ]);
 
 gulp.task('build:formViewer:ES6:min', [
@@ -566,87 +579,10 @@ gulp.task('app:js:dragdropway',
 
 
 
-/**
- * -------------------------------
- * APP JS TASKS (FORMVIEWER)
- * -------------------------------
- */
-gulp.task('app:js:formviewer', 
-		[
-			'formviewer:clean',
-			'formviewer:templatecache'
-		],  
-		() => {
-	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
-	if(appConfig.environment.current === 'PROD'){
-		//prod version
-		gulp.src(gulpConfig.srcFiles.app.formViewer.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(sourcemaps.init())	
-			.pipe(uglify()) 
-			.pipe(concat(gulpConfig.destFiles.app.formViewer.js))
-			.pipe(wrap(gulpConfig.decorate.formviewer.templateJS))
-			.pipe(sourcemaps.write('./'))
-			.on('error', notify.onError(error => 'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}else{
-		//dev version (no uglify/no source map)
-		gulp.src(gulpConfig.srcFiles.app.formViewer.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(concat(gulpConfig.destFiles.app.formViewer.js))
-			.pipe(wrap(gulpConfig.decorate.formviewer.templateJS))
-			.on('error', notify.onError(error => 'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}
-});
-
-
-
-
-
 
 
  
  
- 
-
-
-/**
- * --------------------------------------
- * WATCH TASK (developments friend task)
- * --------------------------------------
- */
-gulp.task('watch', () => {
-	const watcher = gulp.watch(	[	
-      //app : drag and drop way sources
-      gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles,
-      gulpConfig.srcFiles.app.dragAndDropWay.js,
-      gulpConfig.srcFiles.app.dragAndDropWay.sass,
-      '!' + gulpConfig.templateCache.dragAndDropWay.destDir + gulpConfig.templateCache.dragAndDropWay.destFile,
-      //app : step way sources
-      gulpConfig.templateCache.stepway.sourceDir + gulpConfig.templateCache.stepway.sourceFiles,
-      gulpConfig.srcFiles.app.stepway.js,
-      gulpConfig.srcFiles.app.stepway.sass,
-      '!' + gulpConfig.templateCache.stepway.destDir + gulpConfig.templateCache.stepway.destFile,
-      //app : form viewer sources
-      gulpConfig.templateCache.formViewer.sourceDir + gulpConfig.templateCache.formViewer.sourceFiles,
-      gulpConfig.srcFiles.app.formViewer.js,
-      gulpConfig.srcFiles.app.formViewer.sass,
-      '!' + gulpConfig.templateCache.formViewer.destDir + gulpConfig.templateCache.formViewer.destFile										
-    ], 
-    ['default']
-  );
-	watcher.on('change', event => {
-    console.log(`File ${event.path} was ${event.type}, running tasks...`);
-	});
-});
-
 
 /**
  * ---------------------------------------------------------
@@ -693,7 +629,8 @@ gulp.task('build:all', [
  */
 gulp.task('dist', [
   'dist:uglify:app:js',
-  'stepWayES6:sfx:min'
+  'build:stepWay:ES6:min',
+  'build:formViewer:ES6:min'
 ]);
 
 
