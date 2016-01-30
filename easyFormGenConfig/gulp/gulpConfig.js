@@ -93,19 +93,19 @@ module.exports = {
 				css: 'eda.stepway.min.css'
 			},			
 			dragAndDropWay 	: {
-				js : 'eda.dragdropway.js',
+				js : 'eda.dragdropway-ES6.js',
 				css: 'eda.dragdropway.css'
 			},
 			dragAndDropWayMin 	: {
-				js : 'eda.dragdropway.min.js',
+				js : 'eda.dragdropway-ES6.min.js',
 				css: 'eda.dragdropway.min.css'
 			},
 			formViewer 				: {
-				js : 'eda.easyFormViewer.js',
+				js : 'eda.easyFormViewer-ES6.js',
 				css: 'eda.easyFormViewer.css'
 			},
 			formViewerMin 				: {
-				js : 'eda.easyFormViewer.min.js',
+				js : 'eda.easyFormViewer-ES6.min.js',
 				css: 'eda.easyFormViewer.min.css'
 			}						
 		},
