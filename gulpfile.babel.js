@@ -127,11 +127,6 @@ gulp.task('vendor:clean:temp', cb => {
 
 
 
-
-
-
-
-
 /**
  * -------------------------------
  * VENDORS CSS TASKS
@@ -287,18 +282,6 @@ gulp.task('dragdropway:templatecache', () => {
       .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
 });
 
-gulp.task('formviewer:templatecache', () => {
-  return gulp
-      .src(gulpConfig.templateCache.formViewer.sourceDir + gulpConfig.templateCache.formViewer.sourceFiles, 
-        { cwd: gulpConfig.base.root })
-      .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
-      .pipe(ngTemplateCache(
-          gulpConfig.templateCache.formViewer.destFile,
-          gulpConfig.templateCache.formViewer.options
-      ))
-      .pipe(gulp.dest(gulpConfig.templateCache.formViewer.destDir, { cwd: gulpConfig.base.root }));
-});
-
 
 
 
@@ -385,12 +368,6 @@ gulp.task('formviewer:templatecache', () => {
  * APP JS TASKS (STEP WAY ES6)
  * -------------------------------
  */
-
-gulp.task('build:ES6:jshint', () => {
-  return gulp.src(gulpConfig.srcFiles.app.ES6.stepway.js)
-    .pipe(jshint({esnext : true}))
-    .pipe(jshint.reporter('default'));
-});
 
 /**
  * eslint stepway ES6   - uses .eslintrc file

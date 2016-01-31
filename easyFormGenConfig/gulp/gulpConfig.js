@@ -306,8 +306,8 @@ module.exports = {
 			},
 			formViewer : {
 				src 			: 'src/app/formviewer-ES6/eda.easyFormViewer.main',
-				bundle 		: './public/js/eda.easyFormViewer-ES6.js',
-				bundleMin	: './public/js/eda.easyFormViewer-ES6.min.js'
+				bundle 		: './public/js/eda.easyFormViewer.js',
+				bundleMin	: './public/js/eda.easyFormViewer.min.js'
 			},
 				dragDropWay : {
 				src 			: 'src/app/dragdropway-ES6/edaDragDropWay.main',
