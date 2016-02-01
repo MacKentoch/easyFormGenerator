@@ -512,9 +512,7 @@ $__System.register('5', [], function (_export) {
 	return {
 		setters: [],
 		execute: function () {
-			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'dndLists',
-			// 'mgcrea.ngStrap.affix',
-			'pageslide-directive', 'pascalprecht.translate'];
+			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'dndLists', 'mgcrea.ngStrap.affix', 'pageslide-directive', 'pascalprecht.translate'];
 
 			_export('default', angular.module('easyFormGen.dragDropWay.core', CORE_MODULES));
 		}

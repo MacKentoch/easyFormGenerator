@@ -15,12 +15,8 @@
  * 
  * 3) want to dist, use :
  * - $ gulp dist 
- * 
- * 
- * tmp1) formViewer ES6 
- * - $ gulp build:formViewer:ES6 (or gulp build:formViewer:ES6:min for min version) 
  *  
- * tmp2) drad and drop way ES6
+ * tmp) drag and drop way ES6
  * - $ gulp build:dragdropway:ES6 (or gulp build:dragdropway:ES6:min for min version)
  * 
  * ——————————————————————————————————————————————
@@ -33,7 +29,7 @@
 import gulp 								from 'gulp';
 import del    							from 'del';
 import eslint 							from 'gulp-eslint';
-import jshint               from 'gulp-jshint';
+// import jshint               from 'gulp-jshint';
 import concat 							from 'gulp-concat';
 import uglify 							from 'gulp-uglify';
 import cssmin 							from 'gulp-cssmin';
@@ -41,8 +37,8 @@ import sass 								from 'gulp-sass';
 import notify 							from 'gulp-notify';
 import wrap 								from 'gulp-wrap';
 import deleteLines 				  from 'gulp-delete-lines';
-import ngTemplateCache 		  from 'gulp-angular-templatecache';
-import minifyHtml					  from 'gulp-minify-html';
+// import ngTemplateCache 		  from 'gulp-angular-templatecache';
+// import minifyHtml					  from 'gulp-minify-html';
 import sourcemaps 					from 'gulp-sourcemaps';
 import rename							  from 'gulp-rename';
 import childProcess         from 'child_process';
@@ -270,17 +266,17 @@ gulp.task('vendor:header:js',
  */
 
 
-gulp.task('dragdropway:templatecache', () => {
-  return gulp
-      .src(gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles, 
-        { cwd: gulpConfig.base.root })
-      .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
-      .pipe(ngTemplateCache(
-          gulpConfig.templateCache.dragAndDropWay.destFile,
-          gulpConfig.templateCache.dragAndDropWay.options
-      ))
-      .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
-});
+// gulp.task('dragdropway:templatecache', () => {
+//   return gulp
+//       .src(gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles, 
+//         { cwd: gulpConfig.base.root })
+//       .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
+//       .pipe(ngTemplateCache(
+//           gulpConfig.templateCache.dragAndDropWay.destFile,
+//           gulpConfig.templateCache.dragAndDropWay.options
+//       ))
+//       .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
+// });
 
 
 
@@ -293,7 +289,9 @@ gulp.task('dragdropway:templatecache', () => {
  */
 
  //sass : stepway
- gulp.task('app:sass:stepway', ['stepway:clean'], () => {
+ gulp.task('app:sass:stepway', 
+  ['stepway:clean'], 
+  () => {
 	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
@@ -317,7 +315,9 @@ gulp.task('dragdropway:templatecache', () => {
  * -------------------------------
  */
  //sass drag_and_drop
- gulp.task('app:sass:dragdropway', ['dragdropway:clean'], () => {
+ gulp.task('app:sass:dragdropway', 
+  ['dragdropway:clean'], 
+  () => {
 	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
@@ -341,7 +341,9 @@ gulp.task('dragdropway:templatecache', () => {
  * -------------------------------
  */
  //sass formviewer
- gulp.task('app:sass:formviewer', ['formviewer:clean'], () => {
+ gulp.task('app:sass:formviewer', 
+  ['formviewer:clean'], 
+  () => {
 	//minified		 
 	gulp.src(gulpConfig.srcFiles.app.formViewer.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
@@ -402,7 +404,7 @@ gulp.task('eslint:formviewer:es6', () => {
 
 const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle}`;
 gulp.task('stepWayES6:sfx', 
-  ['stepway:clean'], 
+  // ['stepway:clean'], 
   cb => {
   exec(stepWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -414,7 +416,7 @@ gulp.task('stepWayES6:sfx',
 
 const stepWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundleMin} --minify`;
 gulp.task('stepWayES6:sfx:min', 
-  ['stepway:clean'], 
+  // ['stepway:clean'], 
   cb => {
   exec(stepWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -443,7 +445,7 @@ gulp.task('build:stepWay:ES6:min', [
 //drag and drop way
 const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle}`;
 gulp.task('dragdropway:ES6:sfx', 
-  ['dragdropway:clean'], 
+  // ['dragdropway:clean'], 
   cb => {
   exec(dragAndDropWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -455,7 +457,7 @@ gulp.task('dragdropway:ES6:sfx',
 
 const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin} --minify`;
 gulp.task('dragdropway:ES6:sfx:min', 
-  ['dragdropway:clean'], 
+  // ['dragdropway:clean'], 
   cb => {
   exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -478,7 +480,7 @@ gulp.task('build:dragdropway:ES6:min', [
 //formViewer
 const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle}`;
 gulp.task('formViewer:ES6:sfx', 
-  ['formviewer:clean'], 
+  // ['formviewer:clean'], 
   cb => {
   exec(formViewerSfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -489,7 +491,7 @@ gulp.task('formViewer:ES6:sfx',
 
 const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin} --minify`;
 gulp.task('formViewer:ES6:sfx:min', 
-  ['formviewer:clean'], 
+  // ['formviewer:clean'], 
   cb => {
   exec(formViewerSfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -518,41 +520,41 @@ gulp.task('build:formViewer:ES6:min', [
  * APP JS TASKS (DRAGDROP WAY)
  * -------------------------------
  */
-gulp.task('app:js:dragdropway', 
-		[
-			//'dragdropway:clean',
-			'dragdropway:templatecache'
-		],  
-		() => {
-	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
-	if(appConfig.environment.current === 'PROD'){
-		//prod version
-		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(sourcemaps.init())	
-			.pipe(uglify()) 
-			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
-			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
-			.pipe(sourcemaps.write('./'))
-			.on('error', notify.onError(error => 'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}else{
-		//dev version (no uglify/no source map)
-		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
-						{cwd: gulpConfig.base.root})
-			.pipe(jshint())
-			.pipe(jshint.reporter('default'))
-			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
-			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
-			.on('error', notify.onError(error => 'Error: ' + error.message))
-			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-		);
-	}
+// gulp.task('app:js:dragdropway', 
+// 		[
+// 			//'dragdropway:clean',
+// 			'dragdropway:templatecache'
+// 		],  
+// 		() => {
+// 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
+// 	if(appConfig.environment.current === 'PROD'){
+// 		//prod version
+// 		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
+// 						{cwd: gulpConfig.base.root})
+// 			.pipe(jshint())
+// 			.pipe(jshint.reporter('default'))
+// 			.pipe(sourcemaps.init())	
+// 			.pipe(uglify()) 
+// 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
+// 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
+// 			.pipe(sourcemaps.write('./'))
+// 			.on('error', notify.onError(error => 'Error: ' + error.message))
+// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+// 		);
+// 	}else{
+// 		//dev version (no uglify/no source map)
+// 		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
+// 						{cwd: gulpConfig.base.root})
+// 			.pipe(jshint())
+// 			.pipe(jshint.reporter('default'))
+// 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
+// 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
+// 			.on('error', notify.onError(error => 'Error: ' + error.message))
+// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
+// 		);
+// 	}
 
-});
+// });
 
 
 

@@ -8,7 +8,7 @@ const CORE_MODULES = [
 	'ui.bootstrap',
 	'nya.bootstrap.select',
 	'dndLists',
-	// 'mgcrea.ngStrap.affix',
+	'mgcrea.ngStrap.affix',
 	'pageslide-directive',
 	'pascalprecht.translate'	
 ];
