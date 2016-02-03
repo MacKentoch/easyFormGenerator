@@ -153,38 +153,38 @@ function pageslide() {
     function psOpen(slider, param) {
         if (slider.style.width !== 0 && slider.style.width !== 0) {
             switch (param.side) {
-                case 'right':
-                    slider.style.width = param.size;
-                    if (param.squeeze) body.style.right = param.size;
-                    if (param.push) {
-                        body.style.right = param.size;
-                        body.style.left = '-' + param.size;
-                    }
-                    break;
-                case 'left':
-                    slider.style.width = param.size;
-                    if (param.squeeze) body.style.left = param.size;
-                    if (param.push) {
-                        body.style.left = param.size;
-                        body.style.right = '-' + param.size;
-                    }
-                    break;
-                case 'top':
-                    slider.style.height = param.size;
-                    if (param.squeeze) body.style.top = param.size;
-                    if (param.push) {
-                        body.style.top = param.size;
-                        body.style.bottom = '-' + param.size;
-                    }
-                    break;
-                case 'bottom':
-                    slider.style.height = param.size;
-                    if (param.squeeze) body.style.bottom = param.size;
-                    if (param.push) {
-                        body.style.bottom = param.size;
-                        body.style.top = '-' + param.size;
-                    }
-                    break;
+            case 'right':
+              slider.style.width = param.size;
+              if (param.squeeze) body.style.right = param.size;
+              if (param.push) {
+                  body.style.right = param.size;
+                  body.style.left = '-' + param.size;
+              }
+              break;
+            case 'left':
+              slider.style.width = param.size;
+              if (param.squeeze) body.style.left = param.size;
+              if (param.push) {
+                  body.style.left = param.size;
+                  body.style.right = '-' + param.size;
+              }
+              break;
+            case 'top':
+              slider.style.height = param.size;
+              if (param.squeeze) body.style.top = param.size;
+              if (param.push) {
+                  body.style.top = param.size;
+                  body.style.bottom = '-' + param.size;
+              }
+              break;
+            case 'bottom':
+              slider.style.height = param.size;
+              if (param.squeeze) body.style.bottom = param.size;
+              if (param.push) {
+                  body.style.bottom = param.size;
+                  body.style.top = '-' + param.size;
+              }
+              break;
             }
             setTimeout(() => {
               if (param.cloak) content.css('display', 'block');
@@ -193,10 +193,10 @@ function pageslide() {
         }
     }
 
-    function isFunction(functionToCheck) {
-      var getType = {};
-      return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-    }
+    // function isFunction(functionToCheck) {
+    //   var getType = {};
+    //   return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+    // }
 
     /*
     * Watchers

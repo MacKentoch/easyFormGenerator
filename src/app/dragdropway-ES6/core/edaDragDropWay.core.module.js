@@ -7,9 +7,7 @@ const CORE_MODULES = [
 	'formlyBootstrap',
 	'ui.bootstrap',
 	'nya.bootstrap.select',
-	'dndLists',
 	'mgcrea.ngStrap.affix',
-	'pageslide-directive',
 	'pascalprecht.translate'	
 ];
 
