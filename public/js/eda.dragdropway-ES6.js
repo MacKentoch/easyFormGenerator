@@ -512,7 +512,9 @@ $__System.register('5', [], function (_export) {
 	return {
 		setters: [],
 		execute: function () {
-			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'dndLists', 'mgcrea.ngStrap.affix', 'pageslide-directive', 'pascalprecht.translate'];
+			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'mgcrea.ngStrap.affix' // ,
+			// 'pascalprecht.translate'	
+			];
 
 			_export('default', angular.module('easyFormGen.dragDropWay.core', CORE_MODULES));
 		}
@@ -2039,17 +2041,18 @@ $__System.register('11', [], function (_export) {
       _export('initEasyFormReloadConfigurationModel', initEasyFormReloadConfigurationModel);
 
       initHeaderTemplates = function initHeaderTemplates() {
-        return {
+        var headerTemplate = {
           cssClass: ['col-xs-12', 'col-xs-6', 'col-xs-4'],
           textContent: '',
           html_part1: ['  <div class="'].join(''),
           selectedClass: '',
           html_part2: ['">', '    <h2 class="text-center">'].join(''),
-          html_part3: undefined.textContent,
+          html_part3: this.textContent,
           html_part4: ['    <h2>', '    <hr/>', '  </div>'].join(''),
           simpleHtml1: ['<h2 class="text-center">'].join(''),
           simpleHtml2: ['    <h2>', '    <hr/>'].join('')
         };
+        return headerTemplate;
       };
 
       _export('initHeaderTemplates', initHeaderTemplates);
@@ -3573,6 +3576,649 @@ $__System.register('26', ['25'], function (_export) {
 	};
 });
 $__System.register('27', [], function (_export) {
+  'use strict';
+
+  var DNDLIST_DIRECTIVE, TO_INJECT;
+
+  function dndList($parse, $timeout, dndDropEffectWorkaround, dndDragTypeWorkaround) {
+    var directive = {
+      link: linkFct
+    };
+    return directive;
+
+    function linkFct(scope, element, attr) {
+      // While an element is dragged over the list, this placeholder element is inserted
+      // at the location where the element would be inserted after dropping
+      var placeholder = angular.element('<li class="dndPlaceholder"></li>');
+      var placeholderNode = placeholder[0];
+      var listNode = element[0];
+      var horizontal = attr.dndHorizontalList && scope.$eval(attr.dndHorizontalList);
+      var externalSources = attr.dndExternalSources && scope.$eval(attr.dndExternalSources);
+
+      /**
+       * The dragover event is triggered "every few hundred milliseconds" while an element
+       * is being dragged over our list, or over an child element.
+       */
+      element.on('dragover', function (event) {
+        event = event.originalEvent || event;
+        if (!isDropAllowed(event)) return true;
+        // First of all, make sure that the placeholder is shown
+        // This is especially important if the list is empty
+        if (placeholderNode.parentNode != listNode) {
+          element.append(placeholder);
+        }
+        if (event.target !== listNode) {
+          // Try to find the node direct directly below the list node.
+          var listItemNode = event.target;
+          while (listItemNode.parentNode !== listNode && listItemNode.parentNode) {
+            listItemNode = listItemNode.parentNode;
+          }
+          if (listItemNode.parentNode === listNode && listItemNode !== placeholderNode) {
+            // If the mouse pointer is in the upper half of the child element,
+            // we place it before the child element, otherwise below it.
+            if (isMouseInFirstHalf(event, listItemNode)) {
+              listNode.insertBefore(placeholderNode, listItemNode);
+            } else {
+              listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
+            }
+          }
+        } else {
+          // This branch is reached when we are dragging directly over the list element.
+          // Usually we wouldn't need to do anything here, but the IE does not fire it's
+          // events for the child element, only for the list directly. Therefore we repeat
+          // the positioning algorithm for IE here.
+          if (isMouseInFirstHalf(event, placeholderNode, true)) {
+            // Check if we should move the placeholder element one spot towards the top.
+            // Note that display none elements will have offsetTop and offsetHeight set to
+            // zero, therefore we need a special check for them.
+            while (placeholderNode.previousElementSibling && (isMouseInFirstHalf(event, placeholderNode.previousElementSibling, true) || placeholderNode.previousElementSibling.offsetHeight === 0)) {
+              listNode.insertBefore(placeholderNode, placeholderNode.previousElementSibling);
+            }
+          } else {
+            // Check if we should move the placeholder element one spot towards the bottom
+            while (placeholderNode.nextElementSibling && !isMouseInFirstHalf(event, placeholderNode.nextElementSibling, true)) {
+              listNode.insertBefore(placeholderNode, placeholderNode.nextElementSibling.nextElementSibling);
+            }
+          }
+        }
+
+        // At this point we invoke the callback, which still can disallow the drop.
+        // We can't do this earlier because we want to pass the index of the placeholder.
+        if (attr.dndDragover && !invokeCallback(attr.dndDragover, event)) {
+          return stopDragover();
+        }
+        element.addClass('dndDragover');
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * When the element is dropped, we use the position of the placeholder element as the
+       * position where we insert the transferred data. This assumes that the list has exactly
+       * one child element per array element.
+       */
+      element.on('drop', function (event) {
+        event = event.originalEvent || event;
+        if (!isDropAllowed(event)) return true;
+        // The default behavior in Firefox is to interpret the dropped element as URL and
+        // forward to it. We want to prevent that even if our drop is aborted.
+        event.preventDefault();
+        // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
+        // the "Text" drag type will be converted to text/plain, but IE does not do that.
+        var data = event.dataTransfer.getData('Text') || event.dataTransfer.getData('text/plain');
+        var transferredObject;
+        try {
+          transferredObject = JSON.parse(data);
+        } catch (e) {
+          return stopDragover();
+        }
+        // Invoke the callback, which can transform the transferredObject and even abort the drop.
+        if (attr.dndDrop) {
+          transferredObject = invokeCallback(attr.dndDrop, event, transferredObject);
+          if (!transferredObject) {
+            return stopDragover();
+          }
+        }
+        // Retrieve the JSON array and insert the transferred object into it.
+        var targetArray = scope.$eval(attr.dndList);
+        scope.$apply(function () {
+          targetArray.splice(getPlaceholderIndex(), 0, transferredObject);
+        });
+        // In Chrome on Windows the dropEffect will always be none...
+        // We have to determine the actual effect manually from the allowed effects
+        if (event.dataTransfer.dropEffect === 'none') {
+          if (event.dataTransfer.effectAllowed === 'copy' || event.dataTransfer.effectAllowed === 'move') {
+            dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
+          } else {
+            dndDropEffectWorkaround.dropEffect = event.ctrlKey ? 'copy' : 'move';
+          }
+        } else {
+          dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+        }
+        // Clean up
+        stopDragover();
+        event.stopPropagation();
+        return false;
+      });
+
+      /**
+       * We have to remove the placeholder when the element is no longer dragged over our list. The
+       * problem is that the dragleave event is not only fired when the element leaves our list,
+       * but also when it leaves a child element -- so practically it's fired all the time. As a
+       * workaround we wait a few milliseconds and then check if the dndDragover class was added
+       * again. If it is there, dragover must have been called in the meantime, i.e. the element
+       * is still dragging over the list. If you know a better way of doing this, please tell me!
+       */
+      element.on('dragleave', function (event) {
+        event = event.originalEvent || event;
+
+        element.removeClass('dndDragover');
+        $timeout(function () {
+          if (!element.hasClass('dndDragover')) {
+            placeholder.remove();
+          }
+        }, 100);
+      });
+
+      /**
+       * Checks whether the mouse pointer is in the first half of the given target element.
+       *
+       * In Chrome we can just use offsetY, but in Firefox we have to use layerY, which only
+       * works if the child element has position relative. In IE the events are only triggered
+       * on the listNode instead of the listNodeItem, therefore the mouse positions are
+       * relative to the parent element of targetNode.
+       */
+      function isMouseInFirstHalf(event, targetNode, relativeToParent) {
+        var mousePointer = horizontal ? event.offsetX || event.layerX : event.offsetY || event.layerY;
+        var targetSize = horizontal ? targetNode.offsetWidth : targetNode.offsetHeight;
+        var targetPosition = horizontal ? targetNode.offsetLeft : targetNode.offsetTop;
+        targetPosition = relativeToParent ? targetPosition : 0;
+        return mousePointer < targetPosition + targetSize / 2;
+      }
+
+      /**
+       * We use the position of the placeholder node to determine at which position of the array the
+       * object needs to be inserted
+       */
+      function getPlaceholderIndex() {
+        return Array.prototype.indexOf.call(listNode.children, placeholderNode);
+      }
+
+      /**
+       * Checks various conditions that must be fulfilled for a drop to be allowed
+       */
+      function isDropAllowed(event) {
+        // Disallow drop from external source unless it's allowed explicitly.
+        if (!dndDragTypeWorkaround.isDragging && !externalSources) return false;
+        // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
+        // support that.
+        if (!hasTextMimetype(event.dataTransfer.types)) return false;
+        // Now check the dnd-allowed-types against the type of the incoming element. For drops from
+        // external sources we don't know the type, so it will need to be checked via dnd-drop.
+        if (attr.dndAllowedTypes && dndDragTypeWorkaround.isDragging) {
+          var allowed = scope.$eval(attr.dndAllowedTypes);
+          if (angular.isArray(allowed) && allowed.indexOf(dndDragTypeWorkaround.dragType) === -1) {
+            return false;
+          }
+        }
+        // Check whether droping is disabled completely
+        if (attr.dndDisableIf && scope.$eval(attr.dndDisableIf)) return false;
+        return true;
+      }
+
+      /**
+       * Small helper function that cleans up if we aborted a drop.
+       */
+      function stopDragover() {
+        placeholder.remove();
+        element.removeClass('dndDragover');
+        return true;
+      }
+
+      /**
+       * Invokes a callback with some interesting parameters and returns the callbacks return value.
+       */
+      function invokeCallback(expression, event, item) {
+        return $parse(expression)(scope, {
+          event: event,
+          index: getPlaceholderIndex(),
+          item: item || undefined,
+          external: !dndDragTypeWorkaround.isDragging,
+          type: dndDragTypeWorkaround.isDragging ? dndDragTypeWorkaround.dragType : undefined
+        });
+      }
+
+      /**
+       * Check if the dataTransfer object contains a drag type that we can handle. In old versions
+       * of IE the types collection will not even be there, so we just assume a drop is possible.
+       */
+      function hasTextMimetype(types) {
+        if (!types) return true;
+        for (var i = 0; i < types.length; i++) {
+          if (types[i] === 'Text' || types[i] === 'text/plain') return true;
+        }
+        return false;
+      }
+    }
+  }
+
+  return {
+    setters: [],
+    execute: function () {
+      DNDLIST_DIRECTIVE = 'dndList';
+      TO_INJECT = ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround'];
+
+      dndList.$inject = TO_INJECT;
+
+      _export('default', dndList);
+
+      _export('DNDLIST_DIRECTIVE', DNDLIST_DIRECTIVE);
+    }
+  };
+});
+$__System.register('28', [], function (_export) {
+  'use strict';
+
+  var DNDDRAGGABLE_DIRECTIVE, TO_INJECT;
+
+  function dndDraggable($parse, $timeout, dndDropEffectWorkaround, dndDragTypeWorkaround) {
+    var directive = {
+      link: linkFct
+    };
+    return directive;
+
+    function linkFct(scope, element, attr) {
+      var _this = this;
+
+      // Set the HTML5 draggable attribute on the element
+      element.attr('draggable', 'true');
+
+      // If the dnd-disable-if attribute is set, we have to watch that
+      if (attr.dndDisableIf) {
+        scope.$watch(attr.dndDisableIf, function (disabled) {
+          return element.attr('draggable', !disabled);
+        });
+      }
+
+      /**
+       * When the drag operation is started we have to prepare the dataTransfer object,
+       * which is the primary way we communicate with the target element
+       */
+      element.on('dragstart', function (event) {
+        event = event.originalEvent || event;
+        // Serialize the data associated with this element. IE only supports the Text drag type
+        event.dataTransfer.setData('Text', angular.toJson(scope.$eval(attr.dndDraggable)));
+        // Only allow actions specified in dnd-effect-allowed attribute
+        event.dataTransfer.effectAllowed = attr.dndEffectAllowed || 'move';
+        // Add CSS classes. See documentation above
+        element.addClass('dndDragging');
+        $timeout(function () {
+          element.addClass('dndDraggingSource');
+        }, 0);
+        // Workarounds for stupid browsers, see description below
+        dndDropEffectWorkaround.dropEffect = 'none';
+        dndDragTypeWorkaround.isDragging = true;
+        // Save type of item in global state. Usually, this would go into the dataTransfer
+        // typename, but we have to use "Text" there to support IE
+        dndDragTypeWorkaround.dragType = attr.dndType ? scope.$eval(attr.dndType) : undefined;
+        // Invoke callback
+        $parse(attr.dndDragstart)(scope, { event: event });
+        event.stopPropagation();
+      });
+
+      /**
+       * The dragend event is triggered when the element was dropped or when the drag
+       * operation was aborted (e.g. hit escape button). Depending on the executed action
+       * we will invoke the callbacks specified with the dnd-moved or dnd-copied attribute.
+       */
+      element.on('dragend', function (event) {
+        event = event.originalEvent || event;
+
+        // Invoke callbacks. Usually we would use event.dataTransfer.dropEffect to determine
+        // the used effect, but Chrome has not implemented that field correctly. On Windows
+        // it always sets it to 'none', while Chrome on Linux sometimes sets it to something
+        // else when it's supposed to send 'none' (drag operation aborted).
+        var dropEffect = dndDropEffectWorkaround.dropEffect;
+        scope.$apply(function () {
+          switch (dropEffect) {
+            case 'move':
+              $parse(attr.dndMoved)(scope, { event: event });
+              break;
+
+            case 'copy':
+              $parse(attr.dndCopied)(scope, { event: event });
+              break;
+          }
+        });
+
+        // Clean up
+        element.removeClass('dndDragging');
+        element.removeClass('dndDraggingSource');
+        dndDragTypeWorkaround.isDragging = false;
+        event.stopPropagation();
+      });
+
+      /**
+       * When the element is clicked we invoke the callback function
+       * specified with the dnd-selected attribute.
+       */
+      element.on('click', function (event) {
+        event = event.originalEvent || event;
+        scope.$apply(function () {
+          return $parse(attr.dndSelected)(scope, { event: event });
+        });
+        event.stopPropagation();
+      });
+
+      /**
+       * Workaround to make element draggable in IE9
+       */
+      element.on('selectstart', function () {
+        if (_this.dragDrop) _this.dragDrop();
+        return false;
+      });
+    }
+  }
+
+  return {
+    setters: [],
+    execute: function () {
+      DNDDRAGGABLE_DIRECTIVE = 'dndDraggable';
+      TO_INJECT = ['$parse', '$timeout', 'dndDropEffectWorkaround', 'dndDragTypeWorkaround'];
+
+      dndDraggable.$inject = TO_INJECT;
+
+      _export('default', dndDraggable);
+
+      _export('DNDDRAGGABLE_DIRECTIVE', DNDDRAGGABLE_DIRECTIVE);
+    }
+  };
+});
+$__System.register('29', ['27', '28'], function (_export) {
+  'use strict';
+
+  var dndList, DNDLIST_DIRECTIVE, dndDraggable, DNDDRAGGABLE_DIRECTIVE, DRAG_DROP_LIST_MODULE;
+  return {
+    setters: [function (_) {
+      dndList = _['default'];
+      DNDLIST_DIRECTIVE = _.DNDLIST_DIRECTIVE;
+    }, function (_2) {
+      dndDraggable = _2['default'];
+      DNDDRAGGABLE_DIRECTIVE = _2.DNDDRAGGABLE_DIRECTIVE;
+    }],
+    execute: function () {
+      DRAG_DROP_LIST_MODULE = 'dndLists.module';
+
+      _export('default', angular.module(DRAG_DROP_LIST_MODULE, []).directive(DNDLIST_DIRECTIVE, dndList).directive(DNDDRAGGABLE_DIRECTIVE, dndDraggable).factory('dndDragTypeWorkaround', function () {
+        return {};
+      }).factory('dndDropEffectWorkaround', function () {
+        return {};
+      }));
+    }
+  };
+});
+$__System.register('2a', [], function (_export) {
+  'use strict';
+
+  var PAGE_SLIDE_DIRECTIVE;
+
+  function pageslide() {
+    var directive = {
+      restrict: 'EAC',
+      transclude: false,
+      scope: {
+        psOpen: '=?',
+        psAutoClose: '=?',
+        psSide: '@',
+        psSpeed: '@',
+        psClass: '@',
+        psSize: '@',
+        psSqueeze: '@',
+        psCloak: '@',
+        psPush: '@',
+        psContainer: '@'
+      },
+      link: linkFct
+    };
+    return directive;
+
+    function linkFct($scope, el, attrs) {
+      /* Inspect */
+      //console.log($scope);
+      //console.log(el);
+      //console.log(attrs);
+
+      /* Parameters */
+      var param = {};
+
+      param.side = $scope.psSide || 'right';
+      param.speed = $scope.psSpeed || '0.5';
+      param.size = $scope.psSize || '300px';
+      param.zindex = 1000; // Override with custom CSS
+      param.className = $scope.psClass || 'ng-pageslide';
+      param.cloak = $scope.psCloak && $scope.psCloak.toLowerCase() == 'false' ? false : true;
+      param.squeeze = Boolean($scope.psSqueeze) || false;
+      param.push = Boolean($scope.psPush) || false;
+      param.container = $scope.psContainer || false;
+
+      // Apply Class
+      el.addClass(param.className);
+
+      /* DOM manipulation */
+      var content = null;
+      var slider = null;
+      var body = param.container ? document.getElementById(param.container) : document.body;
+
+      slider = el[0];
+
+      // Check for div tag
+      if (slider.tagName.toLowerCase() !== 'div' && slider.tagName.toLowerCase() !== 'pageslide') throw new Error('Pageslide can only be applied to <div> or <pageslide> elements');
+
+      // Check for content
+      if (slider.children.length === 0) throw new Error('You have to content inside the <pageslide>');
+
+      content = angular.element(slider.children);
+
+      /* Append */
+      body.appendChild(slider);
+
+      /* Style setup */
+      slider.style.zIndex = param.zindex;
+      slider.style.position = param.container !== false ? 'absolute' : 'fixed';
+      slider.style.width = 0;
+      slider.style.height = 0;
+      slider.style.overflow = 'hidden';
+      slider.style.transitionDuration = param.speed + 's';
+      slider.style.webkitTransitionDuration = param.speed + 's';
+      slider.style.transitionProperty = 'width, height';
+      if (param.squeeze) {
+        body.style.position = 'absolute';
+        body.style.transitionDuration = param.speed + 's';
+        body.style.webkitTransitionDuration = param.speed + 's';
+        body.style.transitionProperty = 'top, bottom, left, right';
+      }
+
+      switch (param.side) {
+        case 'right':
+          slider.style.height = attrs.psCustomHeight || '100%';
+          slider.style.top = attrs.psCustomTop || '0px';
+          slider.style.bottom = attrs.psCustomBottom || '0px';
+          slider.style.right = attrs.psCustomRight || '0px';
+          break;
+        case 'left':
+          slider.style.height = attrs.psCustomHeight || '100%';
+          slider.style.top = attrs.psCustomTop || '0px';
+          slider.style.bottom = attrs.psCustomBottom || '0px';
+          slider.style.left = attrs.psCustomLeft || '0px';
+          break;
+        case 'top':
+          slider.style.width = attrs.psCustomWidth || '100%';
+          slider.style.left = attrs.psCustomLeft || '0px';
+          slider.style.top = attrs.psCustomTop || '0px';
+          slider.style.right = attrs.psCustomRight || '0px';
+          break;
+        case 'bottom':
+          slider.style.width = attrs.psCustomWidth || '100%';
+          slider.style.bottom = attrs.psCustomBottom || '0px';
+          slider.style.left = attrs.psCustomLeft || '0px';
+          slider.style.right = attrs.psCustomRight || '0px';
+          break;
+      }
+
+      /* Closed */
+      function psClose(slider, param) {
+        if (slider && slider.style.width !== 0 && slider.style.width !== 0) {
+          if (param.cloak) content.css('display', 'none');
+          switch (param.side) {
+            case 'right':
+              slider.style.width = '0px';
+              if (param.squeeze) body.style.right = '0px';
+              if (param.push) {
+                body.style.right = '0px';
+                body.style.left = '0px';
+              }
+              break;
+            case 'left':
+              slider.style.width = '0px';
+              if (param.squeeze) body.style.left = '0px';
+              if (param.push) {
+                body.style.left = '0px';
+                body.style.right = '0px';
+              }
+              break;
+            case 'top':
+              slider.style.height = '0px';
+              if (param.squeeze) body.style.top = '0px';
+              if (param.push) {
+                body.style.top = '0px';
+                body.style.bottom = '0px';
+              }
+              break;
+            case 'bottom':
+              slider.style.height = '0px';
+              if (param.squeeze) body.style.bottom = '0px';
+              if (param.push) {
+                body.style.bottom = '0px';
+                body.style.top = '0px';
+              }
+              break;
+          }
+        }
+        $scope.psOpen = false;
+      }
+
+      /* Open */
+      function psOpen(slider, param) {
+        if (slider.style.width !== 0 && slider.style.width !== 0) {
+          switch (param.side) {
+            case 'right':
+              slider.style.width = param.size;
+              if (param.squeeze) body.style.right = param.size;
+              if (param.push) {
+                body.style.right = param.size;
+                body.style.left = '-' + param.size;
+              }
+              break;
+            case 'left':
+              slider.style.width = param.size;
+              if (param.squeeze) body.style.left = param.size;
+              if (param.push) {
+                body.style.left = param.size;
+                body.style.right = '-' + param.size;
+              }
+              break;
+            case 'top':
+              slider.style.height = param.size;
+              if (param.squeeze) body.style.top = param.size;
+              if (param.push) {
+                body.style.top = param.size;
+                body.style.bottom = '-' + param.size;
+              }
+              break;
+            case 'bottom':
+              slider.style.height = param.size;
+              if (param.squeeze) body.style.bottom = param.size;
+              if (param.push) {
+                body.style.bottom = param.size;
+                body.style.top = '-' + param.size;
+              }
+              break;
+          }
+          setTimeout(function () {
+            if (param.cloak) content.css('display', 'block');
+          }, param.speed * 1000);
+        }
+      }
+
+      // function isFunction(functionToCheck) {
+      //   var getType = {};
+      //   return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+      // }
+
+      /*
+      * Watchers
+      * */
+
+      $scope.$watch('psOpen', function (value) {
+        /* eslint no-extra-boolean-cast:0 */
+        if (!!value) {
+          // Open
+          psOpen(slider, param);
+        } else {
+          // Close
+          psClose(slider, param);
+        }
+      });
+
+      /*
+      * Events
+      * */
+
+      $scope.$on('$destroy', function () {
+        return body.removeChild(slider);
+      });
+
+      if ($scope.psAutoClose) {
+        $scope.$on('$locationChangeStart', function () {
+          return psClose(slider, param);
+        });
+        $scope.$on('$stateChangeStart', function () {
+          return psClose(slider, param);
+        });
+      }
+    }
+  }
+
+  return {
+    setters: [],
+    execute: function () {
+      PAGE_SLIDE_DIRECTIVE = 'pageslide';
+      pageslide.$inject = [];
+
+      _export('default', pageslide);
+
+      _export('PAGE_SLIDE_DIRECTIVE', PAGE_SLIDE_DIRECTIVE);
+    }
+  };
+});
+$__System.register('2b', ['2a'], function (_export) {
+  'use strict';
+
+  var pageslide, PAGE_SLIDE_DIRECTIVE, PAGE_SLIDE_MODULE;
+  return {
+    setters: [function (_a) {
+      pageslide = _a['default'];
+      PAGE_SLIDE_DIRECTIVE = _a.PAGE_SLIDE_DIRECTIVE;
+    }],
+    execute: function () {
+      PAGE_SLIDE_MODULE = 'pageslide.module';
+
+      _export('default', angular.module(PAGE_SLIDE_MODULE, []).directive(PAGE_SLIDE_DIRECTIVE, pageslide));
+    }
+  };
+});
+$__System.register('2c', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -3756,7 +4402,7 @@ $__System.register('27', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("28", [], true, function($__require, exports, module) {
+$__System.registerDynamic("2d", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -3766,7 +4412,7 @@ $__System.registerDynamic("28", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("29", [], true, function($__require, exports, module) {
+$__System.registerDynamic("2e", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -3788,12 +4434,12 @@ $__System.registerDynamic("29", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2a", ["29"], true, function($__require, exports, module) {
+$__System.registerDynamic("2f", ["2e"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('29');
+  var $ = $__require('2e');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -3801,26 +4447,26 @@ $__System.registerDynamic("2a", ["29"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("2b", ["2a"], true, function($__require, exports, module) {
+$__System.registerDynamic("30", ["2f"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('2a'),
+    "default": $__require('2f'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("8", ["2b"], true, function($__require, exports, module) {
+$__System.registerDynamic("8", ["30"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('2b')["default"];
+  var _Object$defineProperty = $__require('30')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -3861,7 +4507,7 @@ $__System.registerDynamic("9", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.register('2c', [], function (_export) {
+$__System.register('31', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -3966,7 +4612,7 @@ $__System.register('2c', [], function (_export) {
 		}
 	};
 });
-$__System.register('2d', ['8', '9', '2c'], function (_export) {
+$__System.register('32', ['8', '9', '31'], function (_export) {
   var _createClass, _classCallCheck, initTabModel, initIhmModel, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenCtrl;
 
   return {
@@ -3974,9 +4620,9 @@ $__System.register('2d', ['8', '9', '2c'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_c) {
-      initTabModel = _c.initTabModel;
-      initIhmModel = _c.initIhmModel;
+    }, function (_3) {
+      initTabModel = _3.initTabModel;
+      initIhmModel = _3.initIhmModel;
     }],
     execute: function () {
       /* global angular */
@@ -4407,7 +5053,7 @@ $__System.register('2d', ['8', '9', '2c'], function (_export) {
     }
   };
 });
-$__System.register('2e', ['28', '2d'], function (_export) {
+$__System.register('33', ['32', '2d'], function (_export) {
 	/* global angular */
 
 	//TODO : to bindToController
@@ -4416,7 +5062,7 @@ $__System.register('2e', ['28', '2d'], function (_export) {
 
 	'use strict';
 
-	var edaDragDropWayEasyFormGenDirectiveTemplate, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
+	var DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenDirectiveTemplate, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
 
 	function edaDragdropWayEasyFormGen($timeout, formFieldManage, ddModelConfModelProxyService, dragDropConfig) {
 
@@ -4529,10 +5175,10 @@ $__System.register('2e', ['28', '2d'], function (_export) {
 
 	return {
 		setters: [function (_) {
-			edaDragDropWayEasyFormGenDirectiveTemplate = _['default'];
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS;
 		}, function (_d) {
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _d.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = _d.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS;
+			edaDragDropWayEasyFormGenDirectiveTemplate = _d['default'];
 		}],
 		execute: function () {
 			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = 'edaDragdropWayEasyFormGen';
@@ -4544,22 +5190,22 @@ $__System.register('2e', ['28', '2d'], function (_export) {
 		}
 	};
 });
-$__System.register('2f', ['27', '2d', '2e'], function (_export) {
+$__System.register('34', ['32', '33', '2c'], function (_export) {
 	/* global angular */
 
 	'use strict';
 
-	var ddNoEditableControl, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, DRAGDROP_MODULE;
+	var edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, ddNoEditableControl, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, DRAGDROP_MODULE;
 	return {
 		setters: [function (_) {
-			ddNoEditableControl = _['default'];
-			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
-		}, function (_d) {
-			edaDragDropWayEasyFormGenCtrl = _d['default'];
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _d.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
-		}, function (_e) {
-			edaDragdropWayEasyFormGen = _e['default'];
-			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = _e.EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
+			edaDragDropWayEasyFormGenCtrl = _['default'];
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
+		}, function (_2) {
+			edaDragdropWayEasyFormGen = _2['default'];
+			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = _2.EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
+		}, function (_c) {
+			ddNoEditableControl = _c['default'];
+			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _c.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
 		}],
 		execute: function () {
 			DRAGDROP_MODULE = 'edaDragDropWay.main.module';
@@ -4568,7 +5214,7 @@ $__System.register('2f', ['27', '2d', '2e'], function (_export) {
 		}
 	};
 });
-$__System.register('30', [], function (_export) {
+$__System.register('35', [], function (_export) {
   'use strict';
 
   var TRUST_THIS_FILTER_NAME;
@@ -4591,7 +5237,7 @@ $__System.register('30', [], function (_export) {
     }
   };
 });
-$__System.register('31', ['30'], function (_export) {
+$__System.register('36', ['35'], function (_export) {
   'use strict';
 
   var trustThis, TRUST_THIS_FILTER_NAME, TRUST_THIS_FILTER_MODULE;
@@ -4607,40 +5253,44 @@ $__System.register('31', ['30'], function (_export) {
     }
   };
 });
-$__System.register('1', ['2', '3', '4', '5', '13', '21', '24', '26', '31', 'f', '2f'], function (_export) {
-	'use strict';
+$__System.register('1', ['2', '3', '4', '5', '13', '21', '24', '26', '29', '34', '36', 'f', '2b'], function (_export) {
+  'use strict';
 
-	var formlyConfigFunct, dragDropConfigFunt, coreModule, formlyProxyModule, dragdropModule, rightClickModule, configProxyModule, trustThisFilterModule, leftPanelModule, easyFormDragDropModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
-	return {
-		setters: [function (_) {}, function (_2) {
-			formlyConfigFunct = _2['default'];
-		}, function (_3) {
-			dragDropConfigFunt = _3['default'];
-		}, function (_4) {
-			coreModule = _4['default'];
-		}, function (_5) {
-			formlyProxyModule = _5['default'];
-		}, function (_6) {
-			dragdropModule = _6['default'];
-		}, function (_7) {
-			rightClickModule = _7['default'];
-		}, function (_8) {
-			configProxyModule = _8['default'];
-		}, function (_9) {
-			trustThisFilterModule = _9['default'];
-		}, function (_f) {
-			leftPanelModule = _f['default'];
-		}, function (_f2) {
-			easyFormDragDropModule = _f2['default'];
-		}],
-		execute: function () {
-			DRAG_DROP_WAY_MODULE_NAME = 'eda.easyformGen.dragDropWay';
-			DRAG_DROP_MODULES_INJECT = [coreModule.name, configProxyModule.name, trustThisFilterModule.name, leftPanelModule.name, formlyProxyModule.name, dragdropModule.name, easyFormDragDropModule.name, rightClickModule.name];
-			mainModule = angular.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT).config(dragDropConfigFunt).config(formlyConfigFunct);
+  var formlyConfigFunct, dragDropConfigFunt, coreModule, formlyProxyModule, dragdropModule, rightClickModule, configProxyModule, dragAndDropListModule, easyFormDragDropModule, trustThisFilterModule, leftPanelModule, pageSlideModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
+  return {
+    setters: [function (_) {}, function (_2) {
+      formlyConfigFunct = _2['default'];
+    }, function (_3) {
+      dragDropConfigFunt = _3['default'];
+    }, function (_4) {
+      coreModule = _4['default'];
+    }, function (_5) {
+      formlyProxyModule = _5['default'];
+    }, function (_6) {
+      dragdropModule = _6['default'];
+    }, function (_7) {
+      rightClickModule = _7['default'];
+    }, function (_8) {
+      configProxyModule = _8['default'];
+    }, function (_9) {
+      dragAndDropListModule = _9['default'];
+    }, function (_10) {
+      easyFormDragDropModule = _10['default'];
+    }, function (_11) {
+      trustThisFilterModule = _11['default'];
+    }, function (_f) {
+      leftPanelModule = _f['default'];
+    }, function (_b) {
+      pageSlideModule = _b['default'];
+    }],
+    execute: function () {
+      DRAG_DROP_WAY_MODULE_NAME = 'eda.easyformGen.dragDropWay';
+      DRAG_DROP_MODULES_INJECT = [coreModule.name, configProxyModule.name, trustThisFilterModule.name, leftPanelModule.name, formlyProxyModule.name, dragdropModule.name, easyFormDragDropModule.name, rightClickModule.name, dragAndDropListModule.name, pageSlideModule.name];
+      mainModule = angular.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT).config(dragDropConfigFunt).config(formlyConfigFunct);
 
-			_export('default', mainModule);
-		}
-	};
+      _export('default', mainModule);
+    }
+  };
 });
 })
 (function(factory) {

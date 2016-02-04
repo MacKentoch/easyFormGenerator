@@ -203,6 +203,7 @@ function pageslide() {
     * */
 
     $scope.$watch('psOpen', (value) => {
+      /* eslint no-extra-boolean-cast:0 */
       if (!!value) {
         // Open
         psOpen(slider, param);

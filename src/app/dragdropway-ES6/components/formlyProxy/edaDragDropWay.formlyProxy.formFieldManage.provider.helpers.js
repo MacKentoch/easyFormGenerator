@@ -72,8 +72,9 @@ export const initEasyFormReloadConfigurationModel = () => {
   return reloadConfigModel;
 };
   
-export const initHeaderTemplates = () => {
-  return {
+// can't use arrow function here -> 'this' would be bound to caller rather than expected current returned object...  
+export const initHeaderTemplates = function() {
+  let headerTemplate = {
     cssClass 		: ['col-xs-12', 'col-xs-6', 'col-xs-4'],
     textContent : '',
     html_part1 	: [
@@ -84,7 +85,7 @@ export const initHeaderTemplates = () => {
                     '">',
                     '    <h2 class="text-center">'																							
                   ].join(''),							 
-    html_part3  : this.textContent,
+    html_part3  : this.textContent,  
     html_part4 	:  [ 
                     '    <h2>',
                     '    <hr/>',
@@ -97,7 +98,8 @@ export const initHeaderTemplates = () => {
                     '    <h2>',
                     '    <hr/>'																
                     ].join('')						 
-  };    
+  };  
+  return  headerTemplate; 
 };
   
   

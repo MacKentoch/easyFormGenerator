@@ -4,7 +4,7 @@ import dndList, {
 
 import dndDraggable, {
   DNDDRAGGABLE_DIRECTIVE
-}                       from 'dragAndDropList.dndDraggable.directive';
+}                       from './dragAndDropList.dndDraggable.directive';
 
 const DRAG_DROP_LIST_MODULE = 'dndLists.module';
 

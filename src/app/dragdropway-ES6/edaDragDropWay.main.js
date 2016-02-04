@@ -10,7 +10,7 @@ import dragdropModule						from './components/dragdrop/edaDragDropWay.dragdrop.m
 import rightClickModule					from './components/common/rightclick/edaDragDropWay.rightClick.module';
 import configProxyModule        from './components/configurationModelProxy/edaDragDropWay.configurationModelProxy.module';
 
-import dragAndDropListModule    from '/components/common/dragAndDropList/dragAndDropList.module';
+import dragAndDropListModule    from './components/common/dragAndDropList/dragAndDropList.module';
 import pageSlideModule          from './components/common/pageslide/pageslide.module';
 
 import easyFormDragDropModule 	from './components/edaDragDropWayEasyFormGen/edaDragDropWay.edaDragdropWayEasyFormGen.module';
