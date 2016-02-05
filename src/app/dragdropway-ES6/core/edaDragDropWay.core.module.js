@@ -7,8 +7,8 @@ const CORE_MODULES = [
 	'formlyBootstrap',
 	'ui.bootstrap',
 	'nya.bootstrap.select',
-	'mgcrea.ngStrap.affix',
-	'pascalprecht.translate'	
+	'mgcrea.ngStrap.affix'
+	// 'pascalprecht.translate'	
 ];
 
 export default angular

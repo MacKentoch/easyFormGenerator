@@ -512,7 +512,7 @@ $__System.register('5', [], function (_export) {
 	return {
 		setters: [],
 		execute: function () {
-			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'mgcrea.ngStrap.affix' // ,
+			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'mgcrea.ngStrap.affix'
 			// 'pascalprecht.translate'	
 			];
 
@@ -2039,6 +2039,8 @@ $__System.register('11', [], function (_export) {
       };
 
       _export('initEasyFormReloadConfigurationModel', initEasyFormReloadConfigurationModel);
+
+      // can't use arrow function here -> 'this' would be bound to caller rather than expected current returned object... 
 
       initHeaderTemplates = function initHeaderTemplates() {
         var headerTemplate = {
@@ -4224,11 +4226,11 @@ $__System.register('2c', [], function (_export) {
 
 	var EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
 
-	function easyFormDragWayConfig($translateProvider) {
+	function easyFormDragWayConfig() {
 		var _configuration = defaultConfig();
 		var _controlsList = controlsList();
-		var _defaultLanguage = getDefaultLanguage();
-		var _currentLanguage = initDefaultLanguage();
+		// let _defaultLanguage		= getDefaultLanguage();
+		// let _currentLanguage		= initDefaultLanguage();
 		var _showPreviewPanel = getDefaultshowPreviewPanel();
 		var _showPreviewModels = getDefaultShowPreviewModel();
 		/* jshint validthis:true */
@@ -4239,8 +4241,8 @@ $__System.register('2c', [], function (_export) {
 		this.getEnabledControls = getEnabledControls;
 		this.disableControl = disableControl;
 		this.enableControl = enableControl;
-		this.setLanguage = setLanguage;
-		this.getCurrentLanguage = getCurrentLanguage;
+		// this.setLanguage				= setLanguage;
+		// this.getCurrentLanguage	= getCurrentLanguage;
 		this.showPreviewPanel = showPreviewPanel;
 		this.showPreviewModels = showPreviewModels;
 
@@ -4262,9 +4264,9 @@ $__System.register('2c', [], function (_export) {
 			return true;
 		}
 
-		function getCurrentLanguage() {
-			return _currentLanguage;
-		}
+		// function getCurrentLanguage(){
+		// 		return _currentLanguage;
+		// }	
 
 		//list of controls
 		function controlsList() {
@@ -4286,33 +4288,33 @@ $__System.register('2c', [], function (_export) {
 			}
 		}
 
-		//language : set default to english
-		function getDefaultLanguage() {
-			var lang = 'en';
-			return lang;
-		}
+		// //language : set default to english
+		// function getDefaultLanguage(){
+		// 	let lang = 'en';
+		// 	return lang;
+		// }
 
-		function setDefaultLanguage() {
-			_currentLanguage = _defaultLanguage;
-			$translateProvider.preferredLanguage(_currentLanguage);
-			return _currentLanguage;
-		}
+		// function setDefaultLanguage(){
+		// 	_currentLanguage = _defaultLanguage;
+		// 	$translateProvider.preferredLanguage(_currentLanguage);
+		// 	return _currentLanguage;
+		// }	
 
-		function setLanguage(language) {
-			if (angular.isString(language)) {
-				_currentLanguage = language;
-				$translateProvider.preferredLanguage(language);
-			} else {
-				setDefaultLanguage();
-			}
-		}
+		// function setLanguage(language){				
+		// 	if (angular.isString(language)) {
+		// 		_currentLanguage = language;
+		// 		$translateProvider.preferredLanguage(language);
+		// 	}else{
+		// 		setDefaultLanguage();
+		// 	}
+		// }
 
-		function initDefaultLanguage() {
-			$translateProvider.useSanitizeValueStrategy('escape'); //security : Enable escaping of HTML
-			$translateProvider.fallbackLanguage(_defaultLanguage); //fallback language to default language
-			$translateProvider.preferredLanguage(_defaultLanguage);
-			return _defaultLanguage;
-		}
+		// function initDefaultLanguage(){
+		// 	$translateProvider.useSanitizeValueStrategy('escape'); 	//security : Enable escaping of HTML
+		// 	$translateProvider.fallbackLanguage(_defaultLanguage);	//fallback language to default language
+		// 	$translateProvider.preferredLanguage(_defaultLanguage);
+		// 	return _defaultLanguage;
+		// }
 
 		function getEnabledControls() {
 			return _controlsList;
@@ -4345,15 +4347,17 @@ $__System.register('2c', [], function (_export) {
 		}
 
 		//$get implementation :
-		easyFormDragDropWayConfigGET.$inject = ['$translate'];
-		function easyFormDragDropWayConfigGET($translate) {
+		// easyFormDragDropWayConfigGET.$inject = ['$translate'];
+		// function easyFormDragDropWayConfigGET($translate){
+		easyFormDragDropWayConfigGET.$inject = [];
+		function easyFormDragDropWayConfigGET() {
 
 			var service = {
 				setModalAnimation: setModalAnimationFct,
 				getModalAnimationValue: getModalAnimationValue,
 				getListEnabledControl: getListEnabledControl,
-				setLanguage: switchLanguage,
-				getCurrentLanguage: getCurrentLanguage,
+				// setLanguage 						: switchLanguage,
+				// getCurrentLanguage			: getCurrentLanguage,
 				isPreviewPanelVisible: isPreviewPanelVisible,
 				arePreviewModelsVisible: arePreviewModelsVisible
 			};
@@ -4371,14 +4375,14 @@ $__System.register('2c', [], function (_export) {
 				return angular.copy(_controlsList);
 			}
 
-			function switchLanguage(language) {
-				if (angular.isString(language)) {
-					_currentLanguage = language;
-					$translate.use(language);
-				} else {
-					setDefaultLanguage();
-				}
-			}
+			// function switchLanguage(language){
+			// 	if (angular.isString(language)) {
+			// 		_currentLanguage = language;
+			// 		$translate.use(language);
+			// 	}else{
+			// 		setDefaultLanguage();
+			// 	}
+			// }					
 
 			function isPreviewPanelVisible() {
 				return _showPreviewPanel;
@@ -4390,11 +4394,13 @@ $__System.register('2c', [], function (_export) {
 		}
 	}
 
+	// easyFormDragWayConfig.$inject = ['$translateProvider'];
+
 	return {
 		setters: [],
 		execute: function () {
 			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = 'easyFormDragWayConfig';
-			easyFormDragWayConfig.$inject = ['$translateProvider'];
+			easyFormDragWayConfig.$inject = [];
 
 			_export('default', easyFormDragWayConfig);
 

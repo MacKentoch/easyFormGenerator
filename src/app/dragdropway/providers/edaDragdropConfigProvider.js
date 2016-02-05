@@ -264,7 +264,6 @@ angular
                                                                     }
                                                                     return true;
                                                                   };
-
           Service.getDragDropPresentationModel = function(){
                                                   /**
                                                    * 

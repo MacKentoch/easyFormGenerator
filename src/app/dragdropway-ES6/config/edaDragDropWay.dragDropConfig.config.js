@@ -1,5 +1,5 @@
-function dragDropConfigFunct(dragDropConfigProvider) {
-  dragDropConfigProvider.setItemsNotTocount({
+function dragDropConfigFunct(easyFormDragWayConfigProvider) {
+  easyFormDragWayConfigProvider.setItemsNotTocount({
     //placeholder :         '',
     itemBeingDragged :    'dndDraggingSource'    
   });
@@ -7,7 +7,7 @@ function dragDropConfigFunct(dragDropConfigProvider) {
 
 
 dragDropConfigFunct.$inject = [
-  'dragDropConfigProvider'
+  'easyFormDragWayConfigProvider'
 ];
 
 export default dragDropConfigFunct;

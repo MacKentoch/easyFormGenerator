@@ -1,4 +1,4 @@
-function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, dragDropConfigProvider) {
+function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, easyFormDragWayConfigProvider) {
 
   formlyConfigProvider.setType({
     name  		: 'blank',
@@ -18,7 +18,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlyOptions 		: []
   });
 
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	:   
       `<div class="col-md-12">
           <div class="form-group">                                          
@@ -49,7 +49,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
   });
 
 
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	: [  
       `<div class="col-md-12">
           <div class="form-group">                                          
@@ -94,7 +94,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlyOptions 		: []
   });
   
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfig.addControlToDragDropPresentationModel({
     'label' 	:  
       `<div class="col-md-12">
           <div class="form-group">                                          
@@ -124,7 +124,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlyOptions 		: []
   });
   
-  
+
   /**
    * drag and drop text input (basic) control template
    *
@@ -133,7 +133,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label' 	:  
         `<div class="col-md-12">
           <div class="form-group">
@@ -183,7 +183,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label' 	:
         `<div class="col-md-12">
           <div class="form-group">
@@ -307,7 +307,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	:`
     <div class="col-md-12">
       <div class="form-group">
@@ -358,7 +358,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     'label' 	: `
       <div class="col-md-12">
           <div class="form-group">
@@ -412,7 +412,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */	
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	: `
       <div class="col-md-12">
           <div class="form-group">
@@ -460,7 +460,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     'label' 	: `
       <div class="col-md-12">       
         <div class="form-group">
@@ -518,7 +518,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	: `
     <div class="col-md-12">
       <div class="checkbox">
@@ -579,7 +579,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel(
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel(
   {
     label 	: `
       <div class="col-md-12">
@@ -651,7 +651,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     * @PARAM 2 : object to indicates in which group of control it will be inserted
     *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
     */
-  dragDropConfigProvider.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     label 	: `
       <div class="col-md-12">
           <div class="form-group">
@@ -680,7 +680,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
 formlyConfig.$inject = [
   'formlyConfigProvider',
   'EasyFormGenFormlyBindingModelsProvider',
-  'dragDropConfigProvider'
+  'easyFormDragWayConfigProvider'
 ];
 
 export default formlyConfig;
