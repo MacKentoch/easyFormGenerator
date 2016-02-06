@@ -1,28 +1,39 @@
 // TODO : Add here configs from ES5 dragDropConfigProvider
 
+import {
+  LIST_DRAG_DROP_ITEM_CSS_CLASSES,
+  DRAG_DROP_CONFIG_MODEL,
+  DRAG_DROP_PRESENTATION_MODEL,
+  ITEMS_NOT_TO_COUNT_FOR_REAL
+} 	from './edaDragDropWay.edaDragdropWayEasyFormGen.provider.helpers';
+
 const EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = 'easyFormDragWayConfig';
 
 function easyFormDragWayConfig() {
-	let _configuration 			= defaultConfig();
-	let _controlsList				= controlsList();
+
+	let _listDragDropItemCssClasses = [].concat(LIST_DRAG_DROP_ITEM_CSS_CLASSES);
+	let _dragDropConfigModel 				= angular.copy(DRAG_DROP_CONFIG_MODEL);
+	let _dragDropPresentationModel 	= [].concat(DRAG_DROP_PRESENTATION_MODEL);
+	let _itemsNotToCountFoReal 			= angular.copy(ITEMS_NOT_TO_COUNT_FOR_REAL);
+
+	let _configuration 							= defaultConfig();
+	let _controlsList								= controlsList();
 	// let _defaultLanguage		= getDefaultLanguage();
 	// let _currentLanguage		= initDefaultLanguage();
-	let _showPreviewPanel		= getDefaultshowPreviewPanel();
-	let _showPreviewModels	= getDefaultShowPreviewModel();	
+	let _showPreviewPanel						= getDefaultshowPreviewPanel();
+	let _showPreviewModels					= getDefaultShowPreviewModel();	
 	/* jshint validthis:true */
-	this.$get 							= easyFormDragDropWayConfigGET;
-	this.setModalAnimation 	= setModalAnimation;
-	this.getModalAnimation	= getModalAnimation;
-	this.configuration			= _configuration;
-	this.getEnabledControls = getEnabledControls;
-	this.disableControl			= disableControl;
-	this.enableControl			= enableControl;
+	this.$get 											= easyFormDragDropWayConfigGET;
+	this.setModalAnimation 					= setModalAnimation;
+	this.getModalAnimation					= getModalAnimation;
+	this.configuration							= _configuration;
+	this.getEnabledControls 				= getEnabledControls;
+	this.disableControl							= disableControl;
+	this.enableControl							= enableControl;
 	// this.setLanguage				= setLanguage;
 	// this.getCurrentLanguage	= getCurrentLanguage;
-	this.showPreviewPanel		= showPreviewPanel;
-	this.showPreviewModels	= showPreviewModels;	
-	
-	
+	this.showPreviewPanel						= showPreviewPanel;
+	this.showPreviewModels					= showPreviewModels;	
 	
 	//set default config
 	function defaultConfig(){
