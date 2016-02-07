@@ -11,36 +11,61 @@ const EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = 'easyFormDragWayConfig';
 
 function easyFormDragWayConfig() {
 
-	let _listDragDropItemCssClasses = [].concat(LIST_DRAG_DROP_ITEM_CSS_CLASSES);
-	let _dragDropConfigModel 				= angular.copy(DRAG_DROP_CONFIG_MODEL);
-	let _dragDropPresentationModel 	= [].concat(DRAG_DROP_PRESENTATION_MODEL);
-	let _itemsNotToCountFoReal 			= angular.copy(ITEMS_NOT_TO_COUNT_FOR_REAL);
+	let _listDragDropItemCssClasses 						= [].concat(LIST_DRAG_DROP_ITEM_CSS_CLASSES);
+	let _dragDropConfigModel 										= angular.copy(DRAG_DROP_CONFIG_MODEL);
+	let _dragDropPresentationModel 							= [].concat(DRAG_DROP_PRESENTATION_MODEL);
+	let _itemsNotToCountFoReal 									= angular.copy(ITEMS_NOT_TO_COUNT_FOR_REAL);
 
-	let _configuration 							= defaultConfig();
-	let _controlsList								= controlsList();
+	let _configuration 													= defaultConfig();
+	let _controlsList														= controlsList();
 	// let _defaultLanguage		= getDefaultLanguage();
 	// let _currentLanguage		= initDefaultLanguage();
-	let _showPreviewPanel						= getDefaultshowPreviewPanel();
-	let _showPreviewModels					= getDefaultShowPreviewModel();	
+	let _showPreviewPanel												= getDefaultshowPreviewPanel();
+	let _showPreviewModels											= getDefaultShowPreviewModel();	
 	/* jshint validthis:true */
-	this.$get 											= easyFormDragDropWayConfigGET;
-	this.setModalAnimation 					= setModalAnimation;
-	this.getModalAnimation					= getModalAnimation;
-	this.configuration							= _configuration;
-	this.getEnabledControls 				= getEnabledControls;
-	this.disableControl							= disableControl;
-	this.enableControl							= enableControl;
+	this.$get 																	= easyFormDragDropWayConfigGET;
+	this.setModalAnimation 											= setModalAnimation;
+	this.getModalAnimation											= getModalAnimation;
+	this.configuration													= _configuration;
+	this.getEnabledControls 										= getEnabledControls;
+	this.disableControl													= disableControl;
+	this.enableControl													= enableControl;
 	// this.setLanguage				= setLanguage;
 	// this.getCurrentLanguage	= getCurrentLanguage;
-	this.showPreviewPanel						= showPreviewPanel;
-	this.showPreviewModels					= showPreviewModels;	
+	this.showPreviewPanel												= showPreviewPanel;
+	this.showPreviewModels											= showPreviewModels;	
+
+	this.setListItemCssClass 										= setListItemCssClass;
+	this.getItemsNotTocount	 										= getItemsNotTocount;
+	this.setItemsNotTocount 										= setItemsNotTocount;
+	this.addControlToDragDropPresentationModel 	= addControlToDragDropPresentationModel;
 	
+
+	function setListItemCssClass(fromConfig) {
+		_listDragDropItemCssClasses = [].concat(fromConfig);
+	}
+
+	function getItemsNotTocount() {
+		return _itemsNotToCountFoReal;
+	}
+
+	function setItemsNotTocount(fromConfig) {
+		_itemsNotToCountFoReal = angular.copy(fromConfig);	
+	}
+
 	//set default config
 	function defaultConfig(){
 		let  _defaultConfiguration = {
 			modalAnimated : false
 		};
 		return _defaultConfiguration;
+	}
+
+	function addControlToDragDropPresentationModel(controlToAdd, groupToAdd) {
+    if (typeof controlToAdd !== 'undefined' &&
+        typeof groupToAdd   !== 'undefined') {
+      addToGroupControl(controlToAdd, groupToAdd);
+    }		
 	}
 	
 
@@ -203,6 +228,59 @@ function easyFormDragWayConfig() {
 		}				
 		
 	}
+
+  /**
+   * addToGroupControl : add control to _dragDropPresentationModel
+   * @param {[type]} thisControl : control to add
+   * @param {[type]} thisGroup   : groupId wher this control should be added
+   *
+   * NOTE : if _dragDropPresentationModel wrong initialized it will create list of group conforming to 
+   * configModel
+   */
+  function addToGroupControl(thisControl, thisGroup){
+    /**
+     * search group if already exists
+     */
+    if (_dragDropPresentationModel[0].length > 0) {
+      /**
+       * case when _dragDropConfigModel.containerConfig.decoration.length is > to _dragDropPresentationModel[0].length
+       *
+       * for instance : initialization _dragDropPresentationModel[0] in between
+       */
+      if (_dragDropPresentationModel[0].length < _dragDropConfigModel.containerConfig.decoration.length) {
+        let missingGroupNumber = _dragDropConfigModel.containerConfig.decoration.length - _dragDropPresentationModel[0].length;
+
+        for (let i = 0; i < missingGroupNumber; i++) {
+          _dragDropPresentationModel[0].push([]);
+        }
+      }
+      /**
+       * push control to right index 
+       * (deduced by _dragDropConfigModel.containerConfig.decoration.WhenIndex value for groupId === thisGroup)
+       */
+       _dragDropConfigModel.containerConfig.decoration.forEach((groupConfig)=>{
+        if (thisGroup.addToGroupCtrl === groupConfig.groupId) {
+          _dragDropPresentationModel[0][groupConfig.WhenIndex].push(thisControl);
+        }
+       });
+    }else{
+      /**
+       * no group no control
+       *
+       * initialize _dragDropConfigModel.containerConfig.decoration list
+       */
+      _dragDropConfigModel.containerConfig.decoration.forEach(()=>_dragDropPresentationModel[0].push([]));
+      /**
+       * push control to right index 
+       * (deduced by _dragDropConfigModel.containerConfig.decoration.WhenIndex value for groupId === thisGroup)
+       */
+       _dragDropConfigModel.containerConfig.decoration.forEach((groupConfig)=>{
+        if (thisGroup.addToGroupCtrl === groupConfig.groupId) {
+          _dragDropPresentationModel[0][groupConfig.WhenIndex].push(thisControl);
+        }
+       }); 
+    }
+  } 	
 	
 }
 
