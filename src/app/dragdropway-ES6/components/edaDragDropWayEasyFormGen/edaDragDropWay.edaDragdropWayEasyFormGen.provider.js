@@ -39,7 +39,7 @@ function easyFormDragWayConfig() {
 	this.getItemsNotTocount	 										= getItemsNotTocount;
 	this.setItemsNotTocount 										= setItemsNotTocount;
 	this.addControlToDragDropPresentationModel 	= addControlToDragDropPresentationModel;
-	
+	this.getDragDropPresentationModel 					= getDragDropPresentationModel;
 
 	function setListItemCssClass(fromConfig) {
 		_listDragDropItemCssClasses = [].concat(fromConfig);
@@ -67,8 +67,11 @@ function easyFormDragWayConfig() {
       addToGroupControl(controlToAdd, groupToAdd);
     }		
 	}
-	
 
+  function getDragDropPresentationModel(){
+    return _dragDropPresentationModel;
+  }	
+	
 	//show preview panel by default
 	function getDefaultshowPreviewPanel(){
 		return true;
@@ -187,17 +190,42 @@ function easyFormDragWayConfig() {
 	function easyFormDragDropWayConfigGET(){		
 											
 		let service = {
-			setModalAnimation 			: setModalAnimationFct,
-			getModalAnimationValue 	: getModalAnimationValue,
-			getListEnabledControl		: getListEnabledControl,
-			// setLanguage 						: switchLanguage,
-			// getCurrentLanguage			: getCurrentLanguage,
-			isPreviewPanelVisible		: isPreviewPanelVisible,
-			arePreviewModelsVisible	: arePreviewModelsVisible
+			setModalAnimation 									: setModalAnimationFct,
+			getModalAnimationValue 							: getModalAnimationValue,
+			getListEnabledControl								: getListEnabledControl,
+			// setLanguage 											: switchLanguage,
+			// getCurrentLanguage								: getCurrentLanguage,
+			isPreviewPanelVisible								: isPreviewPanelVisible,
+			arePreviewModelsVisible							: arePreviewModelsVisible,
+			
+			getListItemCssClass 								: getListItemCssClass,
+			getItemsNotToCount 									: getItemsNotToCount,
+			getItemCssDependingNumberItemsInRow : getItemCssDependingNumberItemsInRow
 		};
 		return service;
 		
-		
+		function getItemCssDependingNumberItemsInRow(numberOfItems) {
+      if(typeof numberOfItems !== 'undefined'){
+        let classToReturn = '';
+        for (let  i = _listDragDropItemCssClasses.length - 1; i >= 0; i--) {
+          if (_listDragDropItemCssClasses[i].numberItemPerRow === numberOfItems) {
+            classToReturn = _listDragDropItemCssClasses[i].cssClass;  
+          }
+        }
+        return classToReturn;
+      }else{
+        return '';
+      }			
+		}
+
+		function getListItemCssClass() {
+			return _listDragDropItemCssClasses;	
+		}
+
+		function getItemsNotToCount() {
+			return _itemsNotToCountFoReal;
+		}
+
 		function getModalAnimationValue(){
 			return _configuration.modalAnimated;
 		}				
