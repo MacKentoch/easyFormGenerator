@@ -11,12 +11,12 @@ class leftPanelController{
 	constructor(toaster,
 							$timeout,
 							$selectOptionMange,
-							$modalProxy){
+							controllerModalProxy){
 								
 		this.toaster  						= toaster;
 		this.$timeout  						= $timeout;
 		this.$selectOptionMange  	= $selectOptionMange;
-		this.$modalProxy  				= $modalProxy;
+		this.controllerModalProxy = controllerModalProxy;
 		
 		this.init();
 	}
@@ -62,9 +62,9 @@ class leftPanelController{
 			for (let i = this.proxyModel.controls.length - 1; i >= 0; i--) {
 					if (this.proxyModel.controls[i].id === this.proxyModel.temporyConfig.selectedControl) this.modelproxyModel = this.proxyModel.controls[i];
 			}
-			if (this.proxyModel.temporyConfig.selectedControl === 'BasicSelect') this.$modalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
-			if (this.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') this.$modalProxy.bindGroupedSelectFromProxyModel(this.groupedSelectRowCollection, this.GroupedSelectGroups);
-			if (this.proxyModel.temporyConfig.selectedControl === 'Radio') this.$modalProxy.bindRadioFromProxyModel(this.radioRowCollection);		
+			if (this.proxyModel.temporyConfig.selectedControl === 'BasicSelect') this.controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
+			if (this.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') this.controllerModalProxy.bindGroupedSelectFromProxyModel(this.groupedSelectRowCollection, this.GroupedSelectGroups);
+			if (this.proxyModel.temporyConfig.selectedControl === 'Radio') this.controllerModalProxy.bindRadioFromProxyModel(this.radioRowCollection);		
 		}	
 	}	
 	
@@ -347,7 +347,7 @@ leftPanelController.$inject = [
 	'toaster',
 	'$timeout',
 	'$selectOptionMange',
-	'$modalProxy'	
+	'controllerModalProxy'	
 ];
 
 export default leftPanelController;

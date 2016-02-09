@@ -10,7 +10,7 @@
 const CONTROLLER_MODAL_PROXY  = 'controllerModalProxy';
 const INIT_OPTION_MODEL       = { rows : [] }; 
 
-class controllerModalProxy{
+class controllerModalProxy{ 
   
   constructor(EasyFormGenFormlyBindingModels){
     this.EasyFormGenFormlyBindingModels = EasyFormGenFormlyBindingModels;
@@ -408,7 +408,7 @@ class controllerModalProxy{
 }
 
 controllerModalProxy.$inject = [
-  'controllerModalProxy'
+  'EasyFormGenFormlyBindingModels'
 ];
 
 export default controllerModalProxy;

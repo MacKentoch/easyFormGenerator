@@ -19,7 +19,7 @@ class formFieldManage{
    *  PLEASE NOTE columns array contains objects that look like formly fields one
    */
   initConfigurationEditFromScratch(configurationModel, addStepWayProperties){
-    let configurationModelInit = this.initConfigurationEditFromScratchEasyFormGenFormlyBindingModels.getEasyFormInitialStateConfigurationModel(addStepWayProperties); 
+    let configurationModelInit = this.EasyFormGenFormlyBindingModels.getEasyFormInitialStateConfigurationModel(addStepWayProperties); 
     angular.copy(configurationModelInit, configurationModel);
   }  
   

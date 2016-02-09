@@ -2,13 +2,13 @@ const DRAG_DROP_ITEM_DECOR_SERVICE = 'dragDropItemDecorationService';
 
 class dragDropItemDecorationService {
 	
-	constructor(dragDropConfig){
-		this.dragDropConfig = dragDropConfig;
+	constructor(easyFormDragWayConfig){
+		this.easyFormDragWayConfig = easyFormDragWayConfig;
 		this.init();
 	}
 	
 	init(){
-		this._listItemClass = [].concat(this.dragDropConfig.getListItemCssClass());
+		this._listItemClass = [].concat(this.easyFormDragWayConfig.getListItemCssClass());
 	}
 	
 	getListClass(){
@@ -16,7 +16,7 @@ class dragDropItemDecorationService {
 	}	
 	
 	getCssClassWhenNumberItemsInRowIs(thisNumber){
-		return this.dragDropConfig.getItemCssDependingNumberItemsInRow(thisNumber);
+		return this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(thisNumber);
 	}
 	
 	applyCssClassWholeLine(model, indexColumn, indexLine, numberItems, restrictToThisIndexColumn){
@@ -27,7 +27,7 @@ class dragDropItemDecorationService {
 				typeof restrictToThisIndexColumn !== 'undefined') {
 			if (indexColumn === restrictToThisIndexColumn) {
 				for (let i = model[indexColumn][indexLine].length - 1; i >= 0; i--) {
-						model[indexColumn][indexLine][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(numberItems);
+						model[indexColumn][indexLine][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(numberItems);
 				}
 			} 
 			return true;
@@ -41,7 +41,7 @@ class dragDropItemDecorationService {
 				typeof model !== 'undefined') {
 			for (let cpt = model[indexColumn].length - 1; cpt >= 0; cpt--) {
 				for (let i = model[indexColumn][cpt].length - 1; i >= 0; i--) {
-						model[indexColumn][cpt][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
+						model[indexColumn][cpt][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
 				}
 			}	
 			return true;
@@ -54,7 +54,7 @@ class dragDropItemDecorationService {
 }
 
 dragDropItemDecorationService.$inject = [
-	'dragDropConfig'
+	'easyFormDragWayConfig'
 ];
 
 export default dragDropItemDecorationService;

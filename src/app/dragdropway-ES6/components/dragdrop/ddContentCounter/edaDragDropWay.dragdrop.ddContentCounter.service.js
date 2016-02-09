@@ -2,14 +2,14 @@ const DRAG_DROP_ITEM_COUNTER_SERVICE = 'dragDropItemCounterService';
 
 class dragDropItemCounterService{
 	
-	constructor(dragDropConfig){
-		this.dragDropConfig = dragDropConfig;
+	constructor(easyFormDragWayConfig){
+		this.easyFormDragWayConfig = easyFormDragWayConfig;
 		this.init();
 	}
 	
 	init(){
 		this._modelItemRealCounter = [];
-		this._itemsNotToCount = angular.copy(this.dragDropConfig.getItemsNotToCount());
+		this._itemsNotToCount = angular.copy(this.easyFormDragWayConfig.getItemsNotToCount());
 	}
 		
 	getItemsNotToCount(){
@@ -42,7 +42,7 @@ class dragDropItemCounterService{
 				for (let j = 0; j < listCssToApply.length; j++) {
 					if(	listCssToApply[j].item 		=== i &&
 							listCssToApply[j].isReal 	=== true){
-						fullModel[columIndex][lineIndex][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
+						fullModel[columIndex][lineIndex][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(realCount);
 					} 	
 				}
 			}																					
@@ -54,7 +54,7 @@ class dragDropItemCounterService{
 }
 
 dragDropItemCounterService.$inject = [
-	'dragDropConfig'
+	'easyFormDragWayConfig'
 ];
 
 export default dragDropItemCounterService;

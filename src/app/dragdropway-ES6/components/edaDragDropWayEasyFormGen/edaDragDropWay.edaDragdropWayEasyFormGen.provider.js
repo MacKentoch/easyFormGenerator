@@ -54,7 +54,7 @@ function easyFormDragWayConfig() {
 	}
 
 	//set default config
-	function defaultConfig(){
+	function defaultConfig() {
 		let  _defaultConfiguration = {
 			modalAnimated : false
 		};
@@ -148,11 +148,11 @@ function easyFormDragWayConfig() {
 	// 	return _defaultLanguage;
 	// }
 	
-	function getEnabledControls(){
+	function getEnabledControls() {
 		return _controlsList;
 	}
 	
-	function disableControl(controlName){
+	function disableControl(controlName) {
 		if (angular.isString(controlName)) {
 			angular.forEach(_controlsList, (aControl) => {
 				if (aControl.name === controlName) aControl.enabled = false;
@@ -160,7 +160,7 @@ function easyFormDragWayConfig() {
 		}
 	}
 	
-	function enableControl(controlName){
+	function enableControl(controlName) {
 		if (angular.isString(controlName)) {
 			angular.forEach(_controlsList, (aControl) => {
 				if (aControl.name === controlName) aControl.enabled = true;
@@ -168,7 +168,7 @@ function easyFormDragWayConfig() {
 		}				
 	}						
 	
-	function setModalAnimation(flagConfig){
+	function setModalAnimation(flagConfig) {
 		let valueToApply = (flagConfig === true) ? 
 													flagConfig  
 												: (flagConfig === false ? 
@@ -178,7 +178,7 @@ function easyFormDragWayConfig() {
 		_configuration.modalAnimated = valueToApply;
 	}
 	
-	function getModalAnimation(){																	
+	function getModalAnimation() {																	
 		return _configuration.modalAnimated;
 	}		
 	
@@ -200,10 +200,55 @@ function easyFormDragWayConfig() {
 			
 			getListItemCssClass 								: getListItemCssClass,
 			getItemsNotToCount 									: getItemsNotToCount,
-			getItemCssDependingNumberItemsInRow : getItemCssDependingNumberItemsInRow
+			getItemCssDependingNumberItemsInRow : getItemCssDependingNumberItemsInRow,
+			getDistinctItemCssClass 						: getDistinctItemCssClass,
+			getDragDropConfigModel 							: getDragDropConfigModel,
+			getDragDropPresentationModel 				: getDragDropPresentationModel,
+			setDragDropConfigContainerDecorationCollapse : setDragDropConfigContainerDecorationCollapse
 		};
 		return service;
 		
+		function getDragDropPresentationModel() {
+			return _dragDropPresentationModel;
+		}
+
+		function setDragDropConfigContainerDecorationCollapse(dragDropConfigModel, indexValue, isCollapsedBool) {
+	   	if (typeof indexValue       !== 'undefined' &&
+					typeof isCollapsedBool  !== 'undefined') {
+	        if (indexValue === parseInt(indexValue, 10)) {
+	          dragDropConfigModel.containerConfig.decoration[indexValue].isCollapsed = isCollapsedBool;
+	        }
+	     }
+	  	return true;
+		}
+	
+
+		function getDragDropConfigModel() {
+			return _dragDropConfigModel;
+		}
+
+		function getDistinctItemCssClass() {
+      let distinctCssClass = [];
+      angular.forEach(_listDragDropItemCssClasses, (valueRef)=>{
+
+        let cssClassRef = valueRef.cssClass;
+
+        if (distinctCssClass.length === 0){
+          distinctCssClass.push(cssClassRef);
+        } else {
+          let canAdd = true;
+          angular.forEach(distinctCssClass, (valueProc)=>{
+	          let cssClassProc = valueProc;
+	          if (cssClassRef === cssClassProc) {
+	          	canAdd = false;
+	          }
+          });
+          if (canAdd) distinctCssClass.push(cssClassRef);
+        }
+      });
+      return distinctCssClass;			
+		}
+
 		function getItemCssDependingNumberItemsInRow(numberOfItems) {
       if(typeof numberOfItems !== 'undefined'){
         let classToReturn = '';
@@ -254,7 +299,6 @@ function easyFormDragWayConfig() {
 		function arePreviewModelsVisible(){
 			return _showPreviewModels;
 		}				
-		
 	}
 
   /**
@@ -309,7 +353,7 @@ function easyFormDragWayConfig() {
        }); 
     }
   } 	
-	
+
 }
 
 // easyFormDragWayConfig.$inject = ['$translateProvider'];

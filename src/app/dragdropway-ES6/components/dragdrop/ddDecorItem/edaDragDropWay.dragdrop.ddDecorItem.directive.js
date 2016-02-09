@@ -1,9 +1,9 @@
-/* global angular */
+
 import dragdropItemTemplate from './edaDragDropWay.dragdrop.ddDecorItem.template.html!text';
 
 const DRAG_DROP_DECOR_ITEM = 'ddDecorItem';
 
-function ddDecorItem(dragDropConfig){
+function ddDecorItem(easyFormDragWayConfig){
 	let directive = {
 		restrict			: 'A',
 		scope					:  {
@@ -24,7 +24,7 @@ function ddDecorItem(dragDropConfig){
 		let verboseModeActive = $scope.verboseMode;
 		let currentIndex      = $scope.currentIndex;
 		let parentIndex       = $scope.parentIndex;
-		let listClass         = dragDropConfig.getDistinctItemCssClass();
+		let listClass         = easyFormDragWayConfig.getDistinctItemCssClass();
 	
 	
 		/**
@@ -87,7 +87,7 @@ function ddDecorItem(dragDropConfig){
 
 
 ddDecorItem.$inject = [
-	'dragDropConfig'
+	'easyFormDragWayConfig'
 ];
 
 export default ddDecorItem;

@@ -3,13 +3,15 @@ const DRAG_DROP_CONFIG_PROXY_SERVICE = 'ddModelConfModelProxyService';
 class ddModelConfModelProxyService{
   
   constructor(
-    EasyFormGenFormlyBindingModels, 
-    controllerModalProxy, 
-    dragDropConfig, 
+    EasyFormGenFormlyBindingModels,  
+    // controllerModalProxy, 
+    // dragDropConfig, 
+    easyFormDragWayConfig,
     $parse){
     this.EasyFormGenFormlyBindingModels = EasyFormGenFormlyBindingModels;
-    this.controllerModalProxy           = controllerModalProxy;
-    this.dragDropConfig                 = dragDropConfig;
+    // this.controllerModalProxy           = controllerModalProxy;
+    // this.dragDropConfig                 = dragDropConfig;
+    this.easyFormDragWayConfig          = easyFormDragWayConfig;
     this.$parse                         = $parse;
     this.init();  
   }
@@ -112,7 +114,7 @@ class ddModelConfModelProxyService{
         });
         dragDropModel[1][aConfigLineIndex].push(dragdropControlRef);
         //update class depending number of control per line
-        let cssClassToApply = this.dragDropConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
+        let cssClassToApply = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
         angular.forEach(dragDropModel[1][aConfigLineIndex], (ddControlToUpdate)=>ddControlToUpdate.cssClass = cssClassToApply);
       });	            
     });
@@ -227,8 +229,9 @@ class ddModelConfModelProxyService{
 
 ddModelConfModelProxyService.$inject = [
   'EasyFormGenFormlyBindingModels',
-  'controllerModalProxy',
-  'dragDropConfig',
+  // 'controllerModalProxy',
+  // 'dragDropConfig',
+  'easyFormDragWayConfig',
   '$parse'  
 ];
 

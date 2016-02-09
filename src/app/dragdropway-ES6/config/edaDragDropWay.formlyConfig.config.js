@@ -94,7 +94,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlyOptions 		: []
   });
   
-  easyFormDragWayConfig.addControlToDragDropPresentationModel({
+  easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
     'label' 	:  
       `<div class="col-md-12">
           <div class="form-group">                                          

@@ -18,8 +18,9 @@ function edaDragdropWayEasyFormGen(
 	$timeout, 
 	formFieldManage,
 	ddModelConfModelProxyService,
-	dragDropConfig){
-	
+	// dragDropConfig,
+	easyFormDragWayConfig){
+	 
 	let directive = {
 		restrict 			: 'E',
 		template			: edaDragDropWayEasyFormGenDirectiveTemplate,
@@ -120,9 +121,9 @@ function edaDragdropWayEasyFormGen(
 				//apply configuration model
 				scope.configuration = angular.copy(scope.configurationLoaded);
 				//apply ddModel
-				ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel(scope.configuration, scope.dragDropModel);            
+				ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel(scope.configuration, scope.vm.dragDropModel);            
 				updateConfigurationClassName(scope.configuration);
-				ddModelConfModelProxyService.refreshControlsKeys(scope.configuration, scope.dragDropModel);             
+				ddModelConfModelProxyService.refreshControlsKeys(scope.configuration, scope.vm.dragDropModel);             
 				//apply formly model
 				formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.dataModel);          
 				scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
@@ -136,7 +137,7 @@ function edaDragdropWayEasyFormGen(
          
 		function updateConfigurationClassName(configModel){
 			angular.forEach(configModel.lines, (aline)=>{
-				let cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
+				let cssClassToApply = easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
 				angular.forEach(aline.columns, (aControl)=> aControl.control.className = cssClassToApply); 
 			});         
 		}
@@ -151,7 +152,8 @@ edaDragdropWayEasyFormGen.$inject = [
 	'$timeout', 
 	'formFieldManage',
 	'ddModelConfModelProxyService',
-	'dragDropConfig'	
+	// 'dragDropConfig',
+	'easyFormDragWayConfig'	
 ];
 
 export default edaDragdropWayEasyFormGen;

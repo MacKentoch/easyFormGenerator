@@ -1,6 +1,6 @@
 /* global angular */
 
-import ddNoEditableControl, {
+import easyFormDragWayConfig, {
 	EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME
 } 																		from './edaDragDropWay.edaDragdropWayEasyFormGen.provider';
 import edaDragDropWayEasyFormGenCtrl, {
@@ -15,6 +15,6 @@ const DRAGDROP_MODULE = 'edaDragDropWay.main.module';
 
 export default angular
 								.module(DRAGDROP_MODULE, [])
-								.provider(EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, ddNoEditableControl)
+								.provider(EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, easyFormDragWayConfig)
 								.controller(DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragDropWayEasyFormGenCtrl)
 								.directive(EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, edaDragdropWayEasyFormGen);

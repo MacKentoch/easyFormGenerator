@@ -29,7 +29,7 @@ class edaDragDropWayEasyFormGenCtrl{
     formFieldManage, 
     controllerModalProxy,
     dragDropItemDecorationService,
-    dragDropConfig,
+    // dragDropConfig,
     ddModelConfModelProxyService,
     ddItemRightClickedManager,
     easyFormDragWayConfig   
@@ -45,7 +45,7 @@ class edaDragDropWayEasyFormGenCtrl{
     this.formFieldManage                  = formFieldManage; 
     this.controllerModalProxy             = controllerModalProxy;
     this.dragDropItemDecorationService    = dragDropItemDecorationService;
-    this.dragDropConfig                   = dragDropConfig;
+    // this.dragDropConfig                   = dragDropConfig;
     this.ddModelConfModelProxyService     = ddModelConfModelProxyService;
     this.ddItemRightClickedManager        = ddItemRightClickedManager;
     this.easyFormDragWayConfig            = easyFormDragWayConfig;
@@ -62,13 +62,13 @@ class edaDragDropWayEasyFormGenCtrl{
     this.wfFormFields                     = [];
     this.wfFormFieldsOnlyNeededProperties = [];
     this.ihm                              = initIhmModel();
-    this.easyFormDragDropProperties       = this.dragDropConfig.getDragDropConfigModel();
-    this.dragDropModel                    = [].concat(this.dragDropConfig.getDragDropPresentationModel());
+    this.easyFormDragDropProperties       = this.easyFormDragWayConfig.getDragDropConfigModel();
+    this.dragDropModel                    = [].concat(this.easyFormDragWayConfig.getDragDropPresentationModel());
     this.numberOfColumns                  = 1;  
     this.MaxNumberOfColumns               = 3;
     this.MinNumberOfColumns               = 1;
     this.configuration                    = {};
-    this.animationsEnabled                = this.easyFormSteWayConfig.getModalAnimationValue(); 
+    this.animationsEnabled                = this.easyFormDragWayConfig.getModalAnimationValue(); 
     this.editPanelModel                   = { toggle : false };
     this.debugProxyModel                  = this.controllerModalProxy.ProxyModel;
     this.model                            = [];
@@ -80,7 +80,7 @@ class edaDragDropWayEasyFormGenCtrl{
   
   collapseAllGroupControl(allExceptThisGroupIndex){        
     angular.forEach(this.easyFormDragDropProperties.containerConfig.decoration, (value)=>{
-      if (value.WhenIndex !== allExceptThisGroupIndex) this.dragDropConfig.setDragDropConfigContainerDecorationCollapse(this.easyFormDragDropProperties, value.WhenIndex, true);
+      if (value.WhenIndex !== allExceptThisGroupIndex) this.easyFormDragWayConfig.setDragDropConfigContainerDecorationCollapse(this.easyFormDragDropProperties, value.WhenIndex, true);
     });
   }
   
@@ -427,7 +427,7 @@ edaDragDropWayEasyFormGenCtrl.$inject = [
     'formFieldManage', 
     'controllerModalProxy',
     'dragDropItemDecorationService',
-    'dragDropConfig',
+    // 'dragDropConfig',
     'ddModelConfModelProxyService',
     'ddItemRightClickedManager' ,
     'easyFormDragWayConfig'

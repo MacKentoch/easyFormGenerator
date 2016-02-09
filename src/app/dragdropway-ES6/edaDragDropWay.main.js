@@ -1,8 +1,10 @@
 import './edaDragDropWay.vendors.adapter';
 
 import formlyConfigFunct        from './config/edaDragDropWay.formlyConfig.config';
-import dragDropConfigFunt       from './config/edaDragDropWay.dragDropConfig.config';
-
+import dragDropConfigFunt, {
+  EASY_FORM_DD_VERSION_NAME,
+  EASY_FORM_DD_VERSION_VALUE
+}                               from './config/edaDragDropWay.dragDropConfig.config';
 import coreModule								from './core/edaDragDropWay.core.module';
 import leftPanelModule 					from './components/leftPanel/edaDragDropWay.leftPanel.module';
 import formlyProxyModule        from './components/formlyProxy/edaDragDropWay.formlyProxy.formFieldManage.module';
@@ -34,6 +36,7 @@ const DRAG_DROP_MODULES_INJECT 		= [
 let mainModule = angular
 									.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT)
                   .config(dragDropConfigFunt)
-                  .config(formlyConfigFunct);
+                  .config(formlyConfigFunct)
+                  .value(EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE);
 									
 export default mainModule;

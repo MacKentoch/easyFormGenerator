@@ -16,7 +16,7 @@ $__System.register("2", [], function (_export) {
 $__System.register('3', [], function (_export) {
   'use strict';
 
-  function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, dragDropConfigProvider) {
+  function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvider, easyFormDragWayConfigProvider) {
 
     formlyConfigProvider.setType({
       name: 'blank',
@@ -36,7 +36,7 @@ $__System.register('3', [], function (_export) {
       formlyOptions: []
     });
 
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '<div class="col-md-12">\n          <div class="form-group">                                          \n            <div class="">\n            </div>\n          </div>\n      </div>',
       control: 'empty',
       cssClass: 'col-xs-12'
@@ -57,7 +57,7 @@ $__System.register('3', [], function (_export) {
       formlyOptions: []
     });
 
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: ['<div class="col-md-12">\n          <div class="form-group">                                          \n            <div class="">\n              <h2 class="text-center">Header</h2>\n              <hr/>\n            </div>\n          </div>\n      </div>'].join(''),
       control: 'Header',
       cssClass: 'col-xs-12'
@@ -85,7 +85,7 @@ $__System.register('3', [], function (_export) {
       formlyOptions: []
     });
 
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label': '<div class="col-md-12">\n          <div class="form-group">                                          \n            <div class="">\n              <h4 class="text-center">SubTitle</h4>\n              <hr/>\n            </div>\n          </div>\n      </div>',
       'control': 'Subtitle',
       'cssClass': 'col-xs-12'
@@ -114,7 +114,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label': '<div class="col-md-12">\n          <div class="form-group">\n            <label for="inputText" class="control-label textControlLabel pull-left">\n              title for text input<span class="textControlLabel ng-scope">*</span>\n            </label>\n            <div class="">\n              <input type="text" disabled class="form-control fakeControl" id="inputText" placeholder="basic input">\n              <p class="help-block pull-left">Description</p>\n            </div>\n          </div>\n        </div>',
       'control': 'TextInput',
       'cssClass': 'col-xs-12'
@@ -150,7 +150,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label': '<div class="col-md-12">\n          <div class="form-group">\n            <label for="inputPass" class="control-label textControlLabel ng-binding pull-left">\n            title for password input<span class="textControlLabel ng-scope">*</span>\n            </label>\n            <div class="">\n              <input type="password" disabled class="form-control fakeControl" id="inputPass" placeholder="password input">\n              <p class="help-block ng-binding pull-left">Description</p>\n            </div>\n          </div>\n        </div>',
       'control': 'Password',
       'cssClass': 'col-xs-12'
@@ -237,7 +237,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '\n    <div class="col-md-12">\n      <div class="form-group">\n        <label for="inputDate" class="control-label textControlLabel ng-binding pull-left">\n         title for date input<span class="textControlLabel ng-scope">*</span>\n        </label>\n        <div class="col-xs-12 col-sm-12 col-md-12 demoddDatepicker">\n\t\t\t\t\t<div class="input-group">\n  \t\t\t\t\t<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>\n  \t\t\t\t\t<input type="text" disabled class="form-control fakeControl">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n        <p class="help-block pull-left">description</p>\n      </div>\n     </div>',
       control: 'Date',
       cssClass: 'col-xs-12'
@@ -273,7 +273,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label': '\n      <div class="col-md-12">\n          <div class="form-group">\n            <label for="textArea" class="control-label \n      \t\t\t\t\t\t\ttextControlLabel pull-left">title for textarea <span class="textControlLabel">*</span></label> \n            <div class="">\n              <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>\n              <p class="help-block pull-left">description</p>        \n            </div>\n          </div>                    \n      </div>',
       'control': 'Texarea',
       'cssClass': 'col-xs-12'
@@ -312,7 +312,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '\n      <div class="col-md-12">\n          <div class="form-group">\n            <label for="textArea" class="control-label \n      \t\t\t\t\t\t\ttextControlLabel pull-left">title for rich text editor <span class="textControlLabel">*</span></label>\n            <div class="">\n              <textarea disabled class="form-control dragItemtextarea fakeControl" ng-model="model[options.key]" rows="1" id="textArea"></textarea>\n              <p class="help-block">description</p>\n            </div>\n          </div>\n      </div>',
       control: 'RichTextEditor',
       cssClass: 'col-xs-12'
@@ -349,7 +349,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       'label': '\n      <div class="col-md-12">       \n        <div class="form-group">\n          <label for="vertRadio" class="control-label textControlLabel pull-left">title for radio <span class="textControlLabel">*</span></label>\n          <div class="interligne"></div>\n          <div class="pull-left">\n            <div class="radio">\n              <label class="fakeCheck">\n                <input type="radio" disabled name="optionsRadios" class="fakeCheck" id="optionsRadio-0" value="verticalRadio0" checked="">\n                option1\n              </label>\n            </div>\n            <div class="radio">\n              <label class="fakeCheck">\n                <input type="radio" disabled name="optionsRadios" class="fakeCheck"  id="optionsRadio-1" value="verticalRadio1" checked="">\n                option2\n              </label>\n            </div>\n            <p class="help-block pull-left">description</p>\n          </div>\n        </div>                           \n      </div>',
       'control': 'Radio',
       'cssClass': 'col-xs-12'
@@ -385,7 +385,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '\n    <div class="col-md-12">\n      <div class="checkbox">\n        <label class="fakeCheck">\n          <input type="checkbox" disabled class="fakeCheck" id="checkBox">\n      \t\t<span class="blackText ng-binding">label for checkbox </span>\n      \t\t<span class="textControlLabel ng-scope">*</span>\n        </label>\n      </div>\n      <p class="help-block ng-binding">description</p>\n    </div>',
       control: 'Checkbox',
       cssClass: 'col-xs-12'
@@ -427,7 +427,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '\n      <div class="col-md-12">\n        <div class="form-group">\n      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">\n\n      <ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"\n      \tng-model="fakeModelNyaSelectBasic"\n      \tdata-live-search="false">\n      \n         <button class="btn btn-default dropdown-toggle" disabled type="button">\n      \t\t <span class="pull-left filter-option">\n      \t\t\t <span class="ng-binding">Basic select</span>\n      \t\t</span>\n      \t\t&nbsp;<span class="caret"></span>\n        </button>\n\n      </div>\n      </div>',
       control: 'BasicSelect',
       cssClass: 'col-xs-12'
@@ -468,7 +468,7 @@ $__System.register('3', [], function (_export) {
       * @PARAM 2 : object to indicates in which group of control it will be inserted
       *  					(related to _dragDropConfigModel.containerConfig.decoration in dragDropConfig provider)
       */
-    dragDropConfigProvider.addControlToDragDropPresentationModel({
+    easyFormDragWayConfigProvider.addControlToDragDropPresentationModel({
       label: '\n      <div class="col-md-12">\n          <div class="form-group">\n      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectfordemo">\n      <ol class="nya-bs-select col-xs-12 col-sm-12 col-md-12 col-lg-12 ng-valid btn-group ng-dirty ng-valid-parse ng-touched"\n      \tng-model="fakeModelNyaSelectBasic"\n      \tdata-live-search="false">\n         <button class="btn btn-default dropdown-toggle" disabled type="button">\n      \t\t <span class="pull-left filter-option">\n      \t\t\t <span class="ng-binding">Grouped select</span>\n      \t\t</span>\n      \t\t&nbsp;<span class="caret"></span>\n      </button>\n      </div>\n      </div>',
       control: 'GroupedSelect',
       cssClass: 'col-xs-12'
@@ -480,32 +480,56 @@ $__System.register('3', [], function (_export) {
   return {
     setters: [],
     execute: function () {
-      formlyConfig.$inject = ['formlyConfigProvider', 'EasyFormGenFormlyBindingModelsProvider', 'dragDropConfigProvider'];
+      formlyConfig.$inject = ['formlyConfigProvider', 'EasyFormGenFormlyBindingModelsProvider', 'easyFormDragWayConfigProvider'];
 
       _export('default', formlyConfig);
     }
   };
 });
-$__System.register('4', [], function (_export) {
+$__System.registerDynamic("4", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "stepway": {"version": "1.1.0"},
+    "dragdropway": {"version": "1.1.0"},
+    "formviewer": {"version": "1.1.0"}
+  };
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('5', ['4'], function (_export) {
   'use strict';
 
-  function dragDropConfigFunct(dragDropConfigProvider) {
-    dragDropConfigProvider.setItemsNotTocount({
+  var easyFormConfig, EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE;
+
+  function dragDropConfigFunct(easyFormDragWayConfigProvider) {
+    easyFormDragWayConfigProvider.setItemsNotTocount({
       //placeholder :         '',
       itemBeingDragged: 'dndDraggingSource'
     });
   }
 
   return {
-    setters: [],
+    setters: [function (_) {
+      easyFormConfig = _['default'];
+    }],
     execute: function () {
-      dragDropConfigFunct.$inject = ['dragDropConfigProvider'];
+      EASY_FORM_DD_VERSION_NAME = 'easyFormGenVersion';
+      EASY_FORM_DD_VERSION_VALUE = easyFormConfig.dragdropway.version;
+      dragDropConfigFunct.$inject = ['easyFormDragWayConfigProvider'];
 
       _export('default', dragDropConfigFunct);
+
+      _export('EASY_FORM_DD_VERSION_NAME', EASY_FORM_DD_VERSION_NAME);
+
+      _export('EASY_FORM_DD_VERSION_VALUE', EASY_FORM_DD_VERSION_VALUE);
     }
   };
 });
-$__System.register('5', [], function (_export) {
+$__System.register('6', [], function (_export) {
 	'use strict';
 
 	var CORE_MODULES;
@@ -520,7 +544,7 @@ $__System.register('5', [], function (_export) {
 		}
 	};
 });
-$__System.register('6', [], function (_export) {
+$__System.register('7', [], function (_export) {
 	'use strict';
 
 	var dateFormats, setToday, clearDateTime;
@@ -545,18 +569,18 @@ $__System.register('6', [], function (_export) {
 		}
 	};
 });
-$__System.register('7', ['6', '8', '9'], function (_export) {
+$__System.register('8', ['7', '9', 'a'], function (_export) {
 	var dateFormats, setToday, clearDateTime, _createClass, _classCallCheck, LEFT_PANEL_CONTROLLER, LEFT_PANEL_CONTROLLERAS, leftPanelController;
 
 	return {
-		setters: [function (_3) {
-			dateFormats = _3.dateFormats;
-			setToday = _3.setToday;
-			clearDateTime = _3.clearDateTime;
+		setters: [function (_2) {
+			dateFormats = _2.dateFormats;
+			setToday = _2.setToday;
+			clearDateTime = _2.clearDateTime;
 		}, function (_) {
 			_createClass = _['default'];
-		}, function (_2) {
-			_classCallCheck = _2['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
 		}],
 		execute: function () {
 			'use strict';
@@ -565,13 +589,13 @@ $__System.register('7', ['6', '8', '9'], function (_export) {
 			LEFT_PANEL_CONTROLLERAS = 'leftPanelCtrl';
 
 			leftPanelController = (function () {
-				function leftPanelController(toaster, $timeout, $selectOptionMange, $modalProxy) {
+				function leftPanelController(toaster, $timeout, $selectOptionMange, controllerModalProxy) {
 					_classCallCheck(this, leftPanelController);
 
 					this.toaster = toaster;
 					this.$timeout = $timeout;
 					this.$selectOptionMange = $selectOptionMange;
-					this.$modalProxy = $modalProxy;
+					this.controllerModalProxy = controllerModalProxy;
 
 					this.init();
 				}
@@ -620,9 +644,9 @@ $__System.register('7', ['6', '8', '9'], function (_export) {
 							for (var i = this.proxyModel.controls.length - 1; i >= 0; i--) {
 								if (this.proxyModel.controls[i].id === this.proxyModel.temporyConfig.selectedControl) this.modelproxyModel = this.proxyModel.controls[i];
 							}
-							if (this.proxyModel.temporyConfig.selectedControl === 'BasicSelect') this.$modalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
-							if (this.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') this.$modalProxy.bindGroupedSelectFromProxyModel(this.groupedSelectRowCollection, this.GroupedSelectGroups);
-							if (this.proxyModel.temporyConfig.selectedControl === 'Radio') this.$modalProxy.bindRadioFromProxyModel(this.radioRowCollection);
+							if (this.proxyModel.temporyConfig.selectedControl === 'BasicSelect') this.controllerModalProxy.bindBasicSelectFromProxyModel(self.basicSelectRowCollection);
+							if (this.proxyModel.temporyConfig.selectedControl === 'GroupedSelect') this.controllerModalProxy.bindGroupedSelectFromProxyModel(this.groupedSelectRowCollection, this.GroupedSelectGroups);
+							if (this.proxyModel.temporyConfig.selectedControl === 'Radio') this.controllerModalProxy.bindRadioFromProxyModel(this.radioRowCollection);
 						}
 					}
 				}, {
@@ -916,7 +940,7 @@ $__System.register('7', ['6', '8', '9'], function (_export) {
 				return leftPanelController;
 			})();
 
-			leftPanelController.$inject = ['$scope', 'toaster', '$timeout', '$selectOptionMange', '$modalProxy'];
+			leftPanelController.$inject = ['$scope', 'toaster', '$timeout', '$selectOptionMange', 'controllerModalProxy'];
 
 			_export('default', leftPanelController);
 
@@ -926,7 +950,7 @@ $__System.register('7', ['6', '8', '9'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("b", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -936,7 +960,7 @@ $__System.registerDynamic("a", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.register('b', ['7', 'a'], function (_export) {
+$__System.register('c', ['8', 'b'], function (_export) {
 	'use strict';
 
 	var LEFT_PANEL_CONTROLLER, LEFT_PANEL_CONTROLLERAS, leftPanelTemplate, LEFT_PANEL_DIRECTIVE;
@@ -959,8 +983,8 @@ $__System.register('b', ['7', 'a'], function (_export) {
 		setters: [function (_) {
 			LEFT_PANEL_CONTROLLER = _.LEFT_PANEL_CONTROLLER;
 			LEFT_PANEL_CONTROLLERAS = _.LEFT_PANEL_CONTROLLERAS;
-		}, function (_a) {
-			leftPanelTemplate = _a['default'];
+		}, function (_b) {
+			leftPanelTemplate = _b['default'];
 		}],
 		execute: function () {
 			LEFT_PANEL_DIRECTIVE = 'leftPanel';
@@ -972,7 +996,7 @@ $__System.register('b', ['7', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('c', [], function (_export) {
+$__System.register('d', [], function (_export) {
   /* global angular */
   'use strict';
 
@@ -1018,16 +1042,16 @@ $__System.register('c', [], function (_export) {
     }
   };
 });
-$__System.register('d', ['8', '9', 'c'], function (_export) {
+$__System.register('e', ['9', 'a', 'd'], function (_export) {
   var _createClass, _classCallCheck, helpers, LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, selectOptionMange;
 
   return {
     setters: [function (_) {
       _createClass = _['default'];
-    }, function (_2) {
-      _classCallCheck = _2['default'];
-    }, function (_c) {
-      helpers = _c;
+    }, function (_a) {
+      _classCallCheck = _a['default'];
+    }, function (_d) {
+      helpers = _d;
     }],
     execute: function () {
       /* global angular */
@@ -1226,14 +1250,14 @@ $__System.register('d', ['8', '9', 'c'], function (_export) {
     }
   };
 });
-$__System.register('e', ['8', '9'], function (_export) {
+$__System.register('f', ['9', 'a'], function (_export) {
   var _createClass, _classCallCheck, CONTROLLER_MODAL_PROXY, INIT_OPTION_MODEL, controllerModalProxy;
 
   return {
     setters: [function (_2) {
       _createClass = _2['default'];
-    }, function (_3) {
-      _classCallCheck = _3['default'];
+    }, function (_a) {
+      _classCallCheck = _a['default'];
     }],
     execute: function () {
       /// <reference path="../../../../../typings/angularjs/angular.d.ts" />
@@ -1676,7 +1700,7 @@ $__System.register('e', ['8', '9'], function (_export) {
         return controllerModalProxy;
       })();
 
-      controllerModalProxy.$inject = ['controllerModalProxy'];
+      controllerModalProxy.$inject = ['EasyFormGenFormlyBindingModels'];
 
       _export('default', controllerModalProxy);
 
@@ -1684,7 +1708,7 @@ $__System.register('e', ['8', '9'], function (_export) {
     }
   };
 });
-$__System.register('f', ['7', 'b', 'd', 'e'], function (_export) {
+$__System.register('10', ['8', 'c', 'e', 'f'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -1693,15 +1717,15 @@ $__System.register('f', ['7', 'b', 'd', 'e'], function (_export) {
 		setters: [function (_) {
 			leftPanelController = _['default'];
 			LEFT_PANEL_CONTROLLER = _.LEFT_PANEL_CONTROLLER;
-		}, function (_b) {
-			leftPanel = _b['default'];
-			LEFT_PANEL_DIRECTIVE = _b.LEFT_PANEL_DIRECTIVE;
-		}, function (_d) {
-			selectOptionMange = _d['default'];
-			LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE = _d.LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE;
+		}, function (_c) {
+			leftPanel = _c['default'];
+			LEFT_PANEL_DIRECTIVE = _c.LEFT_PANEL_DIRECTIVE;
 		}, function (_e) {
-			controllerModalProxy = _e['default'];
-			CONTROLLER_MODAL_PROXY = _e.CONTROLLER_MODAL_PROXY;
+			selectOptionMange = _e['default'];
+			LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE = _e.LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE;
+		}, function (_f) {
+			controllerModalProxy = _f['default'];
+			CONTROLLER_MODAL_PROXY = _f.CONTROLLER_MODAL_PROXY;
 		}],
 		execute: function () {
 			LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';
@@ -1710,14 +1734,14 @@ $__System.register('f', ['7', 'b', 'd', 'e'], function (_export) {
 		}
 	};
 });
-$__System.register('10', ['8', '9'], function (_export) {
+$__System.register('11', ['9', 'a'], function (_export) {
   var _createClass, _classCallCheck, FORM_FIELD_MANAGE_SERVICE, formFieldManage;
 
   return {
     setters: [function (_) {
       _createClass = _['default'];
-    }, function (_2) {
-      _classCallCheck = _2['default'];
+    }, function (_a) {
+      _classCallCheck = _a['default'];
     }],
     execute: function () {
       'use strict';
@@ -1746,7 +1770,7 @@ $__System.register('10', ['8', '9'], function (_export) {
         }, {
           key: 'initConfigurationEditFromScratch',
           value: function initConfigurationEditFromScratch(configurationModel, addStepWayProperties) {
-            var configurationModelInit = this.initConfigurationEditFromScratchEasyFormGenFormlyBindingModels.getEasyFormInitialStateConfigurationModel(addStepWayProperties);
+            var configurationModelInit = this.EasyFormGenFormlyBindingModels.getEasyFormInitialStateConfigurationModel(addStepWayProperties);
             angular.copy(configurationModelInit, configurationModel);
           }
 
@@ -1957,7 +1981,7 @@ $__System.register('10', ['8', '9'], function (_export) {
     }
   };
 });
-$__System.register('11', [], function (_export) {
+$__System.register('12', [], function (_export) {
   'use strict';
 
   var initEasyFormListControls, initEasyFormEmptyConfigurationLineModel, initEmptyControlFieldModel, initEasyFormInitialStateConfigurationModel, initEasyFormInitialStateConfigurationModelAddOnForStepWay, initEasyFormReloadConfigurationModel, initHeaderTemplates, initFormlyControlTemplates, initParticularControlProperties;
@@ -2092,7 +2116,7 @@ $__System.register('11', [], function (_export) {
     }
   };
 });
-$__System.register('12', ['11'], function (_export) {
+$__System.register('13', ['12'], function (_export) {
   'use strict';
 
   var helpers, EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER;
@@ -2309,7 +2333,7 @@ $__System.register('12', ['11'], function (_export) {
     }
   };
 });
-$__System.register('13', ['10', '12'], function (_export) {
+$__System.register('14', ['11', '13'], function (_export) {
   'use strict';
 
   var formFieldManage, FORM_FIELD_MANAGE_SERVICE, EasyFormGenFormlyBindingModels, EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER, FORMLY_PROXY_MODULE;
@@ -2328,7 +2352,7 @@ $__System.register('13', ['10', '12'], function (_export) {
     }
   };
 });
-$__System.register('14', [], function (_export) {
+$__System.register('15', [], function (_export) {
 	'use strict';
 
 	var DD_CONTENT_COUNTER_DIRECTIVE;
@@ -2393,14 +2417,14 @@ $__System.register('14', [], function (_export) {
 		}
 	};
 });
-$__System.register('15', ['8', '9'], function (_export) {
+$__System.register('16', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DRAG_DROP_ITEM_COUNTER_SERVICE, dragDropItemCounterService;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_2) {
-			_classCallCheck = _2['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
 		}],
 		execute: function () {
 			'use strict';
@@ -2408,10 +2432,10 @@ $__System.register('15', ['8', '9'], function (_export) {
 			DRAG_DROP_ITEM_COUNTER_SERVICE = 'dragDropItemCounterService';
 
 			dragDropItemCounterService = (function () {
-				function dragDropItemCounterService(dragDropConfig) {
+				function dragDropItemCounterService(easyFormDragWayConfig) {
 					_classCallCheck(this, dragDropItemCounterService);
 
-					this.dragDropConfig = dragDropConfig;
+					this.easyFormDragWayConfig = easyFormDragWayConfig;
 					this.init();
 				}
 
@@ -2419,7 +2443,7 @@ $__System.register('15', ['8', '9'], function (_export) {
 					key: 'init',
 					value: function init() {
 						this._modelItemRealCounter = [];
-						this._itemsNotToCount = angular.copy(this.dragDropConfig.getItemsNotToCount());
+						this._itemsNotToCount = angular.copy(this.easyFormDragWayConfig.getItemsNotToCount());
 					}
 				}, {
 					key: 'getItemsNotToCount',
@@ -2451,7 +2475,7 @@ $__System.register('15', ['8', '9'], function (_export) {
 							for (var i = fullModel[columIndex][lineIndex].length - 1; i >= 0; i--) {
 								for (var j = 0; j < listCssToApply.length; j++) {
 									if (listCssToApply[j].item === i && listCssToApply[j].isReal === true) {
-										fullModel[columIndex][lineIndex][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(realCount);
+										fullModel[columIndex][lineIndex][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(realCount);
 									}
 								}
 							}
@@ -2463,7 +2487,7 @@ $__System.register('15', ['8', '9'], function (_export) {
 				return dragDropItemCounterService;
 			})();
 
-			dragDropItemCounterService.$inject = ['dragDropConfig'];
+			dragDropItemCounterService.$inject = ['easyFormDragWayConfig'];
 
 			_export('default', dragDropItemCounterService);
 
@@ -2471,7 +2495,7 @@ $__System.register('15', ['8', '9'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("16", [], true, function($__require, exports, module) {
+$__System.registerDynamic("17", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2481,7 +2505,7 @@ $__System.registerDynamic("16", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('17', ['16', '18'], function (_export) {
+$__System.register('18', ['17', '19'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -2596,14 +2620,14 @@ $__System.register('17', ['16', '18'], function (_export) {
 		}
 	};
 });
-$__System.register('18', ['8', '9'], function (_export) {
+$__System.register('19', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DD_DECOR_CONTAINER_CONTROLLER_NAME, DD_DECOR_CONTAINER_CONTROLLERAS_NAME, ddDecorContainerController;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_2) {
-			_classCallCheck = _2['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
 		}],
 		execute: function () {
 			/* global angular */
@@ -2660,7 +2684,7 @@ $__System.register('18', ['8', '9'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("19", [], true, function($__require, exports, module) {
+$__System.registerDynamic("1a", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2670,7 +2694,7 @@ $__System.registerDynamic("19", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('1a', ['19'], function (_export) {
+$__System.register('1b', ['1a'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -2733,8 +2757,8 @@ $__System.register('1a', ['19'], function (_export) {
 	}
 
 	return {
-		setters: [function (_) {
-			ddDecorDropZoneTemplate = _['default'];
+		setters: [function (_a) {
+			ddDecorDropZoneTemplate = _a['default'];
 		}],
 		execute: function () {
 			DD_DECOR_DROPZONE_DIRECTIVE = 'ddDecorDropZone';
@@ -2746,7 +2770,7 @@ $__System.register('1a', ['19'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("1b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("1c", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2756,13 +2780,12 @@ $__System.registerDynamic("1b", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('1c', ['1b'], function (_export) {
-	/* global angular */
+$__System.register('1d', ['1c'], function (_export) {
 	'use strict';
 
 	var dragdropItemTemplate, DRAG_DROP_DECOR_ITEM;
 
-	function ddDecorItem(dragDropConfig) {
+	function ddDecorItem(easyFormDragWayConfig) {
 		var directive = {
 			restrict: 'A',
 			scope: {
@@ -2783,7 +2806,7 @@ $__System.register('1c', ['1b'], function (_export) {
 			var verboseModeActive = $scope.verboseMode;
 			var currentIndex = $scope.currentIndex;
 			var parentIndex = $scope.parentIndex;
-			var listClass = dragDropConfig.getDistinctItemCssClass();
+			var listClass = easyFormDragWayConfig.getDistinctItemCssClass();
 
 			/**
    	* init css class
@@ -2847,12 +2870,12 @@ $__System.register('1c', ['1b'], function (_export) {
 	}
 
 	return {
-		setters: [function (_b) {
-			dragdropItemTemplate = _b['default'];
+		setters: [function (_c) {
+			dragdropItemTemplate = _c['default'];
 		}],
 		execute: function () {
 			DRAG_DROP_DECOR_ITEM = 'ddDecorItem';
-			ddDecorItem.$inject = ['dragDropConfig'];
+			ddDecorItem.$inject = ['easyFormDragWayConfig'];
 
 			_export('default', ddDecorItem);
 
@@ -2860,14 +2883,14 @@ $__System.register('1c', ['1b'], function (_export) {
 		}
 	};
 });
-$__System.register('1d', ['8', '9'], function (_export) {
+$__System.register('1e', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DRAG_DROP_ITEM_DECOR_SERVICE, dragDropItemDecorationService;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_2) {
-			_classCallCheck = _2['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
 		}],
 		execute: function () {
 			'use strict';
@@ -2875,17 +2898,17 @@ $__System.register('1d', ['8', '9'], function (_export) {
 			DRAG_DROP_ITEM_DECOR_SERVICE = 'dragDropItemDecorationService';
 
 			dragDropItemDecorationService = (function () {
-				function dragDropItemDecorationService(dragDropConfig) {
+				function dragDropItemDecorationService(easyFormDragWayConfig) {
 					_classCallCheck(this, dragDropItemDecorationService);
 
-					this.dragDropConfig = dragDropConfig;
+					this.easyFormDragWayConfig = easyFormDragWayConfig;
 					this.init();
 				}
 
 				_createClass(dragDropItemDecorationService, [{
 					key: 'init',
 					value: function init() {
-						this._listItemClass = [].concat(this.dragDropConfig.getListItemCssClass());
+						this._listItemClass = [].concat(this.easyFormDragWayConfig.getListItemCssClass());
 					}
 				}, {
 					key: 'getListClass',
@@ -2895,7 +2918,7 @@ $__System.register('1d', ['8', '9'], function (_export) {
 				}, {
 					key: 'getCssClassWhenNumberItemsInRowIs',
 					value: function getCssClassWhenNumberItemsInRowIs(thisNumber) {
-						return this.dragDropConfig.getItemCssDependingNumberItemsInRow(thisNumber);
+						return this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(thisNumber);
 					}
 				}, {
 					key: 'applyCssClassWholeLine',
@@ -2903,7 +2926,7 @@ $__System.register('1d', ['8', '9'], function (_export) {
 						if (typeof numberItems !== 'undefined' && typeof indexLine !== 'undefined' && typeof indexColumn !== 'undefined' && typeof model !== 'undefined' && typeof restrictToThisIndexColumn !== 'undefined') {
 							if (indexColumn === restrictToThisIndexColumn) {
 								for (var i = model[indexColumn][indexLine].length - 1; i >= 0; i--) {
-									model[indexColumn][indexLine][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(numberItems);
+									model[indexColumn][indexLine][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(numberItems);
 								}
 							}
 							return true;
@@ -2917,7 +2940,7 @@ $__System.register('1d', ['8', '9'], function (_export) {
 						if (typeof indexColumn !== 'undefined' && typeof model !== 'undefined') {
 							for (var cpt = model[indexColumn].length - 1; cpt >= 0; cpt--) {
 								for (var i = model[indexColumn][cpt].length - 1; i >= 0; i--) {
-									model[indexColumn][cpt][i].cssClass = this.dragDropConfig.getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
+									model[indexColumn][cpt][i].cssClass = this.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(model[indexColumn][cpt].length);
 								}
 							}
 							return true;
@@ -2930,7 +2953,7 @@ $__System.register('1d', ['8', '9'], function (_export) {
 				return dragDropItemDecorationService;
 			})();
 
-			dragDropItemDecorationService.$inject = ['dragDropConfig'];
+			dragDropItemDecorationService.$inject = ['easyFormDragWayConfig'];
 
 			_export('default', dragDropItemDecorationService);
 
@@ -2938,7 +2961,7 @@ $__System.register('1d', ['8', '9'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("1e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("1f", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2948,7 +2971,7 @@ $__System.registerDynamic("1e", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('1f', ['1e'], function (_export) {
+$__System.register('20', ['1f'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -3091,8 +3114,8 @@ $__System.register('1f', ['1e'], function (_export) {
 	}
 
 	return {
-		setters: [function (_e) {
-			ddDecorLineTemplate = _e['default'];
+		setters: [function (_f) {
+			ddDecorLineTemplate = _f['default'];
 		}],
 		execute: function () {
 			DRAG_DROP_DECOR_LINE = 'ddDecorLine';
@@ -3104,7 +3127,7 @@ $__System.register('1f', ['1e'], function (_export) {
 		}
 	};
 });
-$__System.register('20', [], function (_export) {
+$__System.register('21', [], function (_export) {
 	'use strict';
 
 	var DRAG_DROP_NO_EDITABLE_CONTROL;
@@ -3135,11 +3158,11 @@ $__System.register('20', [], function (_export) {
 		}
 	};
 });
-$__System.register('21', ['14', '15', '17', '18', '20', '1a', '1c', '1d', '1f'], function (_export) {
+$__System.register('22', ['15', '16', '18', '19', '20', '21', '1b', '1d', '1e'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var ddContentCounter, DD_CONTENT_COUNTER_DIRECTIVE, dragDropItemCounterService, DRAG_DROP_ITEM_COUNTER_SERVICE, ddDecorContainerDirective, DD_DECOR_CONTAINER_DIRECTIVE, ddDecorContainerController, DD_DECOR_CONTAINER_CONTROLLER_NAME, ddNoEditableControl, DRAG_DROP_NO_EDITABLE_CONTROL, ddDecorDropZone, DD_DECOR_DROPZONE_DIRECTIVE, ddDecorItem, DRAG_DROP_DECOR_ITEM, dragDropItemDecorationService, DRAG_DROP_ITEM_DECOR_SERVICE, ddDecorLine, DRAG_DROP_DECOR_LINE, DRAGDROP_MODULE;
+	var ddContentCounter, DD_CONTENT_COUNTER_DIRECTIVE, dragDropItemCounterService, DRAG_DROP_ITEM_COUNTER_SERVICE, ddDecorContainerDirective, DD_DECOR_CONTAINER_DIRECTIVE, ddDecorContainerController, DD_DECOR_CONTAINER_CONTROLLER_NAME, ddDecorLine, DRAG_DROP_DECOR_LINE, ddNoEditableControl, DRAG_DROP_NO_EDITABLE_CONTROL, ddDecorDropZone, DD_DECOR_DROPZONE_DIRECTIVE, ddDecorItem, DRAG_DROP_DECOR_ITEM, dragDropItemDecorationService, DRAG_DROP_ITEM_DECOR_SERVICE, DRAGDROP_MODULE;
 	return {
 		setters: [function (_) {
 			ddContentCounter = _['default'];
@@ -3154,20 +3177,20 @@ $__System.register('21', ['14', '15', '17', '18', '20', '1a', '1c', '1d', '1f'],
 			ddDecorContainerController = _4['default'];
 			DD_DECOR_CONTAINER_CONTROLLER_NAME = _4.DD_DECOR_CONTAINER_CONTROLLER_NAME;
 		}, function (_5) {
-			ddNoEditableControl = _5['default'];
-			DRAG_DROP_NO_EDITABLE_CONTROL = _5.DRAG_DROP_NO_EDITABLE_CONTROL;
-		}, function (_a) {
-			ddDecorDropZone = _a['default'];
-			DD_DECOR_DROPZONE_DIRECTIVE = _a.DD_DECOR_DROPZONE_DIRECTIVE;
-		}, function (_c) {
-			ddDecorItem = _c['default'];
-			DRAG_DROP_DECOR_ITEM = _c.DRAG_DROP_DECOR_ITEM;
+			ddDecorLine = _5['default'];
+			DRAG_DROP_DECOR_LINE = _5.DRAG_DROP_DECOR_LINE;
+		}, function (_6) {
+			ddNoEditableControl = _6['default'];
+			DRAG_DROP_NO_EDITABLE_CONTROL = _6.DRAG_DROP_NO_EDITABLE_CONTROL;
+		}, function (_b) {
+			ddDecorDropZone = _b['default'];
+			DD_DECOR_DROPZONE_DIRECTIVE = _b.DD_DECOR_DROPZONE_DIRECTIVE;
 		}, function (_d) {
-			dragDropItemDecorationService = _d['default'];
-			DRAG_DROP_ITEM_DECOR_SERVICE = _d.DRAG_DROP_ITEM_DECOR_SERVICE;
-		}, function (_f) {
-			ddDecorLine = _f['default'];
-			DRAG_DROP_DECOR_LINE = _f.DRAG_DROP_DECOR_LINE;
+			ddDecorItem = _d['default'];
+			DRAG_DROP_DECOR_ITEM = _d.DRAG_DROP_DECOR_ITEM;
+		}, function (_e) {
+			dragDropItemDecorationService = _e['default'];
+			DRAG_DROP_ITEM_DECOR_SERVICE = _e.DRAG_DROP_ITEM_DECOR_SERVICE;
 		}],
 		execute: function () {
 			DRAGDROP_MODULE = 'edaDragDropWay.dragdrop.module';
@@ -3176,7 +3199,7 @@ $__System.register('21', ['14', '15', '17', '18', '20', '1a', '1c', '1d', '1f'],
 		}
 	};
 });
-$__System.register('22', [], function (_export) {
+$__System.register('23', [], function (_export) {
   'use strict';
 
   var EDA_RIGHT_CLICK_DIRECTIVE;
@@ -3220,14 +3243,14 @@ $__System.register('22', [], function (_export) {
     }
   };
 });
-$__System.register('23', ['8', '9'], function (_export) {
+$__System.register('24', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, EDA_RIGHT_CLICKED_MANAGER_SERVICE, ddItemRightClickedManager;
 
 	return {
 		setters: [function (_) {
 			_createClass = _['default'];
-		}, function (_2) {
-			_classCallCheck = _2['default'];
+		}, function (_a) {
+			_classCallCheck = _a['default'];
 		}],
 		execute: function () {
 			'use strict';
@@ -3287,7 +3310,7 @@ $__System.register('23', ['8', '9'], function (_export) {
 		}
 	};
 });
-$__System.register('24', ['22', '23'], function (_export) {
+$__System.register('25', ['23', '24'], function (_export) {
 	'use strict';
 
 	var edaRightClick, EDA_RIGHT_CLICK_DIRECTIVE, ddItemRightClickedManager, EDA_RIGHT_CLICKED_MANAGER_SERVICE, EDA_RIGHT_CLICK_MODULE;
@@ -3306,14 +3329,14 @@ $__System.register('24', ['22', '23'], function (_export) {
 		}
 	};
 });
-$__System.register('25', ['8', '9'], function (_export) {
+$__System.register('26', ['9', 'a'], function (_export) {
   var _createClass, _classCallCheck, DRAG_DROP_CONFIG_PROXY_SERVICE, ddModelConfModelProxyService;
 
   return {
     setters: [function (_) {
       _createClass = _['default'];
-    }, function (_2) {
-      _classCallCheck = _2['default'];
+    }, function (_a) {
+      _classCallCheck = _a['default'];
     }],
     execute: function () {
       'use strict';
@@ -3321,12 +3344,15 @@ $__System.register('25', ['8', '9'], function (_export) {
       DRAG_DROP_CONFIG_PROXY_SERVICE = 'ddModelConfModelProxyService';
 
       ddModelConfModelProxyService = (function () {
-        function ddModelConfModelProxyService(EasyFormGenFormlyBindingModels, controllerModalProxy, dragDropConfig, $parse) {
+        function ddModelConfModelProxyService(EasyFormGenFormlyBindingModels,
+        // controllerModalProxy,
+        easyFormDragWayConfig, $parse) {
           _classCallCheck(this, ddModelConfModelProxyService);
 
           this.EasyFormGenFormlyBindingModels = EasyFormGenFormlyBindingModels;
-          this.controllerModalProxy = controllerModalProxy;
-          this.dragDropConfig = dragDropConfig;
+          // this.controllerModalProxy           = controllerModalProxy;
+          // this.dragDropConfig                 = dragDropConfig;
+          this.easyFormDragWayConfig = easyFormDragWayConfig;
           this.$parse = $parse;
           this.init();
         }
@@ -3435,7 +3461,7 @@ $__System.register('25', ['8', '9'], function (_export) {
                 });
                 dragDropModel[1][aConfigLineIndex].push(dragdropControlRef);
                 //update class depending number of control per line
-                var cssClassToApply = _this2.dragDropConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
+                var cssClassToApply = _this2.easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(dragDropModel[1][aConfigLineIndex].length);
                 angular.forEach(dragDropModel[1][aConfigLineIndex], function (ddControlToUpdate) {
                   return ddControlToUpdate.cssClass = cssClassToApply;
                 });
@@ -3553,7 +3579,10 @@ $__System.register('25', ['8', '9'], function (_export) {
         return ddModelConfModelProxyService;
       })();
 
-      ddModelConfModelProxyService.$inject = ['EasyFormGenFormlyBindingModels', 'controllerModalProxy', 'dragDropConfig', '$parse'];
+      ddModelConfModelProxyService.$inject = ['EasyFormGenFormlyBindingModels',
+      // 'controllerModalProxy',
+      // 'dragDropConfig',
+      'easyFormDragWayConfig', '$parse'];
 
       _export('default', ddModelConfModelProxyService);
 
@@ -3561,7 +3590,8 @@ $__System.register('25', ['8', '9'], function (_export) {
     }
   };
 });
-$__System.register('26', ['25'], function (_export) {
+// dragDropConfig,
+$__System.register('27', ['26'], function (_export) {
 	'use strict';
 
 	var ddModelConfModelProxyService, DRAG_DROP_CONFIG_PROXY_SERVICE, EDA_CONFIG_PROXY_MODULE;
@@ -3577,7 +3607,7 @@ $__System.register('26', ['25'], function (_export) {
 		}
 	};
 });
-$__System.register('27', [], function (_export) {
+$__System.register('28', [], function (_export) {
   'use strict';
 
   var DNDLIST_DIRECTIVE, TO_INJECT;
@@ -3819,7 +3849,7 @@ $__System.register('27', [], function (_export) {
     }
   };
 });
-$__System.register('28', [], function (_export) {
+$__System.register('29', [], function (_export) {
   'use strict';
 
   var DNDDRAGGABLE_DIRECTIVE, TO_INJECT;
@@ -3937,7 +3967,7 @@ $__System.register('28', [], function (_export) {
     }
   };
 });
-$__System.register('29', ['27', '28'], function (_export) {
+$__System.register('2a', ['28', '29'], function (_export) {
   'use strict';
 
   var dndList, DNDLIST_DIRECTIVE, dndDraggable, DNDDRAGGABLE_DIRECTIVE, DRAG_DROP_LIST_MODULE;
@@ -3960,7 +3990,7 @@ $__System.register('29', ['27', '28'], function (_export) {
     }
   };
 });
-$__System.register('2a', [], function (_export) {
+$__System.register('2b', [], function (_export) {
   'use strict';
 
   var PAGE_SLIDE_DIRECTIVE;
@@ -4204,14 +4234,14 @@ $__System.register('2a', [], function (_export) {
     }
   };
 });
-$__System.register('2b', ['2a'], function (_export) {
+$__System.register('2c', ['2b'], function (_export) {
   'use strict';
 
   var pageslide, PAGE_SLIDE_DIRECTIVE, PAGE_SLIDE_MODULE;
   return {
-    setters: [function (_a) {
-      pageslide = _a['default'];
-      PAGE_SLIDE_DIRECTIVE = _a.PAGE_SLIDE_DIRECTIVE;
+    setters: [function (_b) {
+      pageslide = _b['default'];
+      PAGE_SLIDE_DIRECTIVE = _b.PAGE_SLIDE_DIRECTIVE;
     }],
     execute: function () {
       PAGE_SLIDE_MODULE = 'pageslide.module';
@@ -4220,13 +4250,133 @@ $__System.register('2b', ['2a'], function (_export) {
     }
   };
 });
-$__System.register('2c', [], function (_export) {
-	/* global angular */
+$__System.register('2d', [], function (_export) {
+  'use strict';
+
+  var LIST_DRAG_DROP_ITEM_CSS_CLASSES, DRAG_DROP_CONFIG_MODEL, DRAG_DROP_PRESENTATION_MODEL, ITEMS_NOT_TO_COUNT_FOR_REAL;
+  return {
+    setters: [],
+    execute: function () {
+      LIST_DRAG_DROP_ITEM_CSS_CLASSES = [{
+        cssClass: 'col-md-12',
+        numberItemPerRow: 0
+      }, {
+        cssClass: 'col-md-12',
+        numberItemPerRow: 1
+      }, {
+        cssClass: 'col-md-6',
+        numberItemPerRow: 2
+      }, {
+        cssClass: 'col-md-4',
+        numberItemPerRow: 3
+      }];
+      DRAG_DROP_CONFIG_MODEL = {
+        dropZoneConfig: {
+          decoration: [{
+            WhenIndex: 0,
+            ApplycssClass: 'col-md-4',
+            fontAwesomeIcon: 'fa fa-level-up',
+            title: 'Drag control from here : '
+          }, {
+            WhenIndex: 1,
+            ApplycssClass: 'col-md-8',
+            fontAwesomeIcon: 'fa fa-level-down',
+            title: 'Drop control into here : '
+          }],
+          verboseMode: false
+        },
+        containerConfig: {
+          decoration: [{
+            WhenIndex: 0,
+            ApplycssClass: 'col-md-12',
+            title: 'Blank : ',
+            groupId: 'blank',
+            isCollapsed: true
+          }, {
+            WhenIndex: 1,
+            ApplycssClass: 'col-md-12',
+            title: 'Headers : ',
+            groupId: 'headers',
+            isCollapsed: true
+          }, {
+            WhenIndex: 2,
+            ApplycssClass: 'col-md-12',
+            title: 'Text inputs : ',
+            groupId: 'inputs',
+            isCollapsed: true
+          }, {
+            WhenIndex: 3,
+            ApplycssClass: 'col-md-12',
+            title: 'Textareas : ',
+            groupId: 'textareas',
+            isCollapsed: true
+          }, {
+            WhenIndex: 4,
+            ApplycssClass: 'col-md-12',
+            title: 'Radios : ',
+            groupId: 'radios',
+            isCollapsed: true
+          }, {
+            WhenIndex: 5,
+            ApplycssClass: 'col-md-12',
+            title: 'Checkboxes : ',
+            groupId: 'checkboxes',
+            isCollapsed: true
+          }, {
+            WhenIndex: 6,
+            ApplycssClass: 'col-md-12',
+            title: 'Selects : ',
+            groupId: 'selects',
+            isCollapsed: true
+          }],
+          verboseMode: false,
+          collapseEnabled: true,
+          collapseCtrl: [{
+            atIndex: 0,
+            collapse: true
+          }, {
+            atIndex: 1,
+            collapse: true
+          }]
+        },
+        itemConfig: {
+          verboseMode: false
+        }
+      };
+      DRAG_DROP_PRESENTATION_MODEL = [
+      //1 column here is control selection column
+      [], [
+      //empty 1st line at initialisation
+      []]];
+      ITEMS_NOT_TO_COUNT_FOR_REAL = {
+        //placeholder :         '',
+        itemBeingDragged: ''
+      };
+
+      _export('LIST_DRAG_DROP_ITEM_CSS_CLASSES', LIST_DRAG_DROP_ITEM_CSS_CLASSES);
+
+      _export('DRAG_DROP_CONFIG_MODEL', DRAG_DROP_CONFIG_MODEL);
+
+      _export('DRAG_DROP_PRESENTATION_MODEL', DRAG_DROP_PRESENTATION_MODEL);
+
+      _export('ITEMS_NOT_TO_COUNT_FOR_REAL', ITEMS_NOT_TO_COUNT_FOR_REAL);
+    }
+  };
+});
+$__System.register('2e', ['2d'], function (_export) {
+	// TODO : Add here configs from ES5 dragDropConfigProvider
+
 	'use strict';
 
-	var EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
+	var LIST_DRAG_DROP_ITEM_CSS_CLASSES, DRAG_DROP_CONFIG_MODEL, DRAG_DROP_PRESENTATION_MODEL, ITEMS_NOT_TO_COUNT_FOR_REAL, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
 
 	function easyFormDragWayConfig() {
+
+		var _listDragDropItemCssClasses = [].concat(LIST_DRAG_DROP_ITEM_CSS_CLASSES);
+		var _dragDropConfigModel = angular.copy(DRAG_DROP_CONFIG_MODEL);
+		var _dragDropPresentationModel = [].concat(DRAG_DROP_PRESENTATION_MODEL);
+		var _itemsNotToCountFoReal = angular.copy(ITEMS_NOT_TO_COUNT_FOR_REAL);
+
 		var _configuration = defaultConfig();
 		var _controlsList = controlsList();
 		// let _defaultLanguage		= getDefaultLanguage();
@@ -4246,12 +4396,40 @@ $__System.register('2c', [], function (_export) {
 		this.showPreviewPanel = showPreviewPanel;
 		this.showPreviewModels = showPreviewModels;
 
+		this.setListItemCssClass = setListItemCssClass;
+		this.getItemsNotTocount = getItemsNotTocount;
+		this.setItemsNotTocount = setItemsNotTocount;
+		this.addControlToDragDropPresentationModel = addControlToDragDropPresentationModel;
+		this.getDragDropPresentationModel = getDragDropPresentationModel;
+
+		function setListItemCssClass(fromConfig) {
+			_listDragDropItemCssClasses = [].concat(fromConfig);
+		}
+
+		function getItemsNotTocount() {
+			return _itemsNotToCountFoReal;
+		}
+
+		function setItemsNotTocount(fromConfig) {
+			_itemsNotToCountFoReal = angular.copy(fromConfig);
+		}
+
 		//set default config
 		function defaultConfig() {
 			var _defaultConfiguration = {
 				modalAnimated: false
 			};
 			return _defaultConfiguration;
+		}
+
+		function addControlToDragDropPresentationModel(controlToAdd, groupToAdd) {
+			if (typeof controlToAdd !== 'undefined' && typeof groupToAdd !== 'undefined') {
+				addToGroupControl(controlToAdd, groupToAdd);
+			}
+		}
+
+		function getDragDropPresentationModel() {
+			return _dragDropPresentationModel;
 		}
 
 		//show preview panel by default
@@ -4356,12 +4534,81 @@ $__System.register('2c', [], function (_export) {
 				setModalAnimation: setModalAnimationFct,
 				getModalAnimationValue: getModalAnimationValue,
 				getListEnabledControl: getListEnabledControl,
-				// setLanguage 						: switchLanguage,
-				// getCurrentLanguage			: getCurrentLanguage,
+				// setLanguage 											: switchLanguage,
+				// getCurrentLanguage								: getCurrentLanguage,
 				isPreviewPanelVisible: isPreviewPanelVisible,
-				arePreviewModelsVisible: arePreviewModelsVisible
+				arePreviewModelsVisible: arePreviewModelsVisible,
+
+				getListItemCssClass: getListItemCssClass,
+				getItemsNotToCount: getItemsNotToCount,
+				getItemCssDependingNumberItemsInRow: getItemCssDependingNumberItemsInRow,
+				getDistinctItemCssClass: getDistinctItemCssClass,
+				getDragDropConfigModel: getDragDropConfigModel,
+				getDragDropPresentationModel: getDragDropPresentationModel,
+				setDragDropConfigContainerDecorationCollapse: setDragDropConfigContainerDecorationCollapse
 			};
 			return service;
+
+			function getDragDropPresentationModel() {
+				return _dragDropPresentationModel;
+			}
+
+			function setDragDropConfigContainerDecorationCollapse(dragDropConfigModel, indexValue, isCollapsedBool) {
+				if (typeof indexValue !== 'undefined' && typeof isCollapsedBool !== 'undefined') {
+					if (indexValue === parseInt(indexValue, 10)) {
+						dragDropConfigModel.containerConfig.decoration[indexValue].isCollapsed = isCollapsedBool;
+					}
+				}
+				return true;
+			}
+
+			function getDragDropConfigModel() {
+				return _dragDropConfigModel;
+			}
+
+			function getDistinctItemCssClass() {
+				var distinctCssClass = [];
+				angular.forEach(_listDragDropItemCssClasses, function (valueRef) {
+
+					var cssClassRef = valueRef.cssClass;
+
+					if (distinctCssClass.length === 0) {
+						distinctCssClass.push(cssClassRef);
+					} else {
+						var canAdd = true;
+						angular.forEach(distinctCssClass, function (valueProc) {
+							var cssClassProc = valueProc;
+							if (cssClassRef === cssClassProc) {
+								canAdd = false;
+							}
+						});
+						if (canAdd) distinctCssClass.push(cssClassRef);
+					}
+				});
+				return distinctCssClass;
+			}
+
+			function getItemCssDependingNumberItemsInRow(numberOfItems) {
+				if (typeof numberOfItems !== 'undefined') {
+					var classToReturn = '';
+					for (var i = _listDragDropItemCssClasses.length - 1; i >= 0; i--) {
+						if (_listDragDropItemCssClasses[i].numberItemPerRow === numberOfItems) {
+							classToReturn = _listDragDropItemCssClasses[i].cssClass;
+						}
+					}
+					return classToReturn;
+				} else {
+					return '';
+				}
+			}
+
+			function getListItemCssClass() {
+				return _listDragDropItemCssClasses;
+			}
+
+			function getItemsNotToCount() {
+				return _itemsNotToCountFoReal;
+			}
 
 			function getModalAnimationValue() {
 				return _configuration.modalAnimated;
@@ -4392,12 +4639,72 @@ $__System.register('2c', [], function (_export) {
 				return _showPreviewModels;
 			}
 		}
+
+		/**
+   * addToGroupControl : add control to _dragDropPresentationModel
+   * @param {[type]} thisControl : control to add
+   * @param {[type]} thisGroup   : groupId wher this control should be added
+   *
+   * NOTE : if _dragDropPresentationModel wrong initialized it will create list of group conforming to 
+   * configModel
+   */
+		function addToGroupControl(thisControl, thisGroup) {
+			/**
+    * search group if already exists
+    */
+			if (_dragDropPresentationModel[0].length > 0) {
+				/**
+     * case when _dragDropConfigModel.containerConfig.decoration.length is > to _dragDropPresentationModel[0].length
+     *
+     * for instance : initialization _dragDropPresentationModel[0] in between
+     */
+				if (_dragDropPresentationModel[0].length < _dragDropConfigModel.containerConfig.decoration.length) {
+					var missingGroupNumber = _dragDropConfigModel.containerConfig.decoration.length - _dragDropPresentationModel[0].length;
+
+					for (var i = 0; i < missingGroupNumber; i++) {
+						_dragDropPresentationModel[0].push([]);
+					}
+				}
+				/**
+     * push control to right index 
+     * (deduced by _dragDropConfigModel.containerConfig.decoration.WhenIndex value for groupId === thisGroup)
+     */
+				_dragDropConfigModel.containerConfig.decoration.forEach(function (groupConfig) {
+					if (thisGroup.addToGroupCtrl === groupConfig.groupId) {
+						_dragDropPresentationModel[0][groupConfig.WhenIndex].push(thisControl);
+					}
+				});
+			} else {
+				/**
+     * no group no control
+     *
+     * initialize _dragDropConfigModel.containerConfig.decoration list
+     */
+				_dragDropConfigModel.containerConfig.decoration.forEach(function () {
+					return _dragDropPresentationModel[0].push([]);
+				});
+				/**
+     * push control to right index 
+     * (deduced by _dragDropConfigModel.containerConfig.decoration.WhenIndex value for groupId === thisGroup)
+     */
+				_dragDropConfigModel.containerConfig.decoration.forEach(function (groupConfig) {
+					if (thisGroup.addToGroupCtrl === groupConfig.groupId) {
+						_dragDropPresentationModel[0][groupConfig.WhenIndex].push(thisControl);
+					}
+				});
+			}
+		}
 	}
 
 	// easyFormDragWayConfig.$inject = ['$translateProvider'];
 
 	return {
-		setters: [],
+		setters: [function (_d) {
+			LIST_DRAG_DROP_ITEM_CSS_CLASSES = _d.LIST_DRAG_DROP_ITEM_CSS_CLASSES;
+			DRAG_DROP_CONFIG_MODEL = _d.DRAG_DROP_CONFIG_MODEL;
+			DRAG_DROP_PRESENTATION_MODEL = _d.DRAG_DROP_PRESENTATION_MODEL;
+			ITEMS_NOT_TO_COUNT_FOR_REAL = _d.ITEMS_NOT_TO_COUNT_FOR_REAL;
+		}],
 		execute: function () {
 			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = 'easyFormDragWayConfig';
 			easyFormDragWayConfig.$inject = [];
@@ -4408,7 +4715,7 @@ $__System.register('2c', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("2d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("2f", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -4418,7 +4725,7 @@ $__System.registerDynamic("2d", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("30", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -4440,12 +4747,12 @@ $__System.registerDynamic("2e", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("2f", ["2e"], true, function($__require, exports, module) {
+$__System.registerDynamic("31", ["30"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('2e');
+  var $ = $__require('30');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -4453,26 +4760,26 @@ $__System.registerDynamic("2f", ["2e"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("30", ["2f"], true, function($__require, exports, module) {
+$__System.registerDynamic("32", ["31"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('2f'),
+    "default": $__require('31'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("8", ["30"], true, function($__require, exports, module) {
+$__System.registerDynamic("9", ["32"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('30')["default"];
+  var _Object$defineProperty = $__require('32')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -4497,7 +4804,7 @@ $__System.registerDynamic("8", ["30"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("9", [], true, function($__require, exports, module) {
+$__System.registerDynamic("a", [], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
@@ -4513,7 +4820,7 @@ $__System.registerDynamic("9", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.register('31', [], function (_export) {
+$__System.register('33', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -4618,17 +4925,17 @@ $__System.register('31', [], function (_export) {
 		}
 	};
 });
-$__System.register('32', ['8', '9', '31'], function (_export) {
-  var _createClass, _classCallCheck, initTabModel, initIhmModel, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenCtrl;
+$__System.register('34', ['9', '33', 'a'], function (_export) {
+  var _createClass, initTabModel, initIhmModel, _classCallCheck, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenCtrl;
 
   return {
     setters: [function (_) {
       _createClass = _['default'];
     }, function (_2) {
-      _classCallCheck = _2['default'];
-    }, function (_3) {
-      initTabModel = _3.initTabModel;
-      initIhmModel = _3.initIhmModel;
+      initTabModel = _2.initTabModel;
+      initIhmModel = _2.initIhmModel;
+    }, function (_a) {
+      _classCallCheck = _a['default'];
     }],
     execute: function () {
       /* global angular */
@@ -4645,7 +4952,9 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
       DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = 'vm';
 
       edaDragDropWayEasyFormGenCtrl = (function () {
-        function edaDragDropWayEasyFormGenCtrl($scope, easyFormGenVersion, $filter, $anchorScroll, toaster, $timeout, $modal, $log, formFieldManage, controllerModalProxy, dragDropItemDecorationService, dragDropConfig, ddModelConfModelProxyService, ddItemRightClickedManager, easyFormDragWayConfig) {
+        function edaDragDropWayEasyFormGenCtrl($scope, easyFormGenVersion, $filter, $anchorScroll, toaster, $timeout, $modal, $log, formFieldManage, controllerModalProxy, dragDropItemDecorationService,
+        // dragDropConfig,
+        ddModelConfModelProxyService, ddItemRightClickedManager, easyFormDragWayConfig) {
           _classCallCheck(this, edaDragDropWayEasyFormGenCtrl);
 
           this.$scope = $scope;
@@ -4659,7 +4968,7 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
           this.formFieldManage = formFieldManage;
           this.controllerModalProxy = controllerModalProxy;
           this.dragDropItemDecorationService = dragDropItemDecorationService;
-          this.dragDropConfig = dragDropConfig;
+          // this.dragDropConfig                   = dragDropConfig;
           this.ddModelConfModelProxyService = ddModelConfModelProxyService;
           this.ddItemRightClickedManager = ddItemRightClickedManager;
           this.easyFormDragWayConfig = easyFormDragWayConfig;
@@ -4677,13 +4986,13 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
             this.wfFormFields = [];
             this.wfFormFieldsOnlyNeededProperties = [];
             this.ihm = initIhmModel();
-            this.easyFormDragDropProperties = this.dragDropConfig.getDragDropConfigModel();
-            this.dragDropModel = [].concat(this.dragDropConfig.getDragDropPresentationModel());
+            this.easyFormDragDropProperties = this.easyFormDragWayConfig.getDragDropConfigModel();
+            this.dragDropModel = [].concat(this.easyFormDragWayConfig.getDragDropPresentationModel());
             this.numberOfColumns = 1;
             this.MaxNumberOfColumns = 3;
             this.MinNumberOfColumns = 1;
             this.configuration = {};
-            this.animationsEnabled = this.easyFormSteWayConfig.getModalAnimationValue();
+            this.animationsEnabled = this.easyFormDragWayConfig.getModalAnimationValue();
             this.editPanelModel = { toggle: false };
             this.debugProxyModel = this.controllerModalProxy.ProxyModel;
             this.model = [];
@@ -4697,7 +5006,7 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
             var _this = this;
 
             angular.forEach(this.easyFormDragDropProperties.containerConfig.decoration, function (value) {
-              if (value.WhenIndex !== allExceptThisGroupIndex) _this.dragDropConfig.setDragDropConfigContainerDecorationCollapse(_this.easyFormDragDropProperties, value.WhenIndex, true);
+              if (value.WhenIndex !== allExceptThisGroupIndex) _this.easyFormDragWayConfig.setDragDropConfigContainerDecorationCollapse(_this.easyFormDragDropProperties, value.WhenIndex, true);
             });
           }
         }, {
@@ -5049,7 +5358,9 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
         return edaDragDropWayEasyFormGenCtrl;
       })();
 
-      edaDragDropWayEasyFormGenCtrl.$inject = ['$scope', 'easyFormGenVersion', '$filter', '$anchorScroll', 'toaster', '$timeout', '$modal', '$log', 'formFieldManage', 'controllerModalProxy', 'dragDropItemDecorationService', 'dragDropConfig', 'ddModelConfModelProxyService', 'ddItemRightClickedManager', 'easyFormDragWayConfig'];
+      edaDragDropWayEasyFormGenCtrl.$inject = ['$scope', 'easyFormGenVersion', '$filter', '$anchorScroll', 'toaster', '$timeout', '$modal', '$log', 'formFieldManage', 'controllerModalProxy', 'dragDropItemDecorationService',
+      // 'dragDropConfig',
+      'ddModelConfModelProxyService', 'ddItemRightClickedManager', 'easyFormDragWayConfig'];
 
       _export('default', edaDragDropWayEasyFormGenCtrl);
 
@@ -5059,7 +5370,7 @@ $__System.register('32', ['8', '9', '31'], function (_export) {
     }
   };
 });
-$__System.register('33', ['32', '2d'], function (_export) {
+$__System.register('35', ['34', '2f'], function (_export) {
 	/* global angular */
 
 	//TODO : to bindToController
@@ -5070,7 +5381,9 @@ $__System.register('33', ['32', '2d'], function (_export) {
 
 	var DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenDirectiveTemplate, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
 
-	function edaDragdropWayEasyFormGen($timeout, formFieldManage, ddModelConfModelProxyService, dragDropConfig) {
+	function edaDragdropWayEasyFormGen($timeout, formFieldManage, ddModelConfModelProxyService,
+	// dragDropConfig,
+	easyFormDragWayConfig) {
 
 		var directive = {
 			restrict: 'E',
@@ -5155,9 +5468,9 @@ $__System.register('33', ['32', '2d'], function (_export) {
 					//apply configuration model
 					scope.configuration = angular.copy(scope.configurationLoaded);
 					//apply ddModel
-					ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel(scope.configuration, scope.dragDropModel);
+					ddModelConfModelProxyService.loadDragDropModelFromConfigurationModel(scope.configuration, scope.vm.dragDropModel);
 					updateConfigurationClassName(scope.configuration);
-					ddModelConfModelProxyService.refreshControlsKeys(scope.configuration, scope.dragDropModel);
+					ddModelConfModelProxyService.refreshControlsKeys(scope.configuration, scope.vm.dragDropModel);
 					//apply formly model
 					formFieldManage.applyConfigurationToformlyModel(scope.configuration, scope.vm.wfFormFields, scope.dataModel);
 					scope.vm.wfFormFieldsOnlyNeededProperties = angular.copy(scope.vm.wfFormFields);
@@ -5170,7 +5483,7 @@ $__System.register('33', ['32', '2d'], function (_export) {
 
 			function updateConfigurationClassName(configModel) {
 				angular.forEach(configModel.lines, function (aline) {
-					var cssClassToApply = dragDropConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
+					var cssClassToApply = easyFormDragWayConfig.getItemCssDependingNumberItemsInRow(aline.columns.length);
 					angular.forEach(aline.columns, function (aControl) {
 						return aControl.control.className = cssClassToApply;
 					});
@@ -5183,12 +5496,14 @@ $__System.register('33', ['32', '2d'], function (_export) {
 		setters: [function (_) {
 			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
 			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS;
-		}, function (_d) {
-			edaDragDropWayEasyFormGenDirectiveTemplate = _d['default'];
+		}, function (_f) {
+			edaDragDropWayEasyFormGenDirectiveTemplate = _f['default'];
 		}],
 		execute: function () {
 			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = 'edaDragdropWayEasyFormGen';
-			edaDragdropWayEasyFormGen.$inject = ['$timeout', 'formFieldManage', 'ddModelConfModelProxyService', 'dragDropConfig'];
+			edaDragdropWayEasyFormGen.$inject = ['$timeout', 'formFieldManage', 'ddModelConfModelProxyService',
+			// 'dragDropConfig',
+			'easyFormDragWayConfig'];
 
 			_export('default', edaDragdropWayEasyFormGen);
 
@@ -5196,12 +5511,12 @@ $__System.register('33', ['32', '2d'], function (_export) {
 		}
 	};
 });
-$__System.register('34', ['32', '33', '2c'], function (_export) {
+$__System.register('36', ['34', '35', '2e'], function (_export) {
 	/* global angular */
 
 	'use strict';
 
-	var edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, ddNoEditableControl, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, DRAGDROP_MODULE;
+	var edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, easyFormDragWayConfig, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, DRAGDROP_MODULE;
 	return {
 		setters: [function (_) {
 			edaDragDropWayEasyFormGenCtrl = _['default'];
@@ -5209,18 +5524,18 @@ $__System.register('34', ['32', '33', '2c'], function (_export) {
 		}, function (_2) {
 			edaDragdropWayEasyFormGen = _2['default'];
 			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = _2.EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
-		}, function (_c) {
-			ddNoEditableControl = _c['default'];
-			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _c.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
+		}, function (_e) {
+			easyFormDragWayConfig = _e['default'];
+			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _e.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
 		}],
 		execute: function () {
 			DRAGDROP_MODULE = 'edaDragDropWay.main.module';
 
-			_export('default', angular.module(DRAGDROP_MODULE, []).provider(EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, ddNoEditableControl).controller(DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragDropWayEasyFormGenCtrl).directive(EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, edaDragdropWayEasyFormGen));
+			_export('default', angular.module(DRAGDROP_MODULE, []).provider(EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, easyFormDragWayConfig).controller(DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragDropWayEasyFormGenCtrl).directive(EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, edaDragdropWayEasyFormGen));
 		}
 	};
 });
-$__System.register('35', [], function (_export) {
+$__System.register('37', [], function (_export) {
   'use strict';
 
   var TRUST_THIS_FILTER_NAME;
@@ -5243,7 +5558,7 @@ $__System.register('35', [], function (_export) {
     }
   };
 });
-$__System.register('36', ['35'], function (_export) {
+$__System.register('38', ['37'], function (_export) {
   'use strict';
 
   var trustThis, TRUST_THIS_FILTER_NAME, TRUST_THIS_FILTER_MODULE;
@@ -5259,40 +5574,42 @@ $__System.register('36', ['35'], function (_export) {
     }
   };
 });
-$__System.register('1', ['2', '3', '4', '5', '13', '21', '24', '26', '29', '34', '36', 'f', '2b'], function (_export) {
+$__System.register('1', ['2', '3', '5', '6', '10', '14', '22', '25', '27', '36', '38', '2a', '2c'], function (_export) {
   'use strict';
 
-  var formlyConfigFunct, dragDropConfigFunt, coreModule, formlyProxyModule, dragdropModule, rightClickModule, configProxyModule, dragAndDropListModule, easyFormDragDropModule, trustThisFilterModule, leftPanelModule, pageSlideModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
+  var formlyConfigFunct, dragDropConfigFunt, EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE, coreModule, leftPanelModule, formlyProxyModule, dragdropModule, rightClickModule, configProxyModule, easyFormDragDropModule, trustThisFilterModule, dragAndDropListModule, pageSlideModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
   return {
     setters: [function (_) {}, function (_2) {
       formlyConfigFunct = _2['default'];
     }, function (_3) {
       dragDropConfigFunt = _3['default'];
+      EASY_FORM_DD_VERSION_NAME = _3.EASY_FORM_DD_VERSION_NAME;
+      EASY_FORM_DD_VERSION_VALUE = _3.EASY_FORM_DD_VERSION_VALUE;
     }, function (_4) {
       coreModule = _4['default'];
     }, function (_5) {
-      formlyProxyModule = _5['default'];
+      leftPanelModule = _5['default'];
     }, function (_6) {
-      dragdropModule = _6['default'];
+      formlyProxyModule = _6['default'];
     }, function (_7) {
-      rightClickModule = _7['default'];
+      dragdropModule = _7['default'];
     }, function (_8) {
-      configProxyModule = _8['default'];
+      rightClickModule = _8['default'];
     }, function (_9) {
-      dragAndDropListModule = _9['default'];
+      configProxyModule = _9['default'];
     }, function (_10) {
       easyFormDragDropModule = _10['default'];
     }, function (_11) {
       trustThisFilterModule = _11['default'];
-    }, function (_f) {
-      leftPanelModule = _f['default'];
-    }, function (_b) {
-      pageSlideModule = _b['default'];
+    }, function (_a) {
+      dragAndDropListModule = _a['default'];
+    }, function (_c) {
+      pageSlideModule = _c['default'];
     }],
     execute: function () {
       DRAG_DROP_WAY_MODULE_NAME = 'eda.easyformGen.dragDropWay';
       DRAG_DROP_MODULES_INJECT = [coreModule.name, configProxyModule.name, trustThisFilterModule.name, leftPanelModule.name, formlyProxyModule.name, dragdropModule.name, easyFormDragDropModule.name, rightClickModule.name, dragAndDropListModule.name, pageSlideModule.name];
-      mainModule = angular.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT).config(dragDropConfigFunt).config(formlyConfigFunct);
+      mainModule = angular.module(DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT).config(dragDropConfigFunt).config(formlyConfigFunct).value(EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE);
 
       _export('default', mainModule);
     }
