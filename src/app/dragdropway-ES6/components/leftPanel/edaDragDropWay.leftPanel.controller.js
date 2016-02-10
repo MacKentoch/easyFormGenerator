@@ -342,8 +342,7 @@ class leftPanelController{
 	
 }
 
-leftPanelController.$inject = [
-	'$scope',  
+leftPanelController.$inject = [ 
 	'toaster',
 	'$timeout',
 	'$selectOptionMange',

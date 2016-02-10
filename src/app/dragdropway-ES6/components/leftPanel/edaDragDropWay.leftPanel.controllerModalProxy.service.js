@@ -17,8 +17,8 @@ class controllerModalProxy{
     this.init();
   }
   
-  init(){
-    this.ProxyModel     = {};
+  init(){ 
+    this.proxyModel     = {};
     this.resetProxyModel();
     this.editPanelModel = {
       toggle      : false,

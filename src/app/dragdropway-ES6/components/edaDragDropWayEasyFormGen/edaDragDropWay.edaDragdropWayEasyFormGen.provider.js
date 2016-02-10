@@ -213,13 +213,13 @@ function easyFormDragWayConfig() {
 		}
 
 		function setDragDropConfigContainerDecorationCollapse(dragDropConfigModel, indexValue, isCollapsedBool) {
-	   	if (typeof indexValue       !== 'undefined' &&
+      if (typeof indexValue       !== 'undefined' &&
 					typeof isCollapsedBool  !== 'undefined') {
-	        if (indexValue === parseInt(indexValue, 10)) {
-	          dragDropConfigModel.containerConfig.decoration[indexValue].isCollapsed = isCollapsedBool;
-	        }
-	     }
-	  	return true;
+        if (indexValue === parseInt(indexValue, 10)) {
+          dragDropConfigModel.containerConfig.decoration[indexValue].isCollapsed = isCollapsedBool;
+        }
+      }
+    return true;
 		}
 	
 
@@ -238,10 +238,10 @@ function easyFormDragWayConfig() {
         } else {
           let canAdd = true;
           angular.forEach(distinctCssClass, (valueProc)=>{
-	          let cssClassProc = valueProc;
-	          if (cssClassRef === cssClassProc) {
-	          	canAdd = false;
-	          }
+            let cssClassProc = valueProc;
+            if (cssClassRef === cssClassProc) {
+              canAdd = false;
+            }
           });
           if (canAdd) distinctCssClass.push(cssClassRef);
         }

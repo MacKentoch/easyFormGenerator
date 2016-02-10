@@ -20,7 +20,7 @@ function edaDragdropWayEasyFormGen(
 	ddModelConfModelProxyService,
 	// dragDropConfig,
 	easyFormDragWayConfig){
-	 
+	
 	let directive = {
 		restrict 			: 'E',
 		template			: edaDragDropWayEasyFormGenDirectiveTemplate,

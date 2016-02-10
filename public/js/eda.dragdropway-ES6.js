@@ -940,7 +940,7 @@ $__System.register('8', ['7', '9', 'a'], function (_export) {
 				return leftPanelController;
 			})();
 
-			leftPanelController.$inject = ['$scope', 'toaster', '$timeout', '$selectOptionMange', 'controllerModalProxy'];
+			leftPanelController.$inject = ['toaster', '$timeout', '$selectOptionMange', 'controllerModalProxy'];
 
 			_export('default', leftPanelController);
 
@@ -1285,7 +1285,7 @@ $__System.register('f', ['9', 'a'], function (_export) {
         _createClass(controllerModalProxy, [{
           key: 'init',
           value: function init() {
-            this.ProxyModel = {};
+            this.proxyModel = {};
             this.resetProxyModel();
             this.editPanelModel = {
               toggle: false,
