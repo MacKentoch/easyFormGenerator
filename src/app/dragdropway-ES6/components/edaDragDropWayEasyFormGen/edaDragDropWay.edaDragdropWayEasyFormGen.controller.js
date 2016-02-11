@@ -181,7 +181,6 @@ class edaDragDropWayEasyFormGenCtrl{
   //  this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);  
   // }
 
-
   saveThisForm() {
     if (typeof this.configuration.formName === 'undefined') {
     this.toaster.pop({
@@ -328,8 +327,11 @@ class edaDragDropWayEasyFormGenCtrl{
     this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();
   }   
   
-    
-    
+
+  setRightClicked(previousState, item){
+    item.rightCliked = true;
+  }
+        
   toggleEditPanel(event, lineIndex, colIndex, item){
     this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
     // already opened (could be another control edit)

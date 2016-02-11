@@ -195,7 +195,7 @@
                                                               scope.configuration, 
                                                               scope.dragDropModel
                                                             );             
-            
+            /* eslint no-console:0 */
             console.info('compare both configuration model');
             console.dir({
               'loaded one' : angular.copy(scope.configurationLoaded),
