@@ -1,0 +1,142 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="greyText">
+          <i class="fa fa-pencil-square-o"></i>
+          &nbsp;
+          Edit properties :
+        </h5>
+      </div>
+    </div>
+    <div class="marginTopFivepixels"></div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <label
+          for="basicSelectRowCollection"
+          class=" control-label greyText editPropertiesLabel">
+          Add new options :
+        </label>
+     </div>
+    </div>
+    <div class="row">
+      <div>
+        <div class="form-group">
+          <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddNewBasicOption"
+              placeholder="add new option"
+              ng-model="panel.newOptionBasicSelect.saisie">
+            </div>
+            <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+              <button
+                class="btn btn-primary"
+                ng-click="panel.addNewOptionBasicSelect()">
+                add
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-lg-12 col-md-12">
+       <label class=" control-label greyText editPropertiesLabel">
+         Edit/Remove options :
+       </label>
+     </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="container">
+            <div ng-if="panel.basicSelectRowCollection.rows.length === 0">
+              <h5 class="text-center greyText">
+                <em>
+                  - no option : add new options -
+                </em>
+              </h5>
+            </div>
+            <table
+              ng-if="panel.basicSelectRowCollection.rows.length > 0"
+              class="table table-striped">
+              <thead>
+              <tr>
+                <th st-ratio="20">
+                  order
+                </th>
+                <th st-ratio="55">
+                  option
+                </th>
+                <th st-ratio="25"></th>
+              </tr>
+              <tr>
+                <th st-ratio="20"></th>
+                <th st-ratio="55">
+                  <input
+                    ng-model="panel.basicSelectFilter"
+                    placeholder="search for option"
+                    class="input-sm form-control"
+                    type="search" />
+                </th>
+                <th st-ratio="25"></th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="basicSelectRow in panel.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow">
+                  <td st-ratio="20">
+                    {{$index}}
+                  </td>
+                  <td st-ratio="55">
+                    {{basicSelectRow.option}}
+                  </td>
+                  <td st-ratio="25">
+                    <div class="pull-right">
+                      <button
+                        class="btn btn-primary"
+                        ng-click="panel.upThisRow($index)">
+                        <i class="fa fa-arrow-up"></i>
+                      </button>
+                      <button
+                        class="btn btn-primary"
+                        ng-click="panel.downThisRow($index)">
+                        <i class="fa fa-arrow-down"></i>
+                      </button>
+                      <button
+                        class="btn btn-danger"
+                        ng-click="panel.removeRow($index)">
+                        <i class="fa fa-trash-o"></i>
+                      </button>
+                     </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="marginTopFivepixels"></div>
+      <div class="row">
+        <div class="form-group">
+        	<div class="col-md-12">
+            <label
+              for="DescriptionUpdate"
+              class="control-label greyText editPropertiesLabel">
+              Description :
+            </label>
+            <div class="">
+              <input
+                type="text"
+                class="form-control"
+                ng-model="panel.proxyModel.temporyConfig.formlyDesciption"
+                id="DescriptionUpdate"
+                placeholder="Add / edit description here">
+            </div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  <left-panel-valid-edit-footer />
+</div>
