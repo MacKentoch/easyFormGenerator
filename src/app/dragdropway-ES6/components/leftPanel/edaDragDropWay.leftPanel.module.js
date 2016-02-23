@@ -11,13 +11,37 @@ import selectOptionMange, {
 import controllerModalProxy, {
   CONTROLLER_MODAL_PROXY
 }                           from './edaDragDropWay.leftPanel.controllerModalProxy.service';
+import leftPanelValidEditFooter, {
+  LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.validEditFooter.directive';
+import leftPanelTextInputControl, {
+  LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.textInputControl.directive';
+import leftPanelTextareaControl, {
+  LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.textareaControl.directive';
+import leftPanelSubtitleControlControl, {
+  LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.subtitleControl.directive';
+import leftPanelRichTextEditorControl, {
+  LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.richTextEditorControl.directive';
+import leftPanelRadioControl, {
+  LEFT_PANEL_RADIO_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.radioControl.directive';
+
 
 const LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';
-
 
 export default angular
 								.module(LEFT_PANEL_MODULE, [])
 								.directive(LEFT_PANEL_DIRECTIVE, leftPanel)
 								.controller(LEFT_PANEL_CONTROLLER, leftPanelController)
                 .service(LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, selectOptionMange)
-                .service(CONTROLLER_MODAL_PROXY, controllerModalProxy);
+                .service(CONTROLLER_MODAL_PROXY, controllerModalProxy)
+                .directive(LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE, leftPanelValidEditFooter)
+                .directive(LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE, leftPanelTextInputControl)
+                .directive(LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE, leftPanelTextareaControl)
+                .directive(LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE, leftPanelSubtitleControlControl)
+                .directive(LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE, leftPanelRichTextEditorControl)
+                .directive(LEFT_PANEL_RADIO_CONTROL_DIRECTIVE, leftPanelRadioControl);
