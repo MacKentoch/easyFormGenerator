@@ -20,7 +20,7 @@ import leftPanelTextInputControl, {
 import leftPanelTextareaControl, {
   LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE
 }                           from './validEditFooter/edaDragDropWay.leftpanel.textareaControl.directive';
-import leftPanelSubtitleControlControl, {
+import leftPanelSubtitleControl, {
   LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE
 }                           from './validEditFooter/edaDragDropWay.leftpanel.subtitleControl.directive';
 import leftPanelRichTextEditorControl, {
@@ -29,6 +29,27 @@ import leftPanelRichTextEditorControl, {
 import leftPanelRadioControl, {
   LEFT_PANEL_RADIO_CONTROL_DIRECTIVE
 }                           from './validEditFooter/edaDragDropWay.leftpanel.radioControl.directive';
+import leftPanelPasswordControl, {
+  LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.passwordControl.directive';
+import leftPanelHeaderControl, {
+  LEFT_PANEL_HEADER_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.headerControl.directive';
+import leftPanelGroupedSelectControl, {
+  LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.groupedSelectControl.directive';
+import leftPanelDateControl, {
+  LEFT_PANEL_DATE_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.dateControl.directive';
+import leftPanelCheckBoxControl, {
+  LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.checkBoxControl.directive';
+import leftPanelBlankControl, {
+  LEFT_PANEL_BLANK_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.blankControl.directive';
+import leftPanelBasicSelectControl, {
+  LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE
+}                           from './validEditFooter/edaDragDropWay.leftpanel.basicSelectControl.directive';
 
 
 const LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';
@@ -42,6 +63,13 @@ export default angular
                 .directive(LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE, leftPanelValidEditFooter)
                 .directive(LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE, leftPanelTextInputControl)
                 .directive(LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE, leftPanelTextareaControl)
-                .directive(LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE, leftPanelSubtitleControlControl)
+                .directive(LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE, leftPanelSubtitleControl)
                 .directive(LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE, leftPanelRichTextEditorControl)
-                .directive(LEFT_PANEL_RADIO_CONTROL_DIRECTIVE, leftPanelRadioControl);
+                .directive(LEFT_PANEL_RADIO_CONTROL_DIRECTIVE, leftPanelRadioControl)
+                .directive(LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE, leftPanelPasswordControl)
+                .directive(LEFT_PANEL_HEADER_CONTROL_DIRECTIVE, leftPanelHeaderControl)
+                .directive(LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE, leftPanelGroupedSelectControl)
+                .directive(LEFT_PANEL_DATE_CONTROL_DIRECTIVE, leftPanelDateControl)
+                .directive(LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE, leftPanelCheckBoxControl)
+                .directive(LEFT_PANEL_BLANK_CONTROL_DIRECTIVE, leftPanelBlankControl)
+                .directive(LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE, leftPanelBasicSelectControl);

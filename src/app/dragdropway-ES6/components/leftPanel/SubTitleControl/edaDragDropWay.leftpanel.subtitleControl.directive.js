@@ -1,8 +1,8 @@
 import leftPanelSubtitleControlTemplate from './edaDragDropWay.leftpanel.subtitleControl.template.html!text';
 
-const LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE = 'leftPanelSubtitleControlControl';
+const LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE = 'leftPanelSubtitleControl';
 
-function leftPanelSubtitleControlControl() {
+function leftPanelSubtitleControl() {
   let directive = {
     restrict : 'E',
     template : leftPanelSubtitleControlTemplate
@@ -10,9 +10,9 @@ function leftPanelSubtitleControlControl() {
   return directive;
 }
 
-leftPanelSubtitleControlControl.$inject = [];
+leftPanelSubtitleControl.$inject = [];
 
-export default leftPanelSubtitleControlControl;
+export default leftPanelSubtitleControl;
 
 export {
   LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE

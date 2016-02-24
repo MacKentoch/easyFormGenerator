@@ -1,54 +1,69 @@
 <div id="controlEditLeftPanel">
 	<div class="pull-right">
-		<button type="button" class="close" ng-click="leftPanelCtrl.closeEditPanel()" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
+		<button
+      type="button"
+      class="close"
+      ng-click="leftPanelCtrl.closeEditPanel()"
+      aria-label="Close">
+			<span
+        aria-hidden="true">
+        &times;
+      </span>
 		</button>
 	</div>
 	<div class="separator10pixel"></div>
-	<div ng-switch on="leftPanelCtrl.proxyModel.temporyConfig.selectedControl">              
+	<div ng-switch on="leftPanelCtrl.proxyModel.temporyConfig.selectedControl">
 		<div ng-switch-when="none">
 			<div class="row">
 				<div class="col-sm-12">
-					<h5 class="text-center texteRouge"> <i class="fa fa-arrow-up"></i>&nbsp; Select a control</h5>
-				</div>                
+					<h5 class="text-center texteRouge">
+            <i class="fa fa-arrow-up"></i>
+            &nbsp;
+            Select a control
+          </h5>
+				</div>
 			</div>
 		</div>
 		<div ng-switch-when="empty">
-			<script type="text/ng-template" id="editPanelBlankCtrl.tpls.html"></script>
+			<left-panel-blank-control />
 		</div>
 		<div ng-switch-when="Header">
-			<div ng-include=" 'editPanelHeaderCtrl-tpls.html' "></div>
-		</div> 
+			<leftPanelHeaderControl />
+		</div>
 		<div ng-switch-when="Subtitle">
-			<div ng-include=" 'editPanelSubTitleCtrl-tpls.html' "></div>
+			<leftPanelSubtitleControl />
 		</div>
 		<div ng-switch-when="TextInput">
-			<div ng-include=" 'editPanelTextInputCtrl-tpls.html' "></div>
-		</div>                                          
+			<leftPanelTextInputControl />
+		</div>
 		<div ng-switch-when="Password">
-			<div ng-include=" 'editPanelPasswordCtrl-tpls.html' "></div>
-		</div>                                           																			
+			<leftPanelPasswordControl />
+		</div>
 		<div ng-switch-when="Date">
-			<div ng-include=" 'editPanelDateCtrl-tpls.html' "></div>
-		</div>                                           
+			<leftPanelDateControl />
+		</div>
 		<div ng-switch-when="Texarea">
-			<div ng-include=" 'editPanelTextareaCtrl-tpls.html' "></div>
-		</div> 
+			<leftPanelTextareaControl />
+		</div>
 		<div ng-switch-when="RichTextEditor">
-			<div ng-include=" 'editPanelRichTextEditorCtrl-tpls.html' "></div>
-		</div> 
+			<leftPanelRichTextEditorControl />
+		</div>
 		<div ng-switch-when="Radio">
-			<div ng-include=" 'editPanelRadioCtrl-tpls.html' "></div>
-		</div> 
+			<leftPanelRadioControl />
+		</div>
 		<div ng-switch-when="Checkbox">
-			<div ng-include=" 'editPanelCheckboxCtrl-tpls.html' "></div>
+			<leftPanelCheckBoxControl />
 		</div>
 		<div ng-switch-when="BasicSelect">
-			<div ng-include=" 'editPanelBasicSelectCtrl-tpls.html' "></div>
+			<leftPanelBasicSelectControl />
 		</div>
 		<div ng-switch-when="GroupedSelect">
-			<div ng-include=" 'editPanelGroupedSelectCtrl-tpls.html' "></div>
-		</div>                                          
+			<leftPanelGroupedSelectControl />
+		</div>
 	</div>
-	<button class="btn btn-primary btn-block pull-right" ng-click="leftPanelCtrl.closeEditPanel()">Close</button>
+	<button
+    class="btn btn-primary btn-block pull-right"
+    ng-click="leftPanelCtrl.closeEditPanel()">
+    Close
+  </button>
 </div>
