@@ -16,40 +16,40 @@ import leftPanelValidEditFooter, {
 }                           from './validEditFooter/edaDragDropWay.leftpanel.validEditFooter.directive';
 import leftPanelTextInputControl, {
   LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.textInputControl.directive';
+}                           from './TextInputControl/edaDragDropWay.leftpanel.textInputControl.directive';
 import leftPanelTextareaControl, {
   LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.textareaControl.directive';
+}                           from './TextAreaControl/edaDragDropWay.leftpanel.textareaControl.directive';
 import leftPanelSubtitleControl, {
   LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.subtitleControl.directive';
+}                           from './SubTitleControl/edaDragDropWay.leftpanel.subtitleControl.directive';
 import leftPanelRichTextEditorControl, {
   LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.richTextEditorControl.directive';
+}                           from './RichTextEditorControl/edaDragDropWay.leftpanel.richTextEditorControl.directive';
 import leftPanelRadioControl, {
   LEFT_PANEL_RADIO_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.radioControl.directive';
+}                           from './RadioControl/edaDragDropWay.leftpanel.radioControl.directive';
 import leftPanelPasswordControl, {
   LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.passwordControl.directive';
+}                           from './PasswordControl/edaDragDropWay.leftpanel.passwordControl.directive';
 import leftPanelHeaderControl, {
   LEFT_PANEL_HEADER_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.headerControl.directive';
+}                           from './HeaderControl/edaDragDropWay.leftpanel.headerControl.directive';
 import leftPanelGroupedSelectControl, {
   LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.groupedSelectControl.directive';
+}                           from './GroupedSelectControl/edaDragDropWay.leftpanel.groupedSelectControl.directive';
 import leftPanelDateControl, {
   LEFT_PANEL_DATE_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.dateControl.directive';
+}                           from './DateControl/edaDragDropWay.leftpanel.dateControl.directive';
 import leftPanelCheckBoxControl, {
   LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.checkBoxControl.directive';
+}                           from './CheckBoxControl/edaDragDropWay.leftpanel.checkBoxControl.directive';
 import leftPanelBlankControl, {
   LEFT_PANEL_BLANK_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.blankControl.directive';
+}                           from './BlankControl/edaDragDropWay.leftpanel.blankControl.directive';
 import leftPanelBasicSelectControl, {
   LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE
-}                           from './validEditFooter/edaDragDropWay.leftpanel.basicSelectControl.directive';
+}                           from './BasicSelectControl/edaDragDropWay.leftpanel.basicSelectControl.directive';
 
 
 const LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';

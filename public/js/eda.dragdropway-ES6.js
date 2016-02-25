@@ -955,7 +955,7 @@ $__System.registerDynamic("b", [], true, function($__require, exports, module) {
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div id=\"controlEditLeftPanel\">\n\t<div class=\"pull-right\">\n\t\t<button type=\"button\" class=\"close\" ng-click=\"leftPanelCtrl.closeEditPanel()\" aria-label=\"Close\">\n\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t</button>\n\t</div>\n\t<div class=\"separator10pixel\"></div>\n\t<div ng-switch on=\"leftPanelCtrl.proxyModel.temporyConfig.selectedControl\">              \n\t\t<div ng-switch-when=\"none\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm-12\">\n\t\t\t\t\t<h5 class=\"text-center texteRouge\"> <i class=\"fa fa-arrow-up\"></i>&nbsp; Select a control</h5>\n\t\t\t\t</div>                \n\t\t\t</div>\n\t\t</div>\n\t\t<div ng-switch-when=\"empty\">\n\t\t\t<script type=\"text/ng-template\" id=\"editPanelBlankCtrl.tpls.html\"></script>\n\t\t</div>\n\t\t<div ng-switch-when=\"Header\">\n\t\t\t<div ng-include=\" 'editPanelHeaderCtrl-tpls.html' \"></div>\n\t\t</div> \n\t\t<div ng-switch-when=\"Subtitle\">\n\t\t\t<div ng-include=\" 'editPanelSubTitleCtrl-tpls.html' \"></div>\n\t\t</div>\n\t\t<div ng-switch-when=\"TextInput\">\n\t\t\t<div ng-include=\" 'editPanelTextInputCtrl-tpls.html' \"></div>\n\t\t</div>                                          \n\t\t<div ng-switch-when=\"Password\">\n\t\t\t<div ng-include=\" 'editPanelPasswordCtrl-tpls.html' \"></div>\n\t\t</div>                                           \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t<div ng-switch-when=\"Date\">\n\t\t\t<div ng-include=\" 'editPanelDateCtrl-tpls.html' \"></div>\n\t\t</div>                                           \n\t\t<div ng-switch-when=\"Texarea\">\n\t\t\t<div ng-include=\" 'editPanelTextareaCtrl-tpls.html' \"></div>\n\t\t</div> \n\t\t<div ng-switch-when=\"RichTextEditor\">\n\t\t\t<div ng-include=\" 'editPanelRichTextEditorCtrl-tpls.html' \"></div>\n\t\t</div> \n\t\t<div ng-switch-when=\"Radio\">\n\t\t\t<div ng-include=\" 'editPanelRadioCtrl-tpls.html' \"></div>\n\t\t</div> \n\t\t<div ng-switch-when=\"Checkbox\">\n\t\t\t<div ng-include=\" 'editPanelCheckboxCtrl-tpls.html' \"></div>\n\t\t</div>\n\t\t<div ng-switch-when=\"BasicSelect\">\n\t\t\t<div ng-include=\" 'editPanelBasicSelectCtrl-tpls.html' \"></div>\n\t\t</div>\n\t\t<div ng-switch-when=\"GroupedSelect\">\n\t\t\t<div ng-include=\" 'editPanelGroupedSelectCtrl-tpls.html' \"></div>\n\t\t</div>                                          \n\t</div>\n\t<button class=\"btn btn-primary btn-block pull-right\" ng-click=\"leftPanelCtrl.closeEditPanel()\">Close</button>\n</div>";
+  module.exports = "<div id=\"controlEditLeftPanel\">\n\t<div class=\"pull-right\">\n\t\t<button\n      type=\"button\"\n      class=\"close\"\n      ng-click=\"leftPanelCtrl.closeEditPanel()\"\n      aria-label=\"Close\">\n\t\t\t<span\n        aria-hidden=\"true\">\n        &times;\n      </span>\n\t\t</button>\n\t</div>\n\t<div class=\"separator10pixel\"></div>\n\t<div ng-switch on=\"leftPanelCtrl.proxyModel.temporyConfig.selectedControl\">\n\t\t<div ng-switch-when=\"none\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm-12\">\n\t\t\t\t\t<h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp;\n            Select a control\n          </h5>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div ng-switch-when=\"empty\">\n\t\t\t<left-panel-blank-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Header\">\n\t\t\t<left-panel-header-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Subtitle\">\n\t\t\t<left-panel-subtitle-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"TextInput\">\n\t\t\t<left-panel-text-input-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Password\">\n\t\t\t<left-panel-password-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Date\">\n\t\t\t<left-panel-date-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Texarea\">\n\t\t\t<left-panel-textarea-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"RichTextEditor\">\n\t\t\t<left-panel-rich-text-editor-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Radio\">\n\t\t\t<left-panel-radio-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Checkbox\">\n\t\t\t<left-panel-check-box-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"BasicSelect\">\n\t\t\t<left-panel-basic-select-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"GroupedSelect\">\n\t\t\t<left-panel-grouped-select-control />\n\t\t</div>\n\t</div>\n\t<button\n    class=\"btn btn-primary btn-block pull-right\"\n    ng-click=\"leftPanelCtrl.closeEditPanel()\">\n    Close\n  </button>\n</div>\n";
   global.define = __define;
   return module.exports;
 });
@@ -1708,33 +1708,553 @@ $__System.register('f', ['9', 'a'], function (_export) {
     }
   };
 });
-$__System.register('10', ['8', 'c', 'e', 'f'], function (_export) {
-	/* global angular */
-	'use strict';
-
-	var leftPanelController, LEFT_PANEL_CONTROLLER, leftPanel, LEFT_PANEL_DIRECTIVE, selectOptionMange, LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, controllerModalProxy, CONTROLLER_MODAL_PROXY, LEFT_PANEL_MODULE;
-	return {
-		setters: [function (_) {
-			leftPanelController = _['default'];
-			LEFT_PANEL_CONTROLLER = _.LEFT_PANEL_CONTROLLER;
-		}, function (_c) {
-			leftPanel = _c['default'];
-			LEFT_PANEL_DIRECTIVE = _c.LEFT_PANEL_DIRECTIVE;
-		}, function (_e) {
-			selectOptionMange = _e['default'];
-			LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE = _e.LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE;
-		}, function (_f) {
-			controllerModalProxy = _f['default'];
-			CONTROLLER_MODAL_PROXY = _f.CONTROLLER_MODAL_PROXY;
-		}],
-		execute: function () {
-			LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';
-
-			_export('default', angular.module(LEFT_PANEL_MODULE, []).directive(LEFT_PANEL_DIRECTIVE, leftPanel).controller(LEFT_PANEL_CONTROLLER, leftPanelController).service(LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, selectOptionMange).service(CONTROLLER_MODAL_PROXY, controllerModalProxy));
-		}
-	};
+$__System.registerDynamic("10", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"modal-footer\">\n <button \n  class=\"btn btn-danger pull-left\"\n  ng-click=\"panel.resetControl()\">\n  <i class=\"fa fa-refresh\"></i>\n  &nbsp;\n  Reset\n </button>\n <button \n  class=\"btn btn-success pull-right\"\n  ng-click=\"panel.updateSpecialControl(); saveFromEditPanel();\">\n  <i class=\"fa fa-floppy-o\"></i>\n  &nbsp;\n  Save\n </button>                         \n</div>";
+  global.define = __define;
+  return module.exports;
 });
-$__System.register('11', ['9', 'a'], function (_export) {
+
+$__System.register('11', ['10'], function (_export) {
+  'use strict';
+
+  var leftPanelValidEditFooterTemplate, LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE;
+
+  function leftPanelValidEditFooter() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelValidEditFooterTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelValidEditFooterTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE = 'leftPanelValidEditFooter';
+      leftPanelValidEditFooter.$inject = [];
+
+      _export('default', leftPanelValidEditFooter);
+
+      _export('LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE', LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("12", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextLabelUpdate\" \n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n          </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\" \n            id=\"inputTextLabelUpdate\" \n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextplaceholderUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          placeholder :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyPlaceholder\" \n            id=\"inputTextplaceholderUpdate\" \n            placeholder=\"Add / edit placeholder text here\">\n        </div>\n       </div>\n      </div>\n    </div>                         \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label \n          for=\"inputTextRequiredUpdate\" \n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input \n            type=\"checkbox\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\" \n            id=\"inputTextRequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextDescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"inputTextDescriptionUpdate\" \n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div> \n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('13', ['12'], function (_export) {
+  'use strict';
+
+  var leftPanelTextInputControlTemplate, LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE;
+
+  function leftPanelTextInputControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelTextInputControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelTextInputControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE = 'leftPanelTextInputControl';
+      leftPanelTextInputControl.$inject = [];
+
+      _export('default', leftPanelTextInputControl);
+
+      _export('LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE', LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("14", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextLabelUpdate\" \n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\" \n            id=\"inputTextLabelUpdate\" \n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label \n          for=\"RequiredUpdate\" \n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input \n            type=\"checkbox\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\" \n            id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"DescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"DescriptionUpdate\" \n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div> \n  </div>\n  <left-panel-valid-edit-footer />\n</div> \n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('15', ['14'], function (_export) {
+  'use strict';
+
+  var leftPanelTextareaControlTemplate, LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE;
+
+  function leftPanelTextareaControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelTextareaControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelTextareaControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE = 'leftPanelTextareaControl';
+      leftPanelTextareaControl.$inject = [];
+
+      _export('default', leftPanelTextareaControl);
+
+      _export('LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE', LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("16", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class=\"col-md-12\">\n          <label \n            for=\"inputTextDescriptionUpdate\" \n            class=\"control-label greyText editPropertiesLabel\">\n            Subtitle text :\n          </label>\n          <div class=\"\">\n            <input \n              type=\"text\" \n              class=\"form-control\" \n              ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n              id=\"inputSubtitleTextUpdate\" \n              placeholder=\"Add / edit subtitle text here\" >\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('17', ['16'], function (_export) {
+  'use strict';
+
+  var leftPanelSubtitleControlTemplate, LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE;
+
+  function leftPanelSubtitleControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelSubtitleControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelSubtitleControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE = 'leftPanelSubtitleControl';
+      leftPanelSubtitleControl.$inject = [];
+
+      _export('default', leftPanelSubtitleControl);
+
+      _export('LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE', LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("18", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"DescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"DescriptionUpdate\" \n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div> \n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('19', ['18'], function (_export) {
+  'use strict';
+
+  var leftPanelRichTextEditorControlTemplate, LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE;
+
+  function leftPanelRichTextEditorControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelRichTextEditorControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelRichTextEditorControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE = 'leftPanelRichTextEditorControl';
+      leftPanelRichTextEditorControl.$inject = [];
+
+      _export('default', leftPanelRichTextEditorControl);
+
+      _export('LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE', LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("1a", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"radioRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new radio :\n        </label>\n      </div>\n    </div>\n  <div class=\"row\">\n    <div>\n      <div class=\"form-group\">\n        <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"inputAddNewRadioOption\"\n          placeholder=\"add new radio\"\n          ng-model=\"panel.newOptionRadio.saisie\">\n        </div>\n        <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n          <button\n            class=\"btn btn-primary\"\n            ng-click=\"panel.addNewOptionRadio()\">\n            add\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-lg-12 col-md-12\">\n      <label\n        for=\"radioRowCollection\"\n        class=\" control-label greyText editPropertiesLabel\">\n        Edit/Remove radio :\n      </label>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n        <div class=\"container\">\n          <div ng-show=\"panel.radioRowCollection.rows.length === 0\">\n            <h5 class=\"text-center greyText\">\n              <em>\n                - no radio : add new radio values -\n              </em>\n            </h5>\n          </div>\n          <table\n            ng-if=\"panel.radioRowCollection.rows.length > 0\"\n            class=\"table table-striped\">\n            <thead>\n            <tr>\n              <th st-ratio=\"20\">\n                order\n              </th>\n              <th st-ratio=\"55\">\n                option\n              </th>\n              <th st-ratio=\"25\">\n              </th>\n            </tr>\n            <tr>\n              <th st-ratio=\"20\">\n              </th>\n              <th st-ratio=\"55\">\n                <input\n                  ng-model=\"radioFilter\"\n                  placeholder=\"search for option\"\n                  class=\"input-sm form-control\"\n                  type=\"search\" />\n              </th>\n              <th st-ratio=\"25\"></th>\n            </tr>\n            </thead>\n            <tbody>\n              <tr ng-repeat=\"radioRow in panel.radioRowCollection.rows | filter:radioFilter as radioRow\">\n                <td st-ratio=\"20\">\n                  {{$index}}\n                </td>\n                <td st-ratio=\"55\">\n                  {{radioRow.option}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div class=\"pull-right\">\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"panel.upThisRadioRow($index)\">\n                      <i class=\"fa fa-arrow-up\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"panel.downThisRadioRow($index)\">\n                      <i class=\"fa fa-arrow-down\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-danger\"\n                      ng-click=\"panel.removeRadioRow($index)\">\n                      <i class=\"fa fa-trash-o\"></i>\n                    </button>\n                   </div>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\" control-label greyText editPropertiesLabel\">\n            Label text :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"Add / edit control label here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"\">\n          <label\n            for=\"RequiredUpdate\"\n            class=\"col-md-4 control-label greyText editPropertiesLabel\">\n            Required :\n          </label>\n          <div class=\"col-md-8\">\n            <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\"\n              id=\"RequiredUpdate\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n  \t\t\t</div>\n      </div>\n   </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('1b', ['1a'], function (_export) {
+  'use strict';
+
+  var leftPanelRadioControlTemplate, LEFT_PANEL_RADIO_CONTROL_DIRECTIVE;
+
+  function leftPanelRadioControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelRadioControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_a) {
+      leftPanelRadioControlTemplate = _a['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_RADIO_CONTROL_DIRECTIVE = 'leftPanelRadioControl';
+      leftPanelRadioControl.$inject = [];
+
+      _export('default', leftPanelRadioControl);
+
+      _export('LEFT_PANEL_RADIO_CONTROL_DIRECTIVE', LEFT_PANEL_RADIO_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("1c", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextLabelUpdate\" \n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\" \n            id=\"inputTextLabelUpdate\" \n            placeholder=\"Add / edit control label here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"placeholderUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          placeholder :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyPlaceholder\" \n            id=\"inputTextplaceholderUpdate\" \n            placeholder=\"Add / edit placeholder text here\" >\n        </div>\n       </div>\n      </div>\n    </div>                         \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label \n          for=\"RequiredUpdate\" \n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input \n              type=\"checkbox\" \n              ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\" \n              id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"DescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"DescriptionUpdate\" \n            placeholder=\"Add / edit description here\" >\n        </div>\n       </div>\n      </div>\n    </div> \n  </div>\n  <left-panel-valid-edit-footer />\n</div> \n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('1d', ['1c'], function (_export) {
+  'use strict';
+
+  var leftPanelPasswordControlTemplate, LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE;
+
+  function leftPanelPasswordControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelPasswordControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_c) {
+      leftPanelPasswordControlTemplate = _c['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE = 'leftPanelPasswordControl';
+      leftPanelPasswordControl.$inject = [];
+
+      _export('default', leftPanelPasswordControl);
+
+      _export('LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE', LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("1e", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">',\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextDescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Header text :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"inputHeaderTextUpdate\" \n            placeholder=\"Add / edit header text here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('1f', ['1e'], function (_export) {
+  'use strict';
+
+  var leftPanelHeaderControlTemplate, LEFT_PANEL_HEADER_CONTROL_DIRECTIVE;
+
+  function leftPanelHeaderControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelHeaderControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_e) {
+      leftPanelHeaderControlTemplate = _e['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_HEADER_CONTROL_DIRECTIVE = 'leftPanelHeaderControl';
+      leftPanelHeaderControl.$inject = [];
+
+      _export('default', leftPanelHeaderControl);
+
+      _export('LEFT_PANEL_HEADER_CONTROL_DIRECTIVE', LEFT_PANEL_HEADER_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("20", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Add new options :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewGroupedOption\"\n              placeholder=\"add new option\"\n              ng-model=\"panel.newOptionGroupedSelect.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"panel.addNewOptionGroupedSelect()\">\n              add\n            </button>\n          </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new groups :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              id=\"inputAddNewGroupGroupedOption\"\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.newGroupGroupedSelect.saisie\"\n              placeholder=\"Add new group\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"panel.addNewGroupToGroupedSelect()\">\n              add\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          class=\" control-label greyText editPropertiesLabel\">\n          Edit/Remove options/groups:\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"panel.groupedSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - no option : add new options -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"panel.groupedSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    order\n                  </th>\n                  <th st-ratio=\"25\">\n                    group\n                  </th>\n                  <th st-ratio=\"30\">\n                    option\n                  </th>\n                  <th st-ratio=\"25\"></th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\"></th>\n                  <th st-ratio=\"25\"></th>\n                  <th st-ratio=\"30\">\n                    <input\n                      ng-model=\"groupedSelectFilter\"\n                      placeholder=\"search for option\"\n                      class=\"input-sm form-control\"\n                      type=\"search\" />\n                  </th>\n                  <th st-ratio=\"25\"></th>\n                </tr>\n              </thead>\n              <tbody>\n              <tr\n                ng-repeat=\"groupedSelectRow in panel.groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow\">\n                <td st-ratio=\"20\">\n                  {{$index}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div ng-if=\"panel.groupSelectGroupClick.showList === true\">\n                    <div ng-if=\"panel.GroupedSelectGroups.list.length === 0\">\n                      <p class=\"text-left noGroupText\">\n                        - add new groups -\n                      </p>\n                    </div>\n                    <div ng-if=\"panel.GroupedSelectGroups.list.length > 0\">\n                      <ol\n                        class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect\"\n                        ng-model=\"groupedSelectRow.group\"\n                        id=\"modelGroupedOptionGroupedChoose\"\n                        disabled=\"panel.GroupedSelectGroups.list.length === 0\">\n                        <li\n                          class=\"nya-bs-option\"\n                          nya-bs-option=\"GroupedSelectGroup in panel.GroupedSelectGroups.list\"\n                          value=\"GroupedSelectGroup\">\n                          <a>\n                            {{GroupedSelectGroup}}\n                          </a>\n                        </li>\n                      </ol>\n                    </div>\n                  </div>\n                  <div ng-if=\"panel.groupSelectGroupClick.showList === false\">\n                    {{groupedSelectRow.group}}\n                  </div>\n                </td>\n                <td st-ratio=\"30\">\n                  {{groupedSelectRow.option}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div class=\"pull-right\">\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"panel.upThisGroupedSelectRow($index)\">\n                      <i class=\"fa fa-arrow-up\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"panel.downThisGroupedSelectRow($index)\">\n                      <i class=\"fa fa-arrow-down\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-warning\"\n                      ng-click=\"panel.showGroupListToChoose()\">\n                      <i class=\"fa fa-pencil-square-o\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-danger\"\n                      ng-click=\"panel.removeGroupedSelectRow($index)\">\n                      <i class=\"fa fa-trash-o\"></i>\n                    </button>\n                   </div>\n                </td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n\t\t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n\t\t\t\t</div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('21', ['20'], function (_export) {
+  'use strict';
+
+  var leftPanelGroupedSelectControlTemplate, LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE;
+
+  function leftPanelGroupedSelectControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelGroupedSelectControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelGroupedSelectControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE = 'leftPanelGroupedSelectControl';
+      leftPanelGroupedSelectControl.$inject = [];
+
+      _export('default', leftPanelGroupedSelectControl);
+
+      _export('LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE', LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("22", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit properties :\n        </h5>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n   <label class=\"control-label greyText editPropertiesLabel\">\n      Date format :\n    </label>\n    <div class=\"\">\n      <ol \n        class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\" \n        ng-model=\"panel.proxyModel.temporyConfig.datepickerPopup\" \n        id=\"dateformatSelect\">\n        <li   \n          class=\"nya-bs-option\" \n          nya-bs-option=\"dateformat in panel.demodt.formats\" \n          value=\"dateformat\">\n          <a>\n            {{dateformat}}\n          </a>\n        </li>\n      </ol>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"inputTextLabelUpdate\" \n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\" \n            id=\"inputTextLabelUpdate\" \n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label \n          for=\"RequiredUpdate\" \n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input \n            type=\"checkbox\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\" \n            id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div> \n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label \n          for=\"DescriptionUpdate\" \n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input \n            type=\"text\" \n            class=\"form-control\" \n            ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\" \n            id=\"DescriptionUpdate\" \n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div> \n  </div>\n  <left-panel-valid-edit-footer />\n</div> \n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('23', ['22'], function (_export) {
+  'use strict';
+
+  var leftPanelDateControlTemplate, LEFT_PANEL_DATE_CONTROL_DIRECTIVE;
+
+  function leftPanelDateControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelDateControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelDateControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_DATE_CONTROL_DIRECTIVE = 'leftPanelDateControl';
+      leftPanelDateControl.$inject = [];
+
+      _export('default', leftPanelDateControl);
+
+      _export('LEFT_PANEL_DATE_CONTROL_DIRECTIVE', LEFT_PANEL_DATE_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("24", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\" control-label greyText editPropertiesLabel\">\n            Label text :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"Add / edit control label here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"\">\n          <label\n            for=\"RequiredUpdate\"\n            class=\"col-md-4 control-label greyText editPropertiesLabel\">\n            Required :\n          </label>\n          <div class=\"col-md-8\">\n            <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyRequired\"\n              id=\"RequiredUpdate\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('25', ['24'], function (_export) {
+  'use strict';
+
+  var leftPanelCheckBoxControlTemplate, LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE;
+
+  function leftPanelCheckBoxControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelCheckBoxControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelCheckBoxControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE = 'leftPanelCheckBoxControl';
+      leftPanelCheckBoxControl.$inject = [];
+
+      _export('default', leftPanelCheckBoxControl);
+
+      _export('LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE', LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("26", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit :\n        </h5>\n      </div>\n    </div> \n    <div class=\"row\">\n      <div class=\"col-sm-12\">\n        <h5 class=\"text-center greyText\">\n          Column will be blank\n        </h5>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('27', ['26'], function (_export) {
+  'use strict';
+
+  var leftPanelBlankControlTemplate, LEFT_PANEL_BLANK_CONTROL_DIRECTIVE;
+
+  function leftPanelBlankControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelBlankControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelBlankControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_BLANK_CONTROL_DIRECTIVE = 'leftPanelBlankControl';
+      leftPanelBlankControl.$inject = [];
+
+      _export('default', leftPanelBlankControl);
+
+      _export('LEFT_PANEL_BLANK_CONTROL_DIRECTIVE', LEFT_PANEL_BLANK_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.registerDynamic("28", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"basicSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new options :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewBasicOption\"\n              placeholder=\"add new option\"\n              ng-model=\"panel.newOptionBasicSelect.saisie\">\n            </div>\n            <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n              <button\n                class=\"btn btn-primary\"\n                ng-click=\"panel.addNewOptionBasicSelect()\">\n                add\n              </button>\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n     <div class=\"col-lg-12 col-md-12\">\n       <label class=\" control-label greyText editPropertiesLabel\">\n         Edit/Remove options :\n       </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"panel.basicSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - no option : add new options -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"panel.basicSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n              <tr>\n                <th st-ratio=\"20\">\n                  order\n                </th>\n                <th st-ratio=\"55\">\n                  option\n                </th>\n                <th st-ratio=\"25\"></th>\n              </tr>\n              <tr>\n                <th st-ratio=\"20\"></th>\n                <th st-ratio=\"55\">\n                  <input\n                    ng-model=\"panel.basicSelectFilter\"\n                    placeholder=\"search for option\"\n                    class=\"input-sm form-control\"\n                    type=\"search\" />\n                </th>\n                <th st-ratio=\"25\"></th>\n              </tr>\n              </thead>\n              <tbody>\n                <tr ng-repeat=\"basicSelectRow in panel.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow\">\n                  <td st-ratio=\"20\">\n                    {{$index}}\n                  </td>\n                  <td st-ratio=\"55\">\n                    {{basicSelectRow.option}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div class=\"pull-right\">\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"panel.upThisRow($index)\">\n                        <i class=\"fa fa-arrow-up\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"panel.downThisRow($index)\">\n                        <i class=\"fa fa-arrow-down\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-danger\"\n                        ng-click=\"panel.removeRow($index)\">\n                        <i class=\"fa fa-trash-o\"></i>\n                      </button>\n                     </div>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n        \t<div class=\"col-md-12\">\n            <label\n              for=\"DescriptionUpdate\"\n              class=\"control-label greyText editPropertiesLabel\">\n              Description :\n            </label>\n            <div class=\"\">\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                ng-model=\"panel.proxyModel.temporyConfig.formlyDesciption\"\n                id=\"DescriptionUpdate\"\n                placeholder=\"Add / edit description here\">\n            </div>\n        \t</div>\n        </div>\n      </div>\n    </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('29', ['28'], function (_export) {
+  'use strict';
+
+  var leftPanelBasicSelectControlTemplate, LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE;
+
+  function leftPanelBasicSelectControl() {
+    var directive = {
+      restrict: 'E',
+      template: leftPanelBasicSelectControlTemplate
+    };
+    return directive;
+  }
+
+  return {
+    setters: [function (_) {
+      leftPanelBasicSelectControlTemplate = _['default'];
+    }],
+    execute: function () {
+      LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE = 'leftPanelBasicSelectControl';
+      leftPanelBasicSelectControl.$inject = [];
+
+      _export('default', leftPanelBasicSelectControl);
+
+      _export('LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE', LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE);
+    }
+  };
+});
+$__System.register('2a', ['8', '11', '13', '15', '17', '19', '21', '23', '25', '27', '29', 'c', 'e', 'f', '1b', '1d', '1f'], function (_export) {
+  /* global angular */
+  'use strict';
+
+  var leftPanelController, LEFT_PANEL_CONTROLLER, leftPanelValidEditFooter, LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE, leftPanelTextInputControl, LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE, leftPanelTextareaControl, LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE, leftPanelSubtitleControl, LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE, leftPanelRichTextEditorControl, LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE, leftPanelGroupedSelectControl, LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE, leftPanelDateControl, LEFT_PANEL_DATE_CONTROL_DIRECTIVE, leftPanelCheckBoxControl, LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE, leftPanelBlankControl, LEFT_PANEL_BLANK_CONTROL_DIRECTIVE, leftPanelBasicSelectControl, LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE, leftPanel, LEFT_PANEL_DIRECTIVE, selectOptionMange, LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, controllerModalProxy, CONTROLLER_MODAL_PROXY, leftPanelRadioControl, LEFT_PANEL_RADIO_CONTROL_DIRECTIVE, leftPanelPasswordControl, LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE, leftPanelHeaderControl, LEFT_PANEL_HEADER_CONTROL_DIRECTIVE, LEFT_PANEL_MODULE;
+  return {
+    setters: [function (_) {
+      leftPanelController = _['default'];
+      LEFT_PANEL_CONTROLLER = _.LEFT_PANEL_CONTROLLER;
+    }, function (_2) {
+      leftPanelValidEditFooter = _2['default'];
+      LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE = _2.LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE;
+    }, function (_3) {
+      leftPanelTextInputControl = _3['default'];
+      LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE = _3.LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE;
+    }, function (_4) {
+      leftPanelTextareaControl = _4['default'];
+      LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE = _4.LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE;
+    }, function (_5) {
+      leftPanelSubtitleControl = _5['default'];
+      LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE = _5.LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE;
+    }, function (_6) {
+      leftPanelRichTextEditorControl = _6['default'];
+      LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE = _6.LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE;
+    }, function (_7) {
+      leftPanelGroupedSelectControl = _7['default'];
+      LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE = _7.LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE;
+    }, function (_8) {
+      leftPanelDateControl = _8['default'];
+      LEFT_PANEL_DATE_CONTROL_DIRECTIVE = _8.LEFT_PANEL_DATE_CONTROL_DIRECTIVE;
+    }, function (_9) {
+      leftPanelCheckBoxControl = _9['default'];
+      LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE = _9.LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE;
+    }, function (_10) {
+      leftPanelBlankControl = _10['default'];
+      LEFT_PANEL_BLANK_CONTROL_DIRECTIVE = _10.LEFT_PANEL_BLANK_CONTROL_DIRECTIVE;
+    }, function (_11) {
+      leftPanelBasicSelectControl = _11['default'];
+      LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE = _11.LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE;
+    }, function (_c) {
+      leftPanel = _c['default'];
+      LEFT_PANEL_DIRECTIVE = _c.LEFT_PANEL_DIRECTIVE;
+    }, function (_e) {
+      selectOptionMange = _e['default'];
+      LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE = _e.LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE;
+    }, function (_f) {
+      controllerModalProxy = _f['default'];
+      CONTROLLER_MODAL_PROXY = _f.CONTROLLER_MODAL_PROXY;
+    }, function (_b) {
+      leftPanelRadioControl = _b['default'];
+      LEFT_PANEL_RADIO_CONTROL_DIRECTIVE = _b.LEFT_PANEL_RADIO_CONTROL_DIRECTIVE;
+    }, function (_d) {
+      leftPanelPasswordControl = _d['default'];
+      LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE = _d.LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE;
+    }, function (_f2) {
+      leftPanelHeaderControl = _f2['default'];
+      LEFT_PANEL_HEADER_CONTROL_DIRECTIVE = _f2.LEFT_PANEL_HEADER_CONTROL_DIRECTIVE;
+    }],
+    execute: function () {
+      LEFT_PANEL_MODULE = 'edaDragDropWay.leftPanel.module';
+
+      _export('default', angular.module(LEFT_PANEL_MODULE, []).directive(LEFT_PANEL_DIRECTIVE, leftPanel).controller(LEFT_PANEL_CONTROLLER, leftPanelController).service(LEFT_PANEL_SELECT_OPTION_MANAGE_SERVICE, selectOptionMange).service(CONTROLLER_MODAL_PROXY, controllerModalProxy).directive(LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE, leftPanelValidEditFooter).directive(LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE, leftPanelTextInputControl).directive(LEFT_PANEL_TEXTAREA_CONTROL_DIRECTIVE, leftPanelTextareaControl).directive(LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE, leftPanelSubtitleControl).directive(LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE, leftPanelRichTextEditorControl).directive(LEFT_PANEL_RADIO_CONTROL_DIRECTIVE, leftPanelRadioControl).directive(LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE, leftPanelPasswordControl).directive(LEFT_PANEL_HEADER_CONTROL_DIRECTIVE, leftPanelHeaderControl).directive(LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE, leftPanelGroupedSelectControl).directive(LEFT_PANEL_DATE_CONTROL_DIRECTIVE, leftPanelDateControl).directive(LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE, leftPanelCheckBoxControl).directive(LEFT_PANEL_BLANK_CONTROL_DIRECTIVE, leftPanelBlankControl).directive(LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE, leftPanelBasicSelectControl));
+    }
+  };
+});
+$__System.register('2b', ['9', 'a'], function (_export) {
   var _createClass, _classCallCheck, FORM_FIELD_MANAGE_SERVICE, formFieldManage;
 
   return {
@@ -1764,7 +2284,7 @@ $__System.register('11', ['9', 'a'], function (_export) {
            * At initial state : configuration model will contain 1 line, since :
            *    -> it is non sense to create a form without a single line (no line = no form at all)
            *    -> so it is non sense to force user to add a first line
-           * 
+           *
            *  PLEASE NOTE columns array contains objects that look like formly fields one
            */
         }, {
@@ -1795,12 +2315,12 @@ $__System.register('11', ['9', 'a'], function (_export) {
           }
 
           /**
-           * applyConfigurationToformlyModel : 
+           * applyConfigurationToformlyModel :
            *  - bind configuration model into formly field model
            *  - reset dataModel (formlyfield may have changed so previous dataModel would be false)
-           * @param  configurationModel 
-           * @param  formlyModel        
-           * @param  formlyDataModel    
+           * @param  configurationModel
+           * @param  formlyModel
+           * @param  formlyDataModel
            */
         }, {
           key: 'applyConfigurationToformlyModel',
@@ -1825,7 +2345,7 @@ $__System.register('11', ['9', 'a'], function (_export) {
 
             var numberOfColumns = configurationModel.lines[lineIndex].columns.length;
             /**
-             * push formly model 
+             * push formly model
              * here : only className and empty fieldGroup (controls != header)
              * if header will be reset to set a template (at least we have now indexFormlyModel)
              */
@@ -1836,7 +2356,7 @@ $__System.register('11', ['9', 'a'], function (_export) {
             //get index formlyModel for this line :
             var indexFormlyModel = formlyModel.push(rawFormlyModel) - 1;
 
-            // iterates through controls in the line     
+            // iterates through controls in the line
             configurationModel.lines[lineIndex].columns.forEach(function (column) {
               var controlTemplate = {};
               if (typeof controlTemplate !== 'undefined' &&
@@ -1856,9 +2376,9 @@ $__System.register('11', ['9', 'a'], function (_export) {
                 } else {
                   controlTemplate = _this.EasyFormGenFormlyBindingModels.getFormlyControlTemplateForNcolumnLine(numberOfColumns, column.control.type);
                   /**
-                  * NEED REFACTOR HERE 
-                  * should bind properties dynamically 
-                  * 
+                  * NEED REFACTOR HERE
+                  * should bind properties dynamically
+                  *
                   * TODO need to validate all controls (datepicker may not work)
                   * need to refactor
                   */
@@ -1981,7 +2501,7 @@ $__System.register('11', ['9', 'a'], function (_export) {
     }
   };
 });
-$__System.register('12', [], function (_export) {
+$__System.register('2c', [], function (_export) {
   'use strict';
 
   var initEasyFormListControls, initEasyFormEmptyConfigurationLineModel, initEmptyControlFieldModel, initEasyFormInitialStateConfigurationModel, initEasyFormInitialStateConfigurationModelAddOnForStepWay, initEasyFormReloadConfigurationModel, initHeaderTemplates, initFormlyControlTemplates, initParticularControlProperties;
@@ -2116,7 +2636,7 @@ $__System.register('12', [], function (_export) {
     }
   };
 });
-$__System.register('13', ['12'], function (_export) {
+$__System.register('2d', ['2c'], function (_export) {
   'use strict';
 
   var helpers, EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER;
@@ -2320,8 +2840,8 @@ $__System.register('13', ['12'], function (_export) {
   }
 
   return {
-    setters: [function (_) {
-      helpers = _;
+    setters: [function (_c) {
+      helpers = _c;
     }],
     execute: function () {
       EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER = 'EasyFormGenFormlyBindingModels';
@@ -2333,17 +2853,17 @@ $__System.register('13', ['12'], function (_export) {
     }
   };
 });
-$__System.register('14', ['11', '13'], function (_export) {
+$__System.register('2e', ['2b', '2d'], function (_export) {
   'use strict';
 
   var formFieldManage, FORM_FIELD_MANAGE_SERVICE, EasyFormGenFormlyBindingModels, EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER, FORMLY_PROXY_MODULE;
   return {
-    setters: [function (_) {
-      formFieldManage = _['default'];
-      FORM_FIELD_MANAGE_SERVICE = _.FORM_FIELD_MANAGE_SERVICE;
-    }, function (_2) {
-      EasyFormGenFormlyBindingModels = _2['default'];
-      EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER = _2.EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER;
+    setters: [function (_b) {
+      formFieldManage = _b['default'];
+      FORM_FIELD_MANAGE_SERVICE = _b.FORM_FIELD_MANAGE_SERVICE;
+    }, function (_d) {
+      EasyFormGenFormlyBindingModels = _d['default'];
+      EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER = _d.EASY_FORM_FORMLY_BINDING_MODEL_PROVIDER;
     }],
     execute: function () {
       FORMLY_PROXY_MODULE = '';
@@ -2352,7 +2872,7 @@ $__System.register('14', ['11', '13'], function (_export) {
     }
   };
 });
-$__System.register('15', [], function (_export) {
+$__System.register('2f', [], function (_export) {
 	'use strict';
 
 	var DD_CONTENT_COUNTER_DIRECTIVE;
@@ -2417,7 +2937,7 @@ $__System.register('15', [], function (_export) {
 		}
 	};
 });
-$__System.register('16', ['9', 'a'], function (_export) {
+$__System.register('30', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DRAG_DROP_ITEM_COUNTER_SERVICE, dragDropItemCounterService;
 
 	return {
@@ -2495,17 +3015,17 @@ $__System.register('16', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("17", [], true, function($__require, exports, module) {
+$__System.registerDynamic("31", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div ng-click=\"ddDecorContainerCtrl.collapseFct()\">\n   <h6 ng-show=\"ddDecorContainerCtrl.config.isEnabled\" class=\"ddDecorContainerCtrl.isCollapsableZone\"><button class=\"btn btn-primary btn-xs\"><span class=\"{{ddDecorContainerCtrl.currentIconClass()}}\"></span></button>&nbsp;{{ddDecorContainerCtrl.currentTitle}}</h6> \n</div>\n<div collapse=\"ddDecorContainerCtrl.isCollapsed\">\n   <div id=\"ddDecorContainerWillTranscludeHere\"></div> \n</div>";
+  module.exports = "<div ng-click=\"ddDecorContainerCtrl.collapseFct()\">\n   <h6\n    ng-show=\"ddDecorContainerCtrl.config.isEnabled\"\n    class=\"ddDecorContainerCtrl.isCollapsableZone\">\n    <button class=\"btn btn-primary btn-xs\">\n      <span class=\"{{ddDecorContainerCtrl.currentIconClass()}}\"></span>\n    </button>\n    &nbsp;\n    {{ddDecorContainerCtrl.currentTitle}}\n  </h6>\n</div>\n<div collapse=\"ddDecorContainerCtrl.isCollapsed\">\n   <div id=\"ddDecorContainerWillTranscludeHere\"></div>\n</div>\n";
   global.define = __define;
   return module.exports;
 });
 
-$__System.register('18', ['17', '19'], function (_export) {
+$__System.register('32', ['31', '33'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -2620,7 +3140,7 @@ $__System.register('18', ['17', '19'], function (_export) {
 		}
 	};
 });
-$__System.register('19', ['9', 'a'], function (_export) {
+$__System.register('33', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DD_DECOR_CONTAINER_CONTROLLER_NAME, DD_DECOR_CONTAINER_CONTROLLERAS_NAME, ddDecorContainerController;
 
 	return {
@@ -2684,17 +3204,17 @@ $__System.register('19', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("1a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("34", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div class=\"{{styleParam.ApplycssClass}}\"> \n  <div id=\"visualPanel\">\n    <div  class=\"panel panel-default\"> \n      <div class=\"panel-heading\"> \n        <h3 class=\"panel-title\">\n          <i class=\"{{currentFontAwesome}}\"></i>&nbsp; \n          {{currentTitle}}\n           <div ng-show=\"headerConfig.HeaderButtonVisible\">\n             <button class=\"btn btn-primary btn-xs buttonHeaderAddNewLine center-block\" ng-click=\"addNewLineFct();\">\n               <span class=\"glyphicon glyphicon-plus\"></span>&nbsp;add new line\n             </button>\n           </div>\n        </h3>\n      </div>\n      <div class=\"panel-body\"> \n         <div class=\"row\"> \n            <div class=\"col-md-12\" ng-transclude>\n            </div>\n         </div>\n      </div>\n    </div>\n   </div>\n</div>";
+  module.exports = "<div class=\"{{styleParam.ApplycssClass}}\">\n  <div id=\"visualPanel\">\n    <div  class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3 class=\"panel-title\">\n          <i class=\"{{currentFontAwesome}}\"></i>&nbsp;\n          {{currentTitle}}\n           <div ng-show=\"headerConfig.HeaderButtonVisible\">\n             <button\n              class=\"btn btn-primary btn-xs buttonHeaderAddNewLine center-block\"\n              ng-click=\"addNewLineFct();\">\n               <span class=\"glyphicon glyphicon-plus\"></span>\n               &nbsp;\n               add new line\n             </button>\n           </div>\n        </h3>\n      </div>\n      <div class=\"panel-body\">\n         <div class=\"row\">\n            <div class=\"col-md-12\" ng-transclude>\n            </div>\n         </div>\n      </div>\n    </div>\n   </div>\n</div>\n";
   global.define = __define;
   return module.exports;
 });
 
-$__System.register('1b', ['1a'], function (_export) {
+$__System.register('35', ['34'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -2757,8 +3277,8 @@ $__System.register('1b', ['1a'], function (_export) {
 	}
 
 	return {
-		setters: [function (_a) {
-			ddDecorDropZoneTemplate = _a['default'];
+		setters: [function (_) {
+			ddDecorDropZoneTemplate = _['default'];
 		}],
 		execute: function () {
 			DD_DECOR_DROPZONE_DIRECTIVE = 'ddDecorDropZone';
@@ -2770,17 +3290,17 @@ $__System.register('1b', ['1a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("1c", [], true, function($__require, exports, module) {
+$__System.registerDynamic("36", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div>\n <div id=\"itemDirectiveTranscludeHere\"></div>\n</div>";
+  module.exports = "<div>\n  <div id=\"itemDirectiveTranscludeHere\"></div>\n</div>\n";
   global.define = __define;
   return module.exports;
 });
 
-$__System.register('1d', ['1c'], function (_export) {
+$__System.register('37', ['36'], function (_export) {
 	'use strict';
 
 	var dragdropItemTemplate, DRAG_DROP_DECOR_ITEM;
@@ -2870,8 +3390,8 @@ $__System.register('1d', ['1c'], function (_export) {
 	}
 
 	return {
-		setters: [function (_c) {
-			dragdropItemTemplate = _c['default'];
+		setters: [function (_) {
+			dragdropItemTemplate = _['default'];
 		}],
 		execute: function () {
 			DRAG_DROP_DECOR_ITEM = 'ddDecorItem';
@@ -2883,7 +3403,7 @@ $__System.register('1d', ['1c'], function (_export) {
 		}
 	};
 });
-$__System.register('1e', ['9', 'a'], function (_export) {
+$__System.register('38', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, DRAG_DROP_ITEM_DECOR_SERVICE, dragDropItemDecorationService;
 
 	return {
@@ -2961,17 +3481,17 @@ $__System.register('1e', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("1f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("39", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div ng-class=\"{confirmLineDelete : deleteLine.readyToDelete}\" ng-dblclick=\"removeMe($event);\" ng-click=\"cancelDelete($event);\">\n <button ng-show=\"deleteLine.readyToDelete === true\" type=\"button\"  class=\"btn btn-danger pull-right buttonCloseLine\" >\n   <span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></button>\n</div>\n<div id=\"lineDirectiveTranscludeHere\"></div>";
+  module.exports = "<div\n  ng-class=\"{confirmLineDelete : deleteLine.readyToDelete}\"\n  ng-dblclick=\"removeMe($event);\"\n  ng-click=\"cancelDelete($event);\">\n  <button\n    ng-show=\"deleteLine.readyToDelete === true\"\n    type=\"button\"\n    class=\"btn btn-danger pull-right buttonCloseLine\" >\n     <span\n      class=\"glyphicon glyphicon-trash\"\n      aria-hidden=\"true\">\n    </span>\n  </button>\n</div>\n<div id=\"lineDirectiveTranscludeHere\"></div>\n";
   global.define = __define;
   return module.exports;
 });
 
-$__System.register('20', ['1f'], function (_export) {
+$__System.register('3a', ['39'], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -3114,8 +3634,8 @@ $__System.register('20', ['1f'], function (_export) {
 	}
 
 	return {
-		setters: [function (_f) {
-			ddDecorLineTemplate = _f['default'];
+		setters: [function (_) {
+			ddDecorLineTemplate = _['default'];
 		}],
 		execute: function () {
 			DRAG_DROP_DECOR_LINE = 'ddDecorLine';
@@ -3127,7 +3647,7 @@ $__System.register('20', ['1f'], function (_export) {
 		}
 	};
 });
-$__System.register('21', [], function (_export) {
+$__System.register('3b', [], function (_export) {
 	'use strict';
 
 	var DRAG_DROP_NO_EDITABLE_CONTROL;
@@ -3158,39 +3678,39 @@ $__System.register('21', [], function (_export) {
 		}
 	};
 });
-$__System.register('22', ['15', '16', '18', '19', '20', '21', '1b', '1d', '1e'], function (_export) {
+$__System.register('3c', ['30', '32', '33', '35', '37', '38', '2f', '3a', '3b'], function (_export) {
 	/* global angular */
 	'use strict';
 
-	var ddContentCounter, DD_CONTENT_COUNTER_DIRECTIVE, dragDropItemCounterService, DRAG_DROP_ITEM_COUNTER_SERVICE, ddDecorContainerDirective, DD_DECOR_CONTAINER_DIRECTIVE, ddDecorContainerController, DD_DECOR_CONTAINER_CONTROLLER_NAME, ddDecorLine, DRAG_DROP_DECOR_LINE, ddNoEditableControl, DRAG_DROP_NO_EDITABLE_CONTROL, ddDecorDropZone, DD_DECOR_DROPZONE_DIRECTIVE, ddDecorItem, DRAG_DROP_DECOR_ITEM, dragDropItemDecorationService, DRAG_DROP_ITEM_DECOR_SERVICE, DRAGDROP_MODULE;
+	var dragDropItemCounterService, DRAG_DROP_ITEM_COUNTER_SERVICE, ddDecorContainerDirective, DD_DECOR_CONTAINER_DIRECTIVE, ddDecorContainerController, DD_DECOR_CONTAINER_CONTROLLER_NAME, ddDecorDropZone, DD_DECOR_DROPZONE_DIRECTIVE, ddDecorItem, DRAG_DROP_DECOR_ITEM, dragDropItemDecorationService, DRAG_DROP_ITEM_DECOR_SERVICE, ddContentCounter, DD_CONTENT_COUNTER_DIRECTIVE, ddDecorLine, DRAG_DROP_DECOR_LINE, ddNoEditableControl, DRAG_DROP_NO_EDITABLE_CONTROL, DRAGDROP_MODULE;
 	return {
 		setters: [function (_) {
-			ddContentCounter = _['default'];
-			DD_CONTENT_COUNTER_DIRECTIVE = _.DD_CONTENT_COUNTER_DIRECTIVE;
+			dragDropItemCounterService = _['default'];
+			DRAG_DROP_ITEM_COUNTER_SERVICE = _.DRAG_DROP_ITEM_COUNTER_SERVICE;
 		}, function (_2) {
-			dragDropItemCounterService = _2['default'];
-			DRAG_DROP_ITEM_COUNTER_SERVICE = _2.DRAG_DROP_ITEM_COUNTER_SERVICE;
+			ddDecorContainerDirective = _2['default'];
+			DD_DECOR_CONTAINER_DIRECTIVE = _2.DD_DECOR_CONTAINER_DIRECTIVE;
 		}, function (_3) {
-			ddDecorContainerDirective = _3['default'];
-			DD_DECOR_CONTAINER_DIRECTIVE = _3.DD_DECOR_CONTAINER_DIRECTIVE;
+			ddDecorContainerController = _3['default'];
+			DD_DECOR_CONTAINER_CONTROLLER_NAME = _3.DD_DECOR_CONTAINER_CONTROLLER_NAME;
 		}, function (_4) {
-			ddDecorContainerController = _4['default'];
-			DD_DECOR_CONTAINER_CONTROLLER_NAME = _4.DD_DECOR_CONTAINER_CONTROLLER_NAME;
+			ddDecorDropZone = _4['default'];
+			DD_DECOR_DROPZONE_DIRECTIVE = _4.DD_DECOR_DROPZONE_DIRECTIVE;
 		}, function (_5) {
-			ddDecorLine = _5['default'];
-			DRAG_DROP_DECOR_LINE = _5.DRAG_DROP_DECOR_LINE;
+			ddDecorItem = _5['default'];
+			DRAG_DROP_DECOR_ITEM = _5.DRAG_DROP_DECOR_ITEM;
 		}, function (_6) {
-			ddNoEditableControl = _6['default'];
-			DRAG_DROP_NO_EDITABLE_CONTROL = _6.DRAG_DROP_NO_EDITABLE_CONTROL;
+			dragDropItemDecorationService = _6['default'];
+			DRAG_DROP_ITEM_DECOR_SERVICE = _6.DRAG_DROP_ITEM_DECOR_SERVICE;
+		}, function (_f) {
+			ddContentCounter = _f['default'];
+			DD_CONTENT_COUNTER_DIRECTIVE = _f.DD_CONTENT_COUNTER_DIRECTIVE;
+		}, function (_a) {
+			ddDecorLine = _a['default'];
+			DRAG_DROP_DECOR_LINE = _a.DRAG_DROP_DECOR_LINE;
 		}, function (_b) {
-			ddDecorDropZone = _b['default'];
-			DD_DECOR_DROPZONE_DIRECTIVE = _b.DD_DECOR_DROPZONE_DIRECTIVE;
-		}, function (_d) {
-			ddDecorItem = _d['default'];
-			DRAG_DROP_DECOR_ITEM = _d.DRAG_DROP_DECOR_ITEM;
-		}, function (_e) {
-			dragDropItemDecorationService = _e['default'];
-			DRAG_DROP_ITEM_DECOR_SERVICE = _e.DRAG_DROP_ITEM_DECOR_SERVICE;
+			ddNoEditableControl = _b['default'];
+			DRAG_DROP_NO_EDITABLE_CONTROL = _b.DRAG_DROP_NO_EDITABLE_CONTROL;
 		}],
 		execute: function () {
 			DRAGDROP_MODULE = 'edaDragDropWay.dragdrop.module';
@@ -3199,7 +3719,7 @@ $__System.register('22', ['15', '16', '18', '19', '20', '21', '1b', '1d', '1e'],
 		}
 	};
 });
-$__System.register('23', [], function (_export) {
+$__System.register('3d', [], function (_export) {
   'use strict';
 
   var EDA_RIGHT_CLICK_DIRECTIVE;
@@ -3243,7 +3763,7 @@ $__System.register('23', [], function (_export) {
     }
   };
 });
-$__System.register('24', ['9', 'a'], function (_export) {
+$__System.register('3e', ['9', 'a'], function (_export) {
 	var _createClass, _classCallCheck, EDA_RIGHT_CLICKED_MANAGER_SERVICE, ddItemRightClickedManager;
 
 	return {
@@ -3310,17 +3830,17 @@ $__System.register('24', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.register('25', ['23', '24'], function (_export) {
+$__System.register('3f', ['3d', '3e'], function (_export) {
 	'use strict';
 
 	var edaRightClick, EDA_RIGHT_CLICK_DIRECTIVE, ddItemRightClickedManager, EDA_RIGHT_CLICKED_MANAGER_SERVICE, EDA_RIGHT_CLICK_MODULE;
 	return {
-		setters: [function (_) {
-			edaRightClick = _['default'];
-			EDA_RIGHT_CLICK_DIRECTIVE = _.EDA_RIGHT_CLICK_DIRECTIVE;
-		}, function (_2) {
-			ddItemRightClickedManager = _2['default'];
-			EDA_RIGHT_CLICKED_MANAGER_SERVICE = _2.EDA_RIGHT_CLICKED_MANAGER_SERVICE;
+		setters: [function (_d) {
+			edaRightClick = _d['default'];
+			EDA_RIGHT_CLICK_DIRECTIVE = _d.EDA_RIGHT_CLICK_DIRECTIVE;
+		}, function (_e) {
+			ddItemRightClickedManager = _e['default'];
+			EDA_RIGHT_CLICKED_MANAGER_SERVICE = _e.EDA_RIGHT_CLICKED_MANAGER_SERVICE;
 		}],
 		execute: function () {
 			EDA_RIGHT_CLICK_MODULE = 'eda.right.click.module';
@@ -3329,7 +3849,7 @@ $__System.register('25', ['23', '24'], function (_export) {
 		}
 	};
 });
-$__System.register('26', ['9', 'a'], function (_export) {
+$__System.register('40', ['9', 'a'], function (_export) {
   var _createClass, _classCallCheck, DRAG_DROP_CONFIG_PROXY_SERVICE, ddModelConfModelProxyService;
 
   return {
@@ -3591,7 +4111,7 @@ $__System.register('26', ['9', 'a'], function (_export) {
   };
 });
 // dragDropConfig,
-$__System.register('27', ['26'], function (_export) {
+$__System.register('41', ['40'], function (_export) {
 	'use strict';
 
 	var ddModelConfModelProxyService, DRAG_DROP_CONFIG_PROXY_SERVICE, EDA_CONFIG_PROXY_MODULE;
@@ -3607,7 +4127,7 @@ $__System.register('27', ['26'], function (_export) {
 		}
 	};
 });
-$__System.register('28', [], function (_export) {
+$__System.register('42', [], function (_export) {
   'use strict';
 
   var DNDLIST_DIRECTIVE, TO_INJECT;
@@ -3849,7 +4369,7 @@ $__System.register('28', [], function (_export) {
     }
   };
 });
-$__System.register('29', [], function (_export) {
+$__System.register('43', [], function (_export) {
   'use strict';
 
   var DNDDRAGGABLE_DIRECTIVE, TO_INJECT;
@@ -3967,7 +4487,7 @@ $__System.register('29', [], function (_export) {
     }
   };
 });
-$__System.register('2a', ['28', '29'], function (_export) {
+$__System.register('44', ['42', '43'], function (_export) {
   'use strict';
 
   var dndList, DNDLIST_DIRECTIVE, dndDraggable, DNDDRAGGABLE_DIRECTIVE, DRAG_DROP_LIST_MODULE;
@@ -3990,7 +4510,7 @@ $__System.register('2a', ['28', '29'], function (_export) {
     }
   };
 });
-$__System.register('2b', [], function (_export) {
+$__System.register('45', [], function (_export) {
   'use strict';
 
   var PAGE_SLIDE_DIRECTIVE;
@@ -4234,14 +4754,14 @@ $__System.register('2b', [], function (_export) {
     }
   };
 });
-$__System.register('2c', ['2b'], function (_export) {
+$__System.register('46', ['45'], function (_export) {
   'use strict';
 
   var pageslide, PAGE_SLIDE_DIRECTIVE, PAGE_SLIDE_MODULE;
   return {
-    setters: [function (_b) {
-      pageslide = _b['default'];
-      PAGE_SLIDE_DIRECTIVE = _b.PAGE_SLIDE_DIRECTIVE;
+    setters: [function (_) {
+      pageslide = _['default'];
+      PAGE_SLIDE_DIRECTIVE = _.PAGE_SLIDE_DIRECTIVE;
     }],
     execute: function () {
       PAGE_SLIDE_MODULE = 'pageslide.module';
@@ -4250,7 +4770,7 @@ $__System.register('2c', ['2b'], function (_export) {
     }
   };
 });
-$__System.register('2d', [], function (_export) {
+$__System.register('47', [], function (_export) {
   'use strict';
 
   var LIST_DRAG_DROP_ITEM_CSS_CLASSES, DRAG_DROP_CONFIG_MODEL, DRAG_DROP_PRESENTATION_MODEL, ITEMS_NOT_TO_COUNT_FOR_REAL;
@@ -4363,7 +4883,7 @@ $__System.register('2d', [], function (_export) {
     }
   };
 });
-$__System.register('2e', ['2d'], function (_export) {
+$__System.register('48', ['47'], function (_export) {
 	// TODO : Add here configs from ES5 dragDropConfigProvider
 
 	'use strict';
@@ -4699,11 +5219,11 @@ $__System.register('2e', ['2d'], function (_export) {
 	// easyFormDragWayConfig.$inject = ['$translateProvider'];
 
 	return {
-		setters: [function (_d) {
-			LIST_DRAG_DROP_ITEM_CSS_CLASSES = _d.LIST_DRAG_DROP_ITEM_CSS_CLASSES;
-			DRAG_DROP_CONFIG_MODEL = _d.DRAG_DROP_CONFIG_MODEL;
-			DRAG_DROP_PRESENTATION_MODEL = _d.DRAG_DROP_PRESENTATION_MODEL;
-			ITEMS_NOT_TO_COUNT_FOR_REAL = _d.ITEMS_NOT_TO_COUNT_FOR_REAL;
+		setters: [function (_) {
+			LIST_DRAG_DROP_ITEM_CSS_CLASSES = _.LIST_DRAG_DROP_ITEM_CSS_CLASSES;
+			DRAG_DROP_CONFIG_MODEL = _.DRAG_DROP_CONFIG_MODEL;
+			DRAG_DROP_PRESENTATION_MODEL = _.DRAG_DROP_PRESENTATION_MODEL;
+			ITEMS_NOT_TO_COUNT_FOR_REAL = _.ITEMS_NOT_TO_COUNT_FOR_REAL;
 		}],
 		execute: function () {
 			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = 'easyFormDragWayConfig';
@@ -4715,17 +5235,17 @@ $__System.register('2e', ['2d'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("2f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("49", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<section id=\"pageWfEdit\">\n\t<div>\n\t\t<div class=\"container\">\n\t\t\t<section id=\"preview\">\n\t\t\t\t<div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<toaster-container  toaster-options=\"{ 'position-class': 'toast-top-full-width', 'extendedTimeout' : 500,'timeOut': 500 }\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<tabset justified=\"true\">\n\t\t\t\t\t\t\t<tab \n\t\t\t\t\t\t\t\tselect=\"vm.tabJustSelected(2)\" \n\t\t\t\t\t\t\t\tactive=\"vm.tab.editTab.active\" \n\t\t\t\t\t\t\t\theading=\"Edit /Create\">\n\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t<div \t\n\t\t\t\t\t\t\t\t\t\tpageslide \n\t\t\t\t\t\t\t\t\t\tps-open=\"vm.editPanelModel.toggle\" \n\t\t\t\t\t\t\t\t\t\tps-side=\"left\" \n\t\t\t\t\t\t\t\t\t\tps-cloak=\"true\" \n\t\t\t\t\t\t\t\t\t\tps-size=\"400px\">\n\t\t\t\t\t\t\t\t\t\t<left-panel closeEditPanel=\"vm.closeEditPanel()\"></left-panel>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"row advancedDemo\">\n\t\t\t\t\t\t\t\t\t\t\t<div ng-repeat=\"containers in vm.dragDropModel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  \n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-drop-zone\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-properties=\"vm.easyFormDragDropProperties.dropZoneConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-verbose-mode=\"{{vm.easyFormDragDropProperties.dropZoneConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-add-new-line=\"vm.insertNewLine()\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div \tclass=\"dropzone box box-yellow\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['containerType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallback(event, index, item, external, type, 'containerType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"items in containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'containerType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"containers.splice($index, 1);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"$parent.$index == 0\"   \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div \t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"container-element box box-blue\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-container\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-properties=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-is-collpased=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index].isCollapsed\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-current-index=\"{{$parent.$index}}\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-collapse-all=\"vm.collapseAllGroupControl(exceptThisOne)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div dd-decor-include-container-here>\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-line\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-remove-line=\"vm.removeThisLine($index)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['itemType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-horizontal-list=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"items.length > 2\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"itemlist\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-placeholder=\"dndPlaceholder\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-dragging=\"dndDraggingSource\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-full-model = \"vm.dragDropModel\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-force-css-refresh = \"command.forceRefresh\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"item in items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"item\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'itemType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"vm.dndItemMoved($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-item\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-verbose-mode=\"{{vm.easyFormDragDropProperties.itemConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-parent-index = \"{{$parent.$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-items-count=\"items.length\"\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-css-class=\"{{item.cssClass}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"itemContent\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-no-editable-control\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"rightClickCtrl\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{rightClickCtrlSelected : item.rightCliked === true}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-set-right-clicked=\"vm.setRightClicked(previousState, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click=\"vm.toggleEditPanel($event, $parent.$index, $index, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-selected-class=\"rightClickCtrlSelected\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-is-selected=\"{{item.rightCliked}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click-col-index = \"{{$parent.$parent.$index}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span ng-bind-html=\"item.label | trustThis\"></span>\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div> \n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</tab>\t\n\t\t\t\t\t\t\t<tab \n\t\t\t\t\t\t\t\tselect=\"vm.tabJustSelected(1)\" \n\t\t\t\t\t\t\t\tactive=\"vm.tab.previewTab.active\" \n\t\t\t\t\t\t\t\theading=\"Preview\">\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t\t<formly-form \n\t\t\t\t\t\t\t\t\t\t\t\tid=\"previewFormlyForm\" \n\t\t\t\t\t\t\t\t\t\t\t\tmodel=\"vm.model\" \n\t\t\t\t\t\t\t\t\t\t\t\tfields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button \n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"submit\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.submitButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button \n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"cancel\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.cancelButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t\t</form>\t\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div \n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\" \n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.customizeFormButtonsExpanded =!vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i \n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\" \n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.customizeFormButtonsExpanded, 'fa-angle-up' : vm.ihm.preview.customizeFormButtonsExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-wrench\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tCustomize form buttons\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputSubmitButtontext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Submit button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputSubmitButtontext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Submit button text\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.submitButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputCancelButtontext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Cancel button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputCancelButtontext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Cancel button text\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.cancelButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div  \n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\" \n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyModelViewExpanded =!vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<i \n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyModelViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyModelViewExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\tDATA MODEL\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\t    \n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.model | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div \n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\" \n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyFieldsViewExpanded =!vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t<i \n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\" \n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyFieldsViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyFieldsViewExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tFIELDS MODEL (ready to save to database one)\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div \n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\" \n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.saveThisFormExpanded =!vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i \n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\" \n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.saveThisFormExpanded, 'fa-angle-up' : vm.ihm.preview.saveThisFormExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-camera-retro\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tSave this form\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputNameFormtext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tName to this form :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputNameFormtext\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Enter formName\" \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.formName\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\t\t\t\t    \n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<button \n\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary btn-block btn-lg\" \n\t\t\t\t\t\t\t\t\t\t\t\tng-click=\"vm.saveThisForm()\">\n\t\t\t\t\t\t\t\t\t\t\t\tsave this form\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</tab>\n\t\t\t\t\t\t</tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t\t<section>\n\t\t\t\t<h6 class=\"text-right\">\n\t\t\t\t\tEasy form generator : {{vm.easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)\n\t\t\t\t</h6>\n\t\t\t</section>\n\t\t</div>\n\t</div>\n</section>";
+  module.exports = "<section id=\"pageWfEdit\">\n  <div>\n    <div class=\"container\">\n      <section id=\"preview\">\n        <div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<toaster-container\n              toaster-options=\"{ 'position-class': 'toast-top-full-width', 'extendedTimeout' : 500,'timeOut': 500 }\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<tabset justified=\"true\">\n\t\t\t\t\t\t\t<tab\n                select=\"vm.tabJustSelected(2)\"\n                active=\"vm.tab.editTab.active\"\n                heading=\"Edit /Create\">\n                <div class=\"row\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tpageslide\n\t\t\t\t\t\t\t\t\t\tps-open=\"vm.editPanelModel.toggle\"\n\t\t\t\t\t\t\t\t\t\tps-side=\"left\"\n\t\t\t\t\t\t\t\t\t\tps-cloak=\"true\"\n\t\t\t\t\t\t\t\t\t\tps-size=\"400px\">\n\t\t\t\t\t\t\t\t\t\t<left-panel closeEditPanel=\"vm.closeEditPanel()\"></left-panel>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"row advancedDemo\">\n\t\t\t\t\t\t\t\t\t\t\t<div ng-repeat=\"containers in vm.dragDropModel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-drop-zone\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-properties=\"vm.easyFormDragDropProperties.dropZoneConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-verbose-mode=\"{{vm.easyFormDragDropProperties.dropZoneConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-add-new-line=\"vm.insertNewLine()\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div \tclass=\"dropzone box box-yellow\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['containerType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallback(event, index, item, external, type, 'containerType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"items in containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'containerType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"containers.splice($index, 1);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"$parent.$index == 0\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"container-element box box-blue\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-container\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-properties=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-is-collpased=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index].isCollapsed\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-current-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-collapse-all=\"vm.collapseAllGroupControl(exceptThisOne)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div dd-decor-include-container-here>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-line\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-remove-line=\"vm.removeThisLine($index)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['itemType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-horizontal-list=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"items.length > 2\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"itemlist\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-placeholder=\"dndPlaceholder\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-dragging=\"dndDraggingSource\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-full-model = \"vm.dragDropModel\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-force-css-refresh = \"command.forceRefresh\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"item in items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"item\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'itemType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"vm.dndItemMoved($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-item\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-verbose-mode=\"{{vm.easyFormDragDropProperties.itemConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-parent-index = \"{{$parent.$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-items-count=\"items.length\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-css-class=\"{{item.cssClass}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"itemContent\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-no-editable-control\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"rightClickCtrl\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{rightClickCtrlSelected : item.rightCliked === true}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-set-right-clicked=\"vm.setRightClicked(previousState, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click=\"vm.toggleEditPanel($event, $parent.$index, $index, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-selected-class=\"rightClickCtrlSelected\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-is-selected=\"{{item.rightCliked}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click-col-index = \"{{$parent.$parent.$index}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span ng-bind-html=\"item.label | trustThis\"></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</tab>\n\t\t\t\t\t\t\t<tab\n\t\t\t\t\t\t\t\tselect=\"vm.tabJustSelected(1)\"\n\t\t\t\t\t\t\t\tactive=\"vm.tab.previewTab.active\"\n\t\t\t\t\t\t\t\theading=\"Preview\">\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t\t<formly-form\n\t\t\t\t\t\t\t\t\t\t\t\tid=\"previewFormlyForm\"\n\t\t\t\t\t\t\t\t\t\t\t\tmodel=\"vm.model\"\n\t\t\t\t\t\t\t\t\t\t\t\tfields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"submit\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.submitButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"cancel\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.cancelButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.customizeFormButtonsExpanded =!vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.customizeFormButtonsExpanded, 'fa-angle-up' : vm.ihm.preview.customizeFormButtonsExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-wrench\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tCustomize form buttons\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputSubmitButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Submit button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputSubmitButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Submit button text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.submitButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputCancelButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Cancel button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputCancelButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Cancel button text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.cancelButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyModelViewExpanded =!vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyModelViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyModelViewExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\tDATA MODEL\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.model | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyFieldsViewExpanded =!vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyFieldsViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyFieldsViewExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tFIELDS MODEL (ready to save to database one)\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.saveThisFormExpanded =!vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.saveThisFormExpanded, 'fa-angle-up' : vm.ihm.preview.saveThisFormExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-camera-retro\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tSave this form\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div collapse=\"vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputNameFormtext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tName to this form :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputNameFormtext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Enter formName\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.formName\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary btn-block btn-lg\"\n\t\t\t\t\t\t\t\t\t\t\t\tng-click=\"vm.saveThisForm()\">\n\t\t\t\t\t\t\t\t\t\t\t\tsave this form\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</tab>\n\t\t\t\t\t\t</tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t\t<section>\n        <h6 class=\"text-right\">\n          Easy form generator : {{vm.easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)\n        </h6>\n\t\t\t</section>\n    </div>\n  </div>\n</section>\n";
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("30", [], true, function($__require, exports, module) {
+$__System.registerDynamic("4a", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -4747,12 +5267,12 @@ $__System.registerDynamic("30", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("31", ["30"], true, function($__require, exports, module) {
+$__System.registerDynamic("4b", ["4a"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('30');
+  var $ = $__require('4a');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -4760,26 +5280,26 @@ $__System.registerDynamic("31", ["30"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("32", ["31"], true, function($__require, exports, module) {
+$__System.registerDynamic("4c", ["4b"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('31'),
+    "default": $__require('4b'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("9", ["32"], true, function($__require, exports, module) {
+$__System.registerDynamic("9", ["4c"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('32')["default"];
+  var _Object$defineProperty = $__require('4c')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -4820,7 +5340,7 @@ $__System.registerDynamic("a", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.register('33', [], function (_export) {
+$__System.register('4d', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -4925,17 +5445,17 @@ $__System.register('33', [], function (_export) {
 		}
 	};
 });
-$__System.register('34', ['9', '33', 'a'], function (_export) {
-  var _createClass, initTabModel, initIhmModel, _classCallCheck, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenCtrl;
+$__System.register('4e', ['9', 'a', '4d'], function (_export) {
+  var _createClass, _classCallCheck, initTabModel, initIhmModel, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenCtrl;
 
   return {
     setters: [function (_) {
       _createClass = _['default'];
-    }, function (_2) {
-      initTabModel = _2.initTabModel;
-      initIhmModel = _2.initIhmModel;
     }, function (_a) {
       _classCallCheck = _a['default'];
+    }, function (_d) {
+      initTabModel = _d.initTabModel;
+      initIhmModel = _d.initIhmModel;
     }],
     execute: function () {
       /* global angular */
@@ -5375,7 +5895,7 @@ $__System.register('34', ['9', '33', 'a'], function (_export) {
     }
   };
 });
-$__System.register('35', ['34', '2f'], function (_export) {
+$__System.register('4f', ['49', '4e'], function (_export) {
 	/* global angular */
 
 	//TODO : to bindToController
@@ -5384,7 +5904,7 @@ $__System.register('35', ['34', '2f'], function (_export) {
 
 	'use strict';
 
-	var DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, edaDragDropWayEasyFormGenDirectiveTemplate, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
+	var edaDragDropWayEasyFormGenDirectiveTemplate, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
 
 	function edaDragdropWayEasyFormGen($timeout, formFieldManage, ddModelConfModelProxyService,
 	// dragDropConfig,
@@ -5499,10 +6019,10 @@ $__System.register('35', ['34', '2f'], function (_export) {
 
 	return {
 		setters: [function (_) {
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS;
-		}, function (_f) {
-			edaDragDropWayEasyFormGenDirectiveTemplate = _f['default'];
+			edaDragDropWayEasyFormGenDirectiveTemplate = _['default'];
+		}, function (_e) {
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _e.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS = _e.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS;
 		}],
 		execute: function () {
 			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = 'edaDragdropWayEasyFormGen';
@@ -5516,22 +6036,22 @@ $__System.register('35', ['34', '2f'], function (_export) {
 		}
 	};
 });
-$__System.register('36', ['34', '35', '2e'], function (_export) {
+$__System.register('50', ['48', '4e', '4f'], function (_export) {
 	/* global angular */
 
 	'use strict';
 
-	var edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, easyFormDragWayConfig, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, DRAGDROP_MODULE;
+	var easyFormDragWayConfig, EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME, edaDragDropWayEasyFormGenCtrl, DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER, edaDragdropWayEasyFormGen, EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE, DRAGDROP_MODULE;
 	return {
 		setters: [function (_) {
-			edaDragDropWayEasyFormGenCtrl = _['default'];
-			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
-		}, function (_2) {
-			edaDragdropWayEasyFormGen = _2['default'];
-			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = _2.EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
+			easyFormDragWayConfig = _['default'];
+			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
 		}, function (_e) {
-			easyFormDragWayConfig = _e['default'];
-			EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME = _e.EASY_FORM_DRAG_DROP_WAY_CONFIG_NAME;
+			edaDragDropWayEasyFormGenCtrl = _e['default'];
+			DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER = _e.DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER;
+		}, function (_f) {
+			edaDragdropWayEasyFormGen = _f['default'];
+			EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE = _f.EDA_DRAGDROP_WAY_EASY_FORM_GEN_DIRECTIVE;
 		}],
 		execute: function () {
 			DRAGDROP_MODULE = 'edaDragDropWay.main.module';
@@ -5540,7 +6060,7 @@ $__System.register('36', ['34', '35', '2e'], function (_export) {
 		}
 	};
 });
-$__System.register('37', [], function (_export) {
+$__System.register('51', [], function (_export) {
   'use strict';
 
   var TRUST_THIS_FILTER_NAME;
@@ -5563,7 +6083,7 @@ $__System.register('37', [], function (_export) {
     }
   };
 });
-$__System.register('38', ['37'], function (_export) {
+$__System.register('52', ['51'], function (_export) {
   'use strict';
 
   var trustThis, TRUST_THIS_FILTER_NAME, TRUST_THIS_FILTER_MODULE;
@@ -5579,10 +6099,10 @@ $__System.register('38', ['37'], function (_export) {
     }
   };
 });
-$__System.register('1', ['2', '3', '5', '6', '10', '14', '22', '25', '27', '36', '38', '2a', '2c'], function (_export) {
+$__System.register('1', ['2', '3', '5', '6', '41', '44', '46', '50', '52', '2a', '2e', '3c', '3f'], function (_export) {
   'use strict';
 
-  var formlyConfigFunct, dragDropConfigFunt, EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE, coreModule, leftPanelModule, formlyProxyModule, dragdropModule, rightClickModule, configProxyModule, easyFormDragDropModule, trustThisFilterModule, dragAndDropListModule, pageSlideModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
+  var formlyConfigFunct, dragDropConfigFunt, EASY_FORM_DD_VERSION_NAME, EASY_FORM_DD_VERSION_VALUE, coreModule, configProxyModule, dragAndDropListModule, pageSlideModule, easyFormDragDropModule, trustThisFilterModule, leftPanelModule, formlyProxyModule, dragdropModule, rightClickModule, DRAG_DROP_WAY_MODULE_NAME, DRAG_DROP_MODULES_INJECT, mainModule;
   return {
     setters: [function (_) {}, function (_2) {
       formlyConfigFunct = _2['default'];
@@ -5593,23 +6113,23 @@ $__System.register('1', ['2', '3', '5', '6', '10', '14', '22', '25', '27', '36',
     }, function (_4) {
       coreModule = _4['default'];
     }, function (_5) {
-      leftPanelModule = _5['default'];
+      configProxyModule = _5['default'];
     }, function (_6) {
-      formlyProxyModule = _6['default'];
+      dragAndDropListModule = _6['default'];
     }, function (_7) {
-      dragdropModule = _7['default'];
+      pageSlideModule = _7['default'];
     }, function (_8) {
-      rightClickModule = _8['default'];
+      easyFormDragDropModule = _8['default'];
     }, function (_9) {
-      configProxyModule = _9['default'];
-    }, function (_10) {
-      easyFormDragDropModule = _10['default'];
-    }, function (_11) {
-      trustThisFilterModule = _11['default'];
+      trustThisFilterModule = _9['default'];
     }, function (_a) {
-      dragAndDropListModule = _a['default'];
+      leftPanelModule = _a['default'];
+    }, function (_e) {
+      formlyProxyModule = _e['default'];
     }, function (_c) {
-      pageSlideModule = _c['default'];
+      dragdropModule = _c['default'];
+    }, function (_f) {
+      rightClickModule = _f['default'];
     }],
     execute: function () {
       DRAG_DROP_WAY_MODULE_NAME = 'eda.easyformGen.dragDropWay';

@@ -2,12 +2,13 @@ import leftPanelHeaderControlTemplate from './edaDragDropWay.leftpanel.headerCon
 
 const LEFT_PANEL_HEADER_CONTROL_DIRECTIVE = 'leftPanelHeaderControl';
 
-function leftPanelHeaderControl() {
+function leftPanelHeaderControl() {  
   let directive = {
     restrict : 'E',
     template : leftPanelHeaderControlTemplate
   };
   return directive;
+
 }
 
 leftPanelHeaderControl.$inject = [];
