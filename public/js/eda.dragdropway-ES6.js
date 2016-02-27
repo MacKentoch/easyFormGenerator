@@ -3057,7 +3057,7 @@ $__System.register('32', ['31', '33'], function (_export) {
 			$scope.ddDecorContainerCtrl.config.isEnabled = false;
 
 			/**
-   	* forceCollapse when : 
+   	* forceCollapse when :
    	*  dragDropConfigModel.containerConfig.decoration.isCollapsed changed (here bound to $scope.isStillCollapsed)
    	*/
 			$scope.$watch(function () {
@@ -3088,20 +3088,20 @@ $__System.register('32', ['31', '33'], function (_export) {
 			}
 
 			/**
-   	* no header (no title, no collapse....) 
+   	* no header (no title, no collapse....)
    	*/
 			//$scope.ddDecorContainerCtrl.config.isEnabled
 			if (typeof currentIndex !== 'undefined') {
 				if (currentIndex !== '') {
 					/**
-     	* specific 1st column 
+     	* specific 1st column
      	*/
 					if (currentIndex === '0') {
 						/**
-      	* apply title  
+      	* apply title
       	*/
 						if (typeof $scope.ddDecorContainerCtrl.styleParam.title !== 'undefined') {
-							$scope.currentTitle = $scope.ddDecorContainerCtrl.styleParam.title;
+							$scope.ddDecorContainerCtrl.currentTitle = $scope.ddDecorContainerCtrl.styleParam.title;
 							$scope.ddDecorContainerCtrl.config.isEnabled = true;
 							$scope.ddDecorContainerCtrl.isCollapsed = true;
 						}
@@ -3110,13 +3110,13 @@ $__System.register('32', ['31', '33'], function (_export) {
 			}
 
 			/**
-   	* prevent transclusion creating child scope 
+   	* prevent transclusion creating child scope
    	* want to know more about what I'm talking about : check this nice tip on the subject :
-   	* http://angular-tips.com/blog/2014/03/transclusion-and-scopes/        
+   	* http://angular-tips.com/blog/2014/03/transclusion-and-scopes/
    	*/
 			transclude($scope.$parent, function (contentClone) {
 				/**
-    	* transclusion will append content to '<div id="ddDecorContainerWillTranscludeHere"></div>' 
+    	* transclusion will append content to '<div id="ddDecorContainerWillTranscludeHere"></div>'
     	*/
 				var childDiv = angular.element(element.children()[1]);
 				childDiv.append(contentClone);

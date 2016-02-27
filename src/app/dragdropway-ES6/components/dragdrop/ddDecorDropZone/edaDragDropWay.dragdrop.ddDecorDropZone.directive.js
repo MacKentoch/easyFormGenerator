@@ -11,18 +11,18 @@ function ddDecorDropZone(){
 			'styleParam'    : '=ddDropZoneProperties',
 			'verboseMode'   : '@ddDropZoneVerboseMode',
 			'currentIndex'  : '@ddDropZoneCurrentIndex',
-			'addNewLineFct' : '&ddDropZoneAddNewLine'			
+			'addNewLineFct' : '&ddDropZoneAddNewLine'
 		},
 		transclude	: true,
-		link				: linkfct 
+		link				: linkfct
 	};
 	return directive;
-	
+
 	function linkfct($scope){
 
 		let verboseModeActive   = $scope.verboseMode;
 		let currentIndex        = $scope.currentIndex;
-		
+
 		$scope.headerConfig = {
 			HeaderButtonVisible : false,
 			affixAttr           : 'bs-affix',
@@ -43,10 +43,10 @@ function ddDecorDropZone(){
 					currentIndex        : currentIndex,
 					styleParam          : $scope.styleParam
 				});
-			}                    
+			}
 		}
-	
-	
+
+
 		if (typeof currentIndex !== 'undefined') {
 			if (currentIndex !== '') {
 				// apply title
@@ -55,11 +55,11 @@ function ddDecorDropZone(){
 				if (typeof $scope.styleParam.fontAwesomeIcon !== 'undefined') $scope.currentFontAwesome = $scope.styleParam.fontAwesomeIcon;
 				//show add new line button
 				if (currentIndex === '1') $scope.headerConfig.HeaderButtonVisible = true;
-			}                    
-		}		
-		
+			}
+		}
+
 	}
-	
+
 }
 
 
