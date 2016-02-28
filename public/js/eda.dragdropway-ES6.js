@@ -3020,7 +3020,7 @@ $__System.registerDynamic("31", [], true, function($__require, exports, module) 
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div ng-click=\"ddDecorContainerCtrl.collapseFct()\">\n   <h6\n    ng-show=\"ddDecorContainerCtrl.config.isEnabled\"\n    class=\"ddDecorContainerCtrl.isCollapsableZone\">\n    <button class=\"btn btn-primary btn-xs\">\n      <span class=\"{{ddDecorContainerCtrl.currentIconClass()}}\"></span>\n    </button>\n    &nbsp;\n    {{ddDecorContainerCtrl.currentTitle}}\n  </h6>\n</div>\n<div collapse=\"ddDecorContainerCtrl.isCollapsed\">\n   <div id=\"ddDecorContainerWillTranscludeHere\"></div>\n</div>\n";
+  module.exports = "<div ng-click=\"ddDecorContainerCtrl.collapseFct()\">\n   <h6\n    ng-show=\"ddDecorContainerCtrl.config.isEnabled\"\n    class=\"ddDecorContainerCtrl.isCollapsableZone\"\n    style=\"cursor:pointer\">\n    <button class=\"btn btn-primary btn-xs\">\n      <span class=\"{{ddDecorContainerCtrl.currentIconClass()}}\"></span>\n    </button>\n    &nbsp;\n    {{ddDecorContainerCtrl.currentTitle}}\n  </h6>\n</div>\n<div collapse=\"ddDecorContainerCtrl.isCollapsed\">\n   <div id=\"ddDecorContainerWillTranscludeHere\"></div>\n</div>\n";
   global.define = __define;
   return module.exports;
 });
@@ -3055,7 +3055,6 @@ $__System.register('32', ['31', '33'], function (_export) {
 			var currentIndex = $scope.ddDecorContainerCtrl.currentIndex;
 			$scope.ddDecorContainerCtrl.isCollapsed = false;
 			$scope.ddDecorContainerCtrl.config.isEnabled = false;
-
 			/**
    	* forceCollapse when :
    	*  dragDropConfigModel.containerConfig.decoration.isCollapsed changed (here bound to $scope.isStillCollapsed)

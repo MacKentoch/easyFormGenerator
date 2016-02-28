@@ -33,7 +33,6 @@ function ddDecorContainer(){
 		let currentIndex        											= $scope.ddDecorContainerCtrl.currentIndex;
 		$scope.ddDecorContainerCtrl.isCollapsed				= false;
 		$scope.ddDecorContainerCtrl.config.isEnabled	= false;
-
 		/**
 			* forceCollapse when :
 			*  dragDropConfigModel.containerConfig.decoration.isCollapsed changed (here bound to $scope.isStillCollapsed)
