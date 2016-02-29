@@ -606,6 +606,11 @@ $__System.register('8', ['7', '9', 'a'], function (_export) {
 						this.proxyModel = this.controllerModalProxy.proxyModel;
 						this.proxyModel.selectedControl = this.proxyModel.temporyConfig.selectedControl;
 
+						console.info('debug leftpanelController init');
+						console.dir({
+							'this.proxyModel': angular.copy(this.proxyModel)
+						});
+
 						this.basicSelectRowCollection = this.controllerModalProxy.basicSelectRowCollection;
 						this.newOptionBasicSelect = this.controllerModalProxy.newOptionBasicSelect;
 
@@ -622,7 +627,7 @@ $__System.register('8', ['7', '9', 'a'], function (_export) {
 						this.demodt.formats = dateFormats;
 						this.dateOptions = this.getDateOptions();
 
-						this.controllerModalProxy.resetAllTemporyModels();
+						// this.controllerModalProxy.resetAllTemporyModels();
 						this.initNyaSelectConformingSelectedControl();
 					}
 				}, {
@@ -680,6 +685,12 @@ $__System.register('8', ['7', '9', 'a'], function (_export) {
 				}, {
 					key: 'resetControl',
 					value: function resetControl() {
+						console.info('leftPanel resetControl debug');
+						console.dir({
+							'proxyModel': this.proxyModel,
+							'this.controllerModalProxy.proxyModel': this.controllerModalProxy.proxyModel
+						});
+
 						this.proxyModel.temporyConfig.formlyLabel = '';
 						this.proxyModel.temporyConfig.formlyRequired = false;
 						this.proxyModel.temporyConfig.formlyPlaceholder = '';
@@ -1462,6 +1473,11 @@ $__System.register('f', ['9', 'a'], function (_export) {
               if (this.proxyModel.temporyConfig.selectedControl === 'Date') {
                 this.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
               }
+              console.info('debug setProxyModelFromConfigurationSelection');
+              console.dir({
+                selectedControl: angular.copy(this.proxyModel.selectedControl),
+                temporyConfig: angular.copy(this.proxyModel.temporyConfig)
+              });
             }
             return this.proxyModel;
           }
@@ -5609,23 +5625,23 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
           //    }
           //  }
 
-          //  //TO CHECK THEN TO DELETE : should come from step way... 
+          //  //TO CHECK THEN TO DELETE : should come from step way...
           // increaseNumberOfColumns(){
           //  if (this.configuration.lines[this.configuration.activeLine -1].columns.length < this.MaxNumberOfColumns) {
-          //    let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());  
+          //    let newNumberOfColumns = this.configuration.lines[this.configuration.activeLine -1].columns.push(initColumnTemplate());
           //    this.configuration.lines[this.configuration.activeLine -1].columns[newNumberOfColumns - 1].numColumn = newNumberOfColumns;
           //  }
           //  this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
           //  this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-          // } 
+          // }
 
-          //  //TO CHECK THEN TO DELETE : should come from step way... 
+          //  //TO CHECK THEN TO DELETE : should come from step way...
           // decreaseNumberOfColumns(indexLine, indexColumn){
           //  if (this.configuration.lines[this.configuration.activeLine -1].columns.length > 1) {
           //    this.configuration.lines[this.configuration.activeLine -1].columns.splice(this.configuration.lines[this.configuration.activeLine -1].columns.length -1, 1);
           //  }
-          //  this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel); 
-          //  this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields); 
+          //  this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+          //  this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
           // }
 
         }, {
@@ -5699,7 +5715,7 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
         }, {
           key: 'dragoverCallbackItems',
           value: function dragoverCallbackItems(ParentParentIndex, parentIndex) {
-            //prevent items in layout column to be drag to control select 
+            //prevent items in layout column to be drag to control select
             if (parentIndex === 0) return false;
             return true;
           }
@@ -5737,15 +5753,15 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
           key: 'saveFromEditPanel',
           value: function saveFromEditPanel() {
             /**
-            * TODO : 
+            * TODO :
             * should be called from edit panel
             *
             * AND
             *
             * should call all these methods
             *
-            * need to get  : 
-            * 
+            * need to get  :
+            *
             * - line index
             * - column index
             * - basicSelectRowCollection (from edpitpanelcontroller)   --> maybe in controllerModalProxy service
@@ -5773,15 +5789,15 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
             this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
 
             /**
-            * TODO : refresh configuration model 
+            * TODO : refresh configuration model
             * uncomment after update these next 3 lines
-            * 
+            *
             * NOTE : indexLine AND  numcolumn should be stored in service and
             * updated when togle sidepanel
             */
             //this.controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
-            //this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);   
-            //this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);    
+            //this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+            //this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 
             this.controllerModalProxy.setEditPanelModelToggle(false);
             this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();
@@ -5805,8 +5821,8 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
 
               //TODO : for refreshing
               //this.controllerModalProxy.bindConfigurationModelFromProxyModel(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
-              //this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);   
-              //this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);   
+              //this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
+              //this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
 
               // check if new control right clicked otherwise just toggle side panel
               if (typeof this.controllerModalProxy.getEditPanelModelLineIndex() !== 'undefined' && typeof this.controllerModalProxy.getEditPanelModelColumnIndex() !== 'undefined' && typeof this.controllerModalProxy.getEditPanelModelControl() !== 'undefined') {
@@ -5853,7 +5869,7 @@ $__System.register('4e', ['9', 'a', '4d'], function (_export) {
           //    console.info('refreshing models');
           //    formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
           //    this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
-          //   }, 10); 
+          //   }, 10);
           // }
 
         }, {

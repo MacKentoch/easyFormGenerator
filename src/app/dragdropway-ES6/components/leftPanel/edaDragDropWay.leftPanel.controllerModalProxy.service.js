@@ -192,6 +192,11 @@ class controllerModalProxy{
       if (this.proxyModel.temporyConfig.selectedControl === 'Date') {
         this.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
       }
+      console.info('debug setProxyModelFromConfigurationSelection');
+      console.dir({
+        selectedControl : angular.copy(this.proxyModel.selectedControl ),
+        temporyConfig   : angular.copy(this.proxyModel.temporyConfig)
+      });
     }
     return this.proxyModel;
   }

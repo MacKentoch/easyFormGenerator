@@ -25,6 +25,11 @@ class leftPanelController{
 		this.proxyModel 								= this.controllerModalProxy.proxyModel;
 		this.proxyModel.selectedControl = this.proxyModel.temporyConfig.selectedControl;
 
+    console.info('debug leftpanelController init');
+    console.dir({
+      'this.proxyModel' : angular.copy(this.proxyModel)
+    });
+
 		this.basicSelectRowCollection 	= this.controllerModalProxy.basicSelectRowCollection;
 		this.newOptionBasicSelect 			= this.controllerModalProxy.newOptionBasicSelect;
 
@@ -41,9 +46,8 @@ class leftPanelController{
 		this.demodt.formats							= dateFormats;
 		this.dateOptions								= this.getDateOptions();
 
-		this.controllerModalProxy.resetAllTemporyModels();
-		this.initNyaSelectConformingSelectedControl();
-
+		// this.controllerModalProxy.resetAllTemporyModels();
+    this.initNyaSelectConformingSelectedControl();
 	}
 
 	getDateOptions() {
@@ -56,7 +60,7 @@ class leftPanelController{
 		return dateOptions;
 	}
 
-	initNyaSelectConformingSelectedControl(){
+	initNyaSelectConformingSelectedControl() {
 		//place proxyModel to selection if not none :
 		if (this.proxyModel.temporyConfig.selectedControl !== 'none') {
 			for (let i = this.proxyModel.controls.length - 1; i >= 0; i--) {
@@ -68,7 +72,7 @@ class leftPanelController{
 		}
 	}
 
-	updateSpecialControl(){
+	updateSpecialControl() {
 		//refresh service data for particular controls as selects and radio
 		this.proxyModel.basicSelectRowCollection 		= this.basicSelectRowCollection;
 		this.proxyModel.newOptionBasicSelect 				= this.newOptionBasicSelect;
@@ -81,10 +85,10 @@ class leftPanelController{
 		this.proxyModel.newOptionRadio 							= this.newOptionRadio;
 		//force apply update proxyModel
 		this.controllerModalProxy.bindSpecialCtrlTemporyModelsToProxyModel();
-		return true; 	
+		return true;
 	}
 
-	resetTemporyConfig(){
+	resetTemporyConfig() {
 		this.proxyModel.temporyConfig = {
 			formlyLabel				: '',
 			formlyRequired		: false,
@@ -94,7 +98,13 @@ class leftPanelController{
 		};
 	}
 
-	resetControl(){
+	resetControl() {
+    console.info(`leftPanel resetControl debug`);
+    console.dir({
+      'proxyModel' : this.proxyModel,
+      'this.controllerModalProxy.proxyModel' : this.controllerModalProxy.proxyModel
+    });
+
 		this.proxyModel.temporyConfig.formlyLabel 			= '';
 		this.proxyModel.temporyConfig.formlyRequired 		= false;
 		this.proxyModel.temporyConfig.formlyPlaceholder	= '';
@@ -103,7 +113,7 @@ class leftPanelController{
 		this.proxyModel.temporyConfig.datepickerPopup   = this.initDatePicker();
 	}
 
-	initDatePicker(){
+	initDatePicker() {
 		this.proxyModel.temporyConfig.datepickerPopup = this.demodt.formats[0];
 	}
 
