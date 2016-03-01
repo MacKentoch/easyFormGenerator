@@ -16,8 +16,10 @@ function leftPanel(){
 		controller				:	LEFT_PANEL_CONTROLLER,
 		controllerAs			: LEFT_PANEL_CONTROLLERAS,
 		bindToController	: {
-			closeEditPanel : '&'
-		} 
+			closeEditPanel        : '&',
+      updateSpecialControl  : '&',
+      selectedControl       : '&'
+		}
 	};
 	return directive;
 }

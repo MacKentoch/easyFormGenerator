@@ -28,12 +28,12 @@
               class="form-control"
               id="inputAddNewGroupedOption"
               placeholder="add new option"
-              ng-model="panel.newOptionGroupedSelect.saisie">
+              ng-model="leftPanelCtrl.newOptionGroupedSelect.saisie">
           </div>
           <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
             <button
               class="btn btn-primary"
-              ng-click="panel.addNewOptionGroupedSelect()">
+              ng-click="leftPanelCtrl.addNewOptionGroupedSelect()">
               add
             </button>
           </div>
@@ -57,13 +57,13 @@
               id="inputAddNewGroupGroupedOption"
               type="text"
               class="form-control"
-              ng-model="panel.newGroupGroupedSelect.saisie"
+              ng-model="leftPanelCtrl.newGroupGroupedSelect.saisie"
               placeholder="Add new group">
           </div>
           <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
             <button
               class="btn btn-primary"
-              ng-click="panel.addNewGroupToGroupedSelect()">
+              ng-click="leftPanelCtrl.addNewGroupToGroupedSelect()">
               add
             </button>
           </div>
@@ -82,7 +82,7 @@
       <div class="form-group">
         <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="container">
-            <div ng-if="panel.groupedSelectRowCollection.rows.length === 0">
+            <div ng-if="leftPanelCtrl.groupedSelectRowCollection.rows.length === 0">
               <h5 class="text-center greyText">
                 <em>
                   - no option : add new options -
@@ -90,7 +90,7 @@
               </h5>
             </div>
             <table
-              ng-if="panel.groupedSelectRowCollection.rows.length > 0"
+              ng-if="leftPanelCtrl.groupedSelectRowCollection.rows.length > 0"
               class="table table-striped">
               <thead>
                 <tr>
@@ -120,26 +120,26 @@
               </thead>
               <tbody>
               <tr
-                ng-repeat="groupedSelectRow in panel.groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow">
+                ng-repeat="groupedSelectRow in leftPanelCtrl.groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow">
                 <td st-ratio="20">
                   {{$index}}
                 </td>
                 <td st-ratio="25">
-                  <div ng-if="panel.groupSelectGroupClick.showList === true">
-                    <div ng-if="panel.GroupedSelectGroups.list.length === 0">
+                  <div ng-if="leftPanelCtrl.groupSelectGroupClick.showList === true">
+                    <div ng-if="leftPanelCtrl.GroupedSelectGroups.list.length === 0">
                       <p class="text-left noGroupText">
                         - add new groups -
                       </p>
                     </div>
-                    <div ng-if="panel.GroupedSelectGroups.list.length > 0">
+                    <div ng-if="leftPanelCtrl.GroupedSelectGroups.list.length > 0">
                       <ol
                         class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect"
                         ng-model="groupedSelectRow.group"
                         id="modelGroupedOptionGroupedChoose"
-                        disabled="panel.GroupedSelectGroups.list.length === 0">
+                        disabled="leftPanelCtrl.GroupedSelectGroups.list.length === 0">
                         <li
                           class="nya-bs-option"
-                          nya-bs-option="GroupedSelectGroup in panel.GroupedSelectGroups.list"
+                          nya-bs-option="GroupedSelectGroup in leftPanelCtrl.GroupedSelectGroups.list"
                           value="GroupedSelectGroup">
                           <a>
                             {{GroupedSelectGroup}}
@@ -148,7 +148,7 @@
                       </ol>
                     </div>
                   </div>
-                  <div ng-if="panel.groupSelectGroupClick.showList === false">
+                  <div ng-if="leftPanelCtrl.groupSelectGroupClick.showList === false">
                     {{groupedSelectRow.group}}
                   </div>
                 </td>
@@ -159,22 +159,22 @@
                   <div class="pull-right">
                     <button
                       class="btn btn-primary"
-                      ng-click="panel.upThisGroupedSelectRow($index)">
+                      ng-click="leftPanelCtrl.upThisGroupedSelectRow($index)">
                       <i class="fa fa-arrow-up"></i>
                     </button>
                     <button
                       class="btn btn-primary"
-                      ng-click="panel.downThisGroupedSelectRow($index)">
+                      ng-click="leftPanelCtrl.downThisGroupedSelectRow($index)">
                       <i class="fa fa-arrow-down"></i>
                     </button>
                     <button
                       class="btn btn-warning"
-                      ng-click="panel.showGroupListToChoose()">
+                      ng-click="leftPanelCtrl.showGroupListToChoose()">
                       <i class="fa fa-pencil-square-o"></i>
                     </button>
                     <button
                       class="btn btn-danger"
-                      ng-click="panel.removeGroupedSelectRow($index)">
+                      ng-click="leftPanelCtrl.removeGroupedSelectRow($index)">
                       <i class="fa fa-trash-o"></i>
                     </button>
                    </div>
@@ -199,7 +199,7 @@
             <input
               type="text"
               class="form-control"
-              ng-model="panel.proxyModel.temporyConfig.formlyDesciption"
+              ng-model="leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption"
               id="DescriptionUpdate"
               placeholder="Add / edit description here">
           </div>

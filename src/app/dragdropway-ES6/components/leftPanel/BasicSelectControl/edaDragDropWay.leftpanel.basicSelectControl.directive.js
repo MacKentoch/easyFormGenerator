@@ -1,4 +1,3 @@
-
 import leftPanelBasicSelectControlTemplate from './edaDragDropWay.leftpanel.basicSelectControl.template.html!text';
 
 const LEFT_PANEL_BASIC_SELECT_CONTROL_DIRECTIVE = 'leftPanelBasicSelectControl';

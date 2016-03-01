@@ -28,12 +28,12 @@
               class="form-control"
               id="inputAddNewBasicOption"
               placeholder="add new option"
-              ng-model="panel.newOptionBasicSelect.saisie">
+              ng-model="leftPanelCtrl.newOptionBasicSelect.saisie">
             </div>
             <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
               <button
                 class="btn btn-primary"
-                ng-click="panel.addNewOptionBasicSelect()">
+                ng-click="leftPanelCtrl.addNewOptionBasicSelect()">
                 add
               </button>
             </div>
@@ -51,7 +51,7 @@
       <div class="form-group">
         <div class-"col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="container">
-            <div ng-if="panel.basicSelectRowCollection.rows.length === 0">
+            <div ng-if="leftPanelCtrl.basicSelectRowCollection.rows.length === 0">
               <h5 class="text-center greyText">
                 <em>
                   - no option : add new options -
@@ -59,7 +59,7 @@
               </h5>
             </div>
             <table
-              ng-if="panel.basicSelectRowCollection.rows.length > 0"
+              ng-if="leftPanelCtrl.basicSelectRowCollection.rows.length > 0"
               class="table table-striped">
               <thead>
               <tr>
@@ -75,7 +75,7 @@
                 <th st-ratio="20"></th>
                 <th st-ratio="55">
                   <input
-                    ng-model="panel.basicSelectFilter"
+                    ng-model="leftPanelCtrl.basicSelectFilter"
                     placeholder="search for option"
                     class="input-sm form-control"
                     type="search" />
@@ -84,7 +84,7 @@
               </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="basicSelectRow in panel.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow">
+                <tr ng-repeat="basicSelectRow in leftPanelCtrl.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow">
                   <td st-ratio="20">
                     {{$index}}
                   </td>
@@ -95,17 +95,17 @@
                     <div class="pull-right">
                       <button
                         class="btn btn-primary"
-                        ng-click="panel.upThisRow($index)">
+                        ng-click="leftPanelCtrl.upThisRow($index)">
                         <i class="fa fa-arrow-up"></i>
                       </button>
                       <button
                         class="btn btn-primary"
-                        ng-click="panel.downThisRow($index)">
+                        ng-click="leftPanelCtrl.downThisRow($index)">
                         <i class="fa fa-arrow-down"></i>
                       </button>
                       <button
                         class="btn btn-danger"
-                        ng-click="panel.removeRow($index)">
+                        ng-click="leftPanelCtrl.removeRow($index)">
                         <i class="fa fa-trash-o"></i>
                       </button>
                      </div>
@@ -130,7 +130,7 @@
               <input
                 type="text"
                 class="form-control"
-                ng-model="panel.proxyModel.temporyConfig.formlyDesciption"
+                ng-model="leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption"
                 id="DescriptionUpdate"
                 placeholder="Add / edit description here">
             </div>
