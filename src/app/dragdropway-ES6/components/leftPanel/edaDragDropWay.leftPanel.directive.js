@@ -17,7 +17,6 @@ function leftPanel(){
 		controllerAs			: LEFT_PANEL_CONTROLLERAS,
 		bindToController	: {
 			closeEditPanel        : '&',
-      updateSpecialControl  : '&',
       selectedControl       : '&'
 		}
 	};
