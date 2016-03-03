@@ -275,7 +275,12 @@ class edaDragDropWayEasyFormGenCtrl{
   }
 
 
-  saveFromEditPanel(){
+  saveFromEditPanel() {
+    console.info('saveFromEditPanel');
+    console.dir({
+      'this.controllerModalProxy.getEditPanelModelLineIndex()' : this.controllerModalProxy.getEditPanelModelLineIndex(),
+      'this.controllerModalProxy' :  this.controllerModalProxy
+    });
     /**
     * TODO :
     * should be called from edit panel
@@ -333,6 +338,14 @@ class edaDragDropWayEasyFormGenCtrl{
   }
 
   toggleEditPanel(event, lineIndex, colIndex, item){
+    console.info('debug toggleEditPanel ');
+    console.dir({
+      event : event,
+      lineIndex : lineIndex,
+      colIndex : colIndex,
+      item : item
+    });
+
     this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
     // already opened (could be another control edit)
     if (this.controllerModalProxy.getEditPanelModelToggle()) {

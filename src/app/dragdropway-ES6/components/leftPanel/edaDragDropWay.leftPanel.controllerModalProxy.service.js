@@ -126,6 +126,12 @@ class controllerModalProxy{
 
   // to refresh configuration model from edit panel
   bindConfigurationModelFromProxyModel(indexLine, numcolumn, configurationObj){
+    console.dir({
+      'indexLine' : indexLine,
+      'numcolumn' : numcolumn,
+      'configObj' : configurationObj
+    });
+
     let extractedProps = angular.copy(this.proxyModel.temporyConfig);
 
     configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;

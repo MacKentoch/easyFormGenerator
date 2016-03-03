@@ -73,7 +73,6 @@ class leftPanelController{
 	}
 
 	updateSpecialControl() {
-    console.info('updateSpecialControl');
 		//refresh service data for particular controls as selects and radio
 		this.proxyModel.basicSelectRowCollection 		= this.basicSelectRowCollection;
 		this.proxyModel.newOptionBasicSelect 				= this.newOptionBasicSelect;
