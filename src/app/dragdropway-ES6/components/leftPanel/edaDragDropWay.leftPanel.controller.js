@@ -21,15 +21,9 @@ class leftPanelController{
 		this.init();
 	}
 
-	init(){
+	init() {
 		this.proxyModel 								= this.controllerModalProxy.proxyModel;
 		this.proxyModel.selectedControl = this.proxyModel.temporyConfig.selectedControl;
-
-    console.info('debug leftpanelController init');
-    console.dir({
-      'this.proxyModel' : angular.copy(this.proxyModel)
-    });
-
 		this.basicSelectRowCollection 	= this.controllerModalProxy.basicSelectRowCollection;
 		this.newOptionBasicSelect 			= this.controllerModalProxy.newOptionBasicSelect;
 
@@ -99,12 +93,6 @@ class leftPanelController{
 	}
 
 	resetControl() {
-    console.info(`leftPanel resetControl debug`);
-    console.dir({
-      'proxyModel' : this.proxyModel,
-      'this.controllerModalProxy.proxyModel' : this.controllerModalProxy.proxyModel
-    });
-
 		this.proxyModel.temporyConfig.formlyLabel 			= '';
 		this.proxyModel.temporyConfig.formlyRequired 		= false;
 		this.proxyModel.temporyConfig.formlyPlaceholder	= '';

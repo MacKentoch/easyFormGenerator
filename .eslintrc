@@ -2,29 +2,36 @@
   "ecmaFeatures": {
       "modules": true
   },
+  parserOptions: {
+    sourceType: "module"
+  },
   "rules": {
-      //"indent": [ 2, 2 ],
-      "quotes": [ 2, "single" ],
-      "linebreak-style": [ 2, "unix" ],
-      "semi": [ 2, "always" ],
-      "angular/definedundefined" : 0,
-      "angular/json-functions" : 0  
+    // "indent": [ 2, 2 ],
+    "quotes": [ 2, "single" ],
+    "linebreak-style": [ 2, "unix" ],
+    "semi": [ 2, "always" ],
+    "angular/definedundefined" : 0,
+    "angular/json-functions" : 0 ,
+    "angular/document-service" : 0,
+    "angular/timeout-service" : 0,
+    "angular/log" : 0,
+    "angular/window-service" : 0,
+    "angular/typecheck-array" : 0
   },
   "env": {
-      "es6": true,
-      "browser": true,
-      "node" : true
+    "es6": true,
+    "browser": true,
+    "node" : true
   },
   "globals": {
     "angular": false,
     "_" : true
   },
   "extends": [
-  "eslint:recommended",
-  "angular"
+    "eslint:recommended",
+    "angular"
   ],
   plugins: [
-    "import",
     "angular"
   ]
 }

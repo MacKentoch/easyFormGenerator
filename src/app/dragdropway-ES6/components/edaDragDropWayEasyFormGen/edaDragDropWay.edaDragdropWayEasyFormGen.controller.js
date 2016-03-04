@@ -276,11 +276,6 @@ class edaDragDropWayEasyFormGenCtrl{
 
 
   saveFromEditPanel() {
-    console.info('saveFromEditPanel');
-    console.dir({
-      'this.controllerModalProxy.getEditPanelModelLineIndex()' : this.controllerModalProxy.getEditPanelModelLineIndex(),
-      'this.controllerModalProxy' :  this.controllerModalProxy
-    });
     /**
     * TODO :
     * should be called from edit panel
@@ -304,7 +299,7 @@ class edaDragDropWayEasyFormGenCtrl{
 
     //update configuration model and formly model
     this.controllerModalProxy.bindConfigurationModelFromProxyModel(this.controllerModalProxy.getEditPanelModelLineIndex(), this.controllerModalProxy.getEditPanelModelColumnIndex(), this.configuration);
-    this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.vm.wfFormFields, this.dataModel);
+    this.formFieldManage.applyConfigurationToformlyModel(this.configuration, this.wfFormFields, this.dataModel);
     this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
     this.ddModelConfModelProxyService.refreshControlsKeys(this.configuration, this.dragDropModel);
     this.controllerModalProxy.setEditPanelModelToggle(false);
@@ -338,14 +333,6 @@ class edaDragDropWayEasyFormGenCtrl{
   }
 
   toggleEditPanel(event, lineIndex, colIndex, item){
-    console.info('debug toggleEditPanel ');
-    console.dir({
-      event : event,
-      lineIndex : lineIndex,
-      colIndex : colIndex,
-      item : item
-    });
-
     this.ddItemRightClickedManager.resetAllDragDropItemSelectedState(this.dragDropModel);
     // already opened (could be another control edit)
     if (this.controllerModalProxy.getEditPanelModelToggle()) {
@@ -366,7 +353,7 @@ class edaDragDropWayEasyFormGenCtrl{
             this.controllerModalProxy.getEditPanelModelColumnIndex() === colIndex  &&
           angular.equals(this.controllerModalProxy.getEditPanelModelControl(), item)) {
           //console.info('already opened for SAME ctrl : so close - no re-open');
-        }else{
+        } else {
           //console.info('already opened for DIFFERENT ctrl : so re-open');
           item.rightCliked = true;
           // set a timeout before re-opening, 500ms is ok for a ps-size="400px"
@@ -382,9 +369,9 @@ class edaDragDropWayEasyFormGenCtrl{
           this.$scope.$on('$destroy', ()=>this.$timeout.cancel(timerCloseOpenedEditPanel));
         }
       }
-    }else{
+    } else {
       // previous state = closed = immediate open
-      //console.info('NOT already opened : so open');
+      // console.info('NOT already opened : so open');
       item.rightCliked = true;
 
       this.controllerModalProxy.setEditPanelModelLineIndex(lineIndex);
@@ -395,6 +382,12 @@ class edaDragDropWayEasyFormGenCtrl{
       this.controllerModalProxy.setEditPanelModelToggle(true);
       this.editPanelModel.toggle = this.controllerModalProxy.getEditPanelModelToggle();
     }
+
+    // console.info('after toggleLeftPanel check :');
+    // console.dir({
+    //   'this.editPanelModel'                 : angular.copy(this.editPanelModel),
+    //   'controllerModalProxy.editPanelModel' : angular.copy(this.controllerModalProxy.editPanelModel)
+    // });
   }
 
   // // refreshModels : to call after drag and drop events

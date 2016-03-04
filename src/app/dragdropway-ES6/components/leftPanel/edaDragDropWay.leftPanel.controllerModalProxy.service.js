@@ -126,12 +126,6 @@ class controllerModalProxy{
 
   // to refresh configuration model from edit panel
   bindConfigurationModelFromProxyModel(indexLine, numcolumn, configurationObj){
-    console.dir({
-      'indexLine' : indexLine,
-      'numcolumn' : numcolumn,
-      'configObj' : configurationObj
-    });
-
     let extractedProps = angular.copy(this.proxyModel.temporyConfig);
 
     configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl 	= extractedProps.selectedControl;
@@ -198,11 +192,11 @@ class controllerModalProxy{
       if (this.proxyModel.temporyConfig.selectedControl === 'Date') {
         this.proxyModel.temporyConfig.datepickerPopup = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerPopup : '';
       }
-      console.info('debug setProxyModelFromConfigurationSelection');
-      console.dir({
-        selectedControl : angular.copy(this.proxyModel.selectedControl ),
-        temporyConfig   : angular.copy(this.proxyModel.temporyConfig)
-      });
+      // console.info('debug setProxyModelFromConfigurationSelection');
+      // console.dir({
+      //   selectedControl : angular.copy(this.proxyModel.selectedControl ),
+      //   temporyConfig   : angular.copy(this.proxyModel.temporyConfig)
+      // });
     }
     return this.proxyModel;
   }
@@ -231,7 +225,7 @@ class controllerModalProxy{
   setEditPanelModelControl(newEditPanelModel){
     let successfullDone  = false;
     if (typeof newEditPanelModel !== 'undefined') {
-      this.editPanelModel = angular.copy(newEditPanelModel);
+      angular.merge(this.editPanelModel, newEditPanelModel);
       successfullDone     = true;
     }
     return successfullDone;
@@ -255,13 +249,13 @@ class controllerModalProxy{
 
 
   // getter : editPanelModel.lineIndex
-  getEditPanelModelLineIndex(){
+  getEditPanelModelLineIndex() {
     return this.editPanelModel.lineIndex;
   }
 
 
   // setter : editPanelModel.lineIndex
-  setEditPanelModelLineIndex(newLineIndex){
+  setEditPanelModelLineIndex(newLineIndex) {
     let successfullDone  = false;
     if (typeof newLineIndex !== 'undefined') {
       this.editPanelModel.lineIndex = newLineIndex;
