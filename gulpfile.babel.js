@@ -5,20 +5,16 @@
  *
  * INFO on relevant tasks :
  * -------------------------
- * 
+ *
  * 1) want to build "only app dependencies"" (only), use :
  * - $ gulp
  * - $ gulp watch
- * 
+ *
  * 2) want to build "all dependencies" (vendor + app), use :
  * - $ gulp build:all
- * 
+ *
  * 3) want to dist, use :
- * - $ gulp dist 
- *  
- * tmp) drag and drop way ES6
- * - $ gulp build:dragdropway:ES6 (or gulp build:dragdropway:ES6:min for min version)
- * 
+ * - $ gulp dist
  * ——————————————————————————————————————————————
  * MIT (2015) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
@@ -116,7 +112,7 @@ gulp.task('formviewer:clean', cb => {
 gulp.task('vendor:clean:temp', cb => {
   del([
 		gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css'
-		], cb);	
+		], cb);
 });
 
 
@@ -129,7 +125,7 @@ gulp.task('vendor:clean:temp', cb => {
  * -------------------------------
  */
 //vendor:css subtask
-gulp.task('vendor:css:specialCases', 
+gulp.task('vendor:css:specialCases',
 		['public:vendor:css:clean'],
 		() => {
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toMinify.srcFile, { cwd: gulpConfig.base.root })
@@ -137,7 +133,7 @@ gulp.task('vendor:css:specialCases',
 		.pipe(cssmin())
 		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
 		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
-		
+
 	gulp.src(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify.srcFile, { cwd: gulpConfig.base.root })
 		.pipe(deleteLines({ 'filters': [/^@import url/] }))
 		.pipe(concat(gulpConfig.srcFiles.bowerFiles.css.toCleanAndMinify.destfileName))
@@ -145,7 +141,7 @@ gulp.task('vendor:css:specialCases',
 		.on('error', notify.onError(error => 'Error: ' + error.message))
 		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
 		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
-				
+
 });
 
 
@@ -154,19 +150,19 @@ gulp.task('vendor:css:specialCases',
 
 // vendor:css TASK : css, copyt to public dir
 // NOTE : depending 'appConfig.js' : could concat vendor css
-gulp.task('vendor:css', 
-	['vendor:css:specialCases'],  
+gulp.task('vendor:css',
+	['vendor:css:specialCases'],
 	() => {
-		const sources = gulpConfig.srcFiles.bowerFiles.css.noMinify;															
+		const sources = gulpConfig.srcFiles.bowerFiles.css.noMinify;
 		if(appConfig.concatVendorFiles === true){
-      gulp.src( sources 
+      gulp.src( sources
                 ,{ cwd: gulpConfig.base.root })
           .pipe(concat(gulpConfig.destFiles.vendor.css))
-          .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));			
-		}else{		
-			gulp.src( sources 
+          .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
+		}else{
+			gulp.src( sources
 								,{ cwd: gulpConfig.base.root })
-					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));			
+					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
 		}
 });
 
@@ -177,9 +173,9 @@ gulp.task('vendor:css',
  * VENDORS FONTS COPY TASK
  * -------------------------------
  */
-gulp.task('vendor:fonts', 
-			['public:vendor:fonts:clean'], 
-			() => {	
+gulp.task('vendor:fonts',
+			['public:vendor:fonts:clean'],
+			() => {
  gulp.src(gulpConfig.srcFiles.bowerFiles.fonts, { cwd: gulpConfig.base.root })
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.fonts, { cwd: gulpConfig.base.root }));
 });
@@ -196,13 +192,13 @@ gulp.task('vendor:fonts',
  * ------------------------------------------------------------
  * VENDOR JS TASKS (SCRIPTS for HEADER : jquery, angular....)
  * ------------------------------------------------------------
- * 
+ *
  *  NOTE these vendor js never concatenate
  */
-gulp.task('vendor:header:js', 
-		['public:vendor:js:clean'], 
+gulp.task('vendor:header:js',
+		['public:vendor:js:clean'],
 		() => {
-	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, { cwd: gulpConfig.base.root }) 
+	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.noConcat, { cwd: gulpConfig.base.root })
  .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
 });
 
@@ -210,22 +206,22 @@ gulp.task('vendor:header:js',
  * ------------------------------------------------------------
  * VENDOR JS TASKS (SCRIPTS for FOOTER and concatenable)
  * ------------------------------------------------------------
- * 
+ *
  * NOTE : depending 'appConfig.js' : could concat footer vendor js
  */
  gulp.task('vendor:footer:js', ['public:vendor:js:clean'], () => {
-			if(appConfig.concatVendorFiles === true){			 
-				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
+			if(appConfig.concatVendorFiles === true){
+				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
 							{ cwd: gulpConfig.base.root })
-				.pipe(concat(gulpConfig.destFiles.vendor.js))			  
+				.pipe(concat(gulpConfig.destFiles.vendor.js))
 				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
 			}else{
-				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat, 
+				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
 							{ cwd: gulpConfig.base.root })
-				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	
-			}	 	 
+				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
+			}
  });
- 
+
  /**
  * ------------------------------------------------------------
  * VENDOR JS TASKS (combine all vendor js tasks)
@@ -247,36 +243,11 @@ gulp.task('vendor:header:js',
  gulp.task('vendor:map', () => {
 	gulp
     .src(	gulpConfig.srcFiles.bowerFiles.maps, { cwd: gulpConfig.base.root })
-    .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));	 
+    .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
  });
 
 
 
-
-
-
-
-
-
-
-/**
- * -------------------------------
- * APP ANGULAR TEMPLATES CACHE  TASKS
- * -------------------------------
- */
-
-
-// gulp.task('dragdropway:templatecache', () => {
-//   return gulp
-//       .src(gulpConfig.templateCache.dragAndDropWay.sourceDir + gulpConfig.templateCache.dragAndDropWay.sourceFiles, 
-//         { cwd: gulpConfig.base.root })
-//       .pipe(minifyHtml(gulpConfig.minifyHtmlOpts))
-//       .pipe(ngTemplateCache(
-//           gulpConfig.templateCache.dragAndDropWay.destFile,
-//           gulpConfig.templateCache.dragAndDropWay.options
-//       ))
-//       .pipe(gulp.dest(gulpConfig.templateCache.dragAndDropWay.destDir, { cwd: gulpConfig.base.root }));
-// });
 
 
 
@@ -289,75 +260,75 @@ gulp.task('vendor:header:js',
  */
 
  //sass : stepway
- gulp.task('app:sass:stepway', 
-  ['stepway:clean'], 
+ gulp.task('app:sass:stepway',
+  ['stepway:clean'],
   () => {
-	//minified		 
+	//minified
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
 		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
-		.pipe(cssmin())     
+		.pipe(cssmin())
 		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))
-		.pipe(rename({extname: '.min.css'}))    
+		.pipe(rename({extname: '.min.css'}))
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 
 	//not minified
 	gulp.src(gulpConfig.srcFiles.app.stepway.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
-		.pipe(concat(gulpConfig.destFiles.app.stepway.css))     
-		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))  
+		.pipe(concat(gulpConfig.destFiles.app.stepway.css))
+		.pipe(wrap(gulpConfig.decorate.stepway.templateCSS))
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
  });
- 
+
 /**
  * -------------------------------
  * APP SASS TASKS (DRAGDROP WAY)
  * -------------------------------
  */
  //sass drag_and_drop
- gulp.task('app:sass:dragdropway', 
-  ['dragdropway:clean'], 
+ gulp.task('app:sass:dragdropway',
+  ['dragdropway:clean'],
   () => {
-	//minified		 
+	//minified
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
 		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
-		.pipe(cssmin()) 
-		.pipe(rename({extname: '.min.css'}))      
-		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
+		.pipe(cssmin())
+		.pipe(rename({extname: '.min.css'}))
+		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
-	//not minified	
+	//not minified
 	gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
-		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))      
-		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))    
-		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));		
+		.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.css))
+		.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateCSS))
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 });
 
- 
+
 /**
  * -------------------------------
  * APP SASS TASKS (FORMVIEWER)
  * -------------------------------
  */
  //sass formviewer
- gulp.task('app:sass:formviewer', 
-  ['formviewer:clean'], 
+ gulp.task('app:sass:formviewer',
+  ['formviewer:clean'],
   () => {
-	//minified		 
+	//minified
 	gulp.src(gulpConfig.srcFiles.app.formViewer.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
 		.pipe(concat(gulpConfig.destFiles.app.formViewer.css))
-		.pipe(cssmin()) 
-		.pipe(rename({extname: '.min.css'}))      
-		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))    
+		.pipe(cssmin())
+		.pipe(rename({extname: '.min.css'}))
+		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))
 		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
-	//not minified	
+	//not minified
 	gulp.src(gulpConfig.srcFiles.app.formViewer.sass, { cwd: gulpConfig.base.root })
 		.pipe(sass().on('error', notify.onError(error => 'Error: ' + error.message)))
-		.pipe(concat(gulpConfig.destFiles.app.formViewer.css))    
-		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))    
-		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));	
+		.pipe(concat(gulpConfig.destFiles.app.formViewer.css))
+		.pipe(wrap(gulpConfig.decorate.formviewer.templateCSS))
+		.pipe(gulp.dest(gulpConfig.destDirs.app.css, { cwd: gulpConfig.base.root }));
 });
 
 
@@ -403,8 +374,8 @@ gulp.task('eslint:formviewer:es6', () => {
 
 
 const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle}`;
-gulp.task('stepWayES6:sfx', 
-  // ['stepway:clean'], 
+gulp.task('stepWayES6:sfx',
+  // ['stepway:clean'],
   cb => {
   exec(stepWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -415,8 +386,8 @@ gulp.task('stepWayES6:sfx',
 
 
 const stepWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundleMin} --minify`;
-gulp.task('stepWayES6:sfx:min', 
-  // ['stepway:clean'], 
+gulp.task('stepWayES6:sfx:min',
+  // ['stepway:clean'],
   cb => {
   exec(stepWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -444,8 +415,8 @@ gulp.task('build:stepWay:ES6:min', [
 
 //drag and drop way
 const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle}`;
-gulp.task('dragdropway:ES6:sfx', 
-  // ['dragdropway:clean'], 
+gulp.task('dragdropway:ES6:sfx',
+  // ['dragdropway:clean'],
   cb => {
   exec(dragAndDropWaySfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -456,8 +427,8 @@ gulp.task('dragdropway:ES6:sfx',
 
 
 const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin} --minify`;
-gulp.task('dragdropway:ES6:sfx:min', 
-  // ['dragdropway:clean'], 
+gulp.task('dragdropway:ES6:sfx:min',
+  // ['dragdropway:clean'],
   cb => {
   exec(dragAndDropWaySfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -479,8 +450,8 @@ gulp.task('build:dragdropway:ES6:min', [
 
 //formViewer
 const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle}`;
-gulp.task('formViewer:ES6:sfx', 
-  // ['formviewer:clean'], 
+gulp.task('formViewer:ES6:sfx',
+  // ['formviewer:clean'],
   cb => {
   exec(formViewerSfxNoMinifyCMD, (err, stdout) => {
     cb(err);
@@ -490,8 +461,8 @@ gulp.task('formViewer:ES6:sfx',
 });
 
 const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin} --minify`;
-gulp.task('formViewer:ES6:sfx:min', 
-  // ['formviewer:clean'], 
+gulp.task('formViewer:ES6:sfx:min',
+  // ['formviewer:clean'],
   cb => {
   exec(formViewerSfxMinifyCMD, (err, stdout) => {
     cb(err);
@@ -520,11 +491,11 @@ gulp.task('build:formViewer:ES6:min', [
  * APP JS TASKS (DRAGDROP WAY)
  * -------------------------------
  */
-// gulp.task('app:js:dragdropway', 
+// gulp.task('app:js:dragdropway',
 // 		[
 // 			//'dragdropway:clean',
 // 			'dragdropway:templatecache'
-// 		],  
+// 		],
 // 		() => {
 // 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
 // 	if(appConfig.environment.current === 'PROD'){
@@ -533,8 +504,8 @@ gulp.task('build:formViewer:ES6:min', [
 // 						{cwd: gulpConfig.base.root})
 // 			.pipe(jshint())
 // 			.pipe(jshint.reporter('default'))
-// 			.pipe(sourcemaps.init())	
-// 			.pipe(uglify()) 
+// 			.pipe(sourcemaps.init())
+// 			.pipe(uglify())
 // 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
 // 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
 // 			.pipe(sourcemaps.write('./'))
@@ -560,8 +531,8 @@ gulp.task('build:formViewer:ES6:min', [
 
 
 
- 
- 
+
+
 
 /**
  * ---------------------------------------------------------
@@ -569,14 +540,14 @@ gulp.task('build:formViewer:ES6:min', [
  * -> build app only
  * ---------------------------------------------------------
  */
-gulp.task('default', [	 
+gulp.task('default', [
   //app tasks
   'app:sass:stepway',
   'app:sass:dragdropway',
   'app:sass:formviewer',
-  'app:js:stepway',
-  'app:js:dragdropway',
-  'app:js:formviewer'
+  'build:stepWay:ES6',
+  'build:dragdropway:ES6',
+  'build:formViewer:ES6'
 ]);
 
 /**
@@ -584,7 +555,7 @@ gulp.task('default', [
  * BUILD:ALL TASK : 'gulp build:all' refresh all (vendors + app)
  * ------------------------------------------------------------
  */
-gulp.task('build:all', [ 
+gulp.task('build:all', [
   //vendor tasks
   'vendor:css:specialCases',
   'vendor:css',
@@ -595,9 +566,9 @@ gulp.task('build:all', [
   'app:sass:stepway',
   'app:sass:dragdropway',
   'app:sass:formviewer',
-  'app:js:stepway',
-  'app:js:dragdropway',
-  'app:js:formviewer'
+  'build:stepWay:ES6',
+  'build:dragdropway:ES6',
+  'build:formViewer:ES6'
 ], () =>console.info(`building app + vendors. Concat vendors param set to : ${appConfig.concatVendorFiles}`));
 
 
@@ -609,18 +580,19 @@ gulp.task('build:all', [
 gulp.task('dist', [
   'dist:uglify:app:js',
   'build:stepWay:ES6:min',
+  'build:dragdropway:ES6:min',
   'build:formViewer:ES6:min'
 ]);
 
 
 
 
- //public  - all content  
+ //public  - all content
  gulp.task('dist:copy', ['dist:clean'], () => {
-	//all public dir	 
+	//all public dir
   gulp.src(gulpConfig.base.publicDir + '**/*', {base : './'})
     .pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
-	
+
 	const indexHtmlFiles = [
 		gulpConfig.base.root + gulpConfig.stepWayHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.stepWayAsModuleHtmlFile.name,
@@ -629,42 +601,41 @@ gulp.task('dist', [
 		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name
 	];
 	//html files
-	gulp.src(indexHtmlFiles) 
+	gulp.src(indexHtmlFiles)
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
-	
+
 	//bower js
   gulp.src(gulpConfig.destDirs.app.js + '/*.js', {cwd: gulpConfig.base.root})
-    .pipe(gulp.dest(gulpConfig.bower.js ,{cwd: gulpConfig.base.distDir}));	
-		
+    .pipe(gulp.dest(gulpConfig.bower.js ,{cwd: gulpConfig.base.distDir}));
+
 	//bower css
   gulp.src(gulpConfig.destDirs.app.css + '/*.css', {cwd: gulpConfig.base.root})
     .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
-					
+
 	//textAngular css fix
   gulp.src(gulpConfig.srcFiles.app.common.customTextAngularCss, {cwd: gulpConfig.base.root})
-    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));					
+    .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
  });
- 
- 
+
+
  gulp.task('dist:uglify:app:js', ['dist:copy'],() => {
   const appJsFiles = [
     gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
     gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
   ];
 
-	// drag and drop js	
+	// drag and drop js
 	gulp.src(appJsFiles[0], {cwd : './'})
 		.pipe(sourcemaps.init())
 		.pipe(rename({extname: '.min.js'}))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
-	// formviewer  js	
+	// formviewer  js
 	gulp.src(appJsFiles[1], {cwd : './'})
 		.pipe(sourcemaps.init())
 		.pipe(rename({extname: '.min.js'}))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));						
+		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
  });
- 
