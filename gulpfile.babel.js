@@ -25,7 +25,6 @@
 import gulp 								from 'gulp';
 import del    							from 'del';
 import eslint 							from 'gulp-eslint';
-// import jshint               from 'gulp-jshint';
 import concat 							from 'gulp-concat';
 import uglify 							from 'gulp-uglify';
 import cssmin 							from 'gulp-cssmin';
@@ -33,8 +32,6 @@ import sass 								from 'gulp-sass';
 import notify 							from 'gulp-notify';
 import wrap 								from 'gulp-wrap';
 import deleteLines 				  from 'gulp-delete-lines';
-// import ngTemplateCache 		  from 'gulp-angular-templatecache';
-// import minifyHtml					  from 'gulp-minify-html';
 import sourcemaps 					from 'gulp-sourcemaps';
 import rename							  from 'gulp-rename';
 import childProcess         from 'child_process';
@@ -47,12 +44,7 @@ const exec = childProcess.exec;
  * CONFIGS
  * ////////////////////////////////////////////////////////////////
  */
-import appConfig            from './easyFormGenConfig/app/appConfig';
-import gulpConfig           from './easyFormGenConfig/gulp/gulpConfig';
-
-
-
-
+import gulpConfig           from './src/gulp/gulpConfig';
 
 /**
  * ------------------
@@ -106,18 +98,6 @@ gulp.task('formviewer:clean', cb => {
 
 
 
-/**
- * cleaning src/vendor/ temp files
- */
-gulp.task('vendor:clean:temp', cb => {
-  del([
-		gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir + '**/*.css'
-		], cb);
-});
-
-
-
-
 
 /**
  * -------------------------------
@@ -154,16 +134,16 @@ gulp.task('vendor:css',
 	['vendor:css:specialCases'],
 	() => {
 		const sources = gulpConfig.srcFiles.bowerFiles.css.noMinify;
-		if(appConfig.concatVendorFiles === true){
-      gulp.src( sources
-                ,{ cwd: gulpConfig.base.root })
-          .pipe(concat(gulpConfig.destFiles.vendor.css))
-          .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
-		}else{
-			gulp.src( sources
-								,{ cwd: gulpConfig.base.root })
-					.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
-		}
+		// if(appConfig.concatVendorFiles === true){
+    //   gulp.src( sources
+    //             ,{ cwd: gulpConfig.base.root })
+    //       .pipe(concat(gulpConfig.destFiles.vendor.css))
+    //       .pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
+		// }else{
+		gulp.src( sources
+							,{ cwd: gulpConfig.base.root })
+				.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
+		// }
 });
 
 
@@ -210,16 +190,16 @@ gulp.task('vendor:header:js',
  * NOTE : depending 'appConfig.js' : could concat footer vendor js
  */
  gulp.task('vendor:footer:js', ['public:vendor:js:clean'], () => {
-			if(appConfig.concatVendorFiles === true){
-				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
-							{ cwd: gulpConfig.base.root })
-				.pipe(concat(gulpConfig.destFiles.vendor.js))
-				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
-			}else{
-				gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
-							{ cwd: gulpConfig.base.root })
-				.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
-			}
+			// if(appConfig.concatVendorFiles === true){
+			// 	gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
+			// 				{ cwd: gulpConfig.base.root })
+			// 	.pipe(concat(gulpConfig.destFiles.vendor.js))
+			// 	.pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
+			// }else{
+  gulp.src(	gulpConfig.srcFiles.bowerFiles.js.toConcat,
+    { cwd: gulpConfig.base.root })
+    .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
+			// }
  });
 
  /**
@@ -233,15 +213,13 @@ gulp.task('vendor:header:js',
 
 
 
-
-
 /**
  * ------------------------------------------------------------
  * VENDOR MAP TASKS
  * ------------------------------------------------------------
  */
  gulp.task('vendor:map', () => {
-	gulp
+ gulp
     .src(	gulpConfig.srcFiles.bowerFiles.maps, { cwd: gulpConfig.base.root })
     .pipe(gulp.dest(gulpConfig.destDirs.vendor.js, { cwd: gulpConfig.base.root }));
  });
@@ -482,7 +460,7 @@ gulp.task('app:js:formviewer', [
 ]);
 
 gulp.task('build:formViewer:ES6:min', [
-	'beslint:formviewer:es6',
+	'eslint:formviewer:es6',
 	'formViewer:ES6:sfx:min'
 ]);
 
@@ -491,47 +469,6 @@ gulp.task('build:formViewer:ES6:min', [
  * APP JS TASKS (DRAGDROP WAY)
  * -------------------------------
  */
-// gulp.task('app:js:dragdropway',
-// 		[
-// 			//'dragdropway:clean',
-// 			'dragdropway:templatecache'
-// 		],
-// 		() => {
-// 	//NOTE : change ./easyFormGenConfig/app/appConfig to change environment
-// 	if(appConfig.environment.current === 'PROD'){
-// 		//prod version
-// 		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
-// 						{cwd: gulpConfig.base.root})
-// 			.pipe(jshint())
-// 			.pipe(jshint.reporter('default'))
-// 			.pipe(sourcemaps.init())
-// 			.pipe(uglify())
-// 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
-// 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
-// 			.pipe(sourcemaps.write('./'))
-// 			.on('error', notify.onError(error => 'Error: ' + error.message))
-// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-// 		);
-// 	}else{
-// 		//dev version (no uglify/no source map)
-// 		gulp.src(gulpConfig.srcFiles.app.dragAndDropWay.js,
-// 						{cwd: gulpConfig.base.root})
-// 			.pipe(jshint())
-// 			.pipe(jshint.reporter('default'))
-// 			.pipe(concat(gulpConfig.destFiles.app.dragAndDropWay.js))
-// 			.pipe(wrap(gulpConfig.decorate.dragAndDropWay.templateJS))
-// 			.on('error', notify.onError(error => 'Error: ' + error.message))
-// 			.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd: gulpConfig.base.root })
-// 		);
-// 	}
-
-// });
-
-
-
-
-
-
 
 
 /**
@@ -569,7 +506,7 @@ gulp.task('build:all', [
   'build:stepWay:ES6',
   'build:dragdropway:ES6',
   'build:formViewer:ES6'
-], () =>console.info(`building app + vendors. Concat vendors param set to : ${appConfig.concatVendorFiles}`));
+], () =>console.info(`building app + vendors.`));
 
 
 /**
