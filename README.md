@@ -10,13 +10,13 @@
 
 ##What is it?
 
-*`Easy form generator` (step way or drag and drop way) :* 
+*`Easy form generator` (step way or drag and drop way) :*
 
 - Create forms *in a matter of minutes* :hourglass:
   - (*you may not need to add "s" to minutes*).
-- *Don't limit* your form *to a single column* template 
+- *Don't limit* your form *to a single column* template
   - (up to 3 controls per line).
-- generated forms *use bootstrap* 
+- generated forms *use bootstrap*
   - (until now the most popular front end framework)
 - based on amazing and :sparkles: [angular formly](https://github.com/formly-js/angular-formly)  
   - (see angular [formly website](http://angular-formly.com) and [documentation](http://docs.angular-formly.com) then you'll understand the :sparkles: behind)
@@ -34,8 +34,8 @@ ______
 
 ###Easy Form Generator : **Step way**
 
-`Step way version` is the **most accomplished** and **stable version**. 
-- cross browser compatible 
+`Step way version` is the **most accomplished** and **stable version**.
+- cross browser compatible
 - responsive (*not sure it will be used a lot but you could create a form on your smartphone with the step way version*).
 - multi-language support
 - friendly configurable thanks to a single provider `easyFormSteWayConfig` provider
@@ -47,7 +47,7 @@ ______
 
 Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay.html)
 
- - **Step way visual preview here** : 
+ - **Step way visual preview here** :
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
 
 ______
@@ -56,18 +56,18 @@ ______
 
 `Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
 - drag control then drop control
-- right click to open edit panel 
+- right click to open edit panel
 
-Drag and drop way is still in development. 
+Drag and drop way is still in development.
 
 >`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
-have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_DragDropWay_As_Module.html)
+have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_DragDropWay.html)
 
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
- 
- 
+
+
 ______
 
 ###Easy form viewer : production ready
@@ -75,7 +75,7 @@ ______
 `Easy form viewer` is a directive which helps you using your created forms
 - when you saved your form you saved `edaFieldsModel` : easy form generator fields model
 - just bind it to easy form viewer directive, then it will render (*without all unecessary decoration — generator useful only —*) :
-![preview](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/easyFormViewerPreview.png) 
+![preview](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/easyFormViewerPreview.png)
 
 ______
 
@@ -85,34 +85,34 @@ ______
 ####Bower way :
 
 `bower install easy-form-generator`
- 
+
 This way is super easy way since you will be installed all easy form generator dependencies.
- 
+
 Then just launch `EasyFormGenerator-StepWay-DEMO.html` and `EasyFormViewer-DEMO.html` in your browser. You will find it in :
   - bower_components/
   - |__easy-form-generator/
   - |____EasyFormGenerator-StepWay-DEMO.html
   - |____EasyFormViewer-DEMO.html
-  
+
 Finally :
->Inspire yourself from these demo (considering numerous dependencies it may help). 
->Note about easy form viewer : bind `edaFieldsModel` model not the formly one. 
+>Inspire yourself from these demo (considering numerous dependencies it may help).
+>Note about easy form viewer : bind `edaFieldsModel` model not the formly one.
 
 
 ####Manual way
- 
+
  - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
  - or just download it
- - check html in dist directory : 
+ - check html in dist directory :
   - `index_DragDropWay.html` is the `drag drop way` (BETA)
   - `index_StepWay.html` is the `step way` (full easy form html)
-  - `index_StepWay_As_module` is the `step way` (a module more production orientated) 
+  - `index_StepWay_As_module` is the `step way` (a module more production orientated)
 
 _____
 
 ###Using Step way version (production friendly)
 
->demo : `index_StepWay_As_module` in `dist` directory. 
+>demo : `index_StepWay_As_module` in `dist` directory.
 
 ####Inject easy form generator in your app
 
@@ -134,9 +134,9 @@ angular
 
 ####Want to Load/save models?
 
-Add these attributes to interact with your own controller : 
+Add these attributes to interact with your own controller :
 - `eda-easy-form-generator-model` : attribute to bind your model
-- `eda-save-form-event` : attribute to bind save form event 
+- `eda-save-form-event` : attribute to bind save form event
 ```html
 <eda-step-way-easy-form-gen 	
       eda-easy-form-generator-model="_MODEL_"
@@ -154,18 +154,18 @@ Add these attributes to interact with your own controller :
 - `formlyFieldsModel`				   : {object} - `angular formly fields model` (filled by easy form generator from `edaFieldsModel`)
 - `dataModel`								   : {object} - filling the form feeds dataModel
 
-Note : Easy form generator save form event 
+Note : Easy form generator save form event
 
 ```javascript
 //your controller save function should have `edaEasyFormGeneratorModel` parameter
-//it will be filled by easy form generator model 
+//it will be filled by easy form generator model
 saveForm(edaEasyFormGeneratorModel)
 ```
 
 ####dependencies
 
 Easy form generator creates amazing bootstrap forms thanks to these dependencies :
-- angular formly (where all magic comes from) 
+- angular formly (where all magic comes from)
 - bootstrap (css/ jquery)
 - bootswatch (nice theme)
 - jquery
@@ -180,7 +180,7 @@ ____
 
 ###Using Drag and drop way version (BETA)
 
->demo : `index_DragDropWay_As_Module.html` in `dist` directory. 
+>demo : `index_DragDropWay_As_Module.html` in `dist` directory.
 
 ####Inject easy form generator in your app
 
@@ -202,9 +202,9 @@ angular
 
 ####Want to Load/save models?
 
-Add these attributes to interact with your own controller : 
+Add these attributes to interact with your own controller :
 - `eda-easy-form-generator-model` : attribute to bind your model
-- `eda-save-form-event` : attribute to bind save form event 
+- `eda-save-form-event` : attribute to bind save form event
 ```html
 <eda-dragdrop-way-easy-form-gen 	
       eda-easy-form-generator-model="_MODEL_"
@@ -217,7 +217,7 @@ ____
 
 ###Using Easy form viewer (production friendly)
 
->demo : `index_easyFormViewer_Module.html` in `dist` directory. 
+>demo : `index_easyFormViewer_Module.html` in `dist` directory.
 
 ####Inject easy form viewer in your app
 
@@ -229,36 +229,36 @@ Just inject `eda.easyFormViewer` in you application :
     angular
         .module('app', ['eda.easyFormViewer']) //inject easy form viewer
         .controller('demoController', demoController);
-    
+
     //your controller, here an implementation suggestion
-    demoController.$inject = ['$timeout'];	
+    demoController.$inject = ['$timeout'];
     function demoController($timeout){
       var demoCtrl = this;
 
-      demoCtrl.fieldsModel    = loadMySavedEdaFieldsModel(); //="edaFieldsModel" - see easy form generator model - 
-      demoCtrl.dataModel			= {}; //data Model : filling form will fill it (submit event will return updated data model) 
-      
+      demoCtrl.fieldsModel    = loadMySavedEdaFieldsModel(); //="edaFieldsModel" - see easy form generator model -
+      demoCtrl.dataModel			= {}; //data Model : filling form will fill it (submit event will return updated data model)
+
       demoCtrl.submitButtonText = 'Submit this form'; //button text
       demoCtrl.cancelButtonText = 'Cancel all'; //button text
-      
+
       demoCtrl.submitFormEvent 	= submitFormEvent; //event called on form submit
       demoCtrl.cancelFormEvent 	= cancelFormEvent; //event called on form cancel
-      
+
       function loadMySavedEdaFieldsModel(){
         var mySavedModel = readItWhereISavedIt();
-        return mySavedModel; 
+        return mySavedModel;
       }
-      
+
       //submit will return updated dataModel in "dataModelSubmitted" parameter
       function submitFormEvent(dataModelSubmitted){
         console.info('Submit event : you can manage this event in your controller');
         console.dir( {'dataModelSubmitted' : dataModelSubmitted} );
       }
-        
+
       function cancelFormEvent(){
         console.info('Cancel event : you can manage this event in your controller');
       }
-    } 
+    }
       //...
 ```
 
@@ -272,10 +272,10 @@ Just inject `eda.easyFormViewer` in you application :
 <eda-easy-form-viewer
 		eda-easy-form-viewer-data-model="demoCtrl.dataModel"
 		eda-easy-form-viewer-easy-form-generator-fields-model="demoCtrl.fieldsModel"
-		
+
 		eda-easy-form-viewer-submit-button-text="{{demoCtrl.submitButtonText}}"
 		eda-easy-form-viewer-cancel-button-text="{{demoCtrl.cancelButtonText}}"
-		
+
 		eda-easy-form-viewer-submit-form-event="demoCtrl.submitFormEvent(dataModelSubmitted)"
 		eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
 </eda-easy-form-viewer>
@@ -286,22 +286,22 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
- 
+
  - November 2015 : v1.1.0 coming soon : migration to ES6 + fixes
- 
- - October 2015 : `Easy form Generator step way` : new config available with `easyFormSteWayConfigProvider` : 
+
+ - October 2015 : `Easy form Generator step way` : new config available with `easyFormSteWayConfigProvider` :
     - show/hide preview panel
     - show hide models (in prevew panel)
-    
+
 ```javascript
-  
+
   angular
     .module('appDemo', [
       'eda.easyformGen.stepway' //injects easy form generator-step way
     ])
     .config(configFct)
     .controller('demoController', demoController);
-  
+
   /**
     * config
     */
@@ -314,53 +314,53 @@ ______
   }
 
 ```
- 
+
  - October 2015 : `Easy form Generator step way` : demo updated [stepway with language selection](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay_ES6.html)
 
- - October 2015 : `Easy form Generator step way` : new languages added 
+ - October 2015 : `Easy form Generator step way` : new languages added
      - french
      - german
      - japanese
      - spanish (thx to **Benjamin Orozco** :thumbsup:)
      - turkish (thx to **Serhat Can** :thumbsup:)
   ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    
-  
- ```javascript 
+
+ ```javascript
   angular
     .module('YOURAPP', ['...'])
     .config(easyFromConfigFct);
-  
+
   //inject easyFormSteWayConfigProvider
   easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
   function easyFromConfigFct(easyFormSteWayConfigProvider){
-  
+
     //example get current language (by default = english)
     console.info(easyFormSteWayConfigProvider.getCurrentLanguage());
     //set language to french :
     easyFormSteWayConfigProvider.setLanguage('fr');
- 
+
  ```
 
 
  - October 2015 : `Easy form Generator step way` : enable or disable control in your easy form generator step way version.
- 
- ```javascript 
+
+ ```javascript
   angular
     .module('YOURAPP', ['...'])
     .config(easyFromConfigFct);
-  
+
   //inject easyFormSteWayConfigProvider
   easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
   function easyFromConfigFct(easyFormSteWayConfigProvider){
-  
+
     //disable basic TextInput :
     easyFormSteWayConfigProvider.disableControl('TextInput');
-  
-    //enable Date input : 
-    //(NOTE : by default all controls are enabled 
+
+    //enable Date input :
+    //(NOTE : by default all controls are enabled
     //-> so this example is no other use than illustration)
     easyFormSteWayConfigProvider.enableControl('Date');
-  
+
     // List of all easy form generator (step way version) controls :  
     // 'empty'
     // 'Header'
@@ -374,36 +374,36 @@ ______
     // 'BasicSelect'
     // 'GroupedSelect'
  ```
- 
+
  - Sept 2015 : `drag and drop way` is now a simple directive `eda-dragdrop-way-easy-form-gen`
 
  - `Easy form Generator - Step way : new provider` : enable/disable modal animation from your own config thanks to new provider `easyFormSteWayConfigProvider`
-  
+
  ```javascript
   angular
       .module('YOUR_APP', [])
       .config(easyFromConfigFct);
-  
+
   easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
   function easyFromConfigFct(easyFormSteWayConfigProvider){
-    //enable/disable easy form modal animation 
+    //enable/disable easy form modal animation
     //HERE : animation disabled due to angular bootstrap backdrop bug with angular >= 1.4
     easyFormSteWayConfigProvider.setModalAnimation(false);
   }
  ```
- 
- 
- 
+
+
+
     + more easy form generator - step way - config. later
  - `Fix applied in v1.0.17` : :bug: **[angular bootstrap modal animation issues when using angular > 1.3](https://github.com/angular-ui/bootstrap/issues/3633) ** — *backdrop won't disapear when closing modal* —. Waiting for fix, so untill fix is realeased modal animation is disabled to prevent this issue :disappointed_relieved:.
- 
+
  - `step way versions` is now a module easier to interact with your application.  
 
  - :newspaper: `step way` : added `email` control
      + email entered must follow *an email pattern* (validation included)
-     + a validation message is displayed when entered email is invalid (pattern related) 
+     + a validation message is displayed when entered email is invalid (pattern related)
      + preview :
- 
+
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
 
 
@@ -412,18 +412,18 @@ ______
 - [ ] migrating ES6 / optimization / factorization (*in progress*)
     - [x] easy form generator - step way
     - [ ] easy form generator - drag and drop way
-    - [x] easy form viewer 
+    - [x] easy form viewer
 - [x] migrating Babel6+
-- [x] migrating gulp to ES6 
-- [x] create bower 
-- [ ] create npm 
-- [ ] developing / fixing browsers compatibility for `drag and drop` version 
+- [x] migrating gulp to ES6
+- [x] create bower
+- [ ] create npm
+- [ ] developing / fixing browsers compatibility for `drag and drop` version
 - [x] adding more controls
-- [x] adding more validations 
+- [x] adding more validations
 - [ ] adding tests
    - [ ] unit test (*in progress - already in `branch master` not finished*)
    - [ ] E2E (coming soon)
-   
+
 ##License
 
 The MIT License (MIT)
@@ -447,4 +447,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
