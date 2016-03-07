@@ -1,8 +1,9 @@
 import './eda.easyFormViewer.vendors.adapaters';
 import edaFormViewerMainModule 						from './components/main/eda.easyFormViewer.main.module';
 import edaFormViewerCoreModule						from './components/core/eda.easyFormViewer.core.module';
-import edaFormViewerModelTranslatorModule	from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module'; 
+import edaFormViewerModelTranslatorModule	from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module';
 import edaEasyFormViewerConfig            from './config/eda.easyFormViewer.config';
+import easyFormConfig 	                  from '../easyFormConfig.json!json';
 
 const DEP_TO_INJECT_IN_MAIN = [
 	edaFormViewerMainModule.name,
@@ -10,10 +11,13 @@ const DEP_TO_INJECT_IN_MAIN = [
 	edaFormViewerModelTranslatorModule.name
 ];
 
-const MAIN_MODULE_NAME = 'eda.easyFormViewer';
+const EASY_FORM_VIEWER_VERSION_NAME   = 'easyFormViewerVersion';
+const EASY_FORM_VIEWER_VERSION_VALUE  = easyFormConfig.formviewer.version;
+const MAIN_MODULE_NAME                = 'eda.easyFormViewer';
 
 let mainModule = angular
 									.module(MAIN_MODULE_NAME, DEP_TO_INJECT_IN_MAIN)
-                  .config(edaEasyFormViewerConfig);
-									
+                  .config(edaEasyFormViewerConfig)
+                  .value(EASY_FORM_VIEWER_VERSION_NAME, EASY_FORM_VIEWER_VERSION_VALUE);
+
 export default mainModule;

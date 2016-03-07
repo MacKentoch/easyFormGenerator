@@ -1,5 +1,4 @@
-
-module.exports = {
+const appFiles = {
 	stepway : {
 			js : [
 				'src/app/stepway/ngwfApp.js',
@@ -10,19 +9,19 @@ module.exports = {
 				'src/app/stepway/directives/**/*.js',
 				'src/app/stepway/services/**/*.js',
 				'src/app/stepway/filters/**/*.js'
-			],
+			]
 	},
 	dragdropway : {
 		js : [
-				'src/app/dragdropway/edaApp.js',
-				'src/app/dragdropway/configs/**/*.js',
-				'src/app/dragdropway/core/**/*.js',
-				'src/app/dragdropway/providers/**/*.js',
-				'src/app/dragdropway/controllers/**/*.js',
-				'src/app/dragdropway/directives/**/*.js',
-				'src/app/dragdropway/services/**/*.js',
-				'src/app/dragdropway/filters/**/*.js',
-				'src/app/dragdropway/vendors/**/*.js'			
+      'src/app/dragdropway/edaApp.js',
+      'src/app/dragdropway/configs/**/*.js',
+      'src/app/dragdropway/core/**/*.js',
+      'src/app/dragdropway/providers/**/*.js',
+      'src/app/dragdropway/controllers/**/*.js',
+      'src/app/dragdropway/directives/**/*.js',
+      'src/app/dragdropway/services/**/*.js',
+      'src/app/dragdropway/filters/**/*.js',
+      'src/app/dragdropway/vendors/**/*.js'
 		]
 	},
 	formviewer : {
@@ -33,5 +32,7 @@ module.exports = {
 				'src/app/formviewer/directives/**/*.js',
 				'src/app/formviewer/services/**/*.js'
 			]
-	},	
-}
+	}
+};
+
+export default appFiles;

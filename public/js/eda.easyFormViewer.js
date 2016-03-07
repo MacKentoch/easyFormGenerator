@@ -1488,28 +1488,46 @@ $__System.register('12', ['11'], function (_export) {
     }
   };
 });
-$__System.register('1', ['2', '9', '10', '12', 'a'], function (_export) {
-									'use strict';
+$__System.registerDynamic("13", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = {
+    "stepway": {"version": "1.1.0-rc1"},
+    "dragdropway": {"version": "1.1.0-rc1"},
+    "formviewer": {"version": "1.1.0-rc1"}
+  };
+  global.define = __define;
+  return module.exports;
+});
 
-									var edaFormViewerMainModule, edaFormViewerModelTranslatorModule, edaEasyFormViewerConfig, edaFormViewerCoreModule, DEP_TO_INJECT_IN_MAIN, MAIN_MODULE_NAME, mainModule;
-									return {
-																		setters: [function (_) {}, function (_2) {
-																											edaFormViewerMainModule = _2['default'];
-																		}, function (_3) {
-																											edaFormViewerModelTranslatorModule = _3['default'];
-																		}, function (_4) {
-																											edaEasyFormViewerConfig = _4['default'];
-																		}, function (_a) {
-																											edaFormViewerCoreModule = _a['default'];
-																		}],
-																		execute: function () {
-																											DEP_TO_INJECT_IN_MAIN = [edaFormViewerMainModule.name, edaFormViewerCoreModule.name, edaFormViewerModelTranslatorModule.name];
-																											MAIN_MODULE_NAME = 'eda.easyFormViewer';
-																											mainModule = angular.module(MAIN_MODULE_NAME, DEP_TO_INJECT_IN_MAIN).config(edaEasyFormViewerConfig);
+$__System.register('1', ['2', '9', '10', '12', '13', 'a'], function (_export) {
+	'use strict';
 
-																											_export('default', mainModule);
-																		}
-									};
+	var edaFormViewerMainModule, edaFormViewerModelTranslatorModule, edaEasyFormViewerConfig, easyFormConfig, edaFormViewerCoreModule, DEP_TO_INJECT_IN_MAIN, EASY_FORM_VIEWER_VERSION_NAME, EASY_FORM_VIEWER_VERSION_VALUE, MAIN_MODULE_NAME, mainModule;
+	return {
+		setters: [function (_) {}, function (_2) {
+			edaFormViewerMainModule = _2['default'];
+		}, function (_3) {
+			edaFormViewerModelTranslatorModule = _3['default'];
+		}, function (_4) {
+			edaEasyFormViewerConfig = _4['default'];
+		}, function (_5) {
+			easyFormConfig = _5['default'];
+		}, function (_a) {
+			edaFormViewerCoreModule = _a['default'];
+		}],
+		execute: function () {
+			DEP_TO_INJECT_IN_MAIN = [edaFormViewerMainModule.name, edaFormViewerCoreModule.name, edaFormViewerModelTranslatorModule.name];
+			EASY_FORM_VIEWER_VERSION_NAME = 'easyFormViewerVersion';
+			EASY_FORM_VIEWER_VERSION_VALUE = easyFormConfig.formviewer.version;
+			MAIN_MODULE_NAME = 'eda.easyFormViewer';
+			mainModule = angular.module(MAIN_MODULE_NAME, DEP_TO_INJECT_IN_MAIN).config(edaEasyFormViewerConfig).value(EASY_FORM_VIEWER_VERSION_NAME, EASY_FORM_VIEWER_VERSION_VALUE);
+
+			_export('default', mainModule);
+		}
+	};
 });
 })
 (function(factory) {

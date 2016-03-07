@@ -1,15 +1,12 @@
-var ENV_CHOICES = [
+const ENV_CHOICES = [
 	'DEV',
 	'PROD'
-]
+];
 
-module.exports = {
-
-
+const appConfig = {
 	environment : {
 		current : ENV_CHOICES[0]
 	},
-
 	//easy form generator verioning
 	//no more used with ES6 versions
 	version : {
@@ -20,4 +17,6 @@ module.exports = {
 
 	concatVendorFiles : false
 
-}
+};
+
+export default appConfig;

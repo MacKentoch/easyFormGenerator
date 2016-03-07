@@ -1,9 +1,41 @@
-var bowerFiles 	= require('./bowerFiles');
-var appFiles		= require('./appFiles');
-var appConfig 	= require('./appConfig');
+import bowerFiles from './bowerFiles';
+import appFiles		from './appFiles';
+import appConfig 	from '../app/easyFormConfig.json';
 
-module.exports = {
+const decorStepWayCss = `
+/*!
+ * easyFormGenerator — step way — version
+ * Version ${appConfig.stepway.version}
+ * Author : Erwan Datin (MacKentoch)
+ *Link: https://github.com/MacKentoch/easyFormGenerator
+ * License : 2015 MIT
+*/
+<%= contents %>
+`;
 
+const decorDragDropWayCss = `
+/*!
+ * easyFormGenerator — drag and drop way — version
+ * Version ${appConfig.dragdropway.version}
+ * Author : Erwan Datin (MacKentoch)
+ *Link: https://github.com/MacKentoch/easyFormGenerator
+ * License : 2015 MIT
+*/
+<%= contents %>
+`;
+
+const decorFormViewerCss = `
+/*!
+   * easyFormViewer
+   * Version ${appConfig.formviewer.version}
+   * Author : Erwan Datin (MacKentoch)
+   *Link: https://github.com/MacKentoch/easyFormGenerator
+   * License : 2015 MIT
+  */
+  <%= contents %>
+`;
+
+const gulpConfig = {
 	//directories bases
 	base : {
 		root		 			: './',
@@ -11,7 +43,6 @@ module.exports = {
 		publicDir 		: './public/',
 		distDir				: './dist/'
 	},
-
 	//source files
 	srcFiles : {
 		app : {
@@ -66,7 +97,6 @@ module.exports = {
 			maps 	: bowerFiles.bower_components_map
 		}
 	},
-
 	//destination directories
 	destDirs : {
 		app : {
@@ -79,7 +109,6 @@ module.exports = {
 			fonts : 'public/lib/fonts'
 		}
 	},
-
 	//destination files
 	destFiles : {
 		app : {
@@ -113,7 +142,6 @@ module.exports = {
 			css 	: 'vendor.css'
 		}
 	},
-
 	translateFiles :{
 		stepway 				: {
 			sourceDir		: 'src/app/stepway/i18n/',
@@ -143,103 +171,35 @@ module.exports = {
 			}
 		}
 	},
-
 	//decorate
 	decorate : {
 		stepway  : {
-			templateJS: [
-										'/** \n' ,
-										' *easyFormGenerator — step way — version \n',
-										' *Version ' +  appConfig.version.stepWay + ' \n',
-										' *Author : Erwan Datin (MacKentoch) \n',
-										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
-										' *License : MIT (2015) \n',
-										'**/ \n',
-										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
-									].join(' '),
-
-			templateCSS: 	[
-											'/*! \n' +
-											' * easyFormGenerator — step way — version \n' +
-											' * Version ' + appConfig.version.stepWay + ' \n' +
-											' * Author : Erwan Datin (MacKentoch) \n' +
-											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
-											' * License : 2015 MIT \n' +
-											'*/ \n' +
-											'\n<%= contents %>\n'
-										].join('')
-			},
+			templateCSS: decorStepWayCss
+      },
 
 		dragAndDropWay  : {
-			templateJS: [
-										'/** \n' ,
-										' *easyFormGenerator — drag and drop way — version \n',
-										' *Version ' +  appConfig.version.dragAndDropWay + ' \n',
-										' *Author : Erwan Datin (MacKentoch) \n',
-										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
-										' *License : MIT (2015) \n',
-										'**/ \n',
-										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
-									].join(' '),
-
-			templateCSS: 	[
-											'/*! \n' +
-											' * easyFormGenerator — drag and drop way — version \n' +
-											' * Version ' + appConfig.version.dragAndDropWay + ' \n' +
-											' * Author : Erwan Datin (MacKentoch) \n' +
-											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
-											' * License : 2015 MIT \n' +
-											'*/ \n' +
-											'\n<%= contents %>\n'
-										].join('')
+			templateCSS: decorDragDropWayCss
 			},
 
 			formviewer  : {
-			templateJS: [
-										'/** \n' ,
-										' *easyFormViewer \n',
-										' *Version ' +  appConfig.version.stepWay + ' \n',
-										' *Author : Erwan Datin (MacKentoch) \n',
-										' *Link: https://github.com/MacKentoch/easyFormGenerator \n',
-										' *License : MIT (2015) \n',
-										'**/ \n',
-										';(function(){\n 	\'use strict\';\n<%= contents %>\n})(this);'
-									].join(' '),
-
-			templateCSS: 	[
-											'/*! \n' +
-											' * easyFormViewer \n',
-											' * Version ' + appConfig.version.stepWay + ' \n' +
-											' * Author : Erwan Datin (MacKentoch) \n' +
-											' *Link: https://github.com/MacKentoch/easyFormGenerator \n' +
-											' * License : 2015 MIT \n' +
-											'*/ \n' +
-											'\n<%= contents %>\n'
-										].join('')
+			templateCSS: decorFormViewerCss
 			}
 		},
-
 		stepWayHtmlFile : {
 			name : 'index_StepWay.html'
 		},
-
 		stepWayAsModuleHtmlFile : {
 			name : 'index_StepWay.html'
 		},
-
 		dragDropWayHtmlFile : {
 			name : 'index_DragDropWay.html'
 		},
-
 		dragDropWayAsModuleHtmlFile : {
 			name : 'index_DragDropWay_As_Module.html'
 		},
-
 		easyFormViewerHtmlFile : {
 			name : 'index_easyFormViewer_Module.html'
 		},
-
-
 
 		bower : {
 			js : 'js/',
@@ -252,19 +212,21 @@ module.exports = {
 
 		jspm : {
 			stepWay : {
-				src 			: 'src/app/stepway-ES6/edaStepWayEasyFormGen.main',
+				src 			: 'src/app/stepway/edaStepWayEasyFormGen.main',
 				bundle 		: './public/js/eda.stepway.js',
 				bundleMin	: './public/js/eda.stepway.min.js'
 			},
 			formViewer : {
-				src 			: 'src/app/formviewer-ES6/eda.easyFormViewer.main',
+				src 			: 'src/app/formviewer/eda.easyFormViewer.main',
 				bundle 		: './public/js/eda.easyFormViewer.js',
 				bundleMin	: './public/js/eda.easyFormViewer.min.js'
 			},
 				dragDropWay : {
-				src 			: 'src/app/dragdropway-ES6/edaDragDropWay.main',
+				src 			: 'src/app/dragdropway/edaDragDropWay.main',
 				bundle 		:	'./public/js/eda.dragdropway.js',
 				bundleMin	: './public/js/eda.dragdropway.min.js'
 			}
 		}
 };
+
+export default gulpConfig;

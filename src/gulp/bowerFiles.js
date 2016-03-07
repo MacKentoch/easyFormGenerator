@@ -1,14 +1,10 @@
-module.exports = {
-
-
+const bowerFiles = {
  bowerComponentsNoConcatJS : [
    'bower_components/angular/angular.min.js',
    'bower_components/angular-loading-bar/build/loading-bar.min.js',
    'bower_components/html5shiv/dist/html5shiv.min.js',
    'bower_components/respondJS/dest/respond.min.js'
  ],
-
-
 	bower_components_js : [
 		'bower_components/jquery/dist/jquery.min.js',   //jquery always first
 		'bower_components/bootstrap/dist/js/bootstrap.min.js',
@@ -31,9 +27,7 @@ module.exports = {
 		'vendor/js/angular-pageslide-directive.min.js',
 		'bower_components/angular-messages/angular-messages.min.js',
 		'bower_components/angular-translate/angular-translate.min.js'
-
 	],
-
 	bower_components_map : [
 		'bower_components/jquery/dist/jquery.min.map',
 		'bower_components/angular/angular.min.js.map',
@@ -45,7 +39,6 @@ module.exports = {
 		'bower_components/angular-strap/dist/angular-strap.min.js.map',
 		'bower_components/angular-messages/angular-messages.min.js.map'
 	],
-
 	bower_components_css : [
 		'bower_components/bootstrap/dist/css/bootstrap.min.css',
 		'bower_components/font-awesome/css/font-awesome.min.css',
@@ -54,12 +47,10 @@ module.exports = {
 		'bower_components/angularjs-toaster/toaster.min.css',
 		'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
 	],
-
 	bower_components_fonts: 	[
 		'bower_components/bootstrap/dist/fonts/**/*',
 		'bower_components/font-awesome/fonts/**/*'
 	],
-
 	//particular case : bootsrap paper theme from bootswatch (need to clean #import font from googleapi)
 	bower_clean_paper_boostrap_css : [
 		'bower_components/bootswatch/paper/bootstrap.css'
@@ -68,6 +59,6 @@ module.exports = {
 	bower_textAngular_css: 		[
 		'bower_components/textAngular/src/textAngular.css'
 	]
+};
 
-
-}
+export default bowerFiles;
