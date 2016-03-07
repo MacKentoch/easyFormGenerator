@@ -409,9 +409,9 @@ ______
 
 ##What is coming next?
 
-- [ ] migrating ES6 / optimization / factorization (*in progress*)
+- [x] migrating ES6 / optimization / factorization (*in progress*)
     - [x] easy form generator - step way
-    - [ ] easy form generator - drag and drop way
+    - [x] easy form generator - drag and drop way
     - [x] easy form viewer
 - [x] migrating Babel6+
 - [x] migrating gulp to ES6

@@ -26,13 +26,11 @@ import gulp 								from 'gulp';
 import del    							from 'del';
 import eslint 							from 'gulp-eslint';
 import concat 							from 'gulp-concat';
-import uglify 							from 'gulp-uglify';
 import cssmin 							from 'gulp-cssmin';
 import sass 								from 'gulp-sass';
 import notify 							from 'gulp-notify';
 import wrap 								from 'gulp-wrap';
 import deleteLines 				  from 'gulp-delete-lines';
-import sourcemaps 					from 'gulp-sourcemaps';
 import rename							  from 'gulp-rename';
 import childProcess         from 'child_process';
 
@@ -515,28 +513,27 @@ gulp.task('build:all', [
  * --------------------------------------------------------------------
  */
 gulp.task('dist', [
-  'dist:uglify:app:js',
-  'build:stepWay:ES6:min',
-  'build:dragdropway:ES6:min',
-  'build:formViewer:ES6:min'
+  'dist:copy'
 ]);
 
 
 
-
  //public  - all content
- gulp.task('dist:copy', ['dist:clean'], () => {
+ gulp.task('dist:copy', [
+   'build:stepWay:ES6:min',
+   'build:dragdropway:ES6:min',
+   'build:formViewer:ES6:min'
+  ], () => {
 	//all public dir
   gulp.src(gulpConfig.base.publicDir + '**/*', {base : './'})
     .pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
 
 	const indexHtmlFiles = [
 		gulpConfig.base.root + gulpConfig.stepWayHtmlFile.name,
-		gulpConfig.base.root + gulpConfig.stepWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
-		gulpConfig.base.root + gulpConfig.dragDropWayAsModuleHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name
 	];
+  
 	//html files
 	gulp.src(indexHtmlFiles)
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
@@ -552,27 +549,4 @@ gulp.task('dist', [
 	//textAngular css fix
   gulp.src(gulpConfig.srcFiles.app.common.customTextAngularCss, {cwd: gulpConfig.base.root})
     .pipe(gulp.dest(gulpConfig.bower.css ,{cwd: gulpConfig.base.distDir }));
- });
-
-
- gulp.task('dist:uglify:app:js', ['dist:copy'],() => {
-  const appJsFiles = [
-    gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.dragAndDropWay.js,
-    gulpConfig.destDirs.app.js + '/' + gulpConfig.destFiles.app.formViewer.js
-  ];
-
-	// drag and drop js
-	gulp.src(appJsFiles[0], {cwd : './'})
-		.pipe(sourcemaps.init())
-		.pipe(rename({extname: '.min.js'}))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
-	// formviewer  js
-	gulp.src(appJsFiles[1], {cwd : './'})
-		.pipe(sourcemaps.init())
-		.pipe(rename({extname: '.min.js'}))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(gulpConfig.destDirs.app.js, { cwd : gulpConfig.base.root}));
  });
