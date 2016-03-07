@@ -45,7 +45,7 @@ ______
   - show hide preview model and / or preview panel in editor   
 - production friendly
 
-Have a try here : [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/index_StepWay.html)
+Have a try here : [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_StepWay.html)
 
  - **Step way visual preview here** :
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
@@ -62,7 +62,7 @@ Drag and drop way is still in development.
 
 >`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
-have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/master/index_DragDropWay.html)
+have a try here : [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_DragDropWay.html)
 
 - **Drag and drop way visual preview here** :
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
@@ -286,6 +286,7 @@ Just inject `eda.easyFormViewer` in you application :
 ______
 
 ## What is new?
+ - March 2016 : v1.1.0 is released.
 
  - November 2015 : v1.1.0 coming soon : migration to ES6 + fixes
 
