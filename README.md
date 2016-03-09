@@ -3,6 +3,7 @@
 [![GitHub version](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator.svg)](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator)
 [![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Bower version](https://badge.fury.io/bo/easy-form-generator.svg)](https://badge.fury.io/bo/easy-form-generator)
+[![npm version](https://badge.fury.io/js/easy-form-generator.svg)](https://badge.fury.io/js/easy-form-generator)
 
 >Generate advanced and unique boostrap forms without typing a single line of code!
 
@@ -82,9 +83,16 @@ ______
 
 ##How to use?
 
-####Bower way :
+####npm way
 
-`bower install easy-form-generator`
+```bash
+npm install --save easy-form-generator
+```
+
+####Bower way :
+```bash
+bower install easy-form-generator
+```
 
 This way is super easy way since you will be installed all easy form generator dependencies.
 
@@ -417,7 +425,7 @@ ______
 - [x] migrating Babel6+
 - [x] migrating gulp to ES6
 - [x] create bower
-- [ ] create npm
+- [x] create npm
 - [ ] developing / fixing browsers compatibility for `drag and drop` version
 - [x] adding more controls
 - [x] adding more validations

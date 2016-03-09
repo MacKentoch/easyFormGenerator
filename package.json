@@ -24,6 +24,7 @@
     "url": "https://github.com/MacKentoch/easyFormGenerator/issues"
   },
   "devDependencies": {
+    "angular-mocks": "^1.5.0",
     "babel": "^6.3.26",
     "babel-cli": "^6.4.0",
     "babel-core": "^6.5.2",
@@ -85,6 +86,7 @@
     "angular-formly": "^8.0.0",
     "angular-formly-templates-bootstrap": "^6.3.0",
     "angular-loading-bar": "^0.8.0",
+    "angular-resource": "^1.5.0",
     "angular-strap": "^2.3.7",
     "angular-translate": "^2.10.0",
     "angularjs-toaster": "^1.2.0",
