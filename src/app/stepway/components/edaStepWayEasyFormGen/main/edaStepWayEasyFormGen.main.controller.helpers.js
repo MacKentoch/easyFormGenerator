@@ -1,7 +1,7 @@
 /* global angular */
 const DEBUG_MODEL = {
 	showDebug : false,
-	configurationModelNumberofLines : 1        
+	configurationModelNumberofLines : 1
 };
 
 const initDebugModel = () => angular.copy(DEBUG_MODEL);
@@ -21,18 +21,18 @@ const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
 	let _tabModel = angular.copy(DEFAULT_TAB_MODEL);
 	angular.extend(_tabModel.previewTab, {
 		tabVisible 		: isPreviewPanelVisible,
-		modelsVisible : arePreviewModelsVisible		
+		modelsVisible : arePreviewModelsVisible
 	});
 	return _tabModel;
 };
 
 const COLUMN_TEMPLATE =  {
 	numColumn		: -1,
-	exist				:true, 
+	exist				:true,
 	control			: {
 		type		:'none',
 		key			: 'none',
-		subtype	: 'none',
+		subtype	: 'none'
 		// templateOptions: {
 		//                     label: 'none',
 		//                     placeholder: 'none',
@@ -40,20 +40,20 @@ const COLUMN_TEMPLATE =  {
 		//                     description: 'Descriptive text'
 		//                   }
 	}
-}; 
+};
 
 const initColumnTemplate = () => angular.copy(COLUMN_TEMPLATE);
 
 const LINE_TEMPLATE = {
-	line:-1, 
+	line:-1,
 	activeColumn : 1,
 	columns: [
-		{  
+		{
 			numColumn: 1,
-			exist:true, 
+			exist:true,
 			control: {
 				type:'none',
-				key: 'none',
+				key: 'none'
 				// templateOptions: {
 				//                     label: 'none',
 				//                     placeholder: 'none',

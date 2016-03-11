@@ -7,50 +7,36 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jspm','jasmine'],
 
-
-    // list of files / patterns to load in the browser
     files: [
-        'bower_components/angular/angular.js',
-
-        'bower_components/jquery/dist/jquery.js',   
-
-        'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/angular-animate/angular-animate.js',
-
-        'bower_components/bootstrap/dist/js/bootstrap.js',
-        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-
-        'bower_components/rangy/rangy-core.js',
-        'bower_components/rangy/rangy-selectionsaverestore.js',
-        'bower_components/textAngular/dist/textAngular-sanitize.js',
-        'bower_components/textAngular/dist/textAngular.js',
-        'bower_components/textAngular/dist/textAngularSetup.js',
-
-        'bower_components/angularjs-toaster/toaster.js',
-        'bower_components/angular-resource/angular-resource.js',
-
-        'bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js',
-
-        'bower_components/api-check/dist/api-check.js',
-        'bower_components/angular-formly/dist/formly.js',
-        'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
-
-        'bower_components/lodash/lodash.js',
-         
-        'public/js/**/eda.stepway-ES6.js',
-        'src/test/**/*.js'
+        'node_modules/karma-babel-preprocessor/node_modules/babel-core/browser-polyfill.js',
+        'node_modules/jasmine-async-sugar/jasmine-async-sugar.js'
     ],
+
+    jspm: {
+        config: 'jspm.conf.js',
+        loadFiles: [
+          'src/app/stepway/edaStepWayEasyFormGen.main.js',
+          'src/app/dragdropway/edaDragDropWay.main.js',
+          'src/app/formviewer/eda.easyFormViewer.main.js',
+          'src/app/**/*.spec.js'
+        ],
+        serveFiles: [
+          'test/helpers/**/*.js',
+          'src/app/**/*.+(js|html|css|json)'
+        ] // *.{a,b,c} to *.+(a|b|c) https://github.com/karma-runner/karma/issues/1532
+    },
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
+    proxies: {
+        '/test/': '/base/test/',
+        '/src/app/': '/base/src/app/',
+        '/jspm_packages/': '/base/jspm_packages/'
+    },
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -90,5 +76,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
-  })
-}
+  });
+};
