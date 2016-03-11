@@ -15,7 +15,7 @@ module.exports = function(config) {
     ],
 
     jspm: {
-        config: 'jspm.conf.js',
+        config: 'config.js',
         loadFiles: [
           'src/app/stepway/edaStepWayEasyFormGen.main.js',
           'src/app/dragdropway/edaDragDropWay.main.js',
@@ -23,7 +23,6 @@ module.exports = function(config) {
           'src/app/**/*.spec.js'
         ],
         serveFiles: [
-          'test/helpers/**/*.js',
           'src/app/**/*.+(js|html|css|json)'
         ] // *.{a,b,c} to *.+(a|b|c) https://github.com/karma-runner/karma/issues/1532
     },
@@ -33,7 +32,6 @@ module.exports = function(config) {
     exclude: [],
 
     proxies: {
-        '/test/': '/base/test/',
         '/src/app/': '/base/src/app/',
         '/jspm_packages/': '/base/jspm_packages/'
     },
