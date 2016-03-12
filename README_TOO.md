@@ -5,23 +5,23 @@ Complementary information about Easy Form Generator
 
 `Easy Form Generator` is simply some kind `nice and pleasant UI` over super powerfull `angular formly`.
 
-To sum up **very very fast and simple**, `angular formly` is a directive that renders forms from JSON models : 
+To sum up **very very fast and simple**, `angular formly` is a directive that renders forms from JSON models:
 - 1 model for field description
-	- could be called `fieldsModel` 
+	- could be called `fieldsModel`
 - 1 model for data (what user enters in form inputs)
 	- could be called `dataModel`
 
 ##angular formly :
 
-Displaying any form just require this html :
+Displaying any form just require this html:
 
 ```html
-<!-- here is the simple HTML you need (everything else is decoration) : --> 
-<form ng-submit="vm.onSubmit()" name="vm.form" novalidate> 
-	<formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form"> 
-		<button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="vm.form.$invalid">{{vm.buttons.submit}}</button> 
-		<button type="button" class="btn btn-primary pull-right" ng-click="vm.options.resetModel()">{{vm.buttons.cancel}}</button> 
-	</formly-form> 
+<!-- here is the simple HTML you need (everything else is decoration) : -->
+<form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
+	<formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+		<button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="vm.form.$invalid">{{vm.buttons.submit}}</button>
+		<button type="button" class="btn btn-primary pull-right" ng-click="vm.options.resetModel()">{{vm.buttons.cancel}}</button>
+	</formly-form>
 </form>
 ```
 
@@ -35,14 +35,14 @@ And to customize submit and cancel button text :
 - `vm.buttons.submit` (*a simple string*)
 - `vm.buttons.cancel` (*a simple string*)
 
-*More information about angular formly : [formly website](http://angular-formly.com).*
+*More information about angular formly: [formly website](http://angular-formly.com).*
 
 ##Easy form generator role
 
 Remember `vm.fields` is the model that describe all the form.
 How does it look like?
 
-Something like that :
+Something like that:
 ```javascript
 													[
   {
@@ -110,5 +110,3 @@ Something like that :
 This form is simple, but you guess it could be not that easy for anyone non developer to create his own form.
 
 >Easy for generator enable to generate forms without the need to write the form by yourself.
- 
-

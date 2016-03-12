@@ -41,7 +41,7 @@ ______
 - multi-language support
 - friendly configurable thanks to a single provider `easyFormSteWayConfig` provider
   - enable / disable modal animation
-  - enable / disable controls (ex : hide rich text from editor)
+  - enable / disable controls (ex: hide rich text from editor)
   - set current language (default is english)
   - show hide preview model and / or preview panel in editor   
 - production friendly
@@ -53,7 +53,7 @@ Have a try here: [Easy for generator **step way** version](https://rawgit.com/Ma
 
 ______
 
-###Easy Form Generator : **drag and drop way** (BETA)
+###Easy Form Generator: **drag and drop way** (BETA)
 
 `Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
 - drag control then drop control
@@ -65,7 +65,7 @@ Drag and drop way is still in development.
 
 have a try here: [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_DragDropWay.html)
 
-- **Drag and drop way visual preview here** :
+- **Drag and drop way visual preview here**:
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
 
 
@@ -83,13 +83,13 @@ ______
 
 ##How to use?
 
-####npm way
+####npm way:
 
 ```bash
 npm install --save easy-form-generator
 ```
 
-####Bower way :
+####Bower way:
 ```bash
 bower install easy-form-generator
 ```
@@ -152,7 +152,7 @@ Add these attributes to interact with your own controller :
 </eda-step-way-easy-form-gen>
 ```
 
-**Note: Easy form generator model properties are** :
+**Note: Easy form generator model properties are**:
 
 - `formName`: {string} - stores `form name`, default is empty string
 - `btnSubmitText`: {string} - stores submit button name, default is 'Submit'
@@ -362,11 +362,11 @@ ______
   easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
   function easyFromConfigFct(easyFormSteWayConfigProvider){
 
-    //disable basic TextInput :
+    //disable basic TextInput:
     easyFormSteWayConfigProvider.disableControl('TextInput');
 
-    //enable Date input :
-    //(NOTE : by default all controls are enabled
+    //enable Date input:
+    //(NOTE: by default all controls are enabled
     //-> so this example is no other use than illustration)
     easyFormSteWayConfigProvider.enableControl('Date');
 

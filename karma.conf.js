@@ -3,15 +3,14 @@
 
 module.exports = function(config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-    frameworks: ['jspm','jasmine'],
+    frameworks: ['jspm','jasmine', 'phantomjs-shim'],
 
     files: [
-        'node_modules/karma-babel-preprocessor/node_modules/babel-core/browser-polyfill.js',
-        'node_modules/jasmine-async-sugar/jasmine-async-sugar.js'
+      'node_modules/karma-babel-preprocessor/node_modules/babel-core/browser-polyfill.js',
+      'node_modules/jasmine-async-sugar/jasmine-async-sugar.js'
     ],
 
     jspm: {
