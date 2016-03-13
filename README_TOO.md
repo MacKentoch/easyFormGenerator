@@ -11,7 +11,7 @@ To sum up **very very fast and simple**, `angular formly` is a directive that re
 - 1 model for data (what user enters in form inputs)
 	- could be called `dataModel`
 
-##angular formly :
+##angular formly:
 
 Displaying any form just require this html:
 
@@ -25,7 +25,7 @@ Displaying any form just require this html:
 </form>
 ```
 
-You may notice :
+You may notice:
 
 - `vm.model` 	= data model (*will be filled when input are filled*)
 - `vm.fields` = fields description model
