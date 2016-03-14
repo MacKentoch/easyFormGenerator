@@ -142,7 +142,7 @@ angular
 
 ####Want to Load/save models?
 
-Add these attributes to interact with your own controller :
+Add these attributes to interact with your own controller:
 - `eda-easy-form-generator-model`: attribute to bind your model
 - `eda-save-form-event`: attribute to bind save form event
 ```html
@@ -188,7 +188,7 @@ ____
 
 ###Using Drag and drop way version (BETA)
 
->demo : `index_DragDropWay_As_Module.html` in `dist` directory.
+>demo: `index_DragDropWay_As_Module.html` in `dist` directory.
 
 ####Inject easy form generator in your app
 
@@ -225,7 +225,7 @@ ____
 
 ###Using Easy form viewer (production friendly)
 
->demo : `index_easyFormViewer_Module.html` in `dist` directory.
+>demo: `index_easyFormViewer_Module.html` in `dist` directory.
 
 ####Inject easy form viewer in your app
 
@@ -244,7 +244,7 @@ Just inject `eda.easyFormViewer` in you application:
       var demoCtrl = this;
 
       demoCtrl.fieldsModel    = loadMySavedEdaFieldsModel(); //="edaFieldsModel" - see easy form generator model -
-      demoCtrl.dataModel			= {}; //data Model : filling form will fill it (submit event will return updated data model)
+      demoCtrl.dataModel			= {}; //data Model: filling form will fill it (submit event will return updated data model)
 
       demoCtrl.submitButtonText = 'Submit this form'; //button text
       demoCtrl.cancelButtonText = 'Cancel all'; //button text
@@ -259,12 +259,12 @@ Just inject `eda.easyFormViewer` in you application:
 
       //submit will return updated dataModel in "dataModelSubmitted" parameter
       function submitFormEvent(dataModelSubmitted){
-        console.info('Submit event : you can manage this event in your controller');
-        console.dir( {'dataModelSubmitted' : dataModelSubmitted} );
+        console.info('Submit event: you can manage this event in your controller');
+        console.dir( {'dataModelSubmitted': dataModelSubmitted} );
       }
 
       function cancelFormEvent(){
-        console.info('Cancel event : you can manage this event in your controller');
+        console.info('Cancel event: you can manage this event in your controller');
       }
     }
       //...
@@ -296,7 +296,7 @@ ______
 ## What is new?
  - March 2016: v1.1.0 is released.
 
- - November 2015: v1.1.0 coming soon : migration to ES6 + fixes
+ - November 2015: v1.1.0 coming soon: migration to ES6 + fixes
 
  - October 2015: `Easy form Generator step way`: new config available with `easyFormSteWayConfigProvider`:
     - show/hide preview panel
@@ -345,7 +345,7 @@ ______
 
     //example get current language (by default = english)
     console.info(easyFormSteWayConfigProvider.getCurrentLanguage());
-    //set language to french :
+    //set language to french:
     easyFormSteWayConfigProvider.setLanguage('fr');
 
  ```
@@ -370,7 +370,7 @@ ______
     //-> so this example is no other use than illustration)
     easyFormSteWayConfigProvider.enableControl('Date');
 
-    // List of all easy form generator (step way version) controls :  
+    // List of all easy form generator (step way version) controls:  
     // 'empty'
     // 'Header'
     // 'TextInput'
@@ -411,7 +411,7 @@ ______
  - :newspaper: `step way`: added `email` control
      + email entered must follow *an email pattern* (validation included)
      + a validation message is displayed when entered email is invalid (pattern related)
-     + preview :
+     + preview:
 
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
 

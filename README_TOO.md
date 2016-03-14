@@ -16,7 +16,7 @@ To sum up **very very fast and simple**, `angular formly` is a directive that re
 Displaying any form just require this html:
 
 ```html
-<!-- here is the simple HTML you need (everything else is decoration) : -->
+<!-- here is the simple HTML you need (everything else is decoration): -->
 <form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
 	<formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
 		<button type="submit" class="btn btn-primary submit-button pull-right" ng-disabled="vm.form.$invalid">{{vm.buttons.submit}}</button>
@@ -30,7 +30,7 @@ You may notice:
 - `vm.model` 	= data model (*will be filled when input are filled*)
 - `vm.fields` = fields description model
 
-And to customize submit and cancel button text :
+And to customize submit and cancel button text:
 
 - `vm.buttons.submit` (*a simple string*)
 - `vm.buttons.cancel` (*a simple string*)
