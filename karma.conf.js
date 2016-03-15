@@ -4,36 +4,31 @@
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './',
 
-    frameworks: ['jspm','jasmine', 'phantomjs-shim'],
+    frameworks: ['jspm','jasmine'],
 
-    files: [
-      'node_modules/karma-babel-preprocessor/node_modules/babel-core/browser-polyfill.js',
-      'node_modules/jasmine-async-sugar/jasmine-async-sugar.js'
-    ],
+    files: [],
 
     jspm: {
-        config: 'config.js',
-        loadFiles: [
-          'src/app/stepway/edaStepWayEasyFormGen.main.js',
-          'src/app/dragdropway/edaDragDropWay.main.js',
-          'src/app/formviewer/eda.easyFormViewer.main.js',
-          'src/app/**/*.spec.js'
-        ],
-        serveFiles: [
-          'src/app/**/*.+(js|html|css|json)'
-        ] // *.{a,b,c} to *.+(a|b|c) https://github.com/karma-runner/karma/issues/1532
+      config: 'config.js',
+      loadFiles: ['src/app/**/*.spec.js', 'src/app/stepway/edaStepWayEasyFormGen.main.js'],
+      serveFiles: [
+        'src/app/**/*.+(js|html|css|json)'
+      ]
     },
 
+    proxies : [],
+
+    // plugins: ['karma-jspm', 'karma-phantomjs-launcher'],
 
     // list of files to exclude
     exclude: [],
 
-    proxies: {
-        '/src/app/': '/base/src/app/',
-        '/jspm_packages/': '/base/jspm_packages/'
-    },
+    // proxies: {
+    //     '/src/app/': '/base/src/app/',
+    //     '/jspm_packages/': '/base/jspm_packages/'
+    // },
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
