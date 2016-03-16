@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/",
+  baseURL: "",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -15,11 +15,15 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.5.0",
+    "angular-mocks": "github:angular/bower-angular-mocks@1.5.0",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.24",
     "core-js": "npm:core-js@1.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "text": "github:systemjs/plugin-text@0.0.2",
+    "github:angular/bower-angular-mocks@1.5.0": {
+      "angular": "github:angular/bower-angular@1.5.0"
+    },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
