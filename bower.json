@@ -48,9 +48,9 @@
     "config.js"
   ],
   "dependencies": {
-    "angular": "~1.4.5",
-    "angular-resource": "~1.4.5",
-    "angular-animate": "~1.4.5",
+    "angular": "^1.5.1",
+    "angular-resource": "^1.5.1",
+    "angular-animate": "^1.5.1",
     "bootstrap": "~3.3.5",
     "html5shiv": "~3.7.2",
     "modernizer": "~2.8.2",
@@ -60,7 +60,7 @@
     "angular-loading-bar": "~0.7.1",
     "animate.css": "~3.2.6",
     "angularjs-toaster": "~0.4.13",
-    "angular-bootstrap": "~0.13.3",
+    "angular-bootstrap": "^1.2.4",
     "api-check": "~7.2.4",
     "angular-formly": "~6.8.2",
     "angular-formly-templates-bootstrap": "~4.3.2",
@@ -70,9 +70,9 @@
     "angular-translate": "~2.8.1"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.1"
+    "angular-mocks": "^1.5.1"
   },
   "resolutions": {
-    "angular": "^1.4.7"
+    "angular": "^1.5.0"
   }
 }
