@@ -1,12 +1,12 @@
 
 const richTextTemplate = `
-	<text-angular name="{{id}}" 
-		class="richTextAngular" 
+	<text-angular name="{{id}}"
+		class="richTextAngular"
 		ng-model="model[options.key || index]">
 	</text-angular>`;
-					
 
-const blankTemplate = `<div></div>`;								
+
+const blankTemplate = `<div></div>`;
 
 
 const subTitleTemplate = `
@@ -18,24 +18,24 @@ const subTitleTemplate = `
 		</div>
 	</div>`;
 
-const basicSelectTemplate = ` 
-<ol  
-	class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" 
-	ng-model="model[options.key || index]"  
-	id="{{id}}"  
-	disabled="options.templateOptions.options.length === 0">  
-	<li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options">  
-		<a>{{option.name}}</a> 
-	</li>  
+const basicSelectTemplate = `
+<ol
+	class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
+	ng-model="model[options.key || index]"
+	id="{{id}}"
+	disabled="options.templateOptions.options.length === 0">
+	<li class="nya-bs-option" nya-bs-option="option in options.templateOptions.options">
+		<a>{{option.name}}</a>
+	</li>
 </ol>`;
 
 const groupedSelectTemplate = `
-	<ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12" 
-		ng-model="model[options.key || index]" 
-		data-live-search="true" 
+	<ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
+		ng-model="model[options.key || index]"
+		data-live-search="true"
 		disabled="options.templateOptions.options.length === 0">
 		<li nya-bs-option="option in  options.templateOptions.options group by option.group">
-			<span class="dropdown-header">{{$group}}</span> 
+			<span class="dropdown-header">{{$group}}</span>
 			<a>
 				<span>{{option.name}}</span>
 				<span class="glyphicon glyphicon-ok check-mark"></span>
@@ -43,12 +43,13 @@ const groupedSelectTemplate = `
 		</li>
 	</ol>`;
 
-const datepickerTemplate = `	<input  id="{{id}}" 
-																			class="form-control" 
-																			ng-click="open($event)" 
-																			ng-model="model[options.key  || index]" 
-																			is-open="to.isOpen" 
-																			ng-click="to.isOpen = true" 
+const datepickerTemplate = `	<input  id="{{id}}"
+																			class="form-control"
+																			ng-click="open($event)"
+																			ng-model="model[options.key  || index]"
+																			is-open="to.isOpen"
+																			ng-click="to.isOpen = true"
+                                      uib-datepicker-popup
 																			datepicker-options="to.datepickerOptions" />`;
 
 const validationTemplate = `
@@ -64,7 +65,7 @@ const validationTemplate = `
 					</div>
 				</div>
 			</div>`;
-								
+
 export {
 	richTextTemplate,
 	blankTemplate,

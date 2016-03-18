@@ -6,14 +6,14 @@
 					<div class="content-container">
 						<!-- taoster alert -->
 						<toaster-container  toaster-options="{
-																								'position-class': 'toast-top-full-width', 
+																								'position-class': 'toast-top-full-width',
 																								'extendedTimeout':500,
-																								'timeOut':500,                          
+																								'timeOut':500,
 																								}">
 						</toaster-container>
-						<tabset justified="true">
-							<tab active="vm.tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
-								<div class="row">											
+						<uib-tabset justified="true">
+							<uib-tab active="vm.tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
+								<div class="row">
 								<!-- STEP INDICATOR -->
 								<div class="row stepwizardTopmargin">
 									<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
@@ -67,13 +67,13 @@
 														<div class="row">
 															<div class="col-md-12">
 																<span class="addNewLine">{{'ADD_NEW_LINE' | translate}} :</span>&nbsp;
-																<button class="btn btn-primary" ng-click="vm.addNewline()"><i class="fa fa-plus fa-1x"></i></button>												  			
+																<button class="btn btn-primary" ng-click="vm.addNewline()"><i class="fa fa-plus fa-1x"></i></button>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											</div>	    	
+											</div>
 											<div class="col-md-8">
 												<div id="visualPanel">
 												<div  class="panel panel-default">
@@ -90,59 +90,59 @@
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
 																				<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
+																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
 																			</div>
-																			<div class="col-md-12">	
-																				<div class="col-md-12 well">		
+																			<div class="col-md-12">
+																				<div class="col-md-12 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
 																					</button>
-																				</div>		
+																				</div>
 																			</div>
 																		</div>
 																		<div class="row linesList" ng-switch-when="2">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
 																				<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
-																			</div>																    		
+																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
+																			</div>
 																			<div class="col-md-12">
 																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
 																					</button>
 																				</div>
-																				<div class="col-md-6 well">		
+																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																					</button> 
-																				</div>								    	
+																					</button>
+																				</div>
 																			</div>
-																		</div>	
+																		</div>
 																		<div class="row linesList" ng-switch-when="3">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																				<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
 																				<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>	
-																			</div>																    		
+																				<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
+																			</div>
 																			<div class="col-md-12">
-																				<div class="col-md-4 well">			
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
 																					</button>
 																				</div>
-																				<div class="col-md-4 well">				
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
 																					</button>
 																				</div>
-																				<div class="col-md-4 well">	   
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
-																					</button> 
-																				</div>		
+																					</button>
+																				</div>
 																			</div>
-																		</div>									    								    		
+																		</div>
 																	</div>
 															</li>
 														</ul>
@@ -151,7 +151,7 @@
 											</div>
 											</div>
 								</div>
-									<div class="animate-switch" ng-switch-when="first">												
+									<div class="animate-switch" ng-switch-when="first">
 										<div class="col-md-4">
 											<div id="commandPanel">
 												<div  class="panel panel-default">
@@ -174,12 +174,12 @@
 															</div>
 															<div class="col-xs-2 col-sm-2 col-md-2">
 																<button class="btn btn-primary pull-left btnAddColumns" ng-click="vm.increaseNumberOfColumns()"><i class="fa fa-plus fa-1x"></i></button>
-														</div>								   										   		
+														</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											</div>	    	
+											</div>
 											<div class="col-md-8">
 												<div id="visualPanel">
 												<div  class="panel panel-default">
@@ -197,59 +197,59 @@
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
-																					</button>	
+																					</button>
 																			</div>
-																			<div class="col-md-12">	
+																			<div class="col-md-12">
 																				<div class="col-md-12 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>	
-																				</div>		
+																					</button>
+																				</div>
 																			</div>
 																		</div>
 																		<div class="row linesList" ng-switch-when="2">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
-																					</button>	
-																			</div>																    		
+																					</button>
+																			</div>
 																			<div class="col-md-12">
 																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>					
+																					</button>
 																				</div>
-																				<div class="col-md-6 well">	
+																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																					</button>		
-																				</div>								    	
+																					</button>
+																				</div>
 																			</div>
-																		</div>	
+																		</div>
 																		<div class="row linesList" ng-switch-when="3">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
 																					</button>
-																			</div>																    		
+																			</div>
 																			<div class="col-md-12">
-																				<div class="col-md-4 well">			
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>	
+																					</button>
 																				</div>
-																				<div class="col-md-4 well">				
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																					</button>	
+																					</button>
 																				</div>
-																				<div class="col-md-4 well">	   
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block  btn-default disabled">
 																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
-																					</button>	
-																				</div>		
+																					</button>
+																				</div>
 																			</div>
-																		</div>									    								    		
+																		</div>
 																	</div>
 															</li>
 														</ul>
@@ -259,7 +259,7 @@
 										</div>
 								</div>
 
-									<div class="animate-switch" ng-switch-when="second">		
+									<div class="animate-switch" ng-switch-when="second">
 											<div class="col-md-4">
 												<div id="commandPanel">
 													<div  class="panel panel-default">
@@ -276,15 +276,15 @@
 																<div class="col-lg-12" >
 																		<hr/>
 																		<blockquote>
-																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; {{'CLIC_TAP_2_OPEN' | translate}}.</p> 
+																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; {{'CLIC_TAP_2_OPEN' | translate}}.</p>
 																		<p class="numberOfcolumsText"><i class="fa fa-minus"></i>&nbsp; {{'SELECT_2_APPLY_COL' | translate}}.</p>
-																</blockquote>												   		
-																</div>	   		
+																</blockquote>
+																</div>
 															</div>
 														</div>
 													</div>
 											</div>
-											</div>	    	
+											</div>
 
 											<div class="col-md-8">
 												<div id="visualPanel">
@@ -303,59 +303,59 @@
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
-																					</button>																					
+																					</button>
 																			</div>
 																			<div class="col-md-12">
-																				<div class="col-md-12 well">			
+																				<div class="col-md-12 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 0)">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>	
-																				</div>	
+																					</button>
+																				</div>
 																			</div>
 																		</div>
 																		<div class="row linesList" ng-switch-when="2">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
-																					</button>	
-																			</div>	
-																			<div class="col-md-12">															    		
-																				<div class="col-md-6 well">			
+																					</button>
+																			</div>
+																			<div class="col-md-12">
+																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 0)">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>	
+																					</button>
 																				</div>
-																				<div class="col-md-6 well">				
+																				<div class="col-md-6 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 1)">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																					</button>	
+																					</button>
 																				</div>
-																			</div>	
-																		</div>	
+																			</div>
+																		</div>
 																		<div class="row linesList" ng-switch-when="3">
 																			<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
 																					<button class="btn" ng-class="{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}" ng-click="vm.setActiveLineNumber($index + 1)">
 																						<i class="fa"  ng-class="{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}"></i>
 																					</button>
-																			</div>																    		
+																			</div>
 																			<div class="col-md-12">
-																				<div class="col-md-4 well">			
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 0)">
 																							{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																					</button>	
+																					</button>
 																				</div>
-																				<div class="col-md-4 well">				
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 1)">
 																							{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																					</button>	
+																					</button>
 																				</div>
-																				<div class="col-md-4 well">	   
+																				<div class="col-md-4 well">
 																					<button class="btn btn-lg btn-block" ng-class="{'btn-primary': !line.columns[2].control.edited, 'btn-success': line.columns[2].control.edited}" ng-click="vm.showModalAddCtrlToColumn('', $index, 2)">
 																							{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
-																					</button>	
-																				</div>		
+																					</button>
+																				</div>
 																			</div>
-																		</div>									    								    		
+																		</div>
 																	</div>
 															</li>
 														</ul>
@@ -363,7 +363,7 @@
 												</div>
 											</div>
 									</div>
-								</div>	
+								</div>
 								<div class="animate-switch" ng-switch-when="third">
 											<div class="col-md-4">
 													<div id="commandPanel">
@@ -379,8 +379,8 @@
 																	<div class="">
 																		<input type="text" class="form-control" id="inputSubmitButtontext" placeholder="" ng-model="vm.configuration.submitButtonText">
 																	</div>
-																</div>								
-															</div>												    
+																</div>
+															</div>
 														</div>
 														<hr/>
 														<div class="row">
@@ -390,8 +390,8 @@
 																	<div class="">
 																		<input type="text" class="form-control" id="inputCancelButtontext" placeholder="" ng-model="vm.configuration.cancelButtonText">
 																	</div>
-																</div>								
-															</div>												    
+																</div>
+															</div>
 														</div>
 														<hr/>
 														<div class="row">
@@ -401,14 +401,14 @@
 																	<div class="">
 																		<input type="text" class="form-control" id="inputNameFormtext" placeholder="" ng-model="vm.configuration.formName">
 																	</div>
-																</div>								
-															</div>												    
+																</div>
+															</div>
 														</div>
 														<button class="btn btn-primary btn-block btn-lg" ng-click="vm.saveThisForm()">{{'SAVE_THIS_FORM' | translate}}</button>
 													</div>
 												</div>
 											</div>
-											</div>	    	
+											</div>
 											<div class="col-md-8">
 												<div id="visualPanel">
 												<div  class="panel panel-default">
@@ -423,7 +423,7 @@
 															<button class="btn btn-primary" type="cancel">{{vm.configuration.cancelButtonText}}</button>
 															</span>
 														</formly-form>
-													</form>	
+													</form>
 													</div>
 												</div>
 											</div>
@@ -431,9 +431,9 @@
 								</div>
 							</div>
 								</div>
-							</tab>	
+							</uib-tab>
 
-							<tab active="vm.tab.previewTab.active" ng-if="vm.tab.previewTab.tabVisible" heading="{{'PREVIEW_TAB' | translate}}">
+							<uib-tab active="vm.tab.previewTab.active" ng-if="vm.tab.previewTab.tabVisible" heading="{{'PREVIEW_TAB' | translate}}">
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<!-- formly here -->
@@ -444,7 +444,7 @@
 											<button class="btn btn-primary" type="cancel">{{vm.configuration.cancelButtonText}}</button>
 											</span>
 										</formly-form>
-									</form>	
+									</form>
 								</div>
 							</div>
 							<div ng-if="vm.tab.previewTab.modelsVisible" class="panel panel-default">
@@ -463,8 +463,8 @@
 									</pre>
 								</div>
 							</div>
-							</tab>
-						</tabset>
+							</uib-tab>
+						</uib-tabset>
 					</div>
 				</div>
 			</section>

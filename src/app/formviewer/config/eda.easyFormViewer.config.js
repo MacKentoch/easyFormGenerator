@@ -10,7 +10,7 @@ import {
 
 
 function edaEasyFormViewerConfig(formlyConfigProvider) {
-  
+
   formlyConfigProvider.setType(
     {
       name    : 'richEditor',
@@ -25,7 +25,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
       template: blankTemplate
     }
   );
-                          
+
   formlyConfigProvider.setType(
     {
       name    : 'subTitle',
@@ -70,7 +70,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
     'format-month-title',
     'year-range',
     'shortcut-propagation',
-    'datepicker-popup',
+    'uib-datepicker-popup',
     'show-button-bar',
     'current-text',
     'clear-text',
@@ -95,7 +95,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
     ngModelAttrs[camelize(binding)] = {bound: binding};
   });
 
- 
+
   formlyConfigProvider.setType({
     name      : 'datepicker',
     template  : datepickerTemplate,
@@ -106,7 +106,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
         $event.stopPropagation();
         $scope.opened = true;
       };
-      
+
       }],
     defaultOptions: {
       ngModelAttrs    : ngModelAttrs,
@@ -114,12 +114,12 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
         addonLeft : {
           class   : 'glyphicon glyphicon-calendar',
           onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
-        },       
+        },
         onFocus : ($viewValue, $modelValue, scope) => scope.to.isOpen = !scope.to.isOpen,
         datepickerOptions: {}
       }
     }
-    
+
   });
 
 
@@ -127,7 +127,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
   /**
     * wrappers to show validation errors
     * without having to rewrite formly types
-    */        
+    */
   formlyConfigProvider.setWrapper([
       {
         template: validationTemplate
@@ -142,7 +142,7 @@ function edaEasyFormViewerConfig(formlyConfigProvider) {
     return string.replace(/^([A-Z])/, function(match, chr) {
       return chr ? chr.toLowerCase() : '';
     });
-  } 
+  }
 
 
 }

@@ -11,7 +11,7 @@ import {
 
 
 function formlyConfig(formlyConfigProvider){
-	
+
 	formlyConfigProvider.setType(
 		{
 			name  	: 'richEditor',
@@ -26,7 +26,7 @@ function formlyConfig(formlyConfigProvider){
 			template: blankTemplate
 		}
 	);
-													
+
 	formlyConfigProvider.setType(
 		{
 			name 		: 'subTitle',
@@ -56,28 +56,28 @@ function formlyConfig(formlyConfigProvider){
 	// thx Kent C. Dodds
 
 	const attributes = [
-		'date-disabled',
-		'custom-class',
-		'show-weeks',
-		'starting-day',
-		'init-date',
-		'min-mode',
-		'max-mode',
-		'format-day',
-		'format-month',
-		'format-year',
-		'format-day-header',
-		'format-day-title',
-		'format-month-title',
-		'year-range',
-		'shortcut-propagation',
-		'datepicker-popup',
-		'show-button-bar',
-		'current-text',
-		'clear-text',
-		'close-text',
-		'close-on-date-selection',
-		'datepicker-append-to-body'
+    'date-disabled',
+    'custom-class',
+    'show-weeks',
+    'starting-day',
+    'init-date',
+    'min-mode',
+    'max-mode',
+    'format-day',
+    'format-month',
+    'format-year',
+    'format-day-header',
+    'format-day-title',
+    'format-month-title',
+    'year-range',
+    'shortcut-propagation',
+    'datepicker-popup',
+    'show-button-bar',
+    'current-text',
+    'clear-text',
+    'close-text',
+    'close-on-date-selection',
+    'datepicker-append-to-body'
 	];
 
 	const bindings = [
@@ -96,7 +96,7 @@ function formlyConfig(formlyConfigProvider){
 		ngModelAttrs[camelize(binding)] = {bound: binding};
 	});
 
- 
+
 	formlyConfigProvider.setType({
 		name 			: 'datepicker',
 		template 	: datepickerTemplate,
@@ -107,20 +107,19 @@ function formlyConfig(formlyConfigProvider){
 				$event.stopPropagation();
 				$scope.opened = true;
 			};
-			
-			}],
+		}],
 		defaultOptions: {
 			ngModelAttrs 		: ngModelAttrs,
 			templateOptions : {
 				addonLeft : {
 					class 	: 'glyphicon glyphicon-calendar',
 					onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
-				},       
+				},
 				onFocus : ($viewValue, $modelValue, scope) => scope.to.isOpen = !scope.to.isOpen,
 				datepickerOptions: {}
 			}
 		}
-		
+
 	});
 
 
@@ -128,7 +127,7 @@ function formlyConfig(formlyConfigProvider){
 	/**
 		* wrappers to show validation errors
 		* without having to rewrite formly types
-		*/				
+		*/
 	formlyConfigProvider.setWrapper([
 			{
 				template: validationTemplate
@@ -143,7 +142,7 @@ function formlyConfig(formlyConfigProvider){
 		return string.replace(/^([A-Z])/, function(match, chr) {
 			return chr ? chr.toLowerCase() : '';
 		});
-	} 
+	}
 
 }
 

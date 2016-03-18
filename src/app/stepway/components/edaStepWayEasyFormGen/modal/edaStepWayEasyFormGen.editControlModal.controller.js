@@ -2,48 +2,48 @@ const EDIT_MODAL_CONTROLLER_NAME 		= 'editControlModalController';
 const EDIT_MODAL_CONTROLLERAS_NAME 	= 'editControlModCtrl';
 
 class editControlModalController {
-	
-	constructor(  $modalInstance, 
-								nyaSelect, 
+
+	constructor(  $uibModalInstance,
+								nyaSelect,
 								toaster,
 								selectOptionManage,
 								$modalProxy) {
-									
-		this.$modalInstance 			= $modalInstance;
+
+		this.$modalInstance 			= $uibModalInstance;
 		this.nyaSelect 						= nyaSelect;
 		this.toaster 							= toaster;
 		this.selectOptionManage 	= selectOptionManage;
 		this.$modalProxy 					= $modalProxy;
-		
+
 		this.init();
-		
+
 	}
-	
+
 	init() {
 		const initOptionModel 					= { rows:[] };
-		
+
 		this.radioRowCollection 				= initOptionModel;
 		this.newOptionRadio     				= {saisie: ''};
 		this.basicSelectRowCollection 	= initOptionModel;
-		this.newOptionBasicSelect     	= {saisie: ''};	
+		this.newOptionBasicSelect     	= {saisie: ''};
 		this.groupedSelectRowCollection = initOptionModel;
 		this.newOptionGroupedSelect     = {saisie: ''};
 		this.GroupedSelectGroups        = { list:[] };
-		this.newGroupGroupedSelect      = {saisie: ''};  
-		this.groupSelectGroupClick      = {showList : false};	
-		this.demodt         						= {}; 
-		this.dateOptions    						= this.dateOptionsInit(); 
+		this.newGroupGroupedSelect      = {saisie: ''};
+		this.groupSelectGroupClick      = {showList : false};
+		this.demodt         						= {};
+		this.dateOptions    						= this.dateOptionsInit();
 		this.demodt.formats 						= ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 		this.nyaSelect.selectedControl  = this.nyaSelect.temporyConfig.selectedControl;
 		this.nyaSelectFiltered 					= {};
 		this.modelNyaSelect							= {};
-      
+
 		//init today date
 		this.today();
 		//init nyaSelect model depending selected control
-		this.initNyaSelectConformingSelectedControl();			
+		this.initNyaSelectConformingSelectedControl();
 	}
-	
+
 
 	initNyaSelectConformingSelectedControl(){
 		//place nya-select to selection if not none :
@@ -56,20 +56,20 @@ class editControlModalController {
 			if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioFromNYA();
 		}
 		this.initNyaSelectFiltered();
-		
-		console.info(`modal controller : nyaSelect`);
-		console.dir(this.nyaSelect);
+
+		// console.info(`modal controller : nyaSelect`);
+		// console.dir(this.nyaSelect);
 	}
-	
+
 	initNyaSelectFiltered(){
 		let listCtrl = [].concat(this.$modalProxy.getFilteredNyaSelectObject());
 		angular.extend(this.nyaSelectFiltered,{
 			'controls'        : listCtrl,
 			'selectedControl' : this.nyaSelect.selectedControl,
-			'temporyConfig'   : this.nyaSelect.temporyConfig 
-		}); 
-	}	
-	
+			'temporyConfig'   : this.nyaSelect.temporyConfig
+		});
+	}
+
 	bindBasicSelectFromNYA(){
 		if (this.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 			for (let i = 0; i <= this.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -79,10 +79,10 @@ class editControlModalController {
 					'group'		: ''
 				};
 				this.basicSelectRowCollection.rows.push(newOption);
-			}    
+			}
 		}
 	}
-	
+
 	bindRadioFromNYA() {
 		if (this.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 			for (let i = 0; i <= this.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -92,12 +92,12 @@ class editControlModalController {
 						'group'		: ''
 				};
 				this.radioRowCollection.rows.push(newOption);
-			}    
+			}
 		}
 	}
-	
-	
-	
+
+
+
 	bindGroupedSelectFromNYA(){
 		if (this.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 			for (let i = 0; i <= this.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -106,15 +106,15 @@ class editControlModalController {
 					'order'		: i,
 					'group'		: this.nyaSelect.temporyConfig.formlyOptions[i].group
 				};
-				this.groupedSelectRowCollection.rows.push(newOption);            
+				this.groupedSelectRowCollection.rows.push(newOption);
 			}
 			var filteredgroup = _.uniq(_.pluck(this.groupedSelectRowCollection.rows, 'group'));
-			angular.copy(filteredgroup, this.GroupedSelectGroups.list); 
+			angular.copy(filteredgroup, this.GroupedSelectGroups.list);
 		}
-	}		
+	}
 
-	
-	
+
+
 	addNewOptionRadio() {
 		let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
 		if (result.resultFlag === false) {
@@ -122,12 +122,12 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: `'${this.newOptionRadio.saisie}' cannot be added.`,                 
+				body		: `'${this.newOptionRadio.saisie}' cannot be added.`,
 				showCloseButton: true
 			});
 		}
 		this.newOptionRadio = {saisie: ''}; //reset input
-	}	
+	}
 
 
 
@@ -138,12 +138,12 @@ class editControlModalController {
 					type			: 'warning',
 					timeout		: 2000,
 					title			: result.details,
-					body			: 'Delete was cancelled.',                
+					body			: 'Delete was cancelled.',
 					showCloseButton: true
 				});
-		}      
+		}
 	}
-	
+
 	upThisRadioRow(index) {
 		let result = this.selectOptionManage.upthisOption(this.radioRowCollection, index);
 		if (result.resultFlag === false) {
@@ -151,13 +151,13 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
-		}       
+		}
 	}
-	
-	
+
+
 	downThisRadioRow(index) {
 		let result = this.selectOptionManage.downthisOption(this.radioRowCollection, index);
 		if (result.resultFlag === false) {
@@ -165,11 +165,11 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
 		}
-	}		 	
+	}
 
 
 	addNewOptionBasicSelect() {
@@ -179,13 +179,13 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: `'${this.newOptionBasicSelect.saisie}' cannot be added.`,                 
+				body		: `'${this.newOptionBasicSelect.saisie}' cannot be added.`,
 				showCloseButton: true
 			});
 		}
 		this.newOptionBasicSelect = {saisie: ''}; //reset input
-	} 
-	
+	}
+
 	removeRow(index) {
 		let result = this.selectOptionManage.removeOption(this.basicSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -193,12 +193,12 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	:2000,
 				title		: result.details,
-				body		: 'Delete was cancelled.',                
+				body		: 'Delete was cancelled.',
 				showCloseButton: true
 			});
-		}      
-	} 	
-	
+		}
+	}
+
 	upThisRow(index) {
 		let result = this.selectOptionManage.upthisOption(this.basicSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -206,12 +206,12 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
-		}       
+		}
 	}
-	
+
 	downThisRow(index) {
 		let result = this.selectOptionManage.downthisOption(this.basicSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -219,17 +219,17 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
 		}
-	}	
-	
+	}
+
 	showGroupListToChoose() {
 		this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
-	}	
-	
-	
+	}
+
+
 	addNewGroupToGroupedSelect(){
 		if (this.newGroupGroupedSelect.saisie !== '') {
 			for (let i = this.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
@@ -238,9 +238,9 @@ class editControlModalController {
 						type		: 'warning',
 						timeout	: 2000,
 						title		: 'Group already exists',
-						body		: 'No group added.',                
+						body		: 'No group added.',
 						showCloseButton: true
-					});          
+					});
 				}
 			}
 			this.GroupedSelectGroups.list.push(this.newGroupGroupedSelect.saisie);
@@ -249,13 +249,13 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: 'Not a valid group to add',
-				body		: 'No group added.',                
+				body		: 'No group added.',
 				showCloseButton: true
 			});
 		}
 		this.newGroupGroupedSelect.saisie = '';
 	}
-	
+
 
 
 	addNewOptionGroupedSelect() {
@@ -265,7 +265,7 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: `'${this.newOptionGroupedSelect.saisie}' cannot be added.`,                
+				body		: `'${this.newOptionGroupedSelect.saisie}' cannot be added.`,
 				showCloseButton: true
 			});
 		}
@@ -273,9 +273,9 @@ class editControlModalController {
 		//bindGroupedSelectToNya();
 		//reset input
 		this.newOptionGroupedSelect = {saisie: ''};
-	}	
-	
-	
+	}
+
+
 	removeGroupedSelectRow(index) {
 		let result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -283,12 +283,12 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Delete was cancelled.',                
+				body		: 'Delete was cancelled.',
 				showCloseButton: true
 			});
-		}   
-	} 	
-	
+		}
+	}
+
 
 	upThisGroupedSelectRow(index){
 		let result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
@@ -297,12 +297,12 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
-		} 
+		}
 	}
-	
+
 	downThisGroupedSelectRow(index){
 		let result = this.selectOptionManage.downthisOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -310,26 +310,26 @@ class editControlModalController {
 				type		: 'warning',
 				timeout	: 2000,
 				title		: result.details,
-				body		: 'Operation cancelled.',                
+				body		: 'Operation cancelled.',
 				showCloseButton: true
 			});
-		} 
+		}
 	}
-	
+
 	today() {
 		this.demodt.dt = new Date();
-	}	
-	
+	}
+
 	clear() {
 		this.demodt.dt = null;
-	} 
-	
+	}
+
 	open($event){
 		$event.preventDefault();
 		$event.stopPropagation();
 		this.demodt.opened = true;
 	}
-	
+
 	dateOptionsInit(){
 		return  {
 			formatYear	: 'yy',
@@ -338,7 +338,7 @@ class editControlModalController {
 			initDate		: null
 		};
 	}
-	
+
 	selectThisControl(controlName) {
 		this.nyaSelect.selectedControl = 'none';
 		this.resetTemporyConfig();
@@ -346,24 +346,24 @@ class editControlModalController {
 			if (this.nyaSelect.controls[i].id === controlName) this.nyaSelect.selectedControl = this.nyaSelect.controls[i].id;
 		}
 		if (this.nyaSelect.selectedControl === 'Date') this.initDatePicker();
-	}	
-	
-	
+	}
+
+
 	ok() {
 		if (this.nyaSelect.selectedControl === 'BasicSelect') 	this.bindBasicSelectToNya();
 		if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectToNya();
-		if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioToNya(); 
+		if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioToNya();
 		//save config to control
-		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);		
+		this.$modalProxy.applyConfigToSelectedControl(this.nyaSelect);
 		//return current model to parent controller :
 		this.$modalInstance.close(this.nyaSelect);
-	}	
-	
+	}
+
 	cancel() {
 		this.$modalInstance.dismiss('cancel');
-	} 	
-	
-	
+	}
+
+
 	bindBasicSelectToNya() {
 		let resetNyASelectOptions = [];
 		this.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
@@ -375,10 +375,10 @@ class editControlModalController {
 					'group'	: ''
 				};
 				this.nyaSelect.temporyConfig.formlyOptions.push(newOption);
-			}      
+			}
 		}
-	}	
-	
+	}
+
 	bindGroupedSelectToNya() {
 		this.nyaSelect.temporyConfig.formlyOptions = [];
 		for (let i = 0; i <= this.groupedSelectRowCollection.rows.length - 1; i++){
@@ -387,10 +387,10 @@ class editControlModalController {
 				'value'	: i,
 				'group'	: this.groupedSelectRowCollection.rows[i].group
 			};
-			this.nyaSelect.temporyConfig.formlyOptions.push(newOption);  
+			this.nyaSelect.temporyConfig.formlyOptions.push(newOption);
 		}
 	}
-	
+
 	bindRadioToNya(){
 		let resetNyASelectOptions = [];
 		this.nyaSelect.temporyConfig.formlyOptions = resetNyASelectOptions;
@@ -401,39 +401,39 @@ class editControlModalController {
 							'value'	: i,
 							'group'	: ''
 						};
-						this.nyaSelect.temporyConfig.formlyOptions.push(newOption);   
-				}       
+						this.nyaSelect.temporyConfig.formlyOptions.push(newOption);
+				}
 		}
-	}		
-	
-	
+	}
+
+
 	initDatePicker() {
-		this.nyaSelect.temporyConfig.datepickerPopup = this.demodt.formats[0];  
-	} 	
-	
-	
+		this.nyaSelect.temporyConfig.datepickerPopup = this.demodt.formats[0];
+	}
+
+
 	resetTemporyConfig(){
 		this.nyaSelectFiltered.temporyConfig = {
-			formlyLabel				: '', 
-			formlyRequired		: false, 
+			formlyLabel				: '',
+			formlyRequired		: false,
 			formlyPlaceholder	: '',
 			formlyDesciption	: '',
 			formlyOptions			: []
-		};   
-	}	
-	
-			
-	
+		};
+	}
+
+
+
 }
 
 
 const toInject =  [
-	'$modalInstance',
+	'$uibModalInstance',
 	'nyaSelect',
 	'toaster' ,
 	'selectOptionManage',
-	'$modalProxy',	
-]; 
+	'$modalProxy'
+];
 
 editControlModalController.$inject = toInject;
 export default editControlModalController;

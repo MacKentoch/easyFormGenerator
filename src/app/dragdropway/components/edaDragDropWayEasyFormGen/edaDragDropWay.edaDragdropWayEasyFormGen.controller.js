@@ -24,12 +24,10 @@ class edaDragDropWayEasyFormGenCtrl{
     $anchorScroll,
     toaster,
     $timeout,
-    $modal,
     $log,
     formFieldManage,
     controllerModalProxy,
     dragDropItemDecorationService,
-    // dragDropConfig,
     ddModelConfModelProxyService,
     ddItemRightClickedManager,
     easyFormDragWayConfig
@@ -40,7 +38,6 @@ class edaDragDropWayEasyFormGenCtrl{
     this.$anchorScroll                    = $anchorScroll;
     this.toaster                          = toaster;
     this.$timeout                         = $timeout;
-    this.$modal                           = $modal;
     this.$log                             = $log;
     this.formFieldManage                  = formFieldManage;
     this.controllerModalProxy             = controllerModalProxy;
@@ -430,12 +427,10 @@ edaDragDropWayEasyFormGenCtrl.$inject = [
     '$anchorScroll',
     'toaster',
     '$timeout',
-    '$modal',
     '$log',
     'formFieldManage',
     'controllerModalProxy',
     'dragDropItemDecorationService',
-    // 'dragDropConfig',
     'ddModelConfModelProxyService',
     'ddItemRightClickedManager' ,
     'easyFormDragWayConfig'

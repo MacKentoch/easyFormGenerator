@@ -7,8 +7,8 @@
 						<toaster-container
               toaster-options="{ 'position-class': 'toast-top-full-width', 'extendedTimeout' : 500,'timeOut': 500 }">
 						</toaster-container>
-						<tabset justified="true">
-							<tab
+						<uib-tabset justified="true">
+							<uib-tab
                 select="vm.tabJustSelected(2)"
                 active="vm.tab.editTab.active"
                 heading="Edit /Create">
@@ -123,8 +123,8 @@
 										</div>
 									</div>
 								</div>
-							</tab>
-							<tab
+							</uib-tab>
+							<uib-tab
 								select="vm.tabJustSelected(1)"
 								active="vm.tab.previewTab.active"
 								heading="Preview">
@@ -169,7 +169,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="vm.ihm.preview.customizeFormButtonsExpanded">
+										<div uib-collapse="vm.ihm.preview.customizeFormButtonsExpanded">
 											<div class="row">
 												<div class="col-xs-6">
 													<div class="form-group">
@@ -227,7 +227,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="vm.ihm.preview.formlyModelViewExpanded">
+										<div uib-collapse="vm.ihm.preview.formlyModelViewExpanded">
 											<pre>
 												{{vm.model | json}}
 											</pre>
@@ -251,7 +251,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="vm.ihm.preview.formlyFieldsViewExpanded">
+										<div uib-collapse="vm.ihm.preview.formlyFieldsViewExpanded">
 											<pre>
 												{{vm.wfFormFieldsOnlyNeededProperties | json}}
 											</pre>
@@ -275,7 +275,7 @@
 										</h3>
 									</div>
 									<div class="panel-body">
-										<div collapse="vm.ihm.preview.saveThisFormExpanded">
+										<div uib-collapse="vm.ihm.preview.saveThisFormExpanded">
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="form-group">
@@ -303,8 +303,8 @@
 										</div>
 									</div>
 								</div>
-							</tab>
-						</tabset>
+							</uib-tab>
+						</uib-tabset>
 					</div>
 				</div>
 			</section>
