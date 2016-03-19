@@ -19,9 +19,9 @@ $__System.registerDynamic("3", [], true, function($__require, exports, module) {
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "stepway": {"version": "1.1.0"},
-    "dragdropway": {"version": "1.1.0"},
-    "formviewer": {"version": "1.1.0"}
+    "stepway": {"version": "1.2.0"},
+    "dragdropway": {"version": "1.2.0"},
+    "formviewer": {"version": "1.2.0"}
   };
   global.define = __define;
   return module.exports;
@@ -68,18 +68,7 @@ $__System.register("5", [], function (_export) {
 			subTitleTemplate = "\n\t<div class=\"row\">\n\t\t<div class=\"\">\n\t\t\t<h4 class=\"text-center\">\n\t\t\t{{options.templateOptions.placeholder}}\n\t\t\t<h4><hr/>\n\t\t</div>\n\t</div>";
 			basicSelectTemplate = "\n<ol\n\tclass=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n\tng-model=\"model[options.key || index]\"\n\tid=\"{{id}}\"\n\tdisabled=\"options.templateOptions.options.length === 0\">\n\t<li class=\"nya-bs-option\" nya-bs-option=\"option in options.templateOptions.options\">\n\t\t<a>{{option.name}}</a>\n\t</li>\n</ol>";
 			groupedSelectTemplate = "\n\t<ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n\t\tng-model=\"model[options.key || index]\"\n\t\tdata-live-search=\"true\"\n\t\tdisabled=\"options.templateOptions.options.length === 0\">\n\t\t<li nya-bs-option=\"option in  options.templateOptions.options group by option.group\">\n\t\t\t<span class=\"dropdown-header\">{{$group}}</span>\n\t\t\t<a>\n\t\t\t\t<span>{{option.name}}</span>\n\t\t\t\t<span class=\"glyphicon glyphicon-ok check-mark\"></span>\n\t\t\t</a>\n\t\t</li>\n\t</ol>";
-			datepickerTemplate = "\n<input\n  type=\"text\"\n  id=\"{{::id}}\"\n  name=\"{{::id}}\"\n  ng-model=\"model[options.key]\"\n  class=\"form-control\"\n  ng-click=\"datepicker.open($event)\"\n  uib-datepicker-popup=\"{{to.datepickerOptions.format}}\"\n  is-open=\"datepicker.opened\"\n  datepicker-options=\"to.datepickerOptions\" />";
-
-			// <input
-			//   id="{{id}}"
-			// 	class="form-control"
-			// 	ng-click="open($event)"
-			// 	ng-model="model[options.key  || index]"
-			// 	is-open="to.isOpen"
-			// 	ng-click="to.isOpen = true"
-			//   uib-datepicker-popup={{to.datepickerOptions.format}}
-			// 	datepicker-options="to.datepickerOptions" />`;
-
+			datepickerTemplate = "\n<p class=\"input-group\">\n  <span class=\"input-group-btn\">\n      <button\n        type=\"button\"\n        class=\"btn btn-default\"\n        ng-click=\"formlyDatePicker.open($event)\">\n        <i class=\"glyphicon glyphicon-calendar\"></i>\n      </button>\n  </span>\n  <input  type=\"text\"\n          id=\"{{::id}}\"\n          name=\"{{::id}}\"\n          ng-model=\"model[options.key]\"\n          class=\"form-control\"\n          ng-click=\"datepicker.open($event)\"\n          uib-datepicker-popup=\"{{to.datepickerOptions.format}}\"\n          is-open=\"datepicker.opened\"\n          datepicker-options=\"to.datepickerOptions\"\n  />\n</p>\n";
 			validationTemplate = "\n\t<div class=\"formly-template-wrapper form-group\"\n\t\t\t\t\t\tng-class=\"{'has-error': options.validation.errorExistsAndShouldBeVisible}\">\n\t\t\t\t<formly-transclude></formly-transclude>\n\t\t\t\t<div class=\"validation\"\n\t\t\t\t\t\t\tng-if=\"options.validation.errorExistsAndShouldBeVisible\"\n\t\t\t\t\t\t\tng-messages=\"options.formControl.$error\">\n\t\t\t\t\t<div ng-messages-include=\"validation.html\"></div>\n\t\t\t\t\t<div ng-message=\"{{::name}}\" ng-repeat=\"(name, message) in ::options.validation.messages\">\n\t\t\t\t\t\t{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>";
 
 			_export("richTextTemplate", richTextTemplate);
@@ -156,29 +145,37 @@ $__System.register('6', ['5'], function (_export) {
 		formlyConfigProvider.setType({
 			name: 'datepicker',
 			template: datepickerTemplate,
-			wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-			controller: ['$scope', function ($scope) {
-				$scope.open = function ($event) {
-					$event.preventDefault();
-					$event.stopPropagation();
-					$scope.opened = true;
-				};
-			}],
 			defaultOptions: {
 				ngModelAttrs: ngModelAttrs,
 				templateOptions: {
-					addonLeft: {
-						'class': 'glyphicon glyphicon-calendar',
-						onClick: function onClick(options) {
-							return options.templateOptions.isOpen = !options.templateOptions.isOpen;
+					templateOptions: {
+						datepickerOptions: {
+							format: 'dd/MM/yyyy',
+							initDate: new Date(),
+							showWeeks: false
 						}
-					},
-					onFocus: function onFocus($viewValue, $modelValue, scope) {
-						return scope.to.isOpen = !scope.to.isOpen;
-					},
-					datepickerOptions: {}
+					}
 				}
-			}
+			},
+			wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+			controller: ['$scope', function ($scope) {
+				// console.info('ui calendar init');
+				$scope.datepicker = {};
+
+				// make sure the initial value is of type DATE!
+				var currentModelVal = $scope.model[$scope.options.key];
+				if (typeof currentModelVal == 'string') {
+					$scope.model[$scope.options.key] = new Date(currentModelVal);
+				}
+
+				$scope.datepicker.opened = false;
+				$scope.datepicker.open = function ($event) {
+					$event.preventDefault();
+					$event.stopPropagation();
+					// console.info('ui calendar open event');
+					$scope.datepicker.opened = !$scope.datepicker.opened;
+				};
+			}]
 
 		});
 

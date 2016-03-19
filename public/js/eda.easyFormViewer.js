@@ -1494,9 +1494,9 @@ $__System.registerDynamic("13", [], true, function($__require, exports, module) 
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "stepway": {"version": "1.1.0"},
-    "dragdropway": {"version": "1.1.0"},
-    "formviewer": {"version": "1.1.0"}
+    "stepway": {"version": "1.2.0"},
+    "dragdropway": {"version": "1.2.0"},
+    "formviewer": {"version": "1.2.0"}
   };
   global.define = __define;
   return module.exports;

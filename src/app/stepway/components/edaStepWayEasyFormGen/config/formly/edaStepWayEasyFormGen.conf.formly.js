@@ -55,35 +55,35 @@ function formlyConfig(formlyConfigProvider){
 	////////////////////////////
 	// thx Kent C. Dodds
 
-	const attributes = [
-    'date-disabled',
-    'custom-class',
-    'show-weeks',
-    'starting-day',
-    'init-date',
-    'min-mode',
-    'max-mode',
-    'format-day',
-    'format-month',
-    'format-year',
-    'format-day-header',
-    'format-day-title',
-    'format-month-title',
-    'year-range',
-    'shortcut-propagation',
-    'datepicker-popup',
-    'show-button-bar',
-    'current-text',
-    'clear-text',
-    'close-text',
-    'close-on-date-selection',
-    'datepicker-append-to-body'
-	];
+  const attributes = [
+     'date-disabled',
+     'custom-class',
+     'show-weeks',
+     'starting-day',
+     'init-date',
+     'min-mode',
+     'max-mode',
+     'format-day',
+     'format-month',
+     'format-year',
+     'format-day-header',
+     'format-day-title',
+     'format-month-title',
+     'year-range',
+     'shortcut-propagation',
+     'datepicker-popup',
+     'show-button-bar',
+     'current-text',
+     'clear-text',
+     'close-text',
+     'close-on-date-selection',
+     'datepicker-append-to-body'
+   ];
 
 	const bindings = [
-		'datepicker-mode',
-		'min-date',
-		'max-date'
+    'datepicker-mode',
+    'min-date',
+    'max-date'
 	];
 
 	let ngModelAttrs = {};
@@ -96,29 +96,40 @@ function formlyConfig(formlyConfigProvider){
 		ngModelAttrs[camelize(binding)] = {bound: binding};
 	});
 
-
 	formlyConfigProvider.setType({
 		name 			: 'datepicker',
 		template 	: datepickerTemplate,
-		wrapper 	: ['bootstrapLabel', 'bootstrapHasError'],
-		controller: ['$scope', ($scope) => {
-				$scope.open = ($event) => {
-				$event.preventDefault();
-				$event.stopPropagation();
-				$scope.opened = true;
-			};
-		}],
 		defaultOptions: {
 			ngModelAttrs 		: ngModelAttrs,
 			templateOptions : {
-				addonLeft : {
-					class 	: 'glyphicon glyphicon-calendar',
-					onClick : (options) => options.templateOptions.isOpen = !options.templateOptions.isOpen
-				},
-				onFocus : ($viewValue, $modelValue, scope) => scope.to.isOpen = !scope.to.isOpen,
-				datepickerOptions: {}
+        templateOptions: {
+            datepickerOptions: {
+                format: 'dd/MM/yyyy',
+                initDate: new Date(),
+                showWeeks: false
+            }
+        }
 			}
-		}
+		},
+    wrapper 	: ['bootstrapLabel', 'bootstrapHasError'],
+		controller: ['$scope', ($scope) => {
+      // console.info('ui calendar init');
+      $scope.datepicker         = {};
+
+      // make sure the initial value is of type DATE!
+      var currentModelVal = $scope.model[$scope.options.key];
+      if (typeof (currentModelVal) == 'string'){
+        $scope.model[$scope.options.key] = new Date(currentModelVal);
+      }
+      
+      $scope.datepicker.opened  = false;
+      $scope.datepicker.open    = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        // console.info('ui calendar open event');
+        $scope.datepicker.opened = !$scope.datepicker.opened;
+      };
+		}]
 
 	});
 

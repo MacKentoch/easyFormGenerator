@@ -417,7 +417,7 @@ ______
 
 
 ##What is coming next?
-
+- [ ] support UI-bootstrap `uib-*` directives (_as a break change since easyForGenerator >= v1.2.0_)
 - [x] migrating ES6 / optimization / factorization (*in progress*)
     - [x] easy form generator - step way
     - [x] easy form generator - drag and drop way
