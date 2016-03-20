@@ -26,7 +26,8 @@ const bowerFiles = {
 		'bower_components/angular-strap/dist/angular-strap.tpl.min.js',
 		'vendor/js/angular-pageslide-directive.min.js',
 		'bower_components/angular-messages/angular-messages.min.js',
-		'bower_components/angular-translate/angular-translate.min.js'
+		'bower_components/angular-translate/angular-translate.min.js',
+    'bower_components/dropzone/dist/min/dropzone.min.js'
 	],
 	bower_components_map : [
 		'bower_components/jquery/dist/jquery.min.map',
@@ -45,7 +46,8 @@ const bowerFiles = {
 		'bower_components/angular-loading-bar/build/loading-bar.min.css',
 		'bower_components/animate.css/animate.min.css',
 		'bower_components/angularjs-toaster/toaster.min.css',
-		'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css'
+		'bower_components/nya-bootstrap-select/dist/css/nya-bs-select.min.css',
+    'bower_components/dropzone/dist/min/dropzone.min.css'
 	],
 	bower_components_fonts: 	[
 		'bower_components/bootstrap/dist/fonts/**/*',

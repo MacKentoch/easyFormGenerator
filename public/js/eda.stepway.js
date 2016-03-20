@@ -3513,40 +3513,95 @@ $__System.register('25', ['24'], function (_export) {
 																		}
 									};
 });
-$__System.register('1', ['2', '4', '6', '19', '20', '25', 'e', 'f', '1a', '1d'], function (_export) {
-	'use strict';
+$__System.register('26', [], function (_export) {
+  'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayMainModule, easyFormStepwayFormlyProxyModule, easyFormStepwayCommonModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
-	return {
-		setters: [function (_) {}, function (_2) {
-			easyFormStepWayConfig = _2['default'];
-			EASY_FORM_VERSION_NAME = _2.EASY_FORM_VERSION_NAME;
-			EASY_FORM_VERSION_VALUE = _2.EASY_FORM_VERSION_VALUE;
-		}, function (_3) {
-			formlyConfig = _3['default'];
-		}, function (_4) {
-			easyFormStepwayMainModule = _4['default'];
-		}, function (_5) {
-			easyFormStepwayFormlyProxyModule = _5['default'];
-		}, function (_6) {
-			easyFormStepwayCommonModules = _6['default'];
-		}, function (_e) {
-			translateConfig = _e['default'];
-		}, function (_f) {
-			easyFormStepWayCoreModule = _f['default'];
-		}, function (_a) {
-			easyFormStepwayModalModule = _a['default'];
-		}, function (_d) {
-			easyFormStepwayModalProxyModule = _d['default'];
-		}],
-		execute: function () {
-			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
-			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, translateConfig.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwayCommonModules.name];
-			mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
+  var DROP_ZONE_DIRECTIVE_NAME;
 
-			_export('default', mainModule);
-		}
-	};
+  function dropzone() {
+    var directive = {
+      restrict: 'AE',
+      link: linkFct
+    };
+    return directive;
+
+    function linkFct(scope, element, attrs) {
+      var config = undefined;
+      var dropzone = undefined;
+      //console.log(scope);
+      config = scope[attrs.dropzone];
+      // create a Dropzone for the element with the given options
+      dropzone = new Dropzone(element[0], config.options);
+      // bind the given event handlers
+      angular.forEach(config.eventHandlers, function (handler, event) {
+        return dropzone.on(event, handler);
+      });
+    }
+  }
+
+  return {
+    setters: [],
+    execute: function () {
+      DROP_ZONE_DIRECTIVE_NAME = 'dropzone';
+
+      _export('default', dropzone);
+
+      _export('DROP_ZONE_DIRECTIVE_NAME', DROP_ZONE_DIRECTIVE_NAME);
+    }
+  };
+});
+$__System.register('27', ['26'], function (_export) {
+  'use strict';
+
+  var dropzone, DROP_ZONE_DIRECTIVE_NAME, DROP_ZONE_MODULE_NAME;
+  return {
+    setters: [function (_) {
+      dropzone = _['default'];
+      DROP_ZONE_DIRECTIVE_NAME = _.DROP_ZONE_DIRECTIVE_NAME;
+    }],
+    execute: function () {
+      DROP_ZONE_MODULE_NAME = 'easyFirmStepWay.dropzone.module';
+
+      _export('default', angular.module(DROP_ZONE_MODULE_NAME, []).directive(DROP_ZONE_DIRECTIVE_NAME, dropzone));
+    }
+  };
+});
+$__System.register('1', ['2', '4', '6', '19', '20', '25', '27', 'e', 'f', '1a', '1d'], function (_export) {
+		'use strict';
+
+		var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayMainModule, easyFormStepwayFormlyProxyModule, easyFormStepwayCommonModules, dropZoneModule, translateConfig, easyFormStepWayCoreModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+		return {
+				setters: [function (_) {}, function (_2) {
+						easyFormStepWayConfig = _2['default'];
+						EASY_FORM_VERSION_NAME = _2.EASY_FORM_VERSION_NAME;
+						EASY_FORM_VERSION_VALUE = _2.EASY_FORM_VERSION_VALUE;
+				}, function (_3) {
+						formlyConfig = _3['default'];
+				}, function (_4) {
+						easyFormStepwayMainModule = _4['default'];
+				}, function (_5) {
+						easyFormStepwayFormlyProxyModule = _5['default'];
+				}, function (_6) {
+						easyFormStepwayCommonModules = _6['default'];
+				}, function (_7) {
+						dropZoneModule = _7['default'];
+				}, function (_e) {
+						translateConfig = _e['default'];
+				}, function (_f) {
+						easyFormStepWayCoreModule = _f['default'];
+				}, function (_a) {
+						easyFormStepwayModalModule = _a['default'];
+				}, function (_d) {
+						easyFormStepwayModalProxyModule = _d['default'];
+				}],
+				execute: function () {
+						STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
+						STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, translateConfig.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwayCommonModules.name, dropZoneModule.name];
+						mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
+
+						_export('default', mainModule);
+				}
+		};
 });
 })
 (function(factory) {
