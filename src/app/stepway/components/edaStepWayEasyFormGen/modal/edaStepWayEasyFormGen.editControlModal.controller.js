@@ -408,7 +408,7 @@ class editControlModalController {
 
 
 	initDatePicker() {
-		this.nyaSelect.temporyConfig.datepickerPopup = this.demodt.formats[0];
+		this.nyaSelect.temporyConfig.datepickerOptions.format = this.demodt.formats[0];
 	}
 
 

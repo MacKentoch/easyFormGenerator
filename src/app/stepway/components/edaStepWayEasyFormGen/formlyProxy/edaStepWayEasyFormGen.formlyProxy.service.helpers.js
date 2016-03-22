@@ -1,7 +1,7 @@
 /* global angular */
 
 const configurationModelInit = {
-	activeLine: 1,   
+	activeLine: 1,
 	listConfigStep: [
 										'init',
 										'first',
@@ -13,21 +13,21 @@ const configurationModelInit = {
 											false,
 											false,
 											false
-										], 
-	configStepCounter : 0, 
+										],
+	configStepCounter : 0,
 	submitButtonText  : 'submit',
 	cancelButtonText  : 'cancel',
 	lines: [
 	{
-		line					:1,                                       
+		line					:1,
 		activeColumn 	: 1,
 		columns				: [
-		{  
+		{
 			numColumn: 1,
-			exist:true, 
+			exist:true,
 			control: {
 				type:'none',
-				key: 'none',
+				key: 'none' // ,
 				// templateOptions: {
 				//                     label: 'none',
 				//                     placeholder: 'none',
@@ -37,12 +37,12 @@ const configurationModelInit = {
 			}
 			}
 		]
-		}                                 
+		}
 	]
-}; 
- 
+};
+
 const configurationModelResult =  {
-	activeLine: 1,   
+	activeLine: 1,
 	listConfigStep: [
 										'init',
 										'first',
@@ -54,8 +54,8 @@ const configurationModelResult =  {
 											false,
 											false,
 											false
-										], 
-	configStepCounter	: 0, 
+										],
+	configStepCounter	: 0,
 	submitButtonText 	: 'submit',
 	cancelButtonText	: 'cancel',
 	lines: []
@@ -71,8 +71,8 @@ const extractTemplateOptionLabel = (obj)=>{
 	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
 };
 
-const extractTemplateOptionDatepickerPopup= (obj)=>{
-	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
+const extractTemplateOptionDatepickerOptions= (obj)=>{
+	return  typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerOptions !== 'undefined'? angular.copy(obj.templateOptions.datepickerOptions) : {format: ''}) : {format: ''};
 };
 
 const extractFormlyExpressionProperties = (obj)=>{
@@ -108,8 +108,8 @@ const extractTemplateOptionDescription = (obj)=>{
 };
 
 
-const addDatepickerPopupProperty = (fieldToPush, configurationModel,lineIndex) => {
-		fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+const addDatepickerOptionsProperty = (fieldToPush, configurationModel,lineIndex) => {
+		fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(configurationModel.lines[lineIndex].columns[0].control);
 };
 
 
@@ -120,10 +120,10 @@ const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 												.lines[lineIndex]
 												.columns[0]
 												.control
-												.type !== 'undefined' ? 
-													(configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? 
-														headerTemplateCol0 
-														: '<div></div>') 
+												.type !== 'undefined' ?
+													(configurationModel.lines[lineIndex].columns[0].control.type === 'header' ?
+														headerTemplateCol0
+														: '<div></div>')
 													: '<div></div>'
 	});
 };
@@ -147,15 +147,15 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
 		validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 	};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-		addDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);
-	}     
+		addDatepickerOptionsProperty(fieldToPush, configurationModel,lineIndex);
+	}
 
 	formlyModel.push(fieldToPush);
-};    
+};
 
 
 
@@ -186,14 +186,14 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 			},
 					expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
 					validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-					validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                  
+					validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-		addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
-	}                            
+		addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
+	}
 
 	let controlCol1 =  {
 		className: 'col-xs-6',
@@ -209,15 +209,15 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		},
 				expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
 				validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 		};
 
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-		addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
-	}                                
+		addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
+	}
 
 	let FieldGroup = [];
 
@@ -226,15 +226,15 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	}else{
 		FieldGroup.push(controlCol0);
 	}
-		
+
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol1);
 	}else{
 		FieldGroup.push(controlCol1);
-	}    
+	}
 
 	formlyModel.push({
-		className: 'row', 
+		className: 'row',
 		fieldGroup: FieldGroup
 	});
 };
@@ -269,18 +269,18 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 				required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
 				placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
 				description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)                                              
+				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
 		},
 				expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
 				validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                   
+				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-		addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);
-	}                             
+		addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
+	}
 
 	let controlCol1 = {
 		className	: 'col-xs-4',
@@ -292,18 +292,18 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 				required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
 				placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
 				description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)                                               
+				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
 		},
 				expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
 				validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 	};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-		addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
-	}                       
+		addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
+	}
 	let controlCol2 = {
 		className	: 'col-xs-4',
 		type			: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
@@ -314,18 +314,18 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 				required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
 				placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
 				description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)                                              
+				options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
 		},
 				expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
 				validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                   
+				validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
 	};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
 	if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
-		addDatepickerPopupProperty(controlCol2, configurationModel,lineIndex);
-	}     
+		addDatepickerOptionsProperty(controlCol2, configurationModel,lineIndex);
+	}
 
 	let FieldGroup = [];
 
@@ -334,21 +334,21 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	}else{
 		FieldGroup.push(controlCol0);
 	}
-		
+
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol1);
 	}else{
 		FieldGroup.push(controlCol1);
-	}    
+	}
 
 	if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol2);
 	}else{
 		FieldGroup.push(controlCol2);
-	}    
+	}
 
 	formlyModel.push({
-		className: 'row', 
+		className: 'row',
 		fieldGroup: FieldGroup
 	});
 };
@@ -368,29 +368,29 @@ const resetFormlyModel = (formlyModel) => {
 
 
 
- 
+
 export {
 	configurationModelInit,
 	configurationModelResult,
 	resetDataModel,
 	resetFormlyModel,
-	
+
 	isTemplateOptionDefined,
 	extractTemplateOptionLabel,
-	extractTemplateOptionDatepickerPopup,
+	extractTemplateOptionDatepickerOptions,
 	extractFormlyExpressionProperties,
 	extractFormlyValidators,
-	extractFormlyValidation, 
+	extractFormlyValidation,
 	extractTemplateOptionRequired,
 	extractTemplateOptionOptions,
-	extractTemplateOptionType, 
-	extractTemplateOptionPlaceholder, 
+	extractTemplateOptionType,
+	extractTemplateOptionPlaceholder,
 	extractTemplateOptionDescription,
-	
-	addDatepickerPopupProperty,
+
+	addDatepickerOptionsProperty,
 	addOneColumnHeader,
 	addOneColumnControl,
 	addTwoColumnControl,
 	addThreeColumnControl
-	
-}; 
+
+};

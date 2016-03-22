@@ -147,14 +147,12 @@ function formlyConfig(formlyConfigProvider){
 		template 	: datepickerTemplate,
 		defaultOptions: {
 			ngModelAttrs 		: ngModelAttrs,
-			templateOptions : {
-        templateOptions: {
-            datepickerOptions: {
-                format: 'dd/MM/yyyy',
-                initDate: new Date(),
-                showWeeks: false
-            }
-        }
+      templateOptions: {
+          datepickerOptions: {
+              format: 'dd/MM/yyyy',
+              initDate: new Date(),
+              showWeeks: false
+          }
 			}
 		},
     wrapper 	: ['bootstrapLabel', 'bootstrapHasError'],
