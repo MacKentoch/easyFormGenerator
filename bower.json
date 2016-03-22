@@ -1,7 +1,11 @@
 {
   "name": "easy-form-generator",
   "main": [
+    "./dist/js/eda.dragdropway.min.js",
+    "./dist/js/eda.easyFormViewer.min.js",
     "./dist/js/eda.stepway.min.js",
+    "./dist/css/eda.dragdropway.min.css",
+    "./dist/css/eda.easyFormViewer.min.css",
     "./dist/css/eda.stepway.min.css"
   ],
   "version": "1.1.0",
