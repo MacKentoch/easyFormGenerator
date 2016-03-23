@@ -1,74 +1,74 @@
 /* global angular */
 
 const resetNyaSelect = (nyaSelectObj) => {
-	
+
 	let newNyaSelectObj = {
 		controls : [
 			{
-				id								: 'empty',  
-				name							: 'no control', 
-				subtitle					: 'no control', 
-				group							: 'Blank', 
-				formlyType				: 'blank', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
-				formlyValidation	: {} 
-			},
-	
-			{
-				id								: 'Header',  
-				name							: 'Header', 
-				subtitle					: 'no control', 
-				group							: 'Decoration', 
-				formlyType				: 'header', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'empty',
+				name							: 'no control',
+				subtitle					: 'no control',
+				group							: 'Blank',
+				formlyType				: 'blank',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [] ,
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {}
 			},
-			
+
 			{
-				id								: 'Subtitle', 
-				name							: 'Subtitle', 
-				subtitle					: 'no control', 
-				group							: 'Decoration', 
-				formlyType				: 'subTitle', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Header',
+				name							: 'Header',
+				subtitle					: 'no control',
+				group							: 'Decoration',
+				formlyType				: 'header',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [] ,
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {}
 			},
-	
+
 			{
-				id								: 'TextInput',  
-				name							: 'Text input', 
-				subtitle					: 'Text input', 
-				group							: 'input', 
-				formlyType				: 'input', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Subtitle',
+				name							: 'Subtitle',
+				subtitle					: 'no control',
+				group							: 'Decoration',
+				formlyType				: 'subTitle',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [] ,
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
+				formlyValidation	: {}
+			},
+
+			{
+				id								: 'TextInput',
+				name							: 'Text input',
+				subtitle					: 'Text input',
+				group							: 'input',
+				formlyType				: 'input',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [] ,
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Text input field is required';
@@ -78,24 +78,24 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'Password',  
-				name							: 'Password', 
-				subtitle					: 'Password', 
-				group							: 'input', 
-				formlyType				: 'input', 
-				formlySubtype			: 'password', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [] , 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Password',
+				name							: 'Password',
+				subtitle					: 'Password',
+				group							: 'input',
+				formlyType				: 'input',
+				formlySubtype			: 'password',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [] ,
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Password field is required';
@@ -105,20 +105,20 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 		},
-			
+
 			{
-				id 													: 'Email',  
-				name 												: 'Email', 
-				subtitle 										: 'Email', 
-				group 											: 'input', 
-				formlyType									: 'input', 
-				formlySubtype 							: 'email', 
-				formlyLabel 								: '', 
-				formlyRequired 							: false, 
-				formlyDesciption 						: '', 
-				formlyOptions 							: [], 
-				formlyExpressionProperties 	: {}, 
-	
+				id 													: 'Email',
+				name 												: 'Email',
+				subtitle 										: 'Email',
+				group 											: 'input',
+				formlyType									: 'input',
+				formlySubtype 							: 'email',
+				formlyLabel 								: '',
+				formlyRequired 							: false,
+				formlyDesciption 						: '',
+				formlyOptions 							: [],
+				formlyExpressionProperties 	: {},
+
 				formlyValidators 						: {
 					emailShape : {
 						expression : function(viewValue, modelValue) {
@@ -131,37 +131,37 @@ const resetNyaSelect = (nyaSelectObj) => {
 				formlyValidation: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
-							//-> or if not exists or empty just 'this field is required'		
+							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Email field is required';
 							var returnMsg 				= (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
-							//check if validation is really dued to require validation 
+							//check if validation is really dued to require validation
 							//and not another validation like emailShape validator
 							if (scope.to.required) return returnMsg;
 						}
 					}
 				}
 			},
-			
+
 			{
-				id								: 'Date',  
-				name							: 'Date', 
-				subtitle					: 'Date', 
-				group							: 'input', 
-				formlyType				: 'datepicker', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [], 
-				datepickerPopup		: 'dd-MMMM-yyyy', 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Date',
+				name							: 'Date',
+				subtitle					: 'Date',
+				group							: 'input',
+				formlyType				: 'datepicker',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [],
+				datepickerOptions	: {format : 'dd-MMMM-yyyy'},
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Date field is required';
@@ -171,24 +171,24 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'Texarea', 
-				name							: 'Textarea', 
-				subtitle					: 'Textarea', 
-				group							: 'Textarea', 
-				formlyType				: 'textarea', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Texarea',
+				name							: 'Textarea',
+				subtitle					: 'Textarea',
+				group							: 'Textarea',
+				formlyType				: 'textarea',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages	: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Textarea field is required';
@@ -198,24 +198,24 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'RichTextEditor', 
-				name							: 'RichTextEditor', 
-				subtitle					: 'RichTextEditor', 
-				group							: 'Textarea', 
-				formlyType				: 'richEditor', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
+				id								: 'RichTextEditor',
+				name							: 'RichTextEditor',
+				subtitle					: 'RichTextEditor',
+				group							: 'Textarea',
+				formlyType				: 'richEditor',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
 				formlyValidators 					: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg	= 'this RichTextEditor field is required';
@@ -225,25 +225,25 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'Radio', 
-				name							: 'Radio', 
-				subtitle					: 'Radio', 
-				options						: [], 
-				group							: 'Radio', 
-				formlyType				: 'radio', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '' , 
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Radio',
+				name							: 'Radio',
+				subtitle					: 'Radio',
+				options						: [],
+				group							: 'Radio',
+				formlyType				: 'radio',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '' ,
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Password field is required';
@@ -253,24 +253,24 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'Checkbox', 
-				name							: 'Checkbox', 
-				subtitle					: 'Checkbox', 
-				group							: 'Checkbox', 
-				formlyType				: 'checkbox', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				id								: 'Checkbox',
+				name							: 'Checkbox',
+				subtitle					: 'Checkbox',
+				group							: 'Checkbox',
+				formlyType				: 'checkbox',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Checkbox field is required';
@@ -280,25 +280,25 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'BasicSelect', 
-				name							: 'Basic select', 
+				id								: 'BasicSelect',
+				name							: 'Basic select',
 				subtitle					: 'Basic select',
-				options						: [], 
-				group							: 'Select', 
-				formlyType				: 'basicSelect', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
-				formlyDesciption	: '', 
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				options						: [],
+				group							: 'Select',
+				formlyType				: 'basicSelect',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
+				formlyDesciption	: '',
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages: {
 						required: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Basic select field is required';
@@ -308,25 +308,25 @@ const resetNyaSelect = (nyaSelectObj) => {
 					}
 				}
 			},
-	
+
 			{
-				id								: 'GroupedSelect', 
-				name							: 'Grouped Select', 
+				id								: 'GroupedSelect',
+				name							: 'Grouped Select',
 				subtitle					: 'Grouped Select',
-				options						: [], 
-				group							: 'Select', 
-				formlyType				: 'groupedSelect', 
-				formlySubtype			: '', 
-				formlyLabel				: '', 
-				formlyRequired		: false, 
+				options						: [],
+				group							: 'Select',
+				formlyType				: 'groupedSelect',
+				formlySubtype			: '',
+				formlyLabel				: '',
+				formlyRequired		: false,
 				formlyDesciption	: '',
-				formlyOptions			: [], 
-				formlyExpressionProperties: {}, 
-				formlyValidators	: {}, 
+				formlyOptions			: [],
+				formlyExpressionProperties: {},
+				formlyValidators	: {},
 				formlyValidation	: {
 					messages				: {
 						required	: function(viewValue, modelValue, scope) {
-							//return a required validation message : 
+							//return a required validation message :
 							//-> '<label as name> is required '
 							//-> or if not exists or empty just 'this field is required'
 							var defaultReturnMsg 	= 'this Grouped Select field is required';
@@ -340,17 +340,17 @@ const resetNyaSelect = (nyaSelectObj) => {
 			selectedControl : 'none' ,
 			temporyConfig 	: {
 				selectedControl		: 'none',
-				formlyLabel				: 'label', 
-				formlyRequired		: false, 
+				formlyLabel				: 'label',
+				formlyRequired		: false,
 				formlyDesciption	: '',
 				formlyPlaceholder	: '',
 				formlyOptions 		: [],
 				//expressions/validation fields
 				formlyExpressionProperties: {},
 				formlyValidators	: {},
-				formlyValidation	: {}                                        
-			} 
-	
+				formlyValidation	: {}
+			}
+
 	};
 
 	//reset
@@ -363,7 +363,7 @@ const resetNyaSelect = (nyaSelectObj) => {
 	*/
 const getConfigurationModelInit = () => {
 	let configurationModelInit = {
-		activeLine: 1,   
+		activeLine: 1,
 		listConfigStep: [
 											'init',
 											'first',
@@ -375,18 +375,18 @@ const getConfigurationModelInit = () => {
 												false,
 												false,
 												false
-											], 
-		configStepCounter : 0, 
+											],
+		configStepCounter : 0,
 		submitButtonText  : 'submit',
 		cancelButtonText  : 'cancel',
 		lines: [
 						{
-							line:1,                                       
+							line:1,
 							activeColumn : 1,
 							columns: [
-												{  
+												{
 													numColumn: 1,
-													exist:true, 
+													exist:true,
 													control: {
 																			type:'none',
 																			key: 'none'
@@ -399,15 +399,15 @@ const getConfigurationModelInit = () => {
 																		}
 													}
 												]
-							}                                 
+							}
 				]
 	};
-	return configurationModelInit;                         
+	return configurationModelInit;
 };
 
 const getEmptyConfigModelResult = () => {
 	let configurationModelResult = {
-		activeLine: 1,   
+		activeLine: 1,
 		listConfigStep: [
 											'init',
 											'first',
@@ -419,13 +419,13 @@ const getEmptyConfigModelResult = () => {
 												false,
 												false,
 												false
-											], 
-		configStepCounter: 0, 
+											],
+		configStepCounter: 0,
 		submitButtonText : 'submit',
 		cancelButtonText: 'cancel',
 		lines: []
 	};
-	return angular.copy(configurationModelResult);	
+	return angular.copy(configurationModelResult);
 };
 
 
@@ -441,7 +441,7 @@ const getErrorObject = (errorTitle, errorMessage) => {
 	let messageObj = {
 		noError : false,
 		title		: '',
-		Message	: ''  
+		Message	: ''
 	};
 	messageObj.noError	= false;
 	messageObj.title 		= errorTitle;
@@ -453,7 +453,7 @@ const getMessageObject = (messageTitle, messageBody) => {
 	let messageObj = {
 		noError 	: false,
 		title			: '',
-		Message		: ''  
+		Message		: ''
 	};
 	messageObj.noError	= true;
 	messageObj.title 		= messageTitle;
@@ -476,7 +476,7 @@ const extractTemplateOptionType = (obj) => typeof obj.subtype !== 'undefined'? o
 
 const extractTemplateOptionLabel = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.label !== 'undefined'? obj.templateOptions.label: '') : '';
 
-const extractTemplateOptionDatepickerPopup = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerPopup !== 'undefined'? obj.templateOptions.datepickerPopup: '') : '';
+const extractTemplateOptionDatepickerOptions = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.datepickerOptions !== 'undefined'? angular.copy(obj.templateOptions.datepickerOptions) : '') : '';
 
 const extractFormlyExpressionProperties = (obj) => typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
 
@@ -488,12 +488,12 @@ const extractTemplateOptionRequired = (obj) => typeof obj.templateOptions !== 'u
 
 const extractTemplateOptionOptions = (obj) => typeof obj.templateOptions !== 'undefined' ? (typeof obj.templateOptions.options !== 'undefined'? obj.templateOptions.options: '') : '';
 
-const addDatepickerPopupProperty = (fieldToPush, configurationModel,lineIndex) => fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+const addDatepickerOptionsProperty = (fieldToPush, configurationModel,lineIndex) => fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(configurationModel.lines[lineIndex].columns[0].control);
 
 
 const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 	/**
-		* text header is stored in "description" in templateOtion model 
+		* text header is stored in "description" in templateOtion model
 		*/
 	let headerTemplateCol0 = `<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control)}<h2></div></div><hr/>`;
 	formlyModel.push(
@@ -502,10 +502,10 @@ const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 													.lines[lineIndex]
 													.columns[0]
 													.control
-													.type !== 'undefined' ? 
-														(configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? 
-															headerTemplateCol0 
-															: '<div></div>') 
+													.type !== 'undefined' ?
+														(configurationModel.lines[lineIndex].columns[0].control.type === 'header' ?
+															headerTemplateCol0
+															: '<div></div>')
 														: '<div></div>'
 		}
 	);
@@ -529,11 +529,11 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		validators            : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
 		validation            : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 	};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(fieldToPush, configurationModel,lineIndex);     
-	
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(fieldToPush, configurationModel,lineIndex);
+
 	formlyModel.push(fieldToPush);
 };
 
@@ -566,12 +566,12 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		},
 				expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
 				validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-				validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                  
+				validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);                          
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
 
 	let controlCol1 =  {
 		className	: 'col-xs-6',
@@ -587,13 +587,13 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		},
 				expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
 				validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-				validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+				validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 		};
 
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);                               
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
 
 	let FieldGroup = [];
 
@@ -602,18 +602,18 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	}else{
 		FieldGroup.push(controlCol0);
 	}
-		
+
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol1);
 	}else{
 		FieldGroup.push(controlCol1);
-	}    
+	}
 
 	formlyModel.push({
-		className	: 'row', 
+		className	: 'row',
 		fieldGroup: FieldGroup
 	});
-	
+
 };
 
 
@@ -644,16 +644,16 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 					required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
 					placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
 					description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)                                              
+					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
 			},
 					expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
 					validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)                                   
+					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel,lineIndex);                          
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
 
 	let controlCol1 =  {
 			className	: 'col-xs-4',
@@ -665,16 +665,16 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 					required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
 					placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
 					description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)                                               
+					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
 			},
 					expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
 					validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)                                  
+					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel,lineIndex);
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
 
 	let controlCol2 =  {
 			className	: 'col-xs-4',
@@ -686,16 +686,16 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 					required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
 					placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
 					description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)                                              
+					options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
 			},
 					expressionProperties : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
 					validators : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)                                   
+					validation : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
 		};
-	//////////////////////////////////////////////                  
-	//datepicker additionnal particular property  
-	//////////////////////////////////////////////                  
-	if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') addDatepickerPopupProperty(controlCol2, configurationModel,lineIndex);    
+	//////////////////////////////////////////////
+	//datepicker additionnal particular property
+	//////////////////////////////////////////////
+	if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol2, configurationModel,lineIndex);
 
 	let FieldGroup = [];
 
@@ -704,25 +704,25 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	}else{
 		FieldGroup.push(controlCol0);
 	}
-		
+
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol1);
 	}else{
 		FieldGroup.push(controlCol1);
-	}    
+	}
 
 	if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol2);
 	}else{
 		FieldGroup.push(controlCol2);
-	}    
+	}
 
 
 	formlyModel.push({
-				className: 'row', 
+				className: 'row',
 				fieldGroup: FieldGroup
 	});
-	
+
 };
 
 

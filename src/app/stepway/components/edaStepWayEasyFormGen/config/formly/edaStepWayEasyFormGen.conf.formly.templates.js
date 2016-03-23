@@ -64,7 +64,7 @@ const datepickerTemplate = `
           datepicker-options="to.datepickerOptions"
   />
 </p>
-`
+`;
 
 const validationTemplate = `
 	<div class="formly-template-wrapper form-group"

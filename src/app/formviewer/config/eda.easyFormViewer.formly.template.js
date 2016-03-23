@@ -43,14 +43,28 @@ const groupedSelectTemplate = `
 		</li>
 	</ol>`;
 
-const datepickerTemplate = `	<input  id="{{id}}"
-																			class="form-control"
-																			ng-click="open($event)"
-																			ng-model="model[options.key  || index]"
-																			is-open="to.isOpen"
-																			ng-click="to.isOpen = true"
-                                      uib-datepicker-popup
-																			datepicker-options="to.datepickerOptions" />`;
+const datepickerTemplate = `
+  <p class="input-group">
+    <span class="input-group-btn">
+        <button
+          type="button"
+          class="btn btn-default"
+          ng-click="formlyDatePicker.open($event)">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+    </span>
+    <input  type="text"
+            id="{{::id}}"
+            name="{{::id}}"
+            ng-model="model[options.key]"
+            class="form-control"
+            ng-click="datepicker.open($event)"
+            uib-datepicker-popup="{{to.datepickerOptions.format}}"
+            is-open="datepicker.opened"
+            datepicker-options="to.datepickerOptions"
+    />
+  </p>
+  `;
 
 const validationTemplate = `
 	<div class="formly-template-wrapper form-group"
