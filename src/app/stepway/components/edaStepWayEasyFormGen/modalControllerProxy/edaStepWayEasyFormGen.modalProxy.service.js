@@ -43,7 +43,7 @@ class $modalProxy{
 
 			// particular case : datepicker
 			if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-				nyaSelectObj.temporyConfig.datepickerOptions 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOtions : '';
+				nyaSelectObj.temporyConfig.datepickerOptions 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions) : '';
 			}
 		}
 		return nyaSelectObj;
@@ -124,7 +124,7 @@ class $modalProxy{
 					nyaSelectObj.controls[i].formlyOptions 							= nyaSelectObj.temporyConfig.formlyOptions;
 
 					if (nyaSelectObj.controls[i].id ==='Date' ) {
-						nyaSelectObj.controls[i].datepickerOptions 					= nyaSelectObj.temporyConfig.datepickerOptions;
+						nyaSelectObj.controls[i].datepickerOptions 				= angular.copy(nyaSelectObj.temporyConfig.datepickerOptions);
 					}
 
 				}
