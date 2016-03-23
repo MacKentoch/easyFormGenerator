@@ -610,7 +610,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  uib-datepicker-popup
+                  uib-datepicker-popup="{{editControlModCtrl.nyaSelect.temporyConfig.datepickerOptions.format}}"
                   ng-model="editControlModCtrl.demodt.dt"
                   is-open="editControlModCtrl.demodt.opened"
                   min-date="editControlModCtrl.demodt.minDate"
@@ -650,7 +650,7 @@
           <div class="col-lg-9">
             <ol
               class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
-              ng-model="editControlModCtrl.nyaSelect.temporyConfig.datepickerOptions"
+              ng-model="editControlModCtrl.nyaSelect.temporyConfig.datepickerOptions.format"
               id="dateformatSelect">
               <li
                 class="nya-bs-option"

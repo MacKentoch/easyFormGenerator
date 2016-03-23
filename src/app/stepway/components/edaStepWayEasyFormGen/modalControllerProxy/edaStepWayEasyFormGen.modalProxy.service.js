@@ -82,7 +82,7 @@ class $modalProxy{
 		//////////////////////////////////////////
 		//-> datepicker : datepickerOptions
 		if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-			configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions = extractedProps.datepickerOptions;
+			configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions = angular.copy(extractedProps.datepickerOptions);
 		}
 		/**
 			* unique key (set only first time) in this model is formly control type + Date.now();

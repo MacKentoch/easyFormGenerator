@@ -260,7 +260,6 @@ class edaStepWayEasyFormGenController {
 			() => {
 				//$log.info('Modal dismissed at: ' + new Date());
 			});
-
 	}
 
 	previewExistingform(formlyform) {
