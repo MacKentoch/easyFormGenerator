@@ -428,7 +428,7 @@ $__System.register('e', [], function (_export) {
 
 	'use strict';
 
-	var resetNyaSelect, getConfigurationModelInit, getEmptyConfigModelResult, resetDataModel, getErrorObject, getMessageObject, resetFormlyModel, extractTemplateOptionDescription, extractTemplateOptionPlaceholder, extractTemplateOptionType, extractTemplateOptionLabel, extractTemplateOptionDatepickerPopup, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, addDatepickerPopupProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl;
+	var resetNyaSelect, getConfigurationModelInit, getEmptyConfigModelResult, resetDataModel, getErrorObject, getMessageObject, resetFormlyModel, extractTemplateOptionDescription, extractTemplateOptionPlaceholder, extractTemplateOptionType, extractTemplateOptionLabel, extractTemplateOptionDatepickerOptions, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, addDatepickerOptionsProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl;
 	return {
 		setters: [],
 		execute: function () {
@@ -555,7 +555,7 @@ $__System.register('e', [], function (_export) {
 								required: function required(viewValue, modelValue, scope) {
 									//return a required validation message :
 									//-> '<label as name> is required '
-									//-> or if not exists or empty just 'this field is required'		
+									//-> or if not exists or empty just 'this field is required'
 									var defaultReturnMsg = 'this Email field is required';
 									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
 									//check if validation is really dued to require validation
@@ -575,7 +575,7 @@ $__System.register('e', [], function (_export) {
 						formlyRequired: false,
 						formlyDesciption: '',
 						formlyOptions: [],
-						datepickerPopup: 'dd-MMMM-yyyy',
+						datepickerOptions: { format: 'dd-MMMM-yyyy' },
 						formlyExpressionProperties: {},
 						formlyValidators: {},
 						formlyValidation: {
@@ -865,8 +865,8 @@ $__System.register('e', [], function (_export) {
 				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.label !== 'undefined' ? obj.templateOptions.label : '' : '';
 			};
 
-			extractTemplateOptionDatepickerPopup = function extractTemplateOptionDatepickerPopup(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.datepickerPopup !== 'undefined' ? obj.templateOptions.datepickerPopup : '' : '';
+			extractTemplateOptionDatepickerOptions = function extractTemplateOptionDatepickerOptions(obj) {
+				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.datepickerOptions !== 'undefined' ? angular.copy(obj.templateOptions.datepickerOptions) : '' : '';
 			};
 
 			extractFormlyExpressionProperties = function extractFormlyExpressionProperties(obj) {
@@ -889,13 +889,13 @@ $__System.register('e', [], function (_export) {
 				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.options !== 'undefined' ? obj.templateOptions.options : '' : '';
 			};
 
-			addDatepickerPopupProperty = function addDatepickerPopupProperty(fieldToPush, configurationModel, lineIndex) {
-				return fieldToPush.templateOptions.datepickerPopup = extractTemplateOptionDatepickerPopup(configurationModel.lines[lineIndex].columns[0].control);
+			addDatepickerOptionsProperty = function addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex) {
+				return fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(configurationModel.lines[lineIndex].columns[0].control);
 			};
 
 			addOneColumnHeader = function addOneColumnHeader(formlyModel, configurationModel, lineIndex) {
 				/**
-    	* text header is stored in "description" in templateOtion model 
+    	* text header is stored in "description" in templateOtion model
     	*/
 				var headerTemplateCol0 = '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2></div></div><hr/>';
 				formlyModel.push({
@@ -920,10 +920,10 @@ $__System.register('e', [], function (_export) {
 					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 				};
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(fieldToPush, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex);
 
 				formlyModel.push(fieldToPush);
 			};
@@ -957,10 +957,10 @@ $__System.register('e', [], function (_export) {
 					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 				};
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
 
 				var controlCol1 = {
 					className: 'col-xs-6',
@@ -979,10 +979,10 @@ $__System.register('e', [], function (_export) {
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 				};
 
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
 
 				var FieldGroup = [];
 
@@ -1037,10 +1037,10 @@ $__System.register('e', [], function (_export) {
 					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
 				};
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerPopupProperty(controlCol0, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
 
 				var controlCol1 = {
 					className: 'col-xs-4',
@@ -1058,10 +1058,10 @@ $__System.register('e', [], function (_export) {
 					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
 				};
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerPopupProperty(controlCol1, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
 
 				var controlCol2 = {
 					className: 'col-xs-4',
@@ -1079,10 +1079,10 @@ $__System.register('e', [], function (_export) {
 					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
 					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
 				};
-				//////////////////////////////////////////////                 
-				//datepicker additionnal particular property 
-				//////////////////////////////////////////////                 
-				if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') addDatepickerPopupProperty(controlCol2, configurationModel, lineIndex);
+				//////////////////////////////////////////////
+				//datepicker additionnal particular property
+				//////////////////////////////////////////////
+				if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') addDatepickerOptionsProperty(controlCol2, configurationModel, lineIndex);
 
 				var FieldGroup = [];
 
@@ -1350,7 +1350,7 @@ $__System.register("11", [], function (_export) {
 			subTitleTemplate = "\n\t<div class=\"row\">\n\t\t<div class=\"\">\n\t\t\t<h4 class=\"text-center\">\n\t\t\t{{options.templateOptions.placeholder}}\n\t\t\t<h4><hr/>\n\t\t</div>\n\t</div>";
 			basicSelectTemplate = "\n<ol\n\tclass=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n\tng-model=\"model[options.key || index]\"\n\tid=\"{{id}}\"\n\tdisabled=\"options.templateOptions.options.length === 0\">\n\t<li class=\"nya-bs-option\" nya-bs-option=\"option in options.templateOptions.options\">\n\t\t<a>{{option.name}}</a>\n\t</li>\n</ol>";
 			groupedSelectTemplate = "\n\t<ol class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n\t\tng-model=\"model[options.key || index]\"\n\t\tdata-live-search=\"true\"\n\t\tdisabled=\"options.templateOptions.options.length === 0\">\n\t\t<li nya-bs-option=\"option in  options.templateOptions.options group by option.group\">\n\t\t\t<span class=\"dropdown-header\">{{$group}}</span>\n\t\t\t<a>\n\t\t\t\t<span>{{option.name}}</span>\n\t\t\t\t<span class=\"glyphicon glyphicon-ok check-mark\"></span>\n\t\t\t</a>\n\t\t</li>\n\t</ol>";
-			datepickerTemplate = "\t<input  id=\"{{id}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-click=\"open($event)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"model[options.key  || index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tis-open=\"to.isOpen\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-click=\"to.isOpen = true\"\n                                      uib-datepicker-popup\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdatepicker-options=\"to.datepickerOptions\" />";
+			datepickerTemplate = "\n  <p class=\"input-group\">\n    <span class=\"input-group-btn\">\n        <button\n          type=\"button\"\n          class=\"btn btn-default\"\n          ng-click=\"formlyDatePicker.open($event)\">\n          <i class=\"glyphicon glyphicon-calendar\"></i>\n        </button>\n    </span>\n    <input  type=\"text\"\n            id=\"{{::id}}\"\n            name=\"{{::id}}\"\n            ng-model=\"model[options.key]\"\n            class=\"form-control\"\n            ng-click=\"datepicker.open($event)\"\n            uib-datepicker-popup=\"{{to.datepickerOptions.format}}\"\n            is-open=\"datepicker.opened\"\n            datepicker-options=\"to.datepickerOptions\"\n    />\n  </p>\n  ";
 			validationTemplate = "\n\t<div class=\"formly-template-wrapper form-group\"\n\t\t\t\t\t\tng-class=\"{'has-error': options.validation.errorExistsAndShouldBeVisible}\">\n\t\t\t\t<formly-transclude></formly-transclude>\n\t\t\t\t<div class=\"validation\"\n\t\t\t\t\t\t\tng-if=\"options.validation.errorExistsAndShouldBeVisible\"\n\t\t\t\t\t\t\tng-messages=\"options.formControl.$error\">\n\t\t\t\t\t<div ng-messages-include=\"validation.html\"></div>\n\t\t\t\t\t<div ng-message=\"{{::name}}\" ng-repeat=\"(name, message) in ::options.validation.messages\">\n\t\t\t\t\t\t{{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>";
 
 			_export("richTextTemplate", richTextTemplate);
@@ -1409,7 +1409,7 @@ $__System.register('12', ['11'], function (_export) {
     ////////////////////////////
     // thx Kent C. Dodds
 
-    var attributes = ['date-disabled', 'custom-class', 'show-weeks', 'starting-day', 'init-date', 'min-mode', 'max-mode', 'format-day', 'format-month', 'format-year', 'format-day-header', 'format-day-title', 'format-month-title', 'year-range', 'shortcut-propagation', 'uib-datepicker-popup', 'show-button-bar', 'current-text', 'clear-text', 'close-text', 'close-on-date-selection', 'datepicker-append-to-body'];
+    var attributes = ['date-disabled', 'custom-class', 'show-weeks', 'starting-day', 'init-date', 'min-mode', 'max-mode', 'format-day', 'format-month', 'format-year', 'format-day-header', 'format-day-title', 'format-month-title', 'year-range', 'shortcut-propagation', 'datepicker-popup', 'show-button-bar', 'current-text', 'clear-text', 'close-text', 'close-on-date-selection', 'datepicker-append-to-body'];
 
     var bindings = ['datepicker-mode', 'min-date', 'max-date'];
 
@@ -1426,29 +1426,35 @@ $__System.register('12', ['11'], function (_export) {
     formlyConfigProvider.setType({
       name: 'datepicker',
       template: datepickerTemplate,
-      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-      controller: ['$scope', function ($scope) {
-        $scope.open = function ($event) {
-          $event.preventDefault();
-          $event.stopPropagation();
-          $scope.opened = true;
-        };
-      }],
       defaultOptions: {
         ngModelAttrs: ngModelAttrs,
         templateOptions: {
-          addonLeft: {
-            'class': 'glyphicon glyphicon-calendar',
-            onClick: function onClick(options) {
-              return options.templateOptions.isOpen = !options.templateOptions.isOpen;
-            }
-          },
-          onFocus: function onFocus($viewValue, $modelValue, scope) {
-            return scope.to.isOpen = !scope.to.isOpen;
-          },
-          datepickerOptions: {}
+          datepickerOptions: {
+            format: 'dd/MM/yyyy',
+            initDate: new Date(),
+            showWeeks: false
+          }
         }
-      }
+      },
+      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+      controller: ['$scope', function ($scope) {
+        // console.info('ui calendar init');
+        $scope.datepicker = {};
+
+        // make sure the initial value is of type DATE!
+        var currentModelVal = $scope.model[$scope.options.key];
+        if (typeof currentModelVal == 'string') {
+          $scope.model[$scope.options.key] = new Date(currentModelVal);
+        }
+
+        $scope.datepicker.opened = false;
+        $scope.datepicker.open = function ($event) {
+          $event.preventDefault();
+          $event.stopPropagation();
+          // console.info('ui calendar open event');
+          $scope.datepicker.opened = !$scope.datepicker.opened;
+        };
+      }]
 
     });
 
