@@ -25,6 +25,15 @@
 
 [Complementary information to better understand easy form generator](https://github.com/MacKentoch/easyFormGenerator/blob/master/README_TOO.md)
 
+#### Important
+
+To follow `ui-bootstrap` (*ui-bootstrap following angular js and avoiding name conflict with angular Strap*)
+> easyFormGenerator (since v1.2.0) is now compatible with latest ui-bootstrap.
+
+If you want to use older ui-bootstrap (*<= v0.13.4*)
+
+> you will have to use easyFormGenrator <= v1.1.0.
+
 And Since v1.0.21:
 
 *`Easy form viewer` (*no matter form generator you used, models are the same*):
