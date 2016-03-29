@@ -12,7 +12,6 @@ import easyFormStepwayModalModule 			from './components/edaStepWayEasyFormGen/mo
 import easyFormStepwayModalProxyModule	from './components/edaStepWayEasyFormGen/modalControllerProxy/edaStepWayFormGen.modalProxy.module';
 import easyFormStepwayFormlyProxyModule	from './components/edaStepWayEasyFormGen/formlyProxy/edaStepWayEasyFormGen.formlyProxy.module';
 import easyFormStepwayCommonModules			from './components/edaStepWayEasyFormGen/common/edaStepWayEasyFormGen.common.module';
-import dropZoneModule                   from './components/edaStepWayEasyFormGen/dropzone/edaStepWayEasyFormGen.dropzone.module';
 
 const STEP_WAY_MODULE_NAME 		= 'eda.easyformGen.stepway';
 const STEP_WAY_MODULES_INJECT = [
@@ -22,8 +21,7 @@ const STEP_WAY_MODULES_INJECT = [
 	easyFormStepwayModalModule.name,
 	easyFormStepwayModalProxyModule.name,
 	easyFormStepwayFormlyProxyModule.name,
-	easyFormStepwayCommonModules.name,
-  dropZoneModule.name
+	easyFormStepwayCommonModules.name
 ];
 
 let mainModule = angular
