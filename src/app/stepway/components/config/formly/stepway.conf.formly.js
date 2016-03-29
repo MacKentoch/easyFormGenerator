@@ -7,7 +7,7 @@ import {
 	groupedSelectTemplate,
 	datepickerTemplate,
 	validationTemplate
-} from './edaStepWayEasyFormGen.conf.formly.templates';
+} from './stepway.conf.formly.templates';
 
 
 function formlyConfig(formlyConfigProvider){
