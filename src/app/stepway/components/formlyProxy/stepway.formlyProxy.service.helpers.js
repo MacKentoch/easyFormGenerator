@@ -1,5 +1,3 @@
-/* global angular */
-
 const configurationModelInit = {
 	activeLine: 1,
 	listConfigStep: [

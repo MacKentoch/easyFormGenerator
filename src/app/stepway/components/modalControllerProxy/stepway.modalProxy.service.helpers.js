@@ -1,5 +1,3 @@
-/* global angular */
-
 const resetNyaSelect = (nyaSelectObj) => {
 
 	let newNyaSelectObj = {

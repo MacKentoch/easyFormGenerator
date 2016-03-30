@@ -1,4 +1,3 @@
-/* global angular */
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig($translateProvider) {
@@ -7,8 +6,8 @@ function easyFormSteWayConfig($translateProvider) {
 	let _defaultLanguage		= getDefaultLanguage();
 	let _currentLanguage		= initDefaultLanguage();
 	let _showPreviewPanel		= getDefaultshowPreviewPanel();
-	let _showPreviewModels	= getDefaultShowPreviewModel();	
-	/* jshint validthis:true */
+	let _showPreviewModels	= getDefaultShowPreviewModel();
+  
 	this.$get 							= easyFormStepWayConfigGET;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
@@ -19,35 +18,32 @@ function easyFormSteWayConfig($translateProvider) {
 	this.setLanguage				= setLanguage;
 	this.getCurrentLanguage	= getCurrentLanguage;
 	this.showPreviewPanel		= showPreviewPanel;
-	this.showPreviewModels	= showPreviewModels;	
-	
-	
-	
+	this.showPreviewModels	= showPreviewModels;
+
 	//set default config
-	function defaultConfig(){
+	function defaultConfig() {
 		let  _defaultConfiguration = {
 			modalAnimated : false
 		};
 		return _defaultConfiguration;
 	}
-	
 
 	//show preview panel by default
-	function getDefaultshowPreviewPanel(){
+	function getDefaultshowPreviewPanel() {
 		return true;
-	}	
-	
+	}
+
 	//show preview data, fields models in preview panel
-	function getDefaultShowPreviewModel(){
+	function getDefaultShowPreviewModel() {
 		return true;
-	}	
-	
-	function getCurrentLanguage(){
+	}
+
+	function getCurrentLanguage() {
 			return _currentLanguage;
-	}	
-	
+	}
+
 	//list of controls
-	function controlsList(){
+	function controlsList() {
 		let controls = [
 			{name: 'empty', 					enabled: true},
 			{name: 'Header', 					enabled: true},
@@ -65,34 +61,34 @@ function easyFormSteWayConfig($translateProvider) {
 		];
 		return controls;
 	}
-	
-	function showPreviewPanel(wantToShow){
+
+	function showPreviewPanel(wantToShow) {
 		if (angular.isDefined(wantToShow)) {
 			if(wantToShow === true) 	_showPreviewPanel 	= true;
 			if(wantToShow === false) 	_showPreviewPanel 	= false;
 		}
 	}
-	
-	function showPreviewModels(wantToShow){
+
+	function showPreviewModels(wantToShow) {
 		if (angular.isDefined(wantToShow)) {
 			if(wantToShow === true) 	_showPreviewModels 	= true;
 			if(wantToShow === false) 	_showPreviewModels 	= false;
-		}				
-	}		
-	
+		}
+	}
+
 	//language : set default to english
-	function getDefaultLanguage(){
+	function getDefaultLanguage() {
 		let lang = 'en';
 		return lang;
 	}
-	
-	function setDefaultLanguage(){
+
+	function setDefaultLanguage() {
 		_currentLanguage = _defaultLanguage;
 		$translateProvider.preferredLanguage(_currentLanguage);
 		return _currentLanguage;
-	}	
-	
-	function setLanguage(language){				
+	}
+
+	function setLanguage(language) {
 		if (angular.isString(language)) {
 			_currentLanguage = language;
 			$translateProvider.preferredLanguage(language);
@@ -100,53 +96,53 @@ function easyFormSteWayConfig($translateProvider) {
 			setDefaultLanguage();
 		}
 	}
-	
-	function initDefaultLanguage(){
+
+	function initDefaultLanguage() {
 		$translateProvider.useSanitizeValueStrategy('escape'); 	//security : Enable escaping of HTML
 		$translateProvider.fallbackLanguage(_defaultLanguage);	//fallback language to default language
 		$translateProvider.preferredLanguage(_defaultLanguage);
 		return _defaultLanguage;
 	}
-	
-	function getEnabledControls(){
+
+	function getEnabledControls() {
 		return _controlsList;
 	}
-	
-	function disableControl(controlName){
+
+	function disableControl(controlName) {
 		if (angular.isString(controlName)) {
 			angular.forEach(_controlsList, (aControl) => {
 				if (aControl.name === controlName) aControl.enabled = false;
-			});						
+			});
 		}
 	}
-	
-	function enableControl(controlName){
+
+	function enableControl(controlName) {
 		if (angular.isString(controlName)) {
 			angular.forEach(_controlsList, (aControl) => {
 				if (aControl.name === controlName) aControl.enabled = true;
-			});						
-		}				
-	}						
-	
-	function setModalAnimation(flagConfig){
-		let valueToApply = (flagConfig === true) ? 
-													flagConfig  
-												: (flagConfig === false ? 
-														flagConfig 
+			});
+		}
+	}
+
+	function setModalAnimation(flagConfig) {
+		let valueToApply = (flagConfig === true) ?
+													flagConfig
+												: (flagConfig === false ?
+														flagConfig
 													: _configuration.modalAnimated);
-															
+
 		_configuration.modalAnimated = valueToApply;
 	}
-	
-	function getModalAnimation(){																	
+
+	function getModalAnimation(){
 		return _configuration.modalAnimated;
-	}		
-	
-	
+	}
+
+
 	//$get implementation :
 	easyFormStepWayConfigGET.$inject = ['$translate'];
-	function easyFormStepWayConfigGET($translate){
-											
+	function easyFormStepWayConfigGET($translate) {
+
 		let service = {
 			setModalAnimation 			: setModalAnimationFct,
 			getModalAnimationValue 	: getModalAnimationValue,
@@ -157,39 +153,37 @@ function easyFormSteWayConfig($translateProvider) {
 			arePreviewModelsVisible	: arePreviewModelsVisible
 		};
 		return service;
-		
-		
-		function getModalAnimationValue(){
+
+
+		function getModalAnimationValue() {
 			return _configuration.modalAnimated;
-		}				
-		
-		function setModalAnimationFct(value){
+		}
+
+		function setModalAnimationFct(value) {
 			setModalAnimation(value);
 		}
-		
-		function getListEnabledControl(){
+
+		function getListEnabledControl() {
 			return angular.copy(_controlsList);
 		}
-		
-		function switchLanguage(language){
+
+		function switchLanguage(language) {
 			if (angular.isString(language)) {
 				_currentLanguage = language;
 				$translate.use(language);
 			}else{
 				setDefaultLanguage();
 			}
-		}					
+		}
 
-		function isPreviewPanelVisible(){
+		function isPreviewPanelVisible() {
 			return _showPreviewPanel;
 		}
-		
-		function arePreviewModelsVisible(){
+
+		function arePreviewModelsVisible() {
 			return _showPreviewModels;
-		}				
-		
+		}
 	}
-	
 }
 
 easyFormSteWayConfig.$inject = ['$translateProvider'];

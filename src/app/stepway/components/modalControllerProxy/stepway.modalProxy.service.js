@@ -3,12 +3,11 @@ import {
 	returnControlFromAddCtrlModalModel,
 	validKeyUniqueness,
 	getResetConfig
-} from './edaStepWayEasyFormGen.modalProxy.service.helpers.js';
+}                                         from './stepway.modalProxy.service.helpers.js';
 
 const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
-class $modalProxy{
-
+class $modalProxy {
 	constructor(easyFormSteWayConfig) {
 		this.easyFormSteWayConfig	=	easyFormSteWayConfig;
 	}

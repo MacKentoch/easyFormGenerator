@@ -4,13 +4,12 @@ import {
 	initTabModel,
 	initColumnTemplate,
 	initLineTemplate
-} from './edaStepWayEasyFormGen.main.controller.helpers';
-
-import editControlModalTemplate 		from '../modal/edaStepWayEasyFormGen.editControlModal.template.html!text';
+}                                   from './stepway.main.controller.helpers';
+import editControlModalTemplate 		from '../modal/stepway.editControlModal.template.html!text';
 import {
 	EDIT_MODAL_CONTROLLER_NAME,
-	EDIT_MODAL_CONTROLLERAS_NAME} 		from '../modal/edaStepWayEasyFormGen.editControlModal.controller';
-
+	EDIT_MODAL_CONTROLLERAS_NAME
+} 		                              from '../modal/stepway.editControlModal.controller';
 
 
 const STEP_WAY_MAIN_CONTROLLER_NAME 	= 'edaStepWayEasyFormGenController';
@@ -27,7 +26,7 @@ class edaStepWayEasyFormGenController {
 		$log,
 		$formlyProxy,
 		$modalProxy,
-		easyFormSteWayConfig){
+		easyFormSteWayConfig) {
 
 		this.easyFormGenVersion		= easyFormGenVersion;
 		this.$filter 							= $filter;
@@ -40,7 +39,6 @@ class edaStepWayEasyFormGenController {
 		this.easyFormSteWayConfig	= easyFormSteWayConfig;
 
 		this.init();
-
 	}
 
 	init() {

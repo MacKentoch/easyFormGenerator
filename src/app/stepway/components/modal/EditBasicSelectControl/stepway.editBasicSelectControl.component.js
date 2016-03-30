@@ -17,7 +17,6 @@ const editBasicSelectControl = {
   }
 };
 
-
 export default editBasicSelectControl;
 
 export {

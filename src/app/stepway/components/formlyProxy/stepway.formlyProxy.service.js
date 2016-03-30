@@ -8,8 +8,7 @@ import {
 	addOneColumnControl,
 	addTwoColumnControl,
 	addThreeColumnControl
-} from './edaStepWayEasyFormGen.formlyProxy.service.helpers';
-
+}                             from './stepway.formlyProxy.service.helpers';
 
 const FORMLY_PROXY_SERVICE = '$formlyProxy';
 

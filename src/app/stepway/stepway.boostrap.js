@@ -1,6 +1,4 @@
-/* global angular */
-
-import mainModule from './edaStepWayEasyFormGen.main';
+import mainModule from './stepway.main';
 
 angular.element(document).ready(() => {
   angular.bootstrap(document, [mainModule.name], { strictDi: true });
@@ -10,4 +8,3 @@ angular.element(document).ready(() => {
  * NOTE : bootstrap is needed only to replace ng-app for an app
  * here is a module bundles-sfx
  */
- 

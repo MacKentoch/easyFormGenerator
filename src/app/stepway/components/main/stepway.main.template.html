@@ -12,7 +12,9 @@
 																								}">
 						</toaster-container>
 						<uib-tabset justified="true">
-							<uib-tab active="vm.tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
+							<uib-tab
+                active="vm.tab.editTab.active"
+                heading="{{'EDIT_TAB' | translate}}">
 								<div class="row">
 								<!-- STEP INDICATOR -->
 								<div class="row stepwizardTopmargin">
@@ -20,7 +22,7 @@
 										<div class="stepwizard">
 												<div class="row stepwizard-row">
 														<div class="stepwizard-step col-md-3">
-																<button type="button" class="btn btn-circle" ng-class="{'btn-primary': vm.configuration.stepIndicators[0], 'btn-default': !vm.configuration.stepIndicators[0]}" >0</button>
+														  <button type="button" class="btn btn-circle" ng-class="{'btn-primary': vm.configuration.stepIndicators[0], 'btn-default': !vm.configuration.stepIndicators[0]}" >0</button>
 																<p>{{'WIZARD_LINES' | translate}}</p>
 														</div>
 														<div class="stepwizard-step col-md-3">
@@ -151,7 +153,8 @@
 											</div>
 											</div>
 								</div>
-									<div class="animate-switch" ng-switch-when="first">
+
+                  <div class="animate-switch" ng-switch-when="first">
 										<div class="col-md-4">
 											<div id="commandPanel">
 												<div  class="panel panel-default">

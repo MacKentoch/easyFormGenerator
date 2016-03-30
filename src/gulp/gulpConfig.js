@@ -206,7 +206,7 @@ const gulpConfig = {
 
 		jspm : {
 			stepWay : {
-				src 			: 'src/app/stepway/edaStepWayEasyFormGen.main',
+				src 			: 'src/app/stepway/stepway.main',
 				bundle 		: './public/js/eda.stepway.js',
 				bundleMin	: './public/js/eda.stepway.min.js'
 			},

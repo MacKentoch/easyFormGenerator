@@ -1,7 +1,7 @@
 /* global angular */
 import editModalController, {
 	EDIT_MODAL_CONTROLLER_NAME
-} from './edaStepWayEasyFormGen.editControlModal.controller';
+} from './stepway.editControlModal.controller';
 
 const EDIT_CONTROLE_MODAL_NAME = 'editControlModalModule';
 
