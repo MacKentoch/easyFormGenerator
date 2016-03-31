@@ -1,5 +1,5 @@
-/* global angular */
-import translateConfig, {TRANSLATE_CONFIG} from './stepway.translate';
+
+import translateConfig from './stepway.translate';
 
 const TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
 

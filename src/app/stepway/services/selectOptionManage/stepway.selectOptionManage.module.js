@@ -1,7 +1,7 @@
 /* global angular */
 import selectOptionManage, {
   SELECT_OPTION_MANAGE_NAME
-} 			                     from './stepway.common.selectOption.service';
+} 			                     from './stepway.selectOptionManage.service';
 
 const COMMON_MODULE_NAME = 'commonModule';
 

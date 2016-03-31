@@ -1,17 +1,17 @@
 import './stepway.vendor.adapter';
 import easyFormStepWayConfig, {
 		EASY_FORM_VERSION_NAME,
-		EASY_FORM_VERSION_VALUE } 					from './components/config/easyFormGenerator/stepway.conf.easyFormConf';
-import formlyConfig 										from './components/config/formly/stepway.conf.formly';
-import translateConfig									from './components/translate/stepway.translate.module';
+		EASY_FORM_VERSION_VALUE } 					        from './config/easyFormGenerator/stepway.conf.easyFormConf';
+import formlyConfig 									          from './config/formly/stepway.conf.formly';
+import translateConfig								  	      from './config/translate/stepway.translate.module';
 
-import easyFormStepWayCoreModule 				from './components/core/stepway.core.module';
+import easyFormStepWayCoreModule 				        from './core/stepway.core.module';
 
-import easyFormStepwayMainModule 				from './components/main/stepway.main.module';
-import easyFormStepwayModalModule 			from './components/modal/stepway.editControlModal.module';
-import easyFormStepwayModalProxyModule	from './components/modalControllerProxy/stepway.modalProxy.module';
-import easyFormStepwayFormlyProxyModule	from './components/formlyProxy/stepway.formlyProxy.module';
-import easyFormStepwayCommonModules			from './components/common/stepway.common.module';
+import easyFormStepwayMainModule 				        from './components/main/stepway.main.module';
+import easyFormStepwayModalModule 			        from './components/modal/stepway.editControlModal.module';
+import easyFormStepwayModalProxyModule	        from './services/modalControllerProxy/stepway.modalProxy.module';
+import easyFormStepwayFormlyProxyModule	        from './services/formlyProxy/stepway.formlyProxy.module';
+import easyFormStepwaySelectOptionManageModules	from './services/selectOptionManage/stepway.selectOptionManage.module';
 
 const STEP_WAY_MODULE_NAME 		= 'eda.easyformGen.stepway';
 const STEP_WAY_MODULES_INJECT = [
@@ -21,7 +21,7 @@ const STEP_WAY_MODULES_INJECT = [
 	easyFormStepwayModalModule.name,
 	easyFormStepwayModalProxyModule.name,
 	easyFormStepwayFormlyProxyModule.name,
-	easyFormStepwayCommonModules.name
+	easyFormStepwaySelectOptionManageModules.name
 ];
 
 let mainModule = angular
