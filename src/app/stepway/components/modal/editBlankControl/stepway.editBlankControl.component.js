@@ -1,6 +1,6 @@
 export const EDIT_BLANK_CONTROL_COMPONENT = 'editBlankControl';
 
-export const editBlankControl = {
+export const editBlankControlComponent = {
   template      : `
   <div ng-switch-when="empty">
     <div class="panel panel-default">

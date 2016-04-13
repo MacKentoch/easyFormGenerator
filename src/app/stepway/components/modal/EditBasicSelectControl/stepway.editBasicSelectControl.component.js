@@ -2,7 +2,7 @@ import editBasicSelectTemplate from './stepway.editBasicSelectControl.template.h
 
 export const EDIT_BASIC_SELECT_COMPONENT = 'editBasicSelectControl';
 
-export const editBasicSelectControl = {
+export const editBasicSelectControlComponent = {
   template      : editBasicSelectTemplate,
   bindings      : {
     nyaSelect                 : '=',

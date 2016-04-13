@@ -2,7 +2,7 @@ import editHeaderControlTemplate from './stepway.editHeaderControl.template.html
 
 export const EDIT_HEADER_CONTROL_COMPONENT = 'editHeaderControl';
 
-export const editHeaderControl = {
+export const editHeaderControlComponent = {
   template      : editHeaderControlTemplate,
   bindings      : {
     nyaSelect: '='

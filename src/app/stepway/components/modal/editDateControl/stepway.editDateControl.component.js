@@ -1,8 +1,8 @@
 import editDateControlTemplate from './stepway.editDateControl.template.html!text';
 
-export const EDIT_BASIC_SELECT_COMPONENT = 'editDateControl';
+export const EDIT_DATE_COMPONENT = 'editDateControl';
 
-export const editDateControl = {
+export const editDateControlComponent = {
   template      : editDateControlTemplate,
   bindings      : {
     nyaSelect                 : '=',
