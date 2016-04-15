@@ -36,7 +36,7 @@
                 is-open="$ctrl.demodt.opened"
                 datepicker-options="$ctrl.dateOptions"
                 close-text="Close"
-                ng-click="$ctrl.open($event)"
+                ng-click="$ctrl.open({event : $event})"
               />
             </div>
             <p class="help-block">

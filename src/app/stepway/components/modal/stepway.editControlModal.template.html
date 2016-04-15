@@ -45,308 +45,43 @@
         </div>
       </div>
     </div>
-    <!--empty (or blank) control -->
     <div ng-switch-when="empty">
       <edit-blank-control></edit-blank-control>
     </div>
-    <!--header-->
     <div ng-switch-when="Header">
       <edit-header-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-header-control>
     </div>
-    <!--Subtitle-->
     <div ng-switch-when="Subtitle">
       <edit-sub-title-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-sub-title-control>
     </div>
-    <!-- TextInput -->
     <div ng-switch-when="TextInput">
       <edit-text-input-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-text-input-control>
     </div>
-    <!-- password -->
     <div ng-switch-when="Password">
       <edit-password-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-password-control>
     </div>
     <div ng-switch-when="Email">
-      <!-- Email -->
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12">
-              <h5 class="greyText">
-                <i class="fa fa-eye"></i>
-                &nbsp;
-                {{'PREVIEW_TAB' | translate}} :
-              </h5>
-            </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label
-                  for="inputEmail"
-                  class="control-label textControlLabel">
-                  {{editControlModCtrl.nyaSelect.temporyConfig.formlyLabel}}
-                  <span
-                    ng-if="editControlModCtrl.nyaSelect.temporyConfig.formlyRequired"
-                    class="textControlLabel">
-                    *
-                  </span>
-                </label>
-                <div class="">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputEmail"
-                    placeholder="{{editControlModCtrl.nyaSelect.temporyConfig.formlyPlaceholder}}">
-                  <p class="help-block">
-                    {{editControlModCtrl.nyaSelect.temporyConfig.formlyDesciption}}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12">
-              <h5 class="greyText">
-                <i class="fa fa-pencil-square-o"></i>
-                &nbsp;
-                {{'EDIT_PROPERTIES' | translate}} :
-              </h5>
-            </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="form-group">
-              <label
-                for="inputTextLabelUpdate"
-                class="col-lg-3 control-label greyText editPropertiesLabel">
-                {{'LABEL_TEXT' | translate}} :
-              </label>
-              <div class="col-lg-9">
-                <input
-                  type="text"
-                  class="form-control"
-                  ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyLabel"
-                  id="inputTextLabelUpdate"
-                  placeholder="{{'ADD_EDIT_LABEL_HERE' | translate}}">
-              </div>
-            </div>
-          </div>
-          <div class="marginTopFivepixels"></div>
-          <div class="row">
-            <div class="form-group">
-              <label
-                for="inputTextplaceholderUpdate"
-                class="col-lg-3 control-label greyText editPropertiesLabel">
-                {{'PLACEHOLDER' | translate}} :
-              </label>
-              <div class="col-lg-9">
-                <input
-                  type="text"
-                  class="form-control"
-                  ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyPlaceholder"
-                  id="inputTextplaceholderUpdate"
-                  placeholder="{{'ADD_EDIT_PLACEHOLD' | translate}}">
-              </div>
-            </div>
-          </div>
-          <div class="marginTopFivepixels"></div>
-          <div class="row">
-            <div class="form-group">
-              <label
-                for="inputTextRequiredUpdate"
-                class="col-lg-3 control-label greyText editPropertiesLabel">
-                {{'REQUIRED' | translate}} :
-              </label>
-              <div class="col-lg-9">
-                <div class="checkboxCssCorrection">
-                  &nbsp;
-                </div>
-                <input
-                  type="checkbox"
-                  ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyRequired"
-                  id="inputTextRequiredUpdate">
-              </div>
-            </div>
-          </div>
-          <div class="marginTopFivepixels"></div>
-          <div class="row">
-            <div class="form-group">
-              <label
-                for="inputTextDescriptionUpdate"
-                class="col-lg-3 control-label greyText editPropertiesLabel">
-                {{'DESCRIPTION' | translate}} :
-              </label>
-              <div class="col-lg-9">
-                <input
-                  type="text"
-                  class="form-control"
-                  ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyDesciption"
-                  id="inputTextDescriptionUpdate"
-                  placeholder="{{'ADDEDIT_DESCRIPTION' | translate}}">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <edit-email-control
+        nya-select="editControlModCtrl.nyaSelect">
+      </edit-email-control>
     </div>
     <div ng-switch-when="Date">
-      <!-- datetimepicker (input type date not ok in all browsers) -->
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12">
-              <h5 class="greyText">
-                <i class="fa fa-eye"></i>
-                &nbsp;
-                {{'PREVIEW_TAB' | translate}} :
-              </h5>
-            </div>
-          </div>
-          <hr/>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label
-                for="inputDate"
-                class="control-label textControlLabel">
-                {{editControlModCtrl.nyaSelect.temporyConfig.formlyLabel}}
-                <span
-                  ng-if="editControlModCtrl.nyaSelect.temporyConfig.formlyRequired"
-                  class="textControlLabel">
-                  *
-                </span>
-              </label>
-            <div class="">
-              <div class="input-group" >
-                <span class="input-group-addon">
-                  <i class="glyphicon glyphicon-calendar"></i>
-                </span>
-                <input
-                  type="text"
-                  class="form-control"
-                  uib-datepicker-popup="{{editControlModCtrl.nyaSelect.temporyConfig.datepickerOptions.format}}"
-                  ng-model="editControlModCtrl.demodt.dt"
-                  is-open="editControlModCtrl.demodt.opened"
-                  datepicker-options="editControlModCtrl.dateOptions"
-                  close-text="Close"
-                  ng-click="editControlModCtrl.open($event)"
-                />
-              </div>
-              <p class="help-block">
-                {{editControlModCtrl.nyaSelect.temporyConfig.formlyDesciption}}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-12">
-          <h5 class="greyText">
-            <i class="fa fa-pencil-square-o"></i>
-            &nbsp;
-            {{'EDIT_PROPERTIES' | translate}} :
-          </h5>
-        </div>
-      </div>
-      <hr/>
-      <div class="row">
-        <div class="form-group">
-          <label class="col-lg-3 control-label greyText editPropertiesLabel">
-            {{'DATE_FORMAT' | translate}} :
-          </label>
-          <div class="col-lg-9">
-            <ol
-              class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
-              ng-model="editControlModCtrl.nyaSelect.temporyConfig.datepickerOptions.format"
-              id="dateformatSelect">
-              <li
-                class="nya-bs-option"
-                nya-bs-option="dateformat in editControlModCtrl.demodt.formats"
-                value="dateformat">
-                <a>
-                  {{dateformat}}
-                </a>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <div class="marginTopFivepixels"></div>
-        <div class="row">
-          <div class="form-group">
-            <label
-              for="inputTextLabelUpdate"
-              class="col-lg-3 control-label greyText editPropertiesLabel">
-              {{'LABEL_TEXT' | translate}} :
-            </label>
-            <div class="col-lg-9">
-              <input
-                type="text"
-                class="form-control"
-                ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyLabel"
-                id="inputTextLabelUpdate"
-                placeholder="{{'ADD_EDIT_LABEL_HERE' | translate}}">
-            </div>
-          </div>
-        </div>
-        <div class="marginTopFivepixels"></div>
-          <div class="row">
-            <div class="form-group">
-              <label
-                for="inputTextRequiredUpdate"
-                class="col-lg-3 control-label greyText editPropertiesLabel">
-                {{'REQUIRED' | translate}} :
-              </label>
-              <div class="col-lg-9">
-                <div class="checkboxCssCorrection">
-                  &nbsp;
-                </div>
-                <input
-                  type="checkbox"
-                  ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyRequired"
-                  id="inputTextRequiredUpdate">
-              </div>
-            </div>
-          </div>
-          <div class="marginTopFivepixels"></div>
-            <div class="row">
-              <div class="form-group">
-                <label
-                  for="inputTextDescriptionUpdate"
-                  class="col-lg-3 control-label greyText editPropertiesLabel">
-                  {{'DESCRIPTION' | translate}} :
-                </label>
-                <div class="col-lg-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    ng-model="editControlModCtrl.nyaSelect.temporyConfig.formlyDesciption"
-                    id="inputTextDescriptionUpdate"
-                    placeholder="{{'ADDEDIT_DESCRIPTION' | translate}}">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div ng-switch-when="Texarea">
+      <edit-date-control
+        nya-select="editControlModCtrl.nyaSelect"
+        demodt="editControlModCtrl.demodt"
+        date-options="editControlModCtrl.dateOptions"
+        open="editControlModCtrl.open(event)">
+      <edit-date-control>
+    <div ng-switch-when="Texarea">
+
         <!-- textarea -->
         <div class="panel panel-default">
           <div class="panel-body">
