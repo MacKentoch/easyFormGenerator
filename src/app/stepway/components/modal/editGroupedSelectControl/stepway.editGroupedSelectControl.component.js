@@ -9,7 +9,6 @@ export const editGroupedSelectControlComponent = {
     groupedSelectRowCollection: '=',
     newOptionGroupedSelect:     '=',
     newGroupGroupedSelect:      '=',
-    groupedSelectFilter:        '=',
     groupSelectGroupClick:      '=',
     GroupedSelectGroups:        '=',
 

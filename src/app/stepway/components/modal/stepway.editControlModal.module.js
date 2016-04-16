@@ -12,7 +12,8 @@ import editRichTextEditorControlComponent, { EDIT_RICH_TEXT_EDITOR_COMPONENT }  
 import editSubTitleControlComponent, { EDIT_SUBTITLE_CONTROL_COMPONENT }        from './editSubTitleControl/stepway.editSubTitleControl.component';
 import editTextareaControlComponent, { EDIT_TEXTAREA_CONTROL_COMPONENT }        from './editTextareaControl/stepway.editTextareaControl.component';
 import editTextInputControlComponent, { EDIT_TEXTINPUT_CONTROL_COMPONENT }      from './editTextInputControl/stepway.editTextInputControl.component';
-import editValidEditFooterTemplate, { EDIT_EDIT_VALID_FOOTER_COMPONENT }        from './editValidEditFooter/stepway.editValidEditFooter.component';
+import editValidEditFooterComponent, { EDIT_EDIT_VALID_FOOTER_COMPONENT }       from './editValidEditFooter/stepway.editValidEditFooter.component';
+import editChooseControlComponent, { EDIT_CHOOSE_CONTROL_COMPONENT }            from './editChooseControl/stepway.editChooseControl.component';
 
 const EDIT_CONTROLE_MODAL_NAME = 'editControlModalModule';
 
@@ -32,4 +33,5 @@ export default angular
                 .component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent)
                 .component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent)
                 .component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent)
-                .component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterTemplate);
+                .component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent)
+                .component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent);

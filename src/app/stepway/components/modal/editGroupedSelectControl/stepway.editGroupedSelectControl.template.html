@@ -209,12 +209,12 @@
                     <div class="pull-right">
                       <button
                         class="btn btn-primary"
-                        ng-click="$ctrl.upThisGroupedSelectRow($index)">
+                        ng-click="$ctrl.upThisGroupedSelectRow({index: $index})">
                         <i class="fa fa-arrow-up"></i>
                       </button>
                       <button
                         class="btn btn-primary"
-                        ng-click="$ctrl.downThisGroupedSelectRow($index)">
+                        ng-click="$ctrl.downThisGroupedSelectRow({index: $index})">
                         <i class="fa fa-arrow-down"></i>
                       </button>
                       <button
@@ -224,7 +224,7 @@
                       </button>
                       <button
                         class="btn btn-danger"
-                        ng-click="$ctrl.removeGroupedSelectRow($index)">
+                        ng-click="$ctrl.removeGroupedSelectRow({index: $index})">
                         <i class="fa fa-trash-o"></i>
                       </button>
                     </div>

@@ -150,17 +150,17 @@
                       <div class="pull-right">
                         <button
                           class="btn btn-primary"
-                          ng-click="$ctrl.upThisRadioRow($index)">
+                          ng-click="$ctrl.upThisRadioRow({index: $index})">
                           <i class="fa fa-arrow-up"></i>
                         </button>
                         <button
                           class="btn btn-primary"
-                          ng-click="$ctrl.downThisRadioRow($index)">
+                          ng-click="$ctrl.downThisRadioRow({index: $index})">
                           <i class="fa fa-arrow-down"></i>
                         </button>
                         <button
                           class="btn btn-danger"
-                          ng-click="$ctrl.removeRadioRow($index)">
+                          ng-click="$ctrl.removeRadioRow({index: $index})">
                           <i class="fa fa-trash-o"></i>
                         </button>
                       </div>

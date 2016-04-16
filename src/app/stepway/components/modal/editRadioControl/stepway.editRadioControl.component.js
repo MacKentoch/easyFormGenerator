@@ -9,7 +9,6 @@ export const editRadioControlComponent = {
     radioRowCollection: '=',
     newOptionRadio:     '=',
     addNewOptionRadio:  '&',
-    radioFilter:        '&',
     upThisRadioRow:     '&',
     downThisRadioRow:   '&',
     removeRadioRow:     '&'
