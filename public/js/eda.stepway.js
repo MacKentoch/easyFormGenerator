@@ -2783,56 +2783,56 @@ $__System.register('35', ['14', '20', '22', '24', '26', '28', '30', '32', '33', 
         var editModalController, EDIT_MODAL_CONTROLLER_NAME, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME;
         return {
                 setters: [function (_) {
-                        editModalController = _['default'];
+                        editModalController = _.editModalController;
                         EDIT_MODAL_CONTROLLER_NAME = _.EDIT_MODAL_CONTROLLER_NAME;
                 }, function (_2) {
-                        editDateControlComponent = _2['default'];
+                        editDateControlComponent = _2.editDateControlComponent;
                         EDIT_DATE_COMPONENT = _2.EDIT_DATE_COMPONENT;
                 }, function (_3) {
-                        editEmailControlComponent = _3['default'];
+                        editEmailControlComponent = _3.editEmailControlComponent;
                         EDIT_EMAIL_COMPONENT = _3.EDIT_EMAIL_COMPONENT;
                 }, function (_4) {
-                        editGroupedSelectControlComponent = _4['default'];
+                        editGroupedSelectControlComponent = _4.editGroupedSelectControlComponent;
                         EDIT_GROUPED_SELECT_COMPONENT = _4.EDIT_GROUPED_SELECT_COMPONENT;
                 }, function (_5) {
-                        editHeaderControlComponent = _5['default'];
+                        editHeaderControlComponent = _5.editHeaderControlComponent;
                         EDIT_HEADER_CONTROL_COMPONENT = _5.EDIT_HEADER_CONTROL_COMPONENT;
                 }, function (_6) {
-                        editPasswordControlComponent = _6['default'];
+                        editPasswordControlComponent = _6.editPasswordControlComponent;
                         EDIT_PASSWORD_CONTROL_COMPONENT = _6.EDIT_PASSWORD_CONTROL_COMPONENT;
                 }, function (_7) {
-                        editTextareaControlComponent = _7['default'];
+                        editTextareaControlComponent = _7.editTextareaControlComponent;
                         EDIT_TEXTAREA_CONTROL_COMPONENT = _7.EDIT_TEXTAREA_CONTROL_COMPONENT;
                 }, function (_8) {
-                        editTextInputControlComponent = _8['default'];
+                        editTextInputControlComponent = _8.editTextInputControlComponent;
                         EDIT_TEXTINPUT_CONTROL_COMPONENT = _8.EDIT_TEXTINPUT_CONTROL_COMPONENT;
                 }, function (_9) {
-                        editValidEditFooterComponent = _9['default'];
+                        editValidEditFooterComponent = _9.editValidEditFooterComponent;
                         EDIT_EDIT_VALID_FOOTER_COMPONENT = _9.EDIT_EDIT_VALID_FOOTER_COMPONENT;
                 }, function (_10) {
-                        editChooseControlComponent = _10['default'];
+                        editChooseControlComponent = _10.editChooseControlComponent;
                         EDIT_CHOOSE_CONTROL_COMPONENT = _10.EDIT_CHOOSE_CONTROL_COMPONENT;
                 }, function (_a) {
-                        editBlankControlComponent = _a['default'];
+                        editBlankControlComponent = _a.editBlankControlComponent;
                         EDIT_BLANK_CONTROL_COMPONENT = _a.EDIT_BLANK_CONTROL_COMPONENT;
                 }, function (_c) {
-                        editBasicSelectControlComponent = _c['default'];
+                        editBasicSelectControlComponent = _c.editBasicSelectControlComponent;
                         EDIT_BASIC_SELECT_COMPONENT = _c.EDIT_BASIC_SELECT_COMPONENT;
                 }, function (_e) {
-                        editCheckBoxControlComponent = _e['default'];
+                        editCheckBoxControlComponent = _e.editCheckBoxControlComponent;
                         EDIT_CHECKBOX_COMPONENT = _e.EDIT_CHECKBOX_COMPONENT;
                 }, function (_a2) {
-                        editRadioControlComponent = _a2['default'];
+                        editRadioControlComponent = _a2.editRadioControlComponent;
                         EDIT_RADIO_CONTROL_COMPONENT = _a2.EDIT_RADIO_CONTROL_COMPONENT;
                 }, function (_c2) {
-                        editRichTextEditorControlComponent = _c2['default'];
+                        editRichTextEditorControlComponent = _c2.editRichTextEditorControlComponent;
                         EDIT_RICH_TEXT_EDITOR_COMPONENT = _c2.EDIT_RICH_TEXT_EDITOR_COMPONENT;
                 }, function (_e2) {
-                        editSubTitleControlComponent = _e2['default'];
+                        editSubTitleControlComponent = _e2.editSubTitleControlComponent;
                         EDIT_SUBTITLE_CONTROL_COMPONENT = _e2.EDIT_SUBTITLE_CONTROL_COMPONENT;
                 }],
                 execute: function () {
-                        EDIT_CONTROLE_MODAL_NAME = 'editControlModalModule';
+                        EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
 
                         _export('default', angular.module(EDIT_CONTROLE_MODAL_NAME, []).controller(EDIT_MODAL_CONTROLLER_NAME, editModalController).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent).component(EDIT_DATE_COMPONENT, editDateControlComponent).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent).component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent).component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent));
                 }
