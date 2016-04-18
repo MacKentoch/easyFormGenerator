@@ -2,7 +2,6 @@ const EDIT_MODAL_CONTROLLER_NAME 		= 'editControlModalController';
 const EDIT_MODAL_CONTROLLERAS_NAME 	= 'editControlModCtrl';
 
 class editControlModalController {
-
 	constructor(  $uibModalInstance,
 								nyaSelect,
 								toaster,
@@ -44,7 +43,6 @@ class editControlModalController {
 		this.initNyaSelectConformingSelectedControl();
 	}
 
-
 	initNyaSelectConformingSelectedControl(){
 		//place nya-select to selection if not none :
 		if (this.nyaSelect.selectedControl !== 'none') {
@@ -56,9 +54,6 @@ class editControlModalController {
 			if (this.nyaSelect.selectedControl === 'Radio') 				this.bindRadioFromNYA();
 		}
 		this.initNyaSelectFiltered();
-
-		// console.info(`modal controller : nyaSelect`);
-		// console.dir(this.nyaSelect);
 	}
 
 	initNyaSelectFiltered(){
@@ -96,8 +91,6 @@ class editControlModalController {
 		}
 	}
 
-
-
 	bindGroupedSelectFromNYA(){
 		if (this.nyaSelect.temporyConfig.formlyOptions.length > 0) {
 			for (let i = 0; i <= this.nyaSelect.temporyConfig.formlyOptions.length-1; i++){
@@ -113,8 +106,6 @@ class editControlModalController {
 		}
 	}
 
-
-
 	addNewOptionRadio() {
 		let result = this.selectOptionManage.addNewOptionRadio(this.radioRowCollection, this.newOptionRadio.saisie);
 		if (result.resultFlag === false) {
@@ -128,8 +119,6 @@ class editControlModalController {
 		}
 		this.newOptionRadio = {saisie: ''}; //reset input
 	}
-
-
 
 	removeRadioRow(index) {
 		let result = this.selectOptionManage.removeOption(this.radioRowCollection, index);
@@ -157,7 +146,6 @@ class editControlModalController {
 		}
 	}
 
-
 	downThisRadioRow(index) {
 		let result = this.selectOptionManage.downthisOption(this.radioRowCollection, index);
 		if (result.resultFlag === false) {
@@ -170,7 +158,6 @@ class editControlModalController {
 			});
 		}
 	}
-
 
 	addNewOptionBasicSelect() {
 		let result = this.selectOptionManage.addNewOptionBasicSelect(this.basicSelectRowCollection, this.newOptionBasicSelect.saisie);
@@ -229,7 +216,6 @@ class editControlModalController {
 		this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
 	}
 
-
 	addNewGroupToGroupedSelect(){
 		if (this.newGroupGroupedSelect.saisie !== '') {
 			for (let i = this.GroupedSelectGroups.list.length - 1; i >= 0; i--) {
@@ -256,8 +242,6 @@ class editControlModalController {
 		this.newGroupGroupedSelect.saisie = '';
 	}
 
-
-
 	addNewOptionGroupedSelect() {
 		let result = this.selectOptionManage.addNewOptionGroupedSelect(this.groupedSelectRowCollection, this.newOptionGroupedSelect.saisie, '');
 		if (result.resultFlag === false) {
@@ -275,7 +259,6 @@ class editControlModalController {
 		this.newOptionGroupedSelect = {saisie: ''};
 	}
 
-
 	removeGroupedSelectRow(index) {
 		let result = this.selectOptionManage.removeOption(this.groupedSelectRowCollection, index);
 		if (result.resultFlag === false) {
@@ -288,7 +271,6 @@ class editControlModalController {
 			});
 		}
 	}
-
 
 	upThisGroupedSelectRow(index){
 		let result = this.selectOptionManage.upthisOption(this.groupedSelectRowCollection, index);
@@ -348,7 +330,6 @@ class editControlModalController {
 		if (this.nyaSelect.selectedControl === 'Date') this.initDatePicker();
 	}
 
-
 	ok() {
 		if (this.nyaSelect.selectedControl === 'BasicSelect') 	this.bindBasicSelectToNya();
 		if (this.nyaSelect.selectedControl === 'GroupedSelect') this.bindGroupedSelectToNya();
@@ -362,7 +343,6 @@ class editControlModalController {
 	cancel() {
 		this.$modalInstance.dismiss('cancel');
 	}
-
 
 	bindBasicSelectToNya() {
 		let resetNyASelectOptions = [];
@@ -406,13 +386,11 @@ class editControlModalController {
 		}
 	}
 
-
 	initDatePicker() {
 		this.nyaSelect.temporyConfig.datepickerOptions = {
       format : this.demodt.formats[0]
     };
 	}
-
 
 	resetTemporyConfig(){
 		this.nyaSelectFiltered.temporyConfig = {
@@ -423,9 +401,6 @@ class editControlModalController {
 			formlyOptions			: []
 		};
 	}
-
-
-
 }
 
 

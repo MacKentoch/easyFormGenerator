@@ -1571,9 +1571,6 @@ $__System.register('14', ['15', '16'], function (_export) {
 							if (this.nyaSelect.selectedControl === 'Radio') this.bindRadioFromNYA();
 						}
 						this.initNyaSelectFiltered();
-
-						// console.info(`modal controller : nyaSelect`);
-						// console.dir(this.nyaSelect);
 					}
 				}, {
 					key: 'initNyaSelectFiltered',
