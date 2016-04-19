@@ -34,17 +34,14 @@ class selectOptionManage {
 		};
 		let checkResult = this.validOption(selectObj, newOptionText);
 		if (checkResult.resultFlag === true){
-
 			let newOption = {
 				option	: newOptionText,
 				order		: selectObj.rows.length
 			};
-
 			selectObj.rows.push(newOption);
 			fullResponse.resultFlag = true;
 			fullResponse.details = '';
 			return fullResponse;
-
 		}else{
 			angular.copy(checkResult, fullResponse);
 			return fullResponse;
@@ -56,19 +53,15 @@ class selectOptionManage {
 			resultFlag 	: false,
 			details 		: ''
 		};
-
 		let checkResult = this.validOption(selectObj, newOptionText);
 		if (checkResult.resultFlag === true){
-
 			let newOption = {
 				option	: newOptionText,
 				order		: selectObj.rows.length
 			};
-
 			selectObj.rows.push(newOption);
 			fullResponse.resultFlag = true;
 			fullResponse.details 		= '';
-
 			return fullResponse;
 		}else{
 			angular.copy(checkResult, fullResponse);
@@ -81,9 +74,7 @@ class selectOptionManage {
 					resultFlag 	: false,
 					details 		: ''
 				};
-
 		let checkResult = this.validOption(selectObj, newOptionText);
-
 		if (checkResult.resultFlag === true){
 
 			let newOption = {
@@ -103,7 +94,6 @@ class selectOptionManage {
 		}
 	}
 
-
 	removeOption(selectObj, AtIndex) {
 		let fullResponse = {
 			resultFlag : false,
@@ -122,14 +112,11 @@ class selectOptionManage {
 		}
 	}
 
-
-
 	upthisOption(selectObj, indexOption){
 		var fullResponse = {
 			resultFlag : false,
 			details : ''
 		};
-
 		if (indexOption > -1) {
 			if (indexOption > 0) {
 				if (selectObj.rows[indexOption - 1]) {
@@ -156,13 +143,11 @@ class selectOptionManage {
 		}
 	}
 
-
 	downthisOption(selectObj, indexOption){
 		let fullResponse = {
 			resultFlag : false,
 			details : ''
 		};
-
 		if (indexOption > -1) {
 			if (indexOption < selectObj.rows.length - 1){
 				if (selectObj.rows[indexOption + 1]) {
@@ -189,40 +174,33 @@ class selectOptionManage {
 		}
 	}
 
-
-
 	validOption(selectObj, newOptionText){
-			let fullResponse = {
-						resultFlag  : false,
-						details     : ''
-					};
-
-			if (typeof newOptionText === 'undefined') {
-				fullResponse.resultFlag = false;
-				fullResponse.details    = 'Entered option is empty';
-				return fullResponse;
-			}
-
-			if (newOptionText !== '') {
-				for (let i = selectObj.rows.length - 1; i >= 0; i--) {
-					if (selectObj.rows[i].option === newOptionText) {
-						fullResponse.resultFlag = false;
-						fullResponse.details    = 'Entered option is not unique';
-						return fullResponse;
-					}
-				}
-				fullResponse.resultFlag = true;
-				fullResponse.details    = '';
-				return fullResponse;
-			}
+		let fullResponse = {
+					resultFlag  : false,
+					details     : ''
+				};
+		if (typeof newOptionText === 'undefined') {
 			fullResponse.resultFlag = false;
 			fullResponse.details    = 'Entered option is empty';
 			return fullResponse;
+		}
+		if (newOptionText !== '') {
+			for (let i = selectObj.rows.length - 1; i >= 0; i--) {
+				if (selectObj.rows[i].option === newOptionText) {
+					fullResponse.resultFlag = false;
+					fullResponse.details    = 'Entered option is not unique';
+					return fullResponse;
+				}
+			}
+			fullResponse.resultFlag = true;
+			fullResponse.details    = '';
+			return fullResponse;
+		}
+		fullResponse.resultFlag = false;
+		fullResponse.details    = 'Entered option is empty';
+		return fullResponse;
 	}
-
-
 }
-
 
 selectOptionManage.$inject = [];
 

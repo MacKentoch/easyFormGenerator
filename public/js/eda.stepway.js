@@ -2780,7 +2780,7 @@ $__System.register('35', ['14', '20', '22', '24', '26', '28', '30', '32', '33', 
         var editModalController, EDIT_MODAL_CONTROLLER_NAME, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME;
         return {
                 setters: [function (_) {
-                        editModalController = _.editModalController;
+                        editModalController = _['default'];
                         EDIT_MODAL_CONTROLLER_NAME = _.EDIT_MODAL_CONTROLLER_NAME;
                 }, function (_2) {
                         editDateControlComponent = _2.editDateControlComponent;

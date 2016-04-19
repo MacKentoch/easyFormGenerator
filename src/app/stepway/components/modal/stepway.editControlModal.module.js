@@ -1,4 +1,4 @@
-import { editModalController,  EDIT_MODAL_CONTROLLER_NAME }                     from './stepway.editControlModal.controller';
+import editModalController,  { EDIT_MODAL_CONTROLLER_NAME }                     from './stepway.editControlModal.controller';
 import { editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT }              from './editBlankControl/stepway.editBlankControl.component';
 import { editBasicSelectControlComponent,  EDIT_BASIC_SELECT_COMPONENT }        from './editBasicSelectControl/stepway.editBasicSelectControl.component';
 import { editCheckBoxControlComponent,  EDIT_CHECKBOX_COMPONENT }               from './editCheckBoxControl/stepway.editCheckBoxControl.component';

@@ -15,7 +15,6 @@ class editControlModalController {
 		this.$modalProxy 					= $modalProxy;
 
 		this.init();
-
 	}
 
 	init() {
@@ -413,7 +412,10 @@ const toInject =  [
 ];
 
 editControlModalController.$inject = toInject;
+
 export default editControlModalController;
+
 export {
 	EDIT_MODAL_CONTROLLER_NAME,
-	EDIT_MODAL_CONTROLLERAS_NAME};
+	EDIT_MODAL_CONTROLLERAS_NAME
+};
