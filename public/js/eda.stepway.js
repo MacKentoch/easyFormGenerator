@@ -4171,12 +4171,10 @@ $__System.register('3f', ['15', '16'], function (_export) {
 						};
 						var checkResult = this.validOption(selectObj, newOptionText);
 						if (checkResult.resultFlag === true) {
-
 							var newOption = {
 								option: newOptionText,
 								order: selectObj.rows.length
 							};
-
 							selectObj.rows.push(newOption);
 							fullResponse.resultFlag = true;
 							fullResponse.details = '';
@@ -4193,19 +4191,15 @@ $__System.register('3f', ['15', '16'], function (_export) {
 							resultFlag: false,
 							details: ''
 						};
-
 						var checkResult = this.validOption(selectObj, newOptionText);
 						if (checkResult.resultFlag === true) {
-
 							var newOption = {
 								option: newOptionText,
 								order: selectObj.rows.length
 							};
-
 							selectObj.rows.push(newOption);
 							fullResponse.resultFlag = true;
 							fullResponse.details = '';
-
 							return fullResponse;
 						} else {
 							angular.copy(checkResult, fullResponse);
@@ -4219,9 +4213,7 @@ $__System.register('3f', ['15', '16'], function (_export) {
 							resultFlag: false,
 							details: ''
 						};
-
 						var checkResult = this.validOption(selectObj, newOptionText);
-
 						if (checkResult.resultFlag === true) {
 
 							var newOption = {
@@ -4265,7 +4257,6 @@ $__System.register('3f', ['15', '16'], function (_export) {
 							resultFlag: false,
 							details: ''
 						};
-
 						if (indexOption > -1) {
 							if (indexOption > 0) {
 								if (selectObj.rows[indexOption - 1]) {
@@ -4298,7 +4289,6 @@ $__System.register('3f', ['15', '16'], function (_export) {
 							resultFlag: false,
 							details: ''
 						};
-
 						if (indexOption > -1) {
 							if (indexOption < selectObj.rows.length - 1) {
 								if (selectObj.rows[indexOption + 1]) {
@@ -4331,13 +4321,11 @@ $__System.register('3f', ['15', '16'], function (_export) {
 							resultFlag: false,
 							details: ''
 						};
-
 						if (typeof newOptionText === 'undefined') {
 							fullResponse.resultFlag = false;
 							fullResponse.details = 'Entered option is empty';
 							return fullResponse;
 						}
-
 						if (newOptionText !== '') {
 							for (var i = selectObj.rows.length - 1; i >= 0; i--) {
 								if (selectObj.rows[i].option === newOptionText) {

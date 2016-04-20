@@ -16,7 +16,7 @@
  * 3) want to dist, use :
  * - $ gulp dist
  * ——————————————————————————————————————————————
- * MIT (2015) - Erwan Datin (MacKentoch)
+ * MIT (2016) - Erwan Datin (MacKentoch)
  * https://github.com/MacKentoch/easyFormGenerator
  * ——————————————————————————————————————————————
 **/
@@ -533,7 +533,7 @@ gulp.task('dist', [
 		gulpConfig.base.root + gulpConfig.dragDropWayHtmlFile.name,
 		gulpConfig.base.root + gulpConfig.easyFormViewerHtmlFile.name
 	];
-  
+
 	//html files
 	gulp.src(indexHtmlFiles)
 	.pipe(gulp.dest(gulpConfig.base.distDir ,{cwd: gulpConfig.base.root}));
