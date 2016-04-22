@@ -14,6 +14,7 @@ import { editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT }        
 import { editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT }      from './editTextInputControl/stepway.editTextInputControl.component';
 import { editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT }       from './editValidEditFooter/stepway.editValidEditFooter.component';
 import { editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT }            from './editChooseControl/stepway.editChooseControl.component';
+import { editIpAdressControlComponent,  EDIT_IP_ADRESS_COMPONENT }              from './editIpAdressControl/stepway.editIpAdressControl.component';
 
 const EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
 
@@ -34,4 +35,5 @@ export default angular
                 .component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent)
                 .component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent)
                 .component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent)
-                .component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent);
+                .component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent)
+                .component(EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent);
