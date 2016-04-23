@@ -7,7 +7,7 @@ function easyFormSteWayConfig($translateProvider) {
 	let _currentLanguage		= initDefaultLanguage();
 	let _showPreviewPanel		= getDefaultshowPreviewPanel();
 	let _showPreviewModels	= getDefaultShowPreviewModel();
-  
+
 	this.$get 							= easyFormStepWayConfigGET;
 	this.setModalAnimation 	= setModalAnimation;
 	this.getModalAnimation	= getModalAnimation;
@@ -51,6 +51,7 @@ function easyFormSteWayConfig($translateProvider) {
 			{name: 'TextInput', 			enabled: true},
 			{name: 'Password', 				enabled: true},
 			{name: 'Email', 					enabled: true},
+      {name: 'IpAdress', 			  enabled: true},
 			{name: 'Date', 						enabled: true},
 			{name: 'Texarea',	 				enabled: true},
 			{name: 'RichTextEditor', 	enabled: true},

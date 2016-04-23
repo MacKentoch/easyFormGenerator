@@ -850,7 +850,7 @@ $__System.registerDynamic("12", [], true, function($__require, exports, module) 
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<div class=\"modal-header\">\n  <h3 class=\"modal-title greyText\">\n    {{'SELECT_A_CTRL' | translate}}\n  </h3>\n</div>\n<div class=\"modal-body\">\n  <hr/>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <h5 class=\"greyText\">\n        <i class=\"fa fa-filter\"></i>\n        &nbsp;\n        {{'SELECT_CTRL_IN_LIST' | translate}} :\n      </h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <edit-choose-control\n        model-nya-select=\"editControlModCtrl.modelNyaSelect\"\n        nya-select-filtered=\"editControlModCtrl.nyaSelectFiltered\"\n        select-this-control=\"editControlModCtrl.selectThisControl(optionId)\">\n      </edit-choose-control>\n    </div>\n  </div>\n  <hr/>\n  <div ng-switch on=\"editControlModCtrl.nyaSelect.selectedControl\">\n    <div ng-switch-when=\"none\">\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp; {{'SELECT_A_CTRL' | translate}}\n          </h5>\n        </div>\n      </div>\n    </div>\n    <div ng-switch-when=\"empty\">\n      <edit-blank-control></edit-blank-control>\n    </div>\n    <div ng-switch-when=\"Header\">\n      <edit-header-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-header-control>\n    </div>\n    <div ng-switch-when=\"Subtitle\">\n      <edit-sub-title-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-sub-title-control>\n    </div>\n    <div ng-switch-when=\"TextInput\">\n      <edit-text-input-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-input-control>\n    </div>\n    <div ng-switch-when=\"Password\">\n      <edit-password-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-password-control>\n    </div>\n    <div ng-switch-when=\"Email\">\n      <edit-email-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-email-control>\n    </div>\n    <div ng-switch-when=\"Date\">\n      <edit-date-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        demodt=\"editControlModCtrl.demodt\"\n        date-options=\"editControlModCtrl.dateOptions\"\n        open=\"editControlModCtrl.open(event)\">\n      <edit-date-control>\n    <div ng-switch-when=\"Texarea\">\n      <edit-text-area-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-area-control>\n    </div>\n    <div ng-switch-when=\"RichTextEditor\">\n      <edit-rich-text-editor-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-rich-text-editor-control>\n    </div>\n    <div ng-switch-when=\"Radio\">\n      <edit-radio-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        radio-row-collection=\"editControlModCtrl.radioRowCollection\"\n        new-option-radio=\"editControlModCtrl.newOptionRadio\"\n        add-new-option-radio=\"editControlModCtrl.addNewOptionRadio()\"\n        up-this-radio-row=\"editControlModCtrl.upThisRadioRow(index)\"\n        down-this-radio-row=\"editControlModCtrl.downThisRadioRow(index)\"\n        remove-radio-row=\"editControlModCtrl.removeRadioRow(index)\">\n      </edit-radio-control>\n    </div>\n    <div ng-switch-when=\"Checkbox\">\n      <!-- checkbox -->\n      <edit-check-box-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-check-box-control>\n    </div>\n    <div ng-switch-when=\"BasicSelect\">\n      <edit-basic-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        modelbasic-select=\"editControlModCtrl.\"\n        basic-select-row-collection=\"editControlModCtrl.basicSelectRowCollection\"\n        new-option-basic-select=\"editControlModCtrl.newOptionBasicSelect\"\n        add-new-option-basic-select=\"editControlModCtrl.\"\n        up-this-row=\"editControlModCtrl.\"\n        down-this-row=\"editControlModCtrl.\"\n        remove-row=\"editControlModCtrl.\"\n        >\n      </edit-basic-select-control>\n    </div>\n    <div ng-switch-when=\"GroupedSelect\">\n      <edit-grouped-select\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        grouped-select-row-collection=\"editControlModCtrl.groupedSelectRowCollection\"\n        new-option-grouped-select=\"editControlModCtrl.newOptionGroupedSelect\"\n        new-group-grouped-select=\"editControlModCtrl.newGroupGroupedSelect\"\n        group-select-group-click=\"editControlModCtrl.groupSelectGroupClick\"\n        Grouped-select-groups=\"editControlModCtrl.GroupedSelectGroups\"\n        add-new-option-grouped-select=\"editControlModCtrl.addNewOptionGroupedSelect()\"\n        add-new-group-to-grouped-select=\"editControlModCtrl.addNewGroupToGroupedSelect()\"\n        up-this-grouped-select-row=\"editControlModCtrl.upThisGroupedSelectRow(index)\"\n        down-this-grouped-select-row=\"editControlModCtrl.downThisGroupedSelectRow(index)\"\n        show-group-list-to-choose=\"editControlModCtrl.showGroupListToChoose()\"\n        remove-grouped-select-row=\"editControlModCtrl.removeGroupedSelectRow(index)\"\n        >\n      </edit-grouped-select>\n    </div>\n  </div>\n</div>\n<editValidEditFooter\n  nya-select=\"editControlModCtrl.nyaSelect\"\n  ok=\"editControlModCtrl.ok()\"\n  cancel=\"editControlModCtrl.cancel()\" >\n</editValidEditFooter>\n";
+  module.exports = "<div class=\"modal-header\">\n  <h3 class=\"modal-title greyText\">\n    {{'SELECT_A_CTRL' | translate}}\n  </h3>\n</div>\n<div class=\"modal-body\">\n  <hr/>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <h5 class=\"greyText\">\n        <i class=\"fa fa-filter\"></i>\n        &nbsp;\n        {{'SELECT_CTRL_IN_LIST' | translate}} :\n      </h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <edit-choose-control\n        model-nya-select=\"editControlModCtrl.modelNyaSelect\"\n        nya-select-filtered=\"editControlModCtrl.nyaSelectFiltered\"\n        select-this-control=\"editControlModCtrl.selectThisControl(optionId)\">\n      </edit-choose-control>\n    </div>\n  </div>\n  <hr/>\n  <div ng-switch on=\"editControlModCtrl.nyaSelect.selectedControl\">\n    <div ng-switch-when=\"none\">\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp; {{'SELECT_A_CTRL' | translate}}\n          </h5>\n        </div>\n      </div>\n    </div>\n    <div ng-switch-when=\"empty\">\n      <edit-blank-control></edit-blank-control>\n    </div>\n    <div ng-switch-when=\"Header\">\n      <edit-header-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-header-control>\n    </div>\n    <div ng-switch-when=\"Subtitle\">\n      <edit-sub-title-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-sub-title-control>\n    </div>\n    <div ng-switch-when=\"TextInput\">\n      <edit-text-input-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-input-control>\n    </div>\n    <div ng-switch-when=\"Password\">\n      <edit-password-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-password-control>\n    </div>\n    <div ng-switch-when=\"Email\">\n      <edit-email-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-email-control>\n    </div>\n    <div ng-switch-when=\"IpAdress\">\n      <edit-ip-adress-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-ip-adress-control>\n    </div>\n    <div ng-switch-when=\"Date\">\n      <edit-date-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        demodt=\"editControlModCtrl.demodt\"\n        date-options=\"editControlModCtrl.dateOptions\"\n        open=\"editControlModCtrl.open(event)\">\n      <edit-date-control>\n    <div ng-switch-when=\"Texarea\">\n      <edit-text-area-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-area-control>\n    </div>\n    <div ng-switch-when=\"RichTextEditor\">\n      <edit-rich-text-editor-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-rich-text-editor-control>\n    </div>\n    <div ng-switch-when=\"Radio\">\n      <edit-radio-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        radio-row-collection=\"editControlModCtrl.radioRowCollection\"\n        new-option-radio=\"editControlModCtrl.newOptionRadio\"\n        add-new-option-radio=\"editControlModCtrl.addNewOptionRadio()\"\n        up-this-radio-row=\"editControlModCtrl.upThisRadioRow(index)\"\n        down-this-radio-row=\"editControlModCtrl.downThisRadioRow(index)\"\n        remove-radio-row=\"editControlModCtrl.removeRadioRow(index)\">\n      </edit-radio-control>\n    </div>\n    <div ng-switch-when=\"Checkbox\">\n      <!-- checkbox -->\n      <edit-check-box-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-check-box-control>\n    </div>\n    <div ng-switch-when=\"BasicSelect\">\n      <edit-basic-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        modelbasic-select=\"editControlModCtrl.\"\n        basic-select-row-collection=\"editControlModCtrl.basicSelectRowCollection\"\n        new-option-basic-select=\"editControlModCtrl.newOptionBasicSelect\"\n        add-new-option-basic-select=\"editControlModCtrl.\"\n        up-this-row=\"editControlModCtrl.\"\n        down-this-row=\"editControlModCtrl.\"\n        remove-row=\"editControlModCtrl.\"\n        >\n      </edit-basic-select-control>\n    </div>\n    <div ng-switch-when=\"GroupedSelect\">\n      <edit-grouped-select\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        grouped-select-row-collection=\"editControlModCtrl.groupedSelectRowCollection\"\n        new-option-grouped-select=\"editControlModCtrl.newOptionGroupedSelect\"\n        new-group-grouped-select=\"editControlModCtrl.newGroupGroupedSelect\"\n        group-select-group-click=\"editControlModCtrl.groupSelectGroupClick\"\n        Grouped-select-groups=\"editControlModCtrl.GroupedSelectGroups\"\n        add-new-option-grouped-select=\"editControlModCtrl.addNewOptionGroupedSelect()\"\n        add-new-group-to-grouped-select=\"editControlModCtrl.addNewGroupToGroupedSelect()\"\n        up-this-grouped-select-row=\"editControlModCtrl.upThisGroupedSelectRow(index)\"\n        down-this-grouped-select-row=\"editControlModCtrl.downThisGroupedSelectRow(index)\"\n        show-group-list-to-choose=\"editControlModCtrl.showGroupListToChoose()\"\n        remove-grouped-select-row=\"editControlModCtrl.removeGroupedSelectRow(index)\"\n        >\n      </edit-grouped-select>\n    </div>\n  </div>\n</div>\n<edit-valid-edit-footer\n  nya-select=\"editControlModCtrl.nyaSelect\"\n  ok=\"editControlModCtrl.ok()\"\n  cancel=\"editControlModCtrl.cancel()\" >\n</edit-valid-edit-footer>\n";
   global.define = __define;
   return module.exports;
 });
@@ -1348,7 +1348,7 @@ $__System.register('18', [], function (_export) {
 
 		//list of controls
 		function controlsList() {
-			var controls = [{ name: 'empty', enabled: true }, { name: 'Header', enabled: true }, { name: 'Subtitle', enabled: true }, { name: 'TextInput', enabled: true }, { name: 'Password', enabled: true }, { name: 'Email', enabled: true }, { name: 'Date', enabled: true }, { name: 'Texarea', enabled: true }, { name: 'RichTextEditor', enabled: true }, { name: 'Radio', enabled: true }, { name: 'Checkbox', enabled: true }, { name: 'BasicSelect', enabled: true }, { name: 'GroupedSelect', enabled: true }];
+			var controls = [{ name: 'empty', enabled: true }, { name: 'Header', enabled: true }, { name: 'Subtitle', enabled: true }, { name: 'TextInput', enabled: true }, { name: 'Password', enabled: true }, { name: 'Email', enabled: true }, { name: 'IpAdress', enabled: true }, { name: 'Date', enabled: true }, { name: 'Texarea', enabled: true }, { name: 'RichTextEditor', enabled: true }, { name: 'Radio', enabled: true }, { name: 'Checkbox', enabled: true }, { name: 'BasicSelect', enabled: true }, { name: 'GroupedSelect', enabled: true }];
 			return controls;
 		}
 
@@ -2774,10 +2774,63 @@ $__System.register('34', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('35', ['14', '20', '22', '24', '26', '28', '30', '32', '33', '34', '1a', '1c', '1e', '2a', '2c', '2e'], function (_export) {
+$__System.registerDynamic("35", [], true, function($__require, exports, module) {
+  ;
+  var global = this,
+      __define = global.define;
+  global.define = undefined;
+  module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputIpAdress\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputIpAdress\"\n              placeholder=\"{{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\">\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'PLACEHOLDER' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"{{'ADD_EDIT_PLACEHOLD' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+  global.define = __define;
+  return module.exports;
+});
+
+$__System.register('36', ['15', '16', '35'], function (_export) {
+  var _createClass, _classCallCheck, editIpAdressControlTemplate, EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }, function (_3) {
+      editIpAdressControlTemplate = _3['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      EDIT_IP_ADRESS_COMPONENT = 'editIpAdressControl';
+
+      _export('EDIT_IP_ADRESS_COMPONENT', EDIT_IP_ADRESS_COMPONENT);
+
+      editIpAdressControlComponent = {
+        template: editIpAdressControlTemplate,
+        bindings: {
+          nyaSelect: '='
+        },
+        controller: (function () {
+          function editIpAdressControlController() {
+            _classCallCheck(this, editIpAdressControlController);
+          }
+
+          _createClass(editIpAdressControlController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return editIpAdressControlController;
+        })()
+      };
+
+      _export('editIpAdressControlComponent', editIpAdressControlComponent);
+    }
+  };
+});
+$__System.register('37', ['14', '20', '22', '24', '26', '28', '30', '32', '33', '34', '36', '1a', '1c', '1e', '2a', '2c', '2e'], function (_export) {
         'use strict';
 
-        var editModalController, EDIT_MODAL_CONTROLLER_NAME, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME;
+        var editModalController, EDIT_MODAL_CONTROLLER_NAME, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME;
         return {
                 setters: [function (_) {
                         editModalController = _['default'];
@@ -2809,6 +2862,9 @@ $__System.register('35', ['14', '20', '22', '24', '26', '28', '30', '32', '33', 
                 }, function (_10) {
                         editChooseControlComponent = _10.editChooseControlComponent;
                         EDIT_CHOOSE_CONTROL_COMPONENT = _10.EDIT_CHOOSE_CONTROL_COMPONENT;
+                }, function (_11) {
+                        editIpAdressControlComponent = _11.editIpAdressControlComponent;
+                        EDIT_IP_ADRESS_COMPONENT = _11.EDIT_IP_ADRESS_COMPONENT;
                 }, function (_a) {
                         editBlankControlComponent = _a.editBlankControlComponent;
                         EDIT_BLANK_CONTROL_COMPONENT = _a.EDIT_BLANK_CONTROL_COMPONENT;
@@ -2831,11 +2887,11 @@ $__System.register('35', ['14', '20', '22', '24', '26', '28', '30', '32', '33', 
                 execute: function () {
                         EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
 
-                        _export('default', angular.module(EDIT_CONTROLE_MODAL_NAME, []).controller(EDIT_MODAL_CONTROLLER_NAME, editModalController).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent).component(EDIT_DATE_COMPONENT, editDateControlComponent).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent).component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent).component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent));
+                        _export('default', angular.module(EDIT_CONTROLE_MODAL_NAME, []).controller(EDIT_MODAL_CONTROLLER_NAME, editModalController).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent).component(EDIT_DATE_COMPONENT, editDateControlComponent).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent).component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent).component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent).component(EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent));
                 }
         };
 });
-$__System.register('36', [], function (_export) {
+$__System.register('38', [], function (_export) {
 	'use strict';
 
 	var resetNyaSelect, getResetConfig, returnControlFromAddCtrlModalModel, validKeyUniqueness;
@@ -2969,6 +3025,38 @@ $__System.register('36', [], function (_export) {
 									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
 									//check if validation is really dued to require validation
 									//and not another validation like emailShape validator
+									if (scope.to.required) return returnMsg;
+								}
+							}
+						}
+					}, {
+						id: 'IpAdress',
+						name: 'IpAdress',
+						subtitle: 'IpAdress',
+						group: 'input',
+						formlyType: 'input',
+						formlySubtype: 'ipadress',
+						formlyLabel: '',
+						formlyRequired: false,
+						formlyDesciption: '',
+						formlyOptions: [],
+						formlyExpressionProperties: {},
+						formlyValidators: {
+							ipAddress: {
+								expression: function expression($viewValue, $modelValue) {
+									var value = $modelValue || $viewValue;
+									return (/(\d{1,3}\.){3}\d{1,3}/.test(value)
+									);
+								},
+								message: '$viewValue + " is not a valid IP Address"' //,
+								// notLocalHost: '$viewValue !== "127.0.0.1"'
+							}
+						},
+						formlyValidation: {
+							messages: {
+								required: function required(viewValue, modelValue, scope) {
+									var defaultReturnMsg = 'this IP Adress field is required';
+									var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
 									if (scope.to.required) return returnMsg;
 								}
 							}
@@ -3262,7 +3350,7 @@ $__System.register('36', [], function (_export) {
 		}
 	};
 });
-$__System.register('37', ['15', '16', '36'], function (_export) {
+$__System.register('39', ['15', '16', '38'], function (_export) {
 	var _createClass, _classCallCheck, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
 
 	return {
@@ -3520,7 +3608,7 @@ $__System.register('37', ['15', '16', '36'], function (_export) {
 		}
 	};
 });
-$__System.register('38', ['37'], function (_export) {
+$__System.register('3a', ['39'], function (_export) {
 		/* global angular */
 		'use strict';
 
@@ -3537,7 +3625,7 @@ $__System.register('38', ['37'], function (_export) {
 				}
 		};
 });
-$__System.register('39', [], function (_export) {
+$__System.register('3b', [], function (_export) {
 	'use strict';
 
 	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerOptions, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerOptionsProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, resetDataModel, resetFormlyModel;
@@ -3906,7 +3994,7 @@ $__System.register('39', [], function (_export) {
 		}
 	};
 });
-$__System.register('3a', ['15', '16', '39'], function (_export) {
+$__System.register('3c', ['15', '16', '3b'], function (_export) {
 	var _createClass, _classCallCheck, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
@@ -3914,15 +4002,15 @@ $__System.register('3a', ['15', '16', '39'], function (_export) {
 			_createClass = _['default'];
 		}, function (_2) {
 			_classCallCheck = _2['default'];
-		}, function (_3) {
-			configurationModelInit = _3.configurationModelInit;
-			configurationModelResult = _3.configurationModelResult;
-			resetDataModel = _3.resetDataModel;
-			resetFormlyModel = _3.resetFormlyModel;
-			addOneColumnHeader = _3.addOneColumnHeader;
-			addOneColumnControl = _3.addOneColumnControl;
-			addTwoColumnControl = _3.addTwoColumnControl;
-			addThreeColumnControl = _3.addThreeColumnControl;
+		}, function (_b) {
+			configurationModelInit = _b.configurationModelInit;
+			configurationModelResult = _b.configurationModelResult;
+			resetDataModel = _b.resetDataModel;
+			resetFormlyModel = _b.resetFormlyModel;
+			addOneColumnHeader = _b.addOneColumnHeader;
+			addOneColumnControl = _b.addOneColumnControl;
+			addTwoColumnControl = _b.addTwoColumnControl;
+			addThreeColumnControl = _b.addThreeColumnControl;
 		}],
 		execute: function () {
 			/* global angular */
@@ -4007,14 +4095,14 @@ $__System.register('3a', ['15', '16', '39'], function (_export) {
 		}
 	};
 });
-$__System.register('3b', ['3a'], function (_export) {
+$__System.register('3d', ['3c'], function (_export) {
 		'use strict';
 
 		var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
 		return {
-				setters: [function (_a) {
-						$formlyProxy = _a['default'];
-						FORMLY_PROXY_SERVICE = _a.FORMLY_PROXY_SERVICE;
+				setters: [function (_c) {
+						$formlyProxy = _c['default'];
+						FORMLY_PROXY_SERVICE = _c.FORMLY_PROXY_SERVICE;
 				}],
 				execute: function () {
 						FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
@@ -4023,7 +4111,7 @@ $__System.register('3b', ['3a'], function (_export) {
 				}
 		};
 });
-$__System.registerDynamic("3c", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3e", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -4045,12 +4133,12 @@ $__System.registerDynamic("3c", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("3d", ["3c"], true, function($__require, exports, module) {
+$__System.registerDynamic("3f", ["3e"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('3c');
+  var $ = $__require('3e');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -4058,26 +4146,26 @@ $__System.registerDynamic("3d", ["3c"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("3e", ["3d"], true, function($__require, exports, module) {
+$__System.registerDynamic("40", ["3f"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('3d'),
+    "default": $__require('3f'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("15", ["3e"], true, function($__require, exports, module) {
+$__System.registerDynamic("15", ["40"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('3e')["default"];
+  var _Object$defineProperty = $__require('40')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -4118,7 +4206,7 @@ $__System.registerDynamic("16", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('3f', ['15', '16'], function (_export) {
+$__System.register('41', ['15', '16'], function (_export) {
 	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
 
 	return {
@@ -4355,15 +4443,15 @@ $__System.register('3f', ['15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('40', ['3f'], function (_export) {
+$__System.register('42', ['41'], function (_export) {
 		/* global angular */
 		'use strict';
 
 		var selectOptionManage, SELECT_OPTION_MANAGE_NAME, COMMON_MODULE_NAME;
 		return {
-				setters: [function (_f) {
-						selectOptionManage = _f['default'];
-						SELECT_OPTION_MANAGE_NAME = _f.SELECT_OPTION_MANAGE_NAME;
+				setters: [function (_) {
+						selectOptionManage = _['default'];
+						SELECT_OPTION_MANAGE_NAME = _.SELECT_OPTION_MANAGE_NAME;
 				}],
 				execute: function () {
 						COMMON_MODULE_NAME = 'commonModule';
@@ -4372,10 +4460,10 @@ $__System.register('40', ['3f'], function (_export) {
 				}
 		};
 });
-$__System.register('1', ['2', '4', '6', '19', '35', '38', '40', 'e', 'f', '3b'], function (_export) {
+$__System.register('1', ['2', '4', '6', '19', '37', '42', 'e', 'f', '3a', '3d'], function (_export) {
 	'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayFormlyProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayModalProxyModule, easyFormStepwayFormlyProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
 	return {
 		setters: [function (_) {}, function (_2) {
 			easyFormStepWayConfig = _2['default'];
@@ -4388,15 +4476,15 @@ $__System.register('1', ['2', '4', '6', '19', '35', '38', '40', 'e', 'f', '3b'],
 		}, function (_5) {
 			easyFormStepwayModalModule = _5['default'];
 		}, function (_6) {
-			easyFormStepwayModalProxyModule = _6['default'];
-		}, function (_7) {
-			easyFormStepwaySelectOptionManageModules = _7['default'];
+			easyFormStepwaySelectOptionManageModules = _6['default'];
 		}, function (_e) {
 			translateConfig = _e['default'];
 		}, function (_f) {
 			easyFormStepWayCoreModule = _f['default'];
-		}, function (_b) {
-			easyFormStepwayFormlyProxyModule = _b['default'];
+		}, function (_a) {
+			easyFormStepwayModalProxyModule = _a['default'];
+		}, function (_d) {
+			easyFormStepwayFormlyProxyModule = _d['default'];
 		}],
 		execute: function () {
 			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
