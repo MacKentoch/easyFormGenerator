@@ -1,4 +1,4 @@
-import editIpAdressControlTemplate from './stepway.editIpAdressControl.template.html!text';
+import editIpAdressControlTemplate from './stepway.editIpAdress.template.html!text';
 
 export const EDIT_IP_ADRESS_COMPONENT = 'editIpAdressControl';
 
