@@ -1,4 +1,4 @@
-export const STEP_ONE_COMMAND_PANEL_COMPONENT_NAME = 'StepOneCommandPanel';
+export const STEP_ONE_COMMAND_PANEL_COMPONENT_NAME = 'stepOneCommandPanel';
 
 export const StepOneCommandPanelComponent = {
   template: `
