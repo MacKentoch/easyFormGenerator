@@ -11,7 +11,7 @@ import {
   StepTwoVisualPanelComponent
 }                                       from './stepway.main.StepTwoVisualPanel.component';
 
-const STEP_TWO_CONTENT_COMPONENT_MODULE = '';
+const STEP_TWO_CONTENT_COMPONENT_MODULE = 'stepway.stepTwoContent.module';
 
 export default angular
                 .module(STEP_TWO_CONTENT_COMPONENT_MODULE, [])
