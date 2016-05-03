@@ -22,25 +22,17 @@
                   </step-indicator>
 							  </div>
 								<div class="row">
-
-								  <ul class="pager">
-  									<li ng-class="{'disabled':vm.stepIndicators[0]}">
-  										<button class="btn btn-primary customPagerButton" ng-click="vm.previousConfigStep()" >
-  											<i class="fa fa-arrow-left fa-2x pull-left"></i>
-  											<span class="pull-right">{{'PAGER_PREVIOUS' | translate}}</span>
-  										</button>
-  									</li>
-  									<li ng-class="{'disabled':vm.stepIndicators[3]}">
-  										<button class="btn btn-primary customPagerButton" ng-click="vm.nextConfigStep()">
-  											<span class="pull-left">{{'PAGER_NEXT' | translate}}</span>
-  											<i class="fa fa-arrow-right fa-2x pull-right"></i>
-  										</button>
-  									</li>
-  								</ul>
-
-									<div class="animate-switch-container" ng-switch on="vm.configuration.listConfigStep[vm.configuration.configStepCounter]">
-
-                  <div class="animate-switch" ng-switch-when="init">
+                  <pager
+                    step-indicators="vm.stepIndicators"
+                    next-config-step="vm.nextConfigStep()"
+                    previous-config-step="vm.previousConfigStep()">
+                  </pager>
+									<div
+                    class="animate-switch-container"
+                    ng-switch on="vm.configuration.listConfigStep[vm.configuration.configStepCounter]">
+                  <div
+                    class="animate-switch"
+                    ng-switch-when="init">
 										<div class="col-md-4" >
 											<div id="commandPanel">
 												<div  class="panel panel-default">
