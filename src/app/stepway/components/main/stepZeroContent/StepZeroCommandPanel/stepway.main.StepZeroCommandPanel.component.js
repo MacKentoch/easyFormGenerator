@@ -1,9 +1,9 @@
-export const STEP_ONE_COMMAND_PANEL_COMPONENT_NAME = 'stepZeroCommandPanel';
+export const STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME = 'stepZeroCommandPanel';
 
-export const StepOneCommandPanelComponent = {
+export const StepZeroCommandPanelComponent = {
   template: `
   <div id="commandPanel">
-    <div class="panel panel-default">
+    <div  class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
           <i class="fa fa-keyboard-o"></i>
@@ -14,33 +14,13 @@ export const StepOneCommandPanelComponent = {
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-            <h4 class="numberOfcolumsText text-center">
-              <i>
-                - {{'SELECTED_LINE' | translate}} -
-              </i>
-            </h4>
-            <h4 class="numberOfcolumsText text-center">
-              {{'NUMBER_OF_COLUMN' | translate}} :
-            </h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
-            <button
-              class="btn btn-primary pull-right btnMinusColumns"
-              ng-click="$ctrl.decreaseNumberOfColumns()">
-              <i class="fa fa-minus fa-1x"></i>
-            </button>
-          </div>
-          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
-            <span class="numberOfColumnsLabel ">
-              {{$ctrl.configuration.lines[$ctrl.configuration.activeLine -1].columns.length}}
+            <span class="addNewLine">
+              {{'ADD_NEW_LINE' | translate}} :
             </span>
-          </div>
-          <div class="col-xs-2 col-sm-2 col-md-2">
+            &nbsp;
             <button
-              class="btn btn-primary pull-left btnAddColumns"
-              ng-click="$ctrl.increaseNumberOfColumns()">
+              class="btn btn-primary"
+              ng-click="$ctrl.addNewline()">
               <i class="fa fa-plus fa-1x"></i>
             </button>
           </div>
@@ -50,12 +30,10 @@ export const StepOneCommandPanelComponent = {
   </div>
   `,
   bindings: {
-    configuration:            '=',
-    increaseNumberOfColumns:  '&',
-    decreaseNumberOfColumns:  '&'
+    addNewline:  '&'
   },
   controller:
-  class StepOneCommandPanelController {
+  class StepZeroCommandPanelController {
     constructor() {
 
     }

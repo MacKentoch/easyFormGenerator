@@ -1,20 +1,20 @@
 import {
-  stepOneContentComponent,
-  LINE_STEP_CONTENT_COMPONENT
-}                                       from './stepway.main.stepOneContent.component';
+  stepZeroContentComponent,
+  LINE_STEP_ZERO_CONTENT_COMPONENT
+}                                       from './stepway.main.stepZeroContent.component';
 import {
-  STEP_ONE_COMMAND_PANEL_COMPONENT_NAME,
-  StepOneCommandPanelComponent
-}                                       from './stepway.main.StepOneCommandPanel.component';
+  STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME,
+  StepZeroCommandPanelComponent
+}                                       from './stepway.main.StepZeroCommandPanel.component';
 import {
-  STEP_ONE_VISUAL_PANEL_COMPONENT_NAME,
-  StepOneVisualPanelComponent
-}                                       from './stepway.main.StepOneVisualPanel.component';
+  STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME,
+  StepZeroVisualPanelComponent
+}                                       from './stepway.main.StepZeroVisualPanel.component';
 
-const STEP_ONE_CONTENT_COMPONENT_MODULE = 'stepway.stepOneContent.module';
+const STEP_ZERO_CONTENT_COMPONENT_MODULE = 'stepway.stepZeroContent.module';
 
 export default angular
-                .module(STEP_ONE_CONTENT_COMPONENT_MODULE, [])
-                .component(LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent)
-                .component(STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent)
-                .component(STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent);
+                .module(STEP_ZERO_CONTENT_COMPONENT_MODULE, [])
+                .component(LINE_STEP_ZERO_CONTENT_COMPONENT, stepZeroContentComponent)
+                .component(STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent)
+                .component(STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent);

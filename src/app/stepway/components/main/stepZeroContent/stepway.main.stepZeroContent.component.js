@@ -1,15 +1,13 @@
-export const LINE_STEP_CONTENT_COMPONENT = 'stepZeroContent';
+export const LINE_STEP_ZERO_CONTENT_COMPONENT = 'stepZeroContent';
 
-export const stepOneContentComponent = {
+export const stepZeroContentComponent = {
   template : `
   <div
     class="animate-switch"
-    ng-switch-when="first">
+    ng-switch-when="init">
     <div class="col-md-4">
       <step-zero-command-panel
-        configuration="$ctrl.configuration"
-        increase-number-of-columns="$ctrl.configuration.increaseNumberOfColumns()"
-        decrease-number-of-columns="$ctrl.configuration.decreaseNumberOfColumns()">
+        add-newline="$ctrl.addNewline()">
       </step-zero-command-panel>
     </div>
     <div class="col-md-8">
@@ -27,7 +25,7 @@ export const stepOneContentComponent = {
     setActiveLineNumberParent:  '&'
   },
   controller:
-  class stepOneContentController {
+  class stepZeroContentController {
     constructor() {
 
     }
@@ -46,9 +44,4 @@ export const stepOneContentComponent = {
       return [];
     }
   }
-};
-
-export default stepOneContentComponent;
-export {
-  LINE_STEP_CONTENT_COMPONENT
 };
