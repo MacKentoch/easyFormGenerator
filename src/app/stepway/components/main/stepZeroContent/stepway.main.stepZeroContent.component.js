@@ -13,6 +13,9 @@ export const stepZeroContentComponent = {
     <div class="col-md-8">
       <step-zero-visual-panel
         configuration="$ctrl.configuration"
+        down-this-line="$ctrl.downThisLineParent(index)"
+        up-this-line="$ctrl.upThisLineParent(index)"
+        remove-this-line="$ctrl.removeThisLineParent(index)"
         set-active-line-number="$ctrl.setActiveLineNumberParent(index)">
       </step-zero-visual-panel>
     </div>
@@ -20,9 +23,10 @@ export const stepZeroContentComponent = {
   `,
   bindings : {
     configuration:              '=',
-    increaseNumberOfColumns:    '&',
-    decreaseNumberOfColumns:    '&',
-    setActiveLineNumberParent:  '&'
+    addNewline:                 '&',
+    downThisLine:               '&',
+    upThisLine:                 '&',
+    removeThisLine:             '&'
   },
   controller:
   class stepZeroContentController {
@@ -37,7 +41,19 @@ export const stepZeroContentComponent = {
     //            parent -> intermediate component (here) -> caller
     // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
     setActiveLineNumberParent(index) {
-      this.setActiveLineNumberParent({ index: index });
+      this.setActiveLineNumber({index});
+    }
+
+    removeThisLineParent(index) {
+      this.removeThisLine({index});
+    }
+
+    upThisLineParent(index) {
+      this.upThisLine({index});
+    }
+
+    downThisLineParent(index) {
+      this.downThisLine({index});
     }
 
     static get $inject() {

@@ -22,129 +22,24 @@
                   </step-indicator>
 							  </div>
 								<div class="row">
+
                   <pager
                     step-indicators="vm.stepIndicators"
                     next-config-step="vm.nextConfigStep()"
                     previous-config-step="vm.previousConfigStep()">
                   </pager>
+                  
 									<div
                     class="animate-switch-container"
                     ng-switch on="vm.configuration.listConfigStep[vm.configuration.configStepCounter]">
 
-
-
-                  <div
-                    class="animate-switch"
-                    ng-switch-when="init">
-										<div class="col-md-4" >
-
-
-
-											<div id="commandPanel">
-												<div  class="panel panel-default">
-													<div class="panel-heading">
-														<h3 class="panel-title"><i class="fa fa-keyboard-o"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>
-													</div>
-													<div class="panel-body">
-														<div class="row">
-															<div class="col-md-12">
-																<span class="addNewLine">{{'ADD_NEW_LINE' | translate}} :</span>&nbsp;
-																<button class="btn btn-primary" ng-click="vm.addNewline()"><i class="fa fa-plus fa-1x"></i></button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-
-
-										</div>
-										<div class="col-md-8">
-											<div id="visualPanel">
-												<div  class="panel panel-default">
-													<div class="panel-heading">
-														<h3 class="panel-title">
-                              <i class="fa fa-eye"></i>
-                              &nbsp;
-                              {{'VISUAL_PANEL' | translate}}
-                            </h3>
-													</div>
-													<div class="panel-body">
-															<!-- lines -->
-														<ul class="list-group">
-															<li
-                                class="list-group-item"
-                                ng-repeat="line in vm.configuration.lines track by $index">
-															  <!-- columns -->
-																<div ng-switch on="line.columns.length">
-																	<div
-                                    class="row linesList"
-                                    ng-switch-when="1">
-																	  <div
-                                      class="col-md-12 lineCommandButtons"
-                                      ng-show="vm.configuration.lines.length > 1">
-																			<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
-																			<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																			<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
-																		</div>
-																		<div class="col-md-12">
-																			<div class="col-md-12 well">
-																				<button class="btn btn-lg btn-block  btn-default disabled">
-                                          {{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																				</button>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="row linesList" ng-switch-when="2">
-																		<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
-																			<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
-																			<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																			<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
-																		</div>
-																		<div class="col-md-12">
-																			<div class="col-md-6 well">
-																				<button class="btn btn-lg btn-block  btn-default disabled">
-																						{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																				</button>
-																			</div>
-																			<div class="col-md-6 well">
-																				<button class="btn btn-lg btn-block  btn-default disabled">
-																						{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																				</button>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="row linesList" ng-switch-when="3">
-																		<div class="col-md-12 lineCommandButtons" ng-show="vm.configuration.lines.length > 1">
-																			<button class="btn btn-warning" ng-hide="$index==0" ng-click="vm.upThisLine($index)"><i class="fa fa-arrow-up"></i></button>
-																			<button class="btn btn-warning" ng-hide="$index==(vm.configuration.lines.length-1)" ng-click="vm.downThisLine($index)"><i class="fa fa-arrow-down"></i></button>
-																			<button class="btn btn-danger pull-right" ng-click="vm.removeThisLine($index)"><i class="fa fa-trash-o"></i></button>
-																		</div>
-																		<div class="col-md-12">
-																			<div class="col-md-4 well">
-																				<button class="btn btn-lg btn-block  btn-default disabled">
-																						{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
-																				</button>
-																			</div>
-																			<div class="col-md-4 well">
-																				<button class="btn btn-lg btn-block  btn-default disabled">
-																					{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
-																				</button>
-																		</div>
-																		<div class="col-md-4 well">
-																			<button class="btn btn-lg btn-block  btn-default disabled">
-																				{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}
-																			</button>
-																		</div>
-																	</div>
-															  </div>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-                    </div>
-								  </div>
+                  <step-zero-content
+                    configuration="vm.configuration"
+                    addNewline="vm.addNewline()"
+                    downThisLine="vm.downThisLine(index)"
+                    upThisLine="vm.upThisLine(index)"
+                    removeThisLine="vm.removeThisLine(index)">
+                  </step-zero-content>
 
                   <step-one-content
                     configuration="vm.configuration"
