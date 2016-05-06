@@ -18,10 +18,9 @@ export const stepTwoContentComponent = {
   </div>
   `,
   bindings : {
-    configuration:              '=',
-    increaseNumberOfColumns:    '&',
-    decreaseNumberOfColumns:    '&',
-    setActiveLineNumberParent:  '&'
+    configuration:            '=',
+    setActiveLineNumber:      '&',
+    showModalAddCtrlToColumn: '&'
   },
   controller:
   class stepTwoContentController {

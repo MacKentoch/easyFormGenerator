@@ -33,13 +33,12 @@ export const StepTwoCommandPanelComponent = {
                 &nbsp;
                 {{'SELECT_2_APPLY_COL' | translate}}.
               </p>
-            </blockquote>
+          </blockquote>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   `,
   bindings: {
 
