@@ -1,6 +1,6 @@
 const resetNyaSelect = (nyaSelectObj) => {
 
-	let newNyaSelectObj = {
+	const newNyaSelectObj = {
 		controls : [
 			{
 				id								: 'empty',
@@ -391,7 +391,7 @@ const resetNyaSelect = (nyaSelectObj) => {
 
 
 const getResetConfig = () => {
-	let emptyConfig = {};
+	const emptyConfig = {};
 	angular.extend(emptyConfig, {
 			formlyLabel				: '',
 			formlyRequired		: false,
@@ -408,7 +408,7 @@ const getResetConfig = () => {
 	*/
 const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
 
-	let modelToReturn = {
+	const modelToReturn = {
 		selectedControl:'none',
 		formlyType : 'none',
 		formlySubtype: 'none',

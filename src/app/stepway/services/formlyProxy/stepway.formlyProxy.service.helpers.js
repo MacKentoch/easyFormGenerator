@@ -129,7 +129,7 @@ const addOneColumnHeader = (formlyModel, configurationModel,lineIndex) => {
 
 
 const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
-	let fieldToPush = {
+	const fieldToPush = {
 		className	: 'col-xs-12',
 		type			: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
 		key				: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
@@ -170,7 +170,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 				template:`<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control)}<h2><hr/></div></div>`
 			};
 
-	let controlCol0 =     {
+	const controlCol0 =     {
 			className: 'col-xs-6',
 			type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
 			key	: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
@@ -193,7 +193,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
 	}
 
-	let controlCol1 =  {
+	const controlCol1 =  {
 		className: 'col-xs-6',
 		type			: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
 		key				: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
@@ -217,7 +217,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
 	}
 
-	let FieldGroup = [];
+	const FieldGroup = [];
 
 	if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol0);
@@ -257,7 +257,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 					template:`<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control)}<h2><hr/></div></div>`
 				};
 
-	let controlCol0 =  {
+	const controlCol0 =  {
 		className	: 'col-xs-4',
 		type			: typeof configurationModel.lines[lineIndex].columns[0].control.type 	!== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
 		key				: typeof configurationModel.lines[lineIndex].columns[0].control.key 	!== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
@@ -280,7 +280,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
 	}
 
-	let controlCol1 = {
+	const controlCol1 = {
 		className	: 'col-xs-4',
 		type			: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
 		key				: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
@@ -302,7 +302,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 	if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
 		addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
 	}
-	let controlCol2 = {
+	const controlCol2 = {
 		className	: 'col-xs-4',
 		type			: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
 		key				: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
@@ -325,7 +325,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 		addDatepickerOptionsProperty(controlCol2, configurationModel,lineIndex);
 	}
 
-	let FieldGroup = [];
+	const FieldGroup = [];
 
 	if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
 		FieldGroup.push(headerTemplateCol0);
@@ -353,18 +353,16 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
 
 
 const resetDataModel = (obj) => {
-	let emptyDataModel = {};
+	const emptyDataModel = {};
 	angular.copy(emptyDataModel, obj);
 	return true;
 };
 
 
 const resetFormlyModel = (formlyModel) => {
-	let resetformly = [];
+	const resetformly = [];
 	angular.copy(resetformly, formlyModel);
 };
-
-
 
 
 export {
@@ -390,5 +388,4 @@ export {
 	addOneColumnControl,
 	addTwoColumnControl,
 	addThreeColumnControl
-
 };

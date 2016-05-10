@@ -28,12 +28,12 @@ class $formlyProxy {
 
 	bindConfigurationLines(configurationModel, lines) {
 		if(angular.isArray(lines)) {
-			let configModelResult = configurationModelResult;
+			const configModelResult = configurationModelResult;
 			configModelResult.lines = [].concat(lines);
 			angular.copy(configModelResult, configurationModel);
-			return this.getMessageObject(`configuration model is bound`,`lines are bound to configuration model.`);
+			return this.getMessageObject('configuration model is bound','lines are bound to configuration model.');
 		}else{
-			return this.getErrorObject(`lines is not an array`, `Checks lines type, it is not an array.`);
+			return this.getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
 		}
 	}
 
@@ -64,7 +64,7 @@ class $formlyProxy {
 	}
 
 	getMessageObject(messageTitle, messageBody) {
-		let messageObj = {
+		const messageObj = {
 			noError : true,
 			title		: messageTitle,
 			Message	: messageBody

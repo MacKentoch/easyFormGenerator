@@ -1,11 +1,13 @@
-import { IpAdressConfig } from './IpAdress/config/stepway.IpAdress.config';
-import { DateConfig }     from './Date/config/stepway.date.config';
-import { CheckBoxConfig } from './CheckBox/config/stepway.checkbox.config';
-import { EmailConfig }    from './Email/config/stepway.email.config';
+import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
+import { DateConfig }         from './Date/config/stepway.date.config';
+import { CheckBoxConfig }     from './CheckBox/config/stepway.checkbox.config';
+import { EmailConfig }        from './Email/config/stepway.email.config';
+import { BasicSelectConfig }  from './basicSelect/config/stepway.basicSelect.config';
 
 export {
   IpAdressConfig,
   DateConfig,
   CheckBoxConfig,
-  EmailConfig
+  EmailConfig,
+  BasicSelectConfig
 };

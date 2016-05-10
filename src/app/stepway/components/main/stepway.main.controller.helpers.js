@@ -18,7 +18,7 @@ const DEFAULT_TAB_MODEL = {
 };
 
 const initTabModel = (isPreviewPanelVisible, arePreviewModelsVisible) => {
-	let _tabModel = angular.copy(DEFAULT_TAB_MODEL);
+	const _tabModel = angular.copy(DEFAULT_TAB_MODEL);
 	angular.extend(_tabModel.previewTab, {
 		tabVisible 		: isPreviewPanelVisible,
 		modelsVisible : arePreviewModelsVisible
