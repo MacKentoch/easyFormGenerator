@@ -3,17 +3,19 @@ module.exports = function(config) {
   config.set({
     basePath: '',
 
-    frameworks: ['jspm','jasmine', 'phantomjs-shim'],
+    frameworks: ['jspm','jasmine', 'karma-phantomjs-launcher'],
 
     jspm: {
       config: 'config.js',
-      loadFiles: [
-        'node_modules/phantomjs-polyfill/bind-polyfill.js',
-        'src/app/**/*.spec.js'
-      ],
-      serveFiles: [
-        'src/app/**/*.+(js|html|css|json)'
-      ]
+      // loadFiles: [
+      //   'node_modules/phantomjs-polyfill/bind-polyfill.js',
+      //   'src/app/**/*.spec.js'
+      // ],
+      loadFiles: ['./node_modules/**/*.js'],
+      packages: 'jspm_packages'
+      // serveFiles: [
+      //   'src/app/**/*.+(js|html|css|json)'
+      // ]
     },
 
     files: [

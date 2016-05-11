@@ -504,7 +504,7 @@ gulp.task('build:all', [
   'build:stepWay:ES6',
   'build:dragdropway:ES6',
   'build:formViewer:ES6'
-], () =>console.info(`building app + vendors.`));
+], () =>console.info('building app + vendors.'));
 
 
 /**
