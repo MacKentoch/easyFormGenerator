@@ -16,6 +16,9 @@ import { BlankConfig }        from './blank/config/stepway.blank.config';
 import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
 import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editgroupedSelect/stepway.editgroupedSelect.component';
 
+import { HeaderConfig }  from './header/config/stepway.header.config';
+import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderSelect.component';
+
 // controls configs
 const configs = {
   IpAdressConfig,
@@ -24,7 +27,8 @@ const configs = {
   EmailConfig,
   BasicSelectConfig,
   BlankConfig,
-  GroupedSelectConfig
+  GroupedSelectConfig,
+  HeaderConfig
 };
 
 // controls component (for edit control modal)
@@ -48,6 +52,10 @@ const controls = {
   editEmail: {
     name: EDIT_EMAIL_COMPONENT,
     component: editEmailControlComponent
+  },
+  headerEdit: {
+    name: EDIT_HEADER_CONTROL_COMPONENT,
+    component: editHeaderControlComponent
   }
 };
 
