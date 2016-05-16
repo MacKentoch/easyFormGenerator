@@ -22,6 +22,9 @@ import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './heade
 import { PasswordConfig }  from './password/config/stepway.password.config';
 import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/stepway.editPassword.component';
 
+import { RadioConfig }  from './radio/config/stepway.radio.config';
+import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/stepway.editRadio.component';
+
 
 // controls configs
 const configs = {
@@ -33,7 +36,8 @@ const configs = {
   BlankConfig,
   GroupedSelectConfig,
   HeaderConfig,
-  PasswordConfig
+  PasswordConfig,
+  RadioConfig
 };
 
 // controls component (for edit control modal)
@@ -65,8 +69,11 @@ const controls = {
   editPassword: {
     name: EDIT_PASSWORD_CONTROL_COMPONENT,
     component: editPasswordControlComponent
+  },
+  editRadio: {
+    name: EDIT_RADIO_CONTROL_COMPONENT,
+    component: editRadioControlComponent
   }
-
 };
 
 export {

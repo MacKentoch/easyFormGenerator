@@ -68,7 +68,7 @@ describe('controller : edaStepWayEasyFormGenController', () => {
       //reset scope.configuation before each
       //inject formFieldManage service to initialize configuration model
       beforeEach(inject((_formFieldManage_) => {
-        let formFieldManage   = _formFieldManage_;
+        const formFieldManage   = _formFieldManage_;
         $scope.configuration  = {};
         formFieldManage.initConfigurationEditFromScratch($scope.configuration);
       }));
