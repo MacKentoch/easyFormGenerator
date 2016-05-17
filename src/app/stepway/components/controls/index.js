@@ -25,6 +25,9 @@ import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './p
 import { RadioConfig }  from './radio/config/stepway.radio.config';
 import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/stepway.editRadio.component';
 
+import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
+import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
+
 
 // controls configs
 const configs = {
@@ -37,7 +40,8 @@ const configs = {
   GroupedSelectConfig,
   HeaderConfig,
   PasswordConfig,
-  RadioConfig
+  RadioConfig,
+  RichTextEditorConfig
 };
 
 // controls component (for edit control modal)
@@ -73,6 +77,10 @@ const controls = {
   editRadio: {
     name: EDIT_RADIO_CONTROL_COMPONENT,
     component: editRadioControlComponent
+  },
+  editRichTextEditor: {
+    name: EDIT_RICH_TEXT_EDITOR_COMPONENT,
+    component: editRichTextEditorControlComponent
   }
 };
 
