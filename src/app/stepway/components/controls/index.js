@@ -28,6 +28,9 @@ import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/e
 import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
 import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
 
+import { SubTitleConfig }  from './subTitle/config/stepway.subTitle.config';
+import {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/stepway.editSubTitle.component';
+
 
 // controls configs
 const configs = {
@@ -41,7 +44,8 @@ const configs = {
   HeaderConfig,
   PasswordConfig,
   RadioConfig,
-  RichTextEditorConfig
+  RichTextEditorConfig,
+  SubTitleConfig
 };
 
 // controls component (for edit control modal)
@@ -81,6 +85,10 @@ const controls = {
   editRichTextEditor: {
     name: EDIT_RICH_TEXT_EDITOR_COMPONENT,
     component: editRichTextEditorControlComponent
+  },
+  editSubTitle: {
+    name: EDIT_SUBTITLE_CONTROL_COMPONENT,
+    component: editSubTitleControlComponent
   }
 };
 
