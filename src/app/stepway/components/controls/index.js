@@ -31,6 +31,9 @@ import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} fro
 import { SubTitleConfig }  from './subTitle/config/stepway.subTitle.config';
 import {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/stepway.editSubTitle.component';
 
+import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
+import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
+
 
 // controls configs
 const configs = {
@@ -45,7 +48,8 @@ const configs = {
   PasswordConfig,
   RadioConfig,
   RichTextEditorConfig,
-  SubTitleConfig
+  SubTitleConfig,
+  TextAreaConfig
 };
 
 // controls component (for edit control modal)
@@ -89,6 +93,10 @@ const controls = {
   editSubTitle: {
     name: EDIT_SUBTITLE_CONTROL_COMPONENT,
     component: editSubTitleControlComponent
+  },
+  editTextArea: {
+    name: EDIT_TEXTAREA_CONTROL_COMPONENT,
+    component: editTextareaControlComponent
   }
 };
 
