@@ -1,3 +1,7 @@
+import { BlankConfig }        from './blank/config/stepway.blank.config';
+import {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/stepway.editBlank.component';
+import editBlankModule  from './blank/editBlank/stepway.editBlankControl.module';
+
 import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
 import {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/stepway.editIpAdress.component';
 
@@ -11,7 +15,8 @@ import { EmailConfig }        from './Email/config/stepway.email.config';
 import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
 
 import { BasicSelectConfig }  from './basicSelect/config/stepway.basicSelect.config';
-import { BlankConfig }        from './blank/config/stepway.blank.config';
+import {editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT} from './basicSelect/editBasicSelect/stepway.editbasicSelect.component';
+import editbasicSelectModule  from './basicSelect/editBasicSelect/stepway.editBasicSelect.module';
 
 import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
 import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editgroupedSelect/stepway.editgroupedSelect.component';
@@ -54,6 +59,11 @@ const configs = {
 
 // controls component (for edit control modal)
 const controls = {
+  editBlank: {
+    name: EDIT_BLANK_CONTROL_COMPONENT,
+    component: editBlankControlComponent,
+    moduleName: editBlankModule.name
+  },
   editIpAdress: {
     name:       EDIT_IP_ADRESS_COMPONENT,
     component:  editIpAdressControlComponent
@@ -61,6 +71,11 @@ const controls = {
   editDate: {
     name:       EDIT_DATE_COMPONENT,
     component:  editDateControlComponent
+  },
+  editBasicSelect: {
+    name: EDIT_BASIC_SELECT_COMPONENT,
+    component: editBasicSelectControlComponent,
+    moduleName: editbasicSelectModule.name
   },
   editGroupedSelect: {
     name: EDIT_GROUPED_SELECT_COMPONENT,
