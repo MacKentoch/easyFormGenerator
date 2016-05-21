@@ -35,10 +35,11 @@ import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} fro
 
 import { SubTitleConfig }  from './subTitle/config/stepway.subTitle.config';
 import {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/stepway.editSubTitle.component';
+import editSubTitle from './subTitle/editSubTitle/stepway.editSubTitle.module';
 
 import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
 import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
-
+import editTextareaControlModule from './textArea/editTextArea/stepway.editTextArea.module';
 
 // controls configs
 const configs = {
@@ -107,11 +108,13 @@ const controls = {
   },
   editSubTitle: {
     name: EDIT_SUBTITLE_CONTROL_COMPONENT,
-    component: editSubTitleControlComponent
+    component: editSubTitleControlComponent,
+    moduleName: editSubTitle.name
   },
   editTextArea: {
     name: EDIT_TEXTAREA_CONTROL_COMPONENT,
-    component: editTextareaControlComponent
+    component: editTextareaControlComponent,
+    moduleName: editTextareaControlModule.name
   }
 };
 
