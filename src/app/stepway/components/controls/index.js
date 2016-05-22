@@ -10,6 +10,7 @@ import {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/ste
 
 import { CheckBoxConfig }     from './CheckBox/config/stepway.checkbox.config';
 import {editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT} from './CheckBox/editCheckBox/stepway.editCheckBox.component';
+import editCheckBoxModule from './CheckBox/editCheckBox/stepway.editCheckBox.module';
 
 import { EmailConfig }        from './Email/config/stepway.email.config';
 import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
@@ -84,7 +85,8 @@ const controls = {
   },
   editCheckBox: {
     name: EDIT_CHECKBOX_COMPONENT,
-    component: editCheckBoxControlComponent
+    component: editCheckBoxControlComponent,
+    moduleName: editCheckBoxModule
   },
   editEmail: {
     name: EDIT_EMAIL_COMPONENT,
