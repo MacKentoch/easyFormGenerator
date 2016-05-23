@@ -4,6 +4,7 @@ import editBlankModule  from './blank/editBlank/stepway.editBlankControl.module'
 
 import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
 import {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/stepway.editIpAdress.component';
+import editIpAdressModule  from './IpAdress/editIpAdress/stepway.editIpAdress.module';
 
 import { DateConfig }         from './Date/config/stepway.date.config';
 import {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/stepway.editDate.component';
@@ -68,7 +69,8 @@ const controls = {
   },
   editIpAdress: {
     name:       EDIT_IP_ADRESS_COMPONENT,
-    component:  editIpAdressControlComponent
+    component:  editIpAdressControlComponent,
+    moduleName: editIpAdressModule
   },
   editDate: {
     name:       EDIT_DATE_COMPONENT,
