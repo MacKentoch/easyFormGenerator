@@ -8,6 +8,7 @@ import editIpAdressModule  from './IpAdress/editIpAdress/stepway.editIpAdress.mo
 
 import { DateConfig }         from './Date/config/stepway.date.config';
 import {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/stepway.editDate.component';
+import editDateModule from './Date/editDate/stepway.editDate.module';
 
 import { CheckBoxConfig }     from './CheckBox/config/stepway.checkbox.config';
 import {editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT} from './CheckBox/editCheckBox/stepway.editCheckBox.component';
@@ -74,7 +75,8 @@ const controls = {
   },
   editDate: {
     name:       EDIT_DATE_COMPONENT,
-    component:  editDateControlComponent
+    component:  editDateControlComponent,
+    moduleName: editDateModule
   },
   editBasicSelect: {
     name: EDIT_BASIC_SELECT_COMPONENT,
