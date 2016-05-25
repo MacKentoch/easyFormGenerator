@@ -23,6 +23,7 @@ import editbasicSelectModule  from './basicSelect/editBasicSelect/stepway.editBa
 
 import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
 import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editgroupedSelect/stepway.editgroupedSelect.component';
+import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.module';
 
 import { HeaderConfig }  from './header/config/stepway.header.config';
 import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderSelect.component';
@@ -71,12 +72,12 @@ const controls = {
   editIpAdress: {
     name:       EDIT_IP_ADRESS_COMPONENT,
     component:  editIpAdressControlComponent,
-    moduleName: editIpAdressModule
+    moduleName: editIpAdressModule.name
   },
   editDate: {
     name:       EDIT_DATE_COMPONENT,
     component:  editDateControlComponent,
-    moduleName: editDateModule
+    moduleName: editDateModule.name
   },
   editBasicSelect: {
     name: EDIT_BASIC_SELECT_COMPONENT,
@@ -85,12 +86,13 @@ const controls = {
   },
   editGroupedSelect: {
     name: EDIT_GROUPED_SELECT_COMPONENT,
-    component: editGroupedSelectControlComponent
+    component: editGroupedSelectControlComponent,
+    moduleName: editGroupedSelectModule.name
   },
   editCheckBox: {
     name: EDIT_CHECKBOX_COMPONENT,
     component: editCheckBoxControlComponent,
-    moduleName: editCheckBoxModule
+    moduleName: editCheckBoxModule.name
   },
   editEmail: {
     name: EDIT_EMAIL_COMPONENT,
