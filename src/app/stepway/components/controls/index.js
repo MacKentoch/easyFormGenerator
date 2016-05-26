@@ -16,6 +16,7 @@ import editCheckBoxModule from './CheckBox/editCheckBox/stepway.editCheckBox.mod
 
 import { EmailConfig }        from './Email/config/stepway.email.config';
 import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
+import editEmailControlModule from './Email/editEmail/stepway.editEmail.module';
 
 import { BasicSelectConfig }  from './basicSelect/config/stepway.basicSelect.config';
 import {editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT} from './basicSelect/editBasicSelect/stepway.editbasicSelect.component';
@@ -96,7 +97,8 @@ const controls = {
   },
   editEmail: {
     name: EDIT_EMAIL_COMPONENT,
-    component: editEmailControlComponent
+    component: editEmailControlComponent,
+    moduleName: editEmailControlModule
   },
   editHeader: {
     name: EDIT_HEADER_CONTROL_COMPONENT,
