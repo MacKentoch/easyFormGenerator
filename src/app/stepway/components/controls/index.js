@@ -28,6 +28,7 @@ import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.
 
 import { HeaderConfig }  from './header/config/stepway.header.config';
 import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderSelect.component';
+import editHeaderControl from 'header/editHeader/stepway.editHeaderSelect.module';
 
 import { PasswordConfig }  from './password/config/stepway.password.config';
 import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/stepway.editPassword.component';
@@ -102,7 +103,8 @@ const controls = {
   },
   editHeader: {
     name: EDIT_HEADER_CONTROL_COMPONENT,
-    component: editHeaderControlComponent
+    component: editHeaderControlComponent,
+    moduleName: editHeaderControl
   },
   editPassword: {
     name: EDIT_PASSWORD_CONTROL_COMPONENT,
