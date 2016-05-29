@@ -47,6 +47,8 @@ import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
 import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
 import editTextareaControlModule from './textArea/editTextArea/stepway.editTextArea.module';
 
+// import TextInputModule 
+
 // controls configs
 const configs = {
   IpAdressConfig,
