@@ -47,7 +47,10 @@ import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
 import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
 import editTextareaControlModule from './textArea/editTextArea/stepway.editTextArea.module';
 
-// import TextInputModule 
+import { TextInputConfig }  from './textInput/config/stepway.textInput.config';
+import {editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT} from './textInput/editTextInput/stepway.editTextInput.component';
+import editTextInputControlModule from './textInput/editTextInput/stepway.editTextInput.module';
+
 
 // controls configs
 const configs = {
@@ -63,7 +66,8 @@ const configs = {
   RadioConfig,
   RichTextEditorConfig,
   SubTitleConfig,
-  TextAreaConfig
+  TextAreaConfig,
+  TextInputConfig
 };
 
 // controls component (for edit control modal)
@@ -129,6 +133,11 @@ const controls = {
     name: EDIT_TEXTAREA_CONTROL_COMPONENT,
     component: editTextareaControlComponent,
     moduleName: editTextareaControlModule.name
+  },
+  editTextInput: {
+    name: EDIT_TEXTINPUT_CONTROL_COMPONENT,
+    component: editTextInputControlComponent,
+    moduleName: editTextInputControlModule.name
   }
 };
 
