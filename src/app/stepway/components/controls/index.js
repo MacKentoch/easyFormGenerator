@@ -32,6 +32,7 @@ import editHeaderControl from 'header/editHeader/stepway.editHeaderSelect.module
 
 import { PasswordConfig }  from './password/config/stepway.password.config';
 import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/stepway.editPassword.component';
+import editPasswordModule from './password/editPassword/stepway.editPassword.module';
 
 import { RadioConfig }  from './radio/config/stepway.radio.config';
 import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/stepway.editRadio.component';
@@ -105,16 +106,17 @@ const controls = {
   editEmail: {
     name: EDIT_EMAIL_COMPONENT,
     component: editEmailControlComponent,
-    moduleName: editEmailControlModule
+    moduleName: editEmailControlModule.name
   },
   editHeader: {
     name: EDIT_HEADER_CONTROL_COMPONENT,
     component: editHeaderControlComponent,
-    moduleName: editHeaderControl
+    moduleName: editHeaderControl.name
   },
   editPassword: {
     name: EDIT_PASSWORD_CONTROL_COMPONENT,
-    component: editPasswordControlComponent
+    component: editPasswordControlComponent,
+    moduleName: editPasswordModule.name
   },
   editRadio: {
     name: EDIT_RADIO_CONTROL_COMPONENT,

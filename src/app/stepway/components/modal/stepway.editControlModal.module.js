@@ -17,9 +17,9 @@ import { editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT }            
 import { editIpAdressControlComponent,  EDIT_IP_ADRESS_COMPONENT }              from './editIpAdressControl/stepway.editIpAdressControl.component';
 
 const EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
-
+const EDIT_CONTROL_INJECT = [];
 export default angular
-								.module(EDIT_CONTROLE_MODAL_NAME, [])
+								.module(EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT)
 								.controller(EDIT_MODAL_CONTROLLER_NAME, editModalController)
                 .component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent)
                 .component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent)
