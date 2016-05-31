@@ -36,6 +36,7 @@ import editPasswordModule from './password/editPassword/stepway.editPassword.mod
 
 import { RadioConfig }  from './radio/config/stepway.radio.config';
 import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/stepway.editRadio.component';
+import editRadioModule from './radio/editRadio/stepway.editRadio.module';
 
 import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
 import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
@@ -120,7 +121,8 @@ const controls = {
   },
   editRadio: {
     name: EDIT_RADIO_CONTROL_COMPONENT,
-    component: editRadioControlComponent
+    component: editRadioControlComponent,
+    moduleName: editRadioModule
   },
   editRichTextEditor: {
     name: EDIT_RICH_TEXT_EDITOR_COMPONENT,
