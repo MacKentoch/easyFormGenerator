@@ -40,6 +40,7 @@ import editRadioModule from './radio/editRadio/stepway.editRadio.module';
 
 import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
 import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
+import editRichTextEditorModule from 'richTextEditor/editRichTextEditor/stepway.editRichTextEditor.module';
 
 import { SubTitleConfig }  from './subTitle/config/stepway.subTitle.config';
 import {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/stepway.editSubTitle.component';
@@ -122,11 +123,12 @@ const controls = {
   editRadio: {
     name: EDIT_RADIO_CONTROL_COMPONENT,
     component: editRadioControlComponent,
-    moduleName: editRadioModule
+    moduleName: editRadioModule.name
   },
   editRichTextEditor: {
     name: EDIT_RICH_TEXT_EDITOR_COMPONENT,
-    component: editRichTextEditorControlComponent
+    component: editRichTextEditorControlComponent,
+    moduleName: editRichTextEditorModule.name
   },
   editSubTitle: {
     name: EDIT_SUBTITLE_CONTROL_COMPONENT,
