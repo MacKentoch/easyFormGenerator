@@ -750,7 +750,7 @@ $__System.registerDynamic("10", [], true, function($__require, exports, module) 
   var global = this,
       __define = global.define;
   global.define = undefined;
-  module.exports = "<section id=\"pageWfEdit\">\n\t<div ng-init=\"\">\n\t\t<div class=\"container\">\n\t\t\t<section id=\"preview\">\n\t\t\t\t<div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<!-- taoster alert -->\n\t\t\t\t\t\t<toaster-container  toaster-options=\"{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'position-class': 'toast-top-full-width',\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'extendedTimeout':500,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'timeOut':500,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<uib-tabset justified=\"true\">\n\t\t\t\t\t\t\t<uib-tab\n                active=\"vm.tab.editTab.active\"\n                heading=\"{{'EDIT_TAB' | translate}}\">\n\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t<!-- STEP INDICATOR -->\n\t\t\t\t\t\t\t\t<div class=\"row stepwizardTopmargin\">\n\t\t\t\t\t\t\t\t\t<div class=\"col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"stepwizard\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row stepwizard-row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"stepwizard-step col-md-3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t  <button type=\"button\" class=\"btn btn-circle\" ng-class=\"{'btn-primary': vm.configuration.stepIndicators[0], 'btn-default': !vm.configuration.stepIndicators[0]}\" >0</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>{{'WIZARD_LINES' | translate}}</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"stepwizard-step col-md-3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-circle\" ng-class=\"{'btn-primary': vm.configuration.stepIndicators[1], 'btn-default': !vm.configuration.stepIndicators[1], 'disabled': (vm.configuration.configStepCounter < 1)}\"  >1</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>{{'WIZARD_LAYOUT' | translate}}</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"stepwizard-step col-md-3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-default btn-circle\" ng-class=\"{'btn-primary': vm.configuration.stepIndicators[2], 'btn-default': !vm.configuration.stepIndicators[2], 'disabled': (vm.configuration.configStepCounter < 2)}\" >2</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>{{'WIZARD_CONTROLS' | translate}}</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"stepwizard-step col-md-3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-default btn-circle\" ng-class=\"{'btn-primary': vm.configuration.stepIndicators[3], 'btn-default': !vm.configuration.stepIndicators[3], 'disabled': (vm.configuration.configStepCounter < 3)}\" >3</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>{{'WIZARD_SAVE' | translate}}</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t<ul class=\"pager\">\n\t\t\t\t\t\t\t\t\t<li ng-class=\"{'disabled':vm.stepIndicators[0]}\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary customPagerButton\" ng-click=\"vm.previousConfigStep()\" >\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-arrow-left fa-2x pull-left\"></i>\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">{{'PAGER_PREVIOUS' | translate}}</span>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t<li ng-class=\"{'disabled':vm.stepIndicators[3]}\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary customPagerButton\" ng-click=\"vm.nextConfigStep()\">\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-left\">{{'PAGER_NEXT' | translate}}</span>\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-arrow-right fa-2x pull-right\"></i>\n\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t<div class=\"animate-switch-container\" ng-switch on=\"vm.configuration.listConfigStep[vm.configuration.configStepCounter]\">\n\t\t\t\t\t\t\t\t\t<div class=\"animate-switch\" ng-switch-when=\"init\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"commandPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-keyboard-o\"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"addNewLine\">{{'ADD_NEW_LINE' | translate}} :</span>&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" ng-click=\"vm.addNewline()\"><i class=\"fa fa-plus fa-1x\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"visualPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-eye\"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- lines -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"list-group-item\" ng-repeat=\"line in vm.configuration.lines track by $index\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- columns -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div ng-switch on=\"line.columns.length\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=\"vm.upThisLine($index)\"><i class=\"fa fa-arrow-up\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==(vm.configuration.lines.length-1)\" ng-click=\"vm.downThisLine($index)\"><i class=\"fa fa-arrow-down\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger pull-right\" ng-click=\"vm.removeThisLine($index)\"><i class=\"fa fa-trash-o\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"2\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=\"vm.upThisLine($index)\"><i class=\"fa fa-arrow-up\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==(vm.configuration.lines.length-1)\" ng-click=\"vm.downThisLine($index)\"><i class=\"fa fa-arrow-down\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger pull-right\" ng-click=\"vm.removeThisLine($index)\"><i class=\"fa fa-trash-o\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==0\" ng-click=\"vm.upThisLine($index)\"><i class=\"fa fa-arrow-up\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" ng-hide=\"$index==(vm.configuration.lines.length-1)\" ng-click=\"vm.downThisLine($index)\"><i class=\"fa fa-arrow-down\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger pull-right\" ng-click=\"vm.removeThisLine($index)\"><i class=\"fa fa-trash-o\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\n                  <div class=\"animate-switch\" ng-switch-when=\"first\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t\t\t\t\t\t<div id=\"commandPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-keyboard-o\"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h4 class=\"numberOfcolumsText text-center\"><i>- {{'SELECTED_LINE' | translate}} -</i></h4>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h4 class=\"numberOfcolumsText text-center\">{{'NUMBER_OF_COLUMN' | translate}} :</h4>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary pull-right btnMinusColumns\" ng-click=\"vm.decreaseNumberOfColumns()\"><i class=\"fa fa-minus fa-1x\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-2 col-sm-2 col-md-2 text-center\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"numberOfColumnsLabel \">{{vm.configuration.lines[vm.configuration.activeLine -1].columns.length}}</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-2 col-sm-2 col-md-2\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary pull-left btnAddColumns\" ng-click=\"vm.increaseNumberOfColumns()\"><i class=\"fa fa-plus fa-1x\"></i></button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"visualPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-eye\"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- lines / columns -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"list-group-item\" ng-repeat=\"line in vm.configuration.lines track by $index\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- columns -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div ng-switch on=\"line.columns.length\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"2\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block  btn-default disabled\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t<div class=\"animate-switch\" ng-switch-when=\"second\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"commandPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-keyboard-o\"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h4 class=\"numberOfcolumsText text-center\">- {{'APPLY_CTRL2COL' | translate}} -</h4>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-lg-12\" >\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<hr/>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<blockquote>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"numberOfcolumsText\"><i class=\"fa fa-minus\"></i>&nbsp; {{'CLIC_TAP_2_OPEN' | translate}}.</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"numberOfcolumsText\"><i class=\"fa fa-minus\"></i>&nbsp; {{'SELECT_2_APPLY_COL' | translate}}.</p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</blockquote>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"visualPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-eye\"></i>&nbsp;{{'VISUAL_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- lines / columns -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"list-group-item\" ng-repeat=\"line in vm.configuration.lines track by $index\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- columns -->\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div ng-switch on=\"line.columns.length\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 0)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"2\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 0)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-6 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row linesList\" ng-switch-when=\"3\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12 lineCommandButtons\" ng-show=\"vm.configuration.lines.length > 1\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn\" ng-class=\"{'btn-warning':($index + 1) !== vm.configuration.activeLine, 'btn-success': ($index + 1) === vm.configuration.activeLine}\" ng-click=\"vm.setActiveLineNumber($index + 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa\"  ng-class=\"{'fa-square-o': ($index + 1) !== vm.configuration.activeLine, 'fa-check-square-o': ($index + 1) === vm.configuration.activeLine}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 0)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 1)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4 well\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-lg btn-block\" ng-class=\"{'btn-primary': !line.columns[2].control.edited, 'btn-success': line.columns[2].control.edited}\" ng-click=\"vm.showModalAddCtrlToColumn('', $index, 2)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{line.columns[2].control.type !== 'none'  ? line.columns[2].control.type + ' ' + line.columns[2].control.subtype || '' : 'column 3'}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"animate-switch\" ng-switch-when=\"third\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"commandPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-keyboard-o\"></i>&nbsp;{{'COMMAND_PANEL' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"inputSubmitButtontext\" class=\" greyText control-label\">{{'CUSTOM_SUBMIT_BTN' | translate}} :</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"inputSubmitButtontext\" placeholder=\"\" ng-model=\"vm.configuration.submitButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<hr/>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"inputCancelButtontext\" class=\" greyText control-label\">{{'CUSTOM_CANCEL_BTN' | translate}} :</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"inputCancelButtontext\" placeholder=\"\" ng-model=\"vm.configuration.cancelButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<hr/>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"inputNameFormtext\" class=\" greyText control-label\">{{'NAME_THIS_FORM' | translate}} :</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"inputNameFormtext\" placeholder=\"\" ng-model=\"vm.configuration.formName\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-block btn-lg\" ng-click=\"vm.saveThisForm()\">{{'SAVE_THIS_FORM' | translate}}</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-md-8\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"visualPanel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\"><i class=\"fa fa-thumbs-o-up\"></i>&nbsp;{{'FINAL_STEP' | translate}}</h3>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<formly-form id=\"saveFormlyFom\" model=\"vm.dataModel\" fields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"submit\">{{vm.configuration.submitButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"cancel\">{{vm.configuration.cancelButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\n\t\t\t\t\t\t\t<uib-tab active=\"vm.tab.previewTab.active\" ng-if=\"vm.tab.previewTab.tabVisible\" heading=\"{{'PREVIEW_TAB' | translate}}\">\n\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<!-- formly here -->\n\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t<formly-form id=\"previewFormlyForm\" model=\"vm.dataModel\" fields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"submit\">{{vm.configuration.submitButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"cancel\">{{vm.configuration.cancelButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<p>{{'DATA_MODEL' | translate}}</p>\n\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t{{vm.dataModel | json}}\n\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<p>{{'FIELDS_MODEL' | translate}}</p>\n\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\t\t\t\t\t\t</uib-tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t\t<!--<section>\n\t\t\t\t<h6 class=\"text-right\">Easy form generator : {{vm.easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)</h6>\n\t\t\t</section>-->\n\t\t</div>\n\t</div>\n</section>\n";
+  module.exports = "<section id=\"pageWfEdit\">\n\t<div ng-init=\"\">\n\t\t<div class=\"container\">\n\t\t\t<section id=\"preview\">\n\t\t\t\t<div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<!-- taoster alert -->\n\t\t\t\t\t\t<toaster-container\n              toaster-options=\"{\n  \t\t\t\t\t\t\t'position-class': 'toast-top-full-width',\n  \t\t\t\t\t\t\t'extendedTimeout':500,\n  \t\t\t\t\t\t\t'timeOut':500,\n  \t\t\t\t\t\t}\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<uib-tabset justified=\"true\">\n\t\t\t\t\t\t  <uib-tab\n                active=\"vm.tab.editTab.active\"\n                heading=\"{{'EDIT_TAB' | translate}}\">\n\t\t\t\t\t\t\t\t<div class=\"row\">\n                  <step-indicator\n                    configuration=\"vm.configuration\">\n                  </step-indicator>\n\t\t\t\t\t\t\t  </div>\n\t\t\t\t\t\t\t\t<div class=\"row\">\n                  <pager\n                    step-indicators=\"vm.stepIndicators\"\n                    next-config-step=\"vm.nextConfigStep()\"\n                    previous-config-step=\"vm.previousConfigStep()\">\n                  </pager>\n\t\t\t\t\t\t\t\t\t<div\n                    class=\"animate-switch-container\"\n                    ng-switch on=\"vm.configuration.listConfigStep[vm.configuration.configStepCounter]\">\n                    <step-zero-content\n                      configuration=\"vm.configuration\"\n                      addNewline=\"vm.addNewline()\"\n                      downThisLine=\"vm.downThisLine(index)\"\n                      upThisLine=\"vm.upThisLine(index)\"\n                      removeThisLine=\"vm.removeThisLine(index)\">\n                    </step-zero-content>\n                    <step-one-content\n                      configuration=\"vm.configuration\"\n                      increaseNumberOfColumns=\"vm.increaseNumberOfColumns()\"\n                      decreaseNumberOfColumns=\"vm.decreaseNumberOfColumns()\"\n                      setActiveLineNumberParent=\"vm.setActiveLineNumberParent(index)\">\n                    </step-one-content>\n                    <step-two-content\n                      configuration=\"vm.configuration\"\n                      setActiveLineNumber=\"vm.setActiveLineNumber(index)\"\n                      showModalAddCtrlToColumn=\"vm.showModalAddCtrlToColumn(size, indexLine, numcolumn)\">\n                    </step-two-content>\n                    <step-three-content\n                      configuration=\"vm.configuration\"\n                      data-model=\"vm.dataModel\"\n                      wf-form-fields=\"vm.wfFormFields\"\n                      on-submit=\"vm.onSubmit()\"\n                      save-this-form=\"vm.saveThisForm()\">\n                    </step-three-content>\n                  </div>\n                </div>\n\t\t\t\t      </uib-tab>\n\t\t\t\t\t\t\t<uib-tab active=\"vm.tab.previewTab.active\" ng-if=\"vm.tab.previewTab.tabVisible\" heading=\"{{'PREVIEW_TAB' | translate}}\">\n\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<!-- formly here -->\n\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t<formly-form id=\"previewFormlyForm\" model=\"vm.dataModel\" fields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"submit\">{{vm.configuration.submitButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\" type=\"cancel\">{{vm.configuration.cancelButtonText}}</button>\n\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<p>{{'DATA_MODEL' | translate}}</p>\n\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t{{vm.dataModel | json}}\n\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t<p>{{'FIELDS_MODEL' | translate}}</p>\n\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\t\t\t\t\t\t</uib-tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t</div>\n\t</div>\n</section>\n";
   global.define = __define;
   return module.exports;
 });
@@ -1482,10 +1482,795 @@ $__System.register('18', [], function (_export) {
 		}
 	};
 });
-$__System.register('19', ['13', '17', '18'], function (_export) {
+$__System.register('19', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, PAGER_COMPONENT_NAME, pagerComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      PAGER_COMPONENT_NAME = 'pager';
+
+      _export('PAGER_COMPONENT_NAME', PAGER_COMPONENT_NAME);
+
+      pagerComponent = {
+        template: '\n  <ul class="pager">\n    <li ng-class="{\'disabled\':$ctrl.stepIndicators[0]}">\n      <button\n          class="btn btn-primary customPagerButton"\n          ng-click="$ctrl.previousConfigStep()" >\n        <i class="fa fa-arrow-left fa-2x pull-left"></i>\n        <span class="pull-right">\n          {{\'PAGER_PREVIOUS\' | translate}}\n        </span>\n      </button>\n    </li>\n    <li ng-class="{\'disabled\':$ctrl.stepIndicators[3]}">\n      <button\n        class="btn btn-primary customPagerButton"\n        ng-click="$ctrl.nextConfigStep()">\n        <span class="pull-left">\n          {{\'PAGER_NEXT\' | translate}}\n        </span>\n        <i class="fa fa-arrow-right fa-2x pull-right"></i>\n      </button>\n    </li>\n  </ul>\n  ',
+        bindings: {
+          stepIndicators: '<',
+          nextConfigStep: '&',
+          previousConfigStep: '&'
+        },
+        controller: (function () {
+          function pagerComponent() {
+            _classCallCheck(this, pagerComponent);
+          }
+
+          _createClass(pagerComponent, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return pagerComponent;
+        })()
+      };
+
+      _export('pagerComponent', pagerComponent);
+    }
+  };
+});
+$__System.register('1a', ['19'], function (_export) {
   'use strict';
 
-  var edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenDirective, STEP_WAY_DIRECTIVE_NAME, easyFormSteWayConfig, EASY_FORM_STEP_WAY_CONFIG_NAME, STEP_WAY_MAIN_MODULE;
+  var pagerComponent, PAGER_COMPONENT_NAME, PAGER_COMPONENT_MODULE;
+  return {
+    setters: [function (_) {
+      pagerComponent = _.pagerComponent;
+      PAGER_COMPONENT_NAME = _.PAGER_COMPONENT_NAME;
+    }],
+    execute: function () {
+      PAGER_COMPONENT_MODULE = 'stepway.pager.module';
+
+      _export('default', angular.module(PAGER_COMPONENT_MODULE, []).component(PAGER_COMPONENT_NAME, pagerComponent));
+    }
+  };
+});
+$__System.register('1b', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_INDICATOR_COMPONENT_NAME, stepIndicatorComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_INDICATOR_COMPONENT_NAME = 'stepIndicator';
+
+      _export('STEP_INDICATOR_COMPONENT_NAME', STEP_INDICATOR_COMPONENT_NAME);
+
+      stepIndicatorComponent = {
+        template: '\n  <div class="row stepwizardTopmargin">\n    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">\n      <div class="stepwizard">\n        <div class="row stepwizard-row">\n          <div class="stepwizard-step col-md-3">\n            <button\n              type="button"\n              class="btn btn-circle"\n              ng-class="{\'btn-primary\': $ctrl.configuration.stepIndicators[0], \'btn-default\': !$ctrl.configuration.stepIndicators[0]}" >\n              0\n            </button>\n            <p>\n              {{\'WIZARD_LINES\' | translate}}\n            </p>\n          </div>\n          <div class="stepwizard-step col-md-3">\n            <button\n              type="button"\n              class="btn btn-circle"\n              ng-class="{\'btn-primary\': $ctrl.configuration.stepIndicators[1], \'btn-default\': !$ctrl.configuration.stepIndicators[1], \'disabled\': ($ctrl.configuration.configStepCounter < 1)}"  >\n              1\n            </button>\n            <p>\n              {{\'WIZARD_LAYOUT\' | translate}}\n            </p>\n          </div>\n          <div class="stepwizard-step col-md-3">\n            <button\n              type="button"\n              class="btn btn-default btn-circle"\n              ng-class="{\'btn-primary\': $ctrl.configuration.stepIndicators[2], \'btn-default\': !$ctrl.configuration.stepIndicators[2], \'disabled\': ($ctrl.configuration.configStepCounter < 2)}" >\n              2\n            </button>\n            <p>\n              {{\'WIZARD_CONTROLS\' | translate}}\n            </p>\n          </div>\n          <div class="stepwizard-step col-md-3">\n            <button\n              type="button"\n              class="btn btn-default btn-circle"\n              ng-class="{\'btn-primary\': $ctrl.configuration.stepIndicators[3], \'btn-default\': !$ctrl.configuration.stepIndicators[3], \'disabled\': ($ctrl.configuration.configStepCounter < 3)}" >\n              3\n            </button>\n            <p>\n              {{\'WIZARD_SAVE\' | translate}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '<'
+        },
+        controller: (function () {
+          function stepIndicatorComponent() {
+            _classCallCheck(this, stepIndicatorComponent);
+          }
+
+          _createClass(stepIndicatorComponent, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return stepIndicatorComponent;
+        })()
+      };
+
+      _export('stepIndicatorComponent', stepIndicatorComponent);
+    }
+  };
+});
+$__System.register('1c', ['1b'], function (_export) {
+  'use strict';
+
+  var stepIndicatorComponent, STEP_INDICATOR_COMPONENT_NAME, STEP_INDICATOR_COMPONENT_MODULE;
+  return {
+    setters: [function (_b) {
+      stepIndicatorComponent = _b.stepIndicatorComponent;
+      STEP_INDICATOR_COMPONENT_NAME = _b.STEP_INDICATOR_COMPONENT_NAME;
+    }],
+    execute: function () {
+      STEP_INDICATOR_COMPONENT_MODULE = 'stepway.stepIndicator.module';
+
+      _export('default', angular.module(STEP_INDICATOR_COMPONENT_MODULE, []).component(STEP_INDICATOR_COMPONENT_NAME, stepIndicatorComponent));
+    }
+  };
+});
+$__System.register('1d', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, LINE_STEP_ZERO_CONTENT_COMPONENT, stepZeroContentComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      LINE_STEP_ZERO_CONTENT_COMPONENT = 'stepZeroContent';
+
+      _export('LINE_STEP_ZERO_CONTENT_COMPONENT', LINE_STEP_ZERO_CONTENT_COMPONENT);
+
+      stepZeroContentComponent = {
+        template: '\n  <div\n    class="animate-switch"\n    ng-switch-when="init">\n    <div class="col-md-4">\n      <step-zero-command-panel\n        add-newline="$ctrl.addNewline()">\n      </step-zero-command-panel>\n    </div>\n    <div class="col-md-8">\n      <step-zero-visual-panel\n        configuration="$ctrl.configuration"\n        down-this-line="$ctrl.downThisLineParent(index)"\n        up-this-line="$ctrl.upThisLineParent(index)"\n        remove-this-line="$ctrl.removeThisLineParent(index)"\n        set-active-line-number="$ctrl.setActiveLineNumberParent(index)">\n      </step-zero-visual-panel>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          addNewline: '&',
+          downThisLine: '&',
+          upThisLine: '&',
+          removeThisLine: '&'
+        },
+        controller: (function () {
+          function stepZeroContentController() {
+            _classCallCheck(this, stepZeroContentController);
+          }
+
+          ///////////////////////////////////
+          // WHY this function is needed :
+          ///////////////////////////////////
+          // CASE OF :  function with parameter passing from parent to caller through another level component
+          //            parent -> intermediate component (here) -> caller
+          // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
+
+          _createClass(stepZeroContentController, [{
+            key: 'setActiveLineNumberParent',
+            value: function setActiveLineNumberParent(index) {
+              this.setActiveLineNumber({ index: index });
+            }
+          }, {
+            key: 'removeThisLineParent',
+            value: function removeThisLineParent(index) {
+              this.removeThisLine({ index: index });
+            }
+          }, {
+            key: 'upThisLineParent',
+            value: function upThisLineParent(index) {
+              this.upThisLine({ index: index });
+            }
+          }, {
+            key: 'downThisLineParent',
+            value: function downThisLineParent(index) {
+              this.downThisLine({ index: index });
+            }
+          }], [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return stepZeroContentController;
+        })()
+      };
+
+      _export('stepZeroContentComponent', stepZeroContentComponent);
+    }
+  };
+});
+$__System.register('1e', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME = 'stepZeroCommandPanel';
+
+      _export('STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME', STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME);
+
+      StepZeroCommandPanelComponent = {
+        template: '\n  <div id="commandPanel">\n    <div  class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-keyboard-o"></i>\n          &nbsp;\n          {{\'COMMAND_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <div class="row">\n          <div class="col-md-12">\n            <span class="addNewLine">\n              {{\'ADD_NEW_LINE\' | translate}} :\n            </span>\n            &nbsp;\n            <button\n              class="btn btn-primary"\n              ng-click="$ctrl.addNewline()">\n              <i class="fa fa-plus fa-1x"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          addNewline: '&'
+        },
+        controller: (function () {
+          function StepZeroCommandPanelController() {
+            _classCallCheck(this, StepZeroCommandPanelController);
+          }
+
+          _createClass(StepZeroCommandPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepZeroCommandPanelController;
+        })()
+      };
+
+      _export('StepZeroCommandPanelComponent', StepZeroCommandPanelComponent);
+    }
+  };
+});
+$__System.register('1f', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME = 'stepZeroVisualPanel';
+
+      _export('STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME', STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME);
+
+      StepZeroVisualPanelComponent = {
+        template: '\n  <div id="visualPanel">\n    <div  class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-eye"></i>\n          &nbsp;\n          {{\'VISUAL_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <!-- lines -->\n        <ul class="list-group">\n          <li\n            class="list-group-item"\n            ng-repeat="line in $ctrl.configuration.lines track by $index">\n            <!-- columns -->\n            <div ng-switch on="line.columns.length">\n              <div\n                class="row linesList"\n                ng-switch-when="1">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==0"\n                    ng-click="$ctrl.upThisLine({index: $index})">\n                    <i class="fa fa-arrow-up"></i>\n                  </button>\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==($ctrl.configuration.lines.length-1)"\n                    ng-click="$ctrl.downThisLine({index: $index})">\n                    <i class="fa fa-arrow-down"></i>\n                  </button>\n                  <button\n                    class="btn btn-danger pull-right"\n                    ng-click="$ctrl.removeThisLine({index: $index})">\n                    <i class="fa fa-trash-o"></i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-12 well">\n                    <button\n                      class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="2">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==0"\n                    ng-click="$ctrl.upThisLine({index: $index})">\n                    <i class="fa fa-arrow-up"></i>\n                  </button>\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==($ctrl.configuration.lines.length-1)"\n                    ng-click="$ctrl.downThisLine({index: $index})">\n                    <i class="fa fa-arrow-down"></i>\n                  </button>\n                  <button\n                    class="btn btn-danger pull-right"\n                    ng-click="$ctrl.removeThisLine({index: $index})">\n                    <i class="fa fa-trash-o"></i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-6 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                        {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-6 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                        {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="3">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==0"\n                    ng-click="$ctrl.upThisLine({index: $index})">\n                    <i class="fa fa-arrow-up"></i>\n                  </button>\n                  <button\n                    class="btn btn-warning"\n                    ng-hide="$index==($ctrl.configuration.lines.length-1)"\n                    ng-click="$ctrl.downThisLine({index: $index})">\n                    <i class="fa fa-arrow-down"></i>\n                  </button>\n                  <button\n                    class="btn btn-danger\n                    pull-right"\n                    ng-click="$ctrl.removeThisLine({index: $index})">\n                    <i class="fa fa-trash-o"></i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-4 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-4 well">\n                    <button\n                      class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                </div>\n                <div class="col-md-4 well">\n                  <button\n                    class="btn btn-lg btn-block  btn-default disabled">\n                    {{line.columns[2].control.type !== \'none\'  ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}\n                  </button>\n                </div>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          downThisLine: '&',
+          upThisLine: '&',
+          removeThisLine: '&'
+        },
+        controller: (function () {
+          function StepZeroVisualPanelController() {
+            _classCallCheck(this, StepZeroVisualPanelController);
+          }
+
+          _createClass(StepZeroVisualPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepZeroVisualPanelController;
+        })()
+      };
+
+      _export('StepZeroVisualPanelComponent', StepZeroVisualPanelComponent);
+    }
+  };
+});
+$__System.register('20', ['1d', '1e', '1f'], function (_export) {
+  'use strict';
+
+  var stepZeroContentComponent, LINE_STEP_ZERO_CONTENT_COMPONENT, STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent, STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent, STEP_ZERO_CONTENT_COMPONENT_MODULE;
+  return {
+    setters: [function (_d) {
+      stepZeroContentComponent = _d.stepZeroContentComponent;
+      LINE_STEP_ZERO_CONTENT_COMPONENT = _d.LINE_STEP_ZERO_CONTENT_COMPONENT;
+    }, function (_e) {
+      STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME = _e.STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME;
+      StepZeroCommandPanelComponent = _e.StepZeroCommandPanelComponent;
+    }, function (_f) {
+      STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME = _f.STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME;
+      StepZeroVisualPanelComponent = _f.StepZeroVisualPanelComponent;
+    }],
+    execute: function () {
+      STEP_ZERO_CONTENT_COMPONENT_MODULE = 'stepway.stepZeroContent.module';
+
+      _export('default', angular.module(STEP_ZERO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_ZERO_CONTENT_COMPONENT, stepZeroContentComponent).component(STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent).component(STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent));
+    }
+  };
+});
+$__System.register('21', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      LINE_STEP_CONTENT_COMPONENT = 'stepOneContent';
+
+      _export('LINE_STEP_CONTENT_COMPONENT', LINE_STEP_CONTENT_COMPONENT);
+
+      stepOneContentComponent = {
+        template: '\n  <div\n    class="animate-switch"\n    ng-switch-when="first">\n    <div class="col-md-4">\n      <step-one-command-panel\n        configuration="$ctrl.configuration"\n        increase-number-of-columns="$ctrl.configuration.increaseNumberOfColumns()"\n        decrease-number-of-columns="$ctrl.configuration.decreaseNumberOfColumns()">\n      </step-one-command-panel>\n    </div>\n    <div class="col-md-8">\n      <step-one-visual-panel\n        configuration="$ctrl.configuration"\n        set-active-line-number="$ctrl.setActiveLineNumberParent(index)">\n      </step-one-visual-panel>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          increaseNumberOfColumns: '&',
+          decreaseNumberOfColumns: '&',
+          setActiveLineNumberParent: '&'
+        },
+        controller: (function () {
+          function stepOneContentController() {
+            _classCallCheck(this, stepOneContentController);
+          }
+
+          ///////////////////////////////////
+          // WHY this function is needed :
+          ///////////////////////////////////
+          // CASE OF :  function with parameter passing from parent to caller through another level component
+          //            parent -> intermediate component (here) -> caller
+          // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
+
+          _createClass(stepOneContentController, [{
+            key: 'setActiveLineNumberParent',
+            value: function setActiveLineNumberParent(index) {
+              this.setActiveLineNumberParent({ index: index });
+            }
+          }], [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return stepOneContentController;
+        })()
+      };
+
+      _export('stepOneContentComponent', stepOneContentComponent);
+
+      _export('default', stepOneContentComponent);
+
+      _export('LINE_STEP_CONTENT_COMPONENT', LINE_STEP_CONTENT_COMPONENT);
+    }
+  };
+});
+$__System.register('22', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_ONE_COMMAND_PANEL_COMPONENT_NAME = 'stepOneCommandPanel';
+
+      _export('STEP_ONE_COMMAND_PANEL_COMPONENT_NAME', STEP_ONE_COMMAND_PANEL_COMPONENT_NAME);
+
+      StepOneCommandPanelComponent = {
+        template: '\n  <div id="commandPanel">\n    <div class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-keyboard-o"></i>\n          &nbsp;\n          {{\'COMMAND_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <div class="row">\n          <div class="col-md-12">\n            <h4 class="numberOfcolumsText text-center">\n              <i>\n                - {{\'SELECTED_LINE\' | translate}} -\n              </i>\n            </h4>\n            <h4 class="numberOfcolumsText text-center">\n              {{\'NUMBER_OF_COLUMN\' | translate}} :\n            </h4>\n          </div>\n        </div>\n        <div class="row">\n          <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">\n            <button\n              class="btn btn-primary pull-right btnMinusColumns"\n              ng-click="$ctrl.decreaseNumberOfColumns()">\n              <i class="fa fa-minus fa-1x"></i>\n            </button>\n          </div>\n          <div class="col-xs-2 col-sm-2 col-md-2 text-center">\n            <span class="numberOfColumnsLabel ">\n              {{$ctrl.configuration.lines[$ctrl.configuration.activeLine -1].columns.length}}\n            </span>\n          </div>\n          <div class="col-xs-2 col-sm-2 col-md-2">\n            <button\n              class="btn btn-primary pull-left btnAddColumns"\n              ng-click="$ctrl.increaseNumberOfColumns()">\n              <i class="fa fa-plus fa-1x"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          increaseNumberOfColumns: '&',
+          decreaseNumberOfColumns: '&'
+        },
+        controller: (function () {
+          function StepOneCommandPanelController() {
+            _classCallCheck(this, StepOneCommandPanelController);
+          }
+
+          _createClass(StepOneCommandPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepOneCommandPanelController;
+        })()
+      };
+
+      _export('StepOneCommandPanelComponent', StepOneCommandPanelComponent);
+    }
+  };
+});
+$__System.register('23', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_ONE_VISUAL_PANEL_COMPONENT_NAME = 'stepOneVisualPanel';
+
+      _export('STEP_ONE_VISUAL_PANEL_COMPONENT_NAME', STEP_ONE_VISUAL_PANEL_COMPONENT_NAME);
+
+      StepOneVisualPanelComponent = {
+        template: '\n  <div id="visualPanel">\n    <div  class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-eye"></i>\n          &nbsp;\n          {{\'VISUAL_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <!-- lines / columns -->\n        <ul class="list-group">\n          <li\n            class="list-group-item"\n            ng-repeat="line in $ctrl.configuration.lines track by $index">\n            <!-- columns -->\n            <div ng-switch on="line.columns.length">\n              <div\n                class="row linesList"\n                ng-switch-when="1">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-12 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="2">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-6 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-6 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="3">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-4 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-4 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-4 well">\n                    <button class="btn btn-lg btn-block  btn-default disabled">\n                      {{line.columns[2].control.type !== \'none\'  ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          setActiveLineNumber: '&'
+        },
+        controller: (function () {
+          function StepOneVisualPanelController() {
+            _classCallCheck(this, StepOneVisualPanelController);
+          }
+
+          _createClass(StepOneVisualPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepOneVisualPanelController;
+        })()
+      };
+
+      _export('StepOneVisualPanelComponent', StepOneVisualPanelComponent);
+    }
+  };
+});
+$__System.register('24', ['21', '22', '23'], function (_export) {
+  'use strict';
+
+  var stepOneContentComponent, LINE_STEP_CONTENT_COMPONENT, STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent, STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent, STEP_ONE_CONTENT_COMPONENT_MODULE;
+  return {
+    setters: [function (_) {
+      stepOneContentComponent = _.stepOneContentComponent;
+      LINE_STEP_CONTENT_COMPONENT = _.LINE_STEP_CONTENT_COMPONENT;
+    }, function (_2) {
+      STEP_ONE_COMMAND_PANEL_COMPONENT_NAME = _2.STEP_ONE_COMMAND_PANEL_COMPONENT_NAME;
+      StepOneCommandPanelComponent = _2.StepOneCommandPanelComponent;
+    }, function (_3) {
+      STEP_ONE_VISUAL_PANEL_COMPONENT_NAME = _3.STEP_ONE_VISUAL_PANEL_COMPONENT_NAME;
+      StepOneVisualPanelComponent = _3.StepOneVisualPanelComponent;
+    }],
+    execute: function () {
+      STEP_ONE_CONTENT_COMPONENT_MODULE = 'stepway.stepOneContent.module';
+
+      _export('default', angular.module(STEP_ONE_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent).component(STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent).component(STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent));
+    }
+  };
+});
+$__System.register('25', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      LINE_STEP_TWO_CONTENT_COMPONENT = 'stepTwoContent';
+
+      _export('LINE_STEP_TWO_CONTENT_COMPONENT', LINE_STEP_TWO_CONTENT_COMPONENT);
+
+      stepTwoContentComponent = {
+        template: '\n  <div\n    class="animate-switch"\n    ng-switch-when="second">\n    <div class="col-md-4">\n      <step-two-command-panel></step-two-command-panel>\n    </div>\n    <div class="col-md-8">\n      <step-two-visual-panel\n        configuration="$ctrl.configuration"\n        set-active-line-number="$ctrl.setActiveLineNumberParent(index)"\n        show-modal-add-ctrl-to-column="$ctrl.showModalAddCtrlToColumnParent(size, indexLine, numcolumn)">\n      </step-two-visual-panel>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          setActiveLineNumber: '&',
+          showModalAddCtrlToColumn: '&'
+        },
+        controller: (function () {
+          function stepTwoContentController() {
+            _classCallCheck(this, stepTwoContentController);
+          }
+
+          ///////////////////////////////////
+          // WHY this function is needed :
+          ///////////////////////////////////
+          // CASE OF :  function with parameter passing from parent to caller through another level component
+          //            parent -> intermediate component (here) -> caller
+          // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
+
+          _createClass(stepTwoContentController, [{
+            key: 'setActiveLineNumberParent',
+            value: function setActiveLineNumberParent(index) {
+              this.setActiveLineNumberParent({ index: index });
+            }
+
+            // Needed for same reason as setActiveLineNumberParent
+          }, {
+            key: 'showModalAddCtrlToColumnParent',
+            value: function showModalAddCtrlToColumnParent(size, indexLine, numcolumn) {
+              this.showModalAddCtrlToColumn({
+                size: size,
+                indexLine: indexLine,
+                numcolumn: numcolumn
+              });
+            }
+          }], [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return stepTwoContentController;
+        })()
+      };
+
+      _export('stepTwoContentComponent', stepTwoContentComponent);
+    }
+  };
+});
+$__System.register('26', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_TWO_COMMAND_PANEL_COMPONENT_NAME = 'stepTwoCommandPanel';
+
+      _export('STEP_TWO_COMMAND_PANEL_COMPONENT_NAME', STEP_TWO_COMMAND_PANEL_COMPONENT_NAME);
+
+      StepTwoCommandPanelComponent = {
+        template: '\n  <div id="commandPanel">\n    <div  class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-keyboard-o"></i>\n          &nbsp;\n          {{\'COMMAND_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <div class="row">\n          <div class="col-md-12">\n            <h4 class="numberOfcolumsText text-center">\n              - {{\'APPLY_CTRL2COL\' | translate}} -\n            </h4>\n          </div>\n        </div>\n        <div class="row">\n          <div class="col-lg-12" >\n            <hr/>\n            <blockquote>\n              <p class="numberOfcolumsText">\n                <i class="fa fa-minus"></i>\n                &nbsp;\n                {{\'CLIC_TAP_2_OPEN\' | translate}}.\n              </p>\n              <p class="numberOfcolumsText">\n                <i class="fa fa-minus"></i>\n                &nbsp;\n                {{\'SELECT_2_APPLY_COL\' | translate}}.\n              </p>\n          </blockquote>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {},
+        controller: (function () {
+          function StepTwoCommandPanelController() {
+            _classCallCheck(this, StepTwoCommandPanelController);
+          }
+
+          _createClass(StepTwoCommandPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepTwoCommandPanelController;
+        })()
+      };
+
+      _export('StepTwoCommandPanelComponent', StepTwoCommandPanelComponent);
+    }
+  };
+});
+$__System.register('27', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_TWO_VISUAL_PANEL_COMPONENT_NAME = 'stepTwoVisualPanel';
+
+      _export('STEP_TWO_VISUAL_PANEL_COMPONENT_NAME', STEP_TWO_VISUAL_PANEL_COMPONENT_NAME);
+
+      StepTwoVisualPanelComponent = {
+        template: '\n  <div id="visualPanel">\n    <div class="panel panel-default">\n    <div class="panel-heading">\n      <h3 class="panel-title">\n        <i class="fa fa-eye"></i>\n        &nbsp;\n        {{\'VISUAL_PANEL\' | translate}}\n      </h3>\n    </h3>\n    </div>\n    <div class="panel-body">\n      <!-- lines / columns -->\n      <ul class="list-group">\n        <li\n          class="list-group-item"\n          ng-repeat="line in $ctrl.configuration.lines track by $index">\n            <!-- columns -->\n            <div ng-switch on="line.columns.length">\n              <div\n                class="row linesList"\n                ng-switch-when="1">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-12 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', index: $index, numcolumn: 0})">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="2">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-6 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', index: $index, numcolumn: 0})">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-6 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', index: $index, numcolumn: 1})">\n                      {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n              <div\n                class="row linesList"\n                ng-switch-when="3">\n                <div\n                  class="col-md-12 lineCommandButtons"\n                  ng-show="$ctrl.configuration.lines.length > 1">\n                  <button\n                    class="btn"\n                    ng-class="{\'btn-warning\':($index + 1) !== $ctrl.configuration.activeLine, \'btn-success\': ($index + 1) === $ctrl.configuration.activeLine}"\n                    ng-click="$ctrl.setActiveLineNumber({index: $index + 1})">\n                    <i\n                      class="fa"\n                      ng-class="{\'fa-square-o\': ($index + 1) !== $ctrl.configuration.activeLine, \'fa-check-square-o\': ($index + 1) === $ctrl.configuration.activeLine}">\n                    </i>\n                  </button>\n                </div>\n                <div class="col-md-12">\n                  <div class="col-md-4 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[0].control.edited, \'btn-success\': line.columns[0].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', index: $index, numcolumn: 0})">\n                      {{line.columns[0].control.type !== \'none\'  ? line.columns[0].control.type + \' \' + line.columns[0].control.subtype || \'\' : \'column 1\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-4 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[1].control.edited, \'btn-success\': line.columns[1].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', index: $index, numcolumn: 1})">\n                      {{line.columns[1].control.type !== \'none\'  ? line.columns[1].control.type + \' \' + line.columns[1].control.subtype || \'\' : \'column 2\'}}\n                    </button>\n                  </div>\n                  <div class="col-md-4 well">\n                    <button\n                      class="btn btn-lg btn-block"\n                      ng-class="{\'btn-primary\': !line.columns[2].control.edited, \'btn-success\': line.columns[2].control.edited}"\n                      ng-click="$ctrl.showModalAddCtrlToColumn({size: \'\', indexLine: $index, numcolumn: 2})">\n                      {{line.columns[2].control.type !== \'none\'  ? line.columns[2].control.type + \' \' + line.columns[2].control.subtype || \'\' : \'column 3\'}}\n                    </button>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          setActiveLineNumber: '&',
+          showModalAddCtrlToColumn: '&'
+        },
+        controller: (function () {
+          function StepTwoVisualPanelController() {
+            _classCallCheck(this, StepTwoVisualPanelController);
+          }
+
+          _createClass(StepTwoVisualPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepTwoVisualPanelController;
+        })()
+      };
+
+      _export('StepTwoVisualPanelComponent', StepTwoVisualPanelComponent);
+    }
+  };
+});
+$__System.register('28', ['25', '26', '27'], function (_export) {
+  'use strict';
+
+  var stepTwoContentComponent, LINE_STEP_TWO_CONTENT_COMPONENT, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent, STEP_TWO_CONTENT_COMPONENT_MODULE;
+  return {
+    setters: [function (_) {
+      stepTwoContentComponent = _.stepTwoContentComponent;
+      LINE_STEP_TWO_CONTENT_COMPONENT = _.LINE_STEP_TWO_CONTENT_COMPONENT;
+    }, function (_2) {
+      STEP_TWO_COMMAND_PANEL_COMPONENT_NAME = _2.STEP_TWO_COMMAND_PANEL_COMPONENT_NAME;
+      StepTwoCommandPanelComponent = _2.StepTwoCommandPanelComponent;
+    }, function (_3) {
+      STEP_TWO_VISUAL_PANEL_COMPONENT_NAME = _3.STEP_TWO_VISUAL_PANEL_COMPONENT_NAME;
+      StepTwoVisualPanelComponent = _3.StepTwoVisualPanelComponent;
+    }],
+    execute: function () {
+      STEP_TWO_CONTENT_COMPONENT_MODULE = 'stepway.stepTwoContent.module';
+
+      _export('default', angular.module(STEP_TWO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent).component(STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent).component(STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent));
+    }
+  };
+});
+$__System.register('29', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, LINE_STEP_THREE_CONTENT_COMPONENT, stepThreeContentComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      LINE_STEP_THREE_CONTENT_COMPONENT = 'stepThreeContent';
+
+      _export('LINE_STEP_THREE_CONTENT_COMPONENT', LINE_STEP_THREE_CONTENT_COMPONENT);
+
+      stepThreeContentComponent = {
+        template: '\n  <div\n    class="animate-switch"\n    ng-switch-when="third">\n    <div class="col-md-4">\n      <step-three-command-panel\n        configuration="$ctrl.configuration"\n        saveThisForm="$ctrl.saveThisForm()">\n      </step-three-command-panel>\n    </div>\n    <div class="col-md-8">\n      <step-three-visual-panel\n        configuration="$ctrl.configuration"\n        data-model="$ctrl.dataModel"\n        wf-form-fields="$ctrl.wfFormFields"\n        on-submit="$ctrl.onSubmit()">\n      </step-three-visual-panel>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          dataModel: '=',
+          wfFormFields: '=',
+          onSubmit: '&',
+          saveThisForm: '&'
+        },
+        controller: (function () {
+          function stepThreeContentController() {
+            _classCallCheck(this, stepThreeContentController);
+          }
+
+          _createClass(stepThreeContentController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return stepThreeContentController;
+        })()
+      };
+
+      _export('stepThreeContentComponent', stepThreeContentComponent);
+    }
+  };
+});
+$__System.register('2a', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_THREE_COMMAND_PANEL_COMPONENT_NAME = 'stepThreeCommandPanel';
+
+      _export('STEP_THREE_COMMAND_PANEL_COMPONENT_NAME', STEP_THREE_COMMAND_PANEL_COMPONENT_NAME);
+
+      StepThreeCommandPanelComponent = {
+        template: '\n  <div id="commandPanel">\n    <div  class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-keyboard-o"></i>\n          &nbsp;\n          {{\'COMMAND_PANEL\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <div class="row">\n          <div class="col-xs-12">\n            <div class="form-group">\n              <label\n                for="inputSubmitButtontext"\n                class=" greyText control-label">\n                {{\'CUSTOM_SUBMIT_BTN\' | translate}} :\n              </label>\n              <div class="">\n                <input\n                  type="text"\n                  class="form-control"\n                  id="inputSubmitButtontext"\n                  placeholder=""\n                  ng-model="$ctrl.configuration.submitButtonText">\n              </div>\n            </div>\n          </div>\n        </div>\n        <hr/>\n        <div class="row">\n          <div class="col-xs-12">\n            <div class="form-group">\n              <label\n                for="inputCancelButtontext"\n                class=" greyText control-label">\n                {{\'CUSTOM_CANCEL_BTN\' | translate}} :\n              </label>\n              <div class="">\n                <input\n                  type="text"\n                  class="form-control"\n                  id="inputCancelButtontext"\n                  placeholder=""\n                  ng-model="$ctrl.configuration.cancelButtonText">\n              </div>\n            </div>\n          </div>\n        </div>\n        <hr/>\n        <div class="row">\n          <div class="col-xs-12">\n            <div class="form-group">\n              <label\n                for="inputNameFormtext"\n                class=" greyText control-label">\n                {{\'NAME_THIS_FORM\' | translate}} :\n              </label>\n              <div class="">\n                <input\n                  type="text"\n                  class="form-control"\n                  id="inputNameFormtext"\n                  placeholder=""\n                  ng-model="$ctrl.configuration.formName">\n              </div>\n            </div>\n          </div>\n        </div>\n        <button\n          class="btn btn-primary btn-block btn-lg"\n          ng-click="$ctrl.saveThisForm()">\n          {{\'SAVE_THIS_FORM\' | translate}}\n        </button>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          saveThisForm: '&'
+        },
+        controller: (function () {
+          function StepThreeCommandPanelController() {
+            _classCallCheck(this, StepThreeCommandPanelController);
+          }
+
+          _createClass(StepThreeCommandPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepThreeCommandPanelController;
+        })()
+      };
+
+      _export('StepThreeCommandPanelComponent', StepThreeCommandPanelComponent);
+    }
+  };
+});
+$__System.register('2b', ['15', '16'], function (_export) {
+  var _createClass, _classCallCheck, STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent;
+
+  return {
+    setters: [function (_) {
+      _createClass = _['default'];
+    }, function (_2) {
+      _classCallCheck = _2['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      STEP_THREE_VISUAL_PANEL_COMPONENT_NAME = 'stepThreeVisualPanel';
+
+      _export('STEP_THREE_VISUAL_PANEL_COMPONENT_NAME', STEP_THREE_VISUAL_PANEL_COMPONENT_NAME);
+
+      StepThreeVisualPanelComponent = {
+        template: '\n  <div id="visualPanel">\n    <div class="panel panel-default">\n      <div class="panel-heading">\n        <h3 class="panel-title">\n          <i class="fa fa-thumbs-o-up"></i>\n          &nbsp;\n          {{\'FINAL_STEP\' | translate}}\n        </h3>\n      </div>\n      <div class="panel-body">\n        <form ng-submit="$ctrl.onSubmit()">\n          <formly-form\n            id="saveFormlyFom"\n            model="$ctrl.dataModel"\n            fields="$ctrl.wfFormFields">\n            <span class="pull-right">\n            <button\n              class="btn btn-primary"\n              type="submit">\n              {{$ctrl.configuration.submitButtonText}}\n            </button>\n            <button\n              class="btn btn-primary"\n              type="cancel">\n              {{$ctrl.configuration.cancelButtonText}}\n            </button>\n            </span>\n          </formly-form>\n        </form>\n      </div>\n    </div>\n  </div>\n  ',
+        bindings: {
+          configuration: '=',
+          dataModel: '=',
+          wfFormFields: '=',
+          onSubmit: '&'
+        },
+        controller: (function () {
+          function StepThreeVisualPanelController() {
+            _classCallCheck(this, StepThreeVisualPanelController);
+          }
+
+          _createClass(StepThreeVisualPanelController, null, [{
+            key: '$inject',
+            get: function get() {
+              return [];
+            }
+          }]);
+
+          return StepThreeVisualPanelController;
+        })()
+      };
+
+      _export('StepThreeVisualPanelComponent', StepThreeVisualPanelComponent);
+    }
+  };
+});
+$__System.register('2c', ['29', '2a', '2b'], function (_export) {
+  'use strict';
+
+  var stepTwoContentComponent, LINE_STEP_TWO_CONTENT_COMPONENT, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent, STEP_TWO_CONTENT_COMPONENT_MODULE;
+  return {
+    setters: [function (_) {
+      stepTwoContentComponent = _.stepTwoContentComponent;
+      LINE_STEP_TWO_CONTENT_COMPONENT = _.LINE_STEP_TWO_CONTENT_COMPONENT;
+    }, function (_a) {
+      STEP_TWO_COMMAND_PANEL_COMPONENT_NAME = _a.STEP_TWO_COMMAND_PANEL_COMPONENT_NAME;
+      StepTwoCommandPanelComponent = _a.StepTwoCommandPanelComponent;
+    }, function (_b) {
+      STEP_TWO_VISUAL_PANEL_COMPONENT_NAME = _b.STEP_TWO_VISUAL_PANEL_COMPONENT_NAME;
+      StepTwoVisualPanelComponent = _b.StepTwoVisualPanelComponent;
+    }],
+    execute: function () {
+      STEP_TWO_CONTENT_COMPONENT_MODULE = 'stepway.stepTwoContent.module';
+
+      _export('default', angular.module(STEP_TWO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent).component(STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent).component(STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent));
+    }
+  };
+});
+$__System.register('2d', ['13', '17', '18', '20', '24', '28', '1a', '1c', '2c'], function (_export) {
+  'use strict';
+
+  var edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenDirective, STEP_WAY_DIRECTIVE_NAME, easyFormSteWayConfig, EASY_FORM_STEP_WAY_CONFIG_NAME, stepZeroContentModule, stepOneContentModule, stepTwoContentModule, pagerModule, pageIndicatorModule, stepThreeContentModule, STEP_WAY_MAIN_MODULE, TO_INJECT;
   return {
     setters: [function (_) {
       edaStepWayEasyFormGenController = _['default'];
@@ -1496,11 +2281,24 @@ $__System.register('19', ['13', '17', '18'], function (_export) {
     }, function (_3) {
       easyFormSteWayConfig = _3['default'];
       EASY_FORM_STEP_WAY_CONFIG_NAME = _3.EASY_FORM_STEP_WAY_CONFIG_NAME;
+    }, function (_4) {
+      stepZeroContentModule = _4['default'];
+    }, function (_5) {
+      stepOneContentModule = _5['default'];
+    }, function (_6) {
+      stepTwoContentModule = _6['default'];
+    }, function (_a) {
+      pagerModule = _a['default'];
+    }, function (_c) {
+      pageIndicatorModule = _c['default'];
+    }, function (_c2) {
+      stepThreeContentModule = _c2['default'];
     }],
     execute: function () {
       STEP_WAY_MAIN_MODULE = 'easyFormStepwayMainModule';
+      TO_INJECT = [pagerModule.name, pageIndicatorModule.name, stepZeroContentModule.name, stepOneContentModule.name, stepTwoContentModule.name, stepThreeContentModule.name];
 
-      _export('default', angular.module(STEP_WAY_MAIN_MODULE, []).controller(STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenController).directive(STEP_WAY_DIRECTIVE_NAME, edaStepWayEasyFormGenDirective).provider(EASY_FORM_STEP_WAY_CONFIG_NAME, easyFormSteWayConfig));
+      _export('default', angular.module(STEP_WAY_MAIN_MODULE, TO_INJECT).controller(STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenController).directive(STEP_WAY_DIRECTIVE_NAME, edaStepWayEasyFormGenDirective).provider(EASY_FORM_STEP_WAY_CONFIG_NAME, easyFormSteWayConfig));
     }
   };
 });
@@ -1965,7 +2763,7 @@ $__System.register('14', ['15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('1a', ['15', '16'], function (_export) {
+$__System.register('2e', ['15', '16'], function (_export) {
   var _createClass, _classCallCheck, EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent;
 
   return {
@@ -2006,7 +2804,7 @@ $__System.register('1a', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("2f", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2016,7 +2814,7 @@ $__System.registerDynamic("1b", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('1c', ['15', '16', '1b'], function (_export) {
+$__System.register('30', ['15', '16', '2f'], function (_export) {
   var _createClass, _classCallCheck, editBasicSelectTemplate, EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent;
 
   return {
@@ -2024,8 +2822,8 @@ $__System.register('1c', ['15', '16', '1b'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_b) {
-      editBasicSelectTemplate = _b['default'];
+    }, function (_f) {
+      editBasicSelectTemplate = _f['default'];
     }],
     execute: function () {
       'use strict';
@@ -2066,7 +2864,7 @@ $__System.register('1c', ['15', '16', '1b'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("31", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2076,7 +2874,7 @@ $__System.registerDynamic("1d", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('1e', ['15', '16', '1d'], function (_export) {
+$__System.register('32', ['15', '16', '31'], function (_export) {
   var _createClass, _classCallCheck, editCheckBoxControlTemplate, EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent;
 
   return {
@@ -2084,8 +2882,8 @@ $__System.register('1e', ['15', '16', '1d'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_d) {
-      editCheckBoxControlTemplate = _d['default'];
+    }, function (_3) {
+      editCheckBoxControlTemplate = _3['default'];
     }],
     execute: function () {
       'use strict';
@@ -2119,7 +2917,7 @@ $__System.register('1e', ['15', '16', '1d'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("33", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2129,7 +2927,7 @@ $__System.registerDynamic("1f", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('20', ['15', '16', '1f'], function (_export) {
+$__System.register('34', ['15', '16', '33'], function (_export) {
   var _createClass, _classCallCheck, editDateControlTemplate, EDIT_DATE_COMPONENT, editDateControlComponent;
 
   return {
@@ -2137,8 +2935,8 @@ $__System.register('20', ['15', '16', '1f'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_f) {
-      editDateControlTemplate = _f['default'];
+    }, function (_3) {
+      editDateControlTemplate = _3['default'];
     }],
     execute: function () {
       'use strict';
@@ -2175,7 +2973,7 @@ $__System.register('20', ['15', '16', '1f'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("21", [], true, function($__require, exports, module) {
+$__System.registerDynamic("35", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2185,7 +2983,7 @@ $__System.registerDynamic("21", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('22', ['15', '16', '21'], function (_export) {
+$__System.register('36', ['15', '16', '35'], function (_export) {
   var _createClass, _classCallCheck, editEmailControlTemplate, EDIT_EMAIL_COMPONENT, editEmailControlComponent;
 
   return {
@@ -2228,7 +3026,7 @@ $__System.register('22', ['15', '16', '21'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("23", [], true, function($__require, exports, module) {
+$__System.registerDynamic("37", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2238,7 +3036,7 @@ $__System.registerDynamic("23", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('24', ['15', '16', '23'], function (_export) {
+$__System.register('38', ['15', '16', '37'], function (_export) {
   var _createClass, _classCallCheck, editGroupedSelectControlTemplate, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent;
 
   return {
@@ -2293,7 +3091,7 @@ $__System.register('24', ['15', '16', '23'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("25", [], true, function($__require, exports, module) {
+$__System.registerDynamic("39", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2303,7 +3101,7 @@ $__System.registerDynamic("25", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('26', ['15', '16', '25'], function (_export) {
+$__System.register('3a', ['15', '16', '39'], function (_export) {
   var _createClass, _classCallCheck, editHeaderControlTemplate, EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent;
 
   return {
@@ -2348,7 +3146,7 @@ $__System.register('26', ['15', '16', '25'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("27", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3b", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2358,7 +3156,7 @@ $__System.registerDynamic("27", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('28', ['15', '16', '27'], function (_export) {
+$__System.register('3c', ['15', '16', '3b'], function (_export) {
   var _createClass, _classCallCheck, editPasswordControlTemplate, EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent;
 
   return {
@@ -2366,8 +3164,8 @@ $__System.register('28', ['15', '16', '27'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_3) {
-      editPasswordControlTemplate = _3['default'];
+    }, function (_b) {
+      editPasswordControlTemplate = _b['default'];
     }],
     execute: function () {
       'use strict';
@@ -2403,7 +3201,7 @@ $__System.register('28', ['15', '16', '27'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("29", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3d", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2413,7 +3211,7 @@ $__System.registerDynamic("29", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('2a', ['15', '16', '29'], function (_export) {
+$__System.register('3e', ['15', '16', '3d'], function (_export) {
   var _createClass, _classCallCheck, editRadioControlTemplate, EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent;
 
   return {
@@ -2421,8 +3219,8 @@ $__System.register('2a', ['15', '16', '29'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_3) {
-      editRadioControlTemplate = _3['default'];
+    }, function (_d) {
+      editRadioControlTemplate = _d['default'];
     }],
     execute: function () {
       'use strict';
@@ -2464,7 +3262,7 @@ $__System.register('2a', ['15', '16', '29'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("2b", [], true, function($__require, exports, module) {
+$__System.registerDynamic("3f", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2474,7 +3272,7 @@ $__System.registerDynamic("2b", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('2c', ['15', '16', '2b'], function (_export) {
+$__System.register('40', ['15', '16', '3f'], function (_export) {
   var _createClass, _classCallCheck, editRichTextEditorControlTemplate, EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent;
 
   return {
@@ -2482,8 +3280,8 @@ $__System.register('2c', ['15', '16', '2b'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_b) {
-      editRichTextEditorControlTemplate = _b['default'];
+    }, function (_f) {
+      editRichTextEditorControlTemplate = _f['default'];
     }],
     execute: function () {
       'use strict';
@@ -2519,7 +3317,7 @@ $__System.register('2c', ['15', '16', '2b'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("2d", [], true, function($__require, exports, module) {
+$__System.registerDynamic("41", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2529,7 +3327,7 @@ $__System.registerDynamic("2d", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('2e', ['15', '16', '2d'], function (_export) {
+$__System.register('42', ['15', '16', '41'], function (_export) {
   var _createClass, _classCallCheck, editSubTitleControlTemplate, EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent;
 
   return {
@@ -2537,8 +3335,8 @@ $__System.register('2e', ['15', '16', '2d'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_d) {
-      editSubTitleControlTemplate = _d['default'];
+    }, function (_3) {
+      editSubTitleControlTemplate = _3['default'];
     }],
     execute: function () {
       'use strict';
@@ -2574,7 +3372,7 @@ $__System.register('2e', ['15', '16', '2d'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("2f", [], true, function($__require, exports, module) {
+$__System.registerDynamic("43", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2584,7 +3382,7 @@ $__System.registerDynamic("2f", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('30', ['15', '16', '2f'], function (_export) {
+$__System.register('44', ['15', '16', '43'], function (_export) {
   var _createClass, _classCallCheck, editTextareaControlTemplate, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent;
 
   return {
@@ -2592,8 +3390,8 @@ $__System.register('30', ['15', '16', '2f'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_f) {
-      editTextareaControlTemplate = _f['default'];
+    }, function (_3) {
+      editTextareaControlTemplate = _3['default'];
     }],
     execute: function () {
       'use strict';
@@ -2629,7 +3427,7 @@ $__System.register('30', ['15', '16', '2f'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("31", [], true, function($__require, exports, module) {
+$__System.registerDynamic("45", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2639,7 +3437,7 @@ $__System.registerDynamic("31", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('32', ['15', '16', '31'], function (_export) {
+$__System.register('46', ['15', '16', '45'], function (_export) {
   var _createClass, _classCallCheck, editTextInputControlTemplate, EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent;
 
   return {
@@ -2684,7 +3482,7 @@ $__System.register('32', ['15', '16', '31'], function (_export) {
     }
   };
 });
-$__System.register('33', ['15', '16'], function (_export) {
+$__System.register('47', ['15', '16'], function (_export) {
   var _createClass, _classCallCheck, EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent;
 
   return {
@@ -2729,7 +3527,7 @@ $__System.register('33', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('34', ['15', '16'], function (_export) {
+$__System.register('48', ['15', '16'], function (_export) {
   var _createClass, _classCallCheck, EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent;
 
   return {
@@ -2774,7 +3572,7 @@ $__System.register('34', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("35", [], true, function($__require, exports, module) {
+$__System.registerDynamic("49", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -2784,7 +3582,7 @@ $__System.registerDynamic("35", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('36', ['15', '16', '35'], function (_export) {
+$__System.register('4a', ['15', '16', '49'], function (_export) {
   var _createClass, _classCallCheck, editIpAdressControlTemplate, EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent;
 
   return {
@@ -2827,71 +3625,72 @@ $__System.register('36', ['15', '16', '35'], function (_export) {
     }
   };
 });
-$__System.register('37', ['14', '20', '22', '24', '26', '28', '30', '32', '33', '34', '36', '1a', '1c', '1e', '2a', '2c', '2e'], function (_export) {
+$__System.register('4b', ['14', '30', '32', '34', '36', '38', '40', '42', '44', '46', '47', '48', '2e', '3a', '3c', '3e', '4a'], function (_export) {
         'use strict';
 
-        var editModalController, EDIT_MODAL_CONTROLLER_NAME, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME;
+        var editModalController, EDIT_MODAL_CONTROLLER_NAME, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT;
         return {
                 setters: [function (_) {
                         editModalController = _['default'];
                         EDIT_MODAL_CONTROLLER_NAME = _.EDIT_MODAL_CONTROLLER_NAME;
                 }, function (_2) {
-                        editDateControlComponent = _2.editDateControlComponent;
-                        EDIT_DATE_COMPONENT = _2.EDIT_DATE_COMPONENT;
+                        editBasicSelectControlComponent = _2.editBasicSelectControlComponent;
+                        EDIT_BASIC_SELECT_COMPONENT = _2.EDIT_BASIC_SELECT_COMPONENT;
                 }, function (_3) {
-                        editEmailControlComponent = _3.editEmailControlComponent;
-                        EDIT_EMAIL_COMPONENT = _3.EDIT_EMAIL_COMPONENT;
+                        editCheckBoxControlComponent = _3.editCheckBoxControlComponent;
+                        EDIT_CHECKBOX_COMPONENT = _3.EDIT_CHECKBOX_COMPONENT;
                 }, function (_4) {
-                        editGroupedSelectControlComponent = _4.editGroupedSelectControlComponent;
-                        EDIT_GROUPED_SELECT_COMPONENT = _4.EDIT_GROUPED_SELECT_COMPONENT;
+                        editDateControlComponent = _4.editDateControlComponent;
+                        EDIT_DATE_COMPONENT = _4.EDIT_DATE_COMPONENT;
                 }, function (_5) {
-                        editHeaderControlComponent = _5.editHeaderControlComponent;
-                        EDIT_HEADER_CONTROL_COMPONENT = _5.EDIT_HEADER_CONTROL_COMPONENT;
+                        editEmailControlComponent = _5.editEmailControlComponent;
+                        EDIT_EMAIL_COMPONENT = _5.EDIT_EMAIL_COMPONENT;
                 }, function (_6) {
-                        editPasswordControlComponent = _6.editPasswordControlComponent;
-                        EDIT_PASSWORD_CONTROL_COMPONENT = _6.EDIT_PASSWORD_CONTROL_COMPONENT;
+                        editGroupedSelectControlComponent = _6.editGroupedSelectControlComponent;
+                        EDIT_GROUPED_SELECT_COMPONENT = _6.EDIT_GROUPED_SELECT_COMPONENT;
                 }, function (_7) {
-                        editTextareaControlComponent = _7.editTextareaControlComponent;
-                        EDIT_TEXTAREA_CONTROL_COMPONENT = _7.EDIT_TEXTAREA_CONTROL_COMPONENT;
+                        editRichTextEditorControlComponent = _7.editRichTextEditorControlComponent;
+                        EDIT_RICH_TEXT_EDITOR_COMPONENT = _7.EDIT_RICH_TEXT_EDITOR_COMPONENT;
                 }, function (_8) {
-                        editTextInputControlComponent = _8.editTextInputControlComponent;
-                        EDIT_TEXTINPUT_CONTROL_COMPONENT = _8.EDIT_TEXTINPUT_CONTROL_COMPONENT;
+                        editSubTitleControlComponent = _8.editSubTitleControlComponent;
+                        EDIT_SUBTITLE_CONTROL_COMPONENT = _8.EDIT_SUBTITLE_CONTROL_COMPONENT;
                 }, function (_9) {
-                        editValidEditFooterComponent = _9.editValidEditFooterComponent;
-                        EDIT_EDIT_VALID_FOOTER_COMPONENT = _9.EDIT_EDIT_VALID_FOOTER_COMPONENT;
+                        editTextareaControlComponent = _9.editTextareaControlComponent;
+                        EDIT_TEXTAREA_CONTROL_COMPONENT = _9.EDIT_TEXTAREA_CONTROL_COMPONENT;
                 }, function (_10) {
-                        editChooseControlComponent = _10.editChooseControlComponent;
-                        EDIT_CHOOSE_CONTROL_COMPONENT = _10.EDIT_CHOOSE_CONTROL_COMPONENT;
+                        editTextInputControlComponent = _10.editTextInputControlComponent;
+                        EDIT_TEXTINPUT_CONTROL_COMPONENT = _10.EDIT_TEXTINPUT_CONTROL_COMPONENT;
                 }, function (_11) {
-                        editIpAdressControlComponent = _11.editIpAdressControlComponent;
-                        EDIT_IP_ADRESS_COMPONENT = _11.EDIT_IP_ADRESS_COMPONENT;
-                }, function (_a) {
-                        editBlankControlComponent = _a.editBlankControlComponent;
-                        EDIT_BLANK_CONTROL_COMPONENT = _a.EDIT_BLANK_CONTROL_COMPONENT;
-                }, function (_c) {
-                        editBasicSelectControlComponent = _c.editBasicSelectControlComponent;
-                        EDIT_BASIC_SELECT_COMPONENT = _c.EDIT_BASIC_SELECT_COMPONENT;
+                        editValidEditFooterComponent = _11.editValidEditFooterComponent;
+                        EDIT_EDIT_VALID_FOOTER_COMPONENT = _11.EDIT_EDIT_VALID_FOOTER_COMPONENT;
+                }, function (_12) {
+                        editChooseControlComponent = _12.editChooseControlComponent;
+                        EDIT_CHOOSE_CONTROL_COMPONENT = _12.EDIT_CHOOSE_CONTROL_COMPONENT;
                 }, function (_e) {
-                        editCheckBoxControlComponent = _e.editCheckBoxControlComponent;
-                        EDIT_CHECKBOX_COMPONENT = _e.EDIT_CHECKBOX_COMPONENT;
-                }, function (_a2) {
-                        editRadioControlComponent = _a2.editRadioControlComponent;
-                        EDIT_RADIO_CONTROL_COMPONENT = _a2.EDIT_RADIO_CONTROL_COMPONENT;
-                }, function (_c2) {
-                        editRichTextEditorControlComponent = _c2.editRichTextEditorControlComponent;
-                        EDIT_RICH_TEXT_EDITOR_COMPONENT = _c2.EDIT_RICH_TEXT_EDITOR_COMPONENT;
+                        editBlankControlComponent = _e.editBlankControlComponent;
+                        EDIT_BLANK_CONTROL_COMPONENT = _e.EDIT_BLANK_CONTROL_COMPONENT;
+                }, function (_a) {
+                        editHeaderControlComponent = _a.editHeaderControlComponent;
+                        EDIT_HEADER_CONTROL_COMPONENT = _a.EDIT_HEADER_CONTROL_COMPONENT;
+                }, function (_c) {
+                        editPasswordControlComponent = _c.editPasswordControlComponent;
+                        EDIT_PASSWORD_CONTROL_COMPONENT = _c.EDIT_PASSWORD_CONTROL_COMPONENT;
                 }, function (_e2) {
-                        editSubTitleControlComponent = _e2.editSubTitleControlComponent;
-                        EDIT_SUBTITLE_CONTROL_COMPONENT = _e2.EDIT_SUBTITLE_CONTROL_COMPONENT;
+                        editRadioControlComponent = _e2.editRadioControlComponent;
+                        EDIT_RADIO_CONTROL_COMPONENT = _e2.EDIT_RADIO_CONTROL_COMPONENT;
+                }, function (_a2) {
+                        editIpAdressControlComponent = _a2.editIpAdressControlComponent;
+                        EDIT_IP_ADRESS_COMPONENT = _a2.EDIT_IP_ADRESS_COMPONENT;
                 }],
                 execute: function () {
                         EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
+                        EDIT_CONTROL_INJECT = [];
 
-                        _export('default', angular.module(EDIT_CONTROLE_MODAL_NAME, []).controller(EDIT_MODAL_CONTROLLER_NAME, editModalController).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent).component(EDIT_DATE_COMPONENT, editDateControlComponent).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent).component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent).component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent).component(EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent));
+                        _export('default', angular.module(EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT).controller(EDIT_MODAL_CONTROLLER_NAME, editModalController).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent).component(EDIT_DATE_COMPONENT, editDateControlComponent).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent).component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent).component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent).component(EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent));
                 }
         };
 });
-$__System.register('38', [], function (_export) {
+$__System.register('4c', [], function (_export) {
 	'use strict';
 
 	var resetNyaSelect, getResetConfig, returnControlFromAddCtrlModalModel, validKeyUniqueness;
@@ -3350,7 +4149,7 @@ $__System.register('38', [], function (_export) {
 		}
 	};
 });
-$__System.register('39', ['15', '16', '38'], function (_export) {
+$__System.register('4d', ['15', '16', '4c'], function (_export) {
 	var _createClass, _classCallCheck, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
 
 	return {
@@ -3358,11 +4157,11 @@ $__System.register('39', ['15', '16', '38'], function (_export) {
 			_createClass = _['default'];
 		}, function (_2) {
 			_classCallCheck = _2['default'];
-		}, function (_3) {
-			resetNyaSelect = _3.resetNyaSelect;
-			returnControlFromAddCtrlModalModel = _3.returnControlFromAddCtrlModalModel;
-			validKeyUniqueness = _3.validKeyUniqueness;
-			getResetConfig = _3.getResetConfig;
+		}, function (_c) {
+			resetNyaSelect = _c.resetNyaSelect;
+			returnControlFromAddCtrlModalModel = _c.returnControlFromAddCtrlModalModel;
+			validKeyUniqueness = _c.validKeyUniqueness;
+			getResetConfig = _c.getResetConfig;
 		}],
 		execute: function () {
 			'use strict';
@@ -3608,15 +4407,15 @@ $__System.register('39', ['15', '16', '38'], function (_export) {
 		}
 	};
 });
-$__System.register('3a', ['39'], function (_export) {
+$__System.register('4e', ['4d'], function (_export) {
 		/* global angular */
 		'use strict';
 
 		var $modalProxy, CONTROLLER_MODAL_PROXY_SERVICE, MODAL_PROXY_MODULE_NAME;
 		return {
-				setters: [function (_) {
-						$modalProxy = _['default'];
-						CONTROLLER_MODAL_PROXY_SERVICE = _.CONTROLLER_MODAL_PROXY_SERVICE;
+				setters: [function (_d) {
+						$modalProxy = _d['default'];
+						CONTROLLER_MODAL_PROXY_SERVICE = _d.CONTROLLER_MODAL_PROXY_SERVICE;
 				}],
 				execute: function () {
 						MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
@@ -3625,7 +4424,7 @@ $__System.register('3a', ['39'], function (_export) {
 				}
 		};
 });
-$__System.register('3b', [], function (_export) {
+$__System.register('4f', [], function (_export) {
 	'use strict';
 
 	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerOptions, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerOptionsProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, resetDataModel, resetFormlyModel;
@@ -3994,7 +4793,7 @@ $__System.register('3b', [], function (_export) {
 		}
 	};
 });
-$__System.register('3c', ['15', '16', '3b'], function (_export) {
+$__System.register('50', ['15', '16', '4f'], function (_export) {
 	var _createClass, _classCallCheck, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
@@ -4002,15 +4801,15 @@ $__System.register('3c', ['15', '16', '3b'], function (_export) {
 			_createClass = _['default'];
 		}, function (_2) {
 			_classCallCheck = _2['default'];
-		}, function (_b) {
-			configurationModelInit = _b.configurationModelInit;
-			configurationModelResult = _b.configurationModelResult;
-			resetDataModel = _b.resetDataModel;
-			resetFormlyModel = _b.resetFormlyModel;
-			addOneColumnHeader = _b.addOneColumnHeader;
-			addOneColumnControl = _b.addOneColumnControl;
-			addTwoColumnControl = _b.addTwoColumnControl;
-			addThreeColumnControl = _b.addThreeColumnControl;
+		}, function (_f) {
+			configurationModelInit = _f.configurationModelInit;
+			configurationModelResult = _f.configurationModelResult;
+			resetDataModel = _f.resetDataModel;
+			resetFormlyModel = _f.resetFormlyModel;
+			addOneColumnHeader = _f.addOneColumnHeader;
+			addOneColumnControl = _f.addOneColumnControl;
+			addTwoColumnControl = _f.addTwoColumnControl;
+			addThreeColumnControl = _f.addThreeColumnControl;
 		}],
 		execute: function () {
 			/* global angular */
@@ -4095,14 +4894,14 @@ $__System.register('3c', ['15', '16', '3b'], function (_export) {
 		}
 	};
 });
-$__System.register('3d', ['3c'], function (_export) {
+$__System.register('51', ['50'], function (_export) {
 		'use strict';
 
 		var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
 		return {
-				setters: [function (_c) {
-						$formlyProxy = _c['default'];
-						FORMLY_PROXY_SERVICE = _c.FORMLY_PROXY_SERVICE;
+				setters: [function (_) {
+						$formlyProxy = _['default'];
+						FORMLY_PROXY_SERVICE = _.FORMLY_PROXY_SERVICE;
 				}],
 				execute: function () {
 						FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
@@ -4111,7 +4910,7 @@ $__System.register('3d', ['3c'], function (_export) {
 				}
 		};
 });
-$__System.registerDynamic("3e", [], true, function($__require, exports, module) {
+$__System.registerDynamic("52", [], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
@@ -4133,12 +4932,12 @@ $__System.registerDynamic("3e", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.registerDynamic("3f", ["3e"], true, function($__require, exports, module) {
+$__System.registerDynamic("53", ["52"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var $ = $__require('3e');
+  var $ = $__require('52');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
@@ -4146,26 +4945,26 @@ $__System.registerDynamic("3f", ["3e"], true, function($__require, exports, modu
   return module.exports;
 });
 
-$__System.registerDynamic("40", ["3f"], true, function($__require, exports, module) {
+$__System.registerDynamic("54", ["53"], true, function($__require, exports, module) {
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
   module.exports = {
-    "default": $__require('3f'),
+    "default": $__require('53'),
     __esModule: true
   };
   global.define = __define;
   return module.exports;
 });
 
-$__System.registerDynamic("15", ["40"], true, function($__require, exports, module) {
+$__System.registerDynamic("15", ["54"], true, function($__require, exports, module) {
   "use strict";
   ;
   var global = this,
       __define = global.define;
   global.define = undefined;
-  var _Object$defineProperty = $__require('40')["default"];
+  var _Object$defineProperty = $__require('54')["default"];
   exports["default"] = (function() {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
@@ -4206,7 +5005,7 @@ $__System.registerDynamic("16", [], true, function($__require, exports, module) 
   return module.exports;
 });
 
-$__System.register('41', ['15', '16'], function (_export) {
+$__System.register('55', ['15', '16'], function (_export) {
 	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
 
 	return {
@@ -4443,7 +5242,7 @@ $__System.register('41', ['15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('42', ['41'], function (_export) {
+$__System.register('56', ['55'], function (_export) {
 		/* global angular */
 		'use strict';
 
@@ -4460,10 +5259,10 @@ $__System.register('42', ['41'], function (_export) {
 				}
 		};
 });
-$__System.register('1', ['2', '4', '6', '19', '37', '42', 'e', 'f', '3a', '3d'], function (_export) {
+$__System.register('1', ['2', '4', '6', '51', '56', 'e', 'f', '2d', '4b', '4e'], function (_export) {
 	'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayModalProxyModule, easyFormStepwayFormlyProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayFormlyProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
 	return {
 		setters: [function (_) {}, function (_2) {
 			easyFormStepWayConfig = _2['default'];
@@ -4472,19 +5271,19 @@ $__System.register('1', ['2', '4', '6', '19', '37', '42', 'e', 'f', '3a', '3d'],
 		}, function (_3) {
 			formlyConfig = _3['default'];
 		}, function (_4) {
-			easyFormStepwayMainModule = _4['default'];
+			easyFormStepwayFormlyProxyModule = _4['default'];
 		}, function (_5) {
-			easyFormStepwayModalModule = _5['default'];
-		}, function (_6) {
-			easyFormStepwaySelectOptionManageModules = _6['default'];
+			easyFormStepwaySelectOptionManageModules = _5['default'];
 		}, function (_e) {
 			translateConfig = _e['default'];
 		}, function (_f) {
 			easyFormStepWayCoreModule = _f['default'];
-		}, function (_a) {
-			easyFormStepwayModalProxyModule = _a['default'];
 		}, function (_d) {
-			easyFormStepwayFormlyProxyModule = _d['default'];
+			easyFormStepwayMainModule = _d['default'];
+		}, function (_b) {
+			easyFormStepwayModalModule = _b['default'];
+		}, function (_e2) {
+			easyFormStepwayModalProxyModule = _e2['default'];
 		}],
 		execute: function () {
 			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';

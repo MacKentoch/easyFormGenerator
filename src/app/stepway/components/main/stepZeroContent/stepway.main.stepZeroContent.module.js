@@ -5,11 +5,11 @@ import {
 import {
   STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME,
   StepZeroCommandPanelComponent
-}                                       from './stepway.main.StepZeroCommandPanel.component';
+}                                       from './StepZeroCommandPanel/stepway.main.StepZeroCommandPanel.component';
 import {
   STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME,
   StepZeroVisualPanelComponent
-}                                       from './stepway.main.StepZeroVisualPanel.component';
+}                                       from './StepZeroVisualPanel/stepway.main.StepZeroVisualPanel.component';
 
 const STEP_ZERO_CONTENT_COMPONENT_MODULE = 'stepway.stepZeroContent.module';
 

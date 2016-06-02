@@ -8,7 +8,7 @@ import easyFormSteWayConfig, {
   EASY_FORM_STEP_WAY_CONFIG_NAME
 }                                         from './stepway.main.provider';
 import pagerModule                        from './pager/stepway.main.pager.module';
-import pageIndicatorModule                from './pageIndicator/stepway.main.pageIndicator.module';
+import pageIndicatorModule                from './stepIndicator/stepway.main.stepIndicator.module';
 import stepZeroContentModule              from './stepZeroContent/stepway.main.stepZeroContent.module';
 import stepOneContentModule               from './stepOneContent/stepway.main.stepOneContent.module';
 import stepTwoContentModule               from './stepTwoContent/stepway.main.stepTwoContent.module';
