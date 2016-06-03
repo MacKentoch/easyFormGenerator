@@ -1,20 +1,20 @@
 import {
-  stepTwoContentComponent,
-  LINE_STEP_TWO_CONTENT_COMPONENT
+  stepThreeContentComponent,
+  LINE_STEP_THREE_CONTENT_COMPONENT
 }                                       from './stepway.main.stepThreeContent.component';
 import {
-  STEP_TWO_COMMAND_PANEL_COMPONENT_NAME,
-  StepTwoCommandPanelComponent
+  STEP_THREE_COMMAND_PANEL_COMPONENT_NAME,
+  StepThreeCommandPanelComponent
 }                                       from './StepThreeCommandPanel/stepway.main.StepThreeCommandPanel.component';
 import {
-  STEP_TWO_VISUAL_PANEL_COMPONENT_NAME,
-  StepTwoVisualPanelComponent
+  STEP_THREE_VISUAL_PANEL_COMPONENT_NAME,
+  StepThreeVisualPanelComponent
 }                                       from './StepThreeVisualPanel/stepway.main.StepThreeVisualPanel.component';
 
-const STEP_TWO_CONTENT_COMPONENT_MODULE = 'stepway.stepTwoContent.module';
+const STEP_THREE_CONTENT_COMPONENT_MODULE = 'stepway.stepThreeContent.module';
 
 export default angular
-                .module(STEP_TWO_CONTENT_COMPONENT_MODULE, [])
-                .component(LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent)
-                .component(STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent)
-                .component(STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent);
+                .module(STEP_THREE_CONTENT_COMPONENT_MODULE, [])
+                .component(LINE_STEP_THREE_CONTENT_COMPONENT, stepThreeContentComponent)
+                .component(STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent)
+                .component(STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent);

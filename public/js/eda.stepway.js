@@ -2248,22 +2248,22 @@ $__System.register('2b', ['15', '16'], function (_export) {
 $__System.register('2c', ['29', '2a', '2b'], function (_export) {
   'use strict';
 
-  var stepTwoContentComponent, LINE_STEP_TWO_CONTENT_COMPONENT, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent, STEP_TWO_CONTENT_COMPONENT_MODULE;
+  var stepThreeContentComponent, LINE_STEP_THREE_CONTENT_COMPONENT, STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent, STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent, STEP_THREE_CONTENT_COMPONENT_MODULE;
   return {
     setters: [function (_) {
-      stepTwoContentComponent = _.stepTwoContentComponent;
-      LINE_STEP_TWO_CONTENT_COMPONENT = _.LINE_STEP_TWO_CONTENT_COMPONENT;
+      stepThreeContentComponent = _.stepThreeContentComponent;
+      LINE_STEP_THREE_CONTENT_COMPONENT = _.LINE_STEP_THREE_CONTENT_COMPONENT;
     }, function (_a) {
-      STEP_TWO_COMMAND_PANEL_COMPONENT_NAME = _a.STEP_TWO_COMMAND_PANEL_COMPONENT_NAME;
-      StepTwoCommandPanelComponent = _a.StepTwoCommandPanelComponent;
+      STEP_THREE_COMMAND_PANEL_COMPONENT_NAME = _a.STEP_THREE_COMMAND_PANEL_COMPONENT_NAME;
+      StepThreeCommandPanelComponent = _a.StepThreeCommandPanelComponent;
     }, function (_b) {
-      STEP_TWO_VISUAL_PANEL_COMPONENT_NAME = _b.STEP_TWO_VISUAL_PANEL_COMPONENT_NAME;
-      StepTwoVisualPanelComponent = _b.StepTwoVisualPanelComponent;
+      STEP_THREE_VISUAL_PANEL_COMPONENT_NAME = _b.STEP_THREE_VISUAL_PANEL_COMPONENT_NAME;
+      StepThreeVisualPanelComponent = _b.StepThreeVisualPanelComponent;
     }],
     execute: function () {
-      STEP_TWO_CONTENT_COMPONENT_MODULE = 'stepway.stepTwoContent.module';
+      STEP_THREE_CONTENT_COMPONENT_MODULE = 'stepway.stepThreeContent.module';
 
-      _export('default', angular.module(STEP_TWO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent).component(STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent).component(STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent));
+      _export('default', angular.module(STEP_THREE_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_THREE_CONTENT_COMPONENT, stepThreeContentComponent).component(STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent).component(STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent));
     }
   };
 });

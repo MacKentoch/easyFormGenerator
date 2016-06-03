@@ -27,7 +27,6 @@ export const stepTwoContentComponent = {
     constructor() {
 
     }
-
     ///////////////////////////////////
     // WHY this function is needed :
     ///////////////////////////////////
