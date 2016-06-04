@@ -32,21 +32,21 @@
                     ng-switch on="vm.configuration.listConfigStep[vm.configuration.configStepCounter]">
                     <step-zero-content
                       configuration="vm.configuration"
-                      addNewline="vm.addNewline()"
-                      downThisLine="vm.downThisLine(index)"
-                      upThisLine="vm.upThisLine(index)"
-                      removeThisLine="vm.removeThisLine(index)">
+                      add-newline="vm.addNewline()"
+                      down-this-line="vm.downThisLine(index)"
+                      up-this-line="vm.upThisLine(index)"
+                      remove-this-line="vm.removeThisLine(index)">
                     </step-zero-content>
                     <step-one-content
                       configuration="vm.configuration"
-                      increaseNumberOfColumns="vm.increaseNumberOfColumns()"
-                      decreaseNumberOfColumns="vm.decreaseNumberOfColumns()"
-                      setActiveLineNumberParent="vm.setActiveLineNumberParent(index)">
+                      increase-number-of-columns="vm.increaseNumberOfColumns()"
+                      decrease-number-of-columns="vm.decreaseNumberOfColumns()"
+                      set-active-line-number-parent="vm.setActiveLineNumberParent(index)">
                     </step-one-content>
                     <step-two-content
                       configuration="vm.configuration"
-                      setActiveLineNumber="vm.setActiveLineNumber(index)"
-                      showModalAddCtrlToColumn="vm.showModalAddCtrlToColumn(size, indexLine, numcolumn)">
+                      set-active-line-number="vm.setActiveLineNumber(index)"
+                      show-modal-add-ctrl-to-column="vm.showModalAddCtrlToColumn(size, indexLine, numcolumn)">
                     </step-two-content>
                     <step-three-content
                       configuration="vm.configuration"
@@ -58,21 +58,37 @@
                   </div>
                 </div>
 				      </uib-tab>
-							<uib-tab active="vm.tab.previewTab.active" ng-if="vm.tab.previewTab.tabVisible" heading="{{'PREVIEW_TAB' | translate}}">
+							<uib-tab
+                active="vm.tab.previewTab.active"
+                ng-if="vm.tab.previewTab.tabVisible"
+                heading="{{'PREVIEW_TAB' | translate}}">
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<!-- formly here -->
 									<form ng-submit="vm.onSubmit()">
-										<formly-form id="previewFormlyForm" model="vm.dataModel" fields="vm.wfFormFields">
+										<formly-form
+                      id="previewFormlyForm"
+                      model="vm.dataModel"
+                      fields="vm.wfFormFields">
 										<span class="pull-right">
-											<button class="btn btn-primary" type="submit">{{vm.configuration.submitButtonText}}</button>
-											<button class="btn btn-primary" type="cancel">{{vm.configuration.cancelButtonText}}</button>
+											<button
+                        class="btn btn-primary"
+                        type="submit">
+                        {{vm.configuration.submitButtonText}}
+                      </button>
+											<button
+                        class="btn btn-primary"
+                        type="cancel">
+                        {{vm.configuration.cancelButtonText}}
+                      </button>
 											</span>
 										</formly-form>
 									</form>
 								</div>
 							</div>
-							<div ng-if="vm.tab.previewTab.modelsVisible" class="panel panel-default">
+							<div
+                ng-if="vm.tab.previewTab.modelsVisible"
+                class="panel panel-default">
 								<div class="panel-body">
 									<p>{{'DATA_MODEL' | translate}}</p>
 									<pre>
@@ -80,7 +96,9 @@
 									</pre>
 								</div>
 							</div>
-							<div ng-if="vm.tab.previewTab.modelsVisible" class="panel panel-default">
+							<div
+                ng-if="vm.tab.previewTab.modelsVisible"
+                class="panel panel-default">
 								<div class="panel-body">
 									<p>{{'FIELDS_MODEL' | translate}}</p>
 									<pre>

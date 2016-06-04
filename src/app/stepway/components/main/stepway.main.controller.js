@@ -74,11 +74,11 @@ class edaStepWayEasyFormGenController {
 	}
 
 	onSubmit() {
-		let JSONedModel = this.$filter('json')(this.dataModel, 4);
+		const JSONedModel = this.$filter('json')(this.dataModel, 4);
 		this.toaster.pop({
 				type 		: 'info',
 				timeout : 2000,
-				title 	: `it should save data model if it were not in editor`,
+				title 	: 'it should save data model if it were not in editor',
 				body 		: `data : ${JSONedModel}`,
 				showCloseButton: true
 		});
@@ -138,12 +138,12 @@ class edaStepWayEasyFormGenController {
 					this.configuration.lines.splice(index, 1);
 			}else{
 				this.$timeout(function(){
-						this.toaster.pop({
-										type: 'warning',
-										title: 'Last line' ,
-										body: 'Can\'t delete the last line',
-										showCloseButton: true
-							});
+					this.toaster.pop({
+						type: 'warning',
+						title: 'Last line' ,
+						body: 'Can\'t delete the last line',
+						showCloseButton: true
+					});
 				}, 100);
 			}
 		//re-render formfield
@@ -154,7 +154,7 @@ class edaStepWayEasyFormGenController {
 
 
 	increaseNumberOfColumns() {
-		let lineIndex = this.configuration.activeLine -1;
+		const lineIndex = this.configuration.activeLine -1;
 		if (this
 					.configuration
 					.lines[lineIndex]
@@ -236,7 +236,7 @@ class edaStepWayEasyFormGenController {
 	}
 
 	showModalAddCtrlToColumn(size, indexLine, numcolumn) {
-		let editControlModal = {};
+		const editControlModal = {};
 		angular.extend(editControlModal, {
 			animation		: this.animationsEnabled,
 			template		: editControlModalTemplate,
@@ -248,7 +248,7 @@ class edaStepWayEasyFormGenController {
 			}
 		});
 
-		let modalInstance = this.$modal.open(editControlModal);
+		const modalInstance = this.$modal.open(editControlModal);
 		modalInstance.result.then(
 			(modalAddCtrlModel) => {
 				this.$modalProxy.bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, this.configuration);
@@ -261,7 +261,7 @@ class edaStepWayEasyFormGenController {
 	}
 
 	previewExistingform(formlyform) {
-		let configlines = JSON.parse(formlyform.formlyField);
+		const configlines = JSON.parse(formlyform.formlyField);
 		//here to replace with $scope.configuration : initialise configuration with lines
 		this.configurationLoaded = {};
 		this.$formlyProxy.bindConfigurationLines(this.configurationLoaded,configlines);

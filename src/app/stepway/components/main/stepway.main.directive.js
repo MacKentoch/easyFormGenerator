@@ -13,7 +13,7 @@ function edaStepWayEasyFormGenDirective(
       $formlyProxy,
       $modalProxy) {
 
-	let directive = {
+	const directive = {
 		restrict 	: 'E',
 		scope 		: {
 			edaEasyFormGeneratorModel : '=',
@@ -31,31 +31,33 @@ function edaStepWayEasyFormGenDirective(
 
 		//watch "scope.easyFormGeneratorModel"
 		scope.$watch(() => scope.edaEasyFormGeneratorModel,
-			(newValue, oldValue) => {
-				loadExistingConfigurationModel();
-			}, true);
+			() => loadExistingConfigurationModel(),
+      true
+    );
 
 		//watch "scope.vm.returnSaveEvent"" = catch saving form event
-		scope.$watch(() => scope.vm.returnSaveEvent, (newValue, oldValue) => {
-			if (newValue === true) {
-				let _easyFormGeneratorModel = {
-					formName          				: scope.vm.configuration.formName,
-					btnSubmitText     				: scope.vm.configuration.submitButtonText,
-					btnCancelText     				: scope.vm.configuration.cancelButtonText,
-					edaFieldsModel    				: scope.vm.configuration.lines,
-					edaFieldsModelStringified : angular.toJson(scope.vm.configuration.lines),
-					formlyFieldsModel 				: scope.vm.wfFormFieldsOnlyNeededProperties,
-					dataModel         				: scope.vm.dataModel
-				};
-				scope.edaSaveFormEvent({ edaEasyFormGeneratorModel : _easyFormGeneratorModel });
-				//back to false, waiting next save event
-				scope.returnSaveEvent = false;
-			}
-		});
+		scope.$watch(() => scope.vm.returnSaveEvent,
+      (newValue) => {
+        if (newValue === true) {
+          const _easyFormGeneratorModel = {
+            formName          				: scope.vm.configuration.formName,
+            btnSubmitText     				: scope.vm.configuration.submitButtonText,
+            btnCancelText     				: scope.vm.configuration.cancelButtonText,
+            edaFieldsModel    				: scope.vm.configuration.lines,
+            edaFieldsModelStringified : angular.toJson(scope.vm.configuration.lines),
+            formlyFieldsModel 				: scope.vm.wfFormFieldsOnlyNeededProperties,
+            dataModel         				: scope.vm.dataModel
+          };
+          scope.edaSaveFormEvent({ edaEasyFormGeneratorModel : _easyFormGeneratorModel });
+          //back to false, waiting next save event
+          scope.returnSaveEvent = false;
+        }
+      }
+    );
 
 		function loadExistingConfigurationModel(){
 			if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
-				let configlines           = returnAttributeConfigurationLinesIfNotEmpty();
+				const configlines           = returnAttributeConfigurationLinesIfNotEmpty();
 				scope.configurationLoaded = {};
 				$formlyProxy.bindConfigurationLines(scope.configurationLoaded,configlines);
 				/**
@@ -81,7 +83,7 @@ function edaStepWayEasyFormGenDirective(
 		}
 
 		function returnAttributeConfigurationLinesIfNotEmpty(){
-			let edaEasyFormGeneratorModelToReturn = (
+			const edaEasyFormGeneratorModelToReturn = (
 					angular.isArray(scope.edaEasyFormGeneratorModel.edaFieldsModel) ?  (
 							scope.edaEasyFormGeneratorModel.edaFieldsModel.length > 0 ?
 								scope.edaEasyFormGeneratorModel.edaFieldsModel
@@ -93,7 +95,7 @@ function edaStepWayEasyFormGenDirective(
 		}
 
 		function returnAttributeDataModelIfNotEmpty(){
-			var dataModelToReturn = (
+			const dataModelToReturn = (
 					angular.isArray(scope.edaEasyFormGeneratorModel.dataModel)   ?  (
 							scope.edaEasyFormGeneratorModel.dataModel.length > 0 ?
 							scope.edaEasyFormGeneratorModel.dataModel
@@ -111,15 +113,15 @@ function edaStepWayEasyFormGenDirective(
 		function emptyEdaFieldsModel(){
 			var emptyModel = [
 				{
-					"line": 1,
-					"activeColumn": 1,
-					"columns": [
+					line: 1,
+					activeColumn: 1,
+					columns: [
 						{
-							"numColumn": 1,
-							"exist": true,
-							"control": {
-								"type": "none",
-								"key": "none"
+							numColumn: 1,
+							exist: true,
+							control: {
+								type: 'none',
+								key: 'none'
 							}
 						}
 					]
