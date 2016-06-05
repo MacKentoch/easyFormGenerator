@@ -8,8 +8,8 @@ export const stepOneContentComponent = {
     <div class="col-md-4">
       <step-one-command-panel
         configuration="$ctrl.configuration"
-        increase-number-of-columns="$ctrl.configuration.increaseNumberOfColumns()"
-        decrease-number-of-columns="$ctrl.configuration.decreaseNumberOfColumns()">
+        increase-number-of-columns="$ctrl.increaseNumberOfColumns()"
+        decrease-number-of-columns="$ctrl.decreaseNumberOfColumns()">
       </step-one-command-panel>
     </div>
     <div class="col-md-8">
@@ -24,7 +24,7 @@ export const stepOneContentComponent = {
     configuration:              '=',
     increaseNumberOfColumns:    '&',
     decreaseNumberOfColumns:    '&',
-    setActiveLineNumberParent:  '&'
+    setActiveLineNumber:  '&'
   },
   controller:
   class stepOneContentController {
@@ -39,7 +39,7 @@ export const stepOneContentComponent = {
     //            parent -> intermediate component (here) -> caller
     // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
     setActiveLineNumberParent(index) {
-      this.setActiveLineNumberParent({ index: index });
+      this.setActiveLineNumber({ index: index });
     }
 
     static get $inject() {

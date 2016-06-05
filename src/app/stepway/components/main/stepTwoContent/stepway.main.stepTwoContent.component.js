@@ -34,7 +34,7 @@ export const stepTwoContentComponent = {
     //            parent -> intermediate component (here) -> caller
     // NOTE : intermediate should call parent function to be sure to pass function parameter upward to parent
     setActiveLineNumberParent(index) {
-      this.setActiveLineNumberParent({ index: index });
+      this.setActiveLineNumber({ index: index });
     }
 
     // Needed for same reason as setActiveLineNumberParent
