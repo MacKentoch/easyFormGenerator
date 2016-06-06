@@ -41,7 +41,7 @@ export const StepTwoVisualPanelComponent = {
                     <button
                       class="btn btn-lg btn-block"
                       ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}"
-                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', index: $index, numcolumn: 0})">
+                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', indexLine: $index, numcolumn: 0})">
                       {{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
                     </button>
                   </div>
@@ -68,7 +68,7 @@ export const StepTwoVisualPanelComponent = {
                     <button
                       class="btn btn-lg btn-block"
                       ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}"
-                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', index: $index, numcolumn: 0})">
+                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', indexLine: $index, numcolumn: 0})">
                       {{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
                     </button>
                   </div>
@@ -76,7 +76,7 @@ export const StepTwoVisualPanelComponent = {
                     <button
                       class="btn btn-lg btn-block"
                       ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}"
-                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', index: $index, numcolumn: 1})">
+                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', indexLine: $index, numcolumn: 1})">
                       {{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
                     </button>
                   </div>
@@ -103,7 +103,7 @@ export const StepTwoVisualPanelComponent = {
                     <button
                       class="btn btn-lg btn-block"
                       ng-class="{'btn-primary': !line.columns[0].control.edited, 'btn-success': line.columns[0].control.edited}"
-                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', index: $index, numcolumn: 0})">
+                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', indexLine: $index, numcolumn: 0})">
                       {{line.columns[0].control.type !== 'none'  ? line.columns[0].control.type + ' ' + line.columns[0].control.subtype || '' : 'column 1'}}
                     </button>
                   </div>
@@ -111,7 +111,7 @@ export const StepTwoVisualPanelComponent = {
                     <button
                       class="btn btn-lg btn-block"
                       ng-class="{'btn-primary': !line.columns[1].control.edited, 'btn-success': line.columns[1].control.edited}"
-                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', index: $index, numcolumn: 1})">
+                      ng-click="$ctrl.showModalAddCtrlToColumn({size: '', indexLine: $index, numcolumn: 1})">
                       {{line.columns[1].control.type !== 'none'  ? line.columns[1].control.type + ' ' + line.columns[1].control.subtype || '' : 'column 2'}}
                     </button>
                   </div>
