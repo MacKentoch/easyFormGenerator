@@ -1,5 +1,5 @@
 import { BlankConfig }        from './blank/config/stepway.blank.config';
-import {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/stepway.editBlank.component';
+import {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/stepway.editBlankControl.component';
 import editBlankModule  from './blank/editBlank/stepway.editBlankControl.module';
 
 import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
@@ -27,8 +27,8 @@ import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from '
 import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.module';
 
 import { HeaderConfig }  from './header/config/stepway.header.config';
-import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderSelect.component';
-import editHeaderControl from 'header/editHeader/stepway.editHeaderSelect.module';
+import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderControl.component';
+import editHeaderControl from './header/editHeader/stepway.editHeaderControl.module';
 
 import { PasswordConfig }  from './password/config/stepway.password.config';
 import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/stepway.editPassword.component';

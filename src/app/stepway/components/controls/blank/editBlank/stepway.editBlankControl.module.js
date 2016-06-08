@@ -1,9 +1,9 @@
 import {
   editBlankControlComponent,
   EDIT_BLANK_CONTROL_COMPONENT
-} from './stepway.editBasicSelect.component';
+} from './stepway.editBlankControl.component';
 
-const editBlankModuleName = 'stepway.editBlank.module';
+const editBlankModuleName = 'stepway.editBlankControl.module';
 
 export default angular
                 .module(editBlankModuleName, [])
