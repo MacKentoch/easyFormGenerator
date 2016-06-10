@@ -3,7 +3,7 @@ import {
   EDIT_TEXTAREA_CONTROL_COMPONENT
 } from './stepway.editTextArea.component';
 
-const edittextareaControlModuleName = 'stepway.editTextareaControl.module';
+const edittextareaControlModuleName = 'stepway.editTextAreaControl.module';
 
 export default angular
                 .module(edittextareaControlModuleName, [])

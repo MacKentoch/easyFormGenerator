@@ -1,4 +1,4 @@
-import editGroupedSelectControlTemplate from './stepway.editGroupedSelectControl.template.html!text';
+import editGroupedSelectControlTemplate from './stepway.editGroupedSelect.template.html!text';
 
 export const EDIT_GROUPED_SELECT_COMPONENT = 'editGroupedSelectControl';
 

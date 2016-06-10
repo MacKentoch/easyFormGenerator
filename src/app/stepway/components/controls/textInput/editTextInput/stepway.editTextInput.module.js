@@ -1,7 +1,7 @@
 import {
   editTextInputControlComponent,
   EDIT_TEXTINPUT_CONTROL_COMPONENT
-} from './stepway.editTextInputControl.component';
+} from './stepway.editTextInput.component';
 
 const editTextInputControlModuleName = 'stepway.editTextInputControl.module';
 

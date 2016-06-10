@@ -1,7 +1,7 @@
 import {
   editSubTitleControlComponent,
   EDIT_SUBTITLE_CONTROL_COMPONENT
-} from './stepway.editTextareaControl.component';
+} from './stepway.editSubTitle.component';
 
 const editSubTitleModuleName = 'stepway.editSubTitleControl.module';
 
