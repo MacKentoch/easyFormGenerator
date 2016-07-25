@@ -1,7 +1,7 @@
 import {
   editPasswordControlComponent,
   EDIT_PASSWORD_CONTROL_COMPONENT
-} from './stepway.editPassword.component';
+}                                       from './stepway.editPassword.component';
 
 const editeditPasswordModuleName = 'stepway.editPasswordControl.module';
 

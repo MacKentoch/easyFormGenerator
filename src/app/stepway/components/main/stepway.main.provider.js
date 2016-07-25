@@ -1,9 +1,9 @@
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig($translateProvider) {
-	let _configuration 			= defaultConfig();
-	let _controlsList				= controlsList();
-	let _defaultLanguage		= getDefaultLanguage();
+	const _configuration 			= defaultConfig();
+	const _controlsList				= controlsList();
+	const _defaultLanguage		= getDefaultLanguage();
 	let _currentLanguage		= initDefaultLanguage();
 	let _showPreviewPanel		= getDefaultshowPreviewPanel();
 	let _showPreviewModels	= getDefaultShowPreviewModel();
@@ -22,7 +22,7 @@ function easyFormSteWayConfig($translateProvider) {
 
 	//set default config
 	function defaultConfig() {
-		let  _defaultConfiguration = {
+		const  _defaultConfiguration = {
 			modalAnimated : false
 		};
 		return _defaultConfiguration;
@@ -44,7 +44,7 @@ function easyFormSteWayConfig($translateProvider) {
 
 	//list of controls
 	function controlsList() {
-		let controls = [
+		const controls = [
 			{name: 'empty', 					enabled: true},
 			{name: 'Header', 					enabled: true},
 			{name: 'Subtitle', 				enabled: true},
@@ -79,7 +79,7 @@ function easyFormSteWayConfig($translateProvider) {
 
 	//language : set default to english
 	function getDefaultLanguage() {
-		let lang = 'en';
+		const lang = 'en';
 		return lang;
 	}
 
@@ -126,7 +126,7 @@ function easyFormSteWayConfig($translateProvider) {
 	}
 
 	function setModalAnimation(flagConfig) {
-		let valueToApply = (flagConfig === true) ?
+		const valueToApply = (flagConfig === true) ?
 													flagConfig
 												: (flagConfig === false ?
 														flagConfig
@@ -144,7 +144,7 @@ function easyFormSteWayConfig($translateProvider) {
 	easyFormStepWayConfigGET.$inject = ['$translate'];
 	function easyFormStepWayConfigGET($translate) {
 
-		let service = {
+		const service = {
 			setModalAnimation 			: setModalAnimationFct,
 			getModalAnimationValue 	: getModalAnimationValue,
 			getListEnabledControl		: getListEnabledControl,

@@ -24,7 +24,7 @@ const STEP_WAY_MODULES_INJECT = [
 	easyFormStepwaySelectOptionManageModules.name
 ];
 
-let mainModule = angular
+const mainModule = angular
 									.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT)
 									.value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE)
 									.config(formlyConfig)

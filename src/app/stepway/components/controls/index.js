@@ -56,7 +56,7 @@ import editTextInputControlModule from './textInput/editTextInput/stepway.editTe
 
 
 // controls configs
-const configs = {
+const configs = [
   IpAdressConfig,
   DateConfig,
   CheckBoxConfig,
@@ -71,81 +71,95 @@ const configs = {
   SubTitleConfig,
   TextAreaConfig,
   TextInputConfig
-};
+];
 
 // controls component (for edit control modal)
-const controls = {
-  editBlank: {
-    name: EDIT_BLANK_CONTROL_COMPONENT,
-    component: editBlankControlComponent,
+const controls = [
+  // editBlankControl:
+  {
+    name:       EDIT_BLANK_CONTROL_COMPONENT,
+    component:  editBlankControlComponent,
     moduleName: editBlankModule.name
   },
-  editIpAdress: {
+  // editIpAdress:
+   {
     name:       EDIT_IP_ADRESS_COMPONENT,
     component:  editIpAdressControlComponent,
     moduleName: editIpAdressModule.name
   },
-  editDate: {
+  // editDate:
+  {
     name:       EDIT_DATE_COMPONENT,
     component:  editDateControlComponent,
     moduleName: editDateModule.name
   },
-  editBasicSelect: {
+  // editBasicSelect:
+  {
     name: EDIT_BASIC_SELECT_COMPONENT,
     component: editBasicSelectControlComponent,
     moduleName: editbasicSelectModule.name
   },
-  editGroupedSelect: {
+  // editGroupedSelect:
+  {
     name: EDIT_GROUPED_SELECT_COMPONENT,
     component: editGroupedSelectControlComponent,
     moduleName: editGroupedSelectModule.name
   },
-  editCheckBox: {
+  // editCheckBox:
+  {
     name: EDIT_CHECKBOX_COMPONENT,
     component: editCheckBoxControlComponent,
     moduleName: editCheckBoxModule.name
   },
-  editEmail: {
+  // editEmail:
+  {
     name: EDIT_EMAIL_COMPONENT,
     component: editEmailControlComponent,
     moduleName: editEmailControlModule.name
   },
-  editHeader: {
+  // editHeader:
+  {
     name: EDIT_HEADER_CONTROL_COMPONENT,
     component: editHeaderControlComponent,
     moduleName: editHeaderControl.name
   },
-  editPassword: {
+  // editPassword:
+  {
     name: EDIT_PASSWORD_CONTROL_COMPONENT,
     component: editPasswordControlComponent,
     moduleName: editPasswordModule.name
   },
-  editRadio: {
+  // editRadio:
+  {
     name: EDIT_RADIO_CONTROL_COMPONENT,
     component: editRadioControlComponent,
     moduleName: editRadioModule.name
   },
-  editRichTextEditor: {
+  // editRichTextEditor:
+  {
     name: EDIT_RICH_TEXT_EDITOR_COMPONENT,
     component: editRichTextEditorControlComponent,
     moduleName: editRichTextEditorModule.name
   },
-  editSubTitle: {
+  // editSubTitle:
+  {
     name: EDIT_SUBTITLE_CONTROL_COMPONENT,
     component: editSubTitleControlComponent,
     moduleName: editSubTitle.name
   },
-  editTextArea: {
+  // editTextArea:
+  {
     name: EDIT_TEXTAREA_CONTROL_COMPONENT,
     component: editTextareaControlComponent,
     moduleName: editTextareaControlModule.name
   },
-  editTextInput: {
+  // editTextInput:
+  {
     name: EDIT_TEXTINPUT_CONTROL_COMPONENT,
     component: editTextInputControlComponent,
     moduleName: editTextInputControlModule.name
   }
-};
+];
 
 export {
   configs,

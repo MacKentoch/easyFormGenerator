@@ -1,4 +1,4 @@
-import editSubTitleControlTemplate from './stepway.editSubTitleControl.template.html!text';
+import editSubTitleControlTemplate from './stepway.editSubTitle.template.html!text';
 
 export const EDIT_SUBTITLE_CONTROL_COMPONENT = 'editSubTitleControl';
 

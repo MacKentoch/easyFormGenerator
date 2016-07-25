@@ -119,9 +119,7 @@ gulp.task('vendor:css:specialCases',
 		.on('error', notify.onError(error => 'Error: ' + error.message))
 		//.pipe(gulp.dest(gulpConfig.srcFiles.bowerFiles.css.minifyInThisDir, { cwd: gulpConfig.base.root }))
 		.pipe(gulp.dest(gulpConfig.destDirs.vendor.css, { cwd: gulpConfig.base.root }));
-
 });
-
 
 
 
