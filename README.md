@@ -1,5 +1,6 @@
 #Easy form generator (AngularJS)
 
+[![npm](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](https://github.com/MacKentoch/easyFormGenerator)
 [![GitHub version](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator.svg)](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator)
 [![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Bower version](https://badge.fury.io/bo/easy-form-generator.svg)](https://badge.fury.io/bo/easy-form-generator)
