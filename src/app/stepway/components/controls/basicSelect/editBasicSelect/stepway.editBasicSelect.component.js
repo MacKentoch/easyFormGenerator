@@ -6,7 +6,6 @@ export const editBasicSelectControlComponent = {
   template      : editBasicSelectTemplate,
   bindings      : {
     nyaSelect                 : '=',
-    modelbasicSelect          : '=',
     basicSelectRowCollection  : '=',
     newOptionBasicSelect      : '=',
     addNewOptionBasicSelect   : '&',
