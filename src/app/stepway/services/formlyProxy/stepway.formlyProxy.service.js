@@ -44,7 +44,7 @@ class $formlyProxy {
 			* manage header here line0
 			*/
 		var lineNumber = configurationModel.lines.length;
-		for (var i = 0; i < lineNumber; i++) {
+		for (let i = 0; i < lineNumber; i++) {
 				//1 column line control
 				if (configurationModel.lines[i].columns.length === 1) {
 					//test if template control = header

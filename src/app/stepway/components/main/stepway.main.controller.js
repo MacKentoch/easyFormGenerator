@@ -65,12 +65,10 @@ class edaStepWayEasyFormGenController {
 		//this.resetToZeroModel         = resetToZeroModel; //function no more used
 
 		this.$formlyProxy.initConfigurationEditFromScratch(this.configuration);
-
-
 		this.$modalProxy.initNyaSelect(this.nyaSelect);
 
-		//console.info(`main controller : init nyaSelect model`);
-		//console.dir(angular.copy(this.nyaSelect));
+		// console.info(`main controller : init nyaSelect model`);
+		// console.dir(angular.copy(this.nyaSelect));
 	}
 
 	onSubmit() {

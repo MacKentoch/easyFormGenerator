@@ -23,6 +23,7 @@
   </div>
   <hr/>
   <div ng-switch on="editControlModCtrl.nyaSelect.selectedControl">
+
     <div ng-switch-when="none">
       <div class="row">
         <div class="col-sm-12">
@@ -33,39 +34,47 @@
         </div>
       </div>
     </div>
+
     <div ng-switch-when="empty">
       <edit-blank-control></edit-blank-control>
     </div>
+
     <div ng-switch-when="Header">
       <edit-header-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-header-control>
     </div>
+
     <div ng-switch-when="Subtitle">
       <edit-sub-title-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-sub-title-control>
     </div>
+
     <div ng-switch-when="TextInput">
       <edit-text-input-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-text-input-control>
     </div>
+
     <div ng-switch-when="Password">
       <edit-password-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-password-control>
     </div>
+
     <div ng-switch-when="Email">
       <edit-email-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-email-control>
     </div>
+
     <div ng-switch-when="IpAdress">
       <edit-ip-adress-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-ip-adress-control>
     </div>
+
     <div ng-switch-when="Date">
       <edit-date-control
         nya-select="editControlModCtrl.nyaSelect"
@@ -73,16 +82,20 @@
         date-options="editControlModCtrl.dateOptions"
         open="editControlModCtrl.open(event)">
       <edit-date-control>
+    </div>
+
     <div ng-switch-when="Texarea">
       <edit-text-area-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-text-area-control>
     </div>
+
     <div ng-switch-when="RichTextEditor">
       <edit-rich-text-editor-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-rich-text-editor-control>
     </div>
+
     <div ng-switch-when="Radio">
       <edit-radio-control
         nya-select="editControlModCtrl.nyaSelect"
@@ -94,12 +107,13 @@
         remove-radio-row="editControlModCtrl.removeRadioRow(index)">
       </edit-radio-control>
     </div>
+
     <div ng-switch-when="Checkbox">
-      <!-- checkbox -->
       <edit-check-box-control
         nya-select="editControlModCtrl.nyaSelect">
       </edit-check-box-control>
     </div>
+
     <div ng-switch-when="BasicSelect">
       <edit-basic-select-control
         nya-select="editControlModCtrl.nyaSelect"
@@ -107,12 +121,12 @@
         basic-select-row-collection="editControlModCtrl.basicSelectRowCollection"
         new-option-basic-select="editControlModCtrl.newOptionBasicSelect"
         add-new-option-basic-select="editControlModCtrl."
-        up-this-row="editControlModCtrl."
-        down-this-row="editControlModCtrl."
-        remove-row="editControlModCtrl."
-        >
+        up-this-row="editControlModCtrl.upThisRow(index)"
+        down-this-row="editControlModCtrl.downThisRow(index)"
+        remove-row="editControlModCtrl.removeRow(index)">
       </edit-basic-select-control>
     </div>
+
     <div ng-switch-when="GroupedSelect">
       <edit-grouped-select
         nya-select="editControlModCtrl.nyaSelect"
@@ -130,8 +144,11 @@
         >
       </edit-grouped-select>
     </div>
+
   </div>
 </div>
+
+
 <edit-valid-edit-footer
   nya-select="editControlModCtrl.nyaSelect"
   ok="editControlModCtrl.ok()"

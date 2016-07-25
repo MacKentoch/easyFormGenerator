@@ -1,9 +1,9 @@
 const EASY_FORM_STEP_WAY_CONFIG_NAME = 'easyFormSteWayConfig';
 
 function easyFormSteWayConfig($translateProvider) {
-	const _configuration 			= defaultConfig();
-	const _controlsList				= controlsList();
-	const _defaultLanguage		= getDefaultLanguage();
+	const _configuration 		= defaultConfig();
+	const _controlsList			= controlsList();
+	const _defaultLanguage	= getDefaultLanguage();
 	let _currentLanguage		= initDefaultLanguage();
 	let _showPreviewPanel		= getDefaultshowPreviewPanel();
 	let _showPreviewModels	= getDefaultShowPreviewModel();
