@@ -85,9 +85,9 @@
     </div>
 
     <div ng-switch-when="Texarea">
-      <edit-text-area-control
+      <edit-textarea-control
         nya-select="editControlModCtrl.nyaSelect">
-      </edit-text-area-control>
+      </edit-textarea-control>
     </div>
 
     <div ng-switch-when="RichTextEditor">
@@ -127,7 +127,7 @@
     </div>
 
     <div ng-switch-when="GroupedSelect">
-      <edit-grouped-select
+      <edit-grouped-select-control
         nya-select="editControlModCtrl.nyaSelect"
         grouped-select-row-collection="editControlModCtrl.groupedSelectRowCollection"
         new-option-grouped-select="editControlModCtrl.newOptionGroupedSelect"
@@ -141,7 +141,7 @@
         show-group-list-to-choose="editControlModCtrl.showGroupListToChoose()"
         remove-grouped-select-row="editControlModCtrl.removeGroupedSelectRow(index)"
         >
-      </edit-grouped-select>
+      </edit-grouped-select-control>
     </div>
 
   </div>
