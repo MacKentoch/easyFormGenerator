@@ -190,9 +190,15 @@
                         <p class="text-left noGroupText">- {{'NO_GROUP_ADD_NEW' | translate}} -</p>
                       </div>
                       <div ng-if="$ctrl.GroupedSelectGroups.list.length > 0">
-                        <ol class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect" ng-model="groupedSelectRow.group" id="modelGroupedOptionGroupedChoose"
-                        disabled="$ctrl.GroupedSelectGroups.list.length === 0">
-                          <li class="nya-bs-option" nya-bs-option="GroupedSelectGroup in $ctrl.GroupedSelectGroups.list" value="GroupedSelectGroup">
+                        <ol
+                          class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect"
+                          ng-model="groupedSelectRow.group"
+                          id="modelGroupedOptionGroupedChoose"
+                          disabled="$ctrl.GroupedSelectGroups.list.length === 0">
+                          <li
+                            class="nya-bs-option"
+                            nya-bs-option="GroupedSelectGroup in $ctrl.GroupedSelectGroups.list"
+                            value="GroupedSelectGroup">
                             <a>{{GroupedSelectGroup}}</a>
                           </li>
                         </ol>
