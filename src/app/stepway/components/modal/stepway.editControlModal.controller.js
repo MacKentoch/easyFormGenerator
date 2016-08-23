@@ -213,6 +213,7 @@ class editControlModalController {
 
 	showGroupListToChoose() {
 		this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
+    // console.log('this.groupSelectGroupClick.showList: ', this.groupSelectGroupClick.showList);
 	}
 
 	addNewGroupToGroupedSelect(){

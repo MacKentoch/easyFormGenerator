@@ -185,7 +185,7 @@
                     {{$index}}
                   </td>
                   <td st-ratio="25">
-                    <div ng-if="$ctrl.groupSelectGroupClick.showList === true">
+                    <div ng-if="!!$ctrl.groupSelectGroupClick.showList">
                       <div ng-if="$ctrl.GroupedSelectGroups.list.length === 0">
                         <p class="text-left noGroupText">- {{'NO_GROUP_ADD_NEW' | translate}} -</p>
                       </div>
@@ -204,7 +204,7 @@
                         </ol>
                       </div>
                     </div>
-                    <div ng-if="$ctrl.groupSelectGroupClick.showList === false">
+                    <div ng-if="!$ctrl.groupSelectGroupClick.showList">
                       {{groupedSelectRow.group}}
                     </div>
                   </td>
