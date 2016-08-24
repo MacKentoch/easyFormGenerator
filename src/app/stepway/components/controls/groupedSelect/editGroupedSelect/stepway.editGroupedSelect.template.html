@@ -185,26 +185,26 @@
                     {{$index}}
                   </td>
                   <td st-ratio="25">
-                    <div ng-if="!!$ctrl.groupSelectGroupClick.showList">
-                      <div ng-if="$ctrl.GroupedSelectGroups.list.length === 0">
+                    <div ng-if="$ctrl.groupSelectGroupClick.showList === true">
+                      <div ng-if="$ctrl.groupedSelectGroups.list.length === 0">
                         <p class="text-left noGroupText">- {{'NO_GROUP_ADD_NEW' | translate}} -</p>
                       </div>
-                      <div ng-if="$ctrl.GroupedSelectGroups.list.length > 0">
+                      <div ng-if="$ctrl.groupedSelectGroups.list.length > 0">
                         <ol
                           class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect"
                           ng-model="groupedSelectRow.group"
                           id="modelGroupedOptionGroupedChoose"
-                          disabled="$ctrl.GroupedSelectGroups.list.length === 0">
+                          disabled="$ctrl.groupedSelectGroups.list.length === 0">
                           <li
                             class="nya-bs-option"
-                            nya-bs-option="GroupedSelectGroup in $ctrl.GroupedSelectGroups.list"
+                            nya-bs-option="GroupedSelectGroup in $ctrl.groupedSelectGroups.list"
                             value="GroupedSelectGroup">
                             <a>{{GroupedSelectGroup}}</a>
                           </li>
                         </ol>
                       </div>
                     </div>
-                    <div ng-if="!$ctrl.groupSelectGroupClick.showList">
+                    <div ng-if="$ctrl.groupSelectGroupClick.showList === false">
                       {{groupedSelectRow.group}}
                     </div>
                   </td>

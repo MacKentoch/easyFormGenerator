@@ -29,6 +29,7 @@ class editControlModalController {
 		this.GroupedSelectGroups        = { list:[] };
 		this.newGroupGroupedSelect      = {saisie: ''};
 		this.groupSelectGroupClick      = {showList : false};
+    this.showGroupList              = false;
 		this.demodt         						= {};
 		this.dateOptions    						= this.dateOptionsInit();
 		this.demodt.formats 						= ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -213,7 +214,7 @@ class editControlModalController {
 
 	showGroupListToChoose() {
 		this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
-    // console.log('this.groupSelectGroupClick.showList: ', this.groupSelectGroupClick.showList);
+    console.log('this.groupSelectGroupClick.showList: ', this.groupSelectGroupClick.showList);
 	}
 
 	addNewGroupToGroupedSelect(){

@@ -10,7 +10,7 @@ export const editGroupedSelectControlComponent = {
     newOptionGroupedSelect:     '=',
     newGroupGroupedSelect:      '=',
     groupSelectGroupClick:      '=',
-    GroupedSelectGroups:        '=',
+    groupedSelectGroups:        '=',
 
     addNewOptionGroupedSelect:  '&',
     addNewGroupToGroupedSelect: '&',
