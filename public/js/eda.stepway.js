@@ -2542,7 +2542,6 @@ $__System.register('14', ['15', '16'], function (_export) {
 					key: 'showGroupListToChoose',
 					value: function showGroupListToChoose() {
 						this.groupSelectGroupClick.showList = !this.groupSelectGroupClick.showList;
-						console.log('this.groupSelectGroupClick.showList: ', this.groupSelectGroupClick.showList);
 					}
 				}, {
 					key: 'addNewGroupToGroupedSelect',
@@ -2584,9 +2583,9 @@ $__System.register('14', ['15', '16'], function (_export) {
 								showCloseButton: true
 							});
 						}
-						//bind nya : dont bind here $apply is not done fast enough
-						//bindGroupedSelectToNya();
-						//reset input
+						// bind nya : dont bind here $apply is not done fast enough
+						// bindGroupedSelectToNya();
+						// reset input
 						this.newOptionGroupedSelect = { saisie: '' };
 					}
 				}, {
