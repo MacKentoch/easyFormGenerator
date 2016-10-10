@@ -62,50 +62,50 @@
                 active="vm.tab.previewTab.active"
                 ng-if="vm.tab.previewTab.tabVisible"
                 heading="{{'PREVIEW_TAB' | translate}}">
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<!-- formly here -->
-									<form ng-submit="vm.onSubmit()">
-										<formly-form
-                      id="previewFormlyForm"
-                      model="vm.dataModel"
-                      fields="vm.wfFormFields">
-										<span class="pull-right">
-											<button
-                        class="btn btn-primary"
-                        type="submit">
-                        {{vm.configuration.submitButtonText}}
-                      </button>
-											<button
-                        class="btn btn-primary"
-                        type="cancel">
-                        {{vm.configuration.cancelButtonText}}
-                      </button>
-											</span>
-										</formly-form>
-									</form>
-								</div>
-							</div>
-							<div
-                ng-if="vm.tab.previewTab.modelsVisible"
-                class="panel panel-default">
-								<div class="panel-body">
-									<p>{{'DATA_MODEL' | translate}}</p>
-									<pre>
-										{{vm.dataModel | json}}
-									</pre>
-								</div>
-							</div>
-							<div
-                ng-if="vm.tab.previewTab.modelsVisible"
-                class="panel panel-default">
-								<div class="panel-body">
-									<p>{{'FIELDS_MODEL' | translate}}</p>
-									<pre>
-										{{vm.wfFormFieldsOnlyNeededProperties | json}}
-									</pre>
-								</div>
-							</div>
+  							<div class="panel panel-default">
+  								<div class="panel-body">
+  									<!-- formly here -->
+  									<form ng-submit="vm.onSubmit()">
+  										<formly-form
+                        id="previewFormlyForm"
+                        model="vm.dataModel"
+                        fields="vm.wfFormFields">
+    										<span class="pull-right">
+    											<button
+                            class="btn btn-primary"
+                            type="submit">
+                            {{vm.configuration.submitButtonText}}
+                          </button>
+    											<button
+                            class="btn btn-primary"
+                            type="cancel">
+                            {{vm.configuration.cancelButtonText}}
+                          </button>
+  											</span>
+  										</formly-form>
+  									</form>
+  								</div>
+  							</div>
+  							<div
+                  ng-if="vm.tab.previewTab.modelsVisible"
+                  class="panel panel-default">
+  								<div class="panel-body">
+  									<p>{{'DATA_MODEL' | translate}}</p>
+  									<pre>
+  										{{vm.dataModel | json}}
+  									</pre>
+  								</div>
+  							</div>
+  							<div
+                  ng-if="vm.tab.previewTab.modelsVisible"
+                  class="panel panel-default">
+  								<div class="panel-body">
+  									<p>{{'FIELDS_MODEL' | translate}}</p>
+  									<pre>
+  										{{vm.wfFormFieldsOnlyNeededProperties | json}}
+  									</pre>
+  								</div>
+  							</div>
 							</uib-tab>
 						</uib-tabset>
 					</div>

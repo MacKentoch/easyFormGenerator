@@ -98,7 +98,6 @@ $__System.register('5', ['3', '4', '6'], function (_export) {
 		return directive;
 
 		function linkFct(scope) {
-
 			scope.vm.model = {};
 			scope.vm.fields = loadFieldsModel();
 			scope.vm.submitText = scope.edaEasyFormViewerSubmitButtonText || 'Submit';
@@ -176,11 +175,10 @@ $__System.register('5', ['3', '4', '6'], function (_export) {
 
 			/**
    	* TODO : check if formly or easy form generato fields model
-   	* 
+   	*
    	* by default or if both -> easy for generator is chosen
    	*/
 			function loadFieldsModel() {
-
 				var initialFieldsModel = angular.isArray(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) ?
 				//translate easy form generator to formly fields model
 				loadExistingConfigurationModel(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) : {};
@@ -199,7 +197,7 @@ $__System.register('5', ['3', '4', '6'], function (_export) {
 					$modelsTranslator.bindConfigurationLines(scope.configurationLoaded, configlines);
 					/**
      	* rebind special control properties :
-     	* 
+     	*
      	* formly expression properties
      	* Validators
      	* Validation
