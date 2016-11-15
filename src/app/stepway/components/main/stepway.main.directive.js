@@ -57,7 +57,7 @@ function edaStepWayEasyFormGenDirective(
 
 		function loadExistingConfigurationModel(){
 			if(angular.isDefined(scope.edaEasyFormGeneratorModel)){
-				const configlines           = returnAttributeConfigurationLinesIfNotEmpty();
+				const configlines         = [].concat(returnAttributeConfigurationLinesIfNotEmpty());
 				scope.configurationLoaded = {};
 				$formlyProxy.bindConfigurationLines(scope.configurationLoaded,configlines);
 				/**

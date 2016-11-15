@@ -1224,7 +1224,7 @@ $__System.register('17', ['10', '13'], function (_export) {
 
 			function loadExistingConfigurationModel() {
 				if (angular.isDefined(scope.edaEasyFormGeneratorModel)) {
-					var configlines = returnAttributeConfigurationLinesIfNotEmpty();
+					var configlines = [].concat(returnAttributeConfigurationLinesIfNotEmpty());
 					scope.configurationLoaded = {};
 					$formlyProxy.bindConfigurationLines(scope.configurationLoaded, configlines);
 					/**
