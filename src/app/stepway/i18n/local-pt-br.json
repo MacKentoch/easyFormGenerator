@@ -1,0 +1,88 @@
+{
+    "SAY_HI"	           : "Olá",
+    
+    "EDIT_TAB"            : "Editar / Criar",
+    "PREVIEW_TAB"         : "Pré-visualizar",
+    
+    "WIZARD_LINES"        : "linhas",
+    "WIZARD_LAYOUT"       : "layout",
+    "WIZARD_CONTROLS"     : "controles",
+    "WIZARD_SAVE"         : "salvar",
+    
+    "PAGER_PREVIOUS"      : "Anterior",
+    "PAGER_NEXT"          : "Próximo",
+    
+    "COMMAND_PANEL"       : "Comando",
+    "VISUAL_PANEL"        : "Visual",
+    
+    "ADD_NEW_LINE"        : "Adicionar uma nova linha",
+    
+    "SELECTED_LINE"       : "Linha selecionada",
+    
+    "NUMBER_OF_COLUMN"    : "número de colunas",
+    "APPLY_CTRL2COL"      : "Aplicar controles às colunas",
+    
+    "CLIC_TAP_2_OPEN"     : "Click / Toque em uma coluna para abrir controle de seleção",
+    "SELECT_2_APPLY_COL"  : "Selecione o controle desejado para aplicar a esta coluna",
+    
+    "CUSTOM_SUBMIT_BTN"   : "Customizar texto do botão Enviar",
+    "CUSTOM_CANCEL_BTN"   : "Customizar texto do botão Cancelar",
+    "NAME_THIS_FORM"      : "Nome deste formulário",
+    "SAVE_THIS_FORM"      : "Salvar este formulário",
+    
+    "FINAL_STEP"          : "Passo final : Visualizar formulário",
+    
+    "DATA_MODEL"          : "Modelo de dados",
+    "FIELDS_MODEL"        : "Modelo de campos (pronto para salvar na base de dados)",
+    
+    
+    "SELECT_A_CTRL"       : "Selecionar um controle",
+    "SELECT_CTRL_IN_LIST" : "Selecionar um controle na lista a seguir",
+    "COL_WILL_BE_BLANK"   : "Coluna ficará em branco",
+    
+    "EDIT_PROPERTIES"     : "Editar propriedades",
+    
+    "HEADER_TEXT"         : "Texto do cabeçalho",
+    "ADD_EDIT_HEADER_HERE": "Adicionar / editar o texto do cabeçalho aqui",
+    
+    "SUBTITLE_TEXT"       : "Texto da legenda",
+    "ADD_EDIT_SUBTIL_HERE": "Adicionar /Editar o texto da legenda aqui",
+    
+    "LABEL_TEXT"          : "Texto do label",
+    "ADD_EDIT_LABEL_HERE" : "Adicionar / Editar texto do controle label aqui",
+    
+    "PLACEHOLDER"         : "placeholder",
+    "ADD_EDIT_PLACEHOLD"  : "Adicionar / editar texto do placeholder aqui",
+    
+    "REQUIRED"            : "Obrigatório",
+    
+    "DESCRIPTION"         : "Descrição",
+    "ADDEDIT_DESCRIPTION" : "Adicionar / editar descrição aqui",
+    
+    "DATE_FORMAT"         : "Formato da data",
+    
+    "ADD_NEW_RADIO"       : "Adicionar novo radio",
+    "ADD_RADIO_PLACEHOLD" : "Adicionar novo radio",
+    "EDIT_REMOVE_RADIO"   : "Editar/Remover radio",
+    "NO_RADIO_ADD_NEW"    : "nenhum radio : Adicionar novo valor ao radio ",
+    
+    "SEARCH_4_OPTION"     : "procurar por opções",
+    
+    "ADD"                 : "adicionar",
+    "ORDER"               : "ordem",
+    "OPTION"              : "opção",
+    "GROUP"               : "grupo",
+    
+    "Add_NEW_OPTIONS"     : "Adicionar nova opção",
+    "ADD_A_NEW_OPTION"    : "Adicionar nova opção",
+    "EDIT_REMOVE_OPTIONS" : "Editar/Remover opções",
+    "NO_OPTION_ADD_NEW"   : "nenhuma opção : adicionar nova opções",
+    
+    "ADD_NEW_GROUPS"      : "Adicionar novos grupos",
+    "ADD_A_NEW_GROUP"     : "adicionar novo grupo",
+    "EDIT_GROUPS_OPTIONS" : "Editar/Remover opções/grupos",
+    "NO_GROUP_ADD_NEW"    : "adicionar novo grupo",
+    
+    "OK"                  : "OK",
+    "CANCEL"              : "Cancelar"
+}
