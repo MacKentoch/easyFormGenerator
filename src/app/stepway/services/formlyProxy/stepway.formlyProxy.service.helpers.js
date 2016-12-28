@@ -19,7 +19,7 @@ const configurationModelInit = {
     {
       line: 1,
       activeColumn: 1,
-      columns				: [{
+      columns        : [{
         numColumn: 1,
         exist:true,
         control: {
@@ -222,18 +222,18 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
   const controlCol0 =     {
   className: 'col-xs-6',
   type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-  key	: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+  key  : typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
   templateOptions: {
-  type					: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-  label					: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-  required 			: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-  placeholder 	: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-  description 	: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-  options 			: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+  type          : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+  label          : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+  required       : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+  placeholder   : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+  description   : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+  options       : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
   },
-  expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-  validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-  validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
@@ -244,19 +244,19 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
 
   const controlCol1 =  {
   className: 'col-xs-6',
-  type			: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-  key				: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-  templateOptions	: {
-  type				: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-  label				: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-  required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+  type      : typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+  key        : typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+  templateOptions  : {
+  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-  options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
   },
-  expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-  validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-  validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
   };
 
   //////////////////////////////////////////////
@@ -307,20 +307,20 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   };
 
   const controlCol0 =  {
-  className	: 'col-xs-4',
-  type			: typeof configurationModel.lines[lineIndex].columns[0].control.type 	!== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-  key				: typeof configurationModel.lines[lineIndex].columns[0].control.key 	!== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+  className  : 'col-xs-4',
+  type      : typeof configurationModel.lines[lineIndex].columns[0].control.type   !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
+  key        : typeof configurationModel.lines[lineIndex].columns[0].control.key   !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
   templateOptions: {
-  type				: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-  label				: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-  required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-  options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
   },
-  expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-  validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-  validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
@@ -330,20 +330,20 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   }
 
   const controlCol1 = {
-  className	: 'col-xs-4',
-  type			: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-  key				: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+  className  : 'col-xs-4',
+  type      : typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
+  key        : typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
   templateOptions: {
-  type				: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-  label				: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-  required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-  options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
   },
-  expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-  validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-  validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
@@ -352,20 +352,20 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
   }
   const controlCol2 = {
-  className	: 'col-xs-4',
-  type			: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
-  key				: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
+  className  : 'col-xs-4',
+  type      : typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
+  key        : typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
   templateOptions: {
-  type				: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
-  label				: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
-  required 		: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
+  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
+  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
+  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
   placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-  options 		: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
+  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
   },
-  expressionProperties 	: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
-  validators 						: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-  validation 						: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
+  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
+  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
+  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
