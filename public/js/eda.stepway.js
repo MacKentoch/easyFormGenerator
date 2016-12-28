@@ -1,8 +1,7 @@
-!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in p||(p[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==v.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=p[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(v.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=p[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return x[e]||(x[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},r.name);t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=p[s],v=x[s];v?l=v.exports:c&&!c.declarative?l=c.esModule:c?(d(c),v=c.module,l=v.exports):l=f(s),v&&v.importers?(v.importers.push(t),t.dependencies.push(v)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=p[e];if(t)t.declarative?c(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=f(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=p[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){if(r===e)return r;var t={};if("object"==typeof r||"function"==typeof r)if(g){var n;for(var o in r)(n=Object.getOwnPropertyDescriptor(r,o))&&h(t,o,n)}else{var a=r&&r.hasOwnProperty;for(var o in r)(!a||r.hasOwnProperty(o))&&(t[o]=r[o])}return t["default"]=r,h(t,"__useDefault",{value:!0}),t}function c(r,t){var n=p[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==v.call(t,u)&&(p[u]?c(u,t):f(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function f(e){if(D[e])return D[e];if("@node/"==e.substr(0,6))return y(e.substr(6));var r=p[e];if(!r)throw"Module "+e+" not present.";return a(e),c(e,[]),p[e]=void 0,r.declarative&&h(r.module.exports,"__esModule",{value:!0}),D[e]=r.declarative?r.module.exports:r.esModule}var p={},v=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},g=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(m){g=!1}var h;!function(){try{Object.defineProperty({},"a",{})&&(h=Object.defineProperty)}catch(e){h=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var x={},y="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,D={"@empty":{}};return function(e,n,o){return function(a){a(function(a){for(var u={_nodeRequire:y,register:r,registerDynamic:t,get:f,set:function(e,r){D[e]=r},newModule:function(e){return e}},d=0;d<n.length;d++)(function(e,r){r&&r.__esModule?D[e]=r:D[e]=s(r)})(n[d],arguments[d]);o(u);var i=f(e[0]);if(e.length>1)for(var d=1;d<e.length;d++)f(e[d]);return i.__useDefault?i["default"]:i})}}}("undefined"!=typeof self?self:global)
+!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);void 0!==typeof c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return I[e]=s(D(e.substr(6)));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
-(["1"], [], function($__System) {
-
-!function(){var t=$__System;if("undefined"!=typeof window&&"undefined"!=typeof document&&window.location)var s=location.protocol+"//"+location.hostname+(location.port?":"+location.port:"");t.set("@@cjs-helpers",t.newModule({getPathVars:function(t){var n,o=t.lastIndexOf("!");n=-1!=o?t.substr(0,o):t;var e=n.split("/");return e.pop(),e=e.join("/"),"file:///"==n.substr(0,8)?(n=n.substr(7),e=e.substr(7),isWindows&&(n=n.substr(1),e=e.substr(1))):s&&n.substr(0,s.length)===s&&(n=n.substr(s.length),e=e.substr(s.length)),{filename:n,dirname:e}}}))}();
+(["1"], [], false, function($__System) {
+var require = this.require, exports = this.exports, module = this.module;
 $__System.register("2", [], function (_export) {
   "use strict";
 
@@ -13,20 +12,23 @@ $__System.register("2", [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("3", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "stepway": {"version": "1.2.1-beta2"},
-    "dragdropway": {"version": "1.2.0"},
-    "formviewer": {"version": "1.2.0"}
-  };
-  global.define = __define;
-  return module.exports;
+$__System.registerDynamic("3", [], true, function ($__require, exports, module) {
+	var define,
+	    global = this || self,
+	    GLOBAL = global;
+	module.exports = {
+		"stepway": {
+			"version": "1.2.1-beta2"
+		},
+		"dragdropway": {
+			"version": "1.2.0"
+		},
+		"formviewer": {
+			"version": "1.2.0"
+		}
+	};
+	return module.exports;
 });
-
 $__System.register('4', ['3'], function (_export) {
 	'use strict';
 
@@ -258,430 +260,661 @@ $__System.register('6', ['5'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("7", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "Hello",
-    "EDIT_TAB": "Edit / Create",
-    "PREVIEW_TAB": "Preview",
-    "WIZARD_LINES": "lines",
-    "WIZARD_LAYOUT": "layout",
-    "WIZARD_CONTROLS": "controls",
-    "WIZARD_SAVE": "save",
-    "PAGER_PREVIOUS": "Previous",
-    "PAGER_NEXT": "Next",
-    "COMMAND_PANEL": "Command",
-    "VISUAL_PANEL": "Visual",
-    "ADD_NEW_LINE": "Add a new line",
-    "SELECTED_LINE": "Selected line",
-    "NUMBER_OF_COLUMN": "number of columns",
-    "APPLY_CTRL2COL": "Apply controls to columns",
-    "CLIC_TAP_2_OPEN": "Click / Tap on column to open control selection",
-    "SELECT_2_APPLY_COL": "Select desired control and valid to apply it to column",
-    "CUSTOM_SUBMIT_BTN": "Customize Submit button Text",
-    "CUSTOM_CANCEL_BTN": "Customize Cancel button Text",
-    "NAME_THIS_FORM": "Name this form",
-    "SAVE_THIS_FORM": "save this form",
-    "FINAL_STEP": "Final Step : form preview",
-    "DATA_MODEL": "DATA MODEL",
-    "FIELDS_MODEL": "FIELDS MODEL (ready to save to database one)",
-    "SELECT_A_CTRL": "Select a control",
-    "SELECT_CTRL_IN_LIST": "Select a control in the list below",
-    "COL_WILL_BE_BLANK": "Column will be blank",
-    "EDIT_PROPERTIES": "Edit properties",
-    "HEADER_TEXT": "Header text",
-    "ADD_EDIT_HEADER_HERE": "Add / edit header text here",
-    "SUBTITLE_TEXT": "Subtitle text",
-    "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here",
-    "LABEL_TEXT": "Label text",
-    "ADD_EDIT_LABEL_HERE": "Add / edit control label here",
-    "PLACEHOLDER": "placeholder",
-    "ADD_EDIT_PLACEHOLD": "Add / edit placeholder text here",
-    "REQUIRED": "Required",
-    "DESCRIPTION": "Description",
-    "ADDEDIT_DESCRIPTION": "Add / edit description here",
-    "DATE_FORMAT": "Date format",
-    "ADD_NEW_RADIO": "Add new radio",
-    "ADD_RADIO_PLACEHOLD": "add new radio",
-    "EDIT_REMOVE_RADIO": "Edit/Remove radio",
-    "NO_RADIO_ADD_NEW": "no radio : add new radio values",
-    "SEARCH_4_OPTION": "search for option",
-    "ADD": "add",
-    "ORDER": "order",
-    "OPTION": "option",
-    "GROUP": "group",
-    "ADD_NEW_OPTIONS": "Add new options",
-    "ADD_A_NEW_OPTION": "add new option",
-    "EDIT_REMOVE_OPTIONS": "Edit/Remove options",
-    "NO_OPTION_ADD_NEW": "no option : add new options",
-    "ADD_NEW_GROUPS": "Add new groups",
-    "ADD_A_NEW_GROUP": "Add new group",
-    "EDIT_GROUPS_OPTIONS": "Edit/Remove options/groups",
-    "NO_GROUP_ADD_NEW": "add new groups",
-    "OK": "OK",
-    "CANCEL": "Cancel"
-  };
-  global.define = __define;
-  return module.exports;
-});
+$__System.registerDynamic("7", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "Hello",
 
-$__System.registerDynamic("8", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "Bonjour",
-    "EDIT_TAB": "Edition / Creation",
-    "PREVIEW_TAB": "Aperçu",
-    "WIZARD_LINES": "lignes",
-    "WIZARD_LAYOUT": "disposition",
-    "WIZARD_CONTROLS": "contrôles",
-    "WIZARD_SAVE": "sauvegarder",
-    "PAGER_PREVIOUS": "Précédent",
-    "PAGER_NEXT": "Suivant",
-    "COMMAND_PANEL": "Commandes",
-    "VISUAL_PANEL": "Visuel",
-    "ADD_NEW_LINE": "Ajouter une nouvelle ligne",
-    "SELECTED_LINE": "Ligne sélectionnée",
-    "NUMBER_OF_COLUMN": "nombre de colonnes",
-    "APPLY_CTRL2COL": "Appliquer les contrôles aux colonnes",
-    "CLIC_TAP_2_OPEN": "Cliquer sur une colonne pour ouvrir le menu d'édition",
-    "SELECT_2_APPLY_COL": "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
-    "CUSTOM_SUBMIT_BTN": "Personnaliser le texte du bouton envoie",
-    "CUSTOM_CANCEL_BTN": "Personnaliser le texte du bouton annuler",
-    "NAME_THIS_FORM": "Nommer le formulaire",
-    "SAVE_THIS_FORM": "sauvegarder le formulaire",
-    "FINAL_STEP": "Dernière étape : aperçu du formulaire",
-    "DATA_MODEL": "MODELE DE DONNEES",
-    "FIELDS_MODEL": "MODELE DES CHAMPS (modèle compatible base de données)",
-    "SELECT_A_CTRL": "Sélectionner un contrôle",
-    "SELECT_CTRL_IN_LIST": "Sélectionner un contrôle dans la liste ci-dessous",
-    "COL_WILL_BE_BLANK": "La colonne sera vide",
-    "EDIT_PROPERTIES": "Editer les propriétés",
-    "HEADER_TEXT": "Texte du titre principal",
-    "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal",
-    "SUBTITLE_TEXT": "Texte du sous-titre",
-    "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre",
-    "LABEL_TEXT": "Texte de l'étiquette",
-    "ADD_EDIT_LABEL_HERE": "Editer le texte de l'étiquette",
-    "PLACEHOLDER": "placeholder",
-    "ADD_EDIT_PLACEHOLD": "Editer le placeholder",
-    "REQUIRED": "Requis",
-    "DESCRIPTION": "Description",
-    "ADDEDIT_DESCRIPTION": "Ajouter / editer la description",
-    "DATE_FORMAT": "Format de la date",
-    "ADD_NEW_RADIO": "Ajouter un nouveau choix à cocher",
-    "ADD_RADIO_PLACEHOLD": "Ajouter un nouveau choix à cocher",
-    "EDIT_REMOVE_RADIO": "Editer / supprimer un choix à cocher",
-    "NO_RADIO_ADD_NEW": "aucun choix à cocher : en ajouter un",
-    "SEARCH_4_OPTION": "rechercher une option",
-    "ADD": "ajouter",
-    "ORDER": "ordre",
-    "OPTION": "option",
-    "GROUP": "groupe",
-    "ADD_NEW_OPTIONS": "Ajouter de nouvelles options",
-    "ADD_A_NEW_OPTION": "ajoutre une option",
-    "EDIT_REMOVE_OPTIONS": "Editer / supprimer des options",
-    "NO_OPTION_ADD_NEW": "aucune option : en ajouter",
-    "ADD_NEW_GROUPS": "Ajouter de nouveaux groupes",
-    "ADD_A_NEW_GROUP": "Ajouter un nouveau groupe",
-    "EDIT_GROUPS_OPTIONS": "Editer / supprimer les groupes et options",
-    "NO_GROUP_ADD_NEW": "ajouter de nouveaux groupes",
-    "OK": "Valider",
-    "CANCEL": "Annuler"
-  };
-  global.define = __define;
-  return module.exports;
-});
+        "EDIT_TAB": "Edit / Create",
+        "PREVIEW_TAB": "Preview",
 
-$__System.registerDynamic("9", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "Hola",
-    "EDIT_TAB": "Editar / Crear",
-    "PREVIEW_TAB": "Previsualizar",
-    "WIZARD_LINES": "lineas",
-    "WIZARD_LAYOUT": "diseño",
-    "WIZARD_CONTROLS": "controles",
-    "WIZARD_SAVE": "guardar",
-    "PAGER_PREVIOUS": "Anterior",
-    "PAGER_NEXT": "Siguiente",
-    "COMMAND_PANEL": "Comando",
-    "VISUAL_PANEL": "Visual",
-    "ADD_NEW_LINE": "Agregar nueva linea",
-    "SELECTED_LINE": "Linea seleccionada",
-    "NUMBER_OF_COLUMN": "numero de columnas",
-    "APPLY_CTRL2COL": "Aplicar controles a columnas",
-    "CLIC_TAP_2_OPEN": "Click / Toque en la columna para seleccionar controles",
-    "SELECT_2_APPLY_COL": "Selecciona el control deseado para aplicarlo a la columna",
-    "CUSTOM_SUBMIT_BTN": "Personalizar texto de boton Enviar",
-    "CUSTOM_CANCEL_BTN": "Personalizar texto de boton Cancelar",
-    "NAME_THIS_FORM": "Nombrar formulario",
-    "SAVE_THIS_FORM": "guardar formulario",
-    "FINAL_STEP": "Ultimo paso : previsualizar formulario",
-    "DATA_MODEL": "MODELO DE DATOS",
-    "FIELDS_MODEL": "MODELO DE CAMPOS (listo para guardar en base de datos uno)",
-    "SELECT_A_CTRL": "Selecciona un control",
-    "SELECT_CTRL_IN_LIST": "Selecciona un control de la lista",
-    "COL_WILL_BE_BLANK": "Columna sera vacia",
-    "EDIT_PROPERTIES": "Editar propiedades",
-    "HEADER_TEXT": "Texto de encabezado",
-    "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui",
-    "SUBTITLE_TEXT": "Texto de subtitulo",
-    "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui",
-    "LABEL_TEXT": "Texto de etiqueta",
-    "ADD_EDIT_LABEL_HERE": "Agregar / editar texto de etiqueta aqui",
-    "PLACEHOLDER": "Marcador",
-    "ADD_EDIT_PLACEHOLD": "Agregar / editar texto de marcador aqui",
-    "REQUIRED": "Requerido",
-    "DESCRIPTION": "Descripcion",
-    "ADDEDIT_DESCRIPTION": "Agregar / editar descripcion aqui",
-    "DATE_FORMAT": "Formato de fecha",
-    "ADD_NEW_RADIO": "Agregar nuevo radio",
-    "ADD_RADIO_PLACEHOLD": "agregar nuevo radio",
-    "EDIT_REMOVE_RADIO": "Editar/Eliminar radio",
-    "NO_RADIO_ADD_NEW": "sin radio : agregar nuevos valores de radio",
-    "SEARCH_4_OPTION": "buscar opcion",
-    "ADD": "agregar",
-    "ORDER": "orden",
-    "OPTION": "opcion",
-    "GROUP": "grupo",
-    "ADD_NEW_OPTIONS": "agregar nuevas opciones",
-    "ADD_A_NEW_OPTION": "agregar nueva opcione",
-    "EDIT_REMOVE_OPTIONS": "Editar/Eliminar opciones",
-    "NO_OPTION_ADD_NEW": "sin opcion : agregar nuevas opciones",
-    "ADD_NEW_GROUPS": "Agregar nuevos grupos",
-    "ADD_A_NEW_GROUP": "Agregar nuevo grupo",
-    "EDIT_GROUPS_OPTIONS": "Editar/Eliminar opciones/grupos",
-    "NO_GROUP_ADD_NEW": "agregar nuevos grupos",
-    "OK": "OK",
-    "CANCEL": "Cancelar"
-  };
-  global.define = __define;
-  return module.exports;
-});
+        "WIZARD_LINES": "lines",
+        "WIZARD_LAYOUT": "layout",
+        "WIZARD_CONTROLS": "controls",
+        "WIZARD_SAVE": "save",
 
-$__System.registerDynamic("a", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "Hallo",
-    "EDIT_TAB": "Bearbeiten / Schaffen",
-    "PREVIEW_TAB": "Vorschau",
-    "WIZARD_LINES": "Linien",
-    "WIZARD_LAYOUT": "Layout",
-    "WIZARD_CONTROLS": "Steuerung",
-    "WIZARD_SAVE": "sparen",
-    "PAGER_PREVIOUS": "vorher.",
-    "PAGER_NEXT": "nächste",
-    "COMMAND_PANEL": "Anweisung",
-    "VISUAL_PANEL": "visuell",
-    "ADD_NEW_LINE": "Hinzufügen neuer Leitung",
-    "SELECTED_LINE": "ausgewählte Linie",
-    "NUMBER_OF_COLUMN": "Anzahl von Spalten",
-    "APPLY_CTRL2COL": "gelten diese Steuer Spalte",
-    "CLIC_TAP_2_OPEN": "klicken Sie auf Spalte zur Steuerungsauswahl öffnen",
-    "SELECT_2_APPLY_COL": "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden",
-    "CUSTOM_SUBMIT_BTN": "Passen Submit-Button Text",
-    "CUSTOM_CANCEL_BTN": "Passen Cancel-Button Text",
-    "NAME_THIS_FORM": "Nennen dieses Formular",
-    "SAVE_THIS_FORM": "Speichern dieses Formular",
-    "FINAL_STEP": "Endschritt : Formular Vorschau",
-    "DATA_MODEL": "DATEN MODELL",
-    "FIELDS_MODEL": "FELDER MODELL (Datenbank-kompatibel)",
-    "SELECT_A_CTRL": "Wählen Sie ein Steuer",
-    "SELECT_CTRL_IN_LIST": "Wählen Sie ein Steuer aus der Liste unten",
-    "COL_WILL_BE_BLANK": "die Spalte werde leer sein",
-    "EDIT_PROPERTIES": "Anzeigen",
-    "HEADER_TEXT": "Kopftext",
-    "ADD_EDIT_HEADER_HERE": "Kopftext ändern",
-    "SUBTITLE_TEXT": "Untertitel",
-    "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern",
-    "LABEL_TEXT": "Etikett",
-    "ADD_EDIT_LABEL_HERE": "Etikett ändern",
-    "PLACEHOLDER": "placeholder",
-    "ADD_EDIT_PLACEHOLD": "placeholder ändern",
-    "REQUIRED": "erforderlich",
-    "DESCRIPTION": "Beschreibung",
-    "ADDEDIT_DESCRIPTION": "Beschreibung ändern",
-    "DATE_FORMAT": "Datumsformat",
-    "ADD_NEW_RADIO": "Radiobutton hinzufügen",
-    "ADD_RADIO_PLACEHOLD": "Radiobutton hinzufügen",
-    "EDIT_REMOVE_RADIO": "Radiobutton ändern",
-    "NO_RADIO_ADD_NEW": "kein Radiobutton : Radiobutton hinzufügen",
-    "SEARCH_4_OPTION": "option suchen",
-    "ADD": "hinzufügen",
-    "ORDER": "bestellen",
-    "OPTION": "Option",
-    "GROUP": "Gruppe",
-    "ADD_NEW_OPTIONS": "Optionen hinzufügen",
-    "ADD_A_NEW_OPTION": "Option hinzufügen",
-    "EDIT_REMOVE_OPTIONS": "Optionen ändern",
-    "NO_OPTION_ADD_NEW": "kein option : Option hinzufügen",
-    "ADD_NEW_GROUPS": "Gruppen hinzufügen",
-    "ADD_A_NEW_GROUP": "Gruppe hinzufügen",
-    "EDIT_GROUPS_OPTIONS": "Gruppen ändern",
-    "NO_GROUP_ADD_NEW": "keine Gruppe : Gruppe hinzufügen",
-    "OK": "bestätigen",
-    "CANCEL": "stornieren"
-  };
-  global.define = __define;
-  return module.exports;
-});
+        "PAGER_PREVIOUS": "Previous",
+        "PAGER_NEXT": "Next",
 
-$__System.registerDynamic("b", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "Merhaba",
-    "EDIT_TAB": "Düzenle / Oluştur",
-    "PREVIEW_TAB": "Önizleme",
-    "WIZARD_LINES": "satırlar",
-    "WIZARD_LAYOUT": "düzen",
-    "WIZARD_CONTROLS": "kontroller",
-    "WIZARD_SAVE": "kaydet",
-    "PAGER_PREVIOUS": "Geri",
-    "PAGER_NEXT": "İleri",
-    "COMMAND_PANEL": "Komut",
-    "VISUAL_PANEL": "Görsel",
-    "ADD_NEW_LINE": "Yeni satır ekle",
-    "SELECTED_LINE": "Seçili satır",
-    "NUMBER_OF_COLUMN": "sütun sayısı",
-    "APPLY_CTRL2COL": "Sütunlara form ögesi ekle",
-    "CLIC_TAP_2_OPEN": "Form ögesi eklemek için sütunlara tıkla",
-    "SELECT_2_APPLY_COL": "İstediğin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet",
-    "CUSTOM_SUBMIT_BTN": "Gönder butonu yazısını düzenle",
-    "CUSTOM_CANCEL_BTN": "İptal butonu yazısını düzenle",
-    "NAME_THIS_FORM": "Forma isim ver",
-    "SAVE_THIS_FORM": "formu kaydet",
-    "FINAL_STEP": "Son aşama : form önizlemesi",
-    "DATA_MODEL": "VERİ MODELİ",
-    "FIELDS_MODEL": "ALAN MODELİ (veritabanına kaydetmeye hazır)",
-    "SELECT_A_CTRL": "Form ögesi seç",
-    "SELECT_CTRL_IN_LIST": "Verilen listeden bir form ögesi seç",
-    "COL_WILL_BE_BLANK": "Sütun boş kalacak",
-    "EDIT_PROPERTIES": "Özellikleri düzenle",
-    "HEADER_TEXT": "Başlık yazısı",
-    "ADD_EDIT_HEADER_HERE": "Başlık yazısını ekle / düzenle",
-    "SUBTITLE_TEXT": "Altyazı",
-    "ADD_EDIT_SUBTIL_HERE": "Altyazı ekle / düzenle",
-    "LABEL_TEXT": "Form ögesinin adı",
-    "ADD_EDIT_LABEL_HERE": "Ad ekle / düzenle",
-    "PLACEHOLDER": "Form ögesinin içine geçici yazı ekle",
-    "ADD_EDIT_PLACEHOLD": "Geçici yazı ekle / düzenle",
-    "REQUIRED": "Gerekli",
-    "DESCRIPTION": "Açıklama",
-    "ADDEDIT_DESCRIPTION": "Açıklama ekle / düzenle",
-    "DATE_FORMAT": "Tarih formatı",
-    "ADD_NEW_RADIO": "Radio butonu ekle",
-    "ADD_RADIO_PLACEHOLD": "radio butonu ekle",
-    "EDIT_REMOVE_RADIO": "Radio butonunu ekle / düzenle",
-    "NO_RADIO_ADD_NEW": "radio butonu yok : yeni buton ekle",
-    "SEARCH_4_OPTION": "seçenek ara",
-    "ADD": "ekle",
-    "ORDER": "sıra",
-    "OPTION": "seçenek",
-    "GROUP": "grup",
-    "ADD_NEW_OPTIONS": "Yeni seçenek ekle",
-    "ADD_A_NEW_OPTION": "yeni seçenek ekle",
-    "EDIT_REMOVE_OPTIONS": "Seçenekleri düzenle/sil",
-    "NO_OPTION_ADD_NEW": "seçenek yok : yeni seçenek ekle",
-    "ADD_NEW_GROUPS": "Yeni grup ekle",
-    "ADD_A_NEW_GROUP": "Yeni grup ekle",
-    "EDIT_GROUPS_OPTIONS": "Seçenek/Grup Ekle/sil",
-    "NO_GROUP_ADD_NEW": "yeni grup ekle",
-    "OK": "TAMAM",
-    "CANCEL": "İptal"
-  };
-  global.define = __define;
-  return module.exports;
-});
+        "COMMAND_PANEL": "Command",
+        "VISUAL_PANEL": "Visual",
 
-$__System.registerDynamic("c", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "SAY_HI": "こんにちわ",
-    "EDIT_TAB": "編集 / 作成",
-    "PREVIEW_TAB": "プレビュー",
-    "WIZARD_LINES": "ライン",
-    "WIZARD_LAYOUT": "レイアウト",
-    "WIZARD_CONTROLS": "コントロール",
-    "WIZARD_SAVE": "サーブ",
-    "PAGER_PREVIOUS": "前",
-    "PAGER_NEXT": "次",
-    "COMMAND_PANEL": "コマンド",
-    "VISUAL_PANEL": "ビジュアル",
-    "ADD_NEW_LINE": "新しいライン追加",
-    "SELECTED_LINE": "選択されたライン",
-    "NUMBER_OF_COLUMN": "カラムの数",
-    "APPLY_CTRL2COL": "カラムにコントロール適用",
-    "CLIC_TAP_2_OPEN": "コントロール選択を広げるには列をクリック",
-    "SELECT_2_APPLY_COL": "好きなコントロールを選び適用",
-    "CUSTOM_SUBMIT_BTN": "適用ボタンの文字変更する場合",
-    "CUSTOM_CANCEL_BTN": "キャンセルボタンの文字変更する場合",
-    "NAME_THIS_FORM": "形式に名前を付ける",
-    "SAVE_THIS_FORM": "形式をサーブ",
-    "FINAL_STEP": "ファイナルステップ : プレビュー形式",
-    "DATA_MODEL": "データーモデル",
-    "FIELDS_MODEL": "モデルフィールド",
-    "SELECT_A_CTRL": "コントロールを選び選択",
-    "SELECT_CTRL_IN_LIST": "以下のリストからコントロールを選び選択",
-    "COL_WILL_BE_BLANK": "空になる列",
-    "EDIT_PROPERTIES": "プロパティの変更",
-    "HEADER_TEXT": "ヘッダーテキスト",
-    "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更",
-    "SUBTITLE_TEXT": "サブタイトル　テキスト",
-    "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更",
-    "LABEL_TEXT": "ラベルテキスト",
-    "ADD_EDIT_LABEL_HERE": "ラベルテキスト文字変更",
-    "PLACEHOLDER": "プレースホルダー",
-    "ADD_EDIT_PLACEHOLD": "プレースホルダー文字変更",
-    "REQUIRED": "必須",
-    "DESCRIPTION": "説明",
-    "ADDEDIT_DESCRIPTION": "説明の変更",
-    "DATE_FORMAT": "日付の形式",
-    "ADD_NEW_RADIO": "新ラジオボタンを追加",
-    "ADD_RADIO_PLACEHOLD": "新ラジオボタンを追加",
-    "EDIT_REMOVE_RADIO": "ラジオボタン変更",
-    "NO_RADIO_ADD_NEW": "ラジオ無し : 新ラジオボタン追加",
-    "SEARCH_4_OPTION": "オプション検索",
-    "ADD": "追加",
-    "ORDER": "順番",
-    "OPTION": "オプション",
-    "GROUP": "グループ",
-    "ADD_NEW_OPTIONS": "新しいオプション追加",
-    "ADD_A_NEW_OPTION": "新しいオプション追加",
-    "EDIT_REMOVE_OPTIONS": "オプションの変更",
-    "NO_OPTION_ADD_NEW": "オプション無し : 新しいオプション追加",
-    "ADD_NEW_GROUPS": "新しいグループ追加",
-    "ADD_A_NEW_GROUP": "新しいグループ追加",
-    "EDIT_GROUPS_OPTIONS": "グループを変更",
-    "NO_GROUP_ADD_NEW": "グループを追加",
-    "OK": "オッケー",
-    "CANCEL": "キャンセル"
-  };
-  global.define = __define;
-  return module.exports;
-});
+        "ADD_NEW_LINE": "Add a new line",
 
-$__System.register('d', ['7', '8', '9', 'a', 'b', 'c'], function (_export) {
+        "SELECTED_LINE": "Selected line",
+
+        "NUMBER_OF_COLUMN": "number of columns",
+        "APPLY_CTRL2COL": "Apply controls to columns",
+
+        "CLIC_TAP_2_OPEN": "Click / Tap on column to open control selection",
+        "SELECT_2_APPLY_COL": "Select desired control and valid to apply it to column",
+
+        "CUSTOM_SUBMIT_BTN": "Customize Submit button Text",
+        "CUSTOM_CANCEL_BTN": "Customize Cancel button Text",
+        "NAME_THIS_FORM": "Name this form",
+        "SAVE_THIS_FORM": "save this form",
+
+        "FINAL_STEP": "Final Step : form preview",
+
+        "DATA_MODEL": "DATA MODEL",
+        "FIELDS_MODEL": "FIELDS MODEL (ready to save to database one)",
+
+        "SELECT_A_CTRL": "Select a control",
+        "SELECT_CTRL_IN_LIST": "Select a control in the list below",
+        "COL_WILL_BE_BLANK": "Column will be blank",
+
+        "EDIT_PROPERTIES": "Edit properties",
+
+        "HEADER_TEXT": "Header text",
+        "ADD_EDIT_HEADER_HERE": "Add / edit header text here",
+
+        "SUBTITLE_TEXT": "Subtitle text",
+        "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here",
+
+        "LABEL_TEXT": "Label text",
+        "ADD_EDIT_LABEL_HERE": "Add / edit control label here",
+
+        "PLACEHOLDER": "placeholder",
+        "ADD_EDIT_PLACEHOLD": "Add / edit placeholder text here",
+
+        "REQUIRED": "Required",
+
+        "DESCRIPTION": "Description",
+        "ADDEDIT_DESCRIPTION": "Add / edit description here",
+
+        "DATE_FORMAT": "Date format",
+
+        "ADD_NEW_RADIO": "Add new radio",
+        "ADD_RADIO_PLACEHOLD": "add new radio",
+        "EDIT_REMOVE_RADIO": "Edit/Remove radio",
+        "NO_RADIO_ADD_NEW": "no radio : add new radio values",
+
+        "SEARCH_4_OPTION": "search for option",
+
+        "ADD": "add",
+        "ORDER": "order",
+        "OPTION": "option",
+        "GROUP": "group",
+
+        "ADD_NEW_OPTIONS": "Add new options",
+        "ADD_A_NEW_OPTION": "add new option",
+        "EDIT_REMOVE_OPTIONS": "Edit/Remove options",
+        "NO_OPTION_ADD_NEW": "no option : add new options",
+
+        "ADD_NEW_GROUPS": "Add new groups",
+        "ADD_A_NEW_GROUP": "Add new group",
+        "EDIT_GROUPS_OPTIONS": "Edit/Remove options/groups",
+        "NO_GROUP_ADD_NEW": "add new groups",
+
+        "OK": "OK",
+        "CANCEL": "Cancel"
+    };
+    return module.exports;
+});
+$__System.registerDynamic("8", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "Bonjour",
+
+        "EDIT_TAB": "Edition / Creation",
+        "PREVIEW_TAB": "Aperçu",
+
+        "WIZARD_LINES": "lignes",
+        "WIZARD_LAYOUT": "disposition",
+        "WIZARD_CONTROLS": "contrôles",
+        "WIZARD_SAVE": "sauvegarder",
+
+        "PAGER_PREVIOUS": "Précédent",
+        "PAGER_NEXT": "Suivant",
+
+        "COMMAND_PANEL": "Commandes",
+        "VISUAL_PANEL": "Visuel",
+
+        "ADD_NEW_LINE": "Ajouter une nouvelle ligne",
+
+        "SELECTED_LINE": "Ligne sélectionnée",
+
+        "NUMBER_OF_COLUMN": "nombre de colonnes",
+        "APPLY_CTRL2COL": "Appliquer les contrôles aux colonnes",
+
+        "CLIC_TAP_2_OPEN": "Cliquer sur une colonne pour ouvrir le menu d'édition",
+        "SELECT_2_APPLY_COL": "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
+
+        "CUSTOM_SUBMIT_BTN": "Personnaliser le texte du bouton envoie",
+        "CUSTOM_CANCEL_BTN": "Personnaliser le texte du bouton annuler",
+        "NAME_THIS_FORM": "Nommer le formulaire",
+        "SAVE_THIS_FORM": "sauvegarder le formulaire",
+
+        "FINAL_STEP": "Dernière étape : aperçu du formulaire",
+
+        "DATA_MODEL": "MODELE DE DONNEES",
+        "FIELDS_MODEL": "MODELE DES CHAMPS (modèle compatible base de données)",
+
+        "SELECT_A_CTRL": "Sélectionner un contrôle",
+        "SELECT_CTRL_IN_LIST": "Sélectionner un contrôle dans la liste ci-dessous",
+        "COL_WILL_BE_BLANK": "La colonne sera vide",
+
+        "EDIT_PROPERTIES": "Editer les propriétés",
+
+        "HEADER_TEXT": "Texte du titre principal",
+        "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal",
+
+        "SUBTITLE_TEXT": "Texte du sous-titre",
+        "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre",
+
+        "LABEL_TEXT": "Texte de l'étiquette",
+        "ADD_EDIT_LABEL_HERE": "Editer le texte de l'étiquette",
+
+        "PLACEHOLDER": "placeholder",
+        "ADD_EDIT_PLACEHOLD": "Editer le placeholder",
+
+        "REQUIRED": "Requis",
+
+        "DESCRIPTION": "Description",
+        "ADDEDIT_DESCRIPTION": "Ajouter / editer la description",
+
+        "DATE_FORMAT": "Format de la date",
+
+        "ADD_NEW_RADIO": "Ajouter un nouveau choix à cocher",
+        "ADD_RADIO_PLACEHOLD": "Ajouter un nouveau choix à cocher",
+        "EDIT_REMOVE_RADIO": "Editer / supprimer un choix à cocher",
+        "NO_RADIO_ADD_NEW": "aucun choix à cocher : en ajouter un",
+
+        "SEARCH_4_OPTION": "rechercher une option",
+
+        "ADD": "ajouter",
+        "ORDER": "ordre",
+        "OPTION": "option",
+        "GROUP": "groupe",
+
+        "ADD_NEW_OPTIONS": "Ajouter de nouvelles options",
+        "ADD_A_NEW_OPTION": "ajoutre une option",
+        "EDIT_REMOVE_OPTIONS": "Editer / supprimer des options",
+        "NO_OPTION_ADD_NEW": "aucune option : en ajouter",
+
+        "ADD_NEW_GROUPS": "Ajouter de nouveaux groupes",
+        "ADD_A_NEW_GROUP": "Ajouter un nouveau groupe",
+        "EDIT_GROUPS_OPTIONS": "Editer / supprimer les groupes et options",
+        "NO_GROUP_ADD_NEW": "ajouter de nouveaux groupes",
+
+        "OK": "Valider",
+        "CANCEL": "Annuler"
+    };
+    return module.exports;
+});
+$__System.registerDynamic("9", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "Hola",
+
+        "EDIT_TAB": "Editar / Crear",
+        "PREVIEW_TAB": "Previsualizar",
+
+        "WIZARD_LINES": "lineas",
+        "WIZARD_LAYOUT": "diseño",
+        "WIZARD_CONTROLS": "controles",
+        "WIZARD_SAVE": "guardar",
+
+        "PAGER_PREVIOUS": "Anterior",
+        "PAGER_NEXT": "Siguiente",
+
+        "COMMAND_PANEL": "Comando",
+        "VISUAL_PANEL": "Visual",
+
+        "ADD_NEW_LINE": "Agregar nueva linea",
+
+        "SELECTED_LINE": "Linea seleccionada",
+
+        "NUMBER_OF_COLUMN": "numero de columnas",
+        "APPLY_CTRL2COL": "Aplicar controles a columnas",
+
+        "CLIC_TAP_2_OPEN": "Click / Toque en la columna para seleccionar controles",
+        "SELECT_2_APPLY_COL": "Selecciona el control deseado para aplicarlo a la columna",
+
+        "CUSTOM_SUBMIT_BTN": "Personalizar texto de boton Enviar",
+        "CUSTOM_CANCEL_BTN": "Personalizar texto de boton Cancelar",
+        "NAME_THIS_FORM": "Nombrar formulario",
+        "SAVE_THIS_FORM": "guardar formulario",
+
+        "FINAL_STEP": "Ultimo paso : previsualizar formulario",
+
+        "DATA_MODEL": "MODELO DE DATOS",
+        "FIELDS_MODEL": "MODELO DE CAMPOS (listo para guardar en base de datos uno)",
+
+        "SELECT_A_CTRL": "Selecciona un control",
+        "SELECT_CTRL_IN_LIST": "Selecciona un control de la lista",
+        "COL_WILL_BE_BLANK": "Columna sera vacia",
+
+        "EDIT_PROPERTIES": "Editar propiedades",
+
+        "HEADER_TEXT": "Texto de encabezado",
+        "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui",
+
+        "SUBTITLE_TEXT": "Texto de subtitulo",
+        "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui",
+
+        "LABEL_TEXT": "Texto de etiqueta",
+        "ADD_EDIT_LABEL_HERE": "Agregar / editar texto de etiqueta aqui",
+
+        "PLACEHOLDER": "Marcador",
+        "ADD_EDIT_PLACEHOLD": "Agregar / editar texto de marcador aqui",
+
+        "REQUIRED": "Requerido",
+
+        "DESCRIPTION": "Descripcion",
+        "ADDEDIT_DESCRIPTION": "Agregar / editar descripcion aqui",
+
+        "DATE_FORMAT": "Formato de fecha",
+
+        "ADD_NEW_RADIO": "Agregar nuevo radio",
+        "ADD_RADIO_PLACEHOLD": "agregar nuevo radio",
+        "EDIT_REMOVE_RADIO": "Editar/Eliminar radio",
+        "NO_RADIO_ADD_NEW": "sin radio : agregar nuevos valores de radio",
+
+        "SEARCH_4_OPTION": "buscar opcion",
+
+        "ADD": "agregar",
+        "ORDER": "orden",
+        "OPTION": "opcion",
+        "GROUP": "grupo",
+
+        "ADD_NEW_OPTIONS": "agregar nuevas opciones",
+        "ADD_A_NEW_OPTION": "agregar nueva opcione",
+        "EDIT_REMOVE_OPTIONS": "Editar/Eliminar opciones",
+        "NO_OPTION_ADD_NEW": "sin opcion : agregar nuevas opciones",
+
+        "ADD_NEW_GROUPS": "Agregar nuevos grupos",
+        "ADD_A_NEW_GROUP": "Agregar nuevo grupo",
+        "EDIT_GROUPS_OPTIONS": "Editar/Eliminar opciones/grupos",
+        "NO_GROUP_ADD_NEW": "agregar nuevos grupos",
+
+        "OK": "OK",
+        "CANCEL": "Cancelar"
+    };
+    return module.exports;
+});
+$__System.registerDynamic("a", [], true, function ($__require, exports, module) {
+     var define,
+         global = this || self,
+         GLOBAL = global;
+     module.exports = {
+          "SAY_HI": "Hallo",
+
+          "EDIT_TAB": "Bearbeiten / Schaffen",
+          "PREVIEW_TAB": "Vorschau",
+
+          "WIZARD_LINES": "Linien",
+          "WIZARD_LAYOUT": "Layout",
+          "WIZARD_CONTROLS": "Steuerung",
+          "WIZARD_SAVE": "sparen",
+
+          "PAGER_PREVIOUS": "vorher.",
+          "PAGER_NEXT": "nächste",
+
+          "COMMAND_PANEL": "Anweisung",
+          "VISUAL_PANEL": "visuell",
+
+          "ADD_NEW_LINE": "Hinzufügen neuer Leitung",
+          "SELECTED_LINE": "ausgewählte Linie",
+
+          "NUMBER_OF_COLUMN": "Anzahl von Spalten",
+          "APPLY_CTRL2COL": "gelten diese Steuer Spalte",
+
+          "CLIC_TAP_2_OPEN": "klicken Sie auf Spalte zur Steuerungsauswahl öffnen",
+          "SELECT_2_APPLY_COL": "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden",
+
+          "CUSTOM_SUBMIT_BTN": "Passen Submit-Button Text",
+          "CUSTOM_CANCEL_BTN": "Passen Cancel-Button Text",
+          "NAME_THIS_FORM": "Nennen dieses Formular",
+          "SAVE_THIS_FORM": "Speichern dieses Formular",
+
+          "FINAL_STEP": "Endschritt : Formular Vorschau",
+
+          "DATA_MODEL": "DATEN MODELL",
+          "FIELDS_MODEL": "FELDER MODELL (Datenbank-kompatibel)",
+
+          "SELECT_A_CTRL": "Wählen Sie ein Steuer",
+          "SELECT_CTRL_IN_LIST": "Wählen Sie ein Steuer aus der Liste unten",
+          "COL_WILL_BE_BLANK": "die Spalte werde leer sein",
+
+          "EDIT_PROPERTIES": "Anzeigen",
+
+          "HEADER_TEXT": "Kopftext",
+          "ADD_EDIT_HEADER_HERE": "Kopftext ändern",
+
+          "SUBTITLE_TEXT": "Untertitel",
+          "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern",
+
+          "LABEL_TEXT": "Etikett",
+          "ADD_EDIT_LABEL_HERE": "Etikett ändern",
+
+          "PLACEHOLDER": "placeholder",
+          "ADD_EDIT_PLACEHOLD": "placeholder ändern",
+
+          "REQUIRED": "erforderlich",
+
+          "DESCRIPTION": "Beschreibung",
+          "ADDEDIT_DESCRIPTION": "Beschreibung ändern",
+
+          "DATE_FORMAT": "Datumsformat",
+
+          "ADD_NEW_RADIO": "Radiobutton hinzufügen",
+          "ADD_RADIO_PLACEHOLD": "Radiobutton hinzufügen",
+          "EDIT_REMOVE_RADIO": "Radiobutton ändern",
+          "NO_RADIO_ADD_NEW": "kein Radiobutton : Radiobutton hinzufügen",
+
+          "SEARCH_4_OPTION": "option suchen",
+
+          "ADD": "hinzufügen",
+          "ORDER": "bestellen",
+          "OPTION": "Option",
+          "GROUP": "Gruppe",
+
+          "ADD_NEW_OPTIONS": "Optionen hinzufügen",
+          "ADD_A_NEW_OPTION": "Option hinzufügen",
+          "EDIT_REMOVE_OPTIONS": "Optionen ändern",
+          "NO_OPTION_ADD_NEW": "kein option : Option hinzufügen",
+
+          "ADD_NEW_GROUPS": "Gruppen hinzufügen",
+          "ADD_A_NEW_GROUP": "Gruppe hinzufügen",
+          "EDIT_GROUPS_OPTIONS": "Gruppen ändern",
+          "NO_GROUP_ADD_NEW": "keine Gruppe : Gruppe hinzufügen",
+
+          "OK": "bestätigen",
+          "CANCEL": "stornieren"
+
+     };
+     return module.exports;
+});
+$__System.registerDynamic("b", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "Merhaba",
+
+        "EDIT_TAB": "Düzenle / Oluştur",
+        "PREVIEW_TAB": "Önizleme",
+
+        "WIZARD_LINES": "satırlar",
+        "WIZARD_LAYOUT": "düzen",
+        "WIZARD_CONTROLS": "kontroller",
+        "WIZARD_SAVE": "kaydet",
+
+        "PAGER_PREVIOUS": "Geri",
+        "PAGER_NEXT": "İleri",
+
+        "COMMAND_PANEL": "Komut",
+        "VISUAL_PANEL": "Görsel",
+
+        "ADD_NEW_LINE": "Yeni satır ekle",
+
+        "SELECTED_LINE": "Seçili satır",
+
+        "NUMBER_OF_COLUMN": "sütun sayısı",
+        "APPLY_CTRL2COL": "Sütunlara form ögesi ekle",
+
+        "CLIC_TAP_2_OPEN": "Form ögesi eklemek için sütunlara tıkla",
+        "SELECT_2_APPLY_COL": "İstediğin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet",
+
+        "CUSTOM_SUBMIT_BTN": "Gönder butonu yazısını düzenle",
+        "CUSTOM_CANCEL_BTN": "İptal butonu yazısını düzenle",
+        "NAME_THIS_FORM": "Forma isim ver",
+        "SAVE_THIS_FORM": "formu kaydet",
+
+        "FINAL_STEP": "Son aşama : form önizlemesi",
+
+        "DATA_MODEL": "VERİ MODELİ",
+        "FIELDS_MODEL": "ALAN MODELİ (veritabanına kaydetmeye hazır)",
+
+        "SELECT_A_CTRL": "Form ögesi seç",
+        "SELECT_CTRL_IN_LIST": "Verilen listeden bir form ögesi seç",
+        "COL_WILL_BE_BLANK": "Sütun boş kalacak",
+
+        "EDIT_PROPERTIES": "Özellikleri düzenle",
+
+        "HEADER_TEXT": "Başlık yazısı",
+        "ADD_EDIT_HEADER_HERE": "Başlık yazısını ekle / düzenle",
+
+        "SUBTITLE_TEXT": "Altyazı",
+        "ADD_EDIT_SUBTIL_HERE": "Altyazı ekle / düzenle",
+
+        "LABEL_TEXT": "Form ögesinin adı",
+        "ADD_EDIT_LABEL_HERE": "Ad ekle / düzenle",
+
+        "PLACEHOLDER": "Form ögesinin içine geçici yazı ekle",
+        "ADD_EDIT_PLACEHOLD": "Geçici yazı ekle / düzenle",
+
+        "REQUIRED": "Gerekli",
+
+        "DESCRIPTION": "Açıklama",
+        "ADDEDIT_DESCRIPTION": "Açıklama ekle / düzenle",
+
+        "DATE_FORMAT": "Tarih formatı",
+
+        "ADD_NEW_RADIO": "Radio butonu ekle",
+        "ADD_RADIO_PLACEHOLD": "radio butonu ekle",
+        "EDIT_REMOVE_RADIO": "Radio butonunu ekle / düzenle",
+        "NO_RADIO_ADD_NEW": "radio butonu yok : yeni buton ekle",
+
+        "SEARCH_4_OPTION": "seçenek ara",
+
+        "ADD": "ekle",
+        "ORDER": "sıra",
+        "OPTION": "seçenek",
+        "GROUP": "grup",
+
+        "ADD_NEW_OPTIONS": "Yeni seçenek ekle",
+        "ADD_A_NEW_OPTION": "yeni seçenek ekle",
+        "EDIT_REMOVE_OPTIONS": "Seçenekleri düzenle/sil",
+        "NO_OPTION_ADD_NEW": "seçenek yok : yeni seçenek ekle",
+
+        "ADD_NEW_GROUPS": "Yeni grup ekle",
+        "ADD_A_NEW_GROUP": "Yeni grup ekle",
+        "EDIT_GROUPS_OPTIONS": "Seçenek/Grup Ekle/sil",
+        "NO_GROUP_ADD_NEW": "yeni grup ekle",
+
+        "OK": "TAMAM",
+        "CANCEL": "İptal"
+    };
+    return module.exports;
+});
+$__System.registerDynamic("c", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "こんにちわ",
+
+        "EDIT_TAB": "編集 / 作成",
+        "PREVIEW_TAB": "プレビュー",
+
+        "WIZARD_LINES": "ライン",
+        "WIZARD_LAYOUT": "レイアウト",
+        "WIZARD_CONTROLS": "コントロール",
+        "WIZARD_SAVE": "サーブ",
+
+        "PAGER_PREVIOUS": "前",
+        "PAGER_NEXT": "次",
+
+        "COMMAND_PANEL": "コマンド",
+        "VISUAL_PANEL": "ビジュアル",
+
+        "ADD_NEW_LINE": "新しいライン追加",
+
+        "SELECTED_LINE": "選択されたライン",
+
+        "NUMBER_OF_COLUMN": "カラムの数",
+        "APPLY_CTRL2COL": "カラムにコントロール適用",
+
+        "CLIC_TAP_2_OPEN": "コントロール選択を広げるには列をクリック",
+        "SELECT_2_APPLY_COL": "好きなコントロールを選び適用",
+
+        "CUSTOM_SUBMIT_BTN": "適用ボタンの文字変更する場合",
+        "CUSTOM_CANCEL_BTN": "キャンセルボタンの文字変更する場合",
+        "NAME_THIS_FORM": "形式に名前を付ける",
+        "SAVE_THIS_FORM": "形式をサーブ",
+
+        "FINAL_STEP": "ファイナルステップ : プレビュー形式",
+
+        "DATA_MODEL": "データーモデル",
+        "FIELDS_MODEL": "モデルフィールド",
+
+        "SELECT_A_CTRL": "コントロールを選び選択",
+        "SELECT_CTRL_IN_LIST": "以下のリストからコントロールを選び選択",
+        "COL_WILL_BE_BLANK": "空になる列",
+
+        "EDIT_PROPERTIES": "プロパティの変更",
+
+        "HEADER_TEXT": "ヘッダーテキスト",
+        "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更",
+
+        "SUBTITLE_TEXT": "サブタイトル　テキスト",
+        "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更",
+
+        "LABEL_TEXT": "ラベルテキスト",
+        "ADD_EDIT_LABEL_HERE": "ラベルテキスト文字変更",
+
+        "PLACEHOLDER": "プレースホルダー",
+        "ADD_EDIT_PLACEHOLD": "プレースホルダー文字変更",
+
+        "REQUIRED": "必須",
+
+        "DESCRIPTION": "説明",
+        "ADDEDIT_DESCRIPTION": "説明の変更",
+
+        "DATE_FORMAT": "日付の形式",
+
+        "ADD_NEW_RADIO": "新ラジオボタンを追加",
+        "ADD_RADIO_PLACEHOLD": "新ラジオボタンを追加",
+        "EDIT_REMOVE_RADIO": "ラジオボタン変更",
+        "NO_RADIO_ADD_NEW": "ラジオ無し : 新ラジオボタン追加",
+
+        "SEARCH_4_OPTION": "オプション検索",
+
+        "ADD": "追加",
+        "ORDER": "順番",
+        "OPTION": "オプション",
+        "GROUP": "グループ",
+
+        "ADD_NEW_OPTIONS": "新しいオプション追加",
+        "ADD_A_NEW_OPTION": "新しいオプション追加",
+        "EDIT_REMOVE_OPTIONS": "オプションの変更",
+        "NO_OPTION_ADD_NEW": "オプション無し : 新しいオプション追加",
+
+        "ADD_NEW_GROUPS": "新しいグループ追加",
+        "ADD_A_NEW_GROUP": "新しいグループ追加",
+        "EDIT_GROUPS_OPTIONS": "グループを変更",
+        "NO_GROUP_ADD_NEW": "グループを追加",
+
+        "OK": "オッケー",
+        "CANCEL": "キャンセル"
+    };
+    return module.exports;
+});
+$__System.registerDynamic("d", [], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    module.exports = {
+        "SAY_HI": "Olá",
+
+        "EDIT_TAB": "Editar / Criar",
+        "PREVIEW_TAB": "Pré-visualizar",
+
+        "WIZARD_LINES": "linhas",
+        "WIZARD_LAYOUT": "layout",
+        "WIZARD_CONTROLS": "controles",
+        "WIZARD_SAVE": "salvar",
+
+        "PAGER_PREVIOUS": "Anterior",
+        "PAGER_NEXT": "Próximo",
+
+        "COMMAND_PANEL": "Comando",
+        "VISUAL_PANEL": "Visual",
+
+        "ADD_NEW_LINE": "Adicionar uma nova linha",
+
+        "SELECTED_LINE": "Linha selecionada",
+
+        "NUMBER_OF_COLUMN": "número de colunas",
+        "APPLY_CTRL2COL": "Aplicar controles às colunas",
+
+        "CLIC_TAP_2_OPEN": "Click / Toque em uma coluna para abrir controle de seleção",
+        "SELECT_2_APPLY_COL": "Selecione o controle desejado para aplicar a esta coluna",
+
+        "CUSTOM_SUBMIT_BTN": "Customizar texto do botão Enviar",
+        "CUSTOM_CANCEL_BTN": "Customizar texto do botão Cancelar",
+        "NAME_THIS_FORM": "Nome deste formulário",
+        "SAVE_THIS_FORM": "Salvar este formulário",
+
+        "FINAL_STEP": "Passo final : Visualizar formulário",
+
+        "DATA_MODEL": "Modelo de dados",
+        "FIELDS_MODEL": "Modelo de campos (pronto para salvar na base de dados)",
+
+        "SELECT_A_CTRL": "Selecionar um controle",
+        "SELECT_CTRL_IN_LIST": "Selecionar um controle na lista a seguir",
+        "COL_WILL_BE_BLANK": "Coluna ficará em branco",
+
+        "EDIT_PROPERTIES": "Editar propriedades",
+
+        "HEADER_TEXT": "Texto do cabeçalho",
+        "ADD_EDIT_HEADER_HERE": "Adicionar / editar o texto do cabeçalho aqui",
+
+        "SUBTITLE_TEXT": "Texto da legenda",
+        "ADD_EDIT_SUBTIL_HERE": "Adicionar /Editar o texto da legenda aqui",
+
+        "LABEL_TEXT": "Texto do label",
+        "ADD_EDIT_LABEL_HERE": "Adicionar / Editar texto do controle label aqui",
+
+        "PLACEHOLDER": "placeholder",
+        "ADD_EDIT_PLACEHOLD": "Adicionar / editar texto do placeholder aqui",
+
+        "REQUIRED": "Obrigatório",
+
+        "DESCRIPTION": "Descrição",
+        "ADDEDIT_DESCRIPTION": "Adicionar / editar descrição aqui",
+
+        "DATE_FORMAT": "Formato da data",
+
+        "ADD_NEW_RADIO": "Adicionar novo radio",
+        "ADD_RADIO_PLACEHOLD": "Adicionar novo radio",
+        "EDIT_REMOVE_RADIO": "Editar/Remover radio",
+        "NO_RADIO_ADD_NEW": "nenhum radio : Adicionar novo valor ao radio ",
+
+        "SEARCH_4_OPTION": "procurar por opções",
+
+        "ADD": "adicionar",
+        "ORDER": "ordem",
+        "OPTION": "opção",
+        "GROUP": "grupo",
+
+        "Add_NEW_OPTIONS": "Adicionar nova opção",
+        "ADD_A_NEW_OPTION": "Adicionar nova opção",
+        "EDIT_REMOVE_OPTIONS": "Editar/Remover opções",
+        "NO_OPTION_ADD_NEW": "nenhuma opção : adicionar nova opções",
+
+        "ADD_NEW_GROUPS": "Adicionar novos grupos",
+        "ADD_A_NEW_GROUP": "adicionar novo grupo",
+        "EDIT_GROUPS_OPTIONS": "Editar/Remover opções/grupos",
+        "NO_GROUP_ADD_NEW": "adicionar novo grupo",
+
+        "OK": "OK",
+        "CANCEL": "Cancelar"
+    };
+    return module.exports;
+});
+$__System.register('e', ['7', '8', '9', 'a', 'b', 'c', 'd'], function (_export) {
 	'use strict';
 
-	var localEn, localFr, localEs, localDe, localTr, localJp, TRANSLATE_CONFIG;
+	var localEn, localFr, localEs, localDe, localTr, localJp, localPtBr, TRANSLATE_CONFIG;
 
 	function translateConfig($translateProvider) {
 		$translateProvider.translations('en', localEn);
@@ -690,6 +923,7 @@ $__System.register('d', ['7', '8', '9', 'a', 'b', 'c'], function (_export) {
 		$translateProvider.translations('de', localDe);
 		$translateProvider.translations('tr', localTr);
 		$translateProvider.translations('jp', localJp);
+		$translateProvider.translations('pt-br', localPtBr);
 	}
 
 	return {
@@ -705,6 +939,8 @@ $__System.register('d', ['7', '8', '9', 'a', 'b', 'c'], function (_export) {
 			localTr = _b['default'];
 		}, function (_c) {
 			localJp = _c['default'];
+		}, function (_d) {
+			localPtBr = _d['default'];
 		}],
 		execute: function () {
 			TRANSLATE_CONFIG = 'easyFormTranslateConfig';
@@ -716,13 +952,13 @@ $__System.register('d', ['7', '8', '9', 'a', 'b', 'c'], function (_export) {
 		}
 	};
 });
-$__System.register('e', ['d'], function (_export) {
+$__System.register('f', ['e'], function (_export) {
 								'use strict';
 
 								var translateConfig, TRANSLATE_MODULE;
 								return {
-																setters: [function (_d) {
-																								translateConfig = _d['default'];
+																setters: [function (_e) {
+																								translateConfig = _e['default'];
 																}],
 																execute: function () {
 																								TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
@@ -731,7 +967,7 @@ $__System.register('e', ['d'], function (_export) {
 																}
 								};
 });
-$__System.register('f', [], function (_export) {
+$__System.register('10', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -745,17 +981,14 @@ $__System.register('f', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("10", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("11", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<section id=\"pageWfEdit\">\n\t<div ng-init=\"\">\n\t\t<div class=\"container\">\n\t\t\t<section id=\"preview\">\n\t\t\t\t<div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<!-- taoster alert -->\n\t\t\t\t\t\t<toaster-container\n              toaster-options=\"{\n  \t\t\t\t\t\t\t'position-class': 'toast-top-full-width',\n  \t\t\t\t\t\t\t'extendedTimeout':500,\n  \t\t\t\t\t\t\t'timeOut':500,\n  \t\t\t\t\t\t}\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<uib-tabset justified=\"true\">\n\t\t\t\t\t\t  <uib-tab\n                active=\"vm.tab.editTab.active\"\n                heading=\"{{'EDIT_TAB' | translate}}\">\n\t\t\t\t\t\t\t\t<div class=\"row\">\n                  <step-indicator\n                    configuration=\"vm.configuration\">\n                  </step-indicator>\n\t\t\t\t\t\t\t  </div>\n\t\t\t\t\t\t\t\t<div class=\"row\">\n                  <pager\n                    step-indicators=\"vm.stepIndicators\"\n                    next-config-step=\"vm.nextConfigStep()\"\n                    previous-config-step=\"vm.previousConfigStep()\">\n                  </pager>\n\t\t\t\t\t\t\t\t\t<div\n                    class=\"animate-switch-container\"\n                    ng-switch on=\"vm.configuration.listConfigStep[vm.configuration.configStepCounter]\">\n                    <step-zero-content\n                      configuration=\"vm.configuration\"\n                      add-newline=\"vm.addNewline()\"\n                      down-this-line=\"vm.downThisLine(index)\"\n                      up-this-line=\"vm.upThisLine(index)\"\n                      remove-this-line=\"vm.removeThisLine(index)\">\n                    </step-zero-content>\n                    <step-one-content\n                      configuration=\"vm.configuration\"\n                      increase-number-of-columns=\"vm.increaseNumberOfColumns()\"\n                      decrease-number-of-columns=\"vm.decreaseNumberOfColumns()\"\n                      set-active-line-number=\"vm.setActiveLineNumber(index)\">\n                    </step-one-content>\n                    <step-two-content\n                      configuration=\"vm.configuration\"\n                      set-active-line-number=\"vm.setActiveLineNumber(index)\"\n                      show-modal-add-ctrl-to-column=\"vm.showModalAddCtrlToColumn(size, indexLine, numcolumn)\">\n                    </step-two-content>\n                    <step-three-content\n                      configuration=\"vm.configuration\"\n                      data-model=\"vm.dataModel\"\n                      wf-form-fields=\"vm.wfFormFields\"\n                      on-submit=\"vm.onSubmit()\"\n                      save-this-form=\"vm.saveThisForm()\">\n                    </step-three-content>\n                  </div>\n                </div>\n\t\t\t\t      </uib-tab>\n\t\t\t\t\t\t\t<uib-tab\n                active=\"vm.tab.previewTab.active\"\n                ng-if=\"vm.tab.previewTab.tabVisible\"\n                heading=\"{{'PREVIEW_TAB' | translate}}\">\n  \t\t\t\t\t\t\t<div class=\"panel panel-default\">\n  \t\t\t\t\t\t\t\t<div class=\"panel-body\">\n  \t\t\t\t\t\t\t\t\t<!-- formly here -->\n  \t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n  \t\t\t\t\t\t\t\t\t\t<formly-form\n                        id=\"previewFormlyForm\"\n                        model=\"vm.dataModel\"\n                        fields=\"vm.wfFormFields\">\n    \t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n    \t\t\t\t\t\t\t\t\t\t\t<button\n                            class=\"btn btn-primary\"\n                            type=\"submit\">\n                            {{vm.configuration.submitButtonText}}\n                          </button>\n    \t\t\t\t\t\t\t\t\t\t\t<button\n                            class=\"btn btn-primary\"\n                            type=\"cancel\">\n                            {{vm.configuration.cancelButtonText}}\n                          </button>\n  \t\t\t\t\t\t\t\t\t\t\t</span>\n  \t\t\t\t\t\t\t\t\t\t</formly-form>\n  \t\t\t\t\t\t\t\t\t</form>\n  \t\t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t\t<div\n                  ng-if=\"vm.tab.previewTab.modelsVisible\"\n                  class=\"panel panel-default\">\n  \t\t\t\t\t\t\t\t<div class=\"panel-body\">\n  \t\t\t\t\t\t\t\t\t<p>{{'DATA_MODEL' | translate}}</p>\n  \t\t\t\t\t\t\t\t\t<pre>\n  \t\t\t\t\t\t\t\t\t\t{{vm.dataModel | json}}\n  \t\t\t\t\t\t\t\t\t</pre>\n  \t\t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t\t<div\n                  ng-if=\"vm.tab.previewTab.modelsVisible\"\n                  class=\"panel panel-default\">\n  \t\t\t\t\t\t\t\t<div class=\"panel-body\">\n  \t\t\t\t\t\t\t\t\t<p>{{'FIELDS_MODEL' | translate}}</p>\n  \t\t\t\t\t\t\t\t\t<pre>\n  \t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n  \t\t\t\t\t\t\t\t\t</pre>\n  \t\t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\t\t\t\t\t\t</uib-tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t</div>\n\t</div>\n</section>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('11', [], function (_export) {
+$__System.register('12', [], function (_export) {
 	/* global angular */
 	'use strict';
 
@@ -845,17 +1078,14 @@ $__System.register('11', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("12", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("13", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"modal-header\">\n  <h3 class=\"modal-title greyText\">\n    {{'SELECT_A_CTRL' | translate}}\n  </h3>\n</div>\n<div class=\"modal-body\">\n  <hr/>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <h5 class=\"greyText\">\n        <i class=\"fa fa-filter\"></i>\n        &nbsp;\n        {{'SELECT_CTRL_IN_LIST' | translate}} :\n      </h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <edit-choose-control\n        model-nya-select=\"editControlModCtrl.modelNyaSelect\"\n        nya-select-filtered=\"editControlModCtrl.nyaSelectFiltered\"\n        select-this-control=\"editControlModCtrl.selectThisControl(optionId)\">\n      </edit-choose-control>\n    </div>\n  </div>\n  <hr/>\n  <div ng-switch on=\"editControlModCtrl.nyaSelect.selectedControl\">\n\n    <div ng-switch-when=\"none\">\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp; {{'SELECT_A_CTRL' | translate}}\n          </h5>\n        </div>\n      </div>\n    </div>\n\n    <div ng-switch-when=\"empty\">\n      <edit-blank-control></edit-blank-control>\n    </div>\n\n    <div ng-switch-when=\"Header\">\n      <edit-header-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-header-control>\n    </div>\n\n    <div ng-switch-when=\"Subtitle\">\n      <edit-sub-title-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-sub-title-control>\n    </div>\n\n    <div ng-switch-when=\"TextInput\">\n      <edit-text-input-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-input-control>\n    </div>\n\n    <div ng-switch-when=\"Password\">\n      <edit-password-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-password-control>\n    </div>\n\n    <div ng-switch-when=\"Email\">\n      <edit-email-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-email-control>\n    </div>\n\n    <div ng-switch-when=\"IpAdress\">\n      <edit-ip-adress-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-ip-adress-control>\n    </div>\n\n    <div ng-switch-when=\"Date\">\n      <edit-date-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        demodt=\"editControlModCtrl.demodt\"\n        date-options=\"editControlModCtrl.dateOptions\"\n        open=\"editControlModCtrl.open(event)\">\n      <edit-date-control>\n    </div>\n\n    <div ng-switch-when=\"Texarea\">\n      <edit-textarea-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-textarea-control>\n    </div>\n\n    <div ng-switch-when=\"RichTextEditor\">\n      <edit-rich-text-editor-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-rich-text-editor-control>\n    </div>\n\n    <div ng-switch-when=\"Radio\">\n      <edit-radio-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        radio-row-collection=\"editControlModCtrl.radioRowCollection\"\n        new-option-radio=\"editControlModCtrl.newOptionRadio\"\n        add-new-option-radio=\"editControlModCtrl.addNewOptionRadio()\"\n        up-this-radio-row=\"editControlModCtrl.upThisRadioRow(index)\"\n        down-this-radio-row=\"editControlModCtrl.downThisRadioRow(index)\"\n        remove-radio-row=\"editControlModCtrl.removeRadioRow(index)\">\n      </edit-radio-control>\n    </div>\n\n    <div ng-switch-when=\"Checkbox\">\n      <edit-check-box-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-check-box-control>\n    </div>\n\n    <div ng-switch-when=\"BasicSelect\">\n      <edit-basic-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        basic-select-row-collection=\"editControlModCtrl.basicSelectRowCollection\"\n        new-option-basic-select=\"editControlModCtrl.newOptionBasicSelect\"\n        add-new-option-basic-select=\"editControlModCtrl.addNewOptionBasicSelect()\"\n        up-this-row=\"editControlModCtrl.upThisRow(index)\"\n        down-this-row=\"editControlModCtrl.downThisRow(index)\"\n        remove-row=\"editControlModCtrl.removeRow(index)\">\n      </edit-basic-select-control>\n    </div>\n\n    <div ng-switch-when=\"GroupedSelect\">\n      <edit-grouped-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        grouped-select-row-collection=\"editControlModCtrl.groupedSelectRowCollection\"\n        new-option-grouped-select=\"editControlModCtrl.newOptionGroupedSelect\"\n        new-group-grouped-select=\"editControlModCtrl.newGroupGroupedSelect\"\n        group-select-group-click=\"editControlModCtrl.groupSelectGroupClick\"\n        grouped-select-groups=\"editControlModCtrl.GroupedSelectGroups\"\n        add-new-option-grouped-select=\"editControlModCtrl.addNewOptionGroupedSelect()\"\n        add-new-group-to-grouped-select=\"editControlModCtrl.addNewGroupToGroupedSelect()\"\n        up-this-grouped-select-row=\"editControlModCtrl.upThisGroupedSelectRow(index)\"\n        down-this-grouped-select-row=\"editControlModCtrl.downThisGroupedSelectRow(index)\"\n        show-group-list-to-choose=\"editControlModCtrl.showGroupListToChoose()\"\n        remove-grouped-select-row=\"editControlModCtrl.removeGroupedSelectRow(index)\"\n        >\n      </edit-grouped-select-control>\n    </div>\n\n  </div>\n</div>\n\n\n<edit-valid-edit-footer\n  nya-select=\"editControlModCtrl.nyaSelect\"\n  ok=\"editControlModCtrl.ok()\"\n  cancel=\"editControlModCtrl.cancel()\" >\n</edit-valid-edit-footer>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('13', ['11', '12', '14', '15', '16'], function (_export) {
+$__System.register('14', ['12', '13', '15', '16', '17'], function (_export) {
 	var initDebugModel, initTabModel, initColumnTemplate, initLineTemplate, editControlModalTemplate, EDIT_MODAL_CONTROLLER_NAME, EDIT_MODAL_CONTROLLERAS_NAME, _createClass, _classCallCheck, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, edaStepWayEasyFormGenController, toInject;
 
 	return {
@@ -1172,7 +1402,7 @@ $__System.register('13', ['11', '12', '14', '15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('17', ['10', '13'], function (_export) {
+$__System.register('18', ['11', '14'], function (_export) {
 	'use strict';
 
 	var easyformTemplate, STEP_WAY_MAIN_CONTROLLER_NAME, STEP_WAY_MAIN_CONTROLLERAS_NAME, STEP_WAY_DIRECTIVE_NAME;
@@ -1298,7 +1528,7 @@ $__System.register('17', ['10', '13'], function (_export) {
 		}
 	};
 });
-$__System.register('18', [], function (_export) {
+$__System.register('19', [], function (_export) {
 	'use strict';
 
 	var EASY_FORM_STEP_WAY_CONFIG_NAME;
@@ -1481,7 +1711,7 @@ $__System.register('18', [], function (_export) {
 		}
 	};
 });
-$__System.register('19', ['15', '16'], function (_export) {
+$__System.register('1a', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, PAGER_COMPONENT_NAME, pagerComponent;
 
   return {
@@ -1524,14 +1754,14 @@ $__System.register('19', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('1a', ['19'], function (_export) {
+$__System.register('1b', ['1a'], function (_export) {
   'use strict';
 
   var pagerComponent, PAGER_COMPONENT_NAME, PAGER_COMPONENT_MODULE;
   return {
-    setters: [function (_) {
-      pagerComponent = _.pagerComponent;
-      PAGER_COMPONENT_NAME = _.PAGER_COMPONENT_NAME;
+    setters: [function (_a) {
+      pagerComponent = _a.pagerComponent;
+      PAGER_COMPONENT_NAME = _a.PAGER_COMPONENT_NAME;
     }],
     execute: function () {
       PAGER_COMPONENT_MODULE = 'stepway.pager.module';
@@ -1540,7 +1770,7 @@ $__System.register('1a', ['19'], function (_export) {
     }
   };
 });
-$__System.register('1b', ['15', '16'], function (_export) {
+$__System.register('1c', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_INDICATOR_COMPONENT_NAME, stepIndicatorComponent;
 
   return {
@@ -1581,14 +1811,14 @@ $__System.register('1b', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('1c', ['1b'], function (_export) {
+$__System.register('1d', ['1c'], function (_export) {
   'use strict';
 
   var stepIndicatorComponent, STEP_INDICATOR_COMPONENT_NAME, STEP_INDICATOR_COMPONENT_MODULE;
   return {
-    setters: [function (_b) {
-      stepIndicatorComponent = _b.stepIndicatorComponent;
-      STEP_INDICATOR_COMPONENT_NAME = _b.STEP_INDICATOR_COMPONENT_NAME;
+    setters: [function (_c) {
+      stepIndicatorComponent = _c.stepIndicatorComponent;
+      STEP_INDICATOR_COMPONENT_NAME = _c.STEP_INDICATOR_COMPONENT_NAME;
     }],
     execute: function () {
       STEP_INDICATOR_COMPONENT_MODULE = 'stepway.stepIndicator.module';
@@ -1597,7 +1827,7 @@ $__System.register('1c', ['1b'], function (_export) {
     }
   };
 });
-$__System.register('1d', ['15', '16'], function (_export) {
+$__System.register('1e', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, LINE_STEP_ZERO_CONTENT_COMPONENT, stepZeroContentComponent;
 
   return {
@@ -1669,7 +1899,7 @@ $__System.register('1d', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('1e', ['15', '16'], function (_export) {
+$__System.register('1f', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent;
 
   return {
@@ -1710,7 +1940,7 @@ $__System.register('1e', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('1f', ['15', '16'], function (_export) {
+$__System.register('20', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent;
 
   return {
@@ -1754,20 +1984,20 @@ $__System.register('1f', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('20', ['1d', '1e', '1f'], function (_export) {
+$__System.register('21', ['20', '1e', '1f'], function (_export) {
   'use strict';
 
-  var stepZeroContentComponent, LINE_STEP_ZERO_CONTENT_COMPONENT, STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent, STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent, STEP_ZERO_CONTENT_COMPONENT_MODULE;
+  var STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, StepZeroVisualPanelComponent, stepZeroContentComponent, LINE_STEP_ZERO_CONTENT_COMPONENT, STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, StepZeroCommandPanelComponent, STEP_ZERO_CONTENT_COMPONENT_MODULE;
   return {
-    setters: [function (_d) {
-      stepZeroContentComponent = _d.stepZeroContentComponent;
-      LINE_STEP_ZERO_CONTENT_COMPONENT = _d.LINE_STEP_ZERO_CONTENT_COMPONENT;
+    setters: [function (_) {
+      STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME = _.STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME;
+      StepZeroVisualPanelComponent = _.StepZeroVisualPanelComponent;
     }, function (_e) {
-      STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME = _e.STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME;
-      StepZeroCommandPanelComponent = _e.StepZeroCommandPanelComponent;
+      stepZeroContentComponent = _e.stepZeroContentComponent;
+      LINE_STEP_ZERO_CONTENT_COMPONENT = _e.LINE_STEP_ZERO_CONTENT_COMPONENT;
     }, function (_f) {
-      STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME = _f.STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME;
-      StepZeroVisualPanelComponent = _f.StepZeroVisualPanelComponent;
+      STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME = _f.STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME;
+      StepZeroCommandPanelComponent = _f.StepZeroCommandPanelComponent;
     }],
     execute: function () {
       STEP_ZERO_CONTENT_COMPONENT_MODULE = 'stepway.stepZeroContent.module';
@@ -1776,7 +2006,7 @@ $__System.register('20', ['1d', '1e', '1f'], function (_export) {
     }
   };
 });
-$__System.register('21', ['15', '16'], function (_export) {
+$__System.register('22', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent;
 
   return {
@@ -1836,7 +2066,7 @@ $__System.register('21', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('22', ['15', '16'], function (_export) {
+$__System.register('23', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent;
 
   return {
@@ -1879,7 +2109,7 @@ $__System.register('22', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('23', ['15', '16'], function (_export) {
+$__System.register('24', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent;
 
   return {
@@ -1921,7 +2151,7 @@ $__System.register('23', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('24', ['21', '22', '23'], function (_export) {
+$__System.register('25', ['22', '23', '24'], function (_export) {
   'use strict';
 
   var stepOneContentComponent, LINE_STEP_CONTENT_COMPONENT, STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent, STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent, STEP_ONE_CONTENT_COMPONENT_MODULE;
@@ -1943,7 +2173,7 @@ $__System.register('24', ['21', '22', '23'], function (_export) {
     }
   };
 });
-$__System.register('25', ['15', '16'], function (_export) {
+$__System.register('26', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent;
 
   return {
@@ -2009,7 +2239,7 @@ $__System.register('25', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('26', ['15', '16'], function (_export) {
+$__System.register('27', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent;
 
   return {
@@ -2048,7 +2278,7 @@ $__System.register('26', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('27', ['15', '16'], function (_export) {
+$__System.register('28', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent;
 
   return {
@@ -2091,7 +2321,7 @@ $__System.register('27', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('28', ['25', '26', '27'], function (_export) {
+$__System.register('29', ['26', '27', '28'], function (_export) {
   'use strict';
 
   var stepTwoContentComponent, LINE_STEP_TWO_CONTENT_COMPONENT, STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, StepTwoCommandPanelComponent, STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, StepTwoVisualPanelComponent, STEP_TWO_CONTENT_COMPONENT_MODULE;
@@ -2113,7 +2343,7 @@ $__System.register('28', ['25', '26', '27'], function (_export) {
     }
   };
 });
-$__System.register('29', ['15', '16'], function (_export) {
+$__System.register('2a', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, LINE_STEP_THREE_CONTENT_COMPONENT, stepThreeContentComponent;
 
   return {
@@ -2158,7 +2388,7 @@ $__System.register('29', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('2a', ['15', '16'], function (_export) {
+$__System.register('2b', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent;
 
   return {
@@ -2200,7 +2430,7 @@ $__System.register('2a', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('2b', ['15', '16'], function (_export) {
+$__System.register('2c', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent;
 
   return {
@@ -2244,20 +2474,20 @@ $__System.register('2b', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('2c', ['29', '2a', '2b'], function (_export) {
+$__System.register('2d', ['2a', '2b', '2c'], function (_export) {
   'use strict';
 
   var stepThreeContentComponent, LINE_STEP_THREE_CONTENT_COMPONENT, STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, StepThreeCommandPanelComponent, STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, StepThreeVisualPanelComponent, STEP_THREE_CONTENT_COMPONENT_MODULE;
   return {
-    setters: [function (_) {
-      stepThreeContentComponent = _.stepThreeContentComponent;
-      LINE_STEP_THREE_CONTENT_COMPONENT = _.LINE_STEP_THREE_CONTENT_COMPONENT;
-    }, function (_a) {
-      STEP_THREE_COMMAND_PANEL_COMPONENT_NAME = _a.STEP_THREE_COMMAND_PANEL_COMPONENT_NAME;
-      StepThreeCommandPanelComponent = _a.StepThreeCommandPanelComponent;
+    setters: [function (_a) {
+      stepThreeContentComponent = _a.stepThreeContentComponent;
+      LINE_STEP_THREE_CONTENT_COMPONENT = _a.LINE_STEP_THREE_CONTENT_COMPONENT;
     }, function (_b) {
-      STEP_THREE_VISUAL_PANEL_COMPONENT_NAME = _b.STEP_THREE_VISUAL_PANEL_COMPONENT_NAME;
-      StepThreeVisualPanelComponent = _b.StepThreeVisualPanelComponent;
+      STEP_THREE_COMMAND_PANEL_COMPONENT_NAME = _b.STEP_THREE_COMMAND_PANEL_COMPONENT_NAME;
+      StepThreeCommandPanelComponent = _b.StepThreeCommandPanelComponent;
+    }, function (_c) {
+      STEP_THREE_VISUAL_PANEL_COMPONENT_NAME = _c.STEP_THREE_VISUAL_PANEL_COMPONENT_NAME;
+      StepThreeVisualPanelComponent = _c.StepThreeVisualPanelComponent;
     }],
     execute: function () {
       STEP_THREE_CONTENT_COMPONENT_MODULE = 'stepway.stepThreeContent.module';
@@ -2266,7 +2496,7 @@ $__System.register('2c', ['29', '2a', '2b'], function (_export) {
     }
   };
 });
-$__System.register('2d', ['13', '17', '18', '20', '24', '28', '1a', '1c', '2c'], function (_export) {
+$__System.register('2e', ['14', '18', '19', '21', '25', '29', '1b', '1d', '2d'], function (_export) {
   'use strict';
 
   var edaStepWayEasyFormGenController, STEP_WAY_MAIN_CONTROLLER_NAME, edaStepWayEasyFormGenDirective, STEP_WAY_DIRECTIVE_NAME, easyFormSteWayConfig, EASY_FORM_STEP_WAY_CONFIG_NAME, stepZeroContentModule, stepOneContentModule, stepTwoContentModule, pagerModule, pageIndicatorModule, stepThreeContentModule, STEP_WAY_MAIN_MODULE, TO_INJECT;
@@ -2286,12 +2516,12 @@ $__System.register('2d', ['13', '17', '18', '20', '24', '28', '1a', '1c', '2c'],
       stepOneContentModule = _5['default'];
     }, function (_6) {
       stepTwoContentModule = _6['default'];
-    }, function (_a) {
-      pagerModule = _a['default'];
-    }, function (_c) {
-      pageIndicatorModule = _c['default'];
-    }, function (_c2) {
-      stepThreeContentModule = _c2['default'];
+    }, function (_b) {
+      pagerModule = _b['default'];
+    }, function (_d) {
+      pageIndicatorModule = _d['default'];
+    }, function (_d2) {
+      stepThreeContentModule = _d2['default'];
     }],
     execute: function () {
       STEP_WAY_MAIN_MODULE = 'easyFormStepwayMainModule';
@@ -2301,7 +2531,7 @@ $__System.register('2d', ['13', '17', '18', '20', '24', '28', '1a', '1c', '2c'],
     }
   };
 });
-$__System.register('14', ['15', '16'], function (_export) {
+$__System.register('15', ['16', '17'], function (_export) {
 	var _createClass, _classCallCheck, EDIT_MODAL_CONTROLLER_NAME, EDIT_MODAL_CONTROLLERAS_NAME, editControlModalController, toInject;
 
 	return {
@@ -2763,7 +2993,7 @@ $__System.register('14', ['15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('2e', ['15', '16'], function (_export) {
+$__System.register('2f', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent;
 
   return {
@@ -2808,7 +3038,7 @@ $__System.register('2e', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('2f', ['15', '16'], function (_export) {
+$__System.register('30', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent;
 
   return {
@@ -2853,7 +3083,7 @@ $__System.register('2f', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('30', [], function (_export) {
+$__System.register('31', [], function (_export) {
   'use strict';
 
   var BlankConfig;
@@ -2880,7 +3110,7 @@ $__System.register('30', [], function (_export) {
     }
   };
 });
-$__System.register('31', ['15', '16'], function (_export) {
+$__System.register('32', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent;
 
   return {
@@ -2921,7 +3151,7 @@ $__System.register('31', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('32', ['31'], function (_export) {
+$__System.register('33', ['32'], function (_export) {
   'use strict';
 
   var editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBlankModuleName;
@@ -2937,62 +3167,58 @@ $__System.register('32', ['31'], function (_export) {
     }
   };
 });
-$__System.register('33', [], function (_export) {
-	'use strict';
+$__System.register('34', [], function (_export) {
+  'use strict';
 
-	var IpAdressConfig;
-	return {
-		setters: [],
-		execute: function () {
-			IpAdressConfig = {
-				id: 'IpAdress',
-				name: 'IpAdress',
-				subtitle: 'IpAdress',
-				group: 'input',
-				formlyType: 'input',
-				formlySubtype: 'ipadress',
-				formlyLabel: '',
-				formlyRequired: false,
-				formlyDesciption: '',
-				formlyOptions: [],
-				formlyExpressionProperties: {},
-				formlyValidators: {
-					ipAddress: {
-						expression: function expression($viewValue, $modelValue) {
-							var value = $modelValue || $viewValue;
-							return (/(\d{1,3}\.){3}\d{1,3}/.test(value)
-							);
-						},
-						message: '$viewValue + " is not a valid IP Address"' //,
-						// notLocalHost: '$viewValue !== "127.0.0.1"'
-					}
-				},
-				formlyValidation: {
-					messages: {
-						required: function required(viewValue, modelValue, scope) {
-							var defaultReturnMsg = 'this IP Adress field is required';
-							var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
-							if (scope.to.required) return returnMsg;
-						}
-					}
-				}
-			};
+  var IpAdressConfig;
+  return {
+    setters: [],
+    execute: function () {
+      IpAdressConfig = {
+        id: 'IpAdress',
+        name: 'IpAdress',
+        subtitle: 'IpAdress',
+        group: 'input',
+        formlyType: 'input',
+        formlySubtype: 'ipadress',
+        formlyLabel: '',
+        formlyRequired: false,
+        formlyDesciption: '',
+        formlyOptions: [],
+        formlyExpressionProperties: {},
+        formlyValidators: {
+          ipAddress: {
+            expression: function expression($viewValue, $modelValue) {
+              var value = $modelValue || $viewValue;
+              return (/(\d{1,3}\.){3}\d{1,3}/.test(value)
+              );
+            },
+            message: '$viewValue + " is not a valid IP Address"'
+          }
+        },
+        formlyValidation: {
+          messages: {
+            required: function required(viewValue, modelValue, scope) {
+              var defaultReturnMsg = 'this IP Adress field is required';
+              var returnMsg = typeof scope.to.label !== 'undefined' ? scope.to.label !== '' ? scope.to.label + ' is required' : defaultReturnMsg : defaultReturnMsg;
+              if (scope.to.required) return returnMsg;
+            }
+          }
+        }
+      };
 
-			_export('IpAdressConfig', IpAdressConfig);
-		}
-	};
+      _export('IpAdressConfig', IpAdressConfig);
+    }
+  };
 });
-$__System.registerDynamic("34", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("35", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputIpAdress\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputIpAdress\"\n              placeholder=\"{{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\">\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'PLACEHOLDER' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"{{'ADD_EDIT_PLACEHOLD' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('35', ['15', '16', '34'], function (_export) {
+$__System.register('36', ['16', '17', '35'], function (_export) {
   var _createClass, _classCallCheck, editIpAdressControlTemplate, EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent;
 
   return {
@@ -3035,7 +3261,7 @@ $__System.register('35', ['15', '16', '34'], function (_export) {
     }
   };
 });
-$__System.register('36', ['35'], function (_export) {
+$__System.register('37', ['36'], function (_export) {
   'use strict';
 
   var editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, editIpAdressModuleName;
@@ -3051,7 +3277,7 @@ $__System.register('36', ['35'], function (_export) {
     }
   };
 });
-$__System.register('37', [], function (_export) {
+$__System.register('38', [], function (_export) {
 	'use strict';
 
 	var DateConfig;
@@ -3090,17 +3316,14 @@ $__System.register('37', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("38", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("39", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputDate\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <div class=\"input-group\" >\n              <span class=\"input-group-addon\">\n                <i class=\"glyphicon glyphicon-calendar\"></i>\n              </span>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                uib-datepicker-popup=\"{{$ctrl.nyaSelect.temporyConfig.datepickerOptions.format}}\"\n                ng-model=\"$ctrl.demodt.dt\"\n                is-open=\"$ctrl.demodt.opened\"\n                datepicker-options=\"$ctrl.dateOptions\"\n                close-text=\"Close\"\n                ng-click=\"$ctrl.open({event : $event})\"\n              />\n            </div>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n      <label class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'DATE_FORMAT' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <ol\n          class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.datepickerOptions.format\"\n          id=\"dateformatSelect\">\n          <li\n            class=\"nya-bs-option\"\n            nya-bs-option=\"dateformat in $ctrl.demodt.formats\"\n            value=\"dateformat\">\n            <a>\n              {{dateformat}}\n            </a>\n          </li>\n        </ol>\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <label\n        for=\"inputTextLabelUpdate\"\n        class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'LABEL_TEXT' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n          id=\"inputTextLabelUpdate\"\n          placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('39', ['15', '16', '38'], function (_export) {
+$__System.register('3a', ['16', '17', '39'], function (_export) {
   var _createClass, _classCallCheck, editDateControlTemplate, EDIT_DATE_COMPONENT, editDateControlComponent;
 
   return {
@@ -3146,14 +3369,14 @@ $__System.register('39', ['15', '16', '38'], function (_export) {
     }
   };
 });
-$__System.register('3a', ['39'], function (_export) {
+$__System.register('3b', ['3a'], function (_export) {
   'use strict';
 
   var editDateControlComponent, EDIT_DATE_COMPONENT, editDateControlModuleName;
   return {
-    setters: [function (_) {
-      editDateControlComponent = _.editDateControlComponent;
-      EDIT_DATE_COMPONENT = _.EDIT_DATE_COMPONENT;
+    setters: [function (_a) {
+      editDateControlComponent = _a.editDateControlComponent;
+      EDIT_DATE_COMPONENT = _a.EDIT_DATE_COMPONENT;
     }],
     execute: function () {
       editDateControlModuleName = 'stepway.editDateControl.module';
@@ -3162,7 +3385,7 @@ $__System.register('3a', ['39'], function (_export) {
     }
   };
 });
-$__System.register('3b', [], function (_export) {
+$__System.register('3c', [], function (_export) {
   'use strict';
 
   var CheckBoxConfig;
@@ -3197,17 +3420,14 @@ $__System.register('3b', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("3c", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("3d", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <div class=\"col-md-12\">\n            <div class=\"checkbox\">\n              <label>\n                <input\n                  type=\"checkbox\"\n                  id=\"checkBox\">\n                <span class=\"blackText\">\n                  {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n                </span>\n                <span\n                  ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n                  class=\"textControlLabel\">\n                  *\n                </span>\n              </label>\n            </div>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('3d', ['15', '16', '3c'], function (_export) {
+$__System.register('3e', ['16', '17', '3d'], function (_export) {
   var _createClass, _classCallCheck, editCheckBoxControlTemplate, EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent;
 
   return {
@@ -3215,8 +3435,8 @@ $__System.register('3d', ['15', '16', '3c'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_c) {
-      editCheckBoxControlTemplate = _c['default'];
+    }, function (_d) {
+      editCheckBoxControlTemplate = _d['default'];
     }],
     execute: function () {
       'use strict';
@@ -3250,14 +3470,14 @@ $__System.register('3d', ['15', '16', '3c'], function (_export) {
     }
   };
 });
-$__System.register('3e', ['3d'], function (_export) {
+$__System.register('3f', ['3e'], function (_export) {
   'use strict';
 
   var editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editCheckBoxModuleName;
   return {
-    setters: [function (_d) {
-      editCheckBoxControlComponent = _d.editCheckBoxControlComponent;
-      EDIT_CHECKBOX_COMPONENT = _d.EDIT_CHECKBOX_COMPONENT;
+    setters: [function (_e) {
+      editCheckBoxControlComponent = _e.editCheckBoxControlComponent;
+      EDIT_CHECKBOX_COMPONENT = _e.EDIT_CHECKBOX_COMPONENT;
     }],
     execute: function () {
       editCheckBoxModuleName = 'stepway.editCheckBox.module';
@@ -3266,7 +3486,7 @@ $__System.register('3e', ['3d'], function (_export) {
     }
   };
 });
-$__System.register('3f', [], function (_export) {
+$__System.register('40', [], function (_export) {
 	'use strict';
 
 	var EmailConfig;
@@ -3315,17 +3535,14 @@ $__System.register('3f', [], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("40", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("41", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputEmail\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputEmail\"\n              placeholder=\"{{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\">\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'PLACEHOLDER' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"{{'ADD_EDIT_PLACEHOLD' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('41', ['15', '16', '40'], function (_export) {
+$__System.register('42', ['16', '17', '41'], function (_export) {
   var _createClass, _classCallCheck, editEmailControlTemplate, EDIT_EMAIL_COMPONENT, editEmailControlComponent;
 
   return {
@@ -3368,7 +3585,7 @@ $__System.register('41', ['15', '16', '40'], function (_export) {
     }
   };
 });
-$__System.register('42', ['41'], function (_export) {
+$__System.register('43', ['42'], function (_export) {
   'use strict';
 
   var editEmailControlComponent, EDIT_EMAIL_COMPONENT, editEmailControlModuleName;
@@ -3384,7 +3601,7 @@ $__System.register('42', ['41'], function (_export) {
     }
   };
 });
-$__System.register('43', [], function (_export) {
+$__System.register('44', [], function (_export) {
   'use strict';
 
   var BasicSelectConfig;
@@ -3423,7 +3640,7 @@ $__System.register('43', [], function (_export) {
     }
   };
 });
-$__System.register('44', ['15', '16', '45'], function (_export) {
+$__System.register('45', ['16', '17', '46'], function (_export) {
   var _createClass, _classCallCheck, editBasicSelectTemplate, EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent;
 
   return {
@@ -3472,17 +3689,14 @@ $__System.register('44', ['15', '16', '45'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("45", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("46", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"basicSelect\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <ol\n              class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n              ng-model=\"$ctrl.modelbasicSelect\"\n              id=\"basicSelect\"\n              disabled=\"$ctrl.basicSelectRowCollection.rows.length === 0\">\n              <li\n                class=\"nya-bs-option\"\n                nya-bs-option=\"basicSelectRow in $ctrl.basicSelectRowCollection.rows\"\n                value=\"$index\">\n                <a>\n                  {{basicSelectRow.option}}\n                </a>\n              </li>\n            </ol>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"basicSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            id=\"inputAddNewBasicOption\"\n            placeholder=\"{{'ADD_A_NEW_OPTION' | translate}}\"\n            ng-model=\"$ctrl.newOptionBasicSelect.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewOptionBasicSelect()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label class=\" control-label greyText editPropertiesLabel\">\n          {{'EDIT_REMOVE_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"$ctrl.basicSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - {{'NO_OPTION_ADD_NEW' | translate}} -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"$ctrl.basicSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    {{'ORDER' | translate}}\n                  </th>\n                  <th st-ratio=\"55\">\n                    {{'OPTION' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\">\n                  </th>\n                  <th st-ratio=\"55\">\n                    <input\n                      ng-model=\"basicSelectFilter\"\n                      placeholder=\"{{'SEARCH_4_OPTION' | translate}}\"\n                      class=\"input-sm form-control\"\n                      type=\"search\"\n                    />\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr ng-repeat=\"basicSelectRow in $ctrl.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow\">\n                    <td st-ratio=\"20\">\n                      {{$index}}\n                    </td>\n                    <td st-ratio=\"55\">\n                      {{basicSelectRow.option}}\n                    </td>\n                    <td st-ratio=\"25\">\n                      <div class=\"pull-right\">\n                        <button\n                          class=\"btn btn-primary\"\n                          ng-click=\"$ctrl.upThisRow($index)\">\n                          <i class=\"fa fa-arrow-up\"></i>\n                        </button>\n                        <button\n                          class=\"btn btn-primary\"\n                          ng-click=\"$ctrl.downThisRow($index)\">\n                          <i class=\"fa fa-arrow-down\"></i>\n                        </button>\n                        <button\n                          class=\"btn btn-danger\"\n                          ng-click=\"$ctrl.removeRow($index)\">\n                          <i class=\"fa fa-trash-o\"></i>\n                        </button>\n                      </div>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n      <hr/>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n            {{'LABEL_TEXT' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n          </div>\n        </div>\n      </div>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextRequiredUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n            Required :\n          </label>\n          <div class=\"col-lg-9\">\n            <div class=\"checkboxCssCorrection\">\n              &nbsp;\n            </div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"nyaSelect.temporyConfig.formlyRequired\"\n              id=\"inputTextRequiredUpdate\">\n          </div>\n        </div>\n      </div>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextDescriptionUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n            {{'DESCRIPTION' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n              id=\"inputTextDescriptionUpdate\"\n              placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('46', ['15', '16', '45'], function (_export) {
+$__System.register('47', ['16', '17', '46'], function (_export) {
   var _createClass, _classCallCheck, editBasicSelectTemplate, EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent;
 
   return {
@@ -3531,7 +3745,7 @@ $__System.register('46', ['15', '16', '45'], function (_export) {
     }
   };
 });
-$__System.register('47', ['46'], function (_export) {
+$__System.register('48', ['47'], function (_export) {
   'use strict';
 
   var editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editBasicSelectModuleName;
@@ -3547,7 +3761,7 @@ $__System.register('47', ['46'], function (_export) {
     }
   };
 });
-$__System.register('48', [], function (_export) {
+$__System.register('49', [], function (_export) {
   'use strict';
 
   var GroupedSelectConfig;
@@ -3586,17 +3800,14 @@ $__System.register('48', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("49", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("4a", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"select\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <ol\n              class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n              ng-model=\"modelGroupedSelect\"\n              data-live-search=\"true\"\n              disabled=\"$ctrl.groupedSelectRowCollection.rows.length === 0\">\n              <li\n                nya-bs-option=\"groupedSelectRow in $ctrl.groupedSelectRowCollection.rows group by groupedSelectRow.group\"\n                value=\"$index\">\n                <span class=\"dropdown-header\">\n                  {{groupedSelectRow.group}}\n                </span>\n                <a>\n                  <span>\n                    {{groupedSelectRow.option}}\n                  </span>\n                  <span class=\"glyphicon glyphicon-ok check-mark\">\n                  </span>\n                </a>\n              </li>\n            </ol>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewGroupedOption\"\n              placeholder=\"{{'ADD_A_NEW_OPTION' | translate}}\"\n              ng-model=\"$ctrl.newOptionGroupedSelect.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewOptionGroupedSelect()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_GROUPS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              id=\"inputAddNewGroupGroupedOption\"\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.newGroupGroupedSelect.saisie\" id=\"inputTextLabelUpdateGroupedSelect\"\n              placeholder=\"{{'ADD_A_NEW_GROUP' | translate}}\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewGroupToGroupedSelect()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label  class=\" control-label greyText editPropertiesLabel\">\n          {{'EDIT_GROUPS_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"$ctrl.groupedSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - {{'NO_OPTION_ADD_NEW' | translate}} -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"$ctrl.groupedSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    {{'ORDER' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                    {{'GROUP' | translate}}\n                  </th>\n                  <th st-ratio=\"30\">\n                    {{'OPTION' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\">\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                  <th st-ratio=\"30\">\n                    <input\n                      ng-model=\"$ctrl.groupedSelectFilter\"\n                      placeholder=\"{{'SEARCH_4_OPTION' | translate}}\"\n                      class=\"input-sm form-control\"\n                      type=\"search\"\n                    />\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr ng-repeat=\"groupedSelectRow in $ctrl.groupedSelectRowCollection.rows | filter:$ctrl.groupedSelectFilter as groupedSelectRow\">\n                  <td st-ratio=\"20\">\n                    {{$index}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div ng-if=\"$ctrl.groupSelectGroupClick.showList === true\">\n                      <div ng-if=\"$ctrl.groupedSelectGroups.list.length === 0\">\n                        <p class=\"text-left noGroupText\">- {{'NO_GROUP_ADD_NEW' | translate}} -</p>\n                      </div>\n                      <div ng-if=\"$ctrl.groupedSelectGroups.list.length > 0\">\n                        <ol\n                          class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect\"\n                          ng-model=\"groupedSelectRow.group\"\n                          id=\"modelGroupedOptionGroupedChoose\"\n                          disabled=\"$ctrl.groupedSelectGroups.list.length === 0\">\n                          <li\n                            class=\"nya-bs-option\"\n                            nya-bs-option=\"GroupedSelectGroup in $ctrl.groupedSelectGroups.list\"\n                            value=\"GroupedSelectGroup\">\n                            <a>{{GroupedSelectGroup}}</a>\n                          </li>\n                        </ol>\n                      </div>\n                    </div>\n                    <div ng-if=\"$ctrl.groupSelectGroupClick.showList === false\">\n                      {{groupedSelectRow.group}}\n                    </div>\n                  </td>\n                  <td st-ratio=\"30\">\n                    {{groupedSelectRow.option}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div class=\"pull-right\">\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"$ctrl.upThisGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-arrow-up\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"$ctrl.downThisGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-arrow-down\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-warning\"\n                        ng-click=\"$ctrl.showGroupListToChoose()\">\n                        <i class=\"fa fa-pencil-square-o\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-danger\"\n                        ng-click=\"$ctrl.removeGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-trash-o\"></i>\n                      </button>\n                    </div>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  <hr/>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <label\n        for=\"inputTextLabelUpdate\"\n        class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'LABEL_TEXT' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n          id=\"inputTextLabelUpdate\"\n          placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n  <div class=\"marginTopFivepixels\"></div>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <label\n        for=\"inputTextDescriptionUpdate\"\n        class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'DESCRIPTION' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n          id=\"inputTextDescriptionUpdate\"\n          placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('4a', ['15', '16', '49'], function (_export) {
+$__System.register('4b', ['16', '17', '4a'], function (_export) {
   var _createClass, _classCallCheck, editGroupedSelectControlTemplate, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent;
 
   return {
@@ -3604,8 +3815,8 @@ $__System.register('4a', ['15', '16', '49'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_3) {
-      editGroupedSelectControlTemplate = _3['default'];
+    }, function (_a) {
+      editGroupedSelectControlTemplate = _a['default'];
     }],
     execute: function () {
       'use strict';
@@ -3651,17 +3862,14 @@ $__System.register('4a', ['15', '16', '49'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("4b", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("4c", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"select\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <ol\n              class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n              ng-model=\"modelGroupedSelect\"\n              data-live-search=\"true\"\n              disabled=\"$ctrl.groupedSelectRowCollection.rows.length === 0\">\n              <li\n                nya-bs-option=\"groupedSelectRow in $ctrl.groupedSelectRowCollection.rows group by groupedSelectRow.group\"\n                value=\"$index\">\n                <span class=\"dropdown-header\">\n                  {{groupedSelectRow.group}}\n                </span>\n                <a>\n                  <span>\n                    {{groupedSelectRow.option}}\n                  </span>\n                  <span class=\"glyphicon glyphicon-ok check-mark\">\n                  </span>\n                </a>\n              </li>\n            </ol>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewGroupedOption\"\n              placeholder=\"{{'ADD_A_NEW_OPTION' | translate}}\"\n              ng-model=\"$ctrl.newOptionGroupedSelect.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewOptionGroupedSelect()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_GROUPS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              id=\"inputAddNewGroupGroupedOption\"\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.newGroupGroupedSelect.saisie\" id=\"inputTextLabelUpdateGroupedSelect\"\n              placeholder=\"{{'ADD_A_NEW_GROUP' | translate}}\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewGroupToGroupedSelect()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label  class=\" control-label greyText editPropertiesLabel\">\n          {{'EDIT_GROUPS_OPTIONS' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"$ctrl.groupedSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - {{'NO_OPTION_ADD_NEW' | translate}} -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"$ctrl.groupedSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    {{'ORDER' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                    {{'GROUP' | translate}}\n                  </th>\n                  <th st-ratio=\"30\">\n                    {{'OPTION' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\">\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                  <th st-ratio=\"30\">\n                    <input\n                      ng-model=\"$ctrl.groupedSelectFilter\"\n                      placeholder=\"{{'SEARCH_4_OPTION' | translate}}\"\n                      class=\"input-sm form-control\"\n                      type=\"search\"\n                    />\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr ng-repeat=\"groupedSelectRow in $ctrl.groupedSelectRowCollection.rows | filter:$ctrl.groupedSelectFilter as groupedSelectRow\">\n                  <td st-ratio=\"20\">\n                    {{$index}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div ng-if=\"$ctrl.groupSelectGroupClick.showList === true\">\n                      <div ng-if=\"$ctrl.groupedSelectGroups.list.length === 0\">\n                        <p class=\"text-left noGroupText\">- {{'NO_GROUP_ADD_NEW' | translate}} -</p>\n                      </div>\n                      <div ng-if=\"$ctrl.groupedSelectGroups.list.length > 0\">\n                        <ol\n                          class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect\"\n                          ng-model=\"groupedSelectRow.group\"\n                          id=\"modelGroupedOptionGroupedChoose\"\n                          disabled=\"$ctrl.groupedSelectGroups.list.length === 0\">\n                          <li\n                            class=\"nya-bs-option\"\n                            nya-bs-option=\"GroupedSelectGroup in $ctrl.groupedSelectGroups.list\"\n                            value=\"GroupedSelectGroup\">\n                            <a>{{GroupedSelectGroup}}</a>\n                          </li>\n                        </ol>\n                      </div>\n                    </div>\n                    <div ng-if=\"$ctrl.groupSelectGroupClick.showList === false\">\n                      {{groupedSelectRow.group}}\n                    </div>\n                  </td>\n                  <td st-ratio=\"30\">\n                    {{groupedSelectRow.option}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div class=\"pull-right\">\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"$ctrl.upThisGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-arrow-up\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"$ctrl.downThisGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-arrow-down\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-warning\"\n                        ng-click=\"$ctrl.showGroupListToChoose()\">\n                        <i class=\"fa fa-pencil-square-o\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-danger\"\n                        ng-click=\"$ctrl.removeGroupedSelectRow({index: $index})\">\n                        <i class=\"fa fa-trash-o\"></i>\n                      </button>\n                    </div>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  <hr/>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <label\n        for=\"inputTextLabelUpdate\"\n        class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'LABEL_TEXT' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n          id=\"inputTextLabelUpdate\"\n          placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n  <div class=\"marginTopFivepixels\"></div>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <label\n        for=\"inputTextDescriptionUpdate\"\n        class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n        {{'DESCRIPTION' | translate}} :\n      </label>\n      <div class=\"col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n          id=\"inputTextDescriptionUpdate\"\n          placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('4c', ['15', '16', '4b'], function (_export) {
+$__System.register('4d', ['16', '17', '4c'], function (_export) {
   var _createClass, _classCallCheck, editGroupedSelectControlTemplate, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent;
 
   return {
@@ -3669,8 +3877,8 @@ $__System.register('4c', ['15', '16', '4b'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_b) {
-      editGroupedSelectControlTemplate = _b['default'];
+    }, function (_c) {
+      editGroupedSelectControlTemplate = _c['default'];
     }],
     execute: function () {
       'use strict';
@@ -3716,14 +3924,14 @@ $__System.register('4c', ['15', '16', '4b'], function (_export) {
     }
   };
 });
-$__System.register('4d', ['4c'], function (_export) {
+$__System.register('4e', ['4d'], function (_export) {
   'use strict';
 
   var editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectModuleName;
   return {
-    setters: [function (_c) {
-      editGroupedSelectControlComponent = _c.editGroupedSelectControlComponent;
-      EDIT_GROUPED_SELECT_COMPONENT = _c.EDIT_GROUPED_SELECT_COMPONENT;
+    setters: [function (_d) {
+      editGroupedSelectControlComponent = _d.editGroupedSelectControlComponent;
+      EDIT_GROUPED_SELECT_COMPONENT = _d.EDIT_GROUPED_SELECT_COMPONENT;
     }],
     execute: function () {
       editGroupedSelectModuleName = 'stepway.editGroupedSelect.module';
@@ -3732,7 +3940,7 @@ $__System.register('4d', ['4c'], function (_export) {
     }
   };
 });
-$__System.register('4e', [], function (_export) {
+$__System.register('4f', [], function (_export) {
   'use strict';
 
   var HeaderConfig;
@@ -3759,7 +3967,7 @@ $__System.register('4e', [], function (_export) {
     }
   };
 });
-$__System.register('4f', ['15', '16'], function (_export) {
+$__System.register('50', ['16', '17'], function (_export) {
   var _createClass, _classCallCheck, EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent;
 
   return {
@@ -3802,14 +4010,14 @@ $__System.register('4f', ['15', '16'], function (_export) {
     }
   };
 });
-$__System.register('50', ['4f'], function (_export) {
+$__System.register('51', ['50'], function (_export) {
   'use strict';
 
   var editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlModuleName;
   return {
-    setters: [function (_f) {
-      editHeaderControlComponent = _f.editHeaderControlComponent;
-      EDIT_HEADER_CONTROL_COMPONENT = _f.EDIT_HEADER_CONTROL_COMPONENT;
+    setters: [function (_) {
+      editHeaderControlComponent = _.editHeaderControlComponent;
+      EDIT_HEADER_CONTROL_COMPONENT = _.EDIT_HEADER_CONTROL_COMPONENT;
     }],
     execute: function () {
       editHeaderControlModuleName = 'stepway.editHeaderControl.module';
@@ -3818,7 +4026,7 @@ $__System.register('50', ['4f'], function (_export) {
     }
   };
 });
-$__System.register('51', [], function (_export) {
+$__System.register('52', [], function (_export) {
   'use strict';
 
   var PasswordConfig;
@@ -3856,17 +4064,14 @@ $__System.register('51', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("52", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("53", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputPassword\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <input\n              type=\"password\"\n              class=\"form-control\"\n              id=\"inputPassword\"\n              placeholder=\"{{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\">\n              <p class=\"help-block\">\n                {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n              </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n          <h5 class=\"greyText\">\n            <i class=\"fa fa-pencil-square-o\"></i>\n            &nbsp;\n            {{'EDIT_PROPERTIES' | translate}} :\n          </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'PLACEHOLDER' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"{{'ADD_EDIT_PLACEHOLD' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('53', ['15', '16', '52'], function (_export) {
+$__System.register('54', ['16', '17', '53'], function (_export) {
   var _createClass, _classCallCheck, editPasswordControlTemplate, EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent;
 
   return {
@@ -3911,7 +4116,7 @@ $__System.register('53', ['15', '16', '52'], function (_export) {
     }
   };
 });
-$__System.register('54', ['53'], function (_export) {
+$__System.register('55', ['54'], function (_export) {
   'use strict';
 
   var editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editeditPasswordModuleName;
@@ -3927,7 +4132,7 @@ $__System.register('54', ['53'], function (_export) {
     }
   };
 });
-$__System.register('55', [], function (_export) {
+$__System.register('56', [], function (_export) {
   'use strict';
 
   var RadioConfig;
@@ -3966,17 +4171,14 @@ $__System.register('55', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("56", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("57", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"basicSelect\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <div\n              class=\"radio\"\n              ng-repeat=\"radioRow in $ctrl.radioRowCollection.rows\">\n              <label>\n                <input\n                  type=\"radio\"\n                  name=\"optionsRadios\"\n                  id=\"{{'optionsRadio-' + $index}}\"\n                  value=\"$index\"\n                  checked=\"\">\n                  {{radioRow.option}}\n              </label>\n            </div>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"radioRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'ADD_NEW_RADIO' | translate}} :\n        </label>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewRadioOption\"\n              placeholder=\"{{'ADD_RADIO_PLACEHOLD' | translate}}\"\n              ng-model=\"$ctrl.newOptionRadio.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"$ctrl.addNewOptionRadio()\">\n              {{'ADD' | translate}}\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-3 col-md-3\">\n        <label\n          for=\"radioRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          {{'EDIT_REMOVE_RADIO' | translate}} :\n        </label>\n      </div>\n    </div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n            <div class=\"container\">\n              <div ng-show=\"$ctrl.radioRowCollection.rows.length === 0\">\n                <h5 class=\"text-center greyText\">\n                  <em>\n                    - {{'NO_RADIO_ADD_NEW' | translate}} -\n                  </em>\n                </h5>\n              </div>\n              <table\n                ng-if=\"$ctrl.radioRowCollection.rows.length > 0\"\n                class=\"table table-striped\">\n                <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    {{'ORDER' | translate}}\n                  </th>\n                  <th st-ratio=\"55\">\n                    {{'OPTION' | translate}}\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\">\n                  </th>\n                  <th st-ratio=\"55\">\n                    <input\n                      ng-model=\"$ctrl.radioFilter\"\n                      placeholder=\"{{'SEARCH_4_OPTION' | translate}}\"\n                      class=\"input-sm form-control\"\n                      type=\"search\"\n                    />\n                  </th>\n                  <th st-ratio=\"25\">\n                  </th>\n                </tr>\n                </thead>\n                <tbody>\n                  <tr ng-repeat=\"radioRow in $ctrl.radioRowCollection.rows | filter:radioFilter as radioRow\">\n                    <td st-ratio=\"20\">\n                      {{$index}}\n                    </td>\n                    <td st-ratio=\"55\">\n                      {{radioRow.option}}\n                    </td>\n                    <td st-ratio=\"25\">\n                      <div class=\"pull-right\">\n                        <button\n                          class=\"btn btn-primary\"\n                          ng-click=\"$ctrl.upThisRadioRow({index: $index})\">\n                          <i class=\"fa fa-arrow-up\"></i>\n                        </button>\n                        <button\n                          class=\"btn btn-primary\"\n                          ng-click=\"$ctrl.downThisRadioRow({index: $index})\">\n                          <i class=\"fa fa-arrow-down\"></i>\n                        </button>\n                        <button\n                          class=\"btn btn-danger\"\n                          ng-click=\"$ctrl.removeRadioRow({index: $index})\">\n                          <i class=\"fa fa-trash-o\"></i>\n                        </button>\n                      </div>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n      <hr/>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">{{'LABEL_TEXT' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n          </div>\n        </div>\n      </div>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextRequiredUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">{{'REQUIRED' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <div class=\"checkboxCssCorrection\">\n              &nbsp;\n            </div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              id=\"inputTextRequiredUpdate\">\n          </div>\n        </div>\n      </div>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextDescriptionUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">{{'DESCRIPTION' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n              id=\"inputTextDescriptionUpdate\"\n              placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('57', ['15', '16', '56'], function (_export) {
+$__System.register('58', ['16', '17', '57'], function (_export) {
   var _createClass, _classCallCheck, editRadioControlTemplate, EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent;
 
   return {
@@ -4027,7 +4229,7 @@ $__System.register('57', ['15', '16', '56'], function (_export) {
     }
   };
 });
-$__System.register('58', ['57'], function (_export) {
+$__System.register('59', ['58'], function (_export) {
   'use strict';
 
   var editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRadioControlModuleName;
@@ -4043,7 +4245,7 @@ $__System.register('58', ['57'], function (_export) {
     }
   };
 });
-$__System.register('59', [], function (_export) {
+$__System.register('5a', [], function (_export) {
   'use strict';
 
   var RichTextEditorConfig;
@@ -4081,17 +4283,14 @@ $__System.register('59', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("5a", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("5b", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"RichTextEditor\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <text-angular\n              ng-model=\"$ctrl.model[options.key]\">\n            </text-angular>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n<!-- required can't be applied to rich text editor (textAngular) right now -->\n<!--<div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">Required :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"nyaSelect.temporyConfig.formlyRequired\" id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>-->\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('5b', ['15', '16', '5a'], function (_export) {
+$__System.register('5c', ['16', '17', '5b'], function (_export) {
   var _createClass, _classCallCheck, editRichTextEditorControlTemplate, EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent;
 
   return {
@@ -4099,8 +4298,8 @@ $__System.register('5b', ['15', '16', '5a'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_a) {
-      editRichTextEditorControlTemplate = _a['default'];
+    }, function (_b) {
+      editRichTextEditorControlTemplate = _b['default'];
     }],
     execute: function () {
       'use strict';
@@ -4136,14 +4335,14 @@ $__System.register('5b', ['15', '16', '5a'], function (_export) {
     }
   };
 });
-$__System.register('5c', ['5b'], function (_export) {
+$__System.register('5d', ['5c'], function (_export) {
   'use strict';
 
   var editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorModuleName;
   return {
-    setters: [function (_b) {
-      editRichTextEditorControlComponent = _b.editRichTextEditorControlComponent;
-      EDIT_RICH_TEXT_EDITOR_COMPONENT = _b.EDIT_RICH_TEXT_EDITOR_COMPONENT;
+    setters: [function (_c) {
+      editRichTextEditorControlComponent = _c.editRichTextEditorControlComponent;
+      EDIT_RICH_TEXT_EDITOR_COMPONENT = _c.EDIT_RICH_TEXT_EDITOR_COMPONENT;
     }],
     execute: function () {
       editRichTextEditorModuleName = 'stepway.editRichTextEditor.module';
@@ -4152,7 +4351,7 @@ $__System.register('5c', ['5b'], function (_export) {
     }
   };
 });
-$__System.register('5d', [], function (_export) {
+$__System.register('5e', [], function (_export) {
   'use strict';
 
   var SubTitleConfig;
@@ -4179,17 +4378,14 @@ $__System.register('5d', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("5e", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("5f", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <h5\n              class=\"greyText\">\n              <i class=\"fa fa-eye\"></i>\n              &nbsp;\n              {{'PREVIEW_TAB' | translate}} :\n            </h5>\n        </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"form-group\">\n              <div class=\"\">\n                <h4 class=\"text-center\">\n                  {{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\n                </h4>\n                <hr/>\n              </div>\n            </div>\n        </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5\n          class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputSubTitleTextUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'SUBTITLE_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputSubTitleTextUpdate\"\n            placeholder=\"{{'ADD_EDIT_SUBTIL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('5f', ['15', '16', '5e'], function (_export) {
+$__System.register('60', ['16', '17', '5f'], function (_export) {
   var _createClass, _classCallCheck, editSubTitleControlTemplate, EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent;
 
   return {
@@ -4197,8 +4393,8 @@ $__System.register('5f', ['15', '16', '5e'], function (_export) {
       _createClass = _['default'];
     }, function (_2) {
       _classCallCheck = _2['default'];
-    }, function (_e) {
-      editSubTitleControlTemplate = _e['default'];
+    }, function (_f) {
+      editSubTitleControlTemplate = _f['default'];
     }],
     execute: function () {
       'use strict';
@@ -4234,14 +4430,14 @@ $__System.register('5f', ['15', '16', '5e'], function (_export) {
     }
   };
 });
-$__System.register('60', ['5f'], function (_export) {
+$__System.register('61', ['60'], function (_export) {
   'use strict';
 
   var editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleModuleName;
   return {
-    setters: [function (_f) {
-      editSubTitleControlComponent = _f.editSubTitleControlComponent;
-      EDIT_SUBTITLE_CONTROL_COMPONENT = _f.EDIT_SUBTITLE_CONTROL_COMPONENT;
+    setters: [function (_) {
+      editSubTitleControlComponent = _.editSubTitleControlComponent;
+      EDIT_SUBTITLE_CONTROL_COMPONENT = _.EDIT_SUBTITLE_CONTROL_COMPONENT;
     }],
     execute: function () {
       editSubTitleModuleName = 'stepway.editSubTitleControl.module';
@@ -4250,7 +4446,7 @@ $__System.register('60', ['5f'], function (_export) {
     }
   };
 });
-$__System.register('61', [], function (_export) {
+$__System.register('62', [], function (_export) {
   'use strict';
 
   var TextAreaConfig;
@@ -4288,17 +4484,14 @@ $__System.register('61', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("62", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("63", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"textArea\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <textarea\n              class=\"form-control\"\n              ng-model=\"model[options.key]\"\n              rows=\"3\"\n              id=\"textArea\">\n            </textarea>\n            <p class=\"help-block\">\n              {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextRequiredUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n            {{'REQUIRED' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <div class=\"checkboxCssCorrection\">\n              &nbsp;\n            </div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              id=\"inputTextRequiredUpdate\">\n          </div>\n        </div>\n      </div>\n      <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputTextDescriptionUpdate\"\n            class=\"col-lg-3 control-label greyText editPropertiesLabel\">{{'DESCRIPTION' | translate}} :\n          </label>\n          <div class=\"col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n              id=\"inputTextDescriptionUpdate\"\n              placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('63', ['15', '16', '62'], function (_export) {
+$__System.register('64', ['16', '17', '63'], function (_export) {
   var _createClass, _classCallCheck, editTextareaControlTemplate, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent;
 
   return {
@@ -4343,7 +4536,7 @@ $__System.register('63', ['15', '16', '62'], function (_export) {
     }
   };
 });
-$__System.register('64', ['63'], function (_export) {
+$__System.register('65', ['64'], function (_export) {
   'use strict';
 
   var editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, edittextareaControlModuleName;
@@ -4359,7 +4552,7 @@ $__System.register('64', ['63'], function (_export) {
     }
   };
 });
-$__System.register('65', [], function (_export) {
+$__System.register('66', [], function (_export) {
   'use strict';
 
   var TextInputConfig;
@@ -4397,17 +4590,14 @@ $__System.register('65', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("66", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("67", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-eye\"></i>\n          &nbsp;\n          {{'PREVIEW_TAB' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"form-group\">\n          <label\n            for=\"inputText\"\n            class=\"control-label textControlLabel\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyLabel}}\n            <span\n              ng-if=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n              class=\"textControlLabel\">\n              *\n            </span>\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputText\"\n              placeholder=\"{{$ctrl.nyaSelect.temporyConfig.formlyPlaceholder}}\">\n            <p class=\"help-block\">\n            {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          {{'EDIT_PROPERTIES' | translate}} :\n        </h5>\n      </div>\n    </div>\n    <hr/>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'LABEL_TEXT' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"{{'ADD_EDIT_LABEL_HERE' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'PLACEHOLDER' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"{{'ADD_EDIT_PLACEHOLD' | translate}}\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'REQUIRED' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"col-lg-3 control-label greyText editPropertiesLabel\">\n          {{'DESCRIPTION' | translate}} :\n        </label>\n        <div class=\"col-lg-9\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"$ctrl.nyaSelect.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"{{'ADDEDIT_DESCRIPTION' | translate}}\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('67', ['15', '16', '66'], function (_export) {
+$__System.register('68', ['16', '17', '67'], function (_export) {
   var _createClass, _classCallCheck, editTextInputControlTemplate, EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent;
 
   return {
@@ -4452,7 +4642,7 @@ $__System.register('67', ['15', '16', '66'], function (_export) {
     }
   };
 });
-$__System.register('68', ['67'], function (_export) {
+$__System.register('69', ['68'], function (_export) {
   'use strict';
 
   var editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlModuleName;
@@ -4468,12 +4658,12 @@ $__System.register('68', ['67'], function (_export) {
     }
   };
 });
-$__System.register('69', ['30', '31', '32', '33', '35', '36', '37', '39', '41', '42', '43', '44', '47', '48', '50', '51', '53', '54', '55', '57', '58', '59', '60', '61', '63', '64', '65', '67', '68', '3a', '3b', '3d', '3e', '3f', '4a', '4d', '4e', '4f', '5b', '5c', '5d', '5f'], function (_export) {
+$__System.register('6a', ['31', '32', '33', '34', '36', '37', '38', '40', '42', '43', '44', '45', '48', '49', '50', '51', '52', '54', '55', '56', '58', '59', '60', '61', '62', '64', '65', '66', '68', '69', '3a', '3b', '3c', '3e', '3f', '4b', '4e', '4f', '5a', '5c', '5d', '5e'], function (_export) {
 
   // controls configs
   'use strict';
 
-  var BlankConfig, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBlankModule, IpAdressConfig, editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, editIpAdressModule, DateConfig, editDateControlComponent, EDIT_DATE_COMPONENT, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editEmailControlModule, BasicSelectConfig, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editbasicSelectModule, GroupedSelectConfig, editHeaderControl, PasswordConfig, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordModule, RadioConfig, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRadioModule, RichTextEditorConfig, editSubTitle, TextAreaConfig, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlModule, TextInputConfig, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlModule, editDateModule, CheckBoxConfig, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editCheckBoxModule, EmailConfig, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectModule, HeaderConfig, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorModule, SubTitleConfig, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, configs, controls;
+  var BlankConfig, editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT, editBlankModule, IpAdressConfig, editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT, editIpAdressModule, DateConfig, EmailConfig, editEmailControlComponent, EDIT_EMAIL_COMPONENT, editEmailControlModule, BasicSelectConfig, editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT, editbasicSelectModule, GroupedSelectConfig, editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT, editHeaderControl, PasswordConfig, editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordModule, RadioConfig, editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT, editRadioModule, editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitle, TextAreaConfig, editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlModule, TextInputConfig, editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlModule, editDateControlComponent, EDIT_DATE_COMPONENT, editDateModule, CheckBoxConfig, editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT, editCheckBoxModule, editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectModule, HeaderConfig, RichTextEditorConfig, editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorModule, SubTitleConfig, configs, controls;
   return {
     setters: [function (_) {
       BlankConfig = _.BlankConfig;
@@ -4492,8 +4682,7 @@ $__System.register('69', ['30', '31', '32', '33', '35', '36', '37', '39', '41', 
     }, function (_7) {
       DateConfig = _7.DateConfig;
     }, function (_8) {
-      editDateControlComponent = _8.editDateControlComponent;
-      EDIT_DATE_COMPONENT = _8.EDIT_DATE_COMPONENT;
+      EmailConfig = _8.EmailConfig;
     }, function (_9) {
       editEmailControlComponent = _9.editEmailControlComponent;
       EDIT_EMAIL_COMPONENT = _9.EDIT_EMAIL_COMPONENT;
@@ -4509,70 +4698,71 @@ $__System.register('69', ['30', '31', '32', '33', '35', '36', '37', '39', '41', 
     }, function (_14) {
       GroupedSelectConfig = _14.GroupedSelectConfig;
     }, function (_15) {
-      editHeaderControl = _15['default'];
+      editHeaderControlComponent = _15.editHeaderControlComponent;
+      EDIT_HEADER_CONTROL_COMPONENT = _15.EDIT_HEADER_CONTROL_COMPONENT;
     }, function (_16) {
-      PasswordConfig = _16.PasswordConfig;
+      editHeaderControl = _16['default'];
     }, function (_17) {
-      editPasswordControlComponent = _17.editPasswordControlComponent;
-      EDIT_PASSWORD_CONTROL_COMPONENT = _17.EDIT_PASSWORD_CONTROL_COMPONENT;
+      PasswordConfig = _17.PasswordConfig;
     }, function (_18) {
-      editPasswordModule = _18['default'];
+      editPasswordControlComponent = _18.editPasswordControlComponent;
+      EDIT_PASSWORD_CONTROL_COMPONENT = _18.EDIT_PASSWORD_CONTROL_COMPONENT;
     }, function (_19) {
-      RadioConfig = _19.RadioConfig;
+      editPasswordModule = _19['default'];
     }, function (_20) {
-      editRadioControlComponent = _20.editRadioControlComponent;
-      EDIT_RADIO_CONTROL_COMPONENT = _20.EDIT_RADIO_CONTROL_COMPONENT;
+      RadioConfig = _20.RadioConfig;
     }, function (_21) {
-      editRadioModule = _21['default'];
+      editRadioControlComponent = _21.editRadioControlComponent;
+      EDIT_RADIO_CONTROL_COMPONENT = _21.EDIT_RADIO_CONTROL_COMPONENT;
     }, function (_22) {
-      RichTextEditorConfig = _22.RichTextEditorConfig;
+      editRadioModule = _22['default'];
     }, function (_23) {
-      editSubTitle = _23['default'];
+      editSubTitleControlComponent = _23.editSubTitleControlComponent;
+      EDIT_SUBTITLE_CONTROL_COMPONENT = _23.EDIT_SUBTITLE_CONTROL_COMPONENT;
     }, function (_24) {
-      TextAreaConfig = _24.TextAreaConfig;
+      editSubTitle = _24['default'];
     }, function (_25) {
-      editTextareaControlComponent = _25.editTextareaControlComponent;
-      EDIT_TEXTAREA_CONTROL_COMPONENT = _25.EDIT_TEXTAREA_CONTROL_COMPONENT;
+      TextAreaConfig = _25.TextAreaConfig;
     }, function (_26) {
-      editTextareaControlModule = _26['default'];
+      editTextareaControlComponent = _26.editTextareaControlComponent;
+      EDIT_TEXTAREA_CONTROL_COMPONENT = _26.EDIT_TEXTAREA_CONTROL_COMPONENT;
     }, function (_27) {
-      TextInputConfig = _27.TextInputConfig;
+      editTextareaControlModule = _27['default'];
     }, function (_28) {
-      editTextInputControlComponent = _28.editTextInputControlComponent;
-      EDIT_TEXTINPUT_CONTROL_COMPONENT = _28.EDIT_TEXTINPUT_CONTROL_COMPONENT;
+      TextInputConfig = _28.TextInputConfig;
     }, function (_29) {
-      editTextInputControlModule = _29['default'];
+      editTextInputControlComponent = _29.editTextInputControlComponent;
+      EDIT_TEXTINPUT_CONTROL_COMPONENT = _29.EDIT_TEXTINPUT_CONTROL_COMPONENT;
+    }, function (_30) {
+      editTextInputControlModule = _30['default'];
     }, function (_a) {
-      editDateModule = _a['default'];
+      editDateControlComponent = _a.editDateControlComponent;
+      EDIT_DATE_COMPONENT = _a.EDIT_DATE_COMPONENT;
     }, function (_b) {
-      CheckBoxConfig = _b.CheckBoxConfig;
-    }, function (_d) {
-      editCheckBoxControlComponent = _d.editCheckBoxControlComponent;
-      EDIT_CHECKBOX_COMPONENT = _d.EDIT_CHECKBOX_COMPONENT;
-    }, function (_e) {
-      editCheckBoxModule = _e['default'];
-    }, function (_f) {
-      EmailConfig = _f.EmailConfig;
-    }, function (_a2) {
-      editGroupedSelectControlComponent = _a2.editGroupedSelectControlComponent;
-      EDIT_GROUPED_SELECT_COMPONENT = _a2.EDIT_GROUPED_SELECT_COMPONENT;
-    }, function (_d2) {
-      editGroupedSelectModule = _d2['default'];
-    }, function (_e2) {
-      HeaderConfig = _e2.HeaderConfig;
-    }, function (_f2) {
-      editHeaderControlComponent = _f2.editHeaderControlComponent;
-      EDIT_HEADER_CONTROL_COMPONENT = _f2.EDIT_HEADER_CONTROL_COMPONENT;
-    }, function (_b2) {
-      editRichTextEditorControlComponent = _b2.editRichTextEditorControlComponent;
-      EDIT_RICH_TEXT_EDITOR_COMPONENT = _b2.EDIT_RICH_TEXT_EDITOR_COMPONENT;
+      editDateModule = _b['default'];
     }, function (_c) {
-      editRichTextEditorModule = _c['default'];
-    }, function (_d3) {
-      SubTitleConfig = _d3.SubTitleConfig;
-    }, function (_f3) {
-      editSubTitleControlComponent = _f3.editSubTitleControlComponent;
-      EDIT_SUBTITLE_CONTROL_COMPONENT = _f3.EDIT_SUBTITLE_CONTROL_COMPONENT;
+      CheckBoxConfig = _c.CheckBoxConfig;
+    }, function (_e) {
+      editCheckBoxControlComponent = _e.editCheckBoxControlComponent;
+      EDIT_CHECKBOX_COMPONENT = _e.EDIT_CHECKBOX_COMPONENT;
+    }, function (_f) {
+      editCheckBoxModule = _f['default'];
+    }, function (_b2) {
+      editGroupedSelectControlComponent = _b2.editGroupedSelectControlComponent;
+      EDIT_GROUPED_SELECT_COMPONENT = _b2.EDIT_GROUPED_SELECT_COMPONENT;
+    }, function (_e2) {
+      editGroupedSelectModule = _e2['default'];
+    }, function (_f2) {
+      HeaderConfig = _f2.HeaderConfig;
+    }, function (_a2) {
+      RichTextEditorConfig = _a2.RichTextEditorConfig;
+    }, function (_c2) {
+      editRichTextEditorControlComponent = _c2.editRichTextEditorControlComponent;
+      EDIT_RICH_TEXT_EDITOR_COMPONENT = _c2.EDIT_RICH_TEXT_EDITOR_COMPONENT;
+    }, function (_d) {
+      editRichTextEditorModule = _d['default'];
+    }, function (_e3) {
+      SubTitleConfig = _e3.SubTitleConfig;
     }],
     execute: function () {
       configs = [IpAdressConfig, DateConfig, CheckBoxConfig, EmailConfig, BasicSelectConfig, BlankConfig, GroupedSelectConfig, HeaderConfig, PasswordConfig, RadioConfig, RichTextEditorConfig, SubTitleConfig, TextAreaConfig, TextInputConfig];
@@ -4670,22 +4860,22 @@ $__System.register('69', ['30', '31', '32', '33', '35', '36', '37', '39', '41', 
     }
   };
 });
-$__System.register('6a', ['14', '69', '2e', '2f'], function (_export) {
+$__System.register('6b', ['15', '30', '2f', '6a'], function (_export) {
   'use strict';
 
-  var editModalController, EDIT_MODAL_CONTROLLER_NAME, controls, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT;
+  var editModalController, EDIT_MODAL_CONTROLLER_NAME, editChooseControlComponent, EDIT_CHOOSE_CONTROL_COMPONENT, editValidEditFooterComponent, EDIT_EDIT_VALID_FOOTER_COMPONENT, controls, EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT;
   return {
     setters: [function (_) {
       editModalController = _['default'];
       EDIT_MODAL_CONTROLLER_NAME = _.EDIT_MODAL_CONTROLLER_NAME;
     }, function (_2) {
-      controls = _2.controls;
-    }, function (_e) {
-      editValidEditFooterComponent = _e.editValidEditFooterComponent;
-      EDIT_EDIT_VALID_FOOTER_COMPONENT = _e.EDIT_EDIT_VALID_FOOTER_COMPONENT;
+      editChooseControlComponent = _2.editChooseControlComponent;
+      EDIT_CHOOSE_CONTROL_COMPONENT = _2.EDIT_CHOOSE_CONTROL_COMPONENT;
     }, function (_f) {
-      editChooseControlComponent = _f.editChooseControlComponent;
-      EDIT_CHOOSE_CONTROL_COMPONENT = _f.EDIT_CHOOSE_CONTROL_COMPONENT;
+      editValidEditFooterComponent = _f.editValidEditFooterComponent;
+      EDIT_EDIT_VALID_FOOTER_COMPONENT = _f.EDIT_EDIT_VALID_FOOTER_COMPONENT;
+    }, function (_a) {
+      controls = _a.controls;
     }],
     execute: function () {
       EDIT_CONTROLE_MODAL_NAME = 'editControlModal.module';
@@ -4697,7 +4887,7 @@ $__System.register('6a', ['14', '69', '2e', '2f'], function (_export) {
     }
   };
 });
-$__System.register('6b', [], function (_export) {
+$__System.register('6c', [], function (_export) {
 	'use strict';
 
 	var resetNyaSelect, getResetConfig, returnControlFromAddCtrlModalModel, validKeyUniqueness;
@@ -5156,7 +5346,7 @@ $__System.register('6b', [], function (_export) {
 		}
 	};
 });
-$__System.register('6c', ['15', '16', '6b'], function (_export) {
+$__System.register('6d', ['16', '17', '6c'], function (_export) {
 	var _createClass, _classCallCheck, resetNyaSelect, returnControlFromAddCtrlModalModel, validKeyUniqueness, getResetConfig, CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy;
 
 	return {
@@ -5164,11 +5354,11 @@ $__System.register('6c', ['15', '16', '6b'], function (_export) {
 			_createClass = _['default'];
 		}, function (_2) {
 			_classCallCheck = _2['default'];
-		}, function (_b) {
-			resetNyaSelect = _b.resetNyaSelect;
-			returnControlFromAddCtrlModalModel = _b.returnControlFromAddCtrlModalModel;
-			validKeyUniqueness = _b.validKeyUniqueness;
-			getResetConfig = _b.getResetConfig;
+		}, function (_c) {
+			resetNyaSelect = _c.resetNyaSelect;
+			returnControlFromAddCtrlModalModel = _c.returnControlFromAddCtrlModalModel;
+			validKeyUniqueness = _c.validKeyUniqueness;
+			getResetConfig = _c.getResetConfig;
 		}],
 		execute: function () {
 			'use strict';
@@ -5414,15 +5604,15 @@ $__System.register('6c', ['15', '16', '6b'], function (_export) {
 		}
 	};
 });
-$__System.register('6d', ['6c'], function (_export) {
+$__System.register('6e', ['6d'], function (_export) {
 		/* global angular */
 		'use strict';
 
 		var $modalProxy, CONTROLLER_MODAL_PROXY_SERVICE, MODAL_PROXY_MODULE_NAME;
 		return {
-				setters: [function (_c) {
-						$modalProxy = _c['default'];
-						CONTROLLER_MODAL_PROXY_SERVICE = _c.CONTROLLER_MODAL_PROXY_SERVICE;
+				setters: [function (_d) {
+						$modalProxy = _d['default'];
+						CONTROLLER_MODAL_PROXY_SERVICE = _d.CONTROLLER_MODAL_PROXY_SERVICE;
 				}],
 				execute: function () {
 						MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
@@ -5431,376 +5621,653 @@ $__System.register('6d', ['6c'], function (_export) {
 				}
 		};
 });
-$__System.register('6e', [], function (_export) {
-	'use strict';
+$__System.registerDynamic('6f', [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+  var UNDEFINED = 'undefined';
+  var global = module.exports = typeof window != UNDEFINED && window.Math == Math ? window : typeof self != UNDEFINED && self.Math == Math ? self : Function('return this')();
+  if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
-	var configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerOptions, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, addDatepickerOptionsProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, resetDataModel, resetFormlyModel;
-	return {
-		setters: [],
-		execute: function () {
-			configurationModelInit = {
-				activeLine: 1,
-				listConfigStep: ['init', 'first', 'second', 'third'],
-				stepIndicators: [true, false, false, false],
-				configStepCounter: 0,
-				submitButtonText: 'submit',
-				cancelButtonText: 'cancel',
-				lines: [{
-					line: 1,
-					activeColumn: 1,
-					columns: [{
-						numColumn: 1,
-						exist: true,
-						control: {
-							type: 'none',
-							key: 'none' // ,
-							// templateOptions: {
-							//                     label: 'none',
-							//                     placeholder: 'none',
-							//                     required: false,
-							//                     description: 'Descriptive text'
-							//                   }
-						}
-					}]
-				}]
-			};
-			configurationModelResult = {
-				activeLine: 1,
-				listConfigStep: ['init', 'first', 'second', 'third'],
-				stepIndicators: [true, false, false, false],
-				configStepCounter: 0,
-				submitButtonText: 'submit',
-				cancelButtonText: 'cancel',
-				lines: []
-			};
-
-			isTemplateOptionDefined = function isTemplateOptionDefined(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? true : false;
-			};
-
-			extractTemplateOptionLabel = function extractTemplateOptionLabel(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.label !== 'undefined' ? obj.templateOptions.label : '' : '';
-			};
-
-			extractTemplateOptionDatepickerOptions = function extractTemplateOptionDatepickerOptions(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.datepickerOptions !== 'undefined' ? angular.copy(obj.templateOptions.datepickerOptions) : { format: '' } : { format: '' };
-			};
-
-			extractFormlyExpressionProperties = function extractFormlyExpressionProperties(obj) {
-				return typeof obj.formlyExpressionProperties !== 'undefined' ? angular.copy(obj.formlyExpressionProperties) : {};
-			};
-
-			extractFormlyValidators = function extractFormlyValidators(obj) {
-				return typeof obj.formlyValidators !== 'undefined' ? angular.copy(obj.formlyValidators) : {};
-			};
-
-			extractFormlyValidation = function extractFormlyValidation(obj) {
-				return typeof obj.formlyValidation !== 'undefined' ? angular.copy(obj.formlyValidation) : {};
-			};
-
-			extractTemplateOptionRequired = function extractTemplateOptionRequired(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.required !== 'undefined' ? obj.templateOptions.required : '' : '';
-			};
-
-			extractTemplateOptionOptions = function extractTemplateOptionOptions(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.options !== 'undefined' ? obj.templateOptions.options : '' : '';
-			};
-
-			extractTemplateOptionType = function extractTemplateOptionType(obj) {
-				return typeof obj.subtype !== 'undefined' ? obj.subtype : '';
-			};
-
-			extractTemplateOptionPlaceholder = function extractTemplateOptionPlaceholder(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.placeholder !== 'undefined' ? obj.templateOptions.placeholder : '' : '';
-			};
-
-			extractTemplateOptionDescription = function extractTemplateOptionDescription(obj) {
-				return typeof obj.templateOptions !== 'undefined' ? typeof obj.templateOptions.description !== 'undefined' ? obj.templateOptions.description : '' : '';
-			};
-
-			addDatepickerOptionsProperty = function addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex) {
-				fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(configurationModel.lines[lineIndex].columns[0].control);
-			};
-
-			addOneColumnHeader = function addOneColumnHeader(formlyModel, configurationModel, lineIndex) {
-				var headerTemplateCol0 = '<div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2></div></div><hr/>';
-				formlyModel.push({
-					template: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'header' ? headerTemplateCol0 : '<div></div>' : '<div></div>'
-				});
-			};
-
-			addOneColumnControl = function addOneColumnControl(formlyModel, configurationModel, lineIndex) {
-				var fieldToPush = {
-					className: 'col-xs-12',
-					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
-				};
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex);
-				}
-
-				formlyModel.push(fieldToPush);
-			};
-
-			addTwoColumnControl = function addTwoColumnControl(formlyModel, configurationModel, lineIndex) {
-
-				//text header is stored in "description" in templateOtion model
-				var headerTemplateCol0 = {
-					className: 'col-xs-6',
-					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
-				};
-
-				var headerTemplateCol1 = {
-					className: 'col-xs-6',
-					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
-				};
-
-				var controlCol0 = {
-					className: 'col-xs-6',
-					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
-				};
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
-				}
-
-				var controlCol1 = {
-					className: 'col-xs-6',
-					type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
-				};
-
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
-				}
-
-				var FieldGroup = [];
-
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
-					FieldGroup.push(headerTemplateCol0);
-				} else {
-					FieldGroup.push(controlCol0);
-				}
-
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
-					FieldGroup.push(headerTemplateCol1);
-				} else {
-					FieldGroup.push(controlCol1);
-				}
-
-				formlyModel.push({
-					className: 'row',
-					fieldGroup: FieldGroup
-				});
-			};
-
-			addThreeColumnControl = function addThreeColumnControl(formlyModel, configurationModel, lineIndex) {
-				//text header is stored in "description" in templateOtion model
-				var headerTemplateCol0 = {
-					className: 'col-xs-4',
-					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
-				};
-
-				var headerTemplateCol1 = {
-					className: 'col-xs-4',
-					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
-				};
-
-				var headerTemplateCol2 = {
-					className: 'col-xs-4',
-					template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control) + '<h2><hr/></div></div>'
-				};
-
-				var controlCol0 = {
-					className: 'col-xs-4',
-					type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
-				};
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
-				}
-
-				var controlCol1 = {
-					className: 'col-xs-4',
-					type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
-				};
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
-				}
-				var controlCol2 = {
-					className: 'col-xs-4',
-					type: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[2].control.type : 'blank',
-					key: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
-					templateOptions: {
-						type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
-						label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
-						required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
-						placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
-						description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-						options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
-					},
-					expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
-					validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-					validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
-				};
-				//////////////////////////////////////////////
-				//datepicker additionnal particular property
-				//////////////////////////////////////////////
-				if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
-					addDatepickerOptionsProperty(controlCol2, configurationModel, lineIndex);
-				}
-
-				var FieldGroup = [];
-
-				if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
-					FieldGroup.push(headerTemplateCol0);
-				} else {
-					FieldGroup.push(controlCol0);
-				}
-
-				if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
-					FieldGroup.push(headerTemplateCol1);
-				} else {
-					FieldGroup.push(controlCol1);
-				}
-
-				if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
-					FieldGroup.push(headerTemplateCol2);
-				} else {
-					FieldGroup.push(controlCol2);
-				}
-
-				formlyModel.push({
-					className: 'row',
-					fieldGroup: FieldGroup
-				});
-			};
-
-			resetDataModel = function resetDataModel(obj) {
-				var emptyDataModel = {};
-				angular.copy(emptyDataModel, obj);
-				return true;
-			};
-
-			resetFormlyModel = function resetFormlyModel(formlyModel) {
-				var resetformly = [];
-				angular.copy(resetformly, formlyModel);
-			};
-
-			_export('configurationModelInit', configurationModelInit);
-
-			_export('configurationModelResult', configurationModelResult);
-
-			_export('resetDataModel', resetDataModel);
-
-			_export('resetFormlyModel', resetFormlyModel);
-
-			_export('isTemplateOptionDefined', isTemplateOptionDefined);
-
-			_export('extractTemplateOptionLabel', extractTemplateOptionLabel);
-
-			_export('extractTemplateOptionDatepickerOptions', extractTemplateOptionDatepickerOptions);
-
-			_export('extractFormlyExpressionProperties', extractFormlyExpressionProperties);
-
-			_export('extractFormlyValidators', extractFormlyValidators);
-
-			_export('extractFormlyValidation', extractFormlyValidation);
-
-			_export('extractTemplateOptionRequired', extractTemplateOptionRequired);
-
-			_export('extractTemplateOptionOptions', extractTemplateOptionOptions);
-
-			_export('extractTemplateOptionType', extractTemplateOptionType);
-
-			_export('extractTemplateOptionPlaceholder', extractTemplateOptionPlaceholder);
-
-			_export('extractTemplateOptionDescription', extractTemplateOptionDescription);
-
-			_export('addDatepickerOptionsProperty', addDatepickerOptionsProperty);
-
-			_export('addOneColumnHeader', addOneColumnHeader);
-
-			_export('addOneColumnControl', addOneColumnControl);
-
-			_export('addTwoColumnControl', addTwoColumnControl);
-
-			_export('addThreeColumnControl', addThreeColumnControl);
-		}
-	};
+  return module.exports;
 });
-$__System.register('6f', ['15', '16', '6e'], function (_export) {
+$__System.registerDynamic('70', ['6f', '71'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var global = $__require('6f'),
+      core = $__require('71'),
+      PROTOTYPE = 'prototype';
+  var ctx = function (fn, that) {
+    return function () {
+      return fn.apply(that, arguments);
+    };
+  };
+  var $def = function (type, name, source) {
+    var key,
+        own,
+        out,
+        exp,
+        isGlobal = type & $def.G,
+        isProto = type & $def.P,
+        target = isGlobal ? global : type & $def.S ? global[name] : (global[name] || {})[PROTOTYPE],
+        exports = isGlobal ? core : core[name] || (core[name] = {});
+    if (isGlobal) source = name;
+    for (key in source) {
+      own = !(type & $def.F) && target && key in target;
+      if (own && key in exports) continue;
+      out = own ? target[key] : source[key];
+      if (isGlobal && typeof target[key] != 'function') exp = source[key];else if (type & $def.B && own) exp = ctx(out, global);else if (type & $def.W && target[key] == out) !function (C) {
+        exp = function (param) {
+          return this instanceof C ? new C(param) : C(param);
+        };
+        exp[PROTOTYPE] = C[PROTOTYPE];
+      }(out);else exp = isProto && typeof out == 'function' ? ctx(Function.call, out) : out;
+      exports[key] = exp;
+      if (isProto) (exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+    }
+  };
+  $def.F = 1;
+  $def.G = 2;
+  $def.S = 4;
+  $def.P = 8;
+  $def.B = 16;
+  $def.W = 32;
+  module.exports = $def;
+  return module.exports;
+});
+$__System.registerDynamic("72", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  // 7.2.1 RequireObjectCoercible(argument)
+  module.exports = function (it) {
+    if (it == undefined) throw TypeError("Can't call method on  " + it);
+    return it;
+  };
+  return module.exports;
+});
+$__System.registerDynamic('73', ['72'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var defined = $__require('72');
+  module.exports = function (it) {
+    return Object(defined(it));
+  };
+  return module.exports;
+});
+$__System.registerDynamic("74", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var toString = {}.toString;
+
+  module.exports = function (it) {
+    return toString.call(it).slice(8, -1);
+  };
+  return module.exports;
+});
+$__System.registerDynamic('75', ['74'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var cof = $__require('74');
+  module.exports = 0 in Object('z') ? Object : function (it) {
+    return cof(it) == 'String' ? it.split('') : Object(it);
+  };
+  return module.exports;
+});
+$__System.registerDynamic('76', ['77'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var $ = $__require('77');
+  module.exports = function (it) {
+    var keys = $.getKeys(it),
+        getSymbols = $.getSymbols;
+    if (getSymbols) {
+      var symbols = getSymbols(it),
+          isEnum = $.isEnum,
+          i = 0,
+          key;
+      while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) keys.push(key);
+    }
+    return keys;
+  };
+  return module.exports;
+});
+$__System.registerDynamic("78", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  module.exports = function (exec) {
+    try {
+      return !!exec();
+    } catch (e) {
+      return true;
+    }
+  };
+  return module.exports;
+});
+$__System.registerDynamic('79', ['73', '75', '76', '78'], true, function ($__require, exports, module) {
+    var define,
+        global = this || self,
+        GLOBAL = global;
+    /* */
+    var toObject = $__require('73'),
+        IObject = $__require('75'),
+        enumKeys = $__require('76');
+    module.exports = $__require('78')(function () {
+        return Symbol() in Object.assign({});
+    }) ? function assign(target, source) {
+        var T = toObject(target),
+            l = arguments.length,
+            i = 1;
+        while (l > i) {
+            var S = IObject(arguments[i++]),
+                keys = enumKeys(S),
+                length = keys.length,
+                j = 0,
+                key;
+            while (length > j) T[key = keys[j++]] = S[key];
+        }
+        return T;
+    } : Object.assign;
+    return module.exports;
+});
+$__System.registerDynamic('7a', ['70', '79'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var $def = $__require('70');
+  $def($def.S + $def.F, 'Object', { assign: $__require('79') });
+  return module.exports;
+});
+$__System.registerDynamic('71', [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var core = module.exports = {};
+  if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+  return module.exports;
+});
+$__System.registerDynamic('7b', ['7a', '71'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  $__require('7a');
+  module.exports = $__require('71').Object.assign;
+  return module.exports;
+});
+$__System.registerDynamic("7c", ["7b"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  module.exports = { "default": $__require("7b"), __esModule: true };
+  return module.exports;
+});
+$__System.registerDynamic("7d", ["7c"], true, function ($__require, exports, module) {
+  /* */
+  "use strict";
+
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var _Object$assign = $__require("7c")["default"];
+  exports["default"] = _Object$assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  exports.__esModule = true;
+  return module.exports;
+});
+$__System.register('7e', ['7d'], function (_export) {
+  var _extends, configurationModelInit, configurationModelResult, isTemplateOptionDefined, extractTemplateOptionLabel, extractTemplateOptionDatepickerOptions, extractTemplateOptionRequired, extractTemplateOptionOptions, extractTemplateOptionType, extractTemplateOptionPlaceholder, extractTemplateOptionDescription, extractFormlyExpressionProperties, extractFormlyValidators, extractFormlyValidation, addDatepickerOptionsProperty, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, resetDataModel, resetFormlyModel;
+
+  return {
+    setters: [function (_d) {
+      _extends = _d['default'];
+    }],
+    execute: function () {
+      'use strict';
+
+      configurationModelInit = {
+        activeLine: 1,
+        listConfigStep: ['init', 'first', 'second', 'third'],
+        stepIndicators: [true, false, false, false],
+        configStepCounter: 0,
+        submitButtonText: 'submit',
+        cancelButtonText: 'cancel',
+        lines: [{
+          line: 1,
+          activeColumn: 1,
+          columns: [{
+            numColumn: 1,
+            exist: true,
+            control: {
+              type: 'none',
+              key: 'none' // ,
+              // templateOptions: {
+              //                     label: 'none',
+              //                     placeholder: 'none',
+              //                     required: false,
+              //                     description: 'Descriptive text'
+              //                   }
+            }
+          }]
+        }]
+      };
+      configurationModelResult = {
+        activeLine: 1,
+        listConfigStep: ['init', 'first', 'second', 'third'],
+        stepIndicators: [true, false, false, false],
+        configStepCounter: 0,
+        submitButtonText: 'submit',
+        cancelButtonTex: 'cancel',
+        lines: []
+      };
+
+      isTemplateOptionDefined = function isTemplateOptionDefined(obj) {
+        var defaultValue = false;
+        if (obj && obj.templateOptions) {
+          return true;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionLabel = function extractTemplateOptionLabel(obj) {
+        var defaultValue = '';
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.label) {
+          return obj.templateOptions.label;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionDatepickerOptions = function extractTemplateOptionDatepickerOptions(obj) {
+        var defaultValue = { format: '' };
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.datepickerOptions) {
+          return _extends({}, obj.templateOptions.datepickerOptions);
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionRequired = function extractTemplateOptionRequired(obj) {
+        var defaultValue = false;
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.required) {
+          return true;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionOptions = function extractTemplateOptionOptions(obj) {
+        var defaultValue = '';
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.options) {
+          return obj.templateOptions.options;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionType = function extractTemplateOptionType(obj) {
+        var defaultValue = '';
+        if (obj && obj.subtype) {
+          return obj.subtype;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionPlaceholder = function extractTemplateOptionPlaceholder(obj) {
+        var defaultValue = '';
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.placeholder) {
+          return obj.templateOptions.placeholder;
+        }
+        return defaultValue;
+      };
+
+      extractTemplateOptionDescription = function extractTemplateOptionDescription(obj) {
+        var defaultValue = '';
+        if (isTemplateOptionDefined(obj) && obj.templateOptions.description) {
+          return obj.templateOptions.description;
+        }
+        return defaultValue;
+      };
+
+      extractFormlyExpressionProperties = function extractFormlyExpressionProperties(obj) {
+        var defaultValue = {};
+        if (obj && obj.formlyExpressionProperties) {
+          return _extends({}, obj.formlyExpressionProperties);
+        }
+        return defaultValue;
+      };
+
+      extractFormlyValidators = function extractFormlyValidators(obj) {
+        var defaultValue = {};
+        if (obj && obj.formlyValidators) {
+          return _extends({}, obj.formlyValidators);
+        }
+        return defaultValue;
+      };
+
+      extractFormlyValidation = function extractFormlyValidation(obj) {
+        var defaultValue = {};
+        if (obj && obj.formlyValidation) {
+          return _extends({}, obj.formlyValidation);
+        }
+        return defaultValue;
+      };
+
+      addDatepickerOptionsProperty = function addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex) {
+        var control = _extends({}, configurationModel.lines[lineIndex].columns[0].control);
+        fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(control);
+      };
+
+      addOneColumnHeader = function addOneColumnHeader(formlyModel, configurationModel, lineIndex) {
+        var control = _extends({}, configurationModel.lines[lineIndex].columns[0].control);
+        var defaultTemplate = '<div></div>';
+        var headerTemplateCol0 = {
+          template: '\n    <div class="row">\n      <div class="">\n        <h2 class="text-center">\n          ' + extractTemplateOptionDescription(control) + '\n        </h2>\n        <hr/>\n      </div>\n    </div>\n    '
+        };
+        if (control.type && control.type === 'header') {
+          return formlyModel.push({
+            template: headerTemplateCol0.template
+          });
+        }
+        return formlyModel.push({
+          template: defaultTemplate
+        });
+      };
+
+      addOneColumnControl = function addOneColumnControl(formlyModel, configurationModel, lineIndex) {
+        var fieldToPush = {
+          className: 'col-xs-12',
+          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+        };
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex);
+        }
+
+        formlyModel.push(fieldToPush);
+      };
+
+      addTwoColumnControl = function addTwoColumnControl(formlyModel, configurationModel, lineIndex) {
+
+        //text header is stored in "description" in templateOtion model
+        var headerTemplateCol0 = {
+          className: 'col-xs-6',
+          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+        };
+
+        var headerTemplateCol1 = {
+          className: 'col-xs-6',
+          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+        };
+
+        var controlCol0 = {
+          className: 'col-xs-6',
+          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+        };
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
+        }
+
+        var controlCol1 = {
+          className: 'col-xs-6',
+          type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+        };
+
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
+        }
+
+        var FieldGroup = [];
+
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol0);
+        } else {
+          FieldGroup.push(controlCol0);
+        }
+
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol1);
+        } else {
+          FieldGroup.push(controlCol1);
+        }
+
+        formlyModel.push({
+          className: 'row',
+          fieldGroup: FieldGroup
+        });
+      };
+
+      addThreeColumnControl = function addThreeColumnControl(formlyModel, configurationModel, lineIndex) {
+        //text header is stored in "description" in templateOtion model
+        var headerTemplateCol0 = {
+          className: 'col-xs-4',
+          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+        };
+
+        var headerTemplateCol1 = {
+          className: 'col-xs-4',
+          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+        };
+
+        var headerTemplateCol2 = {
+          className: 'col-xs-4',
+          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control) + '<h2><hr/></div></div>'
+        };
+
+        var controlCol0 = {
+          className: 'col-xs-4',
+          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+        };
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
+        }
+
+        var controlCol1 = {
+          className: 'col-xs-4',
+          type: typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[1].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+        };
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
+        }
+        var controlCol2 = {
+          className: 'col-xs-4',
+          type: typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[2].control.type : 'blank',
+          key: typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
+          templateOptions: {
+            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
+            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
+            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
+            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
+            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
+            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
+          },
+          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
+          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
+          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
+        };
+        //////////////////////////////////////////////
+        //datepicker additionnal particular property
+        //////////////////////////////////////////////
+        if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
+          addDatepickerOptionsProperty(controlCol2, configurationModel, lineIndex);
+        }
+
+        var FieldGroup = [];
+
+        if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol0);
+        } else {
+          FieldGroup.push(controlCol0);
+        }
+
+        if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol1);
+        } else {
+          FieldGroup.push(controlCol1);
+        }
+
+        if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
+          FieldGroup.push(headerTemplateCol2);
+        } else {
+          FieldGroup.push(controlCol2);
+        }
+
+        formlyModel.push({
+          className: 'row',
+          fieldGroup: FieldGroup
+        });
+      };
+
+      resetDataModel = function resetDataModel(obj) {
+        var emptyDataModel = {};
+        angular.copy(emptyDataModel, obj);
+        return true;
+      };
+
+      resetFormlyModel = function resetFormlyModel(formlyModel) {
+        var resetformly = [];
+        angular.copy(resetformly, formlyModel);
+      };
+
+      _export('configurationModelInit', configurationModelInit);
+
+      _export('configurationModelResult', configurationModelResult);
+
+      _export('resetDataModel', resetDataModel);
+
+      _export('resetFormlyModel', resetFormlyModel);
+
+      _export('isTemplateOptionDefined', isTemplateOptionDefined);
+
+      _export('extractTemplateOptionLabel', extractTemplateOptionLabel);
+
+      _export('extractTemplateOptionDatepickerOptions', extractTemplateOptionDatepickerOptions);
+
+      _export('extractFormlyExpressionProperties', extractFormlyExpressionProperties);
+
+      _export('extractFormlyValidators', extractFormlyValidators);
+
+      _export('extractFormlyValidation', extractFormlyValidation);
+
+      _export('extractTemplateOptionRequired', extractTemplateOptionRequired);
+
+      _export('extractTemplateOptionOptions', extractTemplateOptionOptions);
+
+      _export('extractTemplateOptionType', extractTemplateOptionType);
+
+      _export('extractTemplateOptionPlaceholder', extractTemplateOptionPlaceholder);
+
+      _export('extractTemplateOptionDescription', extractTemplateOptionDescription);
+
+      _export('addDatepickerOptionsProperty', addDatepickerOptionsProperty);
+
+      _export('addOneColumnHeader', addOneColumnHeader);
+
+      _export('addOneColumnControl', addOneColumnControl);
+
+      _export('addTwoColumnControl', addTwoColumnControl);
+
+      _export('addThreeColumnControl', addThreeColumnControl);
+    }
+  };
+});
+$__System.register('7f', ['16', '17', '7e'], function (_export) {
 	var _createClass, _classCallCheck, configurationModelInit, configurationModelResult, resetDataModel, resetFormlyModel, addOneColumnHeader, addOneColumnControl, addTwoColumnControl, addThreeColumnControl, FORMLY_PROXY_SERVICE, $formlyProxy;
 
 	return {
@@ -5901,7 +6368,7 @@ $__System.register('6f', ['15', '16', '6e'], function (_export) {
 		}
 	};
 });
-$__System.register('70', ['6f'], function (_export) {
+$__System.register('80', ['7f'], function (_export) {
 		'use strict';
 
 		var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
@@ -5917,11 +6384,11 @@ $__System.register('70', ['6f'], function (_export) {
 				}
 		};
 });
-$__System.registerDynamic("71", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("77", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
   var $Object = Object;
   module.exports = {
     create: $Object.create,
@@ -5935,84 +6402,71 @@ $__System.registerDynamic("71", [], true, function($__require, exports, module) 
     getSymbols: $Object.getOwnPropertySymbols,
     each: [].forEach
   };
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("72", ["71"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var $ = $__require('71');
+$__System.registerDynamic('81', ['77'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  var $ = $__require('77');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("73", ["72"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "default": $__require('72'),
-    __esModule: true
-  };
-  global.define = __define;
+$__System.registerDynamic("82", ["81"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  module.exports = { "default": $__require("81"), __esModule: true };
   return module.exports;
 });
-
-$__System.registerDynamic("15", ["73"], true, function($__require, exports, module) {
+$__System.registerDynamic("16", ["82"], true, function ($__require, exports, module) {
+  /* */
   "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var _Object$defineProperty = $__require('73')["default"];
-  exports["default"] = (function() {
+
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var _Object$defineProperty = $__require("82")["default"];
+  exports["default"] = function () {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
         descriptor.enumerable = descriptor.enumerable || false;
         descriptor.configurable = true;
-        if ("value" in descriptor)
-          descriptor.writable = true;
+        if ("value" in descriptor) descriptor.writable = true;
         _Object$defineProperty(target, descriptor.key, descriptor);
       }
     }
-    return function(Constructor, protoProps, staticProps) {
-      if (protoProps)
-        defineProperties(Constructor.prototype, protoProps);
-      if (staticProps)
-        defineProperties(Constructor, staticProps);
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
       return Constructor;
     };
-  })();
+  }();
   exports.__esModule = true;
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("16", [], true, function($__require, exports, module) {
+$__System.registerDynamic("17", [], true, function ($__require, exports, module) {
+  /* */
   "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  exports["default"] = function(instance, Constructor) {
+
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  exports["default"] = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   };
+
   exports.__esModule = true;
-  global.define = __define;
   return module.exports;
 });
-
-$__System.register('74', ['15', '16'], function (_export) {
+$__System.register('83', ['16', '17'], function (_export) {
 	var _createClass, _classCallCheck, SELECT_OPTION_MANAGE_NAME, selectOptionManage;
 
 	return {
@@ -6249,7 +6703,7 @@ $__System.register('74', ['15', '16'], function (_export) {
 		}
 	};
 });
-$__System.register('75', ['74'], function (_export) {
+$__System.register('84', ['83'], function (_export) {
 		/* global angular */
 		'use strict';
 
@@ -6266,10 +6720,10 @@ $__System.register('75', ['74'], function (_export) {
 				}
 		};
 });
-$__System.register('1', ['2', '4', '6', '70', '75', 'e', 'f', '2d', '6a', '6d'], function (_export) {
+$__System.register('1', ['2', '4', '6', '10', '80', '84', 'f', '2e', '6b', '6e'], function (_export) {
 	'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepwayFormlyProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepWayCoreModule, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepWayCoreModule, easyFormStepwayFormlyProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
 	return {
 		setters: [function (_) {}, function (_2) {
 			easyFormStepWayConfig = _2['default'];
@@ -6278,19 +6732,19 @@ $__System.register('1', ['2', '4', '6', '70', '75', 'e', 'f', '2d', '6a', '6d'],
 		}, function (_3) {
 			formlyConfig = _3['default'];
 		}, function (_4) {
-			easyFormStepwayFormlyProxyModule = _4['default'];
+			easyFormStepWayCoreModule = _4['default'];
 		}, function (_5) {
-			easyFormStepwaySelectOptionManageModules = _5['default'];
-		}, function (_e) {
-			translateConfig = _e['default'];
+			easyFormStepwayFormlyProxyModule = _5['default'];
+		}, function (_6) {
+			easyFormStepwaySelectOptionManageModules = _6['default'];
 		}, function (_f) {
-			easyFormStepWayCoreModule = _f['default'];
-		}, function (_d) {
-			easyFormStepwayMainModule = _d['default'];
-		}, function (_a) {
-			easyFormStepwayModalModule = _a['default'];
-		}, function (_d2) {
-			easyFormStepwayModalProxyModule = _d2['default'];
+			translateConfig = _f['default'];
+		}, function (_e) {
+			easyFormStepwayMainModule = _e['default'];
+		}, function (_b) {
+			easyFormStepwayModalModule = _b['default'];
+		}, function (_e2) {
+			easyFormStepwayModalProxyModule = _e2['default'];
 		}],
 		execute: function () {
 			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';

@@ -1,3 +1,6 @@
+/* eslint angular/module-getter:0 */
+/* eslint quotes:0 */
+
 System.config({
   baseURL: "",
   defaultJSExtensions: true,
@@ -13,6 +16,12 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
 
+  meta: {
+    "presets": [
+      "es2015"
+    ]
+  },
+
   map: {
     "angular": "github:angular/bower-angular@1.5.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.0",
@@ -20,6 +29,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.24",
     "core-js": "npm:core-js@1.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "plugin-babel": "npm:systemjs-plugin-babel@0.0.17",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:angular/bower-angular-mocks@1.5.0": {
       "angular": "github:angular/bower-angular@1.5.0"

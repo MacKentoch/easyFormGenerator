@@ -304,6 +304,10 @@ Just inject `eda.easyFormViewer` in you application:
 ______
 
 ## What is new?
+ - December 2016: v1.2.1:
+  - new control: `IP adress`
+  - new language added `Brazilian Portuguese` thanks to `Leandro.Battisti`
+ - December 2016: v1.2.0 is released
  - March 2016: v1.1.0 is released.
 
  - November 2015: v1.1.0 coming soon: migration to ES6 + fixes

@@ -1,8 +1,7 @@
-!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in p||(p[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==v.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=p[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(v.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=p[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return x[e]||(x[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},r.name);t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=p[s],v=x[s];v?l=v.exports:c&&!c.declarative?l=c.esModule:c?(d(c),v=c.module,l=v.exports):l=f(s),v&&v.importers?(v.importers.push(t),t.dependencies.push(v)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=p[e];if(t)t.declarative?c(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=f(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=p[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){if(r===e)return r;var t={};if("object"==typeof r||"function"==typeof r)if(g){var n;for(var o in r)(n=Object.getOwnPropertyDescriptor(r,o))&&h(t,o,n)}else{var a=r&&r.hasOwnProperty;for(var o in r)(!a||r.hasOwnProperty(o))&&(t[o]=r[o])}return t["default"]=r,h(t,"__useDefault",{value:!0}),t}function c(r,t){var n=p[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==v.call(t,u)&&(p[u]?c(u,t):f(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function f(e){if(D[e])return D[e];if("@node/"==e.substr(0,6))return y(e.substr(6));var r=p[e];if(!r)throw"Module "+e+" not present.";return a(e),c(e,[]),p[e]=void 0,r.declarative&&h(r.module.exports,"__esModule",{value:!0}),D[e]=r.declarative?r.module.exports:r.esModule}var p={},v=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},g=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(m){g=!1}var h;!function(){try{Object.defineProperty({},"a",{})&&(h=Object.defineProperty)}catch(e){h=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var x={},y="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,D={"@empty":{}};return function(e,n,o){return function(a){a(function(a){for(var u={_nodeRequire:y,register:r,registerDynamic:t,get:f,set:function(e,r){D[e]=r},newModule:function(e){return e}},d=0;d<n.length;d++)(function(e,r){r&&r.__esModule?D[e]=r:D[e]=s(r)})(n[d],arguments[d]);o(u);var i=f(e[0]);if(e.length>1)for(var d=1;d<e.length;d++)f(e[d]);return i.__useDefault?i["default"]:i})}}}("undefined"!=typeof self?self:global)
+!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);void 0!==typeof c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return I[e]=s(D(e.substr(6)));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
-(["1"], [], function($__System) {
-
-!function(){var t=$__System;if("undefined"!=typeof window&&"undefined"!=typeof document&&window.location)var s=location.protocol+"//"+location.hostname+(location.port?":"+location.port:"");t.set("@@cjs-helpers",t.newModule({getPathVars:function(t){var n,o=t.lastIndexOf("!");n=-1!=o?t.substr(0,o):t;var e=n.split("/");return e.pop(),e=e.join("/"),"file:///"==n.substr(0,8)?(n=n.substr(7),e=e.substr(7),isWindows&&(n=n.substr(1),e=e.substr(1))):s&&n.substr(0,s.length)===s&&(n=n.substr(s.length),e=e.substr(s.length)),{filename:n,dirname:e}}}))}();
+(["1"], [], false, function($__System) {
+var require = this.require, exports = this.exports, module = this.module;
 $__System.register("2", [], function (_export) {
   "use strict";
 
@@ -486,20 +485,23 @@ $__System.register('3', [], function (_export) {
     }
   };
 });
-$__System.registerDynamic("4", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "stepway": {"version": "1.2.1-beta2"},
-    "dragdropway": {"version": "1.2.0"},
-    "formviewer": {"version": "1.2.0"}
-  };
-  global.define = __define;
-  return module.exports;
+$__System.registerDynamic("4", [], true, function ($__require, exports, module) {
+	var define,
+	    global = this || self,
+	    GLOBAL = global;
+	module.exports = {
+		"stepway": {
+			"version": "1.2.1-beta2"
+		},
+		"dragdropway": {
+			"version": "1.2.0"
+		},
+		"formviewer": {
+			"version": "1.2.0"
+		}
+	};
+	return module.exports;
 });
-
 $__System.register('5', ['4'], function (_export) {
   'use strict';
 
@@ -949,16 +951,13 @@ $__System.register('8', ['7', '9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("b", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("b", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div id=\"controlEditLeftPanel\">\n\t<div class=\"pull-right\">\n\t\t<button\n      type=\"button\"\n      class=\"close\"\n      ng-click=\"leftPanelCtrl.closeEditPanel()\"\n      aria-label=\"Close\">\n\t\t\t<span\n        aria-hidden=\"true\">\n        &times;\n      </span>\n\t\t</button>\n\t</div>\n\t<div class=\"separator10pixel\"></div>\n\t<div ng-switch on=\"leftPanelCtrl.proxyModel.temporyConfig.selectedControl\">\n\t\t<div ng-switch-when=\"none\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm-12\">\n\t\t\t\t\t<h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp;\n            Select a control\n          </h5>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div ng-switch-when=\"empty\">\n\t\t\t<left-panel-blank-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Header\">\n\t\t\t<left-panel-header-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Subtitle\">\n\t\t\t<left-panel-subtitle-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"TextInput\">\n\t\t\t<left-panel-text-input-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Password\">\n\t\t\t<left-panel-password-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Date\">\n\t\t\t<left-panel-date-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Texarea\">\n\t\t\t<left-panel-textarea-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"RichTextEditor\">\n\t\t\t<left-panel-rich-text-editor-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Radio\">\n\t\t\t<left-panel-radio-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"Checkbox\">\n\t\t\t<left-panel-check-box-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"BasicSelect\">\n\t\t\t<left-panel-basic-select-control />\n\t\t</div>\n\t\t<div ng-switch-when=\"GroupedSelect\">\n\t\t\t<left-panel-grouped-select-control />\n\t\t</div>\n\t</div>\n\t<button\n    class=\"btn btn-primary btn-block pull-right\"\n    ng-click=\"leftPanelCtrl.closeEditPanel()\">\n    Close\n  </button>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('c', ['8', 'b'], function (_export) {
 	'use strict';
 
@@ -1714,16 +1713,13 @@ $__System.register('f', ['9', 'a'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("10", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("10", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"modal-footer\">\n  <button\n    class=\"btn btn-danger pull-left\"\n    ng-click=\"leftPanelCtrl.resetControl()\">\n    <i class=\"fa fa-refresh\"></i>\n    &nbsp;\n    Reset\n  </button>\n  <button\n    class=\"btn btn-success pull-right\"\n    ng-click=\"leftPanelCtrl.updateSpecialControl(); leftPanelCtrl.saveFromEditPanel();\">\n    <i class=\"fa fa-floppy-o\"></i>\n    &nbsp;\n    Save\n  </button>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('11', ['10'], function (_export) {
   'use strict';
 
@@ -1751,16 +1747,13 @@ $__System.register('11', ['10'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("12", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("12", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n          </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextplaceholderUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          placeholder :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"Add / edit placeholder text here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label\n          for=\"inputTextRequiredUpdate\"\n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n            id=\"inputTextRequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\" \n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"inputTextDescriptionUpdate\"\n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('13', ['12'], function (_export) {
   'use strict';
 
@@ -1788,16 +1781,13 @@ $__System.register('13', ['12'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("14", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("14", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\" \n            id=\"inputTextLabelUpdate\"\n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label\n          for=\"RequiredUpdate\"\n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">\n            &nbsp;\n          </div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n            id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"DescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"DescriptionUpdate\"\n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('15', ['14'], function (_export) {
   'use strict';
 
@@ -1825,16 +1815,13 @@ $__System.register('15', ['14'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("16", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("16", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class=\"col-md-12\">\n          <label\n            for=\"inputTextDescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Subtitle text :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\" \n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"inputSubtitleTextUpdate\"\n              placeholder=\"Add / edit subtitle text here\" >\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('17', ['16'], function (_export) {
   'use strict';
 
@@ -1862,16 +1849,13 @@ $__System.register('17', ['16'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("18", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("18", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"DescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"DescriptionUpdate\"\n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('19', ['18'], function (_export) {
   'use strict';
 
@@ -1899,16 +1883,13 @@ $__System.register('19', ['18'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1a", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("1a", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"radioRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new radio :\n        </label>\n      </div>\n    </div>\n  <div class=\"row\">\n    <div>\n      <div class=\"form-group\">\n        <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"inputAddNewRadioOption\"\n          placeholder=\"add new radio\"\n          ng-model=\"leftPanelCtrl.newOptionRadio.saisie\">\n        </div>\n        <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n          <button\n            class=\"btn btn-primary\"\n            ng-click=\"leftPanelCtrl.addNewOptionRadio()\">\n            add\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-lg-12 col-md-12\">\n      <label\n        for=\"radioRowCollection\"\n        class=\" control-label greyText editPropertiesLabel\">\n        Edit/Remove radio :\n      </label>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group\">\n      <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n        <div class=\"container\">\n          <div ng-show=\"leftPanelCtrl.radioRowCollection.rows.length === 0\">\n            <h5 class=\"text-center greyText\">\n              <em>\n                - no radio : add new radio values -\n              </em>\n            </h5>\n          </div>\n          <table\n            ng-if=\"leftPanelCtrl.radioRowCollection.rows.length > 0\"\n            class=\"table table-striped\">\n            <thead>\n            <tr>\n              <th st-ratio=\"20\">\n                order\n              </th>\n              <th st-ratio=\"55\">\n                option\n              </th>\n              <th st-ratio=\"25\">\n              </th>\n            </tr>\n            <tr>\n              <th st-ratio=\"20\">\n              </th>\n              <th st-ratio=\"55\">\n                <input\n                  ng-model=\"radioFilter\"\n                  placeholder=\"search for option\"\n                  class=\"input-sm form-control\"\n                  type=\"search\" />\n              </th>\n              <th st-ratio=\"25\"></th>\n            </tr>\n            </thead>\n            <tbody>\n              <tr ng-repeat=\"radioRow in leftPanelCtrl.radioRowCollection.rows | filter:radioFilter as radioRow\">\n                <td st-ratio=\"20\">\n                  {{$index}}\n                </td>\n                <td st-ratio=\"55\">\n                  {{radioRow.option}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div class=\"pull-right\">\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"leftPanelCtrl.upThisRadioRow($index)\">\n                      <i class=\"fa fa-arrow-up\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"leftPanelCtrl.downThisRadioRow($index)\">\n                      <i class=\"fa fa-arrow-down\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-danger\"\n                      ng-click=\"leftPanelCtrl.removeRadioRow($index)\">\n                      <i class=\"fa fa-trash-o\"></i>\n                    </button>\n                   </div>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\" control-label greyText editPropertiesLabel\">\n            Label text :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"Add / edit control label here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"\">\n          <label\n            for=\"RequiredUpdate\"\n            class=\"col-md-4 control-label greyText editPropertiesLabel\">\n            Required :\n          </label>\n          <div class=\"col-md-8\">\n            <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n              id=\"RequiredUpdate\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n  \t\t\t</div>\n      </div>\n   </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('1b', ['1a'], function (_export) {
   'use strict';
 
@@ -1936,16 +1917,13 @@ $__System.register('1b', ['1a'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1c", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("1c", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\" \n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"Add / edit control label here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"placeholderUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          placeholder :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyPlaceholder\"\n            id=\"inputTextplaceholderUpdate\"\n            placeholder=\"Add / edit placeholder text here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label\n          for=\"RequiredUpdate\"\n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n              id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"DescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"DescriptionUpdate\"\n            placeholder=\"Add / edit description here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('1d', ['1c'], function (_export) {
   'use strict';
 
@@ -1973,16 +1951,13 @@ $__System.register('1d', ['1c'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("1e", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("1e", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextDescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Header text :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"inputHeaderTextUpdate\"\n            placeholder=\"Add / edit header text here\" >\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('1f', ['1e'], function (_export) {
   'use strict';
 
@@ -2010,16 +1985,13 @@ $__System.register('1f', ['1e'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("20", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("20", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Add new options :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewGroupedOption\"\n              placeholder=\"add new option\"\n              ng-model=\"leftPanelCtrl.newOptionGroupedSelect.saisie\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"leftPanelCtrl.addNewOptionGroupedSelect()\">\n              add\n            </button>\n          </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"groupedSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new groups :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              id=\"inputAddNewGroupGroupedOption\"\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.newGroupGroupedSelect.saisie\"\n              placeholder=\"Add new group\">\n          </div>\n          <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n            <button\n              class=\"btn btn-primary\"\n              ng-click=\"leftPanelCtrl.addNewGroupToGroupedSelect()\">\n              add\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          class=\" control-label greyText editPropertiesLabel\">\n          Edit/Remove options/groups:\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"leftPanelCtrl.groupedSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - no option : add new options -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"leftPanelCtrl.groupedSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th st-ratio=\"20\">\n                    order\n                  </th>\n                  <th st-ratio=\"25\">\n                    group\n                  </th>\n                  <th st-ratio=\"30\">\n                    option\n                  </th>\n                  <th st-ratio=\"25\"></th>\n                </tr>\n                <tr>\n                  <th st-ratio=\"20\"></th>\n                  <th st-ratio=\"25\"></th>\n                  <th st-ratio=\"30\">\n                    <input\n                      ng-model=\"groupedSelectFilter\"\n                      placeholder=\"search for option\"\n                      class=\"input-sm form-control\"\n                      type=\"search\" />\n                  </th>\n                  <th st-ratio=\"25\"></th>\n                </tr>\n              </thead>\n              <tbody>\n              <tr\n                ng-repeat=\"groupedSelectRow in leftPanelCtrl.groupedSelectRowCollection.rows | filter:groupedSelectFilter as groupedSelectRow\">\n                <td st-ratio=\"20\">\n                  {{$index}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div ng-if=\"leftPanelCtrl.groupSelectGroupClick.showList === true\">\n                    <div ng-if=\"leftPanelCtrl.GroupedSelectGroups.list.length === 0\">\n                      <p class=\"text-left noGroupText\">\n                        - add new groups -\n                      </p>\n                    </div>\n                    <div ng-if=\"leftPanelCtrl.GroupedSelectGroups.list.length > 0\">\n                      <ol\n                        class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12 editGroupedSelectnyaSelect\"\n                        ng-model=\"groupedSelectRow.group\"\n                        id=\"modelGroupedOptionGroupedChoose\"\n                        disabled=\"leftPanelCtrl.GroupedSelectGroups.list.length === 0\">\n                        <li\n                          class=\"nya-bs-option\"\n                          nya-bs-option=\"GroupedSelectGroup in leftPanelCtrl.GroupedSelectGroups.list\"\n                          value=\"GroupedSelectGroup\">\n                          <a>\n                            {{GroupedSelectGroup}}\n                          </a>\n                        </li>\n                      </ol>\n                    </div>\n                  </div>\n                  <div ng-if=\"leftPanelCtrl.groupSelectGroupClick.showList === false\">\n                    {{groupedSelectRow.group}}\n                  </div>\n                </td>\n                <td st-ratio=\"30\">\n                  {{groupedSelectRow.option}}\n                </td>\n                <td st-ratio=\"25\">\n                  <div class=\"pull-right\">\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"leftPanelCtrl.upThisGroupedSelectRow($index)\">\n                      <i class=\"fa fa-arrow-up\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-primary\"\n                      ng-click=\"leftPanelCtrl.downThisGroupedSelectRow($index)\">\n                      <i class=\"fa fa-arrow-down\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-warning\"\n                      ng-click=\"leftPanelCtrl.showGroupListToChoose()\">\n                      <i class=\"fa fa-pencil-square-o\"></i>\n                    </button>\n                    <button\n                      class=\"btn btn-danger\"\n                      ng-click=\"leftPanelCtrl.removeGroupedSelectRow($index)\">\n                      <i class=\"fa fa-trash-o\"></i>\n                    </button>\n                   </div>\n                </td>\n              </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n\t\t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n\t\t\t\t</div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('21', ['20'], function (_export) {
   'use strict';
 
@@ -2047,16 +2019,13 @@ $__System.register('21', ['20'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("22", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("22", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n   <label class=\"control-label greyText editPropertiesLabel\">\n      Date format :\n    </label>\n    <div class=\"\">\n      <ol\n        class=\"nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12\"\n        ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.datepickerPopup\"\n        id=\"dateformatSelect\">\n        <li\n          class=\"nya-bs-option\"\n          nya-bs-option=\"dateformat in leftPanelCtrl.demodt.formats\"\n          value=\"dateformat\">\n          <a>\n            {{dateformat}}\n          </a>\n        </li>\n      </ol>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"inputTextLabelUpdate\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Label text :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\"\n            id=\"inputTextLabelUpdate\"\n            placeholder=\"Add / edit control label here\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"\">\n        <label\n          for=\"RequiredUpdate\"\n          class=\"col-md-4 control-label greyText editPropertiesLabel\">\n          Required :\n        </label>\n        <div class=\"col-md-8\">\n          <div class=\"checkboxCssCorrection\">&nbsp;</div>\n          <input\n            type=\"checkbox\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n            id=\"RequiredUpdate\">\n        </div>\n       </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n       <div class=\"col-md-12\">\n        <label\n          for=\"DescriptionUpdate\"\n          class=\"control-label greyText editPropertiesLabel\">\n          Description :\n        </label>\n        <div class=\"\">\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n            id=\"DescriptionUpdate\"\n            placeholder=\"Add / edit description here\">\n        </div>\n       </div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('23', ['22'], function (_export) {
   'use strict';
 
@@ -2084,16 +2053,13 @@ $__System.register('23', ['22'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("24", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("24", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"inputTextLabelUpdate\"\n            class=\" control-label greyText editPropertiesLabel\">\n            Label text :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyLabel\"\n              id=\"inputTextLabelUpdate\"\n              placeholder=\"Add / edit control label here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"\">\n          <label\n            for=\"RequiredUpdate\"\n            class=\"col-md-4 control-label greyText editPropertiesLabel\">\n            Required :\n          </label>\n          <div class=\"col-md-8\">\n            <div class=\"checkboxCssCorrection\">&nbsp;</div>\n            <input\n              type=\"checkbox\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyRequired\"\n              id=\"RequiredUpdate\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n  \t\t\t<div class=\"col-md-12\">\n          <label\n            for=\"DescriptionUpdate\"\n            class=\"control-label greyText editPropertiesLabel\">\n            Description :\n          </label>\n          <div class=\"\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n              id=\"DescriptionUpdate\"\n              placeholder=\"Add / edit description here\">\n          </div>\n  \t\t\t</div>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('25', ['24'], function (_export) {
   'use strict';
 
@@ -2121,16 +2087,13 @@ $__System.register('25', ['24'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("26", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("26", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp; \n          Edit :\n        </h5>\n      </div>\n    </div> \n    <div class=\"row\">\n      <div class=\"col-sm-12\">\n        <h5 class=\"text-center greyText\">\n          Column will be blank\n        </h5>\n      </div>\n    </div>\n  </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('27', ['26'], function (_export) {
   'use strict';
 
@@ -2158,16 +2121,13 @@ $__System.register('27', ['26'], function (_export) {
     }
   };
 });
-$__System.registerDynamic("28", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("28", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"panel panel-default\">\n  <div class=\"panel-body\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h5 class=\"greyText\">\n          <i class=\"fa fa-pencil-square-o\"></i>\n          &nbsp;\n          Edit properties :\n        </h5>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n    <div class=\"row\">\n      <div class=\"col-lg-12 col-md-12\">\n        <label\n          for=\"basicSelectRowCollection\"\n          class=\" control-label greyText editPropertiesLabel\">\n          Add new options :\n        </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div>\n        <div class=\"form-group\">\n          <div class=\"col-sm-9 col-xs-9 col-md-9 col-lg-9\">\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"inputAddNewBasicOption\"\n              placeholder=\"add new option\"\n              ng-model=\"leftPanelCtrl.newOptionBasicSelect.saisie\">\n            </div>\n            <div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">\n              <button\n                class=\"btn btn-primary\"\n                ng-click=\"leftPanelCtrl.addNewOptionBasicSelect()\">\n                add\n              </button>\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n     <div class=\"col-lg-12 col-md-12\">\n       <label class=\" control-label greyText editPropertiesLabel\">\n         Edit/Remove options :\n       </label>\n     </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"form-group\">\n        <div class-\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <div class=\"container\">\n            <div ng-if=\"leftPanelCtrl.basicSelectRowCollection.rows.length === 0\">\n              <h5 class=\"text-center greyText\">\n                <em>\n                  - no option : add new options -\n                </em>\n              </h5>\n            </div>\n            <table\n              ng-if=\"leftPanelCtrl.basicSelectRowCollection.rows.length > 0\"\n              class=\"table table-striped\">\n              <thead>\n              <tr>\n                <th st-ratio=\"20\">\n                  order\n                </th>\n                <th st-ratio=\"55\">\n                  option\n                </th>\n                <th st-ratio=\"25\"></th>\n              </tr>\n              <tr>\n                <th st-ratio=\"20\"></th>\n                <th st-ratio=\"55\">\n                  <input\n                    ng-model=\"leftPanelCtrl.basicSelectFilter\"\n                    placeholder=\"search for option\"\n                    class=\"input-sm form-control\"\n                    type=\"search\" />\n                </th>\n                <th st-ratio=\"25\"></th>\n              </tr>\n              </thead>\n              <tbody>\n                <tr ng-repeat=\"basicSelectRow in leftPanelCtrl.basicSelectRowCollection.rows | filter:basicSelectFilter as basicSelectRow\">\n                  <td st-ratio=\"20\">\n                    {{$index}}\n                  </td>\n                  <td st-ratio=\"55\">\n                    {{basicSelectRow.option}}\n                  </td>\n                  <td st-ratio=\"25\">\n                    <div class=\"pull-right\">\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"leftPanelCtrl.upThisRow($index)\">\n                        <i class=\"fa fa-arrow-up\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-primary\"\n                        ng-click=\"leftPanelCtrl.downThisRow($index)\">\n                        <i class=\"fa fa-arrow-down\"></i>\n                      </button>\n                      <button\n                        class=\"btn btn-danger\"\n                        ng-click=\"leftPanelCtrl.removeRow($index)\">\n                        <i class=\"fa fa-trash-o\"></i>\n                      </button>\n                     </div>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"marginTopFivepixels\"></div>\n      <div class=\"row\">\n        <div class=\"form-group\">\n        \t<div class=\"col-md-12\">\n            <label\n              for=\"DescriptionUpdate\"\n              class=\"control-label greyText editPropertiesLabel\">\n              Description :\n            </label>\n            <div class=\"\">\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                ng-model=\"leftPanelCtrl.proxyModel.temporyConfig.formlyDesciption\"\n                id=\"DescriptionUpdate\"\n                placeholder=\"Add / edit description here\">\n            </div>\n        \t</div>\n        </div>\n      </div>\n    </div>\n  <left-panel-valid-edit-footer />\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('29', ['28'], function (_export) {
   'use strict';
 
@@ -3021,16 +2981,13 @@ $__System.register('30', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("31", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("31", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div ng-click=\"ddDecorContainerCtrl.collapseFct()\">\n   <h6\n    ng-show=\"ddDecorContainerCtrl.config.isEnabled\"\n    class=\"ddDecorContainerCtrl.isCollapsableZone\"\n    style=\"cursor:pointer\">\n    <button class=\"btn btn-primary btn-xs\">\n      <span class=\"{{ddDecorContainerCtrl.currentIconClass()}}\"></span>\n    </button>\n    &nbsp;\n    {{ddDecorContainerCtrl.currentTitle}}\n  </h6>\n</div>\n<div uib-collapse=\"ddDecorContainerCtrl.isCollapsed\">\n   <div id=\"ddDecorContainerWillTranscludeHere\"></div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('32', ['31', '33'], function (_export) {
 	/* global angular */
 	'use strict';
@@ -3209,16 +3166,13 @@ $__System.register('33', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("34", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("34", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div class=\"{{styleParam.ApplycssClass}}\">\n  <div id=\"visualPanel\">\n    <div  class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3 class=\"panel-title\">\n          <i class=\"{{currentFontAwesome}}\"></i>&nbsp;\n          {{currentTitle}}\n           <div ng-show=\"headerConfig.HeaderButtonVisible\">\n             <button\n              class=\"btn btn-primary btn-xs buttonHeaderAddNewLine center-block\"\n              ng-click=\"addNewLineFct();\">\n               <span class=\"glyphicon glyphicon-plus\"></span>\n               &nbsp;\n               add new line\n             </button>\n           </div>\n        </h3>\n      </div>\n      <div class=\"panel-body\">\n         <div class=\"row\">\n            <div class=\"col-md-12\" ng-transclude>\n            </div>\n         </div>\n      </div>\n    </div>\n   </div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('35', ['34'], function (_export) {
 	/* global angular */
 	'use strict';
@@ -3295,16 +3249,13 @@ $__System.register('35', ['34'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("36", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("36", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div>\n  <div id=\"itemDirectiveTranscludeHere\"></div>\n</div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('37', ['36'], function (_export) {
 	'use strict';
 
@@ -3486,16 +3437,13 @@ $__System.register('38', ['9', 'a'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("39", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("39", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<div\n  ng-class=\"{confirmLineDelete : deleteLine.readyToDelete}\"\n  ng-dblclick=\"removeMe($event);\"\n  ng-click=\"cancelDelete($event);\">\n  <button\n    ng-show=\"deleteLine.readyToDelete === true\"\n    type=\"button\"\n    class=\"btn btn-danger pull-right buttonCloseLine\" >\n     <span\n      class=\"glyphicon glyphicon-trash\"\n      aria-hidden=\"true\">\n    </span>\n  </button>\n</div>\n<div id=\"lineDirectiveTranscludeHere\"></div>\n";
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('3a', ['39'], function (_export) {
 	/* global angular */
 	'use strict';
@@ -5240,21 +5188,18 @@ $__System.register('48', ['47'], function (_export) {
 		}
 	};
 });
-$__System.registerDynamic("49", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("49", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
   module.exports = "<section id=\"pageWfEdit\">\n  <div>\n    <div class=\"container\">\n      <section id=\"preview\">\n        <div id=\"preview-content\">\n\t\t\t\t\t<div class=\"content-container\">\n\t\t\t\t\t\t<toaster-container\n              toaster-options=\"{ 'position-class': 'toast-top-full-width', 'extendedTimeout' : 500,'timeOut': 500 }\">\n\t\t\t\t\t\t</toaster-container>\n\t\t\t\t\t\t<uib-tabset justified=\"true\">\n\t\t\t\t\t\t\t<uib-tab\n                select=\"vm.tabJustSelected(2)\"\n                active=\"vm.tab.editTab.active\"\n                heading=\"Edit /Create\">\n                <div class=\"row\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tpageslide\n\t\t\t\t\t\t\t\t\t\tps-open=\"vm.editPanelModel.toggle\"\n\t\t\t\t\t\t\t\t\t\tps-side=\"left\"\n\t\t\t\t\t\t\t\t\t\tps-cloak=\"true\"\n\t\t\t\t\t\t\t\t\t\tps-size=\"400px\">\n\t\t\t\t\t\t\t\t\t\t<left-panel\n                      close-edit-panel=\"vm.closeEditPanel()\"\n                      save-from-edit-panel=vm.saveFromEditPanel()>\n                    </left-panel>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t<div class=\"row advancedDemo\">\n\t\t\t\t\t\t\t\t\t\t\t<div ng-repeat=\"containers in vm.dragDropModel\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-drop-zone\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-properties=\"vm.easyFormDragDropProperties.dropZoneConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-verbose-mode=\"{{vm.easyFormDragDropProperties.dropZoneConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tdd-drop-zone-add-new-line=\"vm.insertNewLine()\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div \tclass=\"dropzone box box-yellow\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['containerType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackContainer($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallback(event, index, item, external, type, 'containerType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"items in containers\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'containerType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"containers.splice($index, 1);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"$parent.$index == 0\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"container-element box box-blue\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-container\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-properties=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index]\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-is-collpased=\"vm.easyFormDragDropProperties.containerConfig.decoration[$index].isCollapsed\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-container-current-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-collapse-all=\"vm.collapseAllGroupControl(exceptThisOne)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div dd-decor-include-container-here>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-line\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-verbose-mode=\"{{vm.easyFormDragDropProperties.containerConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-line-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-remove-line=\"vm.removeThisLine($index)\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<ul\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-list=\"items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-allowed-types=\"['itemType']\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-horizontal-list=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-external-sources=\"true\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-disable-if=\"items.length > 2\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragover=\"vm.dragoverCallbackItems($parent.$parent.$index, $parent.$index, $index, external);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-drop=\"vm.dropCallbackItems(event, index, $index,$parent.$index, $parent.$parent.$index, $parent.$parent.$parent.$index, item, external, type, 'itemType');\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"itemlist\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-placeholder=\"dndPlaceholder\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-value-when-dragging=\"dndDraggingSource\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-full-model = \"vm.dragDropModel\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-content-counter-force-css-refresh = \"command.forceRefresh\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-repeat=\"item in items\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-draggable=\"item\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-type=\"'itemType'\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-effect-allowed=\"copyMove\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-dragstart=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-moved=\"vm.dndItemMoved($parent.$parent.$index, $parent.$index, $index);\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdnd-copied=\"\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-decor-item\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-verbose-mode=\"{{vm.easyFormDragDropProperties.itemConfig.verboseMode}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-current-index=\"{{$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-index=\"{{$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-parent-parent-index = \"{{$parent.$parent.$index}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-items-count=\"items.length\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-item-css-class=\"{{item.cssClass}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"itemContent\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tdd-no-editable-control\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"rightClickCtrl\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{rightClickCtrlSelected : item.rightCliked === true}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-set-right-clicked=\"vm.setRightClicked(previousState, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click=\"vm.toggleEditPanel($event, $parent.$index, $index, item)\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-selected-class=\"rightClickCtrlSelected\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-is-selected=\"{{item.rightCliked}}\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\teda-right-click-col-index = \"{{$parent.$parent.$index}}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span ng-bind-html=\"item.label | trustThis\"></span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\t\t\t\t\t\t\t<uib-tab\n\t\t\t\t\t\t\t\tselect=\"vm.tabJustSelected(1)\"\n\t\t\t\t\t\t\t\tactive=\"vm.tab.previewTab.active\"\n\t\t\t\t\t\t\t\theading=\"Preview\">\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<form ng-submit=\"vm.onSubmit()\">\n\t\t\t\t\t\t\t\t\t\t\t<formly-form\n\t\t\t\t\t\t\t\t\t\t\t\tid=\"previewFormlyForm\"\n\t\t\t\t\t\t\t\t\t\t\t\tmodel=\"vm.model\"\n\t\t\t\t\t\t\t\t\t\t\t\tfields=\"vm.wfFormFields\">\n\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"submit\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.submitButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"cancel\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{vm.configuration.cancelButtonText}}\n\t\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t\t</formly-form>\n\t\t\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div  class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.customizeFormButtonsExpanded =!vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.customizeFormButtonsExpanded, 'fa-angle-up' : vm.ihm.preview.customizeFormButtonsExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-wrench\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tCustomize form buttons\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div uib-collapse=\"vm.ihm.preview.customizeFormButtonsExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputSubmitButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Submit button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputSubmitButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Submit button text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.submitButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-6\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputCancelButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCustomize Cancel button Text :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputCancelButtontext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Cancel button text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.cancelButtonText\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyModelViewExpanded =!vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyModelViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyModelViewExpanded}\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t\tDATA MODEL\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div uib-collapse=\"vm.ihm.preview.formlyModelViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.model | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.formlyFieldsViewExpanded =!vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\">\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.formlyFieldsViewExpanded, 'fa-angle-up' : vm.ihm.preview.formlyFieldsViewExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tFIELDS MODEL (ready to save to database one)\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div uib-collapse=\"vm.ihm.preview.formlyFieldsViewExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<pre>\n\t\t\t\t\t\t\t\t\t\t\t\t{{vm.wfFormFieldsOnlyNeededProperties | json}}\n\t\t\t\t\t\t\t\t\t\t\t</pre>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\t\tclass=\"panel-heading heading-preview\"\n\t\t\t\t\t\t\t\t\t\tng-click=\"vm.ihm.preview.saveThisFormExpanded =!vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-xs\" >\n\t\t\t\t\t\t\t\t\t\t\t\t<i\n\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"fa\"\n\t\t\t\t\t\t\t\t\t\t\t\t\tng-class=\"{'fa-angle-down':!vm.ihm.preview.saveThisFormExpanded, 'fa-angle-up' : vm.ihm.preview.saveThisFormExpanded}\"></i>\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-camera-retro\"></i>\n\t\t\t\t\t\t\t\t\t\t\t&nbsp;\n\t\t\t\t\t\t\t\t\t\t\tSave this form\n\t\t\t\t\t\t\t\t\t\t</h3>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t\t\t\t\t\t<div uib-collapse=\"vm.ihm.preview.saveThisFormExpanded\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tfor=\"inputNameFormtext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\" greyText control-label\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tName to this form :\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tid=\"inputNameFormtext\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tplaceholder=\"Enter formName\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tng-model=\"vm.configuration.formName\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary btn-block btn-lg\"\n\t\t\t\t\t\t\t\t\t\t\t\tng-click=\"vm.saveThisForm()\">\n\t\t\t\t\t\t\t\t\t\t\t\tsave this form\n\t\t\t\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</uib-tab>\n\t\t\t\t\t\t</uib-tabset>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</section>\n\t\t\t<hr/>\n\t\t\t<section>\n        <h6 class=\"text-right\">\n          Easy form generator : {{vm.easyFormGeneratorVERSION}} — Erwan DATIN (MacKentoch)\n        </h6>\n\t\t\t</section>\n    </div>\n  </div>\n</section>\n";
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("4a", [], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic("4a", [], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
   var $Object = Object;
   module.exports = {
     create: $Object.create,
@@ -5268,83 +5213,70 @@ $__System.registerDynamic("4a", [], true, function($__require, exports, module) 
     getSymbols: $Object.getOwnPropertySymbols,
     each: [].forEach
   };
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("4b", ["4a"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
+$__System.registerDynamic('4b', ['4a'], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
   var $ = $__require('4a');
   module.exports = function defineProperty(it, key, desc) {
     return $.setDesc(it, key, desc);
   };
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("4c", ["4b"], true, function($__require, exports, module) {
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  module.exports = {
-    "default": $__require('4b'),
-    __esModule: true
-  };
-  global.define = __define;
+$__System.registerDynamic("4c", ["4b"], true, function ($__require, exports, module) {
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  /* */
+  module.exports = { "default": $__require("4b"), __esModule: true };
   return module.exports;
 });
-
-$__System.registerDynamic("9", ["4c"], true, function($__require, exports, module) {
+$__System.registerDynamic("9", ["4c"], true, function ($__require, exports, module) {
+  /* */
   "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  var _Object$defineProperty = $__require('4c')["default"];
-  exports["default"] = (function() {
+
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  var _Object$defineProperty = $__require("4c")["default"];
+  exports["default"] = function () {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
         descriptor.enumerable = descriptor.enumerable || false;
         descriptor.configurable = true;
-        if ("value" in descriptor)
-          descriptor.writable = true;
+        if ("value" in descriptor) descriptor.writable = true;
         _Object$defineProperty(target, descriptor.key, descriptor);
       }
     }
-    return function(Constructor, protoProps, staticProps) {
-      if (protoProps)
-        defineProperties(Constructor.prototype, protoProps);
-      if (staticProps)
-        defineProperties(Constructor, staticProps);
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
       return Constructor;
     };
-  })();
+  }();
   exports.__esModule = true;
-  global.define = __define;
   return module.exports;
 });
-
-$__System.registerDynamic("a", [], true, function($__require, exports, module) {
+$__System.registerDynamic("a", [], true, function ($__require, exports, module) {
+  /* */
   "use strict";
-  ;
-  var global = this,
-      __define = global.define;
-  global.define = undefined;
-  exports["default"] = function(instance, Constructor) {
+
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  exports["default"] = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   };
+
   exports.__esModule = true;
-  global.define = __define;
   return module.exports;
 });
-
 $__System.register('4d', [], function (_export) {
 	/* global angular */
 	'use strict';

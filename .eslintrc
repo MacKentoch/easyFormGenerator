@@ -1,10 +1,11 @@
 {
+  "parser": "babel-eslint",
   "ecmaFeatures": {
       "modules": true,
       "experimentalObjectRestSpread": true
   },
-  parserOptions: {
-    sourceType: "module"
+  "parserOptions": {
+    "sourceType": "module"
   },
   "rules": {
     // "indent": [ 2, 2 ],
@@ -34,7 +35,7 @@
     "eslint:recommended",
     "angular"
   ],
-  plugins: [
+  "plugins": [
     "angular"
   ]
 }

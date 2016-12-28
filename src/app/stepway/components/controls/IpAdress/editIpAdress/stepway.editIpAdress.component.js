@@ -3,11 +3,11 @@ import editIpAdressControlTemplate from './stepway.editIpAdress.template.html!te
 export const EDIT_IP_ADRESS_COMPONENT = 'editIpAdressControl';
 
 export const editIpAdressControlComponent = {
-  template      : editIpAdressControlTemplate,
-  bindings      : {
-    nyaSelect                 : '='
+  template: editIpAdressControlTemplate,
+  bindings: {
+    nyaSelect: '='
   },
-  controller    :
+  controller:
   class editIpAdressControlController {
     constructor() {
 

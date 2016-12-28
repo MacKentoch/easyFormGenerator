@@ -204,7 +204,7 @@ fieldset[disabled] .form-control {
 textarea.form-control {
   height: auto; }
 
-/* animation ng-repeat in mailbox 
+/* animation ng-repeat in mailbox
 easy customize animation from here : http://www.nganimate.org/angularjs/ng-repeat/yo-yo-css3-keyframes-animation*/
 .animate-enter {
   -webkit-animation: enter 600ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -300,8 +300,6 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 ===========================================================*/
 #pageWfEdit {
   margin-top: 40px;
-  margin-/*    right:2%;
-    left:2%; */
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #F2F2F2;
