@@ -10,9 +10,9 @@ body {
     top:$body-padding-top;
     bottom:$body-padding-bottom;
   }
-  
-  height: $body-height; 
-  background-color:$background-color-grey; 
+
+  height: $body-height;
+  background-color:$background-color-grey;
   font-family: $font-family-roboto;
 }
 
@@ -48,19 +48,19 @@ body {
   margin-right:20px;
 }
 
-textarea, textarea.form-control, input.form-control, 
-input[type=text], input[type=password], input[type=email], 
-input[type=number], [type=text].form-control, [type=password].form-control, 
+textarea, textarea.form-control, input.form-control,
+input[type=text], input[type=password], input[type=email],
+input[type=number], [type=text].form-control, [type=password].form-control,
 [type=email].form-control, [type=tel].form-control, [contenteditable].form-control {
 font-size:$input-font-size;
 }
 select, select.form-control {
   font-size:$input-font-size;
-} 
+}
 
 /*container to 100%*/
 @include media-bureau-min-width {
-  .container 
+  .container
   {
     width: $container-width;
     margin-right:20px;
@@ -68,7 +68,7 @@ select, select.form-control {
 }
 
 @include media-smartphone-min-width {
-  .container 
+  .container
   {
     width: $container-width;
     margin-right:20px;
@@ -76,7 +76,7 @@ select, select.form-control {
 }
 
 @include media-tablette-min-width {
-  .container 
+  .container
   {
     width: $container-width;
 
@@ -85,11 +85,11 @@ select, select.form-control {
 
 .container-fluid {
   margin-right: auto;
-  margin-left: auto; 
+  margin-left: auto;
 }
   .container-fluid padding {
     left: 30px;
-    right: 30px; 
+    right: 30px;
 }
 .panel-default>.panel-heading {
   color: $panel-defaut-panel-heading-text-color;
@@ -114,16 +114,16 @@ select, select.form-control {
   padding-bottom: 22px;
   padding-right: 15px;
   padding-left: 15px;
-  } 
+  }
 
- .table>thead>tr>th, 
- .table>tbody>tr>th, 
- .table>tfoot>tr>th, 
- .table>thead>tr>td, 
- .table>tbody>tr>td, 
+ .table>thead>tr>th,
+ .table>tbody>tr>th,
+ .table>tfoot>tr>th,
+ .table>thead>tr>td,
+ .table>tbody>tr>td,
  .table>tfoot>tr>td{
   vertical-align: middle;
- }  
+ }
 
 a {
   &:hover {
@@ -146,7 +146,7 @@ a {
 }
 .socialIcon{
   &:hover{
-    color:$background-color-grey;  
+    color:$background-color-grey;
   }
   font-size: 32px;
 }
@@ -224,14 +224,14 @@ fieldset[disabled] .form-control {
 textarea.form-control {
   height: auto;
 }
-/* animation ng-repeat in mailbox 
+/* animation ng-repeat in mailbox
 easy customize animation from here : http://www.nganimate.org/angularjs/ng-repeat/yo-yo-css3-keyframes-animation*/
-.animate-enter{ 
+.animate-enter{
     -webkit-animation: enter 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
     animation: enter 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
     display: block;
     position: relative;
-} 
+}
 @-webkit-keyframes enter {
     from {
         opacity: 0;
@@ -262,13 +262,13 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
         left: 0px;
     }
 }
- 
-.animate-leave { 
+
+.animate-leave {
     -webkit-animation: leave 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
     animation: leave 600ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
     display: block;
     position: relative;
-} 
+}
 @-webkit-keyframes leave {
     to {
         opacity: 0;
@@ -316,11 +316,11 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 }
 
 .table-user-information{
-   &>thead>tr>th, 
-   &>tbody>tr>th, 
-   &>tfoot>tr>th, 
-   &>thead>tr>td, 
-   &>tbody>tr>td, 
+   &>thead>tr>th,
+   &>tbody>tr>th,
+   &>tfoot>tr>th,
+   &>thead>tr>td,
+   &>tbody>tr>td,
    &>tfoot>tr>td {
     vertical-align: middle;
   }
@@ -346,8 +346,6 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 #pageWfEdit{
   margin:{
     top:40px;
- /*    right:2%;
-    left:2%; */
   }
   padding:{
     top:30px;
@@ -365,14 +363,14 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 .addNewLine{
     font-size: 24px; //H4 equiv
     vertical-align: middle;
-    color: #666666; 
+    color: #666666;
 }
 #editor{
   margin-top: 0px;
   margin-bottom: 0px;
   height: 150px;
   background-color:#52B3D9;
-  border-bottom: solid 1px #2C3E50; 
+  border-bottom: solid 1px #2C3E50;
 }
 #editor-content{
   /* padding-top: 25px; */
@@ -383,14 +381,14 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 }
 #preview{
   margin-top: 0px;
-  margin-bottom: 0px;      
+  margin-bottom: 0px;
   /* background-color: #E4F1FE; */
    border:solid 1 px #2C3E50;
   -moz-box-shadow: 0px 0px 10px 0px #ddd;
   -webkit-box-shadow: 0px 10px 5px 0px #ddd;
   -o-box-shadow: 0px 0px 10px 0px #ddd;
   box-shadow: 0px 0px 10px 0px #ddd;
-  filter:progid:DXImageTransform.Microsoft.Shadow(color=#ddd, Direction=NaN, Strength=10); 
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#ddd, Direction=NaN, Strength=10);
 }
 #preview-content{
   background-color: #FFF;
@@ -428,7 +426,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
  {
   font-size: 32px;
   text-align: center;
-  padding:{ 
+  padding:{
     top:25%;
     bottom:25%;
   }
@@ -503,7 +501,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   left:0px;
   top:0px;
   opacity: 0.8;
-} 
+}
 /*=========================================================
   STEP INDICATOR
 =========================================================*/
@@ -514,15 +512,15 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 }
 
 .stepwizard-step p {
-    margin-top: 10px;   
-    color: #666666; 
+    margin-top: 10px;
+    color: #666666;
 }
 
 .stepwizard-row {
     display: table-row;
 }
 .stepwizard {
-    display: table;     
+    display: table;
     width: 100%;
     position: relative;
 }
@@ -538,9 +536,9 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
     width: 100%;
     height: 1px;
     background-color: #ccc;
-    z-order: 0;  
+    z-order: 0;
 }
-.stepwizard-step {    
+.stepwizard-step {
     display: table-cell;
     text-align: center;
     position: relative;
@@ -569,7 +567,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   margin:{
     top:6px;
   }
-} 
+}
 .textControlLabel{
   color: #000;
 }
@@ -595,7 +593,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
 // textAngular div to apply a margin bottom
 .ta-scroll-window
 {
-  margin-bottom:16px;  
+  margin-bottom:16px;
 }
 //checkbox Y-placement correction
 .formly-field-checkbox{
@@ -605,13 +603,13 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   margin-bottom : 20px;
 }
 #inputAddNewBasicOption{
-  margin-bottom : 20px;  
+  margin-bottom : 20px;
 }
 #inputAddNewGroupedOption{
-  margin-bottom : 20px;   
+  margin-bottom : 20px;
 }
 #inputAddNewGroupGroupedOption{
-  margin-bottom : 20px;  
+  margin-bottom : 20px;
 }
 .editGroupedSelectnyaSelect {
     margin-bottom:0px;
@@ -667,7 +665,7 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   // top: -10px;
 }
 
-.error-messages.ng-leave, 
+.error-messages.ng-leave,
 .message.ng-leave,
 .validation.ng-leave {
   opacity: 1;
@@ -680,11 +678,3 @@ easy customize animation from here : http://www.nganimate.org/angularjs/ng-repea
   opacity: 0;
   // top: -10px;
 }
-
-
-
-
-
-
-
-
