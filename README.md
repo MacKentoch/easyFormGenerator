@@ -59,7 +59,7 @@ ______
 Have a try here: [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_StepWay.html)
 
  - **Step way visual preview here**:
-![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/preview.png)
+![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/images/preview.png)
 
 ______
 
@@ -99,38 +99,12 @@ ______
 npm install --save easy-form-generator
 ```
 
-####Bower way:
-```bash
-bower install easy-form-generator
-```
-
-This way is super easy way since you will be installed all easy form generator dependencies.
-
-Then just launch `EasyFormGenerator-StepWay-DEMO.html` and `EasyFormViewer-DEMO.html` in your browser. You will find it in:
-  - bower_components/
-  - |__easy-form-generator/
-  - |____EasyFormGenerator-StepWay-DEMO.html
-  - |____EasyFormViewer-DEMO.html
-
-Finally:
->Inspire yourself from these demo (considering numerous dependencies it may help).
->Note about easy form viewer: bind `edaFieldsModel` model not the formly one.
-
-
-####Manual way
-
- - clone this repository `git clone https://github.com/MacKentoch/easyFormGenerator.git`
- - or just download it
- - check html in dist directory:
-  - `index_DragDropWay.html` is the `drag drop way` (BETA)
-  - `index_StepWay.html` is the `step way` (full easy form html)
-  - `index_StepWay_As_module` is the `step way` (a module more production orientated)
-
 _____
 
 ###Using Step way version (production friendly)
 
->demo: `index_StepWay_As_module` in `dist` directory.
+> Check demo: `formviewer.html` in `preview` directory.
+
 
 ####Inject easy form generator in your app
 
@@ -183,7 +157,6 @@ saveForm(edaEasyFormGeneratorModel)
 ####dependencies
 
 Easy form generator creates amazing bootstrap forms thanks to these dependencies:
-- angular formly (where all magic comes from)
 - bootstrap (css/ jquery)
 - bootswatch (nice theme)
 - jquery
@@ -193,12 +166,14 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - nya-bootstrap-select (for basic and grouped select)
 - angular toaster (nice toaster messages)
 
+> Check demo: `formviewer.html` in `preview` directory.
+
 ____
 
 
 ###Using Drag and drop way version (BETA)
 
->demo: `index_DragDropWay_As_Module.html` in `dist` directory.
+> Check demo: `dragDropWay.html` in `preview` directory.
 
 ####Inject easy form generator in your app
 
@@ -235,7 +210,7 @@ ____
 
 ###Using Easy form viewer (production friendly)
 
->demo: `index_easyFormViewer_Module.html` in `dist` directory.
+>demo: `formviewer.html` in `preview` directory.
 
 ####Inject easy form viewer in your app
 
@@ -304,7 +279,8 @@ Just inject `eda.easyFormViewer` in you application:
 ______
 
 ## What is new?
- - December 2016: v1.2.1:
+ - December 2016: v2.0.0 (big tsunami update):
+  - leave bower, gulp and jspm in favor of webpack + npm
   - new control: `IP adress`
   - new language added `Brazilian Portuguese` thanks to `Leandro.Battisti`
  - December 2016: v1.2.0 is released

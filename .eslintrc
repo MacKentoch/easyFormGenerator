@@ -20,7 +20,10 @@
     "angular/timeout-service" : 0,
     "angular/log" : 0,
     "angular/window-service" : 0,
-    "angular/typecheck-array": 0
+    "angular/typecheck-array": 0,
+    # custom:
+    "no-global-assign": 0,
+    "no-unsafe-negation": 0  
   },
   "env": {
     "es6": true,

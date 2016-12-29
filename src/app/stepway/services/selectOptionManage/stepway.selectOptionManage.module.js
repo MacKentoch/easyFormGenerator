@@ -1,4 +1,3 @@
-/* global angular */
 import selectOptionManage, {
   SELECT_OPTION_MANAGE_NAME
 }                            from './stepway.selectOptionManage.service';
