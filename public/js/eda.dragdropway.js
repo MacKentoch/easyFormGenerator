@@ -486,21 +486,11 @@ $__System.register('3', [], function (_export) {
   };
 });
 $__System.registerDynamic("4", [], true, function ($__require, exports, module) {
-	var define,
-	    global = this || self,
-	    GLOBAL = global;
-	module.exports = {
-		"stepway": {
-			"version": "1.2.1-beta2"
-		},
-		"dragdropway": {
-			"version": "1.2.0"
-		},
-		"formviewer": {
-			"version": "1.2.0"
-		}
-	};
-	return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "stepway": { "version": "1.2.1-beta2" }, "dragdropway": { "version": "1.2.0" }, "formviewer": { "version": "1.2.0" } };
+  return module.exports;
 });
 $__System.register('5', ['4'], function (_export) {
   'use strict';

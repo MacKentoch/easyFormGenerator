@@ -9,13 +9,13 @@ import localPtBr from '../../i18n/local-pt-br.json!json';
 const TRANSLATE_CONFIG = 'easyFormTranslateConfig';
 
 function translateConfig($translateProvider){
-	$translateProvider.translations('en', localEn);
-	$translateProvider.translations('fr', localFr);
-	$translateProvider.translations('es', localEs);
-	$translateProvider.translations('de', localDe);
-	$translateProvider.translations('tr', localTr);
-	$translateProvider.translations('jp', localJp);
-	$translateProvider.translations('pt-br', localPtBr);
+  $translateProvider.translations('en', localEn);
+  $translateProvider.translations('fr', localFr);
+  $translateProvider.translations('es', localEs);
+  $translateProvider.translations('de', localDe);
+  $translateProvider.translations('tr', localTr);
+  $translateProvider.translations('jp', localJp);
+  $translateProvider.translations('pt-br', localPtBr);
 }
 
 translateConfig.$inject = ['$translateProvider'];

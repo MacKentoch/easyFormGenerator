@@ -347,7 +347,7 @@ gulp.task('eslint:formviewer:es6', () => {
 });
 
 
-const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle}`;
+const stepWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundle} `;
 gulp.task('stepWayES6:sfx',
   // ['stepway:clean'],
   cb => {
@@ -359,7 +359,7 @@ gulp.task('stepWayES6:sfx',
 });
 
 
-const stepWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundleMin} --minify`;
+const stepWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.stepWay.src} ${gulpConfig.jspm.stepWay.bundleMin}  --minify`;
 gulp.task('stepWayES6:sfx:min',
   // ['stepway:clean'],
   cb => {
@@ -388,7 +388,7 @@ gulp.task('build:stepWay:ES6:min', [
 
 
 //drag and drop way
-const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle}`;
+const dragAndDropWaySfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundle} `;
 gulp.task('dragdropway:ES6:sfx',
   // ['dragdropway:clean'],
   cb => {
@@ -400,7 +400,7 @@ gulp.task('dragdropway:ES6:sfx',
 });
 
 
-const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin} --minify`;
+const dragAndDropWaySfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.dragDropWay.src} ${gulpConfig.jspm.dragDropWay.bundleMin}  --minify`;
 gulp.task('dragdropway:ES6:sfx:min',
   // ['dragdropway:clean'],
   cb => {
@@ -423,7 +423,7 @@ gulp.task('build:dragdropway:ES6:min', [
 
 
 //formViewer
-const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle}`;
+const formViewerSfxNoMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundle} `;
 gulp.task('formViewer:ES6:sfx',
   // ['formviewer:clean'],
   cb => {
@@ -434,7 +434,7 @@ gulp.task('formViewer:ES6:sfx',
   });
 });
 
-const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin} --minify`;
+const formViewerSfxMinifyCMD  = `jspm bundle-sfx ${gulpConfig.jspm.formViewer.src} ${gulpConfig.jspm.formViewer.bundleMin}  --minify`;
 gulp.task('formViewer:ES6:sfx:min',
   // ['formviewer:clean'],
   cb => {

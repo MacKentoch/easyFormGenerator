@@ -72,8 +72,11 @@
   "homepage": "https://github.com/MacKentoch/easyFormGenerator#readme",
   "jspm": {
     "dependencies": {
-      "angular": "github:angular/bower-angular@^1.5.0",
+      "angular": "github:angular/bower-angular@1.5.0",
+      "angular-formly": "github:formly-js/angular-formly@6.8.2",
+      "angular-formly-templates-bootstrap": "npm:angular-formly-templates-bootstrap@4.3.2",
       "angular-mocks": "github:angular/bower-angular-mocks@^1.5.0",
+      "api-check": "npm:api-check@^7.5.5",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17",
       "text": "github:systemjs/plugin-text@^0.0.2"

@@ -26,11 +26,11 @@ const configurationModelInit = {
           type:'none',
           key: 'none' // ,
           // templateOptions: {
-          //                     label: 'none',
-          //                     placeholder: 'none',
-          //                     required: false,
-          //                     description: 'Descriptive text'
-          //                   }
+          //   label: 'none',
+          //   placeholder: 'none',
+          //   required: false,
+          //   description: 'Descriptive text'
+          // }
           }
         }
       ]
@@ -146,14 +146,13 @@ const extractFormlyValidation = (obj) => {
   return defaultValue;
 };
 
-
 const addDatepickerOptionsProperty = (fieldToPush, configurationModel, lineIndex) => {
   const control = {...configurationModel.lines[lineIndex].columns[0].control};
   fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(control);
 };
 
 const addOneColumnHeader = (formlyModel, configurationModel, lineIndex) => {
-  const control = {...configurationModel.lines[lineIndex].columns[0].control};
+  const control = { ...configurationModel.lines[lineIndex].columns[0].control };
   const defaultTemplate = '<div></div>';
   const headerTemplateCol0 =  {
     template : `
@@ -178,11 +177,11 @@ const addOneColumnHeader = (formlyModel, configurationModel, lineIndex) => {
 };
 
 const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
-  const control = {...configurationModel.lines[lineIndex].columns[0].control};
+  const control = { ...configurationModel.lines[lineIndex].columns[0].control };
   const fieldToPush = {
     className: 'col-xs-12',
-    type: control.type && control.type !== 'none' ? control.type : 'blank',
-    key: control.key ?  control.key : 'blank' + Date.now(),
+    type: control && control.type && control.type !== 'none' ? control.type : 'blank',
+    key: control && control.key ? control.key : 'blank' + Date.now(),
     templateOptions: {
       type: extractTemplateOptionType(control),
       label: extractTemplateOptionLabel(control),
@@ -204,42 +203,59 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
   formlyModel.push(fieldToPush);
 };
 
-
-
 const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
-
+  const control0 = { ...configurationModel.lines[lineIndex].columns[0].control };
+  const control1 = { ...configurationModel.lines[lineIndex].columns[0].control };
   //text header is stored in "description" in templateOtion model
   const headerTemplateCol0 =  {
   className: 'col-xs-6',
-  template : `<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control)}<h2><hr/></div></div>`
+  template: `
+  <div class="row">
+    <div class="">
+      <h2 class="text-center">
+        ${extractTemplateOptionDescription(control0)}
+      </h2>
+      <hr/>
+    </div>
+  </div>
+  `
   };
 
   const headerTemplateCol1 =  {
   className: 'col-xs-6',
-  template:`<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control)}<h2><hr/></div></div>`
+  template:`
+  <div class="row">
+    <div class="">
+      <h2 class="text-center">
+        ${extractTemplateOptionDescription(control1)}
+      </h2>
+      <hr/>
+    </div>
+  </div>
+  `
   };
 
-  const controlCol0 =     {
-  className: 'col-xs-6',
-  type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-  key  : typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-  templateOptions: {
-  type          : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-  label          : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-  required       : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-  placeholder   : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-  description   : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-  options       : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-  },
-  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+  const controlCol0 = {
+    className: 'col-xs-6',
+    type: control0 && control0.type && control0.type !== 'none' ? control0.type:  'blank',
+    key: control0 && control0.key && control0.key !== 'none' ? control0.key: 'blank' + Date.now(),
+    templateOptions: {
+      type: extractTemplateOptionType(control0),
+      label: extractTemplateOptionLabel(control0),
+      required: extractTemplateOptionRequired(control0),
+      placeholder: extractTemplateOptionPlaceholder(control0),
+      description: extractTemplateOptionDescription(control0),
+      options: extractTemplateOptionOptions(control0)
+    },
+    expressionProperties: extractFormlyExpressionProperties(control0),
+    validators: extractFormlyValidators(control0),
+    validation: extractFormlyValidation(control0)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
   //////////////////////////////////////////////
-  if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
-  addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
+  if (control0.type === 'datepicker') {
+    addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
   }
 
   const controlCol1 =  {
@@ -263,7 +279,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
   //datepicker additionnal particular property
   //////////////////////////////////////////////
   if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-  addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
+  addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
   }
 
   const FieldGroup = [];

@@ -9,25 +9,20 @@ $__System.register("2", [], function (_export) {
     setters: [],
     execute: function () {
       _export("default", window.angular);
+
+      // import 'angular';
+      // import 'api-check';
+      // import 'angular-formly';
+      // import 'angular-formly-templates-bootstrap';
     }
   };
 });
 $__System.registerDynamic("3", [], true, function ($__require, exports, module) {
-	var define,
-	    global = this || self,
-	    GLOBAL = global;
-	module.exports = {
-		"stepway": {
-			"version": "1.2.1-beta2"
-		},
-		"dragdropway": {
-			"version": "1.2.0"
-		},
-		"formviewer": {
-			"version": "1.2.0"
-		}
-	};
-	return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "stepway": { "version": "1.2.1-beta2" }, "dragdropway": { "version": "1.2.0" }, "formviewer": { "version": "1.2.0" } };
+  return module.exports;
 });
 $__System.register('4', ['3'], function (_export) {
 	'use strict';
@@ -261,725 +256,123 @@ $__System.register('6', ['5'], function (_export) {
   };
 });
 $__System.registerDynamic("7", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "Hello",
-
-        "EDIT_TAB": "Edit / Create",
-        "PREVIEW_TAB": "Preview",
-
-        "WIZARD_LINES": "lines",
-        "WIZARD_LAYOUT": "layout",
-        "WIZARD_CONTROLS": "controls",
-        "WIZARD_SAVE": "save",
-
-        "PAGER_PREVIOUS": "Previous",
-        "PAGER_NEXT": "Next",
-
-        "COMMAND_PANEL": "Command",
-        "VISUAL_PANEL": "Visual",
-
-        "ADD_NEW_LINE": "Add a new line",
-
-        "SELECTED_LINE": "Selected line",
-
-        "NUMBER_OF_COLUMN": "number of columns",
-        "APPLY_CTRL2COL": "Apply controls to columns",
-
-        "CLIC_TAP_2_OPEN": "Click / Tap on column to open control selection",
-        "SELECT_2_APPLY_COL": "Select desired control and valid to apply it to column",
-
-        "CUSTOM_SUBMIT_BTN": "Customize Submit button Text",
-        "CUSTOM_CANCEL_BTN": "Customize Cancel button Text",
-        "NAME_THIS_FORM": "Name this form",
-        "SAVE_THIS_FORM": "save this form",
-
-        "FINAL_STEP": "Final Step : form preview",
-
-        "DATA_MODEL": "DATA MODEL",
-        "FIELDS_MODEL": "FIELDS MODEL (ready to save to database one)",
-
-        "SELECT_A_CTRL": "Select a control",
-        "SELECT_CTRL_IN_LIST": "Select a control in the list below",
-        "COL_WILL_BE_BLANK": "Column will be blank",
-
-        "EDIT_PROPERTIES": "Edit properties",
-
-        "HEADER_TEXT": "Header text",
-        "ADD_EDIT_HEADER_HERE": "Add / edit header text here",
-
-        "SUBTITLE_TEXT": "Subtitle text",
-        "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here",
-
-        "LABEL_TEXT": "Label text",
-        "ADD_EDIT_LABEL_HERE": "Add / edit control label here",
-
-        "PLACEHOLDER": "placeholder",
-        "ADD_EDIT_PLACEHOLD": "Add / edit placeholder text here",
-
-        "REQUIRED": "Required",
-
-        "DESCRIPTION": "Description",
-        "ADDEDIT_DESCRIPTION": "Add / edit description here",
-
-        "DATE_FORMAT": "Date format",
-
-        "ADD_NEW_RADIO": "Add new radio",
-        "ADD_RADIO_PLACEHOLD": "add new radio",
-        "EDIT_REMOVE_RADIO": "Edit/Remove radio",
-        "NO_RADIO_ADD_NEW": "no radio : add new radio values",
-
-        "SEARCH_4_OPTION": "search for option",
-
-        "ADD": "add",
-        "ORDER": "order",
-        "OPTION": "option",
-        "GROUP": "group",
-
-        "ADD_NEW_OPTIONS": "Add new options",
-        "ADD_A_NEW_OPTION": "add new option",
-        "EDIT_REMOVE_OPTIONS": "Edit/Remove options",
-        "NO_OPTION_ADD_NEW": "no option : add new options",
-
-        "ADD_NEW_GROUPS": "Add new groups",
-        "ADD_A_NEW_GROUP": "Add new group",
-        "EDIT_GROUPS_OPTIONS": "Edit/Remove options/groups",
-        "NO_GROUP_ADD_NEW": "add new groups",
-
-        "OK": "OK",
-        "CANCEL": "Cancel"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Hello", "EDIT_TAB": "Edit / Create", "PREVIEW_TAB": "Preview", "WIZARD_LINES": "lines", "WIZARD_LAYOUT": "layout", "WIZARD_CONTROLS": "controls", "WIZARD_SAVE": "save", "PAGER_PREVIOUS": "Previous", "PAGER_NEXT": "Next", "COMMAND_PANEL": "Command", "VISUAL_PANEL": "Visual", "ADD_NEW_LINE": "Add a new line", "SELECTED_LINE": "Selected line", "NUMBER_OF_COLUMN": "number of columns", "APPLY_CTRL2COL": "Apply controls to columns", "CLIC_TAP_2_OPEN": "Click / Tap on column to open control selection", "SELECT_2_APPLY_COL": "Select desired control and valid to apply it to column", "CUSTOM_SUBMIT_BTN": "Customize Submit button Text", "CUSTOM_CANCEL_BTN": "Customize Cancel button Text", "NAME_THIS_FORM": "Name this form", "SAVE_THIS_FORM": "save this form", "FINAL_STEP": "Final Step : form preview", "DATA_MODEL": "DATA MODEL", "FIELDS_MODEL": "FIELDS MODEL (ready to save to database one)", "SELECT_A_CTRL": "Select a control", "SELECT_CTRL_IN_LIST": "Select a control in the list below", "COL_WILL_BE_BLANK": "Column will be blank", "EDIT_PROPERTIES": "Edit properties", "HEADER_TEXT": "Header text", "ADD_EDIT_HEADER_HERE": "Add / edit header text here", "SUBTITLE_TEXT": "Subtitle text", "ADD_EDIT_SUBTIL_HERE": "Add / edit subtitle text here", "LABEL_TEXT": "Label text", "ADD_EDIT_LABEL_HERE": "Add / edit control label here", "PLACEHOLDER": "placeholder", "ADD_EDIT_PLACEHOLD": "Add / edit placeholder text here", "REQUIRED": "Required", "DESCRIPTION": "Description", "ADDEDIT_DESCRIPTION": "Add / edit description here", "DATE_FORMAT": "Date format", "ADD_NEW_RADIO": "Add new radio", "ADD_RADIO_PLACEHOLD": "add new radio", "EDIT_REMOVE_RADIO": "Edit/Remove radio", "NO_RADIO_ADD_NEW": "no radio : add new radio values", "SEARCH_4_OPTION": "search for option", "ADD": "add", "ORDER": "order", "OPTION": "option", "GROUP": "group", "ADD_NEW_OPTIONS": "Add new options", "ADD_A_NEW_OPTION": "add new option", "EDIT_REMOVE_OPTIONS": "Edit/Remove options", "NO_OPTION_ADD_NEW": "no option : add new options", "ADD_NEW_GROUPS": "Add new groups", "ADD_A_NEW_GROUP": "Add new group", "EDIT_GROUPS_OPTIONS": "Edit/Remove options/groups", "NO_GROUP_ADD_NEW": "add new groups", "OK": "OK", "CANCEL": "Cancel" };
+  return module.exports;
 });
 $__System.registerDynamic("8", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "Bonjour",
-
-        "EDIT_TAB": "Edition / Creation",
-        "PREVIEW_TAB": "Aperçu",
-
-        "WIZARD_LINES": "lignes",
-        "WIZARD_LAYOUT": "disposition",
-        "WIZARD_CONTROLS": "contrôles",
-        "WIZARD_SAVE": "sauvegarder",
-
-        "PAGER_PREVIOUS": "Précédent",
-        "PAGER_NEXT": "Suivant",
-
-        "COMMAND_PANEL": "Commandes",
-        "VISUAL_PANEL": "Visuel",
-
-        "ADD_NEW_LINE": "Ajouter une nouvelle ligne",
-
-        "SELECTED_LINE": "Ligne sélectionnée",
-
-        "NUMBER_OF_COLUMN": "nombre de colonnes",
-        "APPLY_CTRL2COL": "Appliquer les contrôles aux colonnes",
-
-        "CLIC_TAP_2_OPEN": "Cliquer sur une colonne pour ouvrir le menu d'édition",
-        "SELECT_2_APPLY_COL": "Sélectionner un contrôle puis valider pour l'appliquer à la colonne",
-
-        "CUSTOM_SUBMIT_BTN": "Personnaliser le texte du bouton envoie",
-        "CUSTOM_CANCEL_BTN": "Personnaliser le texte du bouton annuler",
-        "NAME_THIS_FORM": "Nommer le formulaire",
-        "SAVE_THIS_FORM": "sauvegarder le formulaire",
-
-        "FINAL_STEP": "Dernière étape : aperçu du formulaire",
-
-        "DATA_MODEL": "MODELE DE DONNEES",
-        "FIELDS_MODEL": "MODELE DES CHAMPS (modèle compatible base de données)",
-
-        "SELECT_A_CTRL": "Sélectionner un contrôle",
-        "SELECT_CTRL_IN_LIST": "Sélectionner un contrôle dans la liste ci-dessous",
-        "COL_WILL_BE_BLANK": "La colonne sera vide",
-
-        "EDIT_PROPERTIES": "Editer les propriétés",
-
-        "HEADER_TEXT": "Texte du titre principal",
-        "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal",
-
-        "SUBTITLE_TEXT": "Texte du sous-titre",
-        "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre",
-
-        "LABEL_TEXT": "Texte de l'étiquette",
-        "ADD_EDIT_LABEL_HERE": "Editer le texte de l'étiquette",
-
-        "PLACEHOLDER": "placeholder",
-        "ADD_EDIT_PLACEHOLD": "Editer le placeholder",
-
-        "REQUIRED": "Requis",
-
-        "DESCRIPTION": "Description",
-        "ADDEDIT_DESCRIPTION": "Ajouter / editer la description",
-
-        "DATE_FORMAT": "Format de la date",
-
-        "ADD_NEW_RADIO": "Ajouter un nouveau choix à cocher",
-        "ADD_RADIO_PLACEHOLD": "Ajouter un nouveau choix à cocher",
-        "EDIT_REMOVE_RADIO": "Editer / supprimer un choix à cocher",
-        "NO_RADIO_ADD_NEW": "aucun choix à cocher : en ajouter un",
-
-        "SEARCH_4_OPTION": "rechercher une option",
-
-        "ADD": "ajouter",
-        "ORDER": "ordre",
-        "OPTION": "option",
-        "GROUP": "groupe",
-
-        "ADD_NEW_OPTIONS": "Ajouter de nouvelles options",
-        "ADD_A_NEW_OPTION": "ajoutre une option",
-        "EDIT_REMOVE_OPTIONS": "Editer / supprimer des options",
-        "NO_OPTION_ADD_NEW": "aucune option : en ajouter",
-
-        "ADD_NEW_GROUPS": "Ajouter de nouveaux groupes",
-        "ADD_A_NEW_GROUP": "Ajouter un nouveau groupe",
-        "EDIT_GROUPS_OPTIONS": "Editer / supprimer les groupes et options",
-        "NO_GROUP_ADD_NEW": "ajouter de nouveaux groupes",
-
-        "OK": "Valider",
-        "CANCEL": "Annuler"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Bonjour", "EDIT_TAB": "Edition / Creation", "PREVIEW_TAB": "Aperçu", "WIZARD_LINES": "lignes", "WIZARD_LAYOUT": "disposition", "WIZARD_CONTROLS": "contrôles", "WIZARD_SAVE": "sauvegarder", "PAGER_PREVIOUS": "Précédent", "PAGER_NEXT": "Suivant", "COMMAND_PANEL": "Commandes", "VISUAL_PANEL": "Visuel", "ADD_NEW_LINE": "Ajouter une nouvelle ligne", "SELECTED_LINE": "Ligne sélectionnée", "NUMBER_OF_COLUMN": "nombre de colonnes", "APPLY_CTRL2COL": "Appliquer les contrôles aux colonnes", "CLIC_TAP_2_OPEN": "Cliquer sur une colonne pour ouvrir le menu d'édition", "SELECT_2_APPLY_COL": "Sélectionner un contrôle puis valider pour l'appliquer à la colonne", "CUSTOM_SUBMIT_BTN": "Personnaliser le texte du bouton envoie", "CUSTOM_CANCEL_BTN": "Personnaliser le texte du bouton annuler", "NAME_THIS_FORM": "Nommer le formulaire", "SAVE_THIS_FORM": "sauvegarder le formulaire", "FINAL_STEP": "Dernière étape : aperçu du formulaire", "DATA_MODEL": "MODELE DE DONNEES", "FIELDS_MODEL": "MODELE DES CHAMPS (modèle compatible base de données)", "SELECT_A_CTRL": "Sélectionner un contrôle", "SELECT_CTRL_IN_LIST": "Sélectionner un contrôle dans la liste ci-dessous", "COL_WILL_BE_BLANK": "La colonne sera vide", "EDIT_PROPERTIES": "Editer les propriétés", "HEADER_TEXT": "Texte du titre principal", "ADD_EDIT_HEADER_HERE": "Editer le textes du titre principal", "SUBTITLE_TEXT": "Texte du sous-titre", "ADD_EDIT_SUBTIL_HERE": "Editer le textes du sous-titre", "LABEL_TEXT": "Texte de l'étiquette", "ADD_EDIT_LABEL_HERE": "Editer le texte de l'étiquette", "PLACEHOLDER": "placeholder", "ADD_EDIT_PLACEHOLD": "Editer le placeholder", "REQUIRED": "Requis", "DESCRIPTION": "Description", "ADDEDIT_DESCRIPTION": "Ajouter / editer la description", "DATE_FORMAT": "Format de la date", "ADD_NEW_RADIO": "Ajouter un nouveau choix à cocher", "ADD_RADIO_PLACEHOLD": "Ajouter un nouveau choix à cocher", "EDIT_REMOVE_RADIO": "Editer / supprimer un choix à cocher", "NO_RADIO_ADD_NEW": "aucun choix à cocher : en ajouter un", "SEARCH_4_OPTION": "rechercher une option", "ADD": "ajouter", "ORDER": "ordre", "OPTION": "option", "GROUP": "groupe", "ADD_NEW_OPTIONS": "Ajouter de nouvelles options", "ADD_A_NEW_OPTION": "ajoutre une option", "EDIT_REMOVE_OPTIONS": "Editer / supprimer des options", "NO_OPTION_ADD_NEW": "aucune option : en ajouter", "ADD_NEW_GROUPS": "Ajouter de nouveaux groupes", "ADD_A_NEW_GROUP": "Ajouter un nouveau groupe", "EDIT_GROUPS_OPTIONS": "Editer / supprimer les groupes et options", "NO_GROUP_ADD_NEW": "ajouter de nouveaux groupes", "OK": "Valider", "CANCEL": "Annuler" };
+  return module.exports;
 });
 $__System.registerDynamic("9", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "Hola",
-
-        "EDIT_TAB": "Editar / Crear",
-        "PREVIEW_TAB": "Previsualizar",
-
-        "WIZARD_LINES": "lineas",
-        "WIZARD_LAYOUT": "diseño",
-        "WIZARD_CONTROLS": "controles",
-        "WIZARD_SAVE": "guardar",
-
-        "PAGER_PREVIOUS": "Anterior",
-        "PAGER_NEXT": "Siguiente",
-
-        "COMMAND_PANEL": "Comando",
-        "VISUAL_PANEL": "Visual",
-
-        "ADD_NEW_LINE": "Agregar nueva linea",
-
-        "SELECTED_LINE": "Linea seleccionada",
-
-        "NUMBER_OF_COLUMN": "numero de columnas",
-        "APPLY_CTRL2COL": "Aplicar controles a columnas",
-
-        "CLIC_TAP_2_OPEN": "Click / Toque en la columna para seleccionar controles",
-        "SELECT_2_APPLY_COL": "Selecciona el control deseado para aplicarlo a la columna",
-
-        "CUSTOM_SUBMIT_BTN": "Personalizar texto de boton Enviar",
-        "CUSTOM_CANCEL_BTN": "Personalizar texto de boton Cancelar",
-        "NAME_THIS_FORM": "Nombrar formulario",
-        "SAVE_THIS_FORM": "guardar formulario",
-
-        "FINAL_STEP": "Ultimo paso : previsualizar formulario",
-
-        "DATA_MODEL": "MODELO DE DATOS",
-        "FIELDS_MODEL": "MODELO DE CAMPOS (listo para guardar en base de datos uno)",
-
-        "SELECT_A_CTRL": "Selecciona un control",
-        "SELECT_CTRL_IN_LIST": "Selecciona un control de la lista",
-        "COL_WILL_BE_BLANK": "Columna sera vacia",
-
-        "EDIT_PROPERTIES": "Editar propiedades",
-
-        "HEADER_TEXT": "Texto de encabezado",
-        "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui",
-
-        "SUBTITLE_TEXT": "Texto de subtitulo",
-        "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui",
-
-        "LABEL_TEXT": "Texto de etiqueta",
-        "ADD_EDIT_LABEL_HERE": "Agregar / editar texto de etiqueta aqui",
-
-        "PLACEHOLDER": "Marcador",
-        "ADD_EDIT_PLACEHOLD": "Agregar / editar texto de marcador aqui",
-
-        "REQUIRED": "Requerido",
-
-        "DESCRIPTION": "Descripcion",
-        "ADDEDIT_DESCRIPTION": "Agregar / editar descripcion aqui",
-
-        "DATE_FORMAT": "Formato de fecha",
-
-        "ADD_NEW_RADIO": "Agregar nuevo radio",
-        "ADD_RADIO_PLACEHOLD": "agregar nuevo radio",
-        "EDIT_REMOVE_RADIO": "Editar/Eliminar radio",
-        "NO_RADIO_ADD_NEW": "sin radio : agregar nuevos valores de radio",
-
-        "SEARCH_4_OPTION": "buscar opcion",
-
-        "ADD": "agregar",
-        "ORDER": "orden",
-        "OPTION": "opcion",
-        "GROUP": "grupo",
-
-        "ADD_NEW_OPTIONS": "agregar nuevas opciones",
-        "ADD_A_NEW_OPTION": "agregar nueva opcione",
-        "EDIT_REMOVE_OPTIONS": "Editar/Eliminar opciones",
-        "NO_OPTION_ADD_NEW": "sin opcion : agregar nuevas opciones",
-
-        "ADD_NEW_GROUPS": "Agregar nuevos grupos",
-        "ADD_A_NEW_GROUP": "Agregar nuevo grupo",
-        "EDIT_GROUPS_OPTIONS": "Editar/Eliminar opciones/grupos",
-        "NO_GROUP_ADD_NEW": "agregar nuevos grupos",
-
-        "OK": "OK",
-        "CANCEL": "Cancelar"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Hola", "EDIT_TAB": "Editar / Crear", "PREVIEW_TAB": "Previsualizar", "WIZARD_LINES": "lineas", "WIZARD_LAYOUT": "diseño", "WIZARD_CONTROLS": "controles", "WIZARD_SAVE": "guardar", "PAGER_PREVIOUS": "Anterior", "PAGER_NEXT": "Siguiente", "COMMAND_PANEL": "Comando", "VISUAL_PANEL": "Visual", "ADD_NEW_LINE": "Agregar nueva linea", "SELECTED_LINE": "Linea seleccionada", "NUMBER_OF_COLUMN": "numero de columnas", "APPLY_CTRL2COL": "Aplicar controles a columnas", "CLIC_TAP_2_OPEN": "Click / Toque en la columna para seleccionar controles", "SELECT_2_APPLY_COL": "Selecciona el control deseado para aplicarlo a la columna", "CUSTOM_SUBMIT_BTN": "Personalizar texto de boton Enviar", "CUSTOM_CANCEL_BTN": "Personalizar texto de boton Cancelar", "NAME_THIS_FORM": "Nombrar formulario", "SAVE_THIS_FORM": "guardar formulario", "FINAL_STEP": "Ultimo paso : previsualizar formulario", "DATA_MODEL": "MODELO DE DATOS", "FIELDS_MODEL": "MODELO DE CAMPOS (listo para guardar en base de datos uno)", "SELECT_A_CTRL": "Selecciona un control", "SELECT_CTRL_IN_LIST": "Selecciona un control de la lista", "COL_WILL_BE_BLANK": "Columna sera vacia", "EDIT_PROPERTIES": "Editar propiedades", "HEADER_TEXT": "Texto de encabezado", "ADD_EDIT_HEADER_HERE": "Agregar / editar texto de encabezado aqui", "SUBTITLE_TEXT": "Texto de subtitulo", "ADD_EDIT_SUBTIL_HERE": "Agregar / editar texto de subtitulo aqui", "LABEL_TEXT": "Texto de etiqueta", "ADD_EDIT_LABEL_HERE": "Agregar / editar texto de etiqueta aqui", "PLACEHOLDER": "Marcador", "ADD_EDIT_PLACEHOLD": "Agregar / editar texto de marcador aqui", "REQUIRED": "Requerido", "DESCRIPTION": "Descripcion", "ADDEDIT_DESCRIPTION": "Agregar / editar descripcion aqui", "DATE_FORMAT": "Formato de fecha", "ADD_NEW_RADIO": "Agregar nuevo radio", "ADD_RADIO_PLACEHOLD": "agregar nuevo radio", "EDIT_REMOVE_RADIO": "Editar/Eliminar radio", "NO_RADIO_ADD_NEW": "sin radio : agregar nuevos valores de radio", "SEARCH_4_OPTION": "buscar opcion", "ADD": "agregar", "ORDER": "orden", "OPTION": "opcion", "GROUP": "grupo", "ADD_NEW_OPTIONS": "agregar nuevas opciones", "ADD_A_NEW_OPTION": "agregar nueva opcione", "EDIT_REMOVE_OPTIONS": "Editar/Eliminar opciones", "NO_OPTION_ADD_NEW": "sin opcion : agregar nuevas opciones", "ADD_NEW_GROUPS": "Agregar nuevos grupos", "ADD_A_NEW_GROUP": "Agregar nuevo grupo", "EDIT_GROUPS_OPTIONS": "Editar/Eliminar opciones/grupos", "NO_GROUP_ADD_NEW": "agregar nuevos grupos", "OK": "OK", "CANCEL": "Cancelar" };
+  return module.exports;
 });
 $__System.registerDynamic("a", [], true, function ($__require, exports, module) {
-     var define,
-         global = this || self,
-         GLOBAL = global;
-     module.exports = {
-          "SAY_HI": "Hallo",
-
-          "EDIT_TAB": "Bearbeiten / Schaffen",
-          "PREVIEW_TAB": "Vorschau",
-
-          "WIZARD_LINES": "Linien",
-          "WIZARD_LAYOUT": "Layout",
-          "WIZARD_CONTROLS": "Steuerung",
-          "WIZARD_SAVE": "sparen",
-
-          "PAGER_PREVIOUS": "vorher.",
-          "PAGER_NEXT": "nächste",
-
-          "COMMAND_PANEL": "Anweisung",
-          "VISUAL_PANEL": "visuell",
-
-          "ADD_NEW_LINE": "Hinzufügen neuer Leitung",
-          "SELECTED_LINE": "ausgewählte Linie",
-
-          "NUMBER_OF_COLUMN": "Anzahl von Spalten",
-          "APPLY_CTRL2COL": "gelten diese Steuer Spalte",
-
-          "CLIC_TAP_2_OPEN": "klicken Sie auf Spalte zur Steuerungsauswahl öffnen",
-          "SELECT_2_APPLY_COL": "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden",
-
-          "CUSTOM_SUBMIT_BTN": "Passen Submit-Button Text",
-          "CUSTOM_CANCEL_BTN": "Passen Cancel-Button Text",
-          "NAME_THIS_FORM": "Nennen dieses Formular",
-          "SAVE_THIS_FORM": "Speichern dieses Formular",
-
-          "FINAL_STEP": "Endschritt : Formular Vorschau",
-
-          "DATA_MODEL": "DATEN MODELL",
-          "FIELDS_MODEL": "FELDER MODELL (Datenbank-kompatibel)",
-
-          "SELECT_A_CTRL": "Wählen Sie ein Steuer",
-          "SELECT_CTRL_IN_LIST": "Wählen Sie ein Steuer aus der Liste unten",
-          "COL_WILL_BE_BLANK": "die Spalte werde leer sein",
-
-          "EDIT_PROPERTIES": "Anzeigen",
-
-          "HEADER_TEXT": "Kopftext",
-          "ADD_EDIT_HEADER_HERE": "Kopftext ändern",
-
-          "SUBTITLE_TEXT": "Untertitel",
-          "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern",
-
-          "LABEL_TEXT": "Etikett",
-          "ADD_EDIT_LABEL_HERE": "Etikett ändern",
-
-          "PLACEHOLDER": "placeholder",
-          "ADD_EDIT_PLACEHOLD": "placeholder ändern",
-
-          "REQUIRED": "erforderlich",
-
-          "DESCRIPTION": "Beschreibung",
-          "ADDEDIT_DESCRIPTION": "Beschreibung ändern",
-
-          "DATE_FORMAT": "Datumsformat",
-
-          "ADD_NEW_RADIO": "Radiobutton hinzufügen",
-          "ADD_RADIO_PLACEHOLD": "Radiobutton hinzufügen",
-          "EDIT_REMOVE_RADIO": "Radiobutton ändern",
-          "NO_RADIO_ADD_NEW": "kein Radiobutton : Radiobutton hinzufügen",
-
-          "SEARCH_4_OPTION": "option suchen",
-
-          "ADD": "hinzufügen",
-          "ORDER": "bestellen",
-          "OPTION": "Option",
-          "GROUP": "Gruppe",
-
-          "ADD_NEW_OPTIONS": "Optionen hinzufügen",
-          "ADD_A_NEW_OPTION": "Option hinzufügen",
-          "EDIT_REMOVE_OPTIONS": "Optionen ändern",
-          "NO_OPTION_ADD_NEW": "kein option : Option hinzufügen",
-
-          "ADD_NEW_GROUPS": "Gruppen hinzufügen",
-          "ADD_A_NEW_GROUP": "Gruppe hinzufügen",
-          "EDIT_GROUPS_OPTIONS": "Gruppen ändern",
-          "NO_GROUP_ADD_NEW": "keine Gruppe : Gruppe hinzufügen",
-
-          "OK": "bestätigen",
-          "CANCEL": "stornieren"
-
-     };
-     return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Hallo", "EDIT_TAB": "Bearbeiten / Schaffen", "PREVIEW_TAB": "Vorschau", "WIZARD_LINES": "Linien", "WIZARD_LAYOUT": "Layout", "WIZARD_CONTROLS": "Steuerung", "WIZARD_SAVE": "sparen", "PAGER_PREVIOUS": "vorher.", "PAGER_NEXT": "nächste", "COMMAND_PANEL": "Anweisung", "VISUAL_PANEL": "visuell", "ADD_NEW_LINE": "Hinzufügen neuer Leitung", "SELECTED_LINE": "ausgewählte Linie", "NUMBER_OF_COLUMN": "Anzahl von Spalten", "APPLY_CTRL2COL": "gelten diese Steuer Spalte", "CLIC_TAP_2_OPEN": "klicken Sie auf Spalte zur Steuerungsauswahl öffnen", "SELECT_2_APPLY_COL": "Wählen Sie die gewünschte Steuerung und gültig , um es in Spalte anwenden", "CUSTOM_SUBMIT_BTN": "Passen Submit-Button Text", "CUSTOM_CANCEL_BTN": "Passen Cancel-Button Text", "NAME_THIS_FORM": "Nennen dieses Formular", "SAVE_THIS_FORM": "Speichern dieses Formular", "FINAL_STEP": "Endschritt : Formular Vorschau", "DATA_MODEL": "DATEN MODELL", "FIELDS_MODEL": "FELDER MODELL (Datenbank-kompatibel)", "SELECT_A_CTRL": "Wählen Sie ein Steuer", "SELECT_CTRL_IN_LIST": "Wählen Sie ein Steuer aus der Liste unten", "COL_WILL_BE_BLANK": "die Spalte werde leer sein", "EDIT_PROPERTIES": "Anzeigen", "HEADER_TEXT": "Kopftext", "ADD_EDIT_HEADER_HERE": "Kopftext ändern", "SUBTITLE_TEXT": "Untertitel", "ADD_EDIT_SUBTIL_HERE": "Untertitel ändern", "LABEL_TEXT": "Etikett", "ADD_EDIT_LABEL_HERE": "Etikett ändern", "PLACEHOLDER": "placeholder", "ADD_EDIT_PLACEHOLD": "placeholder ändern", "REQUIRED": "erforderlich", "DESCRIPTION": "Beschreibung", "ADDEDIT_DESCRIPTION": "Beschreibung ändern", "DATE_FORMAT": "Datumsformat", "ADD_NEW_RADIO": "Radiobutton hinzufügen", "ADD_RADIO_PLACEHOLD": "Radiobutton hinzufügen", "EDIT_REMOVE_RADIO": "Radiobutton ändern", "NO_RADIO_ADD_NEW": "kein Radiobutton : Radiobutton hinzufügen", "SEARCH_4_OPTION": "option suchen", "ADD": "hinzufügen", "ORDER": "bestellen", "OPTION": "Option", "GROUP": "Gruppe", "ADD_NEW_OPTIONS": "Optionen hinzufügen", "ADD_A_NEW_OPTION": "Option hinzufügen", "EDIT_REMOVE_OPTIONS": "Optionen ändern", "NO_OPTION_ADD_NEW": "kein option : Option hinzufügen", "ADD_NEW_GROUPS": "Gruppen hinzufügen", "ADD_A_NEW_GROUP": "Gruppe hinzufügen", "EDIT_GROUPS_OPTIONS": "Gruppen ändern", "NO_GROUP_ADD_NEW": "keine Gruppe : Gruppe hinzufügen", "OK": "bestätigen", "CANCEL": "stornieren" };
+  return module.exports;
 });
 $__System.registerDynamic("b", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "Merhaba",
-
-        "EDIT_TAB": "Düzenle / Oluştur",
-        "PREVIEW_TAB": "Önizleme",
-
-        "WIZARD_LINES": "satırlar",
-        "WIZARD_LAYOUT": "düzen",
-        "WIZARD_CONTROLS": "kontroller",
-        "WIZARD_SAVE": "kaydet",
-
-        "PAGER_PREVIOUS": "Geri",
-        "PAGER_NEXT": "İleri",
-
-        "COMMAND_PANEL": "Komut",
-        "VISUAL_PANEL": "Görsel",
-
-        "ADD_NEW_LINE": "Yeni satır ekle",
-
-        "SELECTED_LINE": "Seçili satır",
-
-        "NUMBER_OF_COLUMN": "sütun sayısı",
-        "APPLY_CTRL2COL": "Sütunlara form ögesi ekle",
-
-        "CLIC_TAP_2_OPEN": "Form ögesi eklemek için sütunlara tıkla",
-        "SELECT_2_APPLY_COL": "İstediğin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet",
-
-        "CUSTOM_SUBMIT_BTN": "Gönder butonu yazısını düzenle",
-        "CUSTOM_CANCEL_BTN": "İptal butonu yazısını düzenle",
-        "NAME_THIS_FORM": "Forma isim ver",
-        "SAVE_THIS_FORM": "formu kaydet",
-
-        "FINAL_STEP": "Son aşama : form önizlemesi",
-
-        "DATA_MODEL": "VERİ MODELİ",
-        "FIELDS_MODEL": "ALAN MODELİ (veritabanına kaydetmeye hazır)",
-
-        "SELECT_A_CTRL": "Form ögesi seç",
-        "SELECT_CTRL_IN_LIST": "Verilen listeden bir form ögesi seç",
-        "COL_WILL_BE_BLANK": "Sütun boş kalacak",
-
-        "EDIT_PROPERTIES": "Özellikleri düzenle",
-
-        "HEADER_TEXT": "Başlık yazısı",
-        "ADD_EDIT_HEADER_HERE": "Başlık yazısını ekle / düzenle",
-
-        "SUBTITLE_TEXT": "Altyazı",
-        "ADD_EDIT_SUBTIL_HERE": "Altyazı ekle / düzenle",
-
-        "LABEL_TEXT": "Form ögesinin adı",
-        "ADD_EDIT_LABEL_HERE": "Ad ekle / düzenle",
-
-        "PLACEHOLDER": "Form ögesinin içine geçici yazı ekle",
-        "ADD_EDIT_PLACEHOLD": "Geçici yazı ekle / düzenle",
-
-        "REQUIRED": "Gerekli",
-
-        "DESCRIPTION": "Açıklama",
-        "ADDEDIT_DESCRIPTION": "Açıklama ekle / düzenle",
-
-        "DATE_FORMAT": "Tarih formatı",
-
-        "ADD_NEW_RADIO": "Radio butonu ekle",
-        "ADD_RADIO_PLACEHOLD": "radio butonu ekle",
-        "EDIT_REMOVE_RADIO": "Radio butonunu ekle / düzenle",
-        "NO_RADIO_ADD_NEW": "radio butonu yok : yeni buton ekle",
-
-        "SEARCH_4_OPTION": "seçenek ara",
-
-        "ADD": "ekle",
-        "ORDER": "sıra",
-        "OPTION": "seçenek",
-        "GROUP": "grup",
-
-        "ADD_NEW_OPTIONS": "Yeni seçenek ekle",
-        "ADD_A_NEW_OPTION": "yeni seçenek ekle",
-        "EDIT_REMOVE_OPTIONS": "Seçenekleri düzenle/sil",
-        "NO_OPTION_ADD_NEW": "seçenek yok : yeni seçenek ekle",
-
-        "ADD_NEW_GROUPS": "Yeni grup ekle",
-        "ADD_A_NEW_GROUP": "Yeni grup ekle",
-        "EDIT_GROUPS_OPTIONS": "Seçenek/Grup Ekle/sil",
-        "NO_GROUP_ADD_NEW": "yeni grup ekle",
-
-        "OK": "TAMAM",
-        "CANCEL": "İptal"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Merhaba", "EDIT_TAB": "Düzenle / Oluştur", "PREVIEW_TAB": "Önizleme", "WIZARD_LINES": "satırlar", "WIZARD_LAYOUT": "düzen", "WIZARD_CONTROLS": "kontroller", "WIZARD_SAVE": "kaydet", "PAGER_PREVIOUS": "Geri", "PAGER_NEXT": "İleri", "COMMAND_PANEL": "Komut", "VISUAL_PANEL": "Görsel", "ADD_NEW_LINE": "Yeni satır ekle", "SELECTED_LINE": "Seçili satır", "NUMBER_OF_COLUMN": "sütun sayısı", "APPLY_CTRL2COL": "Sütunlara form ögesi ekle", "CLIC_TAP_2_OPEN": "Form ögesi eklemek için sütunlara tıkla", "SELECT_2_APPLY_COL": "İstediğin ögeyi seçtikten sonra gerekli yerleri doldur ve kaydet", "CUSTOM_SUBMIT_BTN": "Gönder butonu yazısını düzenle", "CUSTOM_CANCEL_BTN": "İptal butonu yazısını düzenle", "NAME_THIS_FORM": "Forma isim ver", "SAVE_THIS_FORM": "formu kaydet", "FINAL_STEP": "Son aşama : form önizlemesi", "DATA_MODEL": "VERİ MODELİ", "FIELDS_MODEL": "ALAN MODELİ (veritabanına kaydetmeye hazır)", "SELECT_A_CTRL": "Form ögesi seç", "SELECT_CTRL_IN_LIST": "Verilen listeden bir form ögesi seç", "COL_WILL_BE_BLANK": "Sütun boş kalacak", "EDIT_PROPERTIES": "Özellikleri düzenle", "HEADER_TEXT": "Başlık yazısı", "ADD_EDIT_HEADER_HERE": "Başlık yazısını ekle / düzenle", "SUBTITLE_TEXT": "Altyazı", "ADD_EDIT_SUBTIL_HERE": "Altyazı ekle / düzenle", "LABEL_TEXT": "Form ögesinin adı", "ADD_EDIT_LABEL_HERE": "Ad ekle / düzenle", "PLACEHOLDER": "Form ögesinin içine geçici yazı ekle", "ADD_EDIT_PLACEHOLD": "Geçici yazı ekle / düzenle", "REQUIRED": "Gerekli", "DESCRIPTION": "Açıklama", "ADDEDIT_DESCRIPTION": "Açıklama ekle / düzenle", "DATE_FORMAT": "Tarih formatı", "ADD_NEW_RADIO": "Radio butonu ekle", "ADD_RADIO_PLACEHOLD": "radio butonu ekle", "EDIT_REMOVE_RADIO": "Radio butonunu ekle / düzenle", "NO_RADIO_ADD_NEW": "radio butonu yok : yeni buton ekle", "SEARCH_4_OPTION": "seçenek ara", "ADD": "ekle", "ORDER": "sıra", "OPTION": "seçenek", "GROUP": "grup", "ADD_NEW_OPTIONS": "Yeni seçenek ekle", "ADD_A_NEW_OPTION": "yeni seçenek ekle", "EDIT_REMOVE_OPTIONS": "Seçenekleri düzenle/sil", "NO_OPTION_ADD_NEW": "seçenek yok : yeni seçenek ekle", "ADD_NEW_GROUPS": "Yeni grup ekle", "ADD_A_NEW_GROUP": "Yeni grup ekle", "EDIT_GROUPS_OPTIONS": "Seçenek/Grup Ekle/sil", "NO_GROUP_ADD_NEW": "yeni grup ekle", "OK": "TAMAM", "CANCEL": "İptal" };
+  return module.exports;
 });
 $__System.registerDynamic("c", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "こんにちわ",
-
-        "EDIT_TAB": "編集 / 作成",
-        "PREVIEW_TAB": "プレビュー",
-
-        "WIZARD_LINES": "ライン",
-        "WIZARD_LAYOUT": "レイアウト",
-        "WIZARD_CONTROLS": "コントロール",
-        "WIZARD_SAVE": "サーブ",
-
-        "PAGER_PREVIOUS": "前",
-        "PAGER_NEXT": "次",
-
-        "COMMAND_PANEL": "コマンド",
-        "VISUAL_PANEL": "ビジュアル",
-
-        "ADD_NEW_LINE": "新しいライン追加",
-
-        "SELECTED_LINE": "選択されたライン",
-
-        "NUMBER_OF_COLUMN": "カラムの数",
-        "APPLY_CTRL2COL": "カラムにコントロール適用",
-
-        "CLIC_TAP_2_OPEN": "コントロール選択を広げるには列をクリック",
-        "SELECT_2_APPLY_COL": "好きなコントロールを選び適用",
-
-        "CUSTOM_SUBMIT_BTN": "適用ボタンの文字変更する場合",
-        "CUSTOM_CANCEL_BTN": "キャンセルボタンの文字変更する場合",
-        "NAME_THIS_FORM": "形式に名前を付ける",
-        "SAVE_THIS_FORM": "形式をサーブ",
-
-        "FINAL_STEP": "ファイナルステップ : プレビュー形式",
-
-        "DATA_MODEL": "データーモデル",
-        "FIELDS_MODEL": "モデルフィールド",
-
-        "SELECT_A_CTRL": "コントロールを選び選択",
-        "SELECT_CTRL_IN_LIST": "以下のリストからコントロールを選び選択",
-        "COL_WILL_BE_BLANK": "空になる列",
-
-        "EDIT_PROPERTIES": "プロパティの変更",
-
-        "HEADER_TEXT": "ヘッダーテキスト",
-        "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更",
-
-        "SUBTITLE_TEXT": "サブタイトル　テキスト",
-        "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更",
-
-        "LABEL_TEXT": "ラベルテキスト",
-        "ADD_EDIT_LABEL_HERE": "ラベルテキスト文字変更",
-
-        "PLACEHOLDER": "プレースホルダー",
-        "ADD_EDIT_PLACEHOLD": "プレースホルダー文字変更",
-
-        "REQUIRED": "必須",
-
-        "DESCRIPTION": "説明",
-        "ADDEDIT_DESCRIPTION": "説明の変更",
-
-        "DATE_FORMAT": "日付の形式",
-
-        "ADD_NEW_RADIO": "新ラジオボタンを追加",
-        "ADD_RADIO_PLACEHOLD": "新ラジオボタンを追加",
-        "EDIT_REMOVE_RADIO": "ラジオボタン変更",
-        "NO_RADIO_ADD_NEW": "ラジオ無し : 新ラジオボタン追加",
-
-        "SEARCH_4_OPTION": "オプション検索",
-
-        "ADD": "追加",
-        "ORDER": "順番",
-        "OPTION": "オプション",
-        "GROUP": "グループ",
-
-        "ADD_NEW_OPTIONS": "新しいオプション追加",
-        "ADD_A_NEW_OPTION": "新しいオプション追加",
-        "EDIT_REMOVE_OPTIONS": "オプションの変更",
-        "NO_OPTION_ADD_NEW": "オプション無し : 新しいオプション追加",
-
-        "ADD_NEW_GROUPS": "新しいグループ追加",
-        "ADD_A_NEW_GROUP": "新しいグループ追加",
-        "EDIT_GROUPS_OPTIONS": "グループを変更",
-        "NO_GROUP_ADD_NEW": "グループを追加",
-
-        "OK": "オッケー",
-        "CANCEL": "キャンセル"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "こんにちわ", "EDIT_TAB": "編集 / 作成", "PREVIEW_TAB": "プレビュー", "WIZARD_LINES": "ライン", "WIZARD_LAYOUT": "レイアウト", "WIZARD_CONTROLS": "コントロール", "WIZARD_SAVE": "サーブ", "PAGER_PREVIOUS": "前", "PAGER_NEXT": "次", "COMMAND_PANEL": "コマンド", "VISUAL_PANEL": "ビジュアル", "ADD_NEW_LINE": "新しいライン追加", "SELECTED_LINE": "選択されたライン", "NUMBER_OF_COLUMN": "カラムの数", "APPLY_CTRL2COL": "カラムにコントロール適用", "CLIC_TAP_2_OPEN": "コントロール選択を広げるには列をクリック", "SELECT_2_APPLY_COL": "好きなコントロールを選び適用", "CUSTOM_SUBMIT_BTN": "適用ボタンの文字変更する場合", "CUSTOM_CANCEL_BTN": "キャンセルボタンの文字変更する場合", "NAME_THIS_FORM": "形式に名前を付ける", "SAVE_THIS_FORM": "形式をサーブ", "FINAL_STEP": "ファイナルステップ : プレビュー形式", "DATA_MODEL": "データーモデル", "FIELDS_MODEL": "モデルフィールド", "SELECT_A_CTRL": "コントロールを選び選択", "SELECT_CTRL_IN_LIST": "以下のリストからコントロールを選び選択", "COL_WILL_BE_BLANK": "空になる列", "EDIT_PROPERTIES": "プロパティの変更", "HEADER_TEXT": "ヘッダーテキスト", "ADD_EDIT_HEADER_HERE": "ヘッダーテキスト文字変更", "SUBTITLE_TEXT": "サブタイトル　テキスト", "ADD_EDIT_SUBTIL_HERE": "サブタイトルテキスト文字変更", "LABEL_TEXT": "ラベルテキスト", "ADD_EDIT_LABEL_HERE": "ラベルテキスト文字変更", "PLACEHOLDER": "プレースホルダー", "ADD_EDIT_PLACEHOLD": "プレースホルダー文字変更", "REQUIRED": "必須", "DESCRIPTION": "説明", "ADDEDIT_DESCRIPTION": "説明の変更", "DATE_FORMAT": "日付の形式", "ADD_NEW_RADIO": "新ラジオボタンを追加", "ADD_RADIO_PLACEHOLD": "新ラジオボタンを追加", "EDIT_REMOVE_RADIO": "ラジオボタン変更", "NO_RADIO_ADD_NEW": "ラジオ無し : 新ラジオボタン追加", "SEARCH_4_OPTION": "オプション検索", "ADD": "追加", "ORDER": "順番", "OPTION": "オプション", "GROUP": "グループ", "ADD_NEW_OPTIONS": "新しいオプション追加", "ADD_A_NEW_OPTION": "新しいオプション追加", "EDIT_REMOVE_OPTIONS": "オプションの変更", "NO_OPTION_ADD_NEW": "オプション無し : 新しいオプション追加", "ADD_NEW_GROUPS": "新しいグループ追加", "ADD_A_NEW_GROUP": "新しいグループ追加", "EDIT_GROUPS_OPTIONS": "グループを変更", "NO_GROUP_ADD_NEW": "グループを追加", "OK": "オッケー", "CANCEL": "キャンセル" };
+  return module.exports;
 });
 $__System.registerDynamic("d", [], true, function ($__require, exports, module) {
-    var define,
-        global = this || self,
-        GLOBAL = global;
-    module.exports = {
-        "SAY_HI": "Olá",
-
-        "EDIT_TAB": "Editar / Criar",
-        "PREVIEW_TAB": "Pré-visualizar",
-
-        "WIZARD_LINES": "linhas",
-        "WIZARD_LAYOUT": "layout",
-        "WIZARD_CONTROLS": "controles",
-        "WIZARD_SAVE": "salvar",
-
-        "PAGER_PREVIOUS": "Anterior",
-        "PAGER_NEXT": "Próximo",
-
-        "COMMAND_PANEL": "Comando",
-        "VISUAL_PANEL": "Visual",
-
-        "ADD_NEW_LINE": "Adicionar uma nova linha",
-
-        "SELECTED_LINE": "Linha selecionada",
-
-        "NUMBER_OF_COLUMN": "número de colunas",
-        "APPLY_CTRL2COL": "Aplicar controles às colunas",
-
-        "CLIC_TAP_2_OPEN": "Click / Toque em uma coluna para abrir controle de seleção",
-        "SELECT_2_APPLY_COL": "Selecione o controle desejado para aplicar a esta coluna",
-
-        "CUSTOM_SUBMIT_BTN": "Customizar texto do botão Enviar",
-        "CUSTOM_CANCEL_BTN": "Customizar texto do botão Cancelar",
-        "NAME_THIS_FORM": "Nome deste formulário",
-        "SAVE_THIS_FORM": "Salvar este formulário",
-
-        "FINAL_STEP": "Passo final : Visualizar formulário",
-
-        "DATA_MODEL": "Modelo de dados",
-        "FIELDS_MODEL": "Modelo de campos (pronto para salvar na base de dados)",
-
-        "SELECT_A_CTRL": "Selecionar um controle",
-        "SELECT_CTRL_IN_LIST": "Selecionar um controle na lista a seguir",
-        "COL_WILL_BE_BLANK": "Coluna ficará em branco",
-
-        "EDIT_PROPERTIES": "Editar propriedades",
-
-        "HEADER_TEXT": "Texto do cabeçalho",
-        "ADD_EDIT_HEADER_HERE": "Adicionar / editar o texto do cabeçalho aqui",
-
-        "SUBTITLE_TEXT": "Texto da legenda",
-        "ADD_EDIT_SUBTIL_HERE": "Adicionar /Editar o texto da legenda aqui",
-
-        "LABEL_TEXT": "Texto do label",
-        "ADD_EDIT_LABEL_HERE": "Adicionar / Editar texto do controle label aqui",
-
-        "PLACEHOLDER": "placeholder",
-        "ADD_EDIT_PLACEHOLD": "Adicionar / editar texto do placeholder aqui",
-
-        "REQUIRED": "Obrigatório",
-
-        "DESCRIPTION": "Descrição",
-        "ADDEDIT_DESCRIPTION": "Adicionar / editar descrição aqui",
-
-        "DATE_FORMAT": "Formato da data",
-
-        "ADD_NEW_RADIO": "Adicionar novo radio",
-        "ADD_RADIO_PLACEHOLD": "Adicionar novo radio",
-        "EDIT_REMOVE_RADIO": "Editar/Remover radio",
-        "NO_RADIO_ADD_NEW": "nenhum radio : Adicionar novo valor ao radio ",
-
-        "SEARCH_4_OPTION": "procurar por opções",
-
-        "ADD": "adicionar",
-        "ORDER": "ordem",
-        "OPTION": "opção",
-        "GROUP": "grupo",
-
-        "Add_NEW_OPTIONS": "Adicionar nova opção",
-        "ADD_A_NEW_OPTION": "Adicionar nova opção",
-        "EDIT_REMOVE_OPTIONS": "Editar/Remover opções",
-        "NO_OPTION_ADD_NEW": "nenhuma opção : adicionar nova opções",
-
-        "ADD_NEW_GROUPS": "Adicionar novos grupos",
-        "ADD_A_NEW_GROUP": "adicionar novo grupo",
-        "EDIT_GROUPS_OPTIONS": "Editar/Remover opções/grupos",
-        "NO_GROUP_ADD_NEW": "adicionar novo grupo",
-
-        "OK": "OK",
-        "CANCEL": "Cancelar"
-    };
-    return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "SAY_HI": "Olá", "EDIT_TAB": "Editar / Criar", "PREVIEW_TAB": "Pré-visualizar", "WIZARD_LINES": "linhas", "WIZARD_LAYOUT": "layout", "WIZARD_CONTROLS": "controles", "WIZARD_SAVE": "salvar", "PAGER_PREVIOUS": "Anterior", "PAGER_NEXT": "Próximo", "COMMAND_PANEL": "Comando", "VISUAL_PANEL": "Visual", "ADD_NEW_LINE": "Adicionar uma nova linha", "SELECTED_LINE": "Linha selecionada", "NUMBER_OF_COLUMN": "número de colunas", "APPLY_CTRL2COL": "Aplicar controles às colunas", "CLIC_TAP_2_OPEN": "Click / Toque em uma coluna para abrir controle de seleção", "SELECT_2_APPLY_COL": "Selecione o controle desejado para aplicar a esta coluna", "CUSTOM_SUBMIT_BTN": "Customizar texto do botão Enviar", "CUSTOM_CANCEL_BTN": "Customizar texto do botão Cancelar", "NAME_THIS_FORM": "Nome deste formulário", "SAVE_THIS_FORM": "Salvar este formulário", "FINAL_STEP": "Passo final : Visualizar formulário", "DATA_MODEL": "Modelo de dados", "FIELDS_MODEL": "Modelo de campos (pronto para salvar na base de dados)", "SELECT_A_CTRL": "Selecionar um controle", "SELECT_CTRL_IN_LIST": "Selecionar um controle na lista a seguir", "COL_WILL_BE_BLANK": "Coluna ficará em branco", "EDIT_PROPERTIES": "Editar propriedades", "HEADER_TEXT": "Texto do cabeçalho", "ADD_EDIT_HEADER_HERE": "Adicionar / editar o texto do cabeçalho aqui", "SUBTITLE_TEXT": "Texto da legenda", "ADD_EDIT_SUBTIL_HERE": "Adicionar /Editar o texto da legenda aqui", "LABEL_TEXT": "Texto do label", "ADD_EDIT_LABEL_HERE": "Adicionar / Editar texto do controle label aqui", "PLACEHOLDER": "placeholder", "ADD_EDIT_PLACEHOLD": "Adicionar / editar texto do placeholder aqui", "REQUIRED": "Obrigatório", "DESCRIPTION": "Descrição", "ADDEDIT_DESCRIPTION": "Adicionar / editar descrição aqui", "DATE_FORMAT": "Formato da data", "ADD_NEW_RADIO": "Adicionar novo radio", "ADD_RADIO_PLACEHOLD": "Adicionar novo radio", "EDIT_REMOVE_RADIO": "Editar/Remover radio", "NO_RADIO_ADD_NEW": "nenhum radio : Adicionar novo valor ao radio ", "SEARCH_4_OPTION": "procurar por opções", "ADD": "adicionar", "ORDER": "ordem", "OPTION": "opção", "GROUP": "grupo", "Add_NEW_OPTIONS": "Adicionar nova opção", "ADD_A_NEW_OPTION": "Adicionar nova opção", "EDIT_REMOVE_OPTIONS": "Editar/Remover opções", "NO_OPTION_ADD_NEW": "nenhuma opção : adicionar nova opções", "ADD_NEW_GROUPS": "Adicionar novos grupos", "ADD_A_NEW_GROUP": "adicionar novo grupo", "EDIT_GROUPS_OPTIONS": "Editar/Remover opções/grupos", "NO_GROUP_ADD_NEW": "adicionar novo grupo", "OK": "OK", "CANCEL": "Cancelar" };
+  return module.exports;
 });
 $__System.register('e', ['7', '8', '9', 'a', 'b', 'c', 'd'], function (_export) {
-	'use strict';
+  'use strict';
 
-	var localEn, localFr, localEs, localDe, localTr, localJp, localPtBr, TRANSLATE_CONFIG;
+  var localEn, localFr, localEs, localDe, localTr, localJp, localPtBr, TRANSLATE_CONFIG;
 
-	function translateConfig($translateProvider) {
-		$translateProvider.translations('en', localEn);
-		$translateProvider.translations('fr', localFr);
-		$translateProvider.translations('es', localEs);
-		$translateProvider.translations('de', localDe);
-		$translateProvider.translations('tr', localTr);
-		$translateProvider.translations('jp', localJp);
-		$translateProvider.translations('pt-br', localPtBr);
-	}
+  function translateConfig($translateProvider) {
+    $translateProvider.translations('en', localEn);
+    $translateProvider.translations('fr', localFr);
+    $translateProvider.translations('es', localEs);
+    $translateProvider.translations('de', localDe);
+    $translateProvider.translations('tr', localTr);
+    $translateProvider.translations('jp', localJp);
+    $translateProvider.translations('pt-br', localPtBr);
+  }
 
-	return {
-		setters: [function (_) {
-			localEn = _['default'];
-		}, function (_2) {
-			localFr = _2['default'];
-		}, function (_3) {
-			localEs = _3['default'];
-		}, function (_a) {
-			localDe = _a['default'];
-		}, function (_b) {
-			localTr = _b['default'];
-		}, function (_c) {
-			localJp = _c['default'];
-		}, function (_d) {
-			localPtBr = _d['default'];
-		}],
-		execute: function () {
-			TRANSLATE_CONFIG = 'easyFormTranslateConfig';
-			translateConfig.$inject = ['$translateProvider'];
+  return {
+    setters: [function (_) {
+      localEn = _['default'];
+    }, function (_2) {
+      localFr = _2['default'];
+    }, function (_3) {
+      localEs = _3['default'];
+    }, function (_a) {
+      localDe = _a['default'];
+    }, function (_b) {
+      localTr = _b['default'];
+    }, function (_c) {
+      localJp = _c['default'];
+    }, function (_d) {
+      localPtBr = _d['default'];
+    }],
+    execute: function () {
+      TRANSLATE_CONFIG = 'easyFormTranslateConfig';
+      translateConfig.$inject = ['$translateProvider'];
 
-			_export('default', translateConfig);
+      _export('default', translateConfig);
 
-			_export('TRANSLATE_CONFIG', TRANSLATE_CONFIG);
-		}
-	};
+      _export('TRANSLATE_CONFIG', TRANSLATE_CONFIG);
+    }
+  };
 });
 $__System.register('f', ['e'], function (_export) {
-								'use strict';
+                'use strict';
 
-								var translateConfig, TRANSLATE_MODULE;
-								return {
-																setters: [function (_e) {
-																								translateConfig = _e['default'];
-																}],
-																execute: function () {
-																								TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
+                var translateConfig, TRANSLATE_MODULE;
+                return {
+                                setters: [function (_e) {
+                                                translateConfig = _e['default'];
+                                }],
+                                execute: function () {
+                                                TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
 
-																								_export('default', angular.module(TRANSLATE_MODULE, []).config(translateConfig));
-																}
-								};
+                                                _export('default', angular.module(TRANSLATE_MODULE, []).config(translateConfig));
+                                }
+                };
 });
 $__System.register('10', [], function (_export) {
-	/* global angular */
-	'use strict';
+  /* global angular */
+  'use strict';
 
-	var CORE_MODULES;
-	return {
-		setters: [],
-		execute: function () {
-			CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'pascalprecht.translate'];
+  var CORE_MODULES;
+  return {
+    setters: [],
+    execute: function () {
+      CORE_MODULES = ['textAngular', 'textAngularSetup', 'ngAnimate', 'toaster', 'formly', 'formlyBootstrap', 'ui.bootstrap', 'nya.bootstrap.select', 'pascalprecht.translate'];
 
-			_export('default', angular.module('edaStepWayEasyFormGen.core', CORE_MODULES));
-		}
-	};
+      _export('default', angular.module('edaStepWayEasyFormGen.core', CORE_MODULES));
+    }
+  };
 });
 $__System.registerDynamic("11", [], true, function ($__require, exports, module) {
   var define,
@@ -5868,11 +5261,11 @@ $__System.register('7e', ['7d'], function (_export) {
               type: 'none',
               key: 'none' // ,
               // templateOptions: {
-              //                     label: 'none',
-              //                     placeholder: 'none',
-              //                     required: false,
-              //                     description: 'Descriptive text'
-              //                   }
+              //   label: 'none',
+              //   placeholder: 'none',
+              //   required: false,
+              //   description: 'Descriptive text'
+              // }
             }
           }]
         }]
@@ -5997,65 +5390,66 @@ $__System.register('7e', ['7d'], function (_export) {
       };
 
       addOneColumnControl = function addOneColumnControl(formlyModel, configurationModel, lineIndex) {
+        var control = _extends({}, configurationModel.lines[lineIndex].columns[0].control);
         var fieldToPush = {
           className: 'col-xs-12',
-          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
-          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          type: control && control.type && control.type !== 'none' ? control.type : 'blank',
+          key: control && control.key ? control.key : 'blank' + Date.now(),
           templateOptions: {
-            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+            type: extractTemplateOptionType(control),
+            label: extractTemplateOptionLabel(control),
+            required: extractTemplateOptionRequired(control),
+            placeholder: extractTemplateOptionPlaceholder(control),
+            description: extractTemplateOptionDescription(control),
+            options: extractTemplateOptionOptions(control)
           },
-          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+          expressionProperties: extractFormlyExpressionProperties(control),
+          validators: extractFormlyValidators(control),
+          validation: extractFormlyValidation(control)
         };
         //////////////////////////////////////////////
         //datepicker additionnal particular property
         //////////////////////////////////////////////
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+        if (control.type === 'datepicker') {
           addDatepickerOptionsProperty(fieldToPush, configurationModel, lineIndex);
         }
-
         formlyModel.push(fieldToPush);
       };
 
       addTwoColumnControl = function addTwoColumnControl(formlyModel, configurationModel, lineIndex) {
-
+        var control0 = _extends({}, configurationModel.lines[lineIndex].columns[0].control);
+        var control1 = _extends({}, configurationModel.lines[lineIndex].columns[0].control);
         //text header is stored in "description" in templateOtion model
         var headerTemplateCol0 = {
           className: 'col-xs-6',
-          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control) + '<h2><hr/></div></div>'
+          template: '\n  <div class="row">\n    <div class="">\n      <h2 class="text-center">\n        ' + extractTemplateOptionDescription(control0) + '\n      </h2>\n      <hr/>\n    </div>\n  </div>\n  '
         };
 
         var headerTemplateCol1 = {
           className: 'col-xs-6',
-          template: '<div class="row"><div class=""><h2 class="text-center">' + extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control) + '<h2><hr/></div></div>'
+          template: '\n  <div class="row">\n    <div class="">\n      <h2 class="text-center">\n        ' + extractTemplateOptionDescription(control1) + '\n      </h2>\n      <hr/>\n    </div>\n  </div>\n  '
         };
 
         var controlCol0 = {
           className: 'col-xs-6',
-          type: typeof configurationModel.lines[lineIndex].columns[0].control.type !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank' : configurationModel.lines[lineIndex].columns[0].control.type : 'blank',
-          key: typeof configurationModel.lines[lineIndex].columns[0].control.key !== 'undefined' ? configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
+          type: control0 && control0.type && control0.type !== 'none' ? control0.type : 'blank',
+          key: control0 && control0.key && control0.key !== 'none' ? control0.key : 'blank' + Date.now(),
           templateOptions: {
-            type: extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-            label: extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-            required: extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-            placeholder: extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-            description: extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-            options: extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
+            type: extractTemplateOptionType(control0),
+            label: extractTemplateOptionLabel(control0),
+            required: extractTemplateOptionRequired(control0),
+            placeholder: extractTemplateOptionPlaceholder(control0),
+            description: extractTemplateOptionDescription(control0),
+            options: extractTemplateOptionOptions(control0)
           },
-          expressionProperties: extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-          validators: extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-          validation: extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+          expressionProperties: extractFormlyExpressionProperties(control0),
+          validators: extractFormlyValidators(control0),
+          validation: extractFormlyValidation(control0)
         };
         //////////////////////////////////////////////
         //datepicker additionnal particular property
         //////////////////////////////////////////////
-        if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+        if (control0.type === 'datepicker') {
           addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
         }
 
@@ -6369,20 +5763,20 @@ $__System.register('7f', ['16', '17', '7e'], function (_export) {
 	};
 });
 $__System.register('80', ['7f'], function (_export) {
-		'use strict';
+  'use strict';
 
-		var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
-		return {
-				setters: [function (_f) {
-						$formlyProxy = _f['default'];
-						FORMLY_PROXY_SERVICE = _f.FORMLY_PROXY_SERVICE;
-				}],
-				execute: function () {
-						FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
+  var $formlyProxy, FORMLY_PROXY_SERVICE, FORMLY_PROXY_MODULE_NAME;
+  return {
+    setters: [function (_f) {
+      $formlyProxy = _f['default'];
+      FORMLY_PROXY_SERVICE = _f.FORMLY_PROXY_SERVICE;
+    }],
+    execute: function () {
+      FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
 
-						_export('default', angular.module(FORMLY_PROXY_MODULE_NAME, []).service(FORMLY_PROXY_SERVICE, $formlyProxy));
-				}
-		};
+      _export('default', angular.module(FORMLY_PROXY_MODULE_NAME, []).service(FORMLY_PROXY_SERVICE, $formlyProxy));
+    }
+  };
 });
 $__System.registerDynamic("77", [], true, function ($__require, exports, module) {
   var define,
@@ -6721,39 +6115,39 @@ $__System.register('84', ['83'], function (_export) {
 		};
 });
 $__System.register('1', ['2', '4', '6', '10', '80', '84', 'f', '2e', '6b', '6e'], function (_export) {
-	'use strict';
+  'use strict';
 
-	var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepWayCoreModule, easyFormStepwayFormlyProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
-	return {
-		setters: [function (_) {}, function (_2) {
-			easyFormStepWayConfig = _2['default'];
-			EASY_FORM_VERSION_NAME = _2.EASY_FORM_VERSION_NAME;
-			EASY_FORM_VERSION_VALUE = _2.EASY_FORM_VERSION_VALUE;
-		}, function (_3) {
-			formlyConfig = _3['default'];
-		}, function (_4) {
-			easyFormStepWayCoreModule = _4['default'];
-		}, function (_5) {
-			easyFormStepwayFormlyProxyModule = _5['default'];
-		}, function (_6) {
-			easyFormStepwaySelectOptionManageModules = _6['default'];
-		}, function (_f) {
-			translateConfig = _f['default'];
-		}, function (_e) {
-			easyFormStepwayMainModule = _e['default'];
-		}, function (_b) {
-			easyFormStepwayModalModule = _b['default'];
-		}, function (_e2) {
-			easyFormStepwayModalProxyModule = _e2['default'];
-		}],
-		execute: function () {
-			STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
-			STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, translateConfig.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwaySelectOptionManageModules.name];
-			mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
+  var easyFormStepWayConfig, EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE, formlyConfig, easyFormStepWayCoreModule, easyFormStepwayFormlyProxyModule, easyFormStepwaySelectOptionManageModules, translateConfig, easyFormStepwayMainModule, easyFormStepwayModalModule, easyFormStepwayModalProxyModule, STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT, mainModule;
+  return {
+    setters: [function (_) {}, function (_2) {
+      easyFormStepWayConfig = _2['default'];
+      EASY_FORM_VERSION_NAME = _2.EASY_FORM_VERSION_NAME;
+      EASY_FORM_VERSION_VALUE = _2.EASY_FORM_VERSION_VALUE;
+    }, function (_3) {
+      formlyConfig = _3['default'];
+    }, function (_4) {
+      easyFormStepWayCoreModule = _4['default'];
+    }, function (_5) {
+      easyFormStepwayFormlyProxyModule = _5['default'];
+    }, function (_6) {
+      easyFormStepwaySelectOptionManageModules = _6['default'];
+    }, function (_f) {
+      translateConfig = _f['default'];
+    }, function (_e) {
+      easyFormStepwayMainModule = _e['default'];
+    }, function (_b) {
+      easyFormStepwayModalModule = _b['default'];
+    }, function (_e2) {
+      easyFormStepwayModalProxyModule = _e2['default'];
+    }],
+    execute: function () {
+      STEP_WAY_MODULE_NAME = 'eda.easyformGen.stepway';
+      STEP_WAY_MODULES_INJECT = [easyFormStepWayCoreModule.name, translateConfig.name, easyFormStepwayMainModule.name, easyFormStepwayModalModule.name, easyFormStepwayModalProxyModule.name, easyFormStepwayFormlyProxyModule.name, easyFormStepwaySelectOptionManageModules.name];
+      mainModule = angular.module(STEP_WAY_MODULE_NAME, STEP_WAY_MODULES_INJECT).value(EASY_FORM_VERSION_NAME, EASY_FORM_VERSION_VALUE).config(formlyConfig).config(easyFormStepWayConfig);
 
-			_export('default', mainModule);
-		}
-	};
+      _export('default', mainModule);
+    }
+  };
 });
 })
 (function(factory) {

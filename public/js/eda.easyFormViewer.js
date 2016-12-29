@@ -1476,21 +1476,11 @@ $__System.register('12', ['11'], function (_export) {
   };
 });
 $__System.registerDynamic("13", [], true, function ($__require, exports, module) {
-	var define,
-	    global = this || self,
-	    GLOBAL = global;
-	module.exports = {
-		"stepway": {
-			"version": "1.2.1-beta2"
-		},
-		"dragdropway": {
-			"version": "1.2.0"
-		},
-		"formviewer": {
-			"version": "1.2.0"
-		}
-	};
-	return module.exports;
+  var define,
+      global = this || self,
+      GLOBAL = global;
+  module.exports = { "stepway": { "version": "1.2.1-beta2" }, "dragdropway": { "version": "1.2.0" }, "formviewer": { "version": "1.2.0" } };
+  return module.exports;
 });
 $__System.register('1', ['2', '9', '10', '12', '13', 'a'], function (_export) {
 	'use strict';
