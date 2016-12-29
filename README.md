@@ -76,7 +76,7 @@ Drag and drop way is still in development.
 have a try here: [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_DragDropWay.html)
 
 - **Drag and drop way visual preview here**:
-![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/dragdropway_preview.png)
+![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/images/dragdropway_preview.png)
 
 
 ______
@@ -86,7 +86,7 @@ ______
 `Easy form viewer` is a directive which helps you using your created forms
 - when you saved your form you saved `edaFieldsModel`: easy form generator fields model
 - just bind it to easy form viewer directive, then it will render (*without all unecessary decoration — generator useful only —*):
-![preview](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/easyFormViewerPreview.png)
+![preview](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/images/easyFormViewerPreview.png)
 
 ______
 
@@ -346,7 +346,7 @@ ______
      - japanese
      - spanish (thx to **Benjamin Orozco** :thumbsup:)
      - turkish (thx to **Serhat Can** :thumbsup:)
-  ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/languages.png)    
+  ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/images/languages.png)    
 
  ```javascript
   angular
@@ -427,7 +427,7 @@ ______
      + a validation message is displayed when entered email is invalid (pattern related)
      + preview:
 
- ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/emailAndValidation.png)    
+ ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/images/emailAndValidation.png)    
 
 
 ##What is coming next?

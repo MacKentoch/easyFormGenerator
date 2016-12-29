@@ -1,5 +1,5 @@
 
-import leftPanelPasswordControlTemplate from './edaDragDropWay.leftpanel.passwordControl.template.html!text';
+import leftPanelPasswordControlTemplate from './edaDragDropWay.leftpanel.passwordControl.template.html';
 
 const LEFT_PANEL_PASSWORD_CONTROL_DIRECTIVE = 'leftPanelPasswordControl';
 

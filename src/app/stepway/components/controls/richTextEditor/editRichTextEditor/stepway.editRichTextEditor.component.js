@@ -1,4 +1,4 @@
-import editRichTextEditorControlTemplate from './stepway.editRichTextEditor.template.html!text';
+import editRichTextEditorControlTemplate from './stepway.editRichTextEditor.template.html';
 
 export const EDIT_RICH_TEXT_EDITOR_COMPONENT = 'editRichTextEditorControl';
 

@@ -1,5 +1,5 @@
 /* global angular */
-import ddDecorDropZoneTemplate from './edaDragDropWay.dragdrop.ddDecorDropZone.template.html!text';
+import ddDecorDropZoneTemplate from './edaDragDropWay.dragdrop.ddDecorDropZone.template.html';
 
 const DD_DECOR_DROPZONE_DIRECTIVE = 'ddDecorDropZone';
 

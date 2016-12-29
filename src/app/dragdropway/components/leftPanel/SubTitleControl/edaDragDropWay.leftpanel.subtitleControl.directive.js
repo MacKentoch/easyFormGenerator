@@ -1,4 +1,4 @@
-import leftPanelSubtitleControlTemplate from './edaDragDropWay.leftpanel.subtitleControl.template.html!text';
+import leftPanelSubtitleControlTemplate from './edaDragDropWay.leftpanel.subtitleControl.template.html';
 
 const LEFT_PANEL_SUBTITLE_CONTROL_DIRECTIVE = 'leftPanelSubtitleControl';
 

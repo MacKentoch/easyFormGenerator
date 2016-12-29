@@ -1,4 +1,4 @@
-import editEmailControlTemplate from './stepway.editEmail.template.html!text';
+import editEmailControlTemplate from './stepway.editEmail.template.html';
 
 export const EDIT_EMAIL_COMPONENT = 'editEmailControl';
 

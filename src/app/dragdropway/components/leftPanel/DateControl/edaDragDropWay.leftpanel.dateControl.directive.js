@@ -1,5 +1,5 @@
 
-import leftPanelDateControlTemplate from './edaDragDropWay.leftpanel.dateControl.template.html!text';
+import leftPanelDateControlTemplate from './edaDragDropWay.leftpanel.dateControl.template.html';
 
 const LEFT_PANEL_DATE_CONTROL_DIRECTIVE = 'leftPanelDateControl';
 

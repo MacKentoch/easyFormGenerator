@@ -1,5 +1,5 @@
 
-import leftPanelCheckBoxControlTemplate from './edaDragDropWay.leftpanel.checkBoxControl.template.html!text';
+import leftPanelCheckBoxControlTemplate from './edaDragDropWay.leftpanel.checkBoxControl.template.html';
 
 const LEFT_PANEL_CHECKBOX_CONTROL_DIRECTIVE = 'leftPanelCheckBoxControl';
 

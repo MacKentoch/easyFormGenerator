@@ -1,4 +1,4 @@
-import leftPanelHeaderControlTemplate from './edaDragDropWay.leftpanel.headerControl.template.html!text';
+import leftPanelHeaderControlTemplate from './edaDragDropWay.leftpanel.headerControl.template.html';
 
 const LEFT_PANEL_HEADER_CONTROL_DIRECTIVE = 'leftPanelHeaderControl';
 

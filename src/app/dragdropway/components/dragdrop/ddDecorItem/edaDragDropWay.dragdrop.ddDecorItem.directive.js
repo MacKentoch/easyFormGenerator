@@ -1,5 +1,5 @@
 
-import dragdropItemTemplate from './edaDragDropWay.dragdrop.ddDecorItem.template.html!text';
+import dragdropItemTemplate from './edaDragDropWay.dragdrop.ddDecorItem.template.html';
 
 const DRAG_DROP_DECOR_ITEM = 'ddDecorItem';
 

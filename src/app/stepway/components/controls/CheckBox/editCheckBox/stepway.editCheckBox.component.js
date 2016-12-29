@@ -1,4 +1,4 @@
-import editCheckBoxControlTemplate from './stepway.editCheckBox.template.html!text';
+import editCheckBoxControlTemplate from './stepway.editCheckBox.template.html';
 
 export const EDIT_CHECKBOX_COMPONENT = 'editCheckBoxControl';
 

@@ -5,7 +5,7 @@ import {
 	initColumnTemplate,
 	initLineTemplate
 }                                   from './stepway.main.controller.helpers';
-import editControlModalTemplate 		from '../modal/stepway.editControlModal.template.html!text';
+import editControlModalTemplate 		from '../modal/stepway.editControlModal.template.html';
 import {
 	EDIT_MODAL_CONTROLLER_NAME,
 	EDIT_MODAL_CONTROLLERAS_NAME

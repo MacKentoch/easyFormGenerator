@@ -1,5 +1,5 @@
 
-import leftPanelRadioControlTemplate from './edaDragDropWay.leftpanel.radioControl.template.html!text';
+import leftPanelRadioControlTemplate from './edaDragDropWay.leftpanel.radioControl.template.html';
 
 const LEFT_PANEL_RADIO_CONTROL_DIRECTIVE = 'leftPanelRadioControl';
 

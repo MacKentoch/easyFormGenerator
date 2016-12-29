@@ -1,55 +1,55 @@
-
-module.exports = function(config) {
+// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
+module.exports = function karmaConfig (config) {
   config.set({
-    basePath: '',
-
-    frameworks: ['jspm','jasmine', 'karma-phantomjs-launcher'],
-
-    jspm: {
-      config: 'config.js',
-      // loadFiles: [
-      //   'node_modules/phantomjs-polyfill/bind-polyfill.js',
-      //   'src/app/**/*.spec.js'
-      // ],
-      loadFiles: ['./node_modules/**/*.js'],
-      packages: 'jspm_packages'
-      // serveFiles: [
-      //   'src/app/**/*.+(js|html|css|json)'
-      // ]
-    },
-
-    files: [
+    frameworks: [
+      // Reference: https://github.com/karma-runner/karma-jasmine
+      // Set framework to jasmine
+      'jasmine'
     ],
 
-    // list of files to exclude
-    exclude: [
+    reporters: [
+      // Reference: https://github.com/mlex/karma-spec-reporter
+      // Set reporter to print detailed results to console
+      'progress',
+
+      // Reference: https://github.com/karma-runner/karma-coverage
+      // Output code coverage files
+      'coverage'
+    ],
+
+    files: [
+      // Grab all files in the app folder that contain .spec.
+      'src/tests.webpack.js'
     ],
 
     preprocessors: {
+      // Reference: http://webpack.github.io/docs/testing.html
+      // Reference: https://github.com/webpack/karma-webpack
+      // Convert files with webpack and load sourcemaps
+      'src/tests.webpack.js': ['webpack', 'sourcemap']
     },
 
-    reporters: ['progress'],
+    browsers: [
+      // Run tests using PhantomJS
+      'PhantomJS'
+    ],
 
-    // web server port
-    port: 9876,
+    singleRun: true,
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
+    // Configure code coverage reporter
+    coverageReporter: {
+      dir: 'coverage/',
+      reporters: [
+        {type: 'text-summary'},
+        {type: 'html'}
+      ]
+    },
 
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    webpack: require('./webpack.config'),
 
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    // 'Chrome' || 'PhantomJS'
-    browsers: ['PhantomJS'],
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    // Hide webpack build information from output
+    webpackMiddleware: {
+      noInfo: 'errors-only'
+    }
   });
 };

@@ -1,5 +1,5 @@
 /* global angular */
-import ddDecorLineTemplate from './edaDragDropWay.dragdrop.ddDecorLine.template.html!text';
+import ddDecorLineTemplate from './edaDragDropWay.dragdrop.ddDecorLine.template.html';
 
 const DRAG_DROP_DECOR_LINE = 'ddDecorLine';
 

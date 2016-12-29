@@ -1,4 +1,4 @@
-import editTextInputControlTemplate from './stepway.editTextInput.template.html!text';
+import editTextInputControlTemplate from './stepway.editTextInput.template.html';
 
 export const EDIT_TEXTINPUT_CONTROL_COMPONENT = 'editTextInputControl';
 

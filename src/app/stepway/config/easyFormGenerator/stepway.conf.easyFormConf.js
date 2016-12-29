@@ -1,4 +1,4 @@
-import easyFormConfig 	from '../../../easyFormConfig.json!json';
+import easyFormConfig 	from '../../../easyFormConfig.json';
 
 const EASY_FORM_VERSION_NAME 	= 'easyFormGenVersion';
 const EASY_FORM_VERSION_VALUE = easyFormConfig.stepway.version;

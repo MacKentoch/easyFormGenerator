@@ -1,4 +1,4 @@
-import editTextareaControlTemplate from './stepway.editTextArea.template.html!text';
+import editTextareaControlTemplate from './stepway.editTextArea.template.html';
 
 export const EDIT_TEXTAREA_CONTROL_COMPONENT = 'editTextareaControl';
 

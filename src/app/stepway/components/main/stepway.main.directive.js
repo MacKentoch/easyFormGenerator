@@ -1,4 +1,4 @@
-import easyformTemplate            from './stepway.main.template.html!text';
+import easyformTemplate            from './stepway.main.template.html';
 import {
 	STEP_WAY_MAIN_CONTROLLER_NAME,
 	STEP_WAY_MAIN_CONTROLLERAS_NAME

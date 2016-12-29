@@ -1,9 +1,7 @@
-# Created by https://www.gitignore.io
-
-### Yeoman ###
 node_modules/
 bower_components/
 jspm_packages/
+coverage/
 *.log
 
 build/

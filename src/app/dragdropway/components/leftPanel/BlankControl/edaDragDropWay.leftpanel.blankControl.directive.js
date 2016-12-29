@@ -1,4 +1,4 @@
-import leftPanelBlankControlTemplate from './edaDragDropWay.leftpanel.blankControl.template.html!text';
+import leftPanelBlankControlTemplate from './edaDragDropWay.leftpanel.blankControl.template.html';
 
 const LEFT_PANEL_BLANK_CONTROL_DIRECTIVE = 'leftPanelBlankControl';
 

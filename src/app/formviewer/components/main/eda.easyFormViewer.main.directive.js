@@ -1,5 +1,5 @@
 /* global angular */
-import easyFormViewerTemplate 				from './eda.easyFormViewer.main.template.html!text';
+import easyFormViewerTemplate 				from './eda.easyFormViewer.main.template.html';
 
 import {
 	returnAttributeConfigurationLinesIfNotEmpty

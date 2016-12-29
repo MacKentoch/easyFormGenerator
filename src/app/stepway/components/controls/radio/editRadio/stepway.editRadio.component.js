@@ -1,4 +1,4 @@
-import editRadioControlTemplate from './stepway.editRadio.template.html!text';
+import editRadioControlTemplate from './stepway.editRadio.template.html';
 
 export const EDIT_RADIO_CONTROL_COMPONENT = 'editRadioControl';
 

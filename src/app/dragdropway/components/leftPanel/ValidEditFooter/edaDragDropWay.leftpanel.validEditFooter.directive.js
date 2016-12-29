@@ -1,4 +1,4 @@
-import leftPanelValidEditFooterTemplate from './edaDragDropWay.leftpanel.validEditFooter.template.html!text';
+import leftPanelValidEditFooterTemplate from './edaDragDropWay.leftpanel.validEditFooter.template.html';
 
 const LEFT_PANEL_VALID_EDIT_FOOTER_DIRECTIVE = 'leftPanelValidEditFooter';
 

@@ -1,5 +1,5 @@
 
-import leftPanelTextInputControlTemplate from './edaDragDropWay.leftpanel.textInputControl.template.html!text';
+import leftPanelTextInputControlTemplate from './edaDragDropWay.leftpanel.textInputControl.template.html';
 
 const LEFT_PANEL_TEXT_INPUT_CONTROL_DIRECTIVE = 'leftPanelTextInputControl';
 

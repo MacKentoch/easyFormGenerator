@@ -5,7 +5,7 @@
 //-> then angular 1.4+ will be required...
 //-> check methot to refactor inside rag drop way then common step way and drag drop way
 
-import edaDragDropWayEasyFormGenDirectiveTemplate 	from './edaDragDropWay.edaDragdropWayEasyFormGen.template.html!text';
+import edaDragDropWayEasyFormGenDirectiveTemplate 	from './edaDragDropWay.edaDragdropWayEasyFormGen.template.html';
 import {
 	DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLER,
 	DRAG_DROP_WAY_EASY_FORM_GEN_CONTROLLERAS

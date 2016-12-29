@@ -1,4 +1,4 @@
-import editPasswordControlTemplate from './stepway.editPassword.template.html!text';
+import editPasswordControlTemplate from './stepway.editPassword.template.html';
 
 export const EDIT_PASSWORD_CONTROL_COMPONENT = 'editPasswordControl';
 

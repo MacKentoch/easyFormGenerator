@@ -1,4 +1,4 @@
-import editBasicSelectTemplate from './stepway.editBasicSelect.template.html!text';
+import editBasicSelectTemplate from './stepway.editBasicSelect.template.html';
 
 export const EDIT_BASIC_SELECT_COMPONENT = 'editBasicSelectControl';
 

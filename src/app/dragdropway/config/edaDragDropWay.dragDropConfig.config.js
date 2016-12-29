@@ -1,4 +1,4 @@
-import easyFormConfig   from '../../easyFormConfig.json!json';
+import easyFormConfig   from '../../easyFormConfig.json';
 
 const EASY_FORM_DD_VERSION_NAME  = 'easyFormGenVersion';
 let   EASY_FORM_DD_VERSION_VALUE = easyFormConfig.dragdropway.version;

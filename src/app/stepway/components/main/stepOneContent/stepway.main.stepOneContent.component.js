@@ -1,4 +1,4 @@
-export const LINE_STEP_CONTENT_COMPONENT = 'stepOneContent';
+const LINE_STEP_CONTENT_COMPONENT = 'stepOneContent';
 
 export const stepOneContentComponent = {
   template : `

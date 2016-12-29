@@ -1,10 +1,10 @@
-import localEn   from '../../i18n/local-en.json!json';
-import localFr   from '../../i18n/local-fr.json!json';
-import localEs   from '../../i18n/local-es.json!json';
-import localDe   from '../../i18n/local-de.json!json';
-import localTr   from '../../i18n/local-tr.json!json';
-import localJp   from '../../i18n/local-jp.json!json';
-import localPtBr from '../../i18n/local-pt-br.json!json';
+import localEn   from '../../i18n/local-en.json';
+import localFr   from '../../i18n/local-fr.json';
+import localEs   from '../../i18n/local-es.json';
+import localDe   from '../../i18n/local-de.json';
+import localTr   from '../../i18n/local-tr.json';
+import localJp   from '../../i18n/local-jp.json';
+import localPtBr from '../../i18n/local-pt-br.json';
 
 const TRANSLATE_CONFIG = 'easyFormTranslateConfig';
 

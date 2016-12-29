@@ -1,5 +1,5 @@
 
-import leftPanelGroupedSelectControlTemplate from './edaDragDropWay.leftpanel.groupedSelectControl.template.html!text';
+import leftPanelGroupedSelectControlTemplate from './edaDragDropWay.leftpanel.groupedSelectControl.template.html';
 
 const LEFT_PANEL_GROUPED_SELECT_CONTROL_DIRECTIVE = 'leftPanelGroupedSelectControl';
 

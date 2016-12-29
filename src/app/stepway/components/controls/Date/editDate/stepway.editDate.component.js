@@ -1,4 +1,4 @@
-import editDateControlTemplate from './stepway.editDate.template.html!text';
+import editDateControlTemplate from './stepway.editDate.template.html';
 
 export const EDIT_DATE_COMPONENT = 'editDateControl';
 

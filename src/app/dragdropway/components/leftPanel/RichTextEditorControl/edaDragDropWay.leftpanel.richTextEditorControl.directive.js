@@ -1,5 +1,5 @@
 
-import leftPanelRichTextEditorControlTemplate from './edaDragDropWay.leftpanel.richTextEditorControl.template.html!text';
+import leftPanelRichTextEditorControlTemplate from './edaDragDropWay.leftpanel.richTextEditorControl.template.html';
 
 const LEFT_PANEL_RICH_TEXT_EDITOR_CONTROL_DIRECTIVE = 'leftPanelRichTextEditorControl';
 
