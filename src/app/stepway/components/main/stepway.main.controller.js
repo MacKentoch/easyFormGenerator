@@ -268,34 +268,37 @@ class edaStepWayEasyFormGenController {
 
   saveThisForm() {
     if (typeof this.configuration.formName === 'undefined') {
-    this.toaster.pop({
-        type: 'warning',
-        timeout:2000,
-        title: 'Form name is undefined',
-        body: 'Form has not been saved.',
-        showCloseButton: true
-      });
+      this.toaster.pop({
+          type: 'warning',
+          timeout:2000,
+          title: 'Form name is undefined',
+          body: 'Form has not been saved.',
+          showCloseButton: true
+        });
       return false;
     }
+
     if (this.configuration.formName === '') {
-    this.toaster.pop({
-        type: 'warning',
-        timeout:2000,
-        title: 'Form name is required',
-        body: 'Form has not been saved.',
-        showCloseButton: true
-      });
+      this.toaster.pop({
+          type: 'warning',
+          timeout:2000,
+          title: 'Form name is required',
+          body: 'Form has not been saved.',
+          showCloseButton: true
+        });
       return false;
     }
+
     this.toaster.pop({
       type: 'wait',
-      timeout:10000,
-      title: 'Form is being saved',
-      body: 'Wait.',
+      timeout: 3000,
+      title: 'Fake for demo:: Form is being saved',
+      body: 'Fake for demo: Wait.',
       showCloseButton: true
     });
-    this.toaster.clear();
+    // this.toaster.clear();
     this.returnSaveEvent = true;
+
     return true;
   }
 }
