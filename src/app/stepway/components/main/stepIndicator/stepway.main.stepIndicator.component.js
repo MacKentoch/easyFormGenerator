@@ -10,6 +10,7 @@ export const stepIndicatorComponent = {
             <button
               type="button"
               class="btn btn-circle"
+              ng-click="$ctrl.goToStep({index:0})"
               ng-class="{'btn-primary': $ctrl.configuration.stepIndicators[0], 'btn-default': !$ctrl.configuration.stepIndicators[0]}" >
               0
             </button>
@@ -21,6 +22,7 @@ export const stepIndicatorComponent = {
             <button
               type="button"
               class="btn btn-circle"
+              ng-click="$ctrl.goToStep({index:1})"
               ng-class="{'btn-primary': $ctrl.configuration.stepIndicators[1], 'btn-default': !$ctrl.configuration.stepIndicators[1], 'disabled': ($ctrl.configuration.configStepCounter < 1)}"  >
               1
             </button>
@@ -32,6 +34,7 @@ export const stepIndicatorComponent = {
             <button
               type="button"
               class="btn btn-default btn-circle"
+              ng-click="$ctrl.goToStep({index:2})"
               ng-class="{'btn-primary': $ctrl.configuration.stepIndicators[2], 'btn-default': !$ctrl.configuration.stepIndicators[2], 'disabled': ($ctrl.configuration.configStepCounter < 2)}" >
               2
             </button>
@@ -43,6 +46,7 @@ export const stepIndicatorComponent = {
             <button
               type="button"
               class="btn btn-default btn-circle"
+              ng-click="$ctrl.goToStep({index:3})"
               ng-class="{'btn-primary': $ctrl.configuration.stepIndicators[3], 'btn-default': !$ctrl.configuration.stepIndicators[3], 'disabled': ($ctrl.configuration.configStepCounter < 3)}" >
               3
             </button>
@@ -56,7 +60,8 @@ export const stepIndicatorComponent = {
   </div>
   `,
   bindings: {
-    configuration: '<'
+    configuration: '<',
+    goToStep: '&'
   },
   controller:
   class stepIndicatorComponent {

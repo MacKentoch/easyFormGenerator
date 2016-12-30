@@ -220,6 +220,10 @@ class edaStepWayEasyFormGenController {
     this.setTrueThisStepIndicator(this.configuration.configStepCounter);
   }
 
+  goToStep(index) {
+    this.configuration.configStepCounter = index;
+    this.setTrueThisStepIndicator(this.configuration.configStepCounter);
+  }
 
   stepReachable(indexStep) {
     if (indexStep < this.configuration.configStepCounter) {
