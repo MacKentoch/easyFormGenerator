@@ -8,13 +8,13 @@ export const stepThreeContentComponent = {
     <div class="col-md-4">
       <step-three-command-panel
         configuration="$ctrl.configuration"
-        saveThisForm="$ctrl.saveThisForm()">
+        save-this-form="$ctrl.saveThisForm()">
       </step-three-command-panel>
     </div>
     <div class="col-md-8">
       <step-three-visual-panel
         configuration="$ctrl.configuration"
-        data-model="$ctrl.dataModel"
+        eda-data-model="$ctrl.edaDataModel"
         wf-form-fields="$ctrl.wfFormFields"
         on-submit="$ctrl.onSubmit()">
       </step-three-visual-panel>
@@ -23,7 +23,7 @@ export const stepThreeContentComponent = {
   `,
   bindings : {
     configuration:  '=',
-    dataModel:      '<',
+    edaDataModel:   '=',
     wfFormFields:   '=',
     onSubmit:       '&',
     saveThisForm:   '&'
@@ -35,11 +35,11 @@ export const stepThreeContentComponent = {
     }
 
     $onInit() {
-      console.log('stepThreeContentComponent init, dataModel: ', this.dataModel);
+      // console.log('stepThreeContentComponent init, edaDataModel: ', this.edaDataModel);
     }
 
     $onChange(changesObj) {
-      console.log('stepThreeContentComponent onChange, changesObj: ', changesObj);
+      // console.log('stepThreeContentComponent onChange, changesObj: ', changesObj);
     }
 
     static get $inject() {

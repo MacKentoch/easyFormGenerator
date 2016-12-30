@@ -15,7 +15,7 @@ export const StepThreeVisualPanelComponent = {
         <form ng-submit="vizPanel.onSubmit()">
           <formly-form
             id="saveFormlyFom"
-            model="vizPanel.dataModel"
+            model="vizPanel.edaDataModel"
             fields="vizPanel.wfFormFields">
             <span class="pull-right">
             <button
@@ -38,7 +38,7 @@ export const StepThreeVisualPanelComponent = {
   controllerAs: 'vizPanel',
   bindings: {
     configuration: '=',
-    dataModel: '<',
+    edaDataModel: '=',
     wfFormFields: '=',
     onSubmit: '&'
   },
@@ -46,6 +46,10 @@ export const StepThreeVisualPanelComponent = {
   class StepThreeVisualPanelController {
     constructor() {
 
+    }
+
+    $onInit() {
+      // console.log('stepThreeVisualPanel init, edaDataModel: ', this.edaDataModel);
     }
 
     static get $inject() {

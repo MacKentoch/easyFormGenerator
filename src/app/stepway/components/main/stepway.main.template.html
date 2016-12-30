@@ -1,34 +1,34 @@
 <section id="pageWfEdit">
-	<div ng-init="">
-		<div class="container">
-			<section id="preview">
-				<div id="preview-content">
-					<div class="content-container">
-						<!-- taoster alert -->
-						<toaster-container
+  <div ng-init="">
+    <div class="container">
+      <section id="preview">
+        <div id="preview-content">
+          <div class="content-container">
+            <!-- taoster alert -->
+            <toaster-container
               toaster-options="{
-  							'position-class': 'toast-top-full-width',
-  							'extendedTimeout':500,
-  							'timeOut':500,
+                'position-class': 'toast-top-full-width',
+                'extendedTimeout':500,
+                'timeOut':500,
                 'body-output-type': 'template'
-  						}">
-						</toaster-container>
-						<uib-tabset justified="true">
-						  <uib-tab
+              }">
+            </toaster-container>
+            <uib-tabset justified="true">
+              <uib-tab
                 active="vm.tab.editTab.active"
                 heading="{{'EDIT_TAB' | translate}}">
-								<div class="row">
+                <div class="row">
                   <step-indicator
                     configuration="vm.configuration">
                   </step-indicator>
-							  </div>
-								<div class="row">
+                </div>
+                <div class="row">
                   <pager
                     step-indicators="vm.stepIndicators"
                     next-config-step="vm.nextConfigStep()"
                     previous-config-step="vm.previousConfigStep()">
                   </pager>
-									<div
+                  <div
                     class="animate-switch-container"
                     ng-switch on="vm.configuration.listConfigStep[vm.configuration.configStepCounter]">
                     <step-zero-content
@@ -51,68 +51,68 @@
                     </step-two-content>
                     <step-three-content
                       configuration="vm.configuration"
-                      data-model="vm.dataMode"
+                      eda-data-model="vm.dataModel"
                       wf-form-fields="vm.wfFormFields"
                       on-submit="vm.onSubmit()"
                       save-this-form="vm.saveThisForm()">
                     </step-three-content>
                   </div>
                 </div>
-				      </uib-tab>
-							<uib-tab
+              </uib-tab>
+              <uib-tab
                 active="vm.tab.previewTab.active"
                 ng-if="vm.tab.previewTab.tabVisible"
                 heading="{{'PREVIEW_TAB' | translate}}">
-  							<div class="panel panel-default">
-  								<div class="panel-body">
-  									<!-- formly here -->
-  									<form ng-submit="vm.onSubmit()">
-  										<formly-form
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <!-- formly here -->
+                    <form ng-submit="vm.onSubmit()">
+                      <formly-form
                         id="previewFormlyForm"
                         model="vm.dataModel"
                         fields="vm.wfFormFields">
-    										<span class="pull-right">
-    											<button
+                        <span class="pull-right">
+                          <button
                             class="btn btn-primary"
                             type="submit">
                             {{vm.configuration.submitButtonText}}
                           </button>
-    											<button
+                          <button
                             class="btn btn-primary"
                             type="cancel">
                             {{vm.configuration.cancelButtonText}}
                           </button>
-  											</span>
-  										</formly-form>
-  									</form>
-  								</div>
-  							</div>
-  							<div
+                        </span>
+                      </formly-form>
+                    </form>
+                  </div>
+                </div>
+                <div
                   ng-if="vm.tab.previewTab.modelsVisible"
                   class="panel panel-default">
-  								<div class="panel-body">
-  									<p>{{'DATA_MODEL' | translate}}</p>
-  									<pre>
-  										{{vm.dataModel | json}}
-  									</pre>
-  								</div>
-  							</div>
-  							<div
+                  <div class="panel-body">
+                    <p>{{'DATA_MODEL' | translate}}</p>
+                    <pre>
+                      {{vm.dataModel | json}}
+                    </pre>
+                  </div>
+                </div>
+                <div
                   ng-if="vm.tab.previewTab.modelsVisible"
                   class="panel panel-default">
-  								<div class="panel-body">
-  									<p>{{'FIELDS_MODEL' | translate}}</p>
-  									<pre>
-  										{{vm.wfFormFieldsOnlyNeededProperties | json}}
-  									</pre>
-  								</div>
-  							</div>
-							</uib-tab>
-						</uib-tabset>
-					</div>
-				</div>
-			</section>
-			<hr/>
-		</div>
-	</div>
+                  <div class="panel-body">
+                    <p>{{'FIELDS_MODEL' | translate}}</p>
+                    <pre>
+                      {{vm.wfFormFieldsOnlyNeededProperties | json}}
+                    </pre>
+                  </div>
+                </div>
+              </uib-tab>
+            </uib-tabset>
+          </div>
+        </div>
+      </section>
+      <hr/>
+    </div>
+  </div>
 </section>
