@@ -12,21 +12,21 @@ export const StepThreeVisualPanelComponent = {
         </h3>
       </div>
       <div class="panel-body">
-        <form ng-submit="$ctrl.onSubmit()">
+        <form ng-submit="vizPanel.onSubmit()">
           <formly-form
             id="saveFormlyFom"
-            model="$ctrl.dataModel"
-            fields="$ctrl.wfFormFields">
+            model="vizPanel.dataModel"
+            fields="vizPanel.wfFormFields">
             <span class="pull-right">
             <button
               class="btn btn-primary"
               type="submit">
-              {{$ctrl.configuration.submitButtonText}}
+              {{vizPanel.configuration.submitButtonText}}
             </button>
             <button
               class="btn btn-primary"
               type="cancel">
-              {{$ctrl.configuration.cancelButtonText}}
+              {{vizPanel.configuration.cancelButtonText}}
             </button>
             </span>
           </formly-form>
@@ -35,11 +35,12 @@ export const StepThreeVisualPanelComponent = {
     </div>
   </div>
   `,
+  controllerAs: 'vizPanel',
   bindings: {
-    configuration:  '=',
-    dataModel:      '=',
-    wfFormFields:   '=',
-    onSubmit:       '&'
+    configuration: '=',
+    dataModel: '<',
+    wfFormFields: '=',
+    onSubmit: '&'
   },
   controller:
   class StepThreeVisualPanelController {

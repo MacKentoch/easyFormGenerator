@@ -10,6 +10,7 @@
   							'position-class': 'toast-top-full-width',
   							'extendedTimeout':500,
   							'timeOut':500,
+                'body-output-type': 'template'
   						}">
 						</toaster-container>
 						<uib-tabset justified="true">
@@ -50,7 +51,7 @@
                     </step-two-content>
                     <step-three-content
                       configuration="vm.configuration"
-                      data-model="vm.dataModel"
+                      data-model="vm.dataMode"
                       wf-form-fields="vm.wfFormFields"
                       on-submit="vm.onSubmit()"
                       save-this-form="vm.saveThisForm()">

@@ -23,7 +23,7 @@ export const stepThreeContentComponent = {
   `,
   bindings : {
     configuration:  '=',
-    dataModel:      '=',
+    dataModel:      '<',
     wfFormFields:   '=',
     onSubmit:       '&',
     saveThisForm:   '&'
@@ -32,6 +32,14 @@ export const stepThreeContentComponent = {
   class stepThreeContentController {
     constructor() {
 
+    }
+
+    $onInit() {
+      console.log('stepThreeContentComponent init, dataModel: ', this.dataModel);
+    }
+
+    $onChange(changesObj) {
+      console.log('stepThreeContentComponent onChange, changesObj: ', changesObj);
     }
 
     static get $inject() {
