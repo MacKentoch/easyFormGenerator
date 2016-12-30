@@ -11,7 +11,7 @@
 
     "PAGER_PREVIOUS"      : "Anterior",
     "PAGER_NEXT"          : "Siguiente",
-    
+
     "COMMAND_PANEL"       : "Comando",
     "VISUAL_PANEL"        : "Visual",
 
@@ -58,6 +58,9 @@
 
     "DESCRIPTION"         : "Descripcion",
     "ADDEDIT_DESCRIPTION" : "Agregar / editar descripcion aqui",
+
+    "DEFAULTVALUE"         : "Valor por defecto",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "Añadir / editar valor predeterminado aquí",
 
     "DATE_FORMAT"         : "Formato de fecha",
 

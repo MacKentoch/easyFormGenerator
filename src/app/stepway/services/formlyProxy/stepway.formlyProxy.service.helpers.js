@@ -122,6 +122,15 @@ const extractTemplateOptionDescription = (obj) => {
   return defaultValue;
 };
 
+const extractDefaultValue = (obj) => {
+  const defaultValue = '';
+  if (obj && obj.defaultValue) {
+    return obj.defaultValue;
+  }
+  return defaultValue;
+};
+
+
 const extractFormlyExpressionProperties = (obj) => {
   const defaultValue = {};
   if (obj && obj.formlyExpressionProperties) {
@@ -190,6 +199,7 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
       description: extractTemplateOptionDescription(control),
       options: extractTemplateOptionOptions(control)
     },
+    defaultValue: extractDefaultValue(control),
     expressionProperties: extractFormlyExpressionProperties(control),
     validators: extractFormlyValidators(control),
     validation: extractFormlyValidation(control)
@@ -247,6 +257,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
       description: extractTemplateOptionDescription(control0),
       options: extractTemplateOptionOptions(control0)
     },
+    defaultValue: extractDefaultValue(control0),
     expressionProperties: extractFormlyExpressionProperties(control0),
     validators: extractFormlyValidators(control0),
     validation: extractFormlyValidation(control0)
@@ -270,6 +281,7 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
   options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
   },
+  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[1].control),
   expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
   validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
   validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
@@ -334,6 +346,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
   options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
   },
+  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[0].control),
   expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
   validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
   validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
@@ -357,6 +370,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
   options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
   },
+  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[1].control),
   expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
   validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
   validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
@@ -379,6 +393,7 @@ const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
   description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
   options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
   },
+  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[2].control),
   expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
   validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
   validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
@@ -439,6 +454,7 @@ export {
   isTemplateOptionDefined,
   extractTemplateOptionLabel,
   extractTemplateOptionDatepickerOptions,
+  extractDefaultValue,
   extractFormlyExpressionProperties,
   extractFormlyValidators,
   extractFormlyValidation,
