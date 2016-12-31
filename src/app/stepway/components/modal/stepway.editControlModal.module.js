@@ -19,7 +19,7 @@ const EDIT_CONTROL_INJECT = controls.map(
 );
 
 export default angular
-								.module(EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT)
-								.controller(EDIT_MODAL_CONTROLLER_NAME, editModalController)
+                .module(EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT)
+                .controller(EDIT_MODAL_CONTROLLER_NAME, editModalController)
                 .component(EDIT_CHOOSE_CONTROL_COMPONENT, editChooseControlComponent)
                 .component(EDIT_EDIT_VALID_FOOTER_COMPONENT, editValidEditFooterComponent);

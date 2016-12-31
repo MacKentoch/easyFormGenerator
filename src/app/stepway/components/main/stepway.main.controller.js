@@ -292,7 +292,7 @@ class edaStepWayEasyFormGenController {
     this.toaster.pop({
       type: 'wait',
       timeout: 3000,
-      title: 'Fake for demo:: Form is being saved',
+      title: ': Form is being saved',
       body: 'Fake for demo: Wait.',
       showCloseButton: true
     });
