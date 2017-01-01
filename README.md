@@ -103,7 +103,7 @@ _____
 
 ###Using Step way version (production friendly)
 
-> Check demo: `stepway.html` in `preview` directory.
+> Check demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
 
 ####Inject easy form generator in your app
