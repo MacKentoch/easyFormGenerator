@@ -77,18 +77,23 @@ ______
 
 ##How to use?
 
-####npm way:
-
-```bash
-npm install --save easy-form-generator
-```
-
 _____
 
 ###Using Step way version (production friendly)
 
 > Check demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
+####install via npm:
+
+```bash
+npm install --save easy-form-generator
+```
+
+####or install via yarn:
+
+```bash
+yarn install --save easy-form-generator
+```
 
 ####Inject easy form generator in your app
 
@@ -163,6 +168,18 @@ ____
 
 > Check demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
+####install via npm:
+
+```bash
+npm install --save easy-form-generator
+```
+
+####or install via yarn:
+
+```bash
+yarn install --save easy-form-generator
+```
+
 ####Inject easy form generator in your app
 
 Just inject `eda.easyformGen.dragdropway` in you application:
@@ -174,7 +191,6 @@ angular
    ])
 
 ```
-
 
 ####All easy form generator just by this small html:
 ```html
