@@ -83,13 +83,19 @@ _____
 
 > Check demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
-####install via npm:
+####install
+
+**Installing easyFormGenerator will install in a row:**
+- step way
+- drag and drop way
+- form viewer
+
+**Install:**
 
 ```bash
 npm install --save easy-form-generator
 ```
-
-####or install via yarn:
+or
 
 ```bash
 yarn install --save easy-form-generator
@@ -168,13 +174,19 @@ ____
 
 > Check demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
-####install via npm:
+####install
+
+**Installing easyFormGenerator will install in a row:**
+- step way
+- drag and drop way
+- form viewer
+
+**Install:**
 
 ```bash
 npm install --save easy-form-generator
 ```
-
-####or install via yarn:
+or
 
 ```bash
 yarn install --save easy-form-generator
@@ -250,6 +262,25 @@ ____
 ###Using Easy form viewer (production friendly)
 
 >demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
+
+
+####install
+
+**Installing easyFormGenerator will install in a row:**
+- step way
+- drag and drop way
+- form viewer
+
+**Install:**
+
+```bash
+npm install --save easy-form-generator
+```
+or
+
+```bash
+yarn install --save easy-form-generator
+```
 
 ####Inject easy form viewer in your app
 
