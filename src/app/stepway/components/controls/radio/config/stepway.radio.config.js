@@ -1,18 +1,18 @@
 export const RadioConfig =       {
-  id                : 'Radio',
-  name              : 'Radio',
-  subtitle          : 'Radio',
-  options            : [],
-  group              : 'Radio',
-  formlyType        : 'radio',
-  formlySubtype      : '',
-  formlyLabel        : '',
-  formlyRequired    : false,
-  formlyDesciption  : '' ,
-  formlyOptions      : [],
+  id: 'Radio',
+  name: 'Radio',
+  subtitle: 'Radio',
+  options: [],
+  group: 'Radio',
+  formlyType: 'radio',
+  formlySubtype: '',
+  formlyLabel: '',
+  formlyRequired: false,
+  formlyDesciption: '' ,
+  formlyOptions: [],
   formlyExpressionProperties: {},
-  formlyValidators  : {},
-  formlyValidation  : {
+  formlyValidators: {},
+  formlyValidation: {
     messages: {
       required: function(viewValue, modelValue, scope) {
         //return a required validation message :

@@ -1,18 +1,18 @@
 export const TextAreaConfig =       {
-  id                : 'Texarea',
-  name              : 'Textarea',
-  subtitle          : 'Textarea',
-  group              : 'Textarea',
-  formlyType        : 'textarea',
-  formlySubtype      : '',
-  formlyLabel        : '',
-  formlyRequired    : false,
-  formlyDesciption  : '',
-  formlyOptions      : [],
+  id: 'Texarea',
+  name: 'Textarea',
+  subtitle: 'Textarea',
+  group: 'Textarea',
+  formlyType: 'textarea',
+  formlySubtype: '',
+  formlyLabel: '',
+  formlyRequired: false,
+  formlyDesciption: '',
+  formlyOptions: [],
   formlyExpressionProperties: {},
-  formlyValidators  : {},
-  formlyValidation  : {
-    messages  : {
+  formlyValidators: {},
+  formlyValidation: {
+    messages: {
       required: function(viewValue, modelValue, scope) {
         //return a required validation message :
         //-> '<label as name> is required '

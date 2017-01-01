@@ -3,17 +3,17 @@ import editBasicSelectTemplate from './stepway.editBasicSelect.template.html';
 export const EDIT_BASIC_SELECT_COMPONENT = 'editBasicSelectControl';
 
 export const editBasicSelectControlComponent = {
-  template      : editBasicSelectTemplate,
-  bindings      : {
-    nyaSelect                 : '=',
-    basicSelectRowCollection  : '=',
-    newOptionBasicSelect      : '=',
-    addNewOptionBasicSelect   : '&',
-    upThisRow                 : '&',
-    downThisRow               : '&',
-    removeRow                 : '&'
+  template: editBasicSelectTemplate,
+  bindings: {
+    nyaSelect: '=',
+    basicSelectRowCollection: '=',
+    newOptionBasicSelect: '=',
+    addNewOptionBasicSelect: '&',
+    upThisRow: '&',
+    downThisRow: '&',
+    removeRow: '&'
   },
-  controller    :
+  controller:
   class editBasicSelectController {
     constructor() {
 

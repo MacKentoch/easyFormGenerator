@@ -1,17 +1,17 @@
 export const RichTextEditorConfig =       {
-  id                : 'RichTextEditor',
-  name              : 'RichTextEditor',
-  subtitle          : 'RichTextEditor',
-  group              : 'Textarea',
-  formlyType        : 'richEditor',
-  formlySubtype      : '',
-  formlyLabel        : '',
-  formlyRequired    : false,
-  formlyDesciption  : '',
-  formlyOptions      : [],
+  id: 'RichTextEditor',
+  name: 'RichTextEditor',
+  subtitle: 'RichTextEditor',
+  group: 'Textarea',
+  formlyType: 'richEditor',
+  formlySubtype: '',
+  formlyLabel: '',
+  formlyRequired: false,
+  formlyDesciption: '',
+  formlyOptions: [],
   formlyExpressionProperties: {},
-  formlyValidators           : {},
-  formlyValidation  : {
+  formlyValidators: {},
+  formlyValidation: {
     messages: {
       required: function(viewValue, modelValue, scope) {
         //return a required validation message :
