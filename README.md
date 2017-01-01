@@ -140,15 +140,15 @@ Add these attributes to interact with your own controller:
 
 
 
-field name                    | field format  | field description  
---|---|---
-`formName`                    | string        | stores `form name`, default is empty string
-`btnSubmitText`               | string        | stores submit button name, default is 'Submit'
-`btnCancelText`               | string        | stores submit button name, default is 'Cancel'  
-`edaFieldsModel`              | array         | `easy form generator fields model` that describe form  
-`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)  
-`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`)  
-`dataModel`                   | object        | filling the form feeds dataModel  
+field name                    | field format  | field description                                                                   |
+------------------------------|---------------|-------------------------------------------------------------------------------------|
+`formName`                    | string        | stores `form name`, default is empty string                                         |
+`btnSubmitText`               | string        | stores submit button name, default is 'Submit'                                      |
+`btnCancelText`               | string        | stores submit button name, default is 'Cancel'                                      |
+`edaFieldsModel`              | array         | `easy form generator fields model` that describe form                               |
+`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
+`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |  
+`dataModel`                   | object        | filling the form feeds dataModel                                                    |
 
 
 Note: Easy form generator save form event
