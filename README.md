@@ -165,7 +165,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - nya-bootstrap-select (for basic and grouped select)
 - angular toaster (nice toaster messages)
 
-> It will be far clearer be checking demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
+> It will be far more talkative be checking demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
 ____
 
@@ -255,7 +255,7 @@ Easy form generator drag and drop way creates amazing bootstrap forms thanks to 
 - nya-bootstrap-select (for basic and grouped select)
 - angular toaster (nice toaster messages)
 
-> It will be far clearer be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
+> It will be far more talkative be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
 ____
 
@@ -350,6 +350,9 @@ eda-easy-form-viewer-submit-button-text               | string   |  submit butto
 eda-easy-form-viewer-cancel-button-text               | string   |  cancel button text                                                                  |
 eda-easy-form-viewer-submit-form-event                | function |  to handle submit event in your controller (like saving data model for example)      |
 eda-easy-form-viewer-cancel-form-event                | function |  to handle cancel event in your controller                                           |
+
+
+> It will be far more talkative be checking demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 ______
 
 ## What is new?
