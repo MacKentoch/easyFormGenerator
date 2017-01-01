@@ -138,13 +138,16 @@ Add these attributes to interact with your own controller:
 
 **Note: Easy form generator model properties are**:
 
-- `formName`: {string} - stores `form name`, default is empty string
-- `btnSubmitText`: {string} - stores submit button name, default is 'Submit'
-- `btnCancelText`: {string} - stores submit button name, default is 'Cancel'
-- `edaFieldsModel`: {array}  - `easy form generator fields model` that describe form
-- `edaFieldsModelStringified`: {string} - edaFieldsModel but stringified (*then easy to save fields model to any database*)
-- `formlyFieldsModel`: {object} - `angular formly fields model` (filled by easy form generator from `edaFieldsModel`)
-- `dataModel`: {object} - filling the form feeds dataModel
+field name                    | field format  | field description  
+--                            |---            |---
+`formName`                    | string        | stores `form name`, default is empty string
+`btnSubmitText`               | string        | stores submit button name, default is 'Submit'
+`btnCancelText`               | string        | stores submit button name, default is 'Cancel'  
+`edaFieldsModel`              | array         | `easy form generator fields model` that describe form  
+`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)  
+`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`)  
+`dataModel`                   | object        | filling the form feeds dataModel  
+
 
 Note: Easy form generator save form event
 
@@ -273,7 +276,6 @@ Just inject `eda.easyFormViewer` in you application:
 		eda-easy-form-viewer-cancel-form-event="demoCtrl.cancelFormEvent()"> 	
 </eda-easy-form-viewer>
 ```
-
 
 
 ______
@@ -407,22 +409,12 @@ ______
 
 
 ##What is coming next?
-- [x] add a new control : upload file (_planned for v1.2.1_)
-- [x] support UI-bootstrap `uib-*` directives (_as a break change since easyForGenerator >= v1.2.0_)
-- [x] migrating ES6 / optimization / factorization (*in progress*)
-    - [x] easy form generator - step way
-    - [x] easy form generator - drag and drop way
-    - [x] easy form viewer
-- [x] migrating Babel6+
-- [x] migrating gulp to ES6
-- [x] create bower
-- [x] create npm
 - [ ] developing/fixing browsers compatibility for `drag and drop` version
-- [x] adding more controls
-- [x] adding more validations
+- [ ] adding more controls
+- [ ] adding more validations
 - [ ] adding tests
-   - [ ] unit test (*in progress - already in `branch master` not finished*)
-   - [ ] E2E (coming soon)
+- [ ] adding CI
+- [ ] adding contribution guide
 
 ##License
 
