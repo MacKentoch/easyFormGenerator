@@ -59,6 +59,9 @@
     "DESCRIPTION"         : "Açıklama",
     "ADDEDIT_DESCRIPTION" : "Açıklama ekle / düzenle",
 
+    "DEFAULTVALUE"         : "Varsayılan değer",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "Varsayılan değeri buraya ekleyin / düzenle",
+
     "DATE_FORMAT"         : "Tarih formatı",
 
     "ADD_NEW_RADIO"       : "Radio butonu ekle",

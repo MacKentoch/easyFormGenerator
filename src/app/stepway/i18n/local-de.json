@@ -11,7 +11,7 @@
 
     "PAGER_PREVIOUS"      : "vorher.",
     "PAGER_NEXT"          : "nächste",
-    
+
     "COMMAND_PANEL"       : "Anweisung",
     "VISUAL_PANEL"        : "visuell",
 
@@ -56,6 +56,9 @@
 
     "DESCRIPTION"         : "Beschreibung",
     "ADDEDIT_DESCRIPTION" : "Beschreibung ändern",
+
+    "DEFAULTVALUE"         : "Standardwert",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "Hier können Sie den Standardwert hinzufügen / bearbeiten",
 
     "DATE_FORMAT"         : "Datumsformat",
 
