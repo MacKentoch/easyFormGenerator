@@ -150,17 +150,18 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - angular js (>= 1.3.X dev/tested)
 - ngAnimate + animate.css
 - textAngular (for rich text editor)
+- angular translate
 - nya-bootstrap-select (for basic and grouped select)
 - angular toaster (nice toaster messages)
 
-> Check demo: `formviewer.html` in `preview` directory.
+> It will be far clearer be checking demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
 ____
 
 
 ###Using Drag and drop way version (BETA)
 
-> Check demo: `dragDropWay.html` in `preview` directory.
+> Check demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
 ####Inject easy form generator in your app
 
@@ -192,12 +193,47 @@ Add these attributes to interact with your own controller:
 </eda-dragdrop-way-easy-form-gen>
 ```
 
+**`eda-easy-form-generator-model` properties are**:
+
+field name                    | field format  | field description                                                                   |
+------------------------------|---------------|-------------------------------------------------------------------------------------|
+`formName`                    | string        | stores `form name`, default is empty string                                         |
+`btnSubmitText`               | string        | stores submit button name, default is 'Submit'                                      |
+`btnCancelText`               | string        | stores submit button name, default is 'Cancel'                                      |
+`edaFieldsModel`              | array         | `easy form generator fields model` that describe form                               |
+`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
+`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |  
+`dataModel`                   | object        | filling the form feeds dataModel                                                    |
+
+
+**`eda-save-form-event` function**:
+
+```javascript
+//your controller save function should have `edaEasyFormGeneratorModel` parameter
+//it will be filled by easy form generator model
+saveForm(edaEasyFormGeneratorModel)
+```
+
+####dependencies
+
+Easy form generator drag and drop way creates amazing bootstrap forms thanks to these dependencies:
+- bootstrap (css/ jquery)
+- bootswatch (nice theme)
+- jquery
+- angular js (>= 1.3.X dev/tested)
+- ngAnimate + animate.css
+- textAngular (for rich text editor)
+- angular-strap
+- nya-bootstrap-select (for basic and grouped select)
+- angular toaster (nice toaster messages)
+
+> It will be far clearer be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
 ____
 
 ###Using Easy form viewer (production friendly)
 
->demo: `formviewer.html` in `preview` directory.
+>demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 
 ####Inject easy form viewer in your app
 
