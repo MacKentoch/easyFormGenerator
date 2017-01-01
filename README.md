@@ -138,8 +138,10 @@ Add these attributes to interact with your own controller:
 
 **Note: Easy form generator model properties are**:
 
+
+
 field name                    | field format  | field description  
---                            |---            |---
+--|---|---
 `formName`                    | string        | stores `form name`, default is empty string
 `btnSubmitText`               | string        | stores submit button name, default is 'Submit'
 `btnCancelText`               | string        | stores submit button name, default is 'Cancel'  
