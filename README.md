@@ -136,9 +136,7 @@ Add these attributes to interact with your own controller:
 </eda-step-way-easy-form-gen>
 ```
 
-**Note: `eda-easy-form-generator-model` properties are**:
-
-
+**`eda-easy-form-generator-model` properties are**:
 
 field name                    | field format  | field description                                                                   |
 ------------------------------|---------------|-------------------------------------------------------------------------------------|
@@ -151,7 +149,7 @@ field name                    | field format  | field description               
 `dataModel`                   | object        | filling the form feeds dataModel                                                    |
 
 
-Note: Easy form generator save form event
+**`eda-save-form-event` function**:
 
 ```javascript
 //your controller save function should have `edaEasyFormGeneratorModel` parameter
