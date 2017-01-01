@@ -103,7 +103,7 @@ _____
 
 ###Using Step way version (production friendly)
 
-> Check demo: `formviewer.html` in `preview` directory.
+> Check demo: `stepway.html` in `preview` directory.
 
 
 ####Inject easy form generator in your app
