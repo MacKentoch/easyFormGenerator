@@ -136,7 +136,7 @@ Add these attributes to interact with your own controller:
 </eda-step-way-easy-form-gen>
 ```
 
-**Note: Easy form generator model properties are**:
+**Note: `eda-easy-form-generator-model` properties are**:
 
 
 
