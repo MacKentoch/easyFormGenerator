@@ -328,8 +328,6 @@ Just inject `eda.easyFormViewer` in you application:
 
 ####All easy form viewer directive:
 
-**UPDATE**: since v1.0.28: attibutes eda-easy-form-viewer-submit-button-text and eda-easy-form-viewer-cancel-button-text are now waiting a string. See html below for correct up to date declaration.
-
 
 ```html
 <eda-easy-form-viewer
@@ -344,7 +342,14 @@ Just inject `eda.easyFormViewer` in you application:
 </eda-easy-form-viewer>
 ```
 
-
+eda-easy-form-viewer property                         | format   |  description                                                                         |
+------------------------------------------------------|----------|--------------------------------------------------------------------------------------|
+eda-easy-form-viewer-data-model                       | object   |  data model to preload form (from a previous database save for example).             |
+eda-easy-form-viewer-easy-form-generator-fields-model | object   |  easy form generator generated form object (by step way or drag and drop way)        |
+eda-easy-form-viewer-submit-button-text               | string   |  submit button text                                                                  |
+eda-easy-form-viewer-cancel-button-text               | string   |  cancel button text                                                                  |
+eda-easy-form-viewer-submit-form-event                | function |  to handle submit event in your controller (like saving data model for example)      |
+eda-easy-form-viewer-cancel-form-event                | function |  to handle cancel event in your controller                                           |
 ______
 
 ## What is new?
