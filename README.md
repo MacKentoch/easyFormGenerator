@@ -83,14 +83,14 @@ _____
 
 > Check demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
-####install
+####Install
 
-**Installing easyFormGenerator will install in a row:**
+Installing easyFormGenerator will install in a row:
 - step way
 - drag and drop way
 - form viewer
 
-**Install:**
+*Install:*
 
 ```bash
 npm install --save easy-form-generator
@@ -98,7 +98,7 @@ npm install --save easy-form-generator
 or
 
 ```bash
-yarn install --save easy-form-generator
+yarn install easy-form-generator
 ```
 
 ####Inject easy form generator in your app
@@ -174,14 +174,14 @@ ____
 
 > Check demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
-####install
+####Install
 
-**Installing easyFormGenerator will install in a row:**
+Installing easyFormGenerator will install in a row:
 - step way
 - drag and drop way
 - form viewer
 
-**Install:**
+*Install:*
 
 ```bash
 npm install --save easy-form-generator
@@ -189,7 +189,7 @@ npm install --save easy-form-generator
 or
 
 ```bash
-yarn install --save easy-form-generator
+yarn install easy-form-generator
 ```
 
 ####Inject easy form generator in your app
@@ -264,14 +264,14 @@ ____
 >demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 
 
-####install
+####Install
 
-**Installing easyFormGenerator will install in a row:**
+Installing easyFormGenerator will install in a row:
 - step way
 - drag and drop way
 - form viewer
 
-**Install:**
+*Install:*
 
 ```bash
 npm install --save easy-form-generator
@@ -279,7 +279,7 @@ npm install --save easy-form-generator
 or
 
 ```bash
-yarn install --save easy-form-generator
+yarn install easy-form-generator
 ```
 
 ####Inject easy form viewer in your app
