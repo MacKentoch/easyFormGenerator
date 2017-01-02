@@ -40,7 +40,7 @@
   - show hide preview model and / or preview panel in editor   
 - production friendly
 
-Have a try here: [Easy for generator **step way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_StepWay.html)
+Have a try here: [Easy for generator **step way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v2.0.0/preview/stepway.html#)
 
  - **Step way visual preview here**:
 ![previewstepway.png](https://raw.githubusercontent.com/MacKentoch/easyFormGenerator/master/images/preview.png)
@@ -57,7 +57,7 @@ Drag and drop way is still in development.
 
 >`Chrome` will give you the best experience with drag and drop version. You may encounter unexpected behaviours with other navigators.
 
-have a try here: [Easy for generator **drag and drop way** version](https://rawgit.com/MacKentoch/easyFormGenerator/v1.1.0/index_DragDropWay.html)
+have a try here: [Easy for generator **drag and drop way** version](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/v2.0.0/preview/dragDropWay.html)
 
 - **Drag and drop way visual preview here**:
 ![previewdraganddropway](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/images/dragdropway_preview.png)
@@ -133,15 +133,15 @@ Add these attributes to interact with your own controller:
 
 **`eda-easy-form-generator-model` properties are**:
 
-field name                    | field format  | field description                                                                   |
-------------------------------|---------------|-------------------------------------------------------------------------------------|
-`formName`                    | string        | stores `form name`, default is empty string                                         |
-`btnSubmitText`               | string        | stores submit button name, default is 'Submit'                                      |
-`btnCancelText`               | string        | stores submit button name, default is 'Cancel'                                      |
-`edaFieldsModel`              | array         | `easy form generator fields model` that describe form                               |
-`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
-`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |  
-`dataModel`                   | object        | filling the form feeds dataModel                                                    |
+| field name                  | field format | field description                                                                   |
+|:----------------------------|:-------------|:------------------------------------------------------------------------------------|
+| `formName`                  | string       | stores `form name`, default is empty string                                         |
+| `btnSubmitText`             | string       | stores submit button name, default is 'Submit'                                      |
+| `btnCancelText`             | string       | stores submit button name, default is 'Cancel'                                      |
+| `edaFieldsModel`            | array        | `easy form generator fields model` that describe form                               |
+| `edaFieldsModelStringified` | string       | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
+| `formlyFieldsModel`         | object       | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |
+| `dataModel`                 | object       | filling the form feeds dataModel                                                    |
 
 
 **`eda-save-form-event` function**:
@@ -223,15 +223,15 @@ Add these attributes to interact with your own controller:
 
 **`eda-easy-form-generator-model` properties are**:
 
-field name                    | field format  | field description                                                                   |
-------------------------------|---------------|-------------------------------------------------------------------------------------|
-`formName`                    | string        | stores `form name`, default is empty string                                         |
-`btnSubmitText`               | string        | stores submit button name, default is 'Submit'                                      |
-`btnCancelText`               | string        | stores submit button name, default is 'Cancel'                                      |
-`edaFieldsModel`              | array         | `easy form generator fields model` that describe form                               |
-`edaFieldsModelStringified`   | string        | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
-`formlyFieldsModel`           | object        | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |  
-`dataModel`                   | object        | filling the form feeds dataModel                                                    |
+| field name                  | field format | field description                                                                   |
+|:----------------------------|:-------------|:------------------------------------------------------------------------------------|
+| `formName`                  | string       | stores `form name`, default is empty string                                         |
+| `btnSubmitText`             | string       | stores submit button name, default is 'Submit'                                      |
+| `btnCancelText`             | string       | stores submit button name, default is 'Cancel'                                      |
+| `edaFieldsModel`            | array        | `easy form generator fields model` that describe form                               |
+| `edaFieldsModelStringified` | string       | edaFieldsModel but stringified (*then easy to save fields model to any database*)   |
+| `formlyFieldsModel`         | object       | `angular formly fields model` (filled by easy form generator from `edaFieldsModel`) |
+| `dataModel`                 | object       | filling the form feeds dataModel                                                    |
 
 
 **`eda-save-form-event` function**:
@@ -342,14 +342,14 @@ Just inject `eda.easyFormViewer` in you application:
 </eda-easy-form-viewer>
 ```
 
-eda-easy-form-viewer property                         | format   |  description                                                                         |
-------------------------------------------------------|----------|--------------------------------------------------------------------------------------|
-eda-easy-form-viewer-data-model                       | object   |  data model to preload form (from a previous database save for example).             |
-eda-easy-form-viewer-easy-form-generator-fields-model | object   |  easy form generator generated form object (by step way or drag and drop way)        |
-eda-easy-form-viewer-submit-button-text               | string   |  submit button text                                                                  |
-eda-easy-form-viewer-cancel-button-text               | string   |  cancel button text                                                                  |
-eda-easy-form-viewer-submit-form-event                | function |  to handle submit event in your controller (like saving data model for example)      |
-eda-easy-form-viewer-cancel-form-event                | function |  to handle cancel event in your controller                                           |
+| eda-easy-form-viewer property                         | format   | description                                                                    |
+|:------------------------------------------------------|:---------|:-------------------------------------------------------------------------------|
+| eda-easy-form-viewer-data-model                       | object   | data model to preload form (from a previous database save for example).        |
+| eda-easy-form-viewer-easy-form-generator-fields-model | object   | easy form generator generated form object (by step way or drag and drop way)   |
+| eda-easy-form-viewer-submit-button-text               | string   | submit button text                                                             |
+| eda-easy-form-viewer-cancel-button-text               | string   | cancel button text                                                             |
+| eda-easy-form-viewer-submit-form-event                | function | to handle submit event in your controller (like saving data model for example) |
+| eda-easy-form-viewer-cancel-form-event                | function | to handle cancel event in your controller                                      |
 
 
 > It will be far more talkative be checking demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
