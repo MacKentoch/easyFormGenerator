@@ -59,6 +59,9 @@
     "DESCRIPTION"         : "Descrição",
     "ADDEDIT_DESCRIPTION" : "Adicionar / editar descrição aqui",
 
+    "DEFAULTVALUE"         : "Valor padrão",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "Adicionar / editar valor padrão aqui",
+
     "DATE_FORMAT"         : "Formato da data",
 
     "ADD_NEW_RADIO"       : "Adicionar novo radio",

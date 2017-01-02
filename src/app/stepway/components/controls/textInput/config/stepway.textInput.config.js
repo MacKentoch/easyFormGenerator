@@ -8,6 +8,7 @@ export const TextInputConfig =       {
   formlyLabel: '',
   formlyRequired: false,
   formlyDesciption: '',
+  formlyDefaultValue : '',
   formlyOptions: [] ,
   formlyExpressionProperties: {},
   formlyValidators: {},
@@ -17,8 +18,8 @@ export const TextInputConfig =       {
         //return a required validation message :
         //-> '<label as name> is required '
         //-> or if not exists or empty just 'this field is required'
-        const defaultReturnMsg   = 'this Text input field is required';
-        const returnMsg         = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+        const defaultReturnMsg = 'this Text input field is required';
+        const returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
         return returnMsg;
       }
     }

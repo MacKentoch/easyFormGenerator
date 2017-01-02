@@ -59,6 +59,9 @@
     "DESCRIPTION"         : "説明",
     "ADDEDIT_DESCRIPTION" : "説明の変更",
 
+    "DEFAULTVALUE"         : "デフォルト値",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "ここにデフォルト値を追加/編集する",
+
     "DATE_FORMAT"         : "日付の形式",
 
     "ADD_NEW_RADIO"       : "新ラジオボタンを追加",

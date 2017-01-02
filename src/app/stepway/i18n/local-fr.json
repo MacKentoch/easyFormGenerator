@@ -59,6 +59,9 @@
     "DESCRIPTION"         : "Description",
     "ADDEDIT_DESCRIPTION" : "Ajouter / editer la description",
 
+    "DEFAULTVALUE"         : "Valeur par défaut",
+    "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "Ajouter / modifier la valeur par défaut ici",
+
     "DATE_FORMAT"         : "Format de la date",
 
     "ADD_NEW_RADIO"       : "Ajouter un nouveau choix à cocher",

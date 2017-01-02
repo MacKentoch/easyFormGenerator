@@ -9,7 +9,7 @@ const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
 class $modalProxy {
   constructor(easyFormSteWayConfig) {
-    this.easyFormSteWayConfig  =  easyFormSteWayConfig;
+    this.easyFormSteWayConfig = easyFormSteWayConfig;
   }
 
   initNyaSelect(nyaSelectObj) {
@@ -17,7 +17,7 @@ class $modalProxy {
   }
 
   getControlsDefinition() {
-    let controls = {};
+    const controls = {};
     resetNyaSelect(controls);
     return controls;
   }
@@ -27,22 +27,24 @@ class $modalProxy {
     /**
       * data send to modal controller
       */
-    if (typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions != 'undefined') {
+    const controlAtThisLineThisCol = configurationObj.lines[indexLine].columns[numcolumn].control;
 
-      nyaSelectObj.temporyConfig.selectedControl     = typeof configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl             != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl : 'none';
-      nyaSelectObj.temporyConfig.formlyLabel         = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label       != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
-      nyaSelectObj.temporyConfig.formlyRequired     = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required     != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-      nyaSelectObj.temporyConfig.formlyDesciption   = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
-      nyaSelectObj.temporyConfig.formlyPlaceholder   = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
-      nyaSelectObj.temporyConfig.formlyOptions       = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options     != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
-
-      nyaSelectObj.temporyConfig.formlyExpressionProperties = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties   != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties) : {};
-      nyaSelectObj.temporyConfig.formlyValidators   = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators                     != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators) : {};
-      nyaSelectObj.temporyConfig.formlyValidation   = typeof configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation                     != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation) : {};
-
-      // particular case : datepicker
+    if (controlAtThisLineThisCol && controlAtThisLineThisCol.templateOptions) {
+      nyaSelectObj.temporyConfig = {
+        selectedControl: controlAtThisLineThisCol.selectedControl ? controlAtThisLineThisCol.selectedControl : 'none',
+        formlyLabel: controlAtThisLineThisCol.templateOptions.label ? controlAtThisLineThisCol.templateOptions.label : '',
+        formlyRequired: controlAtThisLineThisCol.templateOptions.required ? controlAtThisLineThisCol.templateOptions.required : '',
+        formlyDesciption: controlAtThisLineThisCol.templateOptions.description ? controlAtThisLineThisCol.templateOptions.description : '',
+        formlyDefaultValue: controlAtThisLineThisCol.defaultValue ? controlAtThisLineThisCol.defaultValue : '',
+        formlyPlaceholder: controlAtThisLineThisCol.templateOptions.placeholder ? controlAtThisLineThisCol.templateOptions.placeholder : '',
+        formlyOptions: controlAtThisLineThisCol.templateOptions.options ? controlAtThisLineThisCol.templateOptions.options : '',
+        formlyExpressionProperties: controlAtThisLineThisCol.formlyExpressionProperties ? angular.copy(controlAtThisLineThisCol.formlyExpressionProperties) : {},
+        formlyValidators: controlAtThisLineThisCol.formlyValidators ? angular.copy(controlAtThisLineThisCol.formlyValidators) : {},
+        formlyValidation: controlAtThisLineThisCol.formlyValidation ? angular.copy(controlAtThisLineThisCol.formlyValidation) : {}
+      };
+      // particular case : datepicker needs an additionnal property:
       if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-        nyaSelectObj.temporyConfig.datepickerOptions   = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions != 'undefined' ? angular.copy(configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions) : '';
+        nyaSelectObj.temporyConfig.datepickerOptions   = controlAtThisLineThisCol.templateOptions.datepickerOptions ? angular.copy(controlAtThisLineThisCol.templateOptions.datepickerOptions) : '';
       }
     }
     return nyaSelectObj;
@@ -67,11 +69,12 @@ class $modalProxy {
         options: []
       };
       //then bind templateOptions
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label          = extractedProps.formlyLabel;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required      = extractedProps.formlyRequired;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description   = extractedProps.formlyDesciption;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder   = extractedProps.formlyPlaceholder;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options        = extractedProps.formlyOptions;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label        = extractedProps.formlyLabel;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required     = extractedProps.formlyRequired;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description  = extractedProps.formlyDesciption;
+    configurationObj.lines[indexLine].columns[numcolumn].control.defaultValue                 = extractedProps.formlyDefaultValue;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder  = extractedProps.formlyPlaceholder;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options      = extractedProps.formlyOptions;
     configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties   = angular.copy(extractedProps.formlyExpressionProperties);
     configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators             = angular.copy(extractedProps.formlyValidators);
     configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation             = angular.copy(extractedProps.formlyValidation);
@@ -119,6 +122,7 @@ class $modalProxy {
           nyaSelectObj.controls[i].formlyLabel                 = nyaSelectObj.temporyConfig.formlyLabel;
           nyaSelectObj.controls[i].formlyRequired             = nyaSelectObj.temporyConfig.formlyRequired;
           nyaSelectObj.controls[i].formlyDesciption           = nyaSelectObj.temporyConfig.formlyDesciption;
+          nyaSelectObj.controls[i].formlyDefaultValue          = nyaSelectObj.temporyConfig.formlyDefaultValue;
           nyaSelectObj.controls[i].formlyPlaceholder           = nyaSelectObj.temporyConfig.formlyPlaceholder;
           nyaSelectObj.controls[i].formlyOptions               = nyaSelectObj.temporyConfig.formlyOptions;
 
