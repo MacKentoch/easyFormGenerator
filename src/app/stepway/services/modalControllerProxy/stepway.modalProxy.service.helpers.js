@@ -1,5 +1,4 @@
 const resetNyaSelect = (nyaSelectObj) => {
-
   const newNyaSelectObj = {
     controls : [
       {
