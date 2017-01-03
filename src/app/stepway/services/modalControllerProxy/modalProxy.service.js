@@ -3,7 +3,7 @@ import {
   returnControlFromAddCtrlModalModel,
   validKeyUniqueness,
   getResetConfig
-}                                         from './stepway.modalProxy.service.helpers.js';
+}                                         from './modalProxy.service.helpers.js';
 
 const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
@@ -51,64 +51,51 @@ class $modalProxy {
   }
 
 
-  bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, configurationObj){
+  bindConfigurationModelFromModalReturn(indexLine, numcolumn, modalAddCtrlModel, configurationObj) {
+    const extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
 
-    let extractedProps = returnControlFromAddCtrlModalModel(modalAddCtrlModel);
-    configurationObj.lines[indexLine].columns[numcolumn].control.selectedControl     = extractedProps.selectedControl;
-    configurationObj.lines[indexLine].columns[numcolumn].control.type               = extractedProps.formlyType;
-    configurationObj.lines[indexLine].columns[numcolumn].control.subtype             = extractedProps.formlySubtype;
-    //reset templateOptions
-    configurationObj
-      .lines[indexLine]
-      .columns[numcolumn]
-      .control.templateOptions   = {
-        label: '',
-        required: false,
-        description: '',
-        placeholder: '',
-        options: []
-      };
-      //then bind templateOptions
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label        = extractedProps.formlyLabel;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required     = extractedProps.formlyRequired;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description  = extractedProps.formlyDesciption;
-    configurationObj.lines[indexLine].columns[numcolumn].control.defaultValue                 = extractedProps.formlyDefaultValue;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder  = extractedProps.formlyPlaceholder;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options      = extractedProps.formlyOptions;
-    configurationObj.lines[indexLine].columns[numcolumn].control.formlyExpressionProperties   = angular.copy(extractedProps.formlyExpressionProperties);
-    configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidators             = angular.copy(extractedProps.formlyValidators);
-    configurationObj.lines[indexLine].columns[numcolumn].control.formlyValidation             = angular.copy(extractedProps.formlyValidation);
-
-    //////////////////////////////////////////
-    // add additionnal particular properties
-    //////////////////////////////////////////
-    //-> datepicker : datepickerOptions
-    if (configurationObj.lines[indexLine].columns[numcolumn].control.type === 'datepicker') {
-      configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.datepickerOptions = angular.copy(extractedProps.datepickerOptions);
+    const updatedControl = {
+      selectedControl: extractedProps.selectedControl,
+      type: extractedProps.formlyType,
+      subtype: extractedProps.formlySubtype,
+      defaultValue: extractedProps.defaultValue,
+      templateOptions: {
+        label: extractedProps.formlyLabel,
+        required: extractedProps.formlyRequired,
+        description: extractedProps.formlyDesciption,
+        placeholder: extractedProps.formlyPlaceholder,
+        options: [...extractedProps.formlyOptions]
+      },
+      formlyExpressionProperties: angular.copy(extractedProps.formlyExpressionProperties),
+      formlyValidators: angular.copy(extractedProps.formlyValidators),
+      formlyValidation: angular.copy(extractedProps.formlyValidation)
+    };
+    // particular case: datepicker : additionnal prop datepickerOptions
+    if (updatedControl.type === 'datepicker') {
+      updatedControl.templateOptions.datepickerOptions = angular.copy(extractedProps.datepickerOptions);
     }
     /**
       * unique key (set only first time) in this model is formly control type + Date.now();
       */
-    let newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
+    // 1st attempt
+    let newKey = updatedControl.type + '-' + Date.now();
     if (validKeyUniqueness(newKey, configurationObj) === true){
-      configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-    }else{
-      /**
-        * 2nd attempt
-        */
-      newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
-
-      if (validKeyUniqueness(newKey, configurationObj) === true){
-        configurationObj.lines[indexLine].columns[numcolumn].control.key = newKey;
-      }else{
-        /**
-          * 3rd attempt
-          */
-        newKey = configurationObj.lines[indexLine].columns[numcolumn].control.type + '-' + Date.now();
+      updatedControl.key = newKey;
+    } else {
+      // 2nd attempt
+      newKey = updatedControl.type + '-' + Date.now();
+      if (validKeyUniqueness(newKey, configurationObj) === true) {
+        updatedControl.key = newKey;
+      } else {
+        // 3rd attempt
+        updatedControl.type + '-' + Date.now();
       }
     }
-    configurationObj.lines[indexLine].columns[numcolumn].control.edited = true;
+    updatedControl.edited = true;
+    // ///////////////////////
+    // finally bind it:
+    // ///////////////////////
+    configurationObj.lines[indexLine].columns[numcolumn].control = angular.copy(updatedControl);
   }
 
 
@@ -116,22 +103,24 @@ class $modalProxy {
     /**
       * used in modal (edit control)
       */
-    for (let i = nyaSelectObj.controls.length - 1; i >= 0; i--) {
-      if (nyaSelectObj.controls[i].id === nyaSelectObj.selectedControl) {
+    const selectedControl = nyaSelectObj.selectedControl;
 
-          nyaSelectObj.controls[i].formlyLabel                 = nyaSelectObj.temporyConfig.formlyLabel;
-          nyaSelectObj.controls[i].formlyRequired             = nyaSelectObj.temporyConfig.formlyRequired;
-          nyaSelectObj.controls[i].formlyDesciption           = nyaSelectObj.temporyConfig.formlyDesciption;
-          nyaSelectObj.controls[i].formlyDefaultValue          = nyaSelectObj.temporyConfig.formlyDefaultValue;
-          nyaSelectObj.controls[i].formlyPlaceholder           = nyaSelectObj.temporyConfig.formlyPlaceholder;
-          nyaSelectObj.controls[i].formlyOptions               = nyaSelectObj.temporyConfig.formlyOptions;
-
-          if (nyaSelectObj.controls[i].id ==='Date' ) {
-            nyaSelectObj.controls[i].datepickerOptions         = angular.copy(nyaSelectObj.temporyConfig.datepickerOptions);
-          }
-
+    nyaSelectObj.controls.forEach(
+      control => {
+        if (control.id === selectedControl) {
+          control.formlyLabel = nyaSelectObj.temporyConfig.formlyLabel,
+          control.formlyRequired = nyaSelectObj.temporyConfig.formlyRequired;
+          control.formlyDesciption = nyaSelectObj.temporyConfig.formlyDesciption;
+          control.formlyDefaultValue = nyaSelectObj.temporyConfig.formlyDefaultValue;
+          control.formlyPlaceholder = nyaSelectObj.temporyConfig.formlyPlaceholder;
+          control.formlyOptions = nyaSelectObj.temporyConfig.formlyOptions;
         }
-    }
+
+        if (control.id ==='Date' ) {
+          control.datepickerOptions = angular.copy(nyaSelectObj.temporyConfig.datepickerOptions);
+        }
+      }
+    );
   }
 
   resetTemporyConfig(){
@@ -145,10 +134,10 @@ class $modalProxy {
   refreshControlFormlyExpressionProperties(configurationModel){
     if (angular.isObject(configurationModel)) {
       //iterates lines
-      angular.forEach(configurationModel.lines, (line, indexLine) => {
-        angular.forEach(line.columns, (column, controlIndex) => {
-          let _controlsDefinition = this.getControlsDefinition();
-          angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+      angular.forEach(configurationModel.lines, (line) => {
+        angular.forEach(line.columns, (column) => {
+          const _controlsDefinition = this.getControlsDefinition();
+          angular.forEach(_controlsDefinition.controls, (aControl) => {
             if (column.control.type === aControl.formlyType &&
                 column.control.subtype === aControl.formlySubtype) {
                 //----> update control formlyExpressionProperties property
@@ -168,10 +157,10 @@ class $modalProxy {
   refreshControlFormlyValidators(configurationModel){
     if (angular.isObject(configurationModel)) {
       //iterates lines
-      angular.forEach(configurationModel.lines, (line, indexLine) => {
-        angular.forEach(line.columns, (column, controlIndex) => {
-          let _controlsDefinition = this.getControlsDefinition();
-          angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+      angular.forEach(configurationModel.lines, (line) => {
+        angular.forEach(line.columns, (column) => {
+          const _controlsDefinition = this.getControlsDefinition();
+          angular.forEach(_controlsDefinition.controls, (aControl) => {
             if (column.control.type === aControl.formlyType &&
                 column.control.subtype === aControl.formlySubtype) {
                 //----> update control formlyValidators property
@@ -191,10 +180,10 @@ class $modalProxy {
   refreshControlFormlyValidation(configurationModel){
     if (angular.isObject(configurationModel)) {
       //iterates lines
-      angular.forEach(configurationModel.lines, (line, indexLine) => {
-        angular.forEach(line.columns, (column, controlIndex) => {
-          let _controlsDefinition = this.getControlsDefinition();
-          angular.forEach(_controlsDefinition.controls, (aControl, aControlIndex) => {
+      angular.forEach(configurationModel.lines, (line) => {
+        angular.forEach(line.columns, (column) => {
+          const _controlsDefinition = this.getControlsDefinition();
+          angular.forEach(_controlsDefinition.controls, (aControl) => {
             if (column.control.type === aControl.formlyType &&
                 column.control.subtype === aControl.formlySubtype) {
                 //----> update control formlyValidation property
@@ -208,7 +197,7 @@ class $modalProxy {
 
 
   filterDisabledControl(nyaSelectObj){
-    let listAllEnabledControl = this.easyFormSteWayConfig.getListEnabledControl();
+    const listAllEnabledControl = this.easyFormSteWayConfig.getListEnabledControl();
     let filteredNyaList = [];
     angular.forEach(listAllEnabledControl, (enabledControl) => {
       angular.forEach(nyaSelectObj.controls, (nyaControl) => {
@@ -222,7 +211,7 @@ class $modalProxy {
   }
 
   getFilteredNyaSelectObject(){
-    let newNyaSelectObj = {};
+    const newNyaSelectObj = {};
     resetNyaSelect(newNyaSelectObj);
     return angular.copy(this.filterDisabledControl(angular.copy(newNyaSelectObj)));
     //return angular.copy(angular.copy(newNyaSelectObj));
@@ -231,5 +220,8 @@ class $modalProxy {
 }
 
 $modalProxy.$inject= ['easyFormSteWayConfig'];
-export default $modalProxy;
-export {CONTROLLER_MODAL_PROXY_SERVICE};
+
+const MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
+export default angular
+                  .module(MODAL_PROXY_MODULE_NAME, [])
+                  .service(CONTROLLER_MODAL_PROXY_SERVICE,  $modalProxy);

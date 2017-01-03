@@ -402,16 +402,14 @@ const resetNyaSelect = (nyaSelectObj) => {
 
 
 const getResetConfig = () => {
-  const emptyConfig = {};
-  angular.extend(emptyConfig, {
-      formlyLabel        : '',
-      formlyRequired    : false,
-      formlyPlaceholder  : '',
-      formlyDesciption  : '',
-        formlyDefaultValue : '',
-      formlyOptions      : []
-  });
-  return emptyConfig;
+  return {
+    formlyLabel: '',
+    formlyRequired: false,
+    formlyPlaceholder: '',
+    formlyDesciption: '',
+    formlyDefaultValue: '',
+    formlyOptions: []
+  };
 };
 
 /**
@@ -419,9 +417,35 @@ const getResetConfig = () => {
   * after control being finsihed editing in modal
   */
 const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
-
-  const modelToReturn = {
-    selectedControl:'none',
+  if (CtrlModalModel && CtrlModalModel.selectedControl && Array.isArray(CtrlModalModel.controls)) {
+    const selectedControl = CtrlModalModel.selectedControl;
+    const controlRef = CtrlModalModel.controls.find(control => control.id === selectedControl);
+    // return a deep copy of selected control:
+    if (controlRef) {
+      const returnCtrl = {
+        selectedControl: selectedControl ,
+        formlyType : controlRef.formlyType,
+        formlySubtype: controlRef.formlySubtype,
+        formlyLabel: controlRef.formlyLabel,
+        formlyRequired : controlRef.formlyRequired,
+        formlyDesciption: controlRef.formlyDesciption,
+        formlyPlaceholder: controlRef.formlyPlaceholder,
+        formlyOptions: [...controlRef.formlyOptions],
+        //validation fields
+        formlyExpressionProperties: angular.copy(controlRef.formlyExpressionProperties),
+        formlyValidators: angular.copy(controlRef.formlyExpressionProperties),
+        formlyValidation: angular.copy(controlRef.formlyExpressionProperties)
+      };
+      // particular case: date picker needs an additional property
+      if (controlRef.formlyType === 'datepicker') {
+        returnCtrl.datepickerOptions = controlRef.datepickerOptions;
+      }
+      return returnCtrl;
+    }
+  }
+  // by default: returns an empty control object:
+  return {
+    selectedControl: 'none',
     formlyType : 'none',
     formlySubtype: 'none',
     formlyLabel: '',
@@ -434,36 +458,7 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
     formlyValidators: {},
     formlyValidation: {}
   };
-
-
-  for (let i = CtrlModalModel.controls.length - 1; i >= 0; i--) {
-    if (CtrlModalModel.selectedControl === CtrlModalModel.controls[i].id) {
-      modelToReturn.selectedControl     = CtrlModalModel.selectedControl;
-      modelToReturn.formlyType           = CtrlModalModel.controls[i].formlyType;
-      modelToReturn.formlySubtype       = CtrlModalModel.controls[i].formlySubtype;
-      modelToReturn.formlyLabel         = CtrlModalModel.controls[i].formlyLabel;
-      modelToReturn.formlyRequired       = CtrlModalModel.controls[i].formlyRequired;
-      modelToReturn.formlyDesciption     = CtrlModalModel.controls[i].formlyDesciption;
-      modelToReturn.formlyDefaultValue     = CtrlModalModel.controls[i].formlyDefaultValue;
-
-      modelToReturn.formlyPlaceholder   = CtrlModalModel.controls[i].formlyPlaceholder;
-      modelToReturn.formlyOptions       = CtrlModalModel.controls[i].formlyOptions;
-
-      modelToReturn.formlyExpressionProperties   = angular.copy(CtrlModalModel.controls[i].formlyExpressionProperties);
-      modelToReturn.formlyValidators             = angular.copy(CtrlModalModel.controls[i].formlyValidators);
-      modelToReturn.formlyValidation             = angular.copy(CtrlModalModel.controls[i].formlyValidation);
-
-      //particular properties
-      //datetpicker format
-      if (CtrlModalModel.controls[i].formlyType === 'datepicker') {
-        modelToReturn.datepickerOptions = CtrlModalModel.controls[i].datepickerOptions;
-      }
-    }
-  }
-  return modelToReturn;
 };
-
-
 
 
 /**
@@ -471,19 +466,11 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
   * to be sure the "keys" are unique (in same formly field model)
   */
 const validKeyUniqueness = (thisKey, configurationObj) => {
-  let isUnique = true;
-  //each lines
-  for (let i = configurationObj.lines.length - 1; i >= 0; i--) {
-    //each columns
-    for (let j = configurationObj.lines[i].columns.length - 1; j >= 0; j--) {
-      if (configurationObj.lines[i].columns[j].control.key === thisKey) {
-        isUnique = false;
-      }
-    }
-  }
-  return isUnique;
+  const lines = configurationObj.lines;
+  return !lines
+              .map(line => line.columns.some(column => column.control.key === thisKey))
+              .reduce((prev, next) => prev || next, false);
 };
-
 
 export {
   resetNyaSelect,
