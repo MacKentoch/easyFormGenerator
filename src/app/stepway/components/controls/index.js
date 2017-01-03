@@ -19,11 +19,11 @@ import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail
 import editEmailControlModule from './Email/editEmail/stepway.editEmail.module';
 
 import { BasicSelectConfig }  from './basicSelect/config/stepway.basicSelect.config';
-import {editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT} from './basicSelect/editBasicSelect/stepway.editbasicSelect.component';
-import editbasicSelectModule  from './basicSelect/editBasicSelect/stepway.editBasicSelect.module';
+import {editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT} from './basicSelect/editBasicSelect/stepway.editBasicSelect.component';
+import editBasicSelectModule  from './basicSelect/editBasicSelect/stepway.editBasicSelect.module';
 
 import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
-import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editgroupedSelect/stepway.editgroupedSelect.component';
+import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.component';
 import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.module';
 
 import { HeaderConfig }  from './header/config/stepway.header.config';
@@ -97,7 +97,7 @@ const controls = [
   {
     name: EDIT_BASIC_SELECT_COMPONENT,
     component: editBasicSelectControlComponent,
-    moduleName: editbasicSelectModule.name
+    moduleName: editBasicSelectModule.name
   },
   // editGroupedSelect:
   {
