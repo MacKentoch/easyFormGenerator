@@ -117,9 +117,9 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 | nya-bootstrap-select  | `npm i --save @lordfriend/nya-bootstrap-select` | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | angular toaster       | `npm i --save angularjs-toaster`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 
-**They are not include in easyFormGenerator bundle to avoid side effects / collisions in your application.**
+*They are not include in easyFormGenerator bundle to avoid side effects / collisions in your application.*
 
-**It is up to you to include them in your application depending your dev workflow.**
+*It is up to you to include them in your application depending on your dev workflow.*
 
 > It will be far more talkative be checking demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
