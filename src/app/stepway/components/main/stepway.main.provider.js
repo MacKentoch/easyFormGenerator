@@ -109,10 +109,16 @@ function easyFormSteWayConfig($translateProvider) {
 		return _controlsList;
 	}
 
-	function disableControl(controlName) {
-		if (angular.isString(controlName)) {
+	function disableControl(control) {
+		if (angular.isString(control)) {
 			angular.forEach(_controlsList, (aControl) => {
-				if (aControl.name === controlName) aControl.enabled = false;
+				if (aControl.name === control) aControl.enabled = false;
+			});
+		} else if (angular.isArray(control)) {
+			angular.forEach(control, (controlName) => {
+				angular.forEach(_controlsList, (aControl) => {
+					if (aControl.name === controlName) aControl.enabled = false;
+				});
 			});
 		}
 	}
