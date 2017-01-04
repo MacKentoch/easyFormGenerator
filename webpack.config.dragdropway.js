@@ -1,5 +1,10 @@
 'use strict';
 
+//Note node-sass throws erro like "rror: ENOENT: no such file or directory, scandir '**/node_modules/node-sass/vendor'"
+// just:
+// $ node node_modules/node-sass/scripts/install.js
+// $ npm rebuild node-sass
+
 // Modules
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -119,15 +124,17 @@ module.exports = function makeWebpackConfig () {
       // Extract css files in production builds
       //
       // Reference: https://github.com/webpack/style-loader
+      // // if wanted css and js into same bundle:
       // Use style-loader in development.
-      loader: isTest ? 'null' : 'style!css!postcss'
+      // loader: isTest ? 'null' : 'style!css!postcss'
       // // if wanted to separate css into another chunk file:
-      // loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+      loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
     }, {
       test: /\.scss$/,
-      loader: isTest ? 'null' : 'style!css!postcss!sass' // ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader')
+      // // if wanted css and js into same bundle:
+      // loader: isTest ? 'null' : 'style!css!postcss!sass'
       // // if wanted to separate css into another chunk file:
-      // loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader')
+      loader: isTest ? 'null' : ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
     },{
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -186,7 +193,7 @@ module.exports = function makeWebpackConfig () {
   config.plugins = [];
 
   // Skip rendering index.html in test mode
-  if (!isTest) {
+  if (!isTest && !isProd) {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
     // Render index.html
     config.plugins.push(
@@ -198,7 +205,7 @@ module.exports = function makeWebpackConfig () {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('[name].[hash].css', {disable: !isProd})
+      new ExtractTextPlugin('eda.dragdropway.css')
     );
   }
 
@@ -222,7 +229,12 @@ module.exports = function makeWebpackConfig () {
       new CopyWebpackPlugin([{
         from: __dirname + '/preview/vendors',
         to: __dirname + '/dist/vendors'
-      }])
+      }]),
+
+      // Reference: https://github.com/webpack/extract-text-webpack-plugin
+      // Extract css files
+      // Disabled when in test mode or not in build mode
+      new ExtractTextPlugin('eda.dragdropway.css')
     );
   }
 

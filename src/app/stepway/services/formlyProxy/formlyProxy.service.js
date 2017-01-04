@@ -1,4 +1,3 @@
-/* global angular */
 import {
   configurationModelInit,
   configurationModelResult,
@@ -8,17 +7,14 @@ import {
   addOneColumnControl,
   addTwoColumnControl,
   addThreeColumnControl
-}                             from './stepway.formlyProxy.service.helpers';
+}                             from './formlyProxy.service.helpers';
 
-const FORMLY_PROXY_SERVICE = '$formlyProxy';
+export const FORMLY_PROXY_SERVICE = '$formlyProxy';
 
 class $formlyProxy {
+  static $inject = [];
 
   constructor() {
-    this.init();
-  }
-
-  init() {
 
   }
 
@@ -27,12 +23,12 @@ class $formlyProxy {
   }
 
   bindConfigurationLines(configurationModel, lines) {
-    if(angular.isArray(lines)) {
+    if (angular.isArray(lines)) {
       const configModelResult = configurationModelResult;
       configModelResult.lines = [].concat(lines);
       angular.copy(configModelResult, configurationModel);
       return this.getMessageObject('configuration model is bound','lines are bound to configuration model.');
-    }else{
+    } else {
       return this.getErrorObject('lines is not an array', 'Checks lines type, it is not an array.');
     }
   }
@@ -43,20 +39,22 @@ class $formlyProxy {
     /**
       * manage header here line0
       */
-    var lineNumber = configurationModel.lines.length;
+    const lineNumber = configurationModel.lines.length;
     for (let i = 0; i < lineNumber; i++) {
         //1 column line control
         if (configurationModel.lines[i].columns.length === 1) {
           //test if template control = header
           if (configurationModel.lines[i].columns[0].control.type === 'header') {
             addOneColumnHeader(formlyModel, configurationModel, i);
-          }else{
+          } else {
             addOneColumnControl(formlyModel, configurationModel, i);
           }
         }
+
         if (configurationModel.lines[i].columns.length === 2) {
           addTwoColumnControl(formlyModel, configurationModel,i);
         }
+
         if (configurationModel.lines[i].columns.length === 3) {
           addThreeColumnControl(formlyModel, configurationModel,i);
         }
@@ -65,15 +63,15 @@ class $formlyProxy {
 
   getMessageObject(messageTitle, messageBody) {
     const messageObj = {
-      noError : true,
-      title    : messageTitle,
-      Message  : messageBody
+      noError: true,
+      title: messageTitle,
+      Message: messageBody
     };
     return messageObj;
   }
-
 }
 
-$formlyProxy.$inject = [];
-export default $formlyProxy;
-export {FORMLY_PROXY_SERVICE};
+export const FORMLY_PROXY_MODULE_NAME = 'formlyProxyModule';
+export default angular
+                  .module(FORMLY_PROXY_MODULE_NAME, [])
+                  .service(FORMLY_PROXY_SERVICE, $formlyProxy);

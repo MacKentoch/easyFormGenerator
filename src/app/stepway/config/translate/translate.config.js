@@ -6,9 +6,9 @@ import localTr   from '../../i18n/local-tr.json';
 import localJp   from '../../i18n/local-jp.json';
 import localPtBr from '../../i18n/local-pt-br.json';
 
-const TRANSLATE_CONFIG = 'easyFormTranslateConfig';
+export const TRANSLATE_CONFIG = 'easyFormTranslateConfig';
 
-function translateConfig($translateProvider){
+function translateConfig($translateProvider) {
   $translateProvider.translations('en', localEn);
   $translateProvider.translations('fr', localFr);
   $translateProvider.translations('es', localEs);
@@ -17,7 +17,10 @@ function translateConfig($translateProvider){
   $translateProvider.translations('jp', localJp);
   $translateProvider.translations('pt-br', localPtBr);
 }
-
 translateConfig.$inject = ['$translateProvider'];
-export default translateConfig;
-export {TRANSLATE_CONFIG};
+
+
+export const TRANSLATE_MODULE = 'eda.easyFormGenerator.translate';
+export default angular
+                .module(TRANSLATE_MODULE, [])
+                .config(translateConfig);

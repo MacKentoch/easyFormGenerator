@@ -5,9 +5,11 @@ import {
   getResetConfig
 }                                         from './modalProxy.service.helpers.js';
 
-const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
+export const CONTROLLER_MODAL_PROXY_SERVICE = '$modalProxy';
 
 class $modalProxy {
+  static $inject= ['easyFormSteWayConfig'];
+
   constructor(easyFormSteWayConfig) {
     this.easyFormSteWayConfig = easyFormSteWayConfig;
   }
@@ -219,9 +221,7 @@ class $modalProxy {
 
 }
 
-$modalProxy.$inject= ['easyFormSteWayConfig'];
-
-const MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
+export const MODAL_PROXY_MODULE_NAME = 'modalProxyModule';
 export default angular
                   .module(MODAL_PROXY_MODULE_NAME, [])
                   .service(CONTROLLER_MODAL_PROXY_SERVICE,  $modalProxy);

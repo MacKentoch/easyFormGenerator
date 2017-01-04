@@ -130,7 +130,6 @@ const extractDefaultValue = (obj) => {
   return defaultValue;
 };
 
-
 const extractFormlyExpressionProperties = (obj) => {
   const defaultValue = {};
   if (obj && obj.formlyExpressionProperties) {
@@ -215,40 +214,24 @@ const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
 
 const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
   const control0 = { ...configurationModel.lines[lineIndex].columns[0].control };
-  const control1 = { ...configurationModel.lines[lineIndex].columns[0].control };
   //text header is stored in "description" in templateOtion model
   const headerTemplateCol0 =  {
-  className: 'col-xs-6',
-  template: `
-  <div class="row">
-    <div class="">
-      <h2 class="text-center">
-        ${extractTemplateOptionDescription(control0)}
-      </h2>
-      <hr/>
+    className: 'col-xs-6',
+    template: `
+    <div class="row">
+      <div class="">
+        <h2 class="text-center">
+          ${extractTemplateOptionDescription(control0)}
+        </h2>
+        <hr/>
+      </div>
     </div>
-  </div>
   `
   };
-
-  const headerTemplateCol1 =  {
-  className: 'col-xs-6',
-  template:`
-  <div class="row">
-    <div class="">
-      <h2 class="text-center">
-        ${extractTemplateOptionDescription(control1)}
-      </h2>
-      <hr/>
-    </div>
-  </div>
-  `
-  };
-
   const controlCol0 = {
     className: 'col-xs-6',
     type: control0 && control0.type && control0.type !== 'none' ? control0.type:  'blank',
-    key: control0 && control0.key && control0.key !== 'none' ? control0.key: 'blank' + Date.now(),
+    key: control0 && control0.key ? control0.key: 'blank' + Date.now(),
     templateOptions: {
       type: extractTemplateOptionType(control0),
       label: extractTemplateOptionLabel(control0),
@@ -269,165 +252,204 @@ const addTwoColumnControl = (formlyModel, configurationModel,lineIndex) => {
     addDatepickerOptionsProperty(controlCol0, configurationModel, lineIndex);
   }
 
-  const controlCol1 =  {
-  className: 'col-xs-6',
-  type      : typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-  key        : typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-  templateOptions  : {
-  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
-  placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
-  description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
-  },
-  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[1].control),
-  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+  const control1 = { ...configurationModel.lines[lineIndex].columns[1].control };
+  const headerTemplateCol1 =  {
+    className: 'col-xs-6',
+    template:`
+    <div class="row">
+      <div class="">
+        <h2 class="text-center">
+          ${extractTemplateOptionDescription(control1)}
+        </h2>
+        <hr/>
+      </div>
+    </div>
+  `
   };
-
+  const controlCol1 =  {
+    className: 'col-xs-6',
+    type: control1 && control1.type && control1.type !== 'none' ? control1.type : 'none',
+    key: control1 && control1.key ? control1.key : 'blank' + Date.now(),
+    templateOptions: {
+      type: extractTemplateOptionType(control1),
+      label: extractTemplateOptionLabel(control1),
+      required: extractTemplateOptionRequired(control1),
+      placeholder: extractTemplateOptionPlaceholder(control1),
+      description: extractTemplateOptionDescription(control1),
+      options: extractTemplateOptionOptions(control1)
+    },
+    defaultValue: extractDefaultValue(control1),
+    expressionProperties: extractFormlyExpressionProperties(control1),
+    validators: extractFormlyValidators(control1),
+    validation: extractFormlyValidation(control1)
+  };
   //////////////////////////////////////////////
-  //datepicker additionnal particular property
+  // datepicker additionnal particular property
   //////////////////////////////////////////////
-  if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
-  addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
+  if (control1.type === 'datepicker') {
+    addDatepickerOptionsProperty(controlCol1, configurationModel, lineIndex);
   }
 
   const FieldGroup = [];
 
-  if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
-  FieldGroup.push(headerTemplateCol0);
-  }else{
-  FieldGroup.push(controlCol0);
+  if (control0.type === 'header') {
+   FieldGroup.push(headerTemplateCol0);
+  } else {
+   FieldGroup.push(controlCol0);
   }
 
-  if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
-  FieldGroup.push(headerTemplateCol1);
-  }else{
-  FieldGroup.push(controlCol1);
+  if (control1.type === 'header') {
+   FieldGroup.push(headerTemplateCol1);
+  } else {
+   FieldGroup.push(controlCol1);
   }
 
   formlyModel.push({
-  className: 'row',
-  fieldGroup: FieldGroup
+    className: 'row',
+    fieldGroup: FieldGroup
   });
 };
 
 
-
-
 const addThreeColumnControl = (formlyModel, configurationModel,lineIndex) => {
+  const control0 = { ...configurationModel.lines[lineIndex].columns[0].control };
   //text header is stored in "description" in templateOtion model
   const headerTemplateCol0 =  {
-  className: 'col-xs-4',
-  template : `<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control)}<h2><hr/></div></div>`
+    className: 'col-xs-4',
+    template : `
+    <div class="row">
+      <div class="">
+        <h2 class="text-center">
+          ${extractTemplateOptionDescription(control0)}
+        </h2>
+        <hr/>
+      </div>
+    </div>
+    `
   };
-
-  const headerTemplateCol1 =  {
-  className: 'col-xs-4',
-  template:`<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control)}<h2><hr/></div></div>`
-  };
-
-  const headerTemplateCol2 =  {
-  className: 'col-xs-4',
-  template:`<div class="row"><div class=""><h2 class="text-center">${extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control)}<h2><hr/></div></div>`
-  };
-
   const controlCol0 =  {
-  className  : 'col-xs-4',
-  type      : typeof configurationModel.lines[lineIndex].columns[0].control.type   !== 'undefined' ? (configurationModel.lines[lineIndex].columns[0].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[0].control.type): 'blank',
-  key        : typeof configurationModel.lines[lineIndex].columns[0].control.key   !== 'undefined' ?  configurationModel.lines[lineIndex].columns[0].control.key : 'blank' + Date.now(),
-  templateOptions: {
-  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[0].control),
-  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[0].control),
-  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[0].control),
-  placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[0].control),
-  description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[0].control),
-  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[0].control)
-  },
-  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[0].control),
-  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[0].control),
-  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[0].control),
-  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[0].control)
+    className: 'col-xs-4',
+    type: control0 && control0.type && control0.type !== 'none' ? control0.type:  'blank',
+    key: control0 && control0.key ? control0.key: 'blank' + Date.now(),
+    templateOptions: {
+      type: extractTemplateOptionType(control0),
+      label: extractTemplateOptionLabel(control0),
+      required: extractTemplateOptionRequired(control0),
+      placeholder: extractTemplateOptionPlaceholder(control0),
+      description: extractTemplateOptionDescription(control0),
+      options: extractTemplateOptionOptions(control0)
+    },
+    defaultValue: extractDefaultValue(control0),
+    expressionProperties: extractFormlyExpressionProperties(control0),
+    validators: extractFormlyValidators(control0),
+    validation: extractFormlyValidation(control0)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
   //////////////////////////////////////////////
-  if (configurationModel.lines[lineIndex].columns[0].control.type === 'datepicker') {
+  if (control0.type === 'datepicker') {
   addDatepickerOptionsProperty(controlCol0, configurationModel,lineIndex);
   }
 
+  const control1 = { ...configurationModel.lines[lineIndex].columns[1].control };
+  const headerTemplateCol1 =  {
+    className: 'col-xs-4',
+    template:`
+    <div class="row">
+      <div class="">
+        <h2 class="text-center">
+          ${extractTemplateOptionDescription(control1)}
+        </h2>
+        <hr/>
+      </div>
+    </div>
+    `
+  };
   const controlCol1 = {
-  className  : 'col-xs-4',
-  type      : typeof configurationModel.lines[lineIndex].columns[1].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[1].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[1].control.type) : 'blank',
-  key        : typeof configurationModel.lines[lineIndex].columns[1].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[1].control.key : 'blank' + Date.now(),
-  templateOptions: {
-  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[1].control),
-  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[1].control),
-  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[1].control),
-  placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[1].control),
-  description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[1].control),
-  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[1].control)
-  },
-  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[1].control),
-  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[1].control),
-  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[1].control),
-  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[1].control)
+    className: 'col-xs-4',
+    type: control1 && control1.type && control1.type !== 'none' ? control1.type:  'blank',
+    key: control1 && control1.key ? control1.key: 'blank' + Date.now(),
+    templateOptions: {
+      type: extractTemplateOptionType(control1),
+      label: extractTemplateOptionLabel(control1),
+      required: extractTemplateOptionRequired(control1),
+      placeholder: extractTemplateOptionPlaceholder(control1),
+      description: extractTemplateOptionDescription(control1),
+      options: extractTemplateOptionOptions(control1)
+    },
+    defaultValue: extractDefaultValue(control1),
+    expressionProperties: extractFormlyExpressionProperties(control1),
+    validators: extractFormlyValidators(control1),
+    validation: extractFormlyValidation(control1)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
   //////////////////////////////////////////////
-  if (configurationModel.lines[lineIndex].columns[1].control.type === 'datepicker') {
+  if (control1.type === 'datepicker') {
   addDatepickerOptionsProperty(controlCol1, configurationModel,lineIndex);
   }
+
+  const control2 = { ...configurationModel.lines[lineIndex].columns[2].control };
+  const headerTemplateCol2 =  {
+    className: 'col-xs-4',
+    template:`
+    <div class="row">
+      <div class="">
+        <h2 class="text-center">
+          ${extractTemplateOptionDescription(control2)}
+        </h2>
+        <hr/>
+      </div>
+    </div>
+    `
+  };
   const controlCol2 = {
-  className  : 'col-xs-4',
-  type      : typeof configurationModel.lines[lineIndex].columns[2].control.type !== 'undefined' ?  (configurationModel.lines[lineIndex].columns[2].control.type === 'none' ? 'blank': configurationModel.lines[lineIndex].columns[2].control.type) : 'blank',
-  key        : typeof configurationModel.lines[lineIndex].columns[2].control.key !== 'undefined' ?  configurationModel.lines[lineIndex].columns[2].control.key : 'blank' + Date.now(),
-  templateOptions: {
-  type        : extractTemplateOptionType(configurationModel.lines[lineIndex].columns[2].control),
-  label        : extractTemplateOptionLabel(configurationModel.lines[lineIndex].columns[2].control),
-  required     : extractTemplateOptionRequired(configurationModel.lines[lineIndex].columns[2].control),
-  placeholder : extractTemplateOptionPlaceholder(configurationModel.lines[lineIndex].columns[2].control),
-  description : extractTemplateOptionDescription(configurationModel.lines[lineIndex].columns[2].control),
-  options     : extractTemplateOptionOptions(configurationModel.lines[lineIndex].columns[2].control)
-  },
-  defaultValue: extractDefaultValue(configurationModel.lines[lineIndex].columns[2].control),
-  expressionProperties   : extractFormlyExpressionProperties(configurationModel.lines[lineIndex].columns[2].control),
-  validators             : extractFormlyValidators(configurationModel.lines[lineIndex].columns[2].control),
-  validation             : extractFormlyValidation(configurationModel.lines[lineIndex].columns[2].control)
+    className: 'col-xs-4',
+    type: control2 && control2.type && control2.type !== 'none' ? control2.type:  'blank',
+    key: control2 && control2.key ? control2.key: 'blank' + Date.now(),
+    templateOptions: {
+      type: extractTemplateOptionType(control2),
+      label: extractTemplateOptionLabel(control2),
+      required: extractTemplateOptionRequired(control2),
+      placeholder: extractTemplateOptionPlaceholder(control2),
+      description: extractTemplateOptionDescription(control2),
+      options: extractTemplateOptionOptions(control2)
+    },
+    defaultValue: extractDefaultValue(control2),
+    expressionProperties: extractFormlyExpressionProperties(control2),
+    validators: extractFormlyValidators(control2),
+    validation: extractFormlyValidation(control2)
   };
   //////////////////////////////////////////////
   //datepicker additionnal particular property
   //////////////////////////////////////////////
-  if (configurationModel.lines[lineIndex].columns[2].control.type === 'datepicker') {
+  if (control2.type === 'datepicker') {
   addDatepickerOptionsProperty(controlCol2, configurationModel,lineIndex);
   }
 
   const FieldGroup = [];
 
-  if (configurationModel.lines[lineIndex].columns[0].control.type === 'header') {
-  FieldGroup.push(headerTemplateCol0);
+  if (control0.type === 'header') {
+    FieldGroup.push(headerTemplateCol0);
   }else{
-  FieldGroup.push(controlCol0);
+    FieldGroup.push(controlCol0);
   }
 
-  if (configurationModel.lines[lineIndex].columns[1].control.type === 'header') {
-  FieldGroup.push(headerTemplateCol1);
+  if (control1.type === 'header') {
+    FieldGroup.push(headerTemplateCol1);
   }else{
-  FieldGroup.push(controlCol1);
+    FieldGroup.push(controlCol1);
   }
 
-  if (configurationModel.lines[lineIndex].columns[2].control.type === 'header') {
-  FieldGroup.push(headerTemplateCol2);
+  if (control2.type === 'header') {
+    FieldGroup.push(headerTemplateCol2);
   }else{
-  FieldGroup.push(controlCol2);
+    FieldGroup.push(controlCol2);
   }
 
   formlyModel.push({
-  className: 'row',
-  fieldGroup: FieldGroup
+    className: 'row',
+    fieldGroup: FieldGroup
   });
 };
 

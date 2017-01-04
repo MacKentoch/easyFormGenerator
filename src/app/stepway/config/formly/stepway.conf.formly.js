@@ -1,4 +1,3 @@
-/* global angular */
 import {
   richTextTemplate,
   blankTemplate,
@@ -7,50 +6,49 @@ import {
   groupedSelectTemplate,
   datepickerTemplate,
   validationTemplate
-} from './stepway.conf.formly.templates';
+} from './formly.config.templates';
 
 
 function formlyConfig(formlyConfigProvider){
-
   formlyConfigProvider.setType(
     {
-      name    : 'richEditor',
-      template: richTextTemplate,
-      wrapper : ['bootstrapLabel', 'bootstrapHasError']
+      name: 'richEditor',
+      template: richTextTemplate.template,
+      wrapper: ['bootstrapLabel', 'bootstrapHasError']
     }
   );
 
   formlyConfigProvider.setType(
     {
-      name     : 'blank',
-      template: blankTemplate
+      name: 'blank',
+      template: blankTemplate.template
     }
   );
 
   formlyConfigProvider.setType(
     {
-      name     : 'subTitle',
-      template: subTitleTemplate
+      name: 'subTitle',
+      template: subTitleTemplate.template
     }
   );
 
   formlyConfigProvider.setType(
     {
-      name       : 'basicSelect',
-      template   : basicSelectTemplate,
-      wrapper   : ['bootstrapLabel', 'bootstrapHasError']
+      name: 'basicSelect',
+      template: basicSelectTemplate.template,
+      wrapper: ['bootstrapLabel', 'bootstrapHasError']
     }
   );
 
   formlyConfigProvider.setType(
     {
-      name       : 'groupedSelect',
-      template   : groupedSelectTemplate,
-      wrapper   : ['bootstrapLabel', 'bootstrapHasError']
+      name: 'groupedSelect',
+      template: groupedSelectTemplate.template,
+      wrapper: ['bootstrapLabel', 'bootstrapHasError']
     }
   );
 
-  // impplement from : http://jsbin.com/koredu/edit?js,output
+  // implement from : http://jsbin.com/koredu/edit?js,output
   // formlyConfigProvider.setType({
   //     name: 'upload',
   //     extends: 'input',
@@ -132,8 +130,7 @@ function formlyConfig(formlyConfigProvider){
     'max-date'
   ];
 
-  let ngModelAttrs = {};
-
+  const ngModelAttrs = {};
   angular.forEach(attributes, (attr) => {
     ngModelAttrs[camelize(attr)] = {attribute: attr};
   });
@@ -143,40 +140,37 @@ function formlyConfig(formlyConfigProvider){
   });
 
   formlyConfigProvider.setType({
-    name       : 'datepicker',
-    template   : datepickerTemplate,
+    name: 'datepicker',
+    template: datepickerTemplate.template,
     defaultOptions: {
-      ngModelAttrs     : ngModelAttrs,
+      ngModelAttrs: ngModelAttrs,
       templateOptions: {
-          datepickerOptions: {
-              format: 'dd/MM/yyyy',
-              initDate: new Date(),
-              showWeeks: false
-          }
+        datepickerOptions: {
+          format: 'dd/MM/yyyy',
+          initDate: new Date(),
+          showWeeks: false
+        }
       }
     },
-    wrapper   : ['bootstrapLabel', 'bootstrapHasError'],
+    wrapper: ['bootstrapLabel', 'bootstrapHasError'],
     controller: ['$scope', ($scope) => {
       // console.info('ui calendar init');
-      $scope.datepicker         = {};
+      $scope.datepicker = {};
 
       // make sure the initial value is of type DATE!
       var currentModelVal = $scope.model[$scope.options.key];
       if (typeof (currentModelVal) == 'string'){
         $scope.model[$scope.options.key] = new Date(currentModelVal);
       }
-
-      $scope.datepicker.opened  = false;
-      $scope.datepicker.open    = function ($event) {
+      $scope.datepicker.opened = false;
+      $scope.datepicker.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
         // console.info('ui calendar open event');
         $scope.datepicker.opened = !$scope.datepicker.opened;
       };
     }]
-
   });
-
 
 
   /**
@@ -184,10 +178,10 @@ function formlyConfig(formlyConfigProvider){
     * without having to rewrite formly types
     */
   formlyConfigProvider.setWrapper([
-      {
-        template: validationTemplate
-      }
-    ]);
+    {
+        template: validationTemplate.template
+    }
+  ]);
 
   function camelize(string) {
     string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {

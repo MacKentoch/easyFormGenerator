@@ -1,3 +1,3 @@
 import './vendors';
-require('./style/stepway.scss');
+require('./style/index.scss');
 import './main';
