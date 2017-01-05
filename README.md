@@ -200,6 +200,29 @@ or
 yarn install easy-form-generator
 ```
 
+####dependencies
+
+Easy form generator creates amazing bootstrap forms thanks to these dependencies:
+
+| dependency            | npm install                                     | from dist/vendors  |
+|:----------------------|:------------------------------------------------|:-------------------|
+| bootstrap (css / js)  | `npm i --save bootstrap`                        | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| bootswatch            | `npm i --save bootswatch`                       | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| jquery                | `npm i --save jquery`                           | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular js (>= 1.3.X) | `npm i --save angular`                          | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| ngAnimate             | `npm i --save angular-animate`                  | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| textAngular           | `npm i --save textangular`                      | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-strap         | `npm i --save angular-strap`                    | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| nya-bootstrap-select  | `npm i --save @lordfriend/nya-bootstrap-select` | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular toaster       | `npm i --save angularjs-toaster`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+
+*They are not include in easyFormGenerator bundle to avoid side effects / collisions in your application.*
+
+*It is up to you to include them in your application depending on your dev workflow.*
+
+> It will be far more talkative be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
+
+
 ####Inject easy form generator in your app
 
 Just inject `eda.easyformGen.dragdropway` in you application:
@@ -249,22 +272,6 @@ Add these attributes to interact with your own controller:
 //it will be filled by easy form generator model
 saveForm(edaEasyFormGeneratorModel)
 ```
-
-####dependencies
-
-Easy form generator drag and drop way creates amazing bootstrap forms thanks to these dependencies:
-- bootstrap (css/ jquery)
-- bootswatch (nice theme)
-- jquery
-- angular js (>= 1.3.X dev/tested)
-- ngAnimate + animate.css
-- textAngular (for rich text editor)
-- angular-strap
-- nya-bootstrap-select (for basic and grouped select)
-- angular toaster (nice toaster messages)
-
-> It will be far more talkative be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
-
 ____
 
 ###Using Easy form viewer (production friendly)
@@ -289,6 +296,28 @@ or
 ```bash
 yarn install easy-form-generator
 ```
+
+####dependencies
+
+Easy form generator creates amazing bootstrap forms thanks to these dependencies:
+
+| dependency            | npm install                                     | from dist/vendors  |
+|:----------------------|:------------------------------------------------|:-------------------|
+| bootstrap (css / js)  | `npm i --save bootstrap`                        | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| bootswatch            | `npm i --save bootswatch`                       | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| jquery                | `npm i --save jquery`                           | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular js (>= 1.3.X) | `npm i --save angular`                          | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| ngAnimate             | `npm i --save angular-animate`                  | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| textAngular           | `npm i --save textangular`                      | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| nya-bootstrap-select  | `npm i --save @lordfriend/nya-bootstrap-select` | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+
+
+*They are not include in easyFormGenerator bundle to avoid side effects / collisions in your application.*
+
+*It is up to you to include them in your application depending on your dev workflow.*
+
+> It will be far more talkative be checking demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
+
 
 ####Inject easy form viewer in your app
 
@@ -359,8 +388,6 @@ Just inject `eda.easyFormViewer` in you application:
 | eda-easy-form-viewer-submit-form-event                | function | to handle submit event in your controller (like saving data model for example) |
 | eda-easy-form-viewer-cancel-form-event                | function | to handle cancel event in your controller                                      |
 
-
-> It will be far more talkative be checking demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 ______
 
 ## What is new?

@@ -4,7 +4,10 @@
 
 ### v2.1.0
 - separate js and css into distinct bundles (like before v2.0.0)
-
+- merged awesome PR from
+  - `cristianurbano` :clap:
+  - `gofreddo` :clap:
+  - **Thank you for you contributions!**
 
 ### v2.0.0
 - leave `bower, gulp and jspm` in favor of `webpack + npm`

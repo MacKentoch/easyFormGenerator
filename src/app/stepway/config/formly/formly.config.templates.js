@@ -74,7 +74,7 @@ const datepickerTemplate = {
         <button
           type="button"
           class="btn btn-default"
-          ng-click="formlyDatePicker.open($event)">
+          ng-click="datepicker.open($event)">
           <i class="glyphicon glyphicon-calendar"></i>
         </button>
       </span>

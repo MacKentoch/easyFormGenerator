@@ -154,9 +154,7 @@ function formlyConfig(formlyConfigProvider){
     },
     wrapper: ['bootstrapLabel', 'bootstrapHasError'],
     controller: ['$scope', ($scope) => {
-      // console.info('ui calendar init');
       $scope.datepicker = {};
-
       // make sure the initial value is of type DATE!
       var currentModelVal = $scope.model[$scope.options.key];
       if (typeof (currentModelVal) == 'string'){
@@ -166,7 +164,6 @@ function formlyConfig(formlyConfigProvider){
       $scope.datepicker.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
-        // console.info('ui calendar open event');
         $scope.datepicker.opened = !$scope.datepicker.opened;
       };
     }]
