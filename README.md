@@ -175,6 +175,39 @@ Add these attributes to interact with your own controller:
 saveForm(edaEasyFormGeneratorModel)
 ```
 
+####Customize easyFormGenerator
+
+**Multilanguage support:**
+
+|language               | key     | note                                    |
+|:----------------------|:--------|:----------------------------------------|
+| english               | 'en'    |                                         |
+| french                | 'fr'    |                                         |
+| german                | 'de'    |                                         |
+| japanese              | 'jp'    |                                         |
+| spanish               | 'es'    | thx to **Benjamin Orozco** :thumbsup:   |
+| turkish               | 'tr'    | thx to **Serhat Can** :thumbsup:        |
+| bresilian portuguese  | 'pt-br' | thx to **Leandro.Battisti** :thumbsup:  |
+
+![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/images/languages.png)    
+
+*Change the default language in your controller:*
+
+```javascript
+angular
+.module('YOURAPP', ['...'])
+.config(easyFromConfigFct);
+
+//inject easyFormSteWayConfigProvider
+easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+function easyFromConfigFct(easyFormSteWayConfigProvider){
+
+//example get current language (by default = english)
+console.info(easyFormSteWayConfigProvider.getCurrentLanguage());
+//set language to french (see corresponding keys in upper table):
+easyFormSteWayConfigProvider.setLanguage('fr');
+
+```
 ____
 
 
