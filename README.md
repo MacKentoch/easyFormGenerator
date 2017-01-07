@@ -179,6 +179,8 @@ saveForm(edaEasyFormGeneratorModel)
 
 **Multilanguage support:**
 
+Default or fallback language is set to `english` **by default** (*but you can change this fallback language*).
+
 |language               | key     | note                                    |
 |:----------------------|:--------|:----------------------------------------|
 | english               | 'en'    |                                         |
@@ -206,8 +208,86 @@ function easyFromConfigFct(easyFormSteWayConfigProvider){
 console.info(easyFormSteWayConfigProvider.getCurrentLanguage());
 //set language to french (see corresponding keys in upper table):
 easyFormSteWayConfigProvider.setLanguage('fr');
+```
+
+**enable disable controls:**
+
+All controls are enabled by default.
+
+- list of controls:
+
+|    control name   | control key       |
+|:------------------|:------------------|
+| empty control     | `empty`           |
+| header            | `header`          |
+| Subtitle          | `Subtitle`        |
+| TextInput         | `TextInput`       |
+| Password          | `Password`        |
+| Email             | `Email`           |
+| IpAdress          | `IpAdress`        |
+| Date              | `Date`            |
+| Texarea           | `Texarea`         |
+| RichTextEditor    | `RichTextEditor`  |
+| Radio             | `Radio`           |
+| Checkbox          | `Checkbox`        |
+| BasicSelect       | `BasicSelect`     |
+| GroupedSelect     | `GroupedSelect`   |
+
+
+ ```javascript
+  angular
+    .module('YOURAPP', ['...'])
+    .config(easyFromConfigFct);
+
+  //inject easyFormSteWayConfigProvider
+  easyFromConfigFct.$inject = ['easyFormSteWayConfigProvider'];
+  function easyFromConfigFct(easyFormSteWayConfigProvider){
+    /////////////////////////////
+    // DISABLE EXAMPLES
+    /////////////////////////////
+    //disable a single control:
+    easyFormSteWayConfigProvider.disableControl('TextInput');
+    //disable a list of controls:
+    easyFormSteWayConfigProvider.disableControl(['BasicSelect', 'GroupedSelect']);
+
+    /////////////////////////////
+    // ENABLE EXAMPLES
+    /////////////////////////////
+    //enable a single control:
+    easyFormSteWayConfigProvider.enableControl('TextInput');
+    //enable a list of controls:
+    easyFormSteWayConfigProvider.enableControl(['BasicSelect', 'GroupedSelect']);
+ ```
+
+
+**show hide preview panel details:**
+
+- show / hide entire `form preview panel`
+- show / hide `preview models` in preview panel
+
+```javascript
+
+  angular
+    .module('appDemo', [
+      'eda.easyformGen.stepway' //injects easy form generator-step way
+    ])
+    .config(configFct)
+    .controller('demoController', demoController);
+
+  /**
+    * config
+    */
+  configFct.$inject = ['easyFormSteWayConfigProvider'];
+  function configFct(easyFormSteWayConfigProvider){
+    //show/hide preview panel => default is true
+    easyFormSteWayConfigProvider.showPreviewPanel(true);
+    //show/hide models in preview panel => default is true
+    easyFormSteWayConfigProvider.showPreviewModels(true);
+  }
 
 ```
+
+
 ____
 
 
