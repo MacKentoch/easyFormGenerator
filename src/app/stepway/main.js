@@ -7,6 +7,7 @@ import translateConfig                          from './config/translate/transla
 import easyFormStepWayCoreModule                from './core/core.module';
 
 import easyFormStepwayMainModule                from './components/main/stepway.main.module';
+import easyFormStepwayWizardModule              from './components/wizard/stepway.wizard.module';
 import easyFormStepwayModalModule               from './components/modal/stepway.editControlModal.module';
 import easyFormStepwayModalProxyModule          from './services/modalControllerProxy/modalProxy.service';
 import easyFormStepwayFormlyProxyModule         from './services/formlyProxy/formlyProxy.service';
@@ -17,6 +18,7 @@ const STEP_WAY_MODULES_INJECT = [
   easyFormStepWayCoreModule.name,
   translateConfig.name,
   easyFormStepwayMainModule.name,
+  easyFormStepwayWizardModule.name,
   easyFormStepwayModalModule.name,
   easyFormStepwayModalProxyModule.name,
   easyFormStepwayFormlyProxyModule.name,

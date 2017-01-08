@@ -24,6 +24,7 @@
                 </div>
                 <div class="row">
                   <pager
+                    configuration="vm.configuration"
                     step-indicators="vm.stepIndicators"
                     next-config-step="vm.nextConfigStep()"
                     previous-config-step="vm.previousConfigStep()">
@@ -61,7 +62,7 @@
               </uib-tab>
               <uib-tab
                 active="vm.tab.previewTab.active"
-                ng-if="vm.tab.previewTab.tabVisible"
+                ng-if="vm.tab.previewTab.tabVisible && !vm.configuration.isWizard"
                 heading="{{'PREVIEW_TAB' | translate}}">
                 <div class="panel panel-default">
                   <div class="panel-body">

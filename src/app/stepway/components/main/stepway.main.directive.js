@@ -17,6 +17,7 @@ function edaStepWayEasyFormGenDirective(
     restrict: 'E',
     scope: {
       edaEasyFormGeneratorModel: '=',
+      wizardStepGeneratorModel: '=',
       edaSaveFormEvent: '&edaSaveFormEvent'
     },
     controller: STEP_WAY_MAIN_CONTROLLER_NAME,
@@ -35,6 +36,21 @@ function edaStepWayEasyFormGenDirective(
       true
     );
 
+    if (scope.wizardStepGeneratorModel){
+      loadExistingConfigurationModel();
+      scope.wizardStepGeneratorModel.configuration = scope.vm.configuration;
+      scope.wizardStepGeneratorModel.edaFieldsModel            = scope.vm.configuration.lines;
+      scope.wizardStepGeneratorModel.formlyFieldsModel         = scope.vm.wfFormFields;
+      scope.wizardStepGeneratorModel.dataModel                 = scope.vm.dataModel;      
+      scope.vm.configuration.isWizard = true;
+      if (scope.wizardStepGeneratorModel.loaded) {                        
+        angular.copy(scope.wizardStepGeneratorModel.loaded.edaFieldsModel, scope.wizardStepGeneratorModel.edaFieldsModel);
+        angular.copy(scope.wizardStepGeneratorModel.loaded.dataModel, scope.wizardStepGeneratorModel.dataModel);        
+        scope.wizardStepGeneratorModel.formlyFieldsModel.length = 0;
+        angular.copy(scope.wizardStepGeneratorModel.loaded.formlyFieldsModel, scope.wizardStepGeneratorModel.formlyFieldsModel);   
+      }
+    }
+
     //watch "scope.vm.returnSaveEvent"" = catch saving form event
     scope.$watch(() => scope.vm.returnSaveEvent,
       (newValue) => {
@@ -47,7 +63,7 @@ function edaStepWayEasyFormGenDirective(
             edaFieldsModelStringified : angular.toJson(scope.vm.configuration.lines),
             formlyFieldsModel         : scope.vm.wfFormFieldsOnlyNeededProperties,
             dataModel                 : scope.vm.dataModel
-          };
+          };          
           scope.edaSaveFormEvent({ edaEasyFormGeneratorModel : _easyFormGeneratorModel });
           //back to false, waiting next save event
           scope.vm.returnSaveEvent = false;
