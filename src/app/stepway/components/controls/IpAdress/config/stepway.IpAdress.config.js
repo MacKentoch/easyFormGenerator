@@ -7,7 +7,7 @@ export const IpAdressConfig =       {
   formlySubtype: 'ipadress',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {

@@ -7,7 +7,7 @@ export const CheckBoxConfig = {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {},

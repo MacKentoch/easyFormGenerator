@@ -115,8 +115,11 @@
           function timedModelChanged(){
             $timeout(function(){
               demoCtrl.fieldsModel =   testACompleteForm();
+              demoCtrl.dataModel =  { 'input-1441426278314': 'test' };
               console.info('timeout in demo controller : fields model changed');
               console.dir(demoCtrl.fieldsModel);
+              console.info('timeout in demo controller : data model changed');
+              console.dir(demoCtrl.dataModel);
             }, 3000);
           }
           /**

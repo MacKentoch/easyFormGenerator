@@ -87,7 +87,7 @@ class leftPanelController{
 			formlyLabel				: '',
 			formlyRequired		: false,
 			formlyPlaceholder	: '',
-			formlyDesciption	: '',
+			formlyDescription	: '',
 			formlyOptions			: []
 		};
 	}
@@ -96,7 +96,7 @@ class leftPanelController{
 		this.proxyModel.temporyConfig.formlyLabel 			= '';
 		this.proxyModel.temporyConfig.formlyRequired 		= false;
 		this.proxyModel.temporyConfig.formlyPlaceholder	= '';
-		this.proxyModel.temporyConfig.formlyDesciption 	= '';
+		this.proxyModel.temporyConfig.formlyDescription 	= '';
 		this.proxyModel.temporyConfig.formlyOptions 		= [];
 		this.proxyModel.temporyConfig.datepickerPopup   = this.initDatePicker();
 	}

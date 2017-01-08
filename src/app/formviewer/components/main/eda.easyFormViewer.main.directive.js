@@ -33,7 +33,7 @@ function edaFormViewerDirective($modelsTranslator){
 
 
 	function linkFct(scope) {
-		scope.vm.model 				= {};
+		scope.vm.model 				= scope.edaEasyFormViewerDataModel;
 		scope.vm.fields 			= loadFieldsModel();
 		scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 		scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';
@@ -45,11 +45,11 @@ function edaFormViewerDirective($modelsTranslator){
 		scope.$watch(submitEventToWatch, 		submitEventWatcher);
 		scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
 
-		function dataModelToWatch(){
-			return scope.vm.model;
+		function dataModelToWatch() {
+			return scope.edaEasyFormViewerDataModel;
 		}
 
-		function fieldsModelToWatch(){
+		function fieldsModelToWatch() {
 			return scope.edaEasyFormViewerEasyFormGeneratorFieldsModel;
 		}
 
@@ -85,8 +85,8 @@ function edaFormViewerDirective($modelsTranslator){
 			}
 		}
 
-		function dataModelWatcher(newDataModel){
-			scope.edaEasyFormViewerDataModel = newDataModel;
+		function dataModelWatcher(newDataModel) {
+			scope.vm.model = angular.copy(newDataModel);
 		}
 
 		function submitEventWatcher(newSubmitEvent){
@@ -114,18 +114,15 @@ function edaFormViewerDirective($modelsTranslator){
 			* by default or if both -> easy for generator is chosen
 			*/
 		function loadFieldsModel(){
-			var initialFieldsModel = angular
-																.isArray(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) ?
-				//translate easy form generator to formly fields model
-				loadExistingConfigurationModel(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel)
+			const initialFieldsModel = angular.isArray(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel)
+        ? loadExistingConfigurationModel(scope.edaEasyFormViewerEasyFormGeneratorFieldsModel) //translate easy form generator to formly fields model
 				: {};
-
 			return initialFieldsModel;
 		}
 
 		function loadExistingConfigurationModel(loadedFieldModel){
 
-			if(angular.isArray(loadedFieldModel)){
+			if (angular.isArray(loadedFieldModel)) {
 				const configlines           = returnAttributeConfigurationLinesIfNotEmpty(loadedFieldModel);
 				const formlyFieldsModel 		= [];
 

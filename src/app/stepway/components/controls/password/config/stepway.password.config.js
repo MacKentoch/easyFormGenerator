@@ -7,7 +7,7 @@ export const PasswordConfig =       {
   formlySubtype: 'password',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [] ,
   formlyExpressionProperties: {},
   formlyValidators: {},

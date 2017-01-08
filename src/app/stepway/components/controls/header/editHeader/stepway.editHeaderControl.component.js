@@ -18,7 +18,7 @@ export const editHeaderControlComponent = {
           <div class="form-group">
             <div class="">
               <h2 class="text-center">
-                {{$ctrl.nyaSelect.temporyConfig.formlyDesciption}}
+                {{$ctrl.nyaSelect.temporyConfig.formlyDescription}}
               </h2>
               <hr/>
             </div>
@@ -51,7 +51,7 @@ export const editHeaderControlComponent = {
             <input
               type="text"
               class="form-control"
-              ng-model="$ctrl.nyaSelect.temporyConfig.formlyDesciption"
+              ng-model="$ctrl.nyaSelect.temporyConfig.formlyDescription"
               id="inputHeaderTextUpdate"
               placeholder="{{'ADD_EDIT_HEADER_HERE' | translate}}">
           </div>

@@ -7,7 +7,7 @@ export const TextInputConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyDefaultValue : '',
   formlyOptions: [] ,
   formlyExpressionProperties: {},

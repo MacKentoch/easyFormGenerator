@@ -2,37 +2,37 @@ const resetNyaSelect = (nyaSelectObj) => {
   const newNyaSelectObj = {
     controls : [
       {
-        id                : 'empty',
-        name              : 'no control',
-        subtitle          : 'no control',
-        group              : 'Blank',
-        formlyType        : 'blank',
-        formlySubtype      : '',
-        formlyLabel        : '',
-        formlyRequired    : false,
-        formlyDesciption  : '',
-        formlyDefaultValue : '',
-        formlyOptions      : [] ,
+        id: 'empty',
+        name: 'no control',
+        subtitle: 'no control',
+        group: 'Blank',
+        formlyType: 'blank',
+        formlySubtype: '',
+        formlyLabel: '',
+        formlyRequired: false,
+        formlyDescription: '',
+        formlyDefaultValue: '',
+        formlyOptions: [] ,
         formlyExpressionProperties: {},
-        formlyValidators  : {},
-        formlyValidation  : {}
+        formlyValidators: {},
+        formlyValidation: {}
       },
 
       {
-        id                : 'Header',
-        name              : 'Header',
-        subtitle          : 'no control',
-        group              : 'Decoration',
-        formlyType        : 'header',
-        formlySubtype      : '',
-        formlyLabel        : '',
-        formlyRequired    : false,
-        formlyDesciption  : '',
-        formlyDefaultValue : '',
-        formlyOptions      : [] ,
+        id: 'Header',
+        name: 'Header',
+        subtitle: 'no control',
+        group: 'Decoration',
+        formlyType: 'header',
+        formlySubtype: '',
+        formlyLabel: '',
+        formlyRequired: false,
+        formlyDescription: '',
+        formlyDefaultValue: '',
+        formlyOptions: [] ,
         formlyExpressionProperties: {},
-        formlyValidators  : {},
-        formlyValidation  : {}
+        formlyValidators: {},
+        formlyValidation: {}
       },
 
       {
@@ -44,7 +44,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [] ,
         formlyExpressionProperties: {},
@@ -61,7 +61,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [] ,
         formlyExpressionProperties: {},
@@ -89,7 +89,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : 'password',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [] ,
         formlyExpressionProperties: {},
@@ -117,7 +117,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype               : 'email',
         formlyLabel                 : '',
         formlyRequired               : false,
-        formlyDesciption             : '',
+        formlyDescription             : '',
         formlyOptions               : [],
         formlyExpressionProperties   : {},
         formlyValidators             : {
@@ -126,7 +126,7 @@ const resetNyaSelect = (nyaSelectObj) => {
               var value = modelValue || viewValue;
               return /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/.test(value);
             },
-            message    : '$viewValue + \' is not a valid email\''
+            message: '$viewValue + \' is not a valid email\''
           }
         },
         formlyValidation: {
@@ -135,8 +135,8 @@ const resetNyaSelect = (nyaSelectObj) => {
               //return a required validation message :
               //-> '<label as name> is required '
               //-> or if not exists or empty just 'this field is required'
-              var defaultReturnMsg   = 'this Email field is required';
-              var returnMsg         = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+              var defaultReturnMsg = 'this Email field is required';
+              var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
               //check if validation is really dued to require validation
               //and not another validation like emailShape validator
               if (scope.to.required) return returnMsg;
@@ -154,13 +154,13 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype               : 'ipadress',
         formlyLabel                 : '',
         formlyRequired               : false,
-        formlyDesciption             : '',
+        formlyDescription             : '',
         formlyOptions               : [],
         formlyExpressionProperties   : {},
         formlyValidators             : {
           ipAddress : {
             expression: function($viewValue, $modelValue) {
-              var value = $modelValue || $viewValue;
+              const value = $modelValue || $viewValue;
               return /(\d{1,3}\.){3}\d{1,3}/.test(value);
             },
             message: '$viewValue + " is not a valid IP Address"' //,
@@ -170,8 +170,8 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlyValidation: {
           messages: {
             required: function(viewValue, modelValue, scope) {
-              var defaultReturnMsg   = 'this IP Adress field is required';
-              var returnMsg         = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+              var defaultReturnMsg = 'this IP Adress field is required';
+              var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
               if (scope.to.required) return returnMsg;
             }
           }
@@ -188,7 +188,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         datepickerOptions  : 'dd-MMMM-yyyy',
@@ -200,8 +200,8 @@ const resetNyaSelect = (nyaSelectObj) => {
               //return a required validation message :
               //-> '<label as name> is required '
               //-> or if not exists or empty just 'this field is required'
-              var defaultReturnMsg   = 'this Date field is required';
-              var returnMsg         = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
+              var defaultReturnMsg = 'this Date field is required';
+              var returnMsg = (typeof scope.to.label !== 'undefined') ? ((scope.to.label !== '') ? scope.to.label + ' is required' : defaultReturnMsg) : defaultReturnMsg;
               return returnMsg;
             }
           }
@@ -217,7 +217,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         formlyExpressionProperties: {},
@@ -245,7 +245,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         formlyExpressionProperties: {},
@@ -274,7 +274,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '' ,
+        formlyDescription  : '' ,
         formlyOptions      : [],
         formlyExpressionProperties: {},
         formlyValidators  : {},
@@ -301,7 +301,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         formlyExpressionProperties: {},
@@ -330,7 +330,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         formlyExpressionProperties: {},
@@ -359,7 +359,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         formlySubtype      : '',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyOptions      : [],
         formlyExpressionProperties: {},
@@ -383,7 +383,7 @@ const resetNyaSelect = (nyaSelectObj) => {
         selectedControl    : 'none',
         formlyLabel        : '',
         formlyRequired    : false,
-        formlyDesciption  : '',
+        formlyDescription  : '',
         formlyDefaultValue : '',
         formlyPlaceholder  : '',
         formlyOptions     : [],
@@ -406,7 +406,7 @@ const getResetConfig = () => {
     formlyLabel: '',
     formlyRequired: false,
     formlyPlaceholder: '',
-    formlyDesciption: '',
+    formlyDescription: '',
     formlyDefaultValue: '',
     formlyOptions: []
   };
@@ -428,7 +428,7 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
         formlySubtype: controlRef.formlySubtype,
         formlyLabel: controlRef.formlyLabel,
         formlyRequired : controlRef.formlyRequired,
-        formlyDesciption: controlRef.formlyDesciption,
+        formlyDescription: controlRef.formlyDescription,
         formlyPlaceholder: controlRef.formlyPlaceholder,
         formlyOptions: [...controlRef.formlyOptions],
         //validation fields
@@ -450,7 +450,7 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
     formlySubtype: 'none',
     formlyLabel: '',
     formlyRequired : false,
-    formlyDesciption: '',
+    formlyDescription: '',
     formlyPlaceholder: '',
     formlyOptions: [],
     //validation fields

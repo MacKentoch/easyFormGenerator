@@ -7,7 +7,7 @@ export const HeaderConfig = {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [] ,
   formlyExpressionProperties: {},
   formlyValidators: {},

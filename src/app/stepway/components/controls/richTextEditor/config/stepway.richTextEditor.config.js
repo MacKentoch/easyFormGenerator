@@ -7,7 +7,7 @@ export const RichTextEditorConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {},

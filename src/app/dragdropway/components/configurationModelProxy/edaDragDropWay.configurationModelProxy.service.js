@@ -213,7 +213,7 @@ class ddModelConfModelProxyService{
     //set templateOptions.required :	
     this.$parse('control.templateOptions.required').assign(configurationCtrlModel, this.$parse('formlyRequired')(formlyDetailCtrlModel));	
     //set templateOptions.required :	
-    this.$parse('control.templateOptions.description').assign(configurationCtrlModel, this.$parse('formlyDesciption')(formlyDetailCtrlModel));	
+    this.$parse('control.templateOptions.description').assign(configurationCtrlModel, this.$parse('formlyDescription')(formlyDetailCtrlModel));	
     //set templateOptions.required :	
     this.$parse('control.templateOptions.placeholder').assign(configurationCtrlModel, this.$parse('formlyPlaceholder')(formlyDetailCtrlModel));
     //set templateOptions.required :	

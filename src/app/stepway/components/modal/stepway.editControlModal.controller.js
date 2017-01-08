@@ -397,7 +397,7 @@ class editControlModalController {
       formlyLabel        : '',
       formlyRequired    : false,
       formlyPlaceholder  : '',
-      formlyDesciption  : '',
+      formlyDescription  : '',
       formlyOptions      : []
     };
   }

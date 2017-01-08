@@ -7,7 +7,7 @@ export const DateConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   datepickerOptions: 'dd-MMMM-yyyy',
   formlyExpressionProperties: {},

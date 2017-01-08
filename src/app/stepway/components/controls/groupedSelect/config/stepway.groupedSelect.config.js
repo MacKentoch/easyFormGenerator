@@ -8,7 +8,7 @@ export const GroupedSelectConfig = {
   formlySubtype      : '',
   formlyLabel        : '',
   formlyRequired    : false,
-  formlyDesciption  : '',
+  formlyDescription  : '',
   formlyOptions      : [],
   formlyExpressionProperties: {},
   formlyValidators  : {},

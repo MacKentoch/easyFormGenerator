@@ -36,7 +36,7 @@ class $modalProxy {
         selectedControl: controlAtThisLineThisCol.selectedControl ? controlAtThisLineThisCol.selectedControl : 'none',
         formlyLabel: controlAtThisLineThisCol.templateOptions.label ? controlAtThisLineThisCol.templateOptions.label : '',
         formlyRequired: controlAtThisLineThisCol.templateOptions.required ? controlAtThisLineThisCol.templateOptions.required : '',
-        formlyDesciption: controlAtThisLineThisCol.templateOptions.description ? controlAtThisLineThisCol.templateOptions.description : '',
+        formlyDescription: controlAtThisLineThisCol.templateOptions.description ? controlAtThisLineThisCol.templateOptions.description : '',
         formlyDefaultValue: controlAtThisLineThisCol.defaultValue ? controlAtThisLineThisCol.defaultValue : '',
         formlyPlaceholder: controlAtThisLineThisCol.templateOptions.placeholder ? controlAtThisLineThisCol.templateOptions.placeholder : '',
         formlyOptions: controlAtThisLineThisCol.templateOptions.options ? controlAtThisLineThisCol.templateOptions.options : '',
@@ -46,7 +46,9 @@ class $modalProxy {
       };
       // particular case : datepicker needs an additionnal property:
       if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
-        nyaSelectObj.temporyConfig.datepickerOptions   = controlAtThisLineThisCol.templateOptions.datepickerOptions ? angular.copy(controlAtThisLineThisCol.templateOptions.datepickerOptions) : '';
+        nyaSelectObj.temporyConfig.datepickerOptions = controlAtThisLineThisCol.templateOptions.datepickerOptions
+        ? angular.copy(controlAtThisLineThisCol.templateOptions.datepickerOptions)
+        : '';
       }
     }
     return nyaSelectObj;
@@ -64,7 +66,7 @@ class $modalProxy {
       templateOptions: {
         label: extractedProps.formlyLabel,
         required: extractedProps.formlyRequired,
-        description: extractedProps.formlyDesciption,
+        description: extractedProps.formlyDescription,
         placeholder: extractedProps.formlyPlaceholder,
         options: [...extractedProps.formlyOptions]
       },
@@ -112,7 +114,7 @@ class $modalProxy {
         if (control.id === selectedControl) {
           control.formlyLabel = nyaSelectObj.temporyConfig.formlyLabel,
           control.formlyRequired = nyaSelectObj.temporyConfig.formlyRequired;
-          control.formlyDesciption = nyaSelectObj.temporyConfig.formlyDesciption;
+          control.formlyDescription = nyaSelectObj.temporyConfig.formlyDescription;
           control.formlyDefaultValue = nyaSelectObj.temporyConfig.formlyDefaultValue;
           control.formlyPlaceholder = nyaSelectObj.temporyConfig.formlyPlaceholder;
           control.formlyOptions = nyaSelectObj.temporyConfig.formlyOptions;

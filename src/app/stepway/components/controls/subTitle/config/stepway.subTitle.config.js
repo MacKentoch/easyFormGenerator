@@ -7,7 +7,7 @@ export const SubTitleConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [] ,
   formlyExpressionProperties: {},
   formlyValidators: {},

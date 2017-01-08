@@ -14,7 +14,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
 
@@ -44,7 +44,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
 
@@ -90,7 +90,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
 
@@ -120,7 +120,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
 
@@ -171,7 +171,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
       formlySubtype 		: 'password',
       formlyLabel 			: '',
       formlyRequired 		: false,
-      formlyDesciption 	: '',
+      formlyDescription 	: '',
       formlyOptions 		: []
     }
   );
@@ -295,7 +295,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
       formlySubtype 		: '',
       formlyLabel 			: '',
       formlyRequired 		: false,
-      formlyDesciption 	: '',
+      formlyDescription 	: '',
       formlyOptions 		: [],
       datepickerPopup 	: 'dd-MMMM-yyyy'
     }
@@ -348,7 +348,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
   /**
@@ -402,7 +402,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
   /**
@@ -450,7 +450,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '' ,
+    formlyDescription 	: '' ,
     formlyOptions 		: []
   });
   /**
@@ -508,7 +508,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
   /**
@@ -568,7 +568,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
 
@@ -641,7 +641,7 @@ function formlyConfig(formlyConfigProvider, EasyFormGenFormlyBindingModelsProvid
     formlySubtype 		: '',
     formlyLabel 			: '',
     formlyRequired 		: false,
-    formlyDesciption 	: '',
+    formlyDescription 	: '',
     formlyOptions 		: []
   });
   /**

@@ -6,7 +6,7 @@
       selectedControl		: 'none',
       formlyLabel				: 'label',  
       formlyRequired		: false, 
-      formlyDesciption	: '',
+      formlyDescription	: '',
       formlyPlaceholder	: '',
       formlyOptions 		: []
     } 

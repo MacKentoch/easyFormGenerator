@@ -7,7 +7,7 @@ export const TextAreaConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {},

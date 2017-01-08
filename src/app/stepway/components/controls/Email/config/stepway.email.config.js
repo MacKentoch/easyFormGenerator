@@ -7,7 +7,7 @@ export const EmailConfig =  {
   formlySubtype: 'email',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '',
+  formlyDescription: '',
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {

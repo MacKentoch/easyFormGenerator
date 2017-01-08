@@ -8,7 +8,7 @@ export const RadioConfig =       {
   formlySubtype: '',
   formlyLabel: '',
   formlyRequired: false,
-  formlyDesciption: '' ,
+  formlyDescription: '' ,
   formlyOptions: [],
   formlyExpressionProperties: {},
   formlyValidators: {},

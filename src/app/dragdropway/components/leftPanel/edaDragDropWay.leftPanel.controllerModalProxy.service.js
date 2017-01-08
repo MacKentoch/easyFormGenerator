@@ -73,7 +73,7 @@ class controllerModalProxy{
           formlySubtype			: 'none',
           formlyLabel				: '',
           formlyRequired 		: false,
-          formlyDesciption	: '',
+          formlyDescription	: '',
           formlyPlaceholder	: '',
           formlyOptions			: []
     };
@@ -85,7 +85,7 @@ class controllerModalProxy{
         modelToReturn.formlySubtype 		= CtrlModalModel.controls[i].formlySubtype;
         modelToReturn.formlyLabel 			= CtrlModalModel.controls[i].formlyLabel;
         modelToReturn.formlyRequired 		= CtrlModalModel.controls[i].formlyRequired;
-        modelToReturn.formlyDesciption 	= CtrlModalModel.controls[i].formlyDesciption;
+        modelToReturn.formlyDescription 	= CtrlModalModel.controls[i].formlyDescription;
         modelToReturn.formlyPlaceholder = CtrlModalModel.controls[i].formlyPlaceholder;
         modelToReturn.formlyOptions 		= CtrlModalModel.controls[i].formlyOptions;
         // particular properties, here ; datetpicker format
@@ -142,7 +142,7 @@ class controllerModalProxy{
     // then bind template option
     configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label 				= extractedProps.formlyLabel;
     configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required 		= extractedProps.formlyRequired;
-    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDesciption;
+    configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description 	= extractedProps.formlyDescription;
     configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder 	= extractedProps.formlyPlaceholder;
     configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options 			= extractedProps.formlyOptions;
     // add additionnal — particular — properties : -> datepicker : datepickerPopup
@@ -185,7 +185,7 @@ class controllerModalProxy{
       this.proxyModel.temporyConfig.formlySubtype 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.subtype != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.subtype : 'none';
       this.proxyModel.temporyConfig.formlyLabel 				= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.label : '';
       this.proxyModel.temporyConfig.formlyRequired	 		= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.required : '';
-      this.proxyModel.temporyConfig.formlyDesciption 	  = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
+      this.proxyModel.temporyConfig.formlyDescription 	  = typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.description : '';
       this.proxyModel.temporyConfig.formlyPlaceholder 	= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.placeholder : '';
       this.proxyModel.temporyConfig.formlyOptions 			= typeof configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options != 'undefined' ? configurationObj.lines[indexLine].columns[numcolumn].control.templateOptions.options : '';
       // particular case : datepicker
