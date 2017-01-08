@@ -9,7 +9,7 @@ export const DateConfig =       {
   formlyRequired: false,
   formlyDescription: '',
   formlyOptions: [],
-  datepickerOptions: 'dd-MMMM-yyyy',
+  datepickerOptions: { format: 'dd-MMMM-yyyy' },
   formlyExpressionProperties: {},
   formlyValidators: {},
   formlyValidation: {

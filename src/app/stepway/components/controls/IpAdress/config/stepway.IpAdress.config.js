@@ -1,4 +1,4 @@
-export const IpAdressConfig =       {
+export const IpAdressConfig = {
   id: 'IpAdress',
   name: 'IpAdress',
   subtitle: 'IpAdress',

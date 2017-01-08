@@ -48,7 +48,7 @@ class $modalProxy {
       if (nyaSelectObj.temporyConfig.selectedControl === 'Date') {
         nyaSelectObj.temporyConfig.datepickerOptions = controlAtThisLineThisCol.templateOptions.datepickerOptions
         ? angular.copy(controlAtThisLineThisCol.templateOptions.datepickerOptions)
-        : '';
+        : { format: '' };
       }
     }
     return nyaSelectObj;
