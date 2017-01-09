@@ -3,7 +3,7 @@ export const PAGER_COMPONENT_NAME = 'pager';
 export const pagerComponent = {
   template: `
   <ul class="pager">
-    <li ng-class="{'disabled':$ctrl.stepIndicators[0]}">
+    <li ng-class="{'disabled':$ctrl.stepIndicators[0]}" ng-if="$ctrl.configuration.configStepCounter > 0">
       <button
           class="btn btn-primary customPagerButton"
           ng-click="$ctrl.previousConfigStep()" >
@@ -13,7 +13,7 @@ export const pagerComponent = {
         </span>
       </button>
     </li>
-    <li ng-class="{'disabled':$ctrl.stepIndicators[3]}">
+    <li ng-class="{'disabled':$ctrl.stepIndicators[3]}" ng-if="($ctrl.configuration.configStepCounter < 3 && !$ctrl.configuration.isWizard) || ($ctrl.configuration.configStepCounter < 2 && $ctrl.configuration.isWizard) ">
       <button
         class="btn btn-primary customPagerButton"
         ng-click="$ctrl.nextConfigStep()">
@@ -28,7 +28,8 @@ export const pagerComponent = {
   bindings: {
     stepIndicators:     '<',
     nextConfigStep:     '&',
-    previousConfigStep: '&'
+    previousConfigStep: '&',
+    configuration: '='
   },
   controller:
   class pagerComponent {

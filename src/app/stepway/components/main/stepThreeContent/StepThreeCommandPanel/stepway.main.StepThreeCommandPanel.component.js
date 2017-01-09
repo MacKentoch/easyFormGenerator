@@ -2,7 +2,7 @@ export const STEP_THREE_COMMAND_PANEL_COMPONENT_NAME = 'stepThreeCommandPanel';
 
 export const StepThreeCommandPanelComponent = {
   template: `
-  <div id="commandPanel">
+  <div id="commandPanel" ng-if="!$ctrl.configuration.isWizard">
     <div  class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">

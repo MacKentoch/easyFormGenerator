@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appDemo">
+  <head>
+    <title>Easy wizard form generator</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="create amazing forms without coding : form editor based on angular formly">
+    <meta name="author" content="Erwan Datin (MacKentoch)">
+    <!-- IMPORTANT : angular js lib (here for better result with ng-cloak) -->
+    <!--<script type="text/javascript" src="./vendors/js/angular.min.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="./vendors/css/bootstrap.min.css" rel="stylesheet">
+    <!-- font-awesome -->
+    <link href="./vendors/css/font-awesome.min.css" rel="stylesheet">
+    <!-- animate -->
+    <link href="./vendors/css/animate.min.css" rel="stylesheet">
+    <!-- textAngular -->
+    <link rel='stylesheet' href='./vendors/css/textAngular.min.css'>
+    <!-- taoster angular -->
+    <link rel='stylesheet' href='./vendors/css/toaster.min.css'>
+    <!-- nya select bootstrap -->
+    <link rel='stylesheet' href='./vendors/css/nya-bs-select.min.css'>
+    <!-- easyFormGenerator css -->
+    <link rel='stylesheet' href='../dist/eda.stepway.css'>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="./vendors/html5shiv/dist/html5shiv.min.js"></script>
+      <script src="./vendors/respondJS/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <!-- NOTE : ng-cloak here is not optimal solution : better to use it only where it is needed (I just take a shortcut as this an example not a production sample)  -->
+  <body ng-controller="demoController as demoCtrl" ng-cloak>
+    <div>
+      <!-- navigation : just decoration it is not easy form generator
+      =============================================================-->
+      <header id="pageHeader" >
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Easy form generator</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-left">
+
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      Switch language
+                      <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('en')">English</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('fr')">French</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('es')">Spanish</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('de')">German</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('jp')">Japanese</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('tr')">Turkish</a></li>
+                      <li><a href="#" ng-click="demoCtrl.switchLanguage('pt-br')">Brasilian portuguese</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a class="socialIcon" target="_blank" href="https://github.com/MacKentoch"><span class="text-center"><i class="fa fa-github"></i></span></a></li>
+                  <li><a class="socialIcon" target="_blank" href="https://twitter.com/erwan_datin"><span class="text-center"><i class="fa fa-twitter"></i></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </header>
+      <!-- Easy Form Generator (here step way) is now a ridiculous small html :
+      =============================================================-->
+      <eda-step-way-easy-wizard-form-gen
+          eda-easy-form-generator-model="demoCtrl.easyFormGeneratorModel"
+          eda-save-form-event="demoCtrl.saveForm(edaEasyFormGeneratorModel)">
+      </eda-step-way-easy-wizard-form-gen>
+    </div>
+
+    <script type="text/javascript">
+      //demo purpose : here should be your app
+      //just inject easy form generator and bind properties
+      //then,
+      (function(){
+        'use strict';
+        angular
+          .module('appDemo', [
+            'eda.easyformGen.stepway' //injects easy form generator-step way
+          ])
+          .config(configFct)
+          .controller('demoController', demoController);
+        /**
+         * config
+         */
+        configFct.$inject = ['easyFormSteWayConfigProvider'];
+        function configFct(easyFormSteWayConfigProvider){
+          //enable/disable modal animation
+          easyFormSteWayConfigProvider.setModalAnimation(false);
+          //show/hide preview panel => default is true
+          easyFormSteWayConfigProvider.showPreviewPanel(true);
+          //show/hide models in preview panel => default is true
+          easyFormSteWayConfigProvider.showPreviewModels(true);
+        }
+
+        /**
+         * controller
+         **/
+        demoController.$inject = ['$timeout', 'easyFormSteWayConfig'];
+        function demoController($timeout, easyFormSteWayConfig){
+          var demoCtrl = this;
+
+          demoCtrl.easyFormGeneratorModel  = [{"formName":"One","btnSubmitText":"submit","btnCancelText":"cancel","edaFieldsModel":[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"selectedControl":"TextInput","type":"input","subtype":"","templateOptions":{"label":"Text","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"key":"input-1483907184394","edited":true}}]}],"edaFieldsModelStringified":"[{\"line\":1,\"activeColumn\":1,\"columns\":[{\"numColumn\":1,\"exist\":true,\"control\":{\"type\":\"none\",\"key\":\"none\"}}]}]","formlyFieldsModel":[{"className":"col-xs-12","type":"input","key":"input-1483907184394","templateOptions":{"type":"","label":"Text","required":false,"placeholder":"","description":"","options":[]},"defaultValue":"","expressionProperties":{},"validators":{},"validation":{"messages":{},"errorExistsAndShouldBeVisible":false},"$$hashKey":"object:264","data":{},"id":"formly_1_input_input-1483907184394_0","initialValue":""}],"dataModel":{},"configuration":{"activeLine":1,"listConfigStep":["init","first","second","third"],"stepIndicators":[false,false,true,false],"configStepCounter":2,"submitButtonText":"submit","cancelButtonText":"cancel","lines":[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"selectedControl":"TextInput","type":"input","subtype":"","templateOptions":{"label":"Text","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"key":"input-1483907184394","edited":true}}]}],"isWizard":true}},{"formName":"Two","btnSubmitText":"submit","btnCancelText":"cancel","edaFieldsModel":[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"selectedControl":"Password","type":"input","subtype":"password","templateOptions":{"label":"Pass","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"key":"input-1483907203739","edited":true}}]}],"edaFieldsModelStringified":"[{\"line\":1,\"activeColumn\":1,\"columns\":[{\"numColumn\":1,\"exist\":true,\"control\":{\"type\":\"none\",\"key\":\"none\"}}]}]","formlyFieldsModel":[{"className":"col-xs-12","type":"input","key":"input-1483907203739","templateOptions":{"type":"password","label":"Pass","required":false,"placeholder":"","description":"","options":[]},"defaultValue":"","expressionProperties":{},"validators":{},"validation":{"messages":{},"errorExistsAndShouldBeVisible":false},"$$hashKey":"object:408","data":{},"id":"formly_1_input_input-1483907203739_0","initialValue":""}],"dataModel":{},"configuration":{"activeLine":1,"listConfigStep":["init","first","second","third"],"stepIndicators":[false,false,true,false],"configStepCounter":2,"submitButtonText":"submit","cancelButtonText":"cancel","lines":[{"line":1,"activeColumn":1,"columns":[{"numColumn":1,"exist":true,"control":{"selectedControl":"Password","type":"input","subtype":"password","templateOptions":{"label":"Pass","required":false,"description":"","placeholder":"","options":[]},"formlyExpressionProperties":{},"formlyValidators":{},"formlyValidation":{},"key":"input-1483907203739","edited":true}}]}],"isWizard":true}}];
+          demoCtrl.saveForm               = saveForm;
+          demoCtrl.currentLangue          = refreshCurrentLanguage();
+          demoCtrl.switchLanguage          = switchLanguage;
+
+          //demo purpose only :
+          //in 3 seconds a new form will be bound to easy form generator :
+          timedModelChanged();
+          console.info('Current language is ' + demoCtrl.currentLangue);
+
+          function switchLanguage(toLanguage){
+            if (angular.isString) {
+              easyFormSteWayConfig.setLanguage(toLanguage);
+              refreshCurrentLanguage();
+              console.info('language changed to ' + demoCtrl.currentLangue);
+            }
+          }
+
+          function refreshCurrentLanguage(){
+            return easyFormSteWayConfig.getCurrentLanguage();
+          }
+
+          /**
+           * when click on save form, will call your save form function :
+           */
+          function saveForm(easyFormGeneratorModel){
+            console.info('-> from here : you can save models to database (your controller)');
+            console.dir({
+                'What is it?' : 'this log shows you easy form returned model on save event',
+                'easyFormGeneratorModel' : easyFormGeneratorModel
+            });
+          /**
+           *
+           * MORE DETAILS ON 'easyFormGeneratorModel'
+           * ----------------------------------------
+           *
+           * easy form generator model properties:
+           *
+           * - formName:                   {string} (at save step you name your form)
+           * - btnSubmitText:              {string} (if 'Submit' does not suits to you change submit button name)
+           * - btnCancelText:              {string} (if 'Cancel' does not suits to you change cancel button name)
+           * - edaFieldsMode:              {array} - easy form generator model that describe form
+           * - edaFieldsModelStringified:  {string} - exactly same as edaFieldsModel it is just stringified
+           * - formlyFieldsModel:          {object} - easy form generator model translate by itself 'edaFieldsModel' to 'angular formly fields model' -> usefull is you just need a formly directive
+           * - dataModel:                  {object} - this object is filled when filling form.
+           */
+          }
+
+          /**
+           * to simulate server async load of a form model (3 seconds is eternity I hope your server won't take so much time)
+           *
+           * easy form generator will render it when timer done
+           */
+          function timedModelChanged(){
+            $timeout(function() {
+              demoCtrl
+                .easyFormGeneratorModel
+                .formName = 'DemoForm';
+              demoCtrl
+                .easyFormGeneratorModel
+                .edaFieldsModel = testACompleteForm();
+              demoCtrl
+                .easyFormGeneratorModel
+                .btnSubmitText = 'I Confirm';
+              demoCtrl
+                .easyFormGeneratorModel
+                .btnCancelText = 'I give up';
+              console.info('timeout model change');
+              console.dir(demoCtrl.easyFormGeneratorModel);
+            }, 3000);
+          }
+
+          /**
+           * an easy form generator model as demo
+           *
+           * here as a demo, it could be retrieved from a database
+           */
+          function testACompleteForm(){
+            var _testACompleteForm =  [
+              {
+                "line": -1,
+                "activeColumn": 1,
+                "columns": [
+                  {
+                    "numColumn": 1,
+                    "exist": true,
+                    "control": {
+                      "type": "header",
+                      "key": "header-1441426238190",
+                      "selectedControl": "Header",
+                      "subtype": "",
+                      "templateOptions": {
+                        "label": "",
+                        "required": false,
+                        "description": "A Loaded Form from Your controller",
+                        "placeholder": "",
+                        "options": []
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {},
+                      "edited": true
+                    }
+                  }
+                ]
+              },
+              {
+                "line": -1,
+                "activeColumn": 1,
+                "columns": [
+                  {
+                    "numColumn": 1,
+                    "exist": true,
+                    "control": {
+                      "type": "input",
+                      "key": "input-1441426278314",
+                      "selectedControl": "TextInput",
+                      "subtype": "",
+                      "templateOptions": {
+                        "label": "text input",
+                        "required": true,
+                        "description": "text input",
+                        "placeholder": "text input",
+                        "options": []
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  },
+                  {
+                    "numColumn": 2,
+                    "exist": true,
+                    "control": {
+                      "type": "input",
+                      "key": "input-1441426295927",
+                      "selectedControl": "Password",
+                      "subtype": "password",
+                      "templateOptions": {
+                        "label": "password",
+                        "required": true,
+                        "description": "password",
+                        "placeholder": "password",
+                        "options": []
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  },
+                  {
+                    "numColumn": 3,
+                    "exist": true,
+                    "control": {
+                      "type": "input",
+                      "key": "input-1441426313388",
+                      "selectedControl": "Email",
+                      "subtype": "email",
+                      "templateOptions": {
+                        "label": "email",
+                        "required": true,
+                        "description": "email",
+                        "placeholder": "email",
+                        "options": []
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {
+                        "emailShape": {
+                          "message": "$viewValue + ' is not a valid email'"
+                        }
+                      },
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  }
+                ]
+              },
+              {
+                "line": -1,
+                "activeColumn": 1,
+                "columns": [
+                  {
+                    "numColumn": 1,
+                    "exist": true,
+                    "control": {
+                      "type": "datepicker",
+                      "key": "datepicker-1441426325143",
+                      "selectedControl": "Date",
+                      "subtype": "",
+                      "templateOptions": {
+                        "label": "date",
+                        "required": true,
+                        "description": "date",
+                        "placeholder": "",
+                        "options": [],
+                        "datepickerPopup": "dd-MMMM-yyyy"
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  },
+                  {
+                    "numColumn": 2,
+                    "exist": true,
+                    "control": {
+                      "type": "basicSelect",
+                      "key": "basicSelect-1441426346817",
+                      "selectedControl": "BasicSelect",
+                      "subtype": "",
+                      "templateOptions": {
+                        "label": "",
+                        "required": false,
+                        "description": "",
+                        "placeholder": "",
+                        "options": [
+                          {
+                            "name": "opt1",
+                            "value": 0,
+                            "group": ""
+                          },
+                          {
+                            "name": "opt2",
+                            "value": 1,
+                            "group": ""
+                          },
+                          {
+                            "name": "opt3",
+                            "value": 2,
+                            "group": ""
+                          }
+                        ]
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  }
+                ]
+              },
+              {
+                "line": -1,
+                "activeColumn": 1,
+                "columns": [
+                  {
+                    "numColumn": 1,
+                    "exist": true,
+                    "control": {
+                      "type": "richEditor",
+                      "key": "richEditor-1441426365355",
+                      "selectedControl": "RichTextEditor",
+                      "subtype": "",
+                      "templateOptions": {
+                        "label": "",
+                        "required": false,
+                        "description": "",
+                        "placeholder": "",
+                        "options": []
+                      },
+                      "formlyExpressionProperties": {},
+                      "formlyValidators": {},
+                      "formlyValidation": {
+                        "messages": {}
+                      },
+                      "edited": true
+                    }
+                  }
+                ]
+              }
+            ]
+            return _testACompleteForm;
+          }
+        }
+      })();
+    </script>
+    <!-- footer : declare JS dependencies
+    =============================================================-->
+    <footer id="pageFooter">
+      <!-- jquery framework : top 1 priority -->
+      <script type="text/javascript" src="./vendors/js/jquery.min.js"></script>
+      <!-- bootstrap framework scripts -->
+      <script type="text/javascript" src="./vendors/js/bootstrap.min.js"></script>
+      <!-- angular ui bootstrap -->
+      <script type="text/javascript" src="./vendors/js/ui-bootstrap-tpls.min.js"></script>
+      <!-- textAngular Includes -->
+      <script type="text/javascript" src='./vendors/js/textAngular-rangy.min.js'></script>
+      <script type="text/javascript" src='./vendors/js/textAngular-sanitize.min.js'></script>
+      <script type="text/javascript" src='./vendors/js/textAngular.min.js'></script>
+
+      <script type="text/javascript" src="../dist/eda.stepway.min.js"></script>
+      <!-- lodash -->
+      <script type="text/javascript" src='./vendors/js/lodash.min.js'></script>
+      <!--angular-translate -->
+      <script type="text/javascript" src='./vendors/js/angular-translate.min.js'></script>
+      <!-- angular animate -->
+      <script type="text/javascript" src="./vendors/js/angular-animate.min.js"></script>
+      <!-- angular toaster -->
+      <script type="text/javascript" src="./vendors/js/toaster.min.js"></script>
+      <!-- nya select bootstrap -->
+      <script type="text/javascript" src="./vendors/js/nya-bs-select.min.js"></script>
+
+    </footer>
+
+  </body>
+</html>

@@ -17,6 +17,9 @@
 
     "ADD_NEW_LINE"        : "Add a new line",
 
+    "ADD_NEW_STEP"        : "Add a new step",
+    "STEP_TITLE"          : "Step Title",
+
     "SELECTED_LINE"       : "Selected line",
 
     "NUMBER_OF_COLUMN"    : "Number of columns",
