@@ -1,6 +1,7 @@
-const SELECT_OPTION_MANAGE_NAME = 'selectOptionManage';
+export const SELECT_OPTION_MANAGE_NAME = 'selectOptionManage';
 
 class selectOptionManage {
+  static $inject = [];
 
   constructor() {
 
@@ -202,7 +203,4 @@ class selectOptionManage {
   }
 }
 
-selectOptionManage.$inject = [];
-
 export default selectOptionManage;
-export {SELECT_OPTION_MANAGE_NAME};
