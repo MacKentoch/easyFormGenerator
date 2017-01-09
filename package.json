@@ -37,6 +37,7 @@
     "angular": "^1.5.0",
     "angular-formly": "6.8.2",
     "angular-formly-templates-bootstrap": "4.3.2",
+    "angular-wizard": "^0.10.0",
     "api-check": "^7.5.5"
   },
   "devDependencies": {

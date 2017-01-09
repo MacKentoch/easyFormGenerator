@@ -1,0 +1,86 @@
+<section id="pageWfEdit">
+  <div ng-init="">
+    <div class="container">
+      <section id="preview">
+        <div id="preview-content">
+          <div class="content-container">
+            <!-- taoster alert -->
+            <toaster-container
+              toaster-options="{
+                'position-class': 'toast-top-full-width',
+                'extendedTimeout':500,
+                'timeOut':500
+              }">
+            </toaster-container>
+            <uib-tabset justified="true">
+              <uib-tab active="vm.tab.editTab.active" heading="{{'EDIT_TAB' | translate}}">
+                <div class="row">
+                  <add-step-content configuration="vm.configuration" 
+                    add-newstep="vm.addNewstep()" 
+                    save-this-form="vm.saveThisForm()"
+                    remove-this-step="vm.removeThisStep(index)"
+                    right-this-step="vm.rightThisStep(index)" 
+                    left-this-step="vm.leftThisStep(index)">
+                  </add-step-content>
+                </div>
+              </uib-tab>
+              <uib-tab active="vm.tab.previewTab.active" ng-if="vm.tab.previewTab.tabVisible" heading="{{'PREVIEW_TAB' | translate}}">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <!-- formly here -->
+                    
+                      <wizard edit-mode="true" indicators-position="top" on-finish="finishedWizard()">
+                        <wz-step wz-title="{{vm.configuration.steps[$index].title}}" ng-repeat="step in vm.configuration.steps track by $index">
+                          <formly-form model="vm.dataModel" fields="vm.configuration.steps[$index].easyFormGeneratorModel.formlyFieldsModel">
+                            <span class="pull-right">
+                            <button class="btn btn-primary" ng-if="$index > 0" wz-previous>
+                                <i class="fa fa-arrow-left fa-2x pull-left"></i>
+                                <span class="pull-right ng-binding">
+                                  Previous
+                                </span>
+                            </button>
+                            <button class="btn btn-primary" ng-if="$index < vm.configuration.steps.length - 1" wz-next>
+                                <i class="fa fa-arrow-right fa-2x pull-left"></i>
+                                <span class="pull-right ng-binding">
+                                  Next
+                                </span>
+                              </button>
+                              <button class="btn btn-primary" ng-if="$index == vm.configuration.steps.length - 1" 
+                              type="Submit">            
+                              <i class="fa fa-save fa-2x pull-left"></i>                    
+                                <span class="pull-right ng-binding">
+                                  Submit
+                                </span>
+                              </button>
+                            </span>
+                          </formly-form>
+                        </wz-step>
+                      </wizard>
+                    
+                  </div>
+                </div>
+                <div ng-if="vm.tab.previewTab.modelsVisible" class="panel panel-default">
+                  <div class="panel-body">
+                    <p>{{'DATA_MODEL' | translate}}</p>
+                    <pre>
+                      {{vm.dataModel | json}}
+                    </pre>
+                  </div>
+                </div>
+                <div ng-if="vm.tab.previewTab.modelsVisible" class="panel panel-default">
+                  <div class="panel-body">
+                    <p>{{'FIELDS_MODEL' | translate}}</p>
+                    <pre>
+                      {{vm | json}}                      
+                    </pre>
+                  </div>
+                </div>
+              </uib-tab>
+            </uib-tabset>
+          </div>
+        </div>
+      </section>
+      <hr/>
+    </div>
+  </div>
+</section>

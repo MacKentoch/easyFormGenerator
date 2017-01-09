@@ -42,7 +42,7 @@ export const stepIndicatorComponent = {
               {{'WIZARD_CONTROLS' | translate}}
             </p>
           </div>
-          <div class="stepwizard-step col-md-3">
+          <div class="stepwizard-step col-md-3" ng-if="!$ctrl.configuration.isWizard">
             <button
               type="button"
               class="btn btn-default btn-circle"
