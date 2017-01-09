@@ -2,6 +2,12 @@
 
 ## Notes:
 
+### v2.2.0
+
+- Header component fix (now a real component) => breaking changes
+- add Wizard (thanks to `gofreddo` PR)
+- more coming soon
+
 ### v2.1.0
 - separate js and css into distinct bundles (like before v2.0.0)
 - merged awesome PR from
