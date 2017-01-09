@@ -1,6 +1,7 @@
 import {
   richTextTemplate,
   blankTemplate,
+  headerTemplate,
   subTitleTemplate,
   basicSelectTemplate,
   groupedSelectTemplate,
@@ -22,6 +23,13 @@ function formlyConfig(formlyConfigProvider){
     {
       name: 'blank',
       template: blankTemplate.template
+    }
+  );
+
+  formlyConfigProvider.setType(
+    {
+      name: 'header',
+      template: headerTemplate.template
     }
   );
 
@@ -169,14 +177,13 @@ function formlyConfig(formlyConfigProvider){
     }]
   });
 
-
   /**
     * wrappers to show validation errors
     * without having to rewrite formly types
     */
   formlyConfigProvider.setWrapper([
     {
-        template: validationTemplate.template
+      template: validationTemplate.template
     }
   ]);
 
@@ -189,9 +196,7 @@ function formlyConfig(formlyConfigProvider){
       return chr ? chr.toLowerCase() : '';
     });
   }
-
 }
-
 
 formlyConfig.$inject = ['formlyConfigProvider'];
 

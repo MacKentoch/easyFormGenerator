@@ -1,5 +1,5 @@
 // tips: use some plugin like atom-typescript to highlight html templates inside backticks
-const richTextTemplate = {
+export const richTextTemplate = {
   template: `
   <text-angular
     name="{{id}}"
@@ -10,24 +10,38 @@ const richTextTemplate = {
 };
 
 /* eslint-disable quotes */
-const blankTemplate = {
+export const blankTemplate = {
   template: `<div></div>`
 };
 /* eslint-enable quotes */
 
-const subTitleTemplate = {
+export const headerTemplate = {
   template: `
     <div class="row">
       <div class="">
-        <h4 class="text-center">
-        {{ options.templateOptions.placeholder }}
-        <h4><hr/>
+        <h2 class="text-center">
+          {{ options.templateOptions.placeholder }}
+        </h2>
+        <hr/>
       </div>
     </div>
     `
 };
 
-const basicSelectTemplate = {
+export const subTitleTemplate = {
+  template: `
+    <div class="row">
+      <div class="">
+        <h4 class="text-center">
+          {{ options.templateOptions.placeholder }}
+        </h4>
+        <hr/>
+      </div>
+    </div>
+    `
+};
+
+export const basicSelectTemplate = {
   template: `
     <ol
       class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
@@ -45,7 +59,7 @@ const basicSelectTemplate = {
   `
 };
 
-const groupedSelectTemplate = {
+export const groupedSelectTemplate = {
   template: `
     <ol
       class="nya-bs-select col-sm-12 col-xs-12 col-md-12 col-lg12"
@@ -67,7 +81,7 @@ const groupedSelectTemplate = {
     `
 };
 
-const datepickerTemplate = {
+export const datepickerTemplate = {
   template: `
     <p class="input-group">
       <span class="input-group-btn">
@@ -93,7 +107,7 @@ const datepickerTemplate = {
   `
 };
 
-const validationTemplate = {
+export const validationTemplate = {
   template: `
     <div
       class="formly-template-wrapper form-group"
@@ -112,14 +126,4 @@ const validationTemplate = {
       </div>
     </div>
   `
-};
-
-export {
-  richTextTemplate,
-  blankTemplate,
-  subTitleTemplate,
-  basicSelectTemplate,
-  groupedSelectTemplate,
-  datepickerTemplate,
-  validationTemplate
 };

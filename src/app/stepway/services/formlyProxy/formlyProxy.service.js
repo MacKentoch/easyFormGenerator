@@ -3,7 +3,6 @@ import {
   configurationModelResult,
   resetDataModel,
   resetFormlyModel,
-  addOneColumnHeader,
   addOneColumnControl,
   addTwoColumnControl,
   addThreeColumnControl
@@ -25,7 +24,7 @@ class $formlyProxy {
   bindConfigurationLines(configurationModel, lines) {
     if (angular.isArray(lines)) {
       const configModelResult = configurationModelResult;
-      configModelResult.lines = [].concat(lines);
+      configModelResult.lines = [...lines];
       angular.copy(configModelResult, configurationModel);
       return this.getMessageObject('configuration model is bound','lines are bound to configuration model.');
     } else {
@@ -36,29 +35,20 @@ class $formlyProxy {
   applyConfigurationToformlyModel(configurationModel, formlyModel, formlyDataModel) {
     resetFormlyModel(formlyModel);
     resetDataModel(formlyDataModel);
-    /**
-      * manage header here line0
-      */
-    const lineNumber = configurationModel.lines.length;
-    for (let i = 0; i < lineNumber; i++) {
-        //1 column line control
-        if (configurationModel.lines[i].columns.length === 1) {
-          //test if template control = header
-          if (configurationModel.lines[i].columns[0].control.type === 'header') {
-            addOneColumnHeader(formlyModel, configurationModel, i);
-          } else {
-            addOneColumnControl(formlyModel, configurationModel, i);
-          }
-        }
 
-        if (configurationModel.lines[i].columns.length === 2) {
-          addTwoColumnControl(formlyModel, configurationModel,i);
+    configurationModel.lines.forEach(
+      (line, lineIndex) => {
+        if (line.columns.length === 1) {
+          addOneColumnControl(formlyModel, configurationModel, lineIndex);
         }
-
-        if (configurationModel.lines[i].columns.length === 3) {
-          addThreeColumnControl(formlyModel, configurationModel,i);
+        if (line.columns.length === 2) {
+          addTwoColumnControl(formlyModel, configurationModel, lineIndex);
         }
-    }
+        if (line.columns.length === 3) {
+          addThreeColumnControl(formlyModel, configurationModel, lineIndex);
+        }
+      }
+    );
   }
 
   getMessageObject(messageTitle, messageBody) {

@@ -1,7 +1,9 @@
-import edaFormViewerMainModule             from './components/main/eda.easyFormViewer.main.module';
+import edaFormViewerMainModule            from './components/main/eda.easyFormViewer.main.module';
 import edaFormViewerCoreModule            from './components/core/eda.easyFormViewer.core.module';
-import edaFormViewerModelTranslatorModule  from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module';
-import edaEasyFormViewerConfig            from './config/eda.easyFormViewer.config';
+import edaFormViewerModelTranslatorModule from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module';
+
+import edaEasyFormViewerConfig            from '../stepway/config/formly/stepway.conf.formly.js';
+
 import easyFormConfig                     from '../easyFormConfig.json';
 
 const DEP_TO_INJECT_IN_MAIN = [

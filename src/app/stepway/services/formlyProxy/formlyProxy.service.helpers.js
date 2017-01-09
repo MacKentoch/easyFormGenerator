@@ -159,30 +159,30 @@ const addDatepickerOptionsProperty = (fieldToPush, configurationModel, lineIndex
   fieldToPush.templateOptions.datepickerOptions = extractTemplateOptionDatepickerOptions(control);
 };
 
-const addOneColumnHeader = (formlyModel, configurationModel, lineIndex) => {
-  const control = { ...configurationModel.lines[lineIndex].columns[0].control };
-  const defaultTemplate = '<div></div>';
-  const headerTemplateCol0 =  {
-    template : `
-    <div class="row">
-      <div class="">
-        <h2 class="text-center">
-          ${extractTemplateOptionDescription(control)}
-        </h2>
-        <hr/>
-      </div>
-    </div>
-    `
-  };
-  if (control.type && control.type  === 'header') {
-    return formlyModel.push({
-      template: headerTemplateCol0.template
-    });
-  }
-  return formlyModel.push({
-    template : defaultTemplate
-  });
-};
+// const addOneColumnHeader = (formlyModel, configurationModel, lineIndex) => {
+//   const control = { ...configurationModel.lines[lineIndex].columns[0].control };
+//   const defaultTemplate = '<div></div>';
+//   const headerTemplateCol0 =  {
+//     template : `
+//     <div class="row">
+//       <div class="">
+//         <h2 class="text-center">
+//           ${extractTemplateOptionDescription(control)}
+//         </h2>
+//         <hr/>
+//       </div>
+//     </div>
+//     `
+//   };
+//   if (control.type && control.type  === 'header') {
+//     return formlyModel.push({
+//       template: headerTemplateCol0.template
+//     });
+//   }
+//   return formlyModel.push({
+//     template : defaultTemplate
+//   });
+// };
 
 const addOneColumnControl = (formlyModel, configurationModel,lineIndex) => {
   const control = { ...configurationModel.lines[lineIndex].columns[0].control };
@@ -487,7 +487,6 @@ export {
   extractTemplateOptionDescription,
 
   addDatepickerOptionsProperty,
-  addOneColumnHeader,
   addOneColumnControl,
   addTwoColumnControl,
   addThreeColumnControl
