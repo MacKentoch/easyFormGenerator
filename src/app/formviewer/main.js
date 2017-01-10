@@ -2,7 +2,7 @@ import edaFormViewerMainModule            from './components/main/eda.easyFormVi
 import edaFormViewerCoreModule            from './components/core/eda.easyFormViewer.core.module';
 import edaFormViewerModelTranslatorModule from './components/modelsTranslator/eda.easyFormViewer.modelTranslator.module';
 
-import edaEasyFormViewerConfig            from '../stepway/config/formly/stepway.conf.formly.js';
+import edaEasyFormViewerConfig            from '../stepway/config/formly/formly.config.js';
 
 import easyFormConfig                     from '../easyFormConfig.json';
 

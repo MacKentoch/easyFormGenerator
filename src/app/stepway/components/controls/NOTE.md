@@ -17,6 +17,6 @@ adding a control require (now, but will change later for easier) :
 - adding this component in modal template
   - in `stepway > components > modal > stepway.editControlModal.template.html`
 - adding formly behaviour
-  - in `stepway > services > modalControllerProxy > stepway.modalProxy.service.helpers.js`
+  - in `stepway > services > modalProxy > modalProxy.service.helpers.js`
 - declaring in main config provider in function controlsList()
   - in `stepway > components > main >  stepway.main.provider.js`

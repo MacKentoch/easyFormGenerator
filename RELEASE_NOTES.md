@@ -9,6 +9,7 @@
 ### v2.1.1
 
 - Header component fix (now a real component) => breaking changes
+  - breaking change to `fix angular formly upgrade compatibility issue`. **This breaking change impacts Header fields model control only**. Header control field model now needs header value to be in `templateOptions.placeholder` (*rather than in `templateOptions.description`*). To help to ensure the right property is used by your previously saved fields model, description input is now added in Header edit modal (*so just cut / paste description into header text input*).
 - add Wizard (thanks to `gofreddo` PR)
 
 

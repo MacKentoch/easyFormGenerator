@@ -1,8 +1,8 @@
 import easyFormConfig   from '../../../easyFormConfig.json';
 
-const EASY_FORM_VERSION_NAME   = 'easyFormGenVersion';
+const EASY_FORM_VERSION_NAME  = 'easyFormGenVersion';
 const EASY_FORM_VERSION_VALUE = easyFormConfig.stepway.version;
-const ACTIVE_MODAL_ANIMATION   = true;
+const ACTIVE_MODAL_ANIMATION  = true;
 
 function easyFromConfig(easyFormSteWayConfigProvider){
   //enable/disable easy form modal animation

@@ -29,7 +29,7 @@
 
 ###Easy Form Generator: **Step way**
 
-> **IMPORTANT:** easyFormGenerator v2.2.0 introduced a breaking change to fix angular formly upgrade compatibility issue.
+> **IMPORTANT:** easyFormGenerator v2.1.1 introduced a breaking change to fix angular formly upgrade compatibility issue.
 This breaking change impacts Header control only.
 Header control field model now needs header value to be in `templateOptions.placeholder` (rather than in `templateOptions.description`).
 To help to ensure the right property is used by your previously saved fields model, description input is now added in Header edit modal (*so just cut / paste description into header text input*).

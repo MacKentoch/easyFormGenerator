@@ -23,12 +23,10 @@ export const editValidEditFooterComponent = {
   },
   controller    :
   class editValidEditFooterController {
+    static $inject = [];
+
     constructor() {
       //
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };
