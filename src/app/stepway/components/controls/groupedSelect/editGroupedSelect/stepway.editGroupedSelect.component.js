@@ -3,8 +3,8 @@ import editGroupedSelectControlTemplate from './stepway.editGroupedSelect.templa
 export const EDIT_GROUPED_SELECT_COMPONENT = 'editGroupedSelectControl';
 
 export const editGroupedSelectControlComponent = {
-  template      : editGroupedSelectControlTemplate,
-  bindings      : {
+  template: editGroupedSelectControlTemplate,
+  bindings: {
     nyaSelect:                  '=',
     groupedSelectRowCollection: '=',
     newOptionGroupedSelect:     '=',
@@ -21,12 +21,10 @@ export const editGroupedSelectControlComponent = {
   },
   controller    :
   class editGroupedSelectControlController {
+    static $inject = [];
+
     constructor() {
 
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };

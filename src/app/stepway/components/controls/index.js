@@ -18,9 +18,8 @@ import { EmailConfig }        from './Email/config/stepway.email.config';
 import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
 import editEmailControlModule from './Email/editEmail/stepway.editEmail.module';
 
-import { BasicSelectConfig }  from './basicSelect/config/stepway.basicSelect.config';
-import {editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT} from './basicSelect/editBasicSelect/stepway.editBasicSelect.component';
-import editBasicSelectModule  from './basicSelect/editBasicSelect/stepway.editBasicSelect.module';
+import { BasicSelectConfig }  from './basicSelect/config/basicSelect.config';
+import editBasicSelectModule, { editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT } from './basicSelect/editBasicSelect/editBasicSelect.component';
 
 import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
 import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.component';
