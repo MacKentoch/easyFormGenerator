@@ -1,6 +1,5 @@
-import { BlankConfig }        from './blank/config/stepway.blank.config';
-import {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/stepway.editBlankControl.component';
-import editBlankModule  from './blank/editBlank/stepway.editBlankControl.module';
+import { BlankConfig }        from './blank/config/blank.config';
+import editBlankModule, {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/editBlankControl.component';
 
 import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
 import {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/stepway.editIpAdress.component';

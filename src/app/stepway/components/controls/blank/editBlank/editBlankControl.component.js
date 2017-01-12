@@ -1,7 +1,7 @@
 export const EDIT_BLANK_CONTROL_COMPONENT = 'editBlankControl';
 
 export const editBlankControlComponent = {
-  template      : `
+  template: `
   <div ng-switch-when="empty">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -26,15 +26,18 @@ export const editBlankControlComponent = {
     </div>
   </div>
   `,
-  bindings      : {},
-  controller    :
+  bindings: {},
+  controller:
   class editBlankControlController {
+    static $inject = [];
+
     constructor() {
       //
     }
-
-    static get $inject() {
-      return [];
-    }
   }
 };
+
+const editBlankModuleName = 'stepway.editBlankControl.module';
+export default angular
+                .module(editBlankModuleName, [])
+                .component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent);
