@@ -5,13 +5,11 @@ import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
 import {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/stepway.editIpAdress.component';
 import editIpAdressModule  from './IpAdress/editIpAdress/stepway.editIpAdress.module';
 
-import { DateConfig }         from './Date/config/stepway.date.config';
-import {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/stepway.editDate.component';
-import editDateModule from './Date/editDate/stepway.editDate.module';
+import { DateConfig }         from './Date/config/date.config';
+import editDateModule, {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/editDate.component';
 
-import { CheckBoxConfig }     from './CheckBox/config/stepway.checkbox.config';
-import {editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT} from './CheckBox/editCheckBox/stepway.editCheckBox.component';
-import editCheckBoxModule from './CheckBox/editCheckBox/stepway.editCheckBox.module';
+import { CheckBoxConfig }     from './CheckBox/config/checkbox.config';
+import editCheckBoxModule, {editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT} from './CheckBox/editCheckBox/editCheckBox.component';
 
 import { EmailConfig }        from './Email/config/stepway.email.config';
 import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
