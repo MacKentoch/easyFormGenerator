@@ -2,7 +2,25 @@ import { configs } from '../../components/controls';
 
 const resetNyaSelect = (nyaSelectObj) => {
   //reset
-  angular.copy({ controls: [...configs] }, nyaSelectObj);
+  angular.copy(
+    { 
+      controls: [...configs],
+      selectedControl : 'none' ,
+      temporyConfig : {
+        selectedControl: 'none',
+        formlyLabel: 'label', 
+        formlyRequired: false, 
+        formlyDescription: '',
+        formlyPlaceholder: '',
+        formlyDefaultValue: '',
+        formlyOptions : [],
+        //expressions/validation fields
+        formlyExpressionProperties: {},
+        formlyValidators: {},
+        formlyValidation: {}                                        
+      } 
+    }, 
+    nyaSelectObj);
   return true;
 };
 
