@@ -8,11 +8,11 @@ class editControlModalController {
                 selectOptionManage,
                 $modalProxy) {
 
-    this.$modalInstance       = $uibModalInstance;
-    this.nyaSelect             = nyaSelect;
-    this.toaster               = toaster;
-    this.selectOptionManage   = selectOptionManage;
-    this.$modalProxy           = $modalProxy;
+    this.$modalInstance     = $uibModalInstance;
+    this.nyaSelect          = nyaSelect;
+    this.toaster            = toaster;
+    this.selectOptionManage = selectOptionManage;
+    this.$modalProxy        = $modalProxy;
 
     this.init();
   }
