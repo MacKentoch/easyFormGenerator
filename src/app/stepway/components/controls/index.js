@@ -11,9 +11,8 @@ import editDateModule, {editDateControlComponent, EDIT_DATE_COMPONENT} from './D
 import { CheckBoxConfig }     from './CheckBox/config/checkbox.config';
 import editCheckBoxModule, {editCheckBoxControlComponent, EDIT_CHECKBOX_COMPONENT} from './CheckBox/editCheckBox/editCheckBox.component';
 
-import { EmailConfig }        from './Email/config/stepway.email.config';
-import {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/stepway.editEmail.component';
-import editEmailControlModule from './Email/editEmail/stepway.editEmail.module';
+import { EmailConfig }        from './Email/config/email.config';
+import editEmailControlModule, {editEmailControlComponent, EDIT_EMAIL_COMPONENT} from './Email/editEmail/editEmail.component';
 
 import { BasicSelectConfig }  from './basicSelect/config/basicSelect.config';
 import editBasicSelectModule, { editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT } from './basicSelect/editBasicSelect/editBasicSelect.component';
@@ -22,9 +21,8 @@ import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSele
 import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.component';
 import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.module';
 
-import { HeaderConfig }  from './header/config/stepway.header.config';
-import {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/stepway.editHeaderControl.component';
-import editHeaderControl from './header/editHeader/stepway.editHeaderControl.module';
+import { HeaderConfig }  from './header/config/header.config';
+import editHeaderControl, {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/editHeaderControl.component';
 
 import { PasswordConfig }  from './password/config/stepway.password.config';
 import {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/stepway.editPassword.component';

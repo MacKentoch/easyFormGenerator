@@ -1,7 +1,7 @@
 export const EDIT_HEADER_CONTROL_COMPONENT = 'editHeaderControl';
 
 export const editHeaderControlComponent = {
-  template      : `
+  template: `
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -78,17 +78,21 @@ export const editHeaderControlComponent = {
     </div>
   </div>
   `,
-  bindings      : {
+  bindings: {
     nyaSelect: '='
   },
-  controller    :
+  controller:
   class editHeaderControlController {
+    static $inject = [];
+
     constructor() {
       //
     }
-
-    static get $inject() {
-      return [];
-    }
   }
 };
+
+const editHeaderControlModuleName = 'stepway.editHeaderControl.module';
+
+export default angular
+                .module(editHeaderControlModuleName, [])
+                .component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent);
