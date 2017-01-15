@@ -2,9 +2,15 @@
 
 ## Notes:
 
-### v2.2.0
+### v2.2.3
 
-- more coming soon
+- issues fixes
+ - header control 
+ - opening modal with empty field model won't throw error anymore
+
+### v2.2.2
+
+ - skiped
 
 ### v2.1.1
 

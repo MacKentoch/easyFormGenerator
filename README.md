@@ -117,8 +117,10 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 | jquery                | `npm i --save jquery`                           | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | angular js (>= 1.3.X) | `npm i --save angular`                          | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | ngAnimate             | `npm i --save angular-animate`                  | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-translate     | `npm i --save angular-translate`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-ui-bootstrap  | `npm i --save angular-ui-bootstrap`             | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | textAngular           | `npm i --save textangular`                      | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
-| angular translate     | `npm i --save angular-translate`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-strap         | `npm i --save angular-strap`                    | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | nya-bootstrap-select  | `npm i --save @lordfriend/nya-bootstrap-select` | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | angular toaster       | `npm i --save angularjs-toaster`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 
@@ -126,7 +128,9 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 
 *It is up to you to include them in your application depending on your dev workflow.*
 
-> It will be far more talkative be checking demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
+> It will be far more talkative be checking demo: 
+- [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
+- **OR** this [project example](https://github.com/MacKentoch/easy-form-generator-webpack-example) (*ES6+ and webpack based*)
 
 
 ####Inject easy form generator in your app
@@ -329,6 +333,8 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 | jquery                | `npm i --save jquery`                           | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | angular js (>= 1.3.X) | `npm i --save angular`                          | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | ngAnimate             | `npm i --save angular-animate`                  | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-translate     | `npm i --save angular-translate`                | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
+| angular-ui-bootstrap  | `npm i --save angular-ui-bootstrap`             | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | textAngular           | `npm i --save textangular`                      | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | angular-strap         | `npm i --save angular-strap`                    | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
 | nya-bootstrap-select  | `npm i --save @lordfriend/nya-bootstrap-select` | [dist/vendors](https://github.com/MacKentoch/easyFormGenerator/tree/master/dist/vendors) |
