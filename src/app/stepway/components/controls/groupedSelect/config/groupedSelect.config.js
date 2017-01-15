@@ -1,20 +1,20 @@
 export const GroupedSelectConfig = {
   id: 'GroupedSelect',
-  name              : 'Grouped Select',
-  subtitle          : 'Grouped Select',
-  options            : [],
-  group              : 'Select',
-  formlyType        : 'groupedSelect',
-  formlySubtype      : '',
-  formlyLabel        : '',
-  formlyRequired    : false,
-  formlyDescription  : '',
-  formlyOptions      : [],
+  name: 'Grouped Select',
+  subtitle: 'Grouped Select',
+  options: [],
+  group: 'Select',
+  formlyType: 'groupedSelect',
+  formlySubtype: '',
+  formlyLabel: '',
+  formlyRequired: false,
+  formlyDescription: '',
+  formlyOptions: [],
   formlyExpressionProperties: {},
-  formlyValidators  : {},
-  formlyValidation  : {
-    messages        : {
-      required  : function(viewValue, modelValue, scope) {
+  formlyValidators: {},
+  formlyValidation: {
+    messages: {
+      required: (viewValue, modelValue, scope) => {
         //return a required validation message :
         //-> '<label as name> is required '
         //-> or if not exists or empty just 'this field is required'

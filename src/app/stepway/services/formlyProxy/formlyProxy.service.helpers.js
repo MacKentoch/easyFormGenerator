@@ -133,7 +133,7 @@ const extractDefaultValue = (obj) => {
 const extractFormlyExpressionProperties = (obj) => {
   const defaultValue = {};
   if (obj && obj.formlyExpressionProperties) {
-    return {...obj.formlyExpressionProperties};
+    return angular.copy(obj.formlyExpressionProperties);
   }
   return defaultValue;
 };
@@ -141,7 +141,7 @@ const extractFormlyExpressionProperties = (obj) => {
 const extractFormlyValidators = (obj) => {
   const defaultValue = {};
   if (obj && obj.formlyValidators) {
-    return {...obj.formlyValidators};
+    return angular.copy(obj.formlyValidators);
   }
   return defaultValue;
 };
@@ -149,7 +149,7 @@ const extractFormlyValidators = (obj) => {
 const extractFormlyValidation = (obj) => {
   const defaultValue = {};
   if (obj && obj.formlyValidation) {
-    return {...obj.formlyValidation};
+    return angular.copy(obj.formlyValidation);
   }
   return defaultValue;
 };

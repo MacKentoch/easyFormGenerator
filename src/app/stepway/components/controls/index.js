@@ -1,9 +1,8 @@
 import { BlankConfig }        from './blank/config/blank.config';
 import editBlankModule, {editBlankControlComponent, EDIT_BLANK_CONTROL_COMPONENT} from './blank/editBlank/editBlankControl.component';
 
-import { IpAdressConfig }     from './IpAdress/config/stepway.IpAdress.config';
-import {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/stepway.editIpAdress.component';
-import editIpAdressModule  from './IpAdress/editIpAdress/stepway.editIpAdress.module';
+import { IpAdressConfig }     from './IpAdress/config/IpAdress.config';
+import editIpAdressModule, {editIpAdressControlComponent, EDIT_IP_ADRESS_COMPONENT} from './IpAdress/editIpAdress/editIpAdress.component';
 
 import { DateConfig }         from './Date/config/date.config';
 import editDateModule, {editDateControlComponent, EDIT_DATE_COMPONENT} from './Date/editDate/editDate.component';
@@ -17,9 +16,8 @@ import editEmailControlModule, {editEmailControlComponent, EDIT_EMAIL_COMPONENT}
 import { BasicSelectConfig }  from './basicSelect/config/basicSelect.config';
 import editBasicSelectModule, { editBasicSelectControlComponent, EDIT_BASIC_SELECT_COMPONENT } from './basicSelect/editBasicSelect/editBasicSelect.component';
 
-import { GroupedSelectConfig }  from './groupedSelect/config/stepway.groupedSelect.config';
-import {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.component';
-import editGroupedSelectModule  from './groupedSelect/editGroupedSelect/stepway.editGroupedSelect.module';
+import { GroupedSelectConfig }  from './groupedSelect/config/groupedSelect.config';
+import editGroupedSelectModule, {editGroupedSelectControlComponent, EDIT_GROUPED_SELECT_COMPONENT} from './groupedSelect/editGroupedSelect/editGroupedSelect.component';
 
 import { HeaderConfig }  from './header/config/header.config';
 import editHeaderControl, {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPONENT} from './header/editHeader/editHeaderControl.component';

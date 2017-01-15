@@ -56,8 +56,8 @@ const returnControlFromAddCtrlModalModel = (CtrlModalModel) =>{
         formlyOptions: [...controlRef.formlyOptions],
         //validation fields
         formlyExpressionProperties: angular.copy(controlRef.formlyExpressionProperties),
-        formlyValidators: angular.copy(controlRef.formlyExpressionProperties),
-        formlyValidation: angular.copy(controlRef.formlyExpressionProperties)
+        formlyValidators: angular.copy(controlRef.formlyValidators),
+        formlyValidation: angular.copy(controlRef.formlyValidation)
       };
       // particular case: date picker needs an additional property
       if (controlRef.formlyType === 'datepicker') {
