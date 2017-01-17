@@ -25,9 +25,8 @@ import editHeaderControl, {editHeaderControlComponent, EDIT_HEADER_CONTROL_COMPO
 import { PasswordConfig } from './password/config/password.config';
 import editPasswordModule, {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_COMPONENT} from './password/editPassword/editPassword.component';
 
-import { RadioConfig } from './radio/config/stepway.radio.config';
-import {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/stepway.editRadio.component';
-import editRadioModule from './radio/editRadio/stepway.editRadio.module';
+import { RadioConfig } from './radio/config/radio.config';
+import editRadioModule, {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/editRadio.component';
 
 import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
 import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
