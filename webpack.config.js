@@ -9,6 +9,6 @@ const stepway = require('./webpack.config.stepway.js');
 // const whichConfig = formviewer;
 const whichConfig = stepway;
 
-whichConfig.devServer.contentBase = './'
+whichConfig.devServer.contentBase = './';
 
 module.exports = whichConfig;

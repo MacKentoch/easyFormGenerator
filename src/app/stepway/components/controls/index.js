@@ -28,13 +28,11 @@ import editPasswordModule, {editPasswordControlComponent, EDIT_PASSWORD_CONTROL_
 import { RadioConfig } from './radio/config/radio.config';
 import editRadioModule, {editRadioControlComponent, EDIT_RADIO_CONTROL_COMPONENT} from './radio/editRadio/editRadio.component';
 
-import { RichTextEditorConfig }  from './richTextEditor/config/stepway.richTextEditor.config';
-import {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.component';
-import editRichTextEditorModule from './richTextEditor/editRichTextEditor/stepway.editRichTextEditor.module';
+import { RichTextEditorConfig }  from './richTextEditor/config/richTextEditor.config';
+import editRichTextEditorModule, {editRichTextEditorControlComponent, EDIT_RICH_TEXT_EDITOR_COMPONENT} from './richTextEditor/editRichTextEditor/editRichTextEditor.component';
 
-import { SubTitleConfig }  from './subTitle/config/stepway.subTitle.config';
-import {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/stepway.editSubTitle.component';
-import editSubTitle from './subTitle/editSubTitle/stepway.editSubTitle.module';
+import { SubTitleConfig }  from './subTitle/config/subTitle.config';
+import editSubTitle, {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/editSubTitle.component';
 
 import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
 import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
@@ -43,7 +41,6 @@ import editTextareaControlModule from './textArea/editTextArea/stepway.editTextA
 import { TextInputConfig }  from './textInput/config/stepway.textInput.config';
 import {editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT} from './textInput/editTextInput/stepway.editTextInput.component';
 import editTextInputControlModule from './textInput/editTextInput/stepway.editTextInput.module';
-
 
 // controls configs
 const configs = [
