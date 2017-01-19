@@ -1,4 +1,4 @@
-export const TextInputConfig =       {
+export const TextInputConfig = {
   id: 'TextInput',
   name: 'Text input',
   subtitle: 'Text input',

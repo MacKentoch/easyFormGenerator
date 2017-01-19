@@ -11,8 +11,8 @@ describe('directive : edaStepWayEasyFormGen', () => {
     beforeEach(angular.mock.module('eda.easyformGen.stepway'));
 
     beforeEach(inject(function(_$rootScope_,_$compile_) {
-      let $rootScope = _$rootScope_;
-      let $compile = _$compile_;
+      const $rootScope = _$rootScope_;
+      const $compile = _$compile_;
 
       scope   = $rootScope.$new();
 
@@ -34,6 +34,6 @@ describe('directive : edaStepWayEasyFormGen', () => {
         scope.easyFormGeneratorModel = testModel;
         scope.$digest();
 
-        expect(element.text()).toContain(``); // to be continued
+        expect(element.text()).toContain(''); // to be continued
     });
 });

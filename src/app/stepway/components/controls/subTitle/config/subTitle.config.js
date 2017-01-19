@@ -1,4 +1,4 @@
-export const SubTitleConfig =       {
+export const SubTitleConfig = {
   id: 'Subtitle',
   name: 'Subtitle',
   subtitle: 'no control',

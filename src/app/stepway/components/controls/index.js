@@ -34,13 +34,11 @@ import editRichTextEditorModule, {editRichTextEditorControlComponent, EDIT_RICH_
 import { SubTitleConfig }  from './subTitle/config/subTitle.config';
 import editSubTitle, {editSubTitleControlComponent, EDIT_SUBTITLE_CONTROL_COMPONENT} from './subTitle/editSubTitle/editSubTitle.component';
 
-import { TextAreaConfig }  from './textArea/config/stepway.textArea.config';
-import {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/stepway.editTextArea.component';
-import editTextareaControlModule from './textArea/editTextArea/stepway.editTextArea.module';
+import { TextAreaConfig }  from './textArea/config/textArea.config';
+import editTextareaControlModule, {editTextareaControlComponent, EDIT_TEXTAREA_CONTROL_COMPONENT} from './textArea/editTextArea/editTextArea.component';
 
-import { TextInputConfig }  from './textInput/config/stepway.textInput.config';
-import {editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT} from './textInput/editTextInput/stepway.editTextInput.component';
-import editTextInputControlModule from './textInput/editTextInput/stepway.editTextInput.module';
+import { TextInputConfig }  from './textInput/config/textInput.config';
+import editTextInputControlModule, {editTextInputControlComponent, EDIT_TEXTINPUT_CONTROL_COMPONENT} from './textInput/editTextInput/editTextInput.component';
 
 // controls configs
 const configs = [
