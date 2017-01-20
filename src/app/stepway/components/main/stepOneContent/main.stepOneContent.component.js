@@ -1,4 +1,14 @@
-const LINE_STEP_CONTENT_COMPONENT = 'stepOneContent';
+import {
+  STEP_ONE_COMMAND_PANEL_COMPONENT_NAME,
+  StepOneCommandPanelComponent
+}                                       from './StepOneCommandPanel/main.StepOneCommandPanel.component';
+import {
+  STEP_ONE_VISUAL_PANEL_COMPONENT_NAME,
+  StepOneVisualPanelComponent
+}                                       from './StepOneVisualPanel/main.StepOneVisualPanel.component';
+
+
+export const LINE_STEP_CONTENT_COMPONENT = 'stepOneContent';
 
 export const stepOneContentComponent = {
   template : `
@@ -28,10 +38,11 @@ export const stepOneContentComponent = {
   },
   controller:
   class stepOneContentController {
+    static $inject = [];
+
     constructor() {
-
+      //
     }
-
     ///////////////////////////////////
     // WHY this function is needed :
     ///////////////////////////////////
@@ -41,14 +52,13 @@ export const stepOneContentComponent = {
     setActiveLineNumberParent(index) {
       this.setActiveLineNumber({ index: index });
     }
-
-    static get $inject() {
-      return [];
-    }
   }
 };
 
-export default stepOneContentComponent;
-export {
-  LINE_STEP_CONTENT_COMPONENT
-};
+
+const STEP_ONE_CONTENT_COMPONENT_MODULE = 'stepway.stepOneContent.module';
+export default angular
+                .module(STEP_ONE_CONTENT_COMPONENT_MODULE, [])
+                .component(LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent)
+                .component(STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, StepOneCommandPanelComponent)
+                .component(STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, StepOneVisualPanelComponent);

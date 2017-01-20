@@ -56,12 +56,10 @@ export const StepOneCommandPanelComponent = {
   },
   controller:
   class StepOneCommandPanelController {
+    static $inject = [];
+
     constructor() {
 
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };

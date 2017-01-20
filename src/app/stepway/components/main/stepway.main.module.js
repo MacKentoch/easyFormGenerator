@@ -7,10 +7,10 @@ import edaStepWayEasyFormGenDirective, {
 import easyFormSteWayConfig, {
   EASY_FORM_STEP_WAY_CONFIG_NAME
 }                                         from './stepway.main.provider';
-import pagerModule                        from './pager/stepway.main.pager.module';
-import pageIndicatorModule                from './stepIndicator/stepway.main.stepIndicator.module';
+import pagerModule                        from './pager/main.pager.component';
+import pageIndicatorModule                from './stepIndicator/main.stepIndicator.component';
 import stepZeroContentModule              from './stepZeroContent/stepway.main.stepZeroContent.module';
-import stepOneContentModule               from './stepOneContent/stepway.main.stepOneContent.module';
+import stepOneContentModule               from './stepOneContent/main.stepOneContent.component';
 import stepTwoContentModule               from './stepTwoContent/stepway.main.stepTwoContent.module';
 import stepThreeContentModule             from './stepThreeContent/stepway.main.stepThreeContent.module';
 

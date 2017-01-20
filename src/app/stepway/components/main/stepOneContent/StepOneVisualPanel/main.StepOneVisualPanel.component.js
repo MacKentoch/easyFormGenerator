@@ -119,12 +119,10 @@ export const StepOneVisualPanelComponent = {
   },
   controller:
   class StepOneVisualPanelController {
+    static $inject = [];
+
     constructor() {
 
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };

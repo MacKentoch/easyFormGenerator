@@ -13,7 +13,9 @@ export const pagerComponent = {
         </span>
       </button>
     </li>
-    <li ng-class="{'disabled':$ctrl.stepIndicators[3]}" ng-if="($ctrl.configuration.configStepCounter < 3 && !$ctrl.configuration.isWizard) || ($ctrl.configuration.configStepCounter < 2 && $ctrl.configuration.isWizard) ">
+    <li
+      ng-class="{'disabled':$ctrl.stepIndicators[3]}"
+      ng-if="($ctrl.configuration.configStepCounter < 3 && !$ctrl.configuration.isWizard) || ($ctrl.configuration.configStepCounter < 2 && $ctrl.configuration.isWizard) ">
       <button
         class="btn btn-primary customPagerButton"
         ng-click="$ctrl.nextConfigStep()">
@@ -33,12 +35,16 @@ export const pagerComponent = {
   },
   controller:
   class pagerComponent {
+    static $inject = [];
+
     constructor() {
 
     }
-
-    static get $inject() {
-      return [];
-    }
   }
 };
+
+const PAGER_COMPONENT_MODULE = 'stepway.pager.module';
+
+export default angular
+                .module(PAGER_COMPONENT_MODULE, [])
+                .component(PAGER_COMPONENT_NAME, pagerComponent);

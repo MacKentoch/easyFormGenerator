@@ -65,12 +65,16 @@ export const stepIndicatorComponent = {
   },
   controller:
   class stepIndicatorComponent {
+    static $inject = [];
+
     constructor() {
 
     }
-
-    static get $inject() {
-      return [];
-    }
   }
 };
+
+const STEP_INDICATOR_COMPONENT_MODULE = 'stepway.stepIndicator.module';
+
+export default angular
+                .module(STEP_INDICATOR_COMPONENT_MODULE, [])
+                .component(STEP_INDICATOR_COMPONENT_NAME, stepIndicatorComponent);
