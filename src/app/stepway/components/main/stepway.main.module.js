@@ -12,7 +12,7 @@ import pageIndicatorModule                from './stepIndicator/main.stepIndicat
 import stepZeroContentModule              from './stepZeroContent/stepway.main.stepZeroContent.module';
 import stepOneContentModule               from './stepOneContent/main.stepOneContent.component';
 import stepTwoContentModule               from './stepTwoContent/stepway.main.stepTwoContent.module';
-import stepThreeContentModule             from './stepThreeContent/stepway.main.stepThreeContent.module';
+import stepThreeContentModule             from './stepThreeContent/main.stepThreeContent.component';
 
 const  STEP_WAY_MAIN_MODULE = 'easyFormStepwayMainModule';
 

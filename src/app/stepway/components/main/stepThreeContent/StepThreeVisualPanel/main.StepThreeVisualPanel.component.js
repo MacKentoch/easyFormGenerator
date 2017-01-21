@@ -44,16 +44,14 @@ export const StepThreeVisualPanelComponent = {
   },
   controller:
   class StepThreeVisualPanelController {
-    constructor() {
+    static $inject = [];
 
+    constructor() {
+      //
     }
 
     $onInit() {
       // console.log('stepThreeVisualPanel init, edaDataModel: ', this.edaDataModel);
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };

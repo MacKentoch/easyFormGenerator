@@ -86,12 +86,10 @@ export const StepThreeCommandPanelComponent = {
   },
   controller:
   class StepThreeCommandPanelController {
+    static $inject = [];
+
     constructor() {
-
-    }
-
-    static get $inject() {
-      return [];
+      //
     }
   }
 };
