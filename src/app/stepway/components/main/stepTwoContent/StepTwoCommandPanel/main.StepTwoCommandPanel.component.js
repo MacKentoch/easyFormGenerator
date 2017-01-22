@@ -45,12 +45,10 @@ export const StepTwoCommandPanelComponent = {
   },
   controller:
   class StepTwoCommandPanelController {
+    static $inject = [];
+
     constructor() {
-
-    }
-
-    static get $inject() {
-      return [];
+      //
     }
   }
 };

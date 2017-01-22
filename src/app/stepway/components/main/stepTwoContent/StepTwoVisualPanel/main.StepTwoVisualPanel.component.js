@@ -139,12 +139,10 @@ export const StepTwoVisualPanelComponent = {
   },
   controller:
   class StepTwoVisualPanelController {
+    static $inject = [];
+
     constructor() {
-
-    }
-
-    static get $inject() {
-      return [];
+      //
     }
   }
 };
