@@ -9,7 +9,7 @@ import easyFormSteWayConfig, {
 }                                         from './stepway.main.provider';
 import pagerModule                        from './pager/main.pager.component';
 import pageIndicatorModule                from './stepIndicator/main.stepIndicator.component';
-import stepZeroContentModule              from './stepZeroContent/stepway.main.stepZeroContent.module';
+import stepZeroContentModule              from './stepZeroContent/main.stepZeroContent.component';
 import stepOneContentModule               from './stepOneContent/main.stepOneContent.component';
 import stepTwoContentModule               from './stepTwoContent/main.stepTwoContent.component';
 import stepThreeContentModule             from './stepThreeContent/main.stepThreeContent.component';

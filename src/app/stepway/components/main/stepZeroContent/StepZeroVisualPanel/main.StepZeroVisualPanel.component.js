@@ -141,19 +141,17 @@ export const StepZeroVisualPanelComponent = {
   </div>
   `,
   bindings: {
-    configuration:            '=',
-    downThisLine:             '&',
-    upThisLine:               '&',
-    removeThisLine:           '&'
+    configuration:  '=',
+    downThisLine:   '&',
+    upThisLine:     '&',
+    removeThisLine: '&'
   },
   controller:
   class StepZeroVisualPanelController {
+    static $inject = [];
+
     constructor() {
-
-    }
-
-    static get $inject() {
-      return [];
+      //
     }
   }
 };

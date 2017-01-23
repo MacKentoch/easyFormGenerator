@@ -30,16 +30,14 @@ export const StepZeroCommandPanelComponent = {
   </div>
   `,
   bindings: {
-    addNewline:  '&'
+    addNewline: '&'
   },
   controller:
   class StepZeroCommandPanelController {
+    static $inject = [];
+
     constructor() {
-
-    }
-
-    static get $inject() {
-      return [];
+      //
     }
   }
 };
