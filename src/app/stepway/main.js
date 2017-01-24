@@ -6,7 +6,7 @@ import translateConfig                          from './config/translate/transla
 
 import easyFormStepWayCoreModule                from './core/core.module';
 
-import easyFormStepwayMainModule                from './components/main/stepway.main.module';
+import easyFormStepwayMainModule                from './components/main/main.module';
 import easyFormStepwayWizardModule              from './components/wizard/stepway.wizard.module';
 import easyFormStepwayModalModule               from './components/modal/stepway.editControlModal.module';
 import easyFormStepwayModalProxyModule          from './services/modalProxy/modalProxy.service';

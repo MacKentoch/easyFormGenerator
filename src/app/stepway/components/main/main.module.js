@@ -1,12 +1,12 @@
 import edaStepWayEasyFormGenController, {
   STEP_WAY_MAIN_CONTROLLER_NAME
-}                                         from './stepway.main.controller';
+}                                         from './main.controller';
 import edaStepWayEasyFormGenDirective, {
   STEP_WAY_DIRECTIVE_NAME
-}                                         from './stepway.main.directive';
+}                                         from './main.directive';
 import easyFormSteWayConfig, {
   EASY_FORM_STEP_WAY_CONFIG_NAME
-}                                         from './stepway.main.provider';
+}                                         from './main.provider';
 import pagerModule                        from './pager/main.pager.component';
 import pageIndicatorModule                from './stepIndicator/main.stepIndicator.component';
 import stepZeroContentModule              from './stepZeroContent/main.stepZeroContent.component';

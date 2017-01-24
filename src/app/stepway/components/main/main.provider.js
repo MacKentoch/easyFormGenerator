@@ -166,7 +166,6 @@ function easyFormSteWayConfig($translateProvider) {
     };
     return service;
 
-
     function getModalAnimationValue() {
       return _configuration.modalAnimated;
     }

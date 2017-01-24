@@ -3,13 +3,12 @@ import {
   initTabModel,
   initColumnTemplate,
   initLineTemplate
-}                                   from './stepway.main.controller.helpers';
+}                                   from './main.controller.helpers';
 import editControlModalTemplate     from '../modal/stepway.editControlModal.template.html';
 import {
   EDIT_MODAL_CONTROLLER_NAME,
   EDIT_MODAL_CONTROLLERAS_NAME
 }                                   from '../modal/stepway.editControlModal.controller';
-
 
 const STEP_WAY_MAIN_CONTROLLER_NAME   = 'edaStepWayEasyFormGenController';
 const STEP_WAY_MAIN_CONTROLLERAS_NAME = 'vm';
@@ -147,7 +146,6 @@ class edaStepWayEasyFormGenController {
     }
   }
 
-
   increaseNumberOfColumns() {
     const lineIndex = this.configuration.activeLine -1;
     if (this
@@ -171,7 +169,6 @@ class edaStepWayEasyFormGenController {
       this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
   }
 
-
   decreaseNumberOfColumns() {
     if (this
           .configuration
@@ -186,11 +183,9 @@ class edaStepWayEasyFormGenController {
     this.wfFormFieldsOnlyNeededProperties = angular.copy(this.wfFormFields);
   }
 
-
   resetStepCounter() {
     this.configuration.configStepCounter = 0;
   }
-
 
   nextConfigStep() {
     var configStepCounterMAX = this.configuration.listConfigStep.length -1;
@@ -206,7 +201,6 @@ class edaStepWayEasyFormGenController {
       this.configuration.stepIndicators[i] = false;
     }
   }
-
 
   setTrueThisStepIndicator(indexIndicator){
       this.resetAllIndicators();
@@ -269,7 +263,6 @@ class edaStepWayEasyFormGenController {
     this.previewLoadedForm.submitButtonText = formlyform.submitButtonText;
   }
 
-
   saveThisForm() {
     if (typeof this.configuration.formName === 'undefined') {
       this.toaster.pop({
@@ -306,7 +299,6 @@ class edaStepWayEasyFormGenController {
     return true;
   }
 }
-
 
 const toInject = [
   'easyFormGenVersion',
