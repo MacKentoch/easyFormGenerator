@@ -1,7 +1,7 @@
 export const EDIT_EDIT_VALID_FOOTER_COMPONENT = 'editValidEditFooter';
 
 export const editValidEditFooterComponent = {
-  template      : `
+  template: `
   <div class="modal-footer">
     <button
       class="btn btn-primary"

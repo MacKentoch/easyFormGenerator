@@ -1,14 +1,14 @@
 import editModalController, {
   EDIT_MODAL_CONTROLLER_NAME
-}                                   from './stepway.editControlModal.controller';
+}                                   from './editControlModal.controller';
 import {
   editValidEditFooterComponent,
   EDIT_EDIT_VALID_FOOTER_COMPONENT
-}                                   from './editValidEditFooter/stepway.editValidEditFooter.component';
+}                                   from './editValidEditFooter/editValidEditFooter.component';
 import {
   editChooseControlComponent,
   EDIT_CHOOSE_CONTROL_COMPONENT
-}                                   from './editChooseControl/stepway.editChooseControl.component';
+}                                   from './editChooseControl/editChooseControl.component';
 import { controls }                 from '../controls/index';
 
 

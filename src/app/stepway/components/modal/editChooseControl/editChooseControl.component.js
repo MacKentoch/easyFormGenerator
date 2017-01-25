@@ -24,14 +24,12 @@ export const editChooseControlComponent = {
     nyaSelectFiltered:  '=',
     selectThisControl:  '&'
   },
-  controller    :
+  controller:
   class editChooseControlController {
+    static $inject = [];
+
     constructor() {
       //
-    }
-
-    static get $inject() {
-      return [];
     }
   }
 };

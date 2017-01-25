@@ -8,7 +8,7 @@ import easyFormStepWayCoreModule                from './core/core.module';
 
 import easyFormStepwayMainModule                from './components/main/main.module';
 import easyFormStepwayWizardModule              from './components/wizard/stepway.wizard.module';
-import easyFormStepwayModalModule               from './components/modal/stepway.editControlModal.module';
+import easyFormStepwayModalModule               from './components/modal/editControlModal.module';
 import easyFormStepwayModalProxyModule          from './services/modalProxy/modalProxy.service';
 import easyFormStepwayFormlyProxyModule         from './services/formlyProxy/formlyProxy.service';
 import easyFormStepwaySelectOptionManageModules from './services/selectOptionManage/selectOptionManage.service';

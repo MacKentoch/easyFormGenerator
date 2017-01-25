@@ -4,11 +4,11 @@ import {
   initColumnTemplate,
   initLineTemplate
 }                                   from './main.controller.helpers';
-import editControlModalTemplate     from '../modal/stepway.editControlModal.template.html';
+import editControlModalTemplate     from '../modal/editControlModal.template.html';
 import {
   EDIT_MODAL_CONTROLLER_NAME,
   EDIT_MODAL_CONTROLLERAS_NAME
-}                                   from '../modal/stepway.editControlModal.controller';
+}                                   from '../modal/editControlModal.controller';
 
 const STEP_WAY_MAIN_CONTROLLER_NAME   = 'edaStepWayEasyFormGenController';
 const STEP_WAY_MAIN_CONTROLLERAS_NAME = 'vm';

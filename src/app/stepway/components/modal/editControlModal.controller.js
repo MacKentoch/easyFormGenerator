@@ -392,7 +392,7 @@ class editControlModalController {
     };
   }
 
-  resetTemporyConfig(){
+  resetTemporyConfig() {
     this.nyaSelectFiltered.temporyConfig = {
       formlyLabel        : '',
       formlyRequired    : false,
