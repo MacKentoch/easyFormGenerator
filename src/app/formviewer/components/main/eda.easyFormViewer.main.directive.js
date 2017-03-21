@@ -44,9 +44,9 @@ function edaFormViewerDirective($modelsTranslator){
 		scope.$watch(dataModelToWatch,			dataModelWatcher,			true);
 		scope.$watch(submitBtnTextToWatch, 	submitBtnTextWatcher);
 		scope.$watch(cancelBtnTextToWatch, 	cancelBtnTextWatcher);
+		scope.$watch(readOnlyToWatch,	readOnlyWatcher);
 		scope.$watch(submitEventToWatch, 		submitEventWatcher);
 		scope.$watch(cancelEventToWatch, 		cancelEventWatcher);
-		scope.$watch(readOnlyEventToWatch,	readOnlyEventWatcher);
 
 		function dataModelToWatch() {
 			return scope.edaEasyFormViewerDataModel;
@@ -64,16 +64,16 @@ function edaFormViewerDirective($modelsTranslator){
 			return scope.edaEasyFormViewerCancelButtonText;
 		}
 
+		function readOnlyToWatch() {
+			return scope.edaEasyFormViewerReadOnly;
+		}
+
 		function submitEventToWatch(){
 			return scope.vm.hasJustSumitted;
 		}
 
 		function cancelEventToWatch(){
 			return scope.vm.hasJustCancelled;
-		}
-
-		function readOnlyEventToWatch() {
-			return scope.edaEasyFormViewerReadOnly;
 		}
 
 		function fieldsModelWatcher(newFieldsModel){
@@ -90,6 +90,10 @@ function edaFormViewerDirective($modelsTranslator){
 			if (newCancelBtntext !== oldCancelBtntext) {
 				scope.vm.cancelText 	= newCancelBtntext || 'Submit';
 			}
+		}
+
+		function readOnlyWatcher(newReadOnly, oldReadOnly) {
+				scope.vm.readOnly 	= newReadOnly;
 		}
 
 		function dataModelWatcher(newDataModel) {
@@ -113,10 +117,6 @@ function edaFormViewerDirective($modelsTranslator){
 					}
 			}
 			scope.vm.hasJustCancelled = false;
-		}
-
-		function readOnlyEventWatcher(newReadOnly, oldReadOnly) {
-				scope.vm.readOnly 	= newReadOnly;
 		}
 
 		/**
