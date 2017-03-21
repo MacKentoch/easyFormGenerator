@@ -116,7 +116,7 @@ function edaFormViewerDirective($modelsTranslator){
 		}
 
 		function readOnlyEventWatcher(newReadOnly, oldReadOnly) {
-			if (newCancelBtntext !== oldCancelBtntext) {
+			if (newReadOnly !== newReadOnly) {
 				scope.vm.readOnly 	= newReadOnly;
 			}
 		}
