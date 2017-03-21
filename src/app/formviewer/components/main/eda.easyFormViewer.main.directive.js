@@ -116,9 +116,7 @@ function edaFormViewerDirective($modelsTranslator){
 		}
 
 		function readOnlyEventWatcher(newReadOnly, oldReadOnly) {
-			if (newReadOnly !== newReadOnly) {
 				scope.vm.readOnly 	= newReadOnly;
-			}
 		}
 
 		/**
