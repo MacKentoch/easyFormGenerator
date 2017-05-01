@@ -1,8 +1,8 @@
 {
   "parser": "babel-eslint",
   "ecmaFeatures": {
-      "modules": true,
-      "experimentalObjectRestSpread": true
+    "modules": true,
+    "experimentalObjectRestSpread": true
   },
   "parserOptions": {
     "sourceType": "module"
@@ -13,7 +13,7 @@
     "linebreak-style": [ 2, "unix" ],
     "semi": [ 2, "always" ],
     "prefer-const": 2,
-    # angular
+    //# angular
     "angular/definedundefined" : 0,
     "angular/json-functions" : 0 ,
     "angular/document-service" : 0,
@@ -21,7 +21,7 @@
     "angular/log" : 0,
     "angular/window-service" : 0,
     "angular/typecheck-array": 0,
-    # custom:
+    // # custom:
     "no-global-assign": 0,
     "no-unsafe-negation": 0
   },
