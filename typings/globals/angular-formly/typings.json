@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/a5d477d0850db191897477d6a02d13ee2aa03192/angular-formly/index.d.ts",
+    "raw": "registry:dt/angular-formly#7.2.3+20160707221224",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/a5d477d0850db191897477d6a02d13ee2aa03192/angular-formly/index.d.ts"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/555ea54770b8576162e761e344de969d6e960869/angular-wizard/index.d.ts",
+    "raw": "registry:dt/angular-wizard#0.6.1+20170223151516",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/555ea54770b8576162e761e344de969d6e960869/angular-wizard/index.d.ts"
+  }
+}

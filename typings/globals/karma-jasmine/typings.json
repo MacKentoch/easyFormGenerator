@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4a8052290cc86a13f677cc25a5a9b82a64318b47/karma-jasmine/index.d.ts",
+    "raw": "registry:dt/karma-jasmine#0.0.0+20170207112528",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4a8052290cc86a13f677cc25a5a9b82a64318b47/karma-jasmine/index.d.ts"
+  }
+}

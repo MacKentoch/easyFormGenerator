@@ -1,0 +1,10 @@
+{
+  "globalDependencies": {
+    "angular-formly": "registry:dt/angular-formly#7.2.3+20160707221224"
+  },
+  "globalDevDependencies": {
+    "karma": "registry:dt/karma#0.13.9+20160811111312",
+    "karma-jasmine": "registry:dt/karma-jasmine#0.0.0+20170207112528",
+    "webpack-dev-server": "registry:dt/webpack-dev-server#1.12.1+20170117213337"
+  }
+}
