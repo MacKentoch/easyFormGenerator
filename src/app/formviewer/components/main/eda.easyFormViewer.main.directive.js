@@ -34,7 +34,6 @@ function edaFormViewerDirective($modelsTranslator){
 
 
 	function linkFct(scope) {
-		scope.vm.model 				= scope.edaEasyFormViewerDataModel;
 		scope.vm.fields 			= loadFieldsModel();
 		scope.vm.submitText 	= scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 		scope.vm.cancelText 	= scope.edaEasyFormViewerCancelButtonText || 'Cancel';
@@ -97,13 +96,13 @@ function edaFormViewerDirective($modelsTranslator){
 		}
 
 		function dataModelWatcher(newDataModel) {
-			scope.vm.model = angular.copy(newDataModel);
+			scope.edaEasyFormViewerDataModel = angular.copy(newDataModel);
 		}
 
 		function submitEventWatcher(newSubmitEvent){
 			if (newSubmitEvent === true) {
 					if (angular.isFunction(scope.edaEasyFormViewerSubmitFormEvent)) {
-						const _dataModelSubmitted = scope.vm.model ;
+						const _dataModelSubmitted = scope.edaEasyFormViewerDataModel ;
 						scope.edaEasyFormViewerSubmitFormEvent({ dataModelSubmitted : _dataModelSubmitted });
 					}
 			}
@@ -155,7 +154,7 @@ function edaFormViewerDirective($modelsTranslator){
 				scope.configuration = angular.copy(scope.configurationLoaded);
 
 				//apply formly model
-				$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);
+				$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.edaEasyFormViewerDataModel);
 
 				return  formlyFieldsModel;
 			}
