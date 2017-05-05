@@ -16,6 +16,18 @@
     {
       "type": "chrome",
       "request": "launch",
+      "name": "preview prod stepway",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/dist/stepway.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
       "name": "preview dev dragdropway",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceRoot}",
@@ -28,10 +40,34 @@
     {
       "type": "chrome",
       "request": "launch",
+      "name": "preview prod dragdropway",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/dist/dragDropWay.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
       "name": "preview dev formviewer",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceRoot}",
       "file": "${workspaceRoot}/preview/formviewer.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "preview prod formviewer",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/dist/formviewer.html",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///./*": "${webRoot}/*"
