@@ -4,7 +4,7 @@ import edaFormViewerModelTranslatorModule from './components/modelsTranslator/ed
 
 import edaEasyFormViewerConfig            from '../stepway/config/formly/formly.config.js';
 
-import easyFormConfig                     from '../easyFormConfig.json';
+import easyFormConfig                     from '../../../package.json';
 
 const DEP_TO_INJECT_IN_MAIN = [
   edaFormViewerMainModule.name,
@@ -13,7 +13,7 @@ const DEP_TO_INJECT_IN_MAIN = [
 ];
 
 const EASY_FORM_VIEWER_VERSION_NAME   = 'easyFormViewerVersion';
-const EASY_FORM_VIEWER_VERSION_VALUE  = easyFormConfig.formviewer.version;
+const EASY_FORM_VIEWER_VERSION_VALUE  = easyFormConfig.version;
 const MAIN_MODULE_NAME                = 'eda.easyFormViewer';
 
 const mainModule = angular

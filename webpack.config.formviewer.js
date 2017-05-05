@@ -103,7 +103,11 @@ module.exports = function makeWebpackConfig () {
 
   // Initialize module
   config.module = {
-    preLoaders: [],
+    preLoaders: [{
+        test: /\.jsx?$/,
+        loader: 'remove-flow-types',
+        include: path.join(__dirname, './src/app/formviewer')
+    }],
     loaders: [{
       // JS LOADER
       // Reference: https://github.com/babel/babel-loader

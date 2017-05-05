@@ -1,7 +1,7 @@
-import easyFormConfig   from '../../easyFormConfig.json';
+import easyFormConfig   from '../../../../package.json';
 
 const EASY_FORM_DD_VERSION_NAME  = 'easyFormGenVersion';
-let   EASY_FORM_DD_VERSION_VALUE = easyFormConfig.dragdropway.version;
+const EASY_FORM_DD_VERSION_VALUE = easyFormConfig.version;
 
 function dragDropConfigFunct(easyFormDragWayConfigProvider) {
   easyFormDragWayConfigProvider.setItemsNotTocount({
