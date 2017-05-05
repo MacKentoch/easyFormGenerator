@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "preview dev stepway",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/preview/stepway.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "preview dev dragdropway",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/preview/dragDropWay.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"ù
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "preview dev formviewer",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceRoot}",
+      "file": "${workspaceRoot}/preview/formviewer.html",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      }
+    }
+  ]
+}

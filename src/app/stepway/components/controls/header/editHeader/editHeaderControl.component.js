@@ -86,7 +86,7 @@ export const editHeaderControlComponent = {
     static $inject = [];
 
     constructor() {
-      //
+      // 
     }
   }
 };
