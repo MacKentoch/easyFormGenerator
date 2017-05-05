@@ -4154,7 +4154,6 @@
 		return directive;
 	
 		function linkFct(scope) {
-			scope.vm.model = scope.edaEasyFormViewerDataModel;
 			scope.vm.fields = loadFieldsModel();
 			scope.vm.submitText = scope.edaEasyFormViewerSubmitButtonText || 'Submit';
 			scope.vm.cancelText = scope.edaEasyFormViewerCancelButtonText || 'Cancel';
@@ -4217,13 +4216,13 @@
 			}
 	
 			function dataModelWatcher(newDataModel) {
-				scope.vm.model = angular.copy(newDataModel);
+				scope.edaEasyFormViewerDataModel = angular.copy(newDataModel);
 			}
 	
 			function submitEventWatcher(newSubmitEvent) {
 				if (newSubmitEvent === true) {
 					if (angular.isFunction(scope.edaEasyFormViewerSubmitFormEvent)) {
-						var _dataModelSubmitted = scope.vm.model;
+						var _dataModelSubmitted = scope.edaEasyFormViewerDataModel;
 						scope.edaEasyFormViewerSubmitFormEvent({ dataModelSubmitted: _dataModelSubmitted });
 					}
 				}
@@ -4274,7 +4273,7 @@
 					scope.configuration = angular.copy(scope.configurationLoaded);
 	
 					//apply formly model
-					$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.vm.model);
+					$modelsTranslator.applyConfigurationToformlyModel(scope.configurationLoaded, formlyFieldsModel, scope.edaEasyFormViewerDataModel);
 	
 					return formlyFieldsModel;
 				}
@@ -4290,7 +4289,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"easyFormViewer\">\n\t<fieldset ng-disabled=\"vm.readOnly\">\n\t\t<form ng-submit=\"vm.onSubmit()\" name=\"vm.form\">\n\t\t\t<formly-form model=\"vm.model\" fields=\"vm.fields\" form=\"vm.form\">\n\n\t\t\t\t<div class=\"pull-right\">\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" ng-disabled=\"vm.form.$invalid\" ng-click=\"vm.edaSubmitThisDataModel();\">{{vm.submitText}}</button>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" ng-click=\"vm.edaCancelEvent();\">{{vm.cancelText}}</button>\n\t\t\t\t</div>\n\n\t\t\t</formly-form>\n\t\t</form>\n\t</fieldset>\n</div>\n"
+	module.exports = "<div class=\"easyFormViewer\">\n\t<fieldset ng-disabled=\"vm.readOnly\">\n\t\t<form ng-submit=\"vm.onSubmit()\" name=\"vm.form\">\n\t\t\t<formly-form model=\"edaEasyFormViewerDataModel\" fields=\"vm.fields\" form=\"vm.form\">\n\n\t\t\t\t<div class=\"pull-right\">\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\" ng-disabled=\"vm.form.$invalid\" ng-click=\"vm.edaSubmitThisDataModel();\">{{vm.submitText}}</button>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" ng-click=\"vm.edaCancelEvent();\">{{vm.cancelText}}</button>\n\t\t\t\t</div>\n\n\t\t\t</formly-form>\n\t\t</form>\n\t</fieldset>\n</div>\n"
 
 /***/ },
 /* 10 */
