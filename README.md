@@ -199,6 +199,7 @@ Default or fallback language is set to `english` **by default** (*but you can ch
 | spanish               | 'es'    | thx to **Benjamin Orozco** :thumbsup:   |
 | turkish               | 'tr'    | thx to **Serhat Can** :thumbsup:        |
 | bresilian portuguese  | 'pt-br' | thx to **Leandro.Battisti** :thumbsup:  |
+| chinese               | 'zh'    | thx to **@alansong** :thumbsup:  |
 
 ![preview](https://rawgit.com/MacKentoch/easyFormGenerator/master/images/languages.png)    
 
