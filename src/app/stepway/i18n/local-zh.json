@@ -1,0 +1,94 @@
+{
+  "SAY_HI" : "你好",
+
+  "EDIT_TAB"            : "编辑/创建",
+  "PREVIEW_TAB"         : "预览",
+
+  "WIZARD_LINES"        : "行",
+  "WIZARD_LAYOUT"       : "布局",
+  "WIZARD_CONTROLS"     : "控件",
+  "WIZARD_SAVE"         : "保存",
+
+  "PAGER_PREVIOUS"      : "上一步",
+  "PAGER_NEXT"          : "下一步",
+
+  "COMMAND_PANEL"       : "命令",
+  "VISUAL_PANEL"        : "显示",
+
+  "ADD_NEW_LINE"        : "增加一行",
+
+  "ADD_NEW_STEP"        : "增加新步骤",
+  "STEP_TITLE"          : "步骤标题",
+
+  "SELECTED_LINE"       : "选中行",
+
+  "NUMBER_OF_COLUMN"    : "列数",
+  "APPLY_CTRL2COL"      : "应用控件到列",
+
+  "CLIC_TAP_2_OPEN"     : "单击列以打开控件选择器",
+  "SELECT_2_APPLY_COL"  : "选择需要的控件，输入属性并添加到列。",
+
+  "CUSTOM_SUBMIT_BTN"   : "定制提交按钮",
+  "CUSTOM_CANCEL_BTN"   : "定制取消按钮",
+  "NAME_THIS_FORM"      : "表单名称",
+  "SAVE_THIS_FORM"      : "保存表单",
+
+  "FINAL_STEP"          : "最后：预览表单",
+
+  "DATA_MODEL"          : "数据模型",
+  "FIELDS_MODEL"        : "域模型",
+
+
+  "SELECT_A_CTRL"       : "选择一个控件",
+  "SELECT_CTRL_IN_LIST" : "从下面的列表中选择控件",
+  "COL_WILL_BE_BLANK"   : "该列为空",
+
+  "EDIT_PROPERTIES"     : "编辑属性",
+
+  "HEADER_TEXT"         : "表单头",
+  "ADD_EDIT_HEADER_HERE": "在这里添加或编辑表单头",
+
+  "SUBTITLE_TEXT"       : "副标题",
+  "ADD_EDIT_SUBTIL_HERE": "在这里添加或编辑副标题",
+
+  "LABEL_TEXT"          : "显示文本",
+  "ADD_EDIT_LABEL_HERE" : "在这里添加或编辑控件显示文本",
+
+  "PLACEHOLDER"         : "占位符",
+  "ADD_EDIT_PLACEHOLD"  : "在这里添加或编辑占位符",
+
+  "REQUIRED"            : "必填",
+
+  "DESCRIPTION"         : "描述",
+  "ADDEDIT_DESCRIPTION" : "在这里添加或编辑描述",
+
+  "DEFAULTVALUE"         : "默认值",
+  "ADD_EDIT_DEFAULTVALUE_PLACEHOLD"  : "在这里添加或编辑默认值",
+
+  "DATE_FORMAT"         : "日期格式",
+
+  "ADD_NEW_RADIO"       : "增加新单选项",
+  "ADD_RADIO_PLACEHOLD" : "增加新单选项",
+  "EDIT_REMOVE_RADIO"   : "编辑/移除单选项",
+  "NO_RADIO_ADD_NEW"    : "没有单选项，需添加",
+
+  "SEARCH_4_OPTION"     : "查找选项",
+
+  "ADD"                 : "创建",
+  "ORDER"               : "排序",
+  "OPTION"              : "选项",
+  "GROUP"               : "组",
+
+  "ADD_NEW_OPTIONS"     : "添加多个选项",
+  "ADD_A_NEW_OPTION"    : "添加单个选项",
+  "EDIT_REMOVE_OPTIONS" : "编辑/移除选项",
+  "NO_OPTION_ADD_NEW"   : "没有选项，需添加",
+
+  "ADD_NEW_GROUPS"      : "添加多个组",
+  "ADD_A_NEW_GROUP"     : "添加单个组",
+  "EDIT_GROUPS_OPTIONS" : "编辑/移除选项或组",
+  "NO_GROUP_ADD_NEW"    : "添加新组",
+
+  "OK"                  : "确定",
+  "CANCEL"              : "取消"
+}

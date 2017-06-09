@@ -515,6 +515,10 @@ Just inject `eda.easyFormViewer` in you application:
 ______
 
 ## What is new?
+ - see [release notes](https://github.com/MacKentoch/easyFormGenerator/blob/master/RELEASE_NOTES.md#releases)
+
+ *older:*
+
  - December 2016: v2.0.0 (big tsunami update):
   - leave bower, gulp and jspm in favor of webpack + npm
   - new control: `IP adress`

@@ -50,7 +50,7 @@
 	
 	__webpack_require__(7);
 	
-	__webpack_require__(89);
+	__webpack_require__(90);
 
 /***/ },
 /* 1 */
@@ -4544,31 +4544,31 @@
 	
 	var _translate2 = _interopRequireDefault(_translate);
 	
-	var _core = __webpack_require__(20);
+	var _core = __webpack_require__(21);
 	
 	var _core2 = _interopRequireDefault(_core);
 	
-	var _main = __webpack_require__(21);
+	var _main = __webpack_require__(22);
 	
 	var _main2 = _interopRequireDefault(_main);
 	
-	var _stepwayWizard = __webpack_require__(42);
+	var _stepwayWizard = __webpack_require__(43);
 	
 	var _stepwayWizard2 = _interopRequireDefault(_stepwayWizard);
 	
-	var _editControlModal = __webpack_require__(52);
+	var _editControlModal = __webpack_require__(53);
 	
 	var _editControlModal2 = _interopRequireDefault(_editControlModal);
 	
-	var _modalProxy = __webpack_require__(84);
+	var _modalProxy = __webpack_require__(85);
 	
 	var _modalProxy2 = _interopRequireDefault(_modalProxy);
 	
-	var _formlyProxy = __webpack_require__(86);
+	var _formlyProxy = __webpack_require__(87);
 	
 	var _formlyProxy2 = _interopRequireDefault(_formlyProxy);
 	
-	var _selectOptionManage = __webpack_require__(88);
+	var _selectOptionManage = __webpack_require__(89);
 	
 	var _selectOptionManage2 = _interopRequireDefault(_selectOptionManage);
 	
@@ -4619,7 +4619,7 @@
 
 	module.exports = {
 		"name": "easy-form-generator",
-		"version": "2.1.6",
+		"version": "2.3.0",
 		"description": "create amazing forms without coding : form editor based on angular formly",
 		"scripts": {
 			"clean-dist": "rimraf dist",
@@ -4951,6 +4951,10 @@
 	
 	var _localPtBr2 = _interopRequireDefault(_localPtBr);
 	
+	var _localZh = __webpack_require__(20);
+	
+	var _localZh2 = _interopRequireDefault(_localZh);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var TRANSLATE_CONFIG = exports.TRANSLATE_CONFIG = 'easyFormTranslateConfig';
@@ -4963,6 +4967,7 @@
 	  $translateProvider.translations('tr', _localTr2.default);
 	  $translateProvider.translations('jp', _localJp2.default);
 	  $translateProvider.translations('pt-br', _localPtBr2.default);
+	  $translateProvider.translations('zh', _localZh2.default);
 	}
 	translateConfig.$inject = ['$translateProvider'];
 	
@@ -5451,6 +5456,76 @@
 /* 20 */
 /***/ function(module, exports) {
 
+	module.exports = {
+		"SAY_HI": "你好",
+		"EDIT_TAB": "编辑/创建",
+		"PREVIEW_TAB": "预览",
+		"WIZARD_LINES": "行",
+		"WIZARD_LAYOUT": "布局",
+		"WIZARD_CONTROLS": "控件",
+		"WIZARD_SAVE": "保存",
+		"PAGER_PREVIOUS": "上一步",
+		"PAGER_NEXT": "下一步",
+		"COMMAND_PANEL": "命令",
+		"VISUAL_PANEL": "显示",
+		"ADD_NEW_LINE": "增加一行",
+		"ADD_NEW_STEP": "增加新步骤",
+		"STEP_TITLE": "步骤标题",
+		"SELECTED_LINE": "选中行",
+		"NUMBER_OF_COLUMN": "列数",
+		"APPLY_CTRL2COL": "应用控件到列",
+		"CLIC_TAP_2_OPEN": "单击列以打开控件选择器",
+		"SELECT_2_APPLY_COL": "选择需要的控件，输入属性并添加到列。",
+		"CUSTOM_SUBMIT_BTN": "定制提交按钮",
+		"CUSTOM_CANCEL_BTN": "定制取消按钮",
+		"NAME_THIS_FORM": "表单名称",
+		"SAVE_THIS_FORM": "保存表单",
+		"FINAL_STEP": "最后：预览表单",
+		"DATA_MODEL": "数据模型",
+		"FIELDS_MODEL": "域模型",
+		"SELECT_A_CTRL": "选择一个控件",
+		"SELECT_CTRL_IN_LIST": "从下面的列表中选择控件",
+		"COL_WILL_BE_BLANK": "该列为空",
+		"EDIT_PROPERTIES": "编辑属性",
+		"HEADER_TEXT": "表单头",
+		"ADD_EDIT_HEADER_HERE": "在这里添加或编辑表单头",
+		"SUBTITLE_TEXT": "副标题",
+		"ADD_EDIT_SUBTIL_HERE": "在这里添加或编辑副标题",
+		"LABEL_TEXT": "显示文本",
+		"ADD_EDIT_LABEL_HERE": "在这里添加或编辑控件显示文本",
+		"PLACEHOLDER": "占位符",
+		"ADD_EDIT_PLACEHOLD": "在这里添加或编辑占位符",
+		"REQUIRED": "必填",
+		"DESCRIPTION": "描述",
+		"ADDEDIT_DESCRIPTION": "在这里添加或编辑描述",
+		"DEFAULTVALUE": "默认值",
+		"ADD_EDIT_DEFAULTVALUE_PLACEHOLD": "在这里添加或编辑默认值",
+		"DATE_FORMAT": "日期格式",
+		"ADD_NEW_RADIO": "增加新单选项",
+		"ADD_RADIO_PLACEHOLD": "增加新单选项",
+		"EDIT_REMOVE_RADIO": "编辑/移除单选项",
+		"NO_RADIO_ADD_NEW": "没有单选项，需添加",
+		"SEARCH_4_OPTION": "查找选项",
+		"ADD": "创建",
+		"ORDER": "排序",
+		"OPTION": "选项",
+		"GROUP": "组",
+		"ADD_NEW_OPTIONS": "添加多个选项",
+		"ADD_A_NEW_OPTION": "添加单个选项",
+		"EDIT_REMOVE_OPTIONS": "编辑/移除选项",
+		"NO_OPTION_ADD_NEW": "没有选项，需添加",
+		"ADD_NEW_GROUPS": "添加多个组",
+		"ADD_A_NEW_GROUP": "添加单个组",
+		"EDIT_GROUPS_OPTIONS": "编辑/移除选项或组",
+		"NO_GROUP_ADD_NEW": "添加新组",
+		"OK": "确定",
+		"CANCEL": "取消"
+	};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -5462,7 +5537,7 @@
 	exports.default = angular.module('edaStepWayEasyFormGen.core', CORE_MODULES);
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5471,39 +5546,39 @@
 	  value: true
 	});
 	
-	var _main = __webpack_require__(22);
+	var _main = __webpack_require__(23);
 	
 	var _main2 = _interopRequireDefault(_main);
 	
-	var _main3 = __webpack_require__(26);
+	var _main3 = __webpack_require__(27);
 	
 	var _main4 = _interopRequireDefault(_main3);
 	
-	var _main5 = __webpack_require__(27);
+	var _main5 = __webpack_require__(28);
 	
 	var _main6 = _interopRequireDefault(_main5);
 	
-	var _mainPager = __webpack_require__(28);
+	var _mainPager = __webpack_require__(29);
 	
 	var _mainPager2 = _interopRequireDefault(_mainPager);
 	
-	var _mainStepIndicator = __webpack_require__(29);
+	var _mainStepIndicator = __webpack_require__(30);
 	
 	var _mainStepIndicator2 = _interopRequireDefault(_mainStepIndicator);
 	
-	var _mainStepZeroContent = __webpack_require__(30);
+	var _mainStepZeroContent = __webpack_require__(31);
 	
 	var _mainStepZeroContent2 = _interopRequireDefault(_mainStepZeroContent);
 	
-	var _mainStepOneContent = __webpack_require__(33);
+	var _mainStepOneContent = __webpack_require__(34);
 	
 	var _mainStepOneContent2 = _interopRequireDefault(_mainStepOneContent);
 	
-	var _mainStepTwoContent = __webpack_require__(36);
+	var _mainStepTwoContent = __webpack_require__(37);
 	
 	var _mainStepTwoContent2 = _interopRequireDefault(_mainStepTwoContent);
 	
-	var _mainStepThreeContent = __webpack_require__(39);
+	var _mainStepThreeContent = __webpack_require__(40);
 	
 	var _mainStepThreeContent2 = _interopRequireDefault(_mainStepThreeContent);
 	
@@ -5516,7 +5591,7 @@
 	exports.default = angular.module(STEP_WAY_MAIN_MODULE, TO_INJECT).controller(_main.STEP_WAY_MAIN_CONTROLLER_NAME, _main2.default).directive(_main3.STEP_WAY_DIRECTIVE_NAME, _main4.default).provider(_main5.EASY_FORM_STEP_WAY_CONFIG_NAME, _main6.default);
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5528,13 +5603,13 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _mainController = __webpack_require__(23);
+	var _mainController = __webpack_require__(24);
 	
-	var _editControlModalTemplate = __webpack_require__(24);
+	var _editControlModalTemplate = __webpack_require__(25);
 	
 	var _editControlModalTemplate2 = _interopRequireDefault(_editControlModalTemplate);
 	
-	var _editControlModal = __webpack_require__(25);
+	var _editControlModal = __webpack_require__(26);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -5837,7 +5912,7 @@
 	exports.STEP_WAY_MAIN_CONTROLLERAS_NAME = STEP_WAY_MAIN_CONTROLLERAS_NAME;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -5923,13 +5998,13 @@
 	exports.initLineTemplate = initLineTemplate;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-header\">\n  <h3 class=\"modal-title greyText\">\n    {{'SELECT_A_CTRL' | translate}}\n  </h3>\n</div>\n<div class=\"modal-body\">\n  <hr/>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <h5 class=\"greyText\">\n        <i class=\"fa fa-filter\"></i>\n        &nbsp;\n        {{'SELECT_CTRL_IN_LIST' | translate}} :\n      </h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n      <edit-choose-control\n        model-nya-select=\"editControlModCtrl.modelNyaSelect\"\n        nya-select-filtered=\"editControlModCtrl.nyaSelectFiltered\"\n        select-this-control=\"editControlModCtrl.selectThisControl(optionId)\">\n      </edit-choose-control>\n    </div>\n  </div>\n  <hr/>\n  <div ng-switch on=\"editControlModCtrl.nyaSelect.selectedControl\">\n\n    <div ng-switch-when=\"none\">\n      <div class=\"row\">\n        <div class=\"col-sm-12\">\n          <h5 class=\"text-center texteRouge\">\n            <i class=\"fa fa-arrow-up\"></i>\n            &nbsp; {{'SELECT_A_CTRL' | translate}}\n          </h5>\n        </div>\n      </div>\n    </div>\n\n    <div ng-switch-when=\"empty\">\n      <edit-blank-control></edit-blank-control>\n    </div>\n\n    <div ng-switch-when=\"Header\">\n      <edit-header-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-header-control>\n    </div>\n\n    <div ng-switch-when=\"Subtitle\">\n      <edit-sub-title-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-sub-title-control>\n    </div>\n\n    <div ng-switch-when=\"TextInput\">\n      <edit-text-input-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-text-input-control>\n    </div>\n\n    <div ng-switch-when=\"Password\">\n      <edit-password-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-password-control>\n    </div>\n\n    <div ng-switch-when=\"Email\">\n      <edit-email-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-email-control>\n    </div>\n\n    <div ng-switch-when=\"IpAdress\">\n      <edit-ip-adress-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-ip-adress-control>\n    </div>\n\n    <div ng-switch-when=\"Date\">\n      <edit-date-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        demodt=\"editControlModCtrl.demodt\"\n        date-options=\"editControlModCtrl.dateOptions\"\n        open=\"editControlModCtrl.open(event)\">\n      <edit-date-control>\n    </div>\n\n    <div ng-switch-when=\"Texarea\">\n      <edit-textarea-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-textarea-control>\n    </div>\n\n    <div ng-switch-when=\"RichTextEditor\">\n      <edit-rich-text-editor-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-rich-text-editor-control>\n    </div>\n\n    <div ng-switch-when=\"Radio\">\n      <edit-radio-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        radio-row-collection=\"editControlModCtrl.radioRowCollection\"\n        new-option-radio=\"editControlModCtrl.newOptionRadio\"\n        add-new-option-radio=\"editControlModCtrl.addNewOptionRadio()\"\n        up-this-radio-row=\"editControlModCtrl.upThisRadioRow(index)\"\n        down-this-radio-row=\"editControlModCtrl.downThisRadioRow(index)\"\n        remove-radio-row=\"editControlModCtrl.removeRadioRow(index)\">\n      </edit-radio-control>\n    </div>\n\n    <div ng-switch-when=\"Checkbox\">\n      <edit-check-box-control\n        nya-select=\"editControlModCtrl.nyaSelect\">\n      </edit-check-box-control>\n    </div>\n\n    <div ng-switch-when=\"BasicSelect\">\n      <edit-basic-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        basic-select-row-collection=\"editControlModCtrl.basicSelectRowCollection\"\n        new-option-basic-select=\"editControlModCtrl.newOptionBasicSelect\"\n        add-new-option-basic-select=\"editControlModCtrl.addNewOptionBasicSelect()\"\n        up-this-row=\"editControlModCtrl.upThisRow(index)\"\n        down-this-row=\"editControlModCtrl.downThisRow(index)\"\n        remove-row=\"editControlModCtrl.removeRow(index)\">\n      </edit-basic-select-control>\n    </div>\n\n    <div ng-switch-when=\"GroupedSelect\">\n      <edit-grouped-select-control\n        nya-select=\"editControlModCtrl.nyaSelect\"\n        grouped-select-row-collection=\"editControlModCtrl.groupedSelectRowCollection\"\n        new-option-grouped-select=\"editControlModCtrl.newOptionGroupedSelect\"\n        new-group-grouped-select=\"editControlModCtrl.newGroupGroupedSelect\"\n        group-select-group-click=\"editControlModCtrl.groupSelectGroupClick\"\n        grouped-select-groups=\"editControlModCtrl.GroupedSelectGroups\"\n        add-new-option-grouped-select=\"editControlModCtrl.addNewOptionGroupedSelect()\"\n        add-new-group-to-grouped-select=\"editControlModCtrl.addNewGroupToGroupedSelect()\"\n        up-this-grouped-select-row=\"editControlModCtrl.upThisGroupedSelectRow(index)\"\n        down-this-grouped-select-row=\"editControlModCtrl.downThisGroupedSelectRow(index)\"\n        show-group-list-to-choose=\"editControlModCtrl.showGroupListToChoose()\"\n        remove-grouped-select-row=\"editControlModCtrl.removeGroupedSelectRow(index)\"\n        >\n      </edit-grouped-select-control>\n    </div>\n\n  </div>\n</div>\n\n<edit-valid-edit-footer\n  nya-select=\"editControlModCtrl.nyaSelect\"\n  ok=\"editControlModCtrl.ok()\"\n  cancel=\"editControlModCtrl.cancel()\" >\n</edit-valid-edit-footer>\n"
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6389,7 +6464,7 @@
 	exports.EDIT_MODAL_CONTROLLERAS_NAME = EDIT_MODAL_CONTROLLERAS_NAME;
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6399,7 +6474,7 @@
 	});
 	exports.STEP_WAY_DIRECTIVE_NAME = undefined;
 	
-	var _main = __webpack_require__(22);
+	var _main = __webpack_require__(23);
 	
 	var STEP_WAY_DIRECTIVE_NAME = 'edaStepWayEasyFormGen';
 	
@@ -6528,7 +6603,7 @@
 	exports.STEP_WAY_DIRECTIVE_NAME = STEP_WAY_DIRECTIVE_NAME;
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6720,7 +6795,7 @@
 	exports.EASY_FORM_STEP_WAY_CONFIG_NAME = EASY_FORM_STEP_WAY_CONFIG_NAME;
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6753,7 +6828,7 @@
 	exports.default = angular.module(PAGER_COMPONENT_MODULE, []).component(PAGER_COMPONENT_NAME, pagerComponent);
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6784,7 +6859,7 @@
 	exports.default = angular.module(STEP_INDICATOR_COMPONENT_MODULE, []).component(STEP_INDICATOR_COMPONENT_NAME, stepIndicatorComponent);
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6798,9 +6873,9 @@
 	
 	var _class, _temp;
 	
-	var _mainStepZeroCommandPanel = __webpack_require__(31);
+	var _mainStepZeroCommandPanel = __webpack_require__(32);
 	
-	var _mainStepZeroVisualPanel = __webpack_require__(32);
+	var _mainStepZeroVisualPanel = __webpack_require__(33);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -6859,7 +6934,7 @@
 	exports.default = angular.module(STEP_ZERO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_ZERO_CONTENT_COMPONENT, stepZeroContentComponent).component(_mainStepZeroCommandPanel.STEP_ZERO_COMMAND_PANEL_COMPONENT_NAME, _mainStepZeroCommandPanel.StepZeroCommandPanelComponent).component(_mainStepZeroVisualPanel.STEP_ZERO_VISUAL_PANEL_COMPONENT_NAME, _mainStepZeroVisualPanel.StepZeroVisualPanelComponent);
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6887,7 +6962,7 @@
 	};
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6918,7 +6993,7 @@
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6932,9 +7007,9 @@
 	
 	var _class, _temp;
 	
-	var _mainStepOneCommandPanel = __webpack_require__(34);
+	var _mainStepOneCommandPanel = __webpack_require__(35);
 	
-	var _mainStepOneVisualPanel = __webpack_require__(35);
+	var _mainStepOneVisualPanel = __webpack_require__(36);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -6977,7 +7052,7 @@
 	exports.default = angular.module(STEP_ONE_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_CONTENT_COMPONENT, stepOneContentComponent).component(_mainStepOneCommandPanel.STEP_ONE_COMMAND_PANEL_COMPONENT_NAME, _mainStepOneCommandPanel.StepOneCommandPanelComponent).component(_mainStepOneVisualPanel.STEP_ONE_VISUAL_PANEL_COMPONENT_NAME, _mainStepOneVisualPanel.StepOneVisualPanelComponent);
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7005,7 +7080,7 @@
 	};
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7032,7 +7107,7 @@
 	};
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7046,9 +7121,9 @@
 	
 	var _class, _temp;
 	
-	var _mainStepTwoCommandPanel = __webpack_require__(37);
+	var _mainStepTwoCommandPanel = __webpack_require__(38);
 	
-	var _mainStepTwoVisualPanel = __webpack_require__(38);
+	var _mainStepTwoVisualPanel = __webpack_require__(39);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7103,7 +7178,7 @@
 	exports.default = angular.module(STEP_TWO_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_TWO_CONTENT_COMPONENT, stepTwoContentComponent).component(_mainStepTwoCommandPanel.STEP_TWO_COMMAND_PANEL_COMPONENT_NAME, _mainStepTwoCommandPanel.StepTwoCommandPanelComponent).component(_mainStepTwoVisualPanel.STEP_TWO_VISUAL_PANEL_COMPONENT_NAME, _mainStepTwoVisualPanel.StepTwoVisualPanelComponent);
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7129,7 +7204,7 @@
 	};
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7159,7 +7234,7 @@
 	};
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7173,9 +7248,9 @@
 	
 	var _class, _temp;
 	
-	var _mainStepThreeCommandPanel = __webpack_require__(40);
+	var _mainStepThreeCommandPanel = __webpack_require__(41);
 	
-	var _mainStepThreeVisualPanel = __webpack_require__(41);
+	var _mainStepThreeVisualPanel = __webpack_require__(42);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7218,7 +7293,7 @@
 	exports.default = angular.module(STEP_THREE_CONTENT_COMPONENT_MODULE, []).component(LINE_STEP_THREE_CONTENT_COMPONENT, stepThreeContentComponent).component(_mainStepThreeCommandPanel.STEP_THREE_COMMAND_PANEL_COMPONENT_NAME, _mainStepThreeCommandPanel.StepThreeCommandPanelComponent).component(_mainStepThreeVisualPanel.STEP_THREE_VISUAL_PANEL_COMPONENT_NAME, _mainStepThreeVisualPanel.StepThreeVisualPanelComponent);
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7247,7 +7322,7 @@
 	};
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7292,7 +7367,7 @@
 	};
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7301,19 +7376,19 @@
 	  value: true
 	});
 	
-	var _stepwayWizard = __webpack_require__(43);
+	var _stepwayWizard = __webpack_require__(44);
 	
 	var _stepwayWizard2 = _interopRequireDefault(_stepwayWizard);
 	
-	var _stepwayWizard3 = __webpack_require__(45);
+	var _stepwayWizard3 = __webpack_require__(46);
 	
 	var _stepwayWizard4 = _interopRequireDefault(_stepwayWizard3);
 	
-	var _stepwayWizard5 = __webpack_require__(47);
+	var _stepwayWizard5 = __webpack_require__(48);
 	
 	var _stepwayWizard6 = _interopRequireDefault(_stepwayWizard5);
 	
-	var _stepwayWizardAddStepContent = __webpack_require__(48);
+	var _stepwayWizardAddStepContent = __webpack_require__(49);
 	
 	var _stepwayWizardAddStepContent2 = _interopRequireDefault(_stepwayWizardAddStepContent);
 	
@@ -7326,7 +7401,7 @@
 	exports.default = angular.module(STEP_WAY_WIZARD_MODULE, TO_INJECT).controller(_stepwayWizard.STEP_WAY_WIZARD_CONTROLLER_NAME, _stepwayWizard2.default).directive(_stepwayWizard3.STEP_WAY_WIZARD_DIRECTIVE_NAME, _stepwayWizard4.default).provider(_stepwayWizard5.EASY_WIZARD_FORM_STEP_WAY_CONFIG_NAME, _stepwayWizard6.default);
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7338,7 +7413,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _stepwayWizardController = __webpack_require__(44);
+	var _stepwayWizardController = __webpack_require__(45);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7489,7 +7564,7 @@
 	exports.STEP_WAY_WIZARD_CONTROLLERAS_NAME = STEP_WAY_WIZARD_CONTROLLERAS_NAME;
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7563,7 +7638,7 @@
 	exports.initLineTemplate = initLineTemplate;
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7573,11 +7648,11 @@
 	});
 	exports.STEP_WAY_WIZARD_DIRECTIVE_NAME = undefined;
 	
-	var _stepwayWizardTemplate = __webpack_require__(46);
+	var _stepwayWizardTemplate = __webpack_require__(47);
 	
 	var _stepwayWizardTemplate2 = _interopRequireDefault(_stepwayWizardTemplate);
 	
-	var _stepwayWizard = __webpack_require__(43);
+	var _stepwayWizard = __webpack_require__(44);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -7669,13 +7744,13 @@
 	exports.STEP_WAY_WIZARD_DIRECTIVE_NAME = STEP_WAY_WIZARD_DIRECTIVE_NAME;
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "<section id=\"pageWfEdit\">\n  <div ng-init=\"\">\n    <div class=\"container\">\n      <section id=\"preview\">\n        <div id=\"preview-content\">\n          <div class=\"content-container\">\n            <!-- taoster alert -->\n            <toaster-container\n              toaster-options=\"{\n                'position-class': 'toast-top-full-width',\n                'extendedTimeout':500,\n                'timeOut':500\n              }\">\n            </toaster-container>\n            <uib-tabset justified=\"true\">\n              <uib-tab active=\"vm.tab.editTab.active\" heading=\"{{'EDIT_TAB' | translate}}\">\n                <div class=\"row\">\n                  <add-step-content configuration=\"vm.configuration\" \n                    add-newstep=\"vm.addNewstep()\" \n                    save-this-form=\"vm.saveThisForm()\"\n                    remove-this-step=\"vm.removeThisStep(index)\"\n                    right-this-step=\"vm.rightThisStep(index)\" \n                    left-this-step=\"vm.leftThisStep(index)\">\n                  </add-step-content>\n                </div>\n              </uib-tab>\n              <uib-tab active=\"vm.tab.previewTab.active\" ng-if=\"vm.tab.previewTab.tabVisible\" heading=\"{{'PREVIEW_TAB' | translate}}\">\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-body\">\n                    <!-- formly here -->\n                    \n                      <wizard edit-mode=\"true\" indicators-position=\"top\" on-finish=\"finishedWizard()\">\n                        <wz-step wz-title=\"{{vm.configuration.steps[$index].title}}\" ng-repeat=\"step in vm.configuration.steps track by $index\">\n                          <formly-form model=\"vm.dataModel\" fields=\"vm.configuration.steps[$index].easyFormGeneratorModel.formlyFieldsModel\">\n                            <span class=\"pull-right\">\n                            <button class=\"btn btn-primary\" ng-if=\"$index > 0\" wz-previous>\n                                <i class=\"fa fa-arrow-left fa-2x pull-left\"></i>\n                                <span class=\"pull-right ng-binding\">\n                                  Previous\n                                </span>\n                            </button>\n                            <button class=\"btn btn-primary\" ng-if=\"$index < vm.configuration.steps.length - 1\" wz-next>\n                                <i class=\"fa fa-arrow-right fa-2x pull-left\"></i>\n                                <span class=\"pull-right ng-binding\">\n                                  Next\n                                </span>\n                              </button>\n                              <button class=\"btn btn-primary\" ng-if=\"$index == vm.configuration.steps.length - 1\" \n                              type=\"Submit\">            \n                              <i class=\"fa fa-save fa-2x pull-left\"></i>                    \n                                <span class=\"pull-right ng-binding\">\n                                  Submit\n                                </span>\n                              </button>\n                            </span>\n                          </formly-form>\n                        </wz-step>\n                      </wizard>\n                    \n                  </div>\n                </div>\n                <div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n                  <div class=\"panel-body\">\n                    <p>{{'DATA_MODEL' | translate}}</p>\n                    <pre>\n                      {{vm.dataModel | json}}\n                    </pre>\n                  </div>\n                </div>\n                <div ng-if=\"vm.tab.previewTab.modelsVisible\" class=\"panel panel-default\">\n                  <div class=\"panel-body\">\n                    <p>{{'FIELDS_MODEL' | translate}}</p>\n                    <pre>\n                      {{vm | json}}                      \n                    </pre>\n                  </div>\n                </div>\n              </uib-tab>\n            </uib-tabset>\n          </div>\n        </div>\n      </section>\n      <hr/>\n    </div>\n  </div>\n</section>"
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7820,7 +7895,7 @@
 	exports.EASY_WIZARD_FORM_STEP_WAY_CONFIG_NAME = EASY_WIZARD_FORM_STEP_WAY_CONFIG_NAME;
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7829,18 +7904,18 @@
 	  value: true
 	});
 	
-	var _stepwayWizardAddStepContent = __webpack_require__(49);
+	var _stepwayWizardAddStepContent = __webpack_require__(50);
 	
-	var _stepwayWizardAddStepCommandPanel = __webpack_require__(50);
+	var _stepwayWizardAddStepCommandPanel = __webpack_require__(51);
 	
-	var _stepwayWizardAddStepVisualPanel = __webpack_require__(51);
+	var _stepwayWizardAddStepVisualPanel = __webpack_require__(52);
 	
 	var ADD_STEP_CONTENT_COMPONENT_MODULE = 'stepway.addStepContent.module';
 	
 	exports.default = angular.module(ADD_STEP_CONTENT_COMPONENT_MODULE, []).component(_stepwayWizardAddStepContent.ADD_STEP_CONTENT_COMPONENT, _stepwayWizardAddStepContent.addStepContentComponent).component(_stepwayWizardAddStepCommandPanel.ADD_STEP_COMMAND_PANEL_COMPONENT_NAME, _stepwayWizardAddStepCommandPanel.AddStepCommandPanelComponent).component(_stepwayWizardAddStepVisualPanel.ADD_STEP_VISUAL_PANEL_COMPONENT_NAME, _stepwayWizardAddStepVisualPanel.AddStepVisualPanelComponent);
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7928,7 +8003,7 @@
 	exports.ADD_STEP_CONTENT_COMPONENT = ADD_STEP_CONTENT_COMPONENT;
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7966,7 +8041,7 @@
 	};
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8006,7 +8081,7 @@
 	};
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8015,15 +8090,15 @@
 	  value: true
 	});
 	
-	var _editControlModal = __webpack_require__(25);
+	var _editControlModal = __webpack_require__(26);
 	
 	var _editControlModal2 = _interopRequireDefault(_editControlModal);
 	
-	var _editValidEditFooter = __webpack_require__(53);
+	var _editValidEditFooter = __webpack_require__(54);
 	
-	var _editChooseControl = __webpack_require__(54);
+	var _editChooseControl = __webpack_require__(55);
 	
-	var _index = __webpack_require__(55);
+	var _index = __webpack_require__(56);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -8036,7 +8111,7 @@
 	exports.default = angular.module(EDIT_CONTROLE_MODAL_NAME, EDIT_CONTROL_INJECT).controller(_editControlModal.EDIT_MODAL_CONTROLLER_NAME, _editControlModal2.default).component(_editChooseControl.EDIT_CHOOSE_CONTROL_COMPONENT, _editChooseControl.editChooseControlComponent).component(_editValidEditFooter.EDIT_EDIT_VALID_FOOTER_COMPONENT, _editValidEditFooter.editValidEditFooterComponent);
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8066,7 +8141,7 @@
 	};
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8096,7 +8171,7 @@
 	};
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8106,87 +8181,87 @@
 	});
 	exports.controls = exports.configs = undefined;
 	
-	var _blank = __webpack_require__(56);
+	var _blank = __webpack_require__(57);
 	
-	var _editBlankControl = __webpack_require__(57);
+	var _editBlankControl = __webpack_require__(58);
 	
 	var _editBlankControl2 = _interopRequireDefault(_editBlankControl);
 	
-	var _IpAdress = __webpack_require__(58);
+	var _IpAdress = __webpack_require__(59);
 	
-	var _editIpAdress = __webpack_require__(59);
+	var _editIpAdress = __webpack_require__(60);
 	
 	var _editIpAdress2 = _interopRequireDefault(_editIpAdress);
 	
-	var _date = __webpack_require__(60);
+	var _date = __webpack_require__(61);
 	
-	var _editDate = __webpack_require__(61);
+	var _editDate = __webpack_require__(62);
 	
 	var _editDate2 = _interopRequireDefault(_editDate);
 	
-	var _checkbox = __webpack_require__(62);
+	var _checkbox = __webpack_require__(63);
 	
-	var _editCheckBox = __webpack_require__(63);
+	var _editCheckBox = __webpack_require__(64);
 	
 	var _editCheckBox2 = _interopRequireDefault(_editCheckBox);
 	
-	var _email = __webpack_require__(64);
+	var _email = __webpack_require__(65);
 	
-	var _editEmail = __webpack_require__(65);
+	var _editEmail = __webpack_require__(66);
 	
 	var _editEmail2 = _interopRequireDefault(_editEmail);
 	
-	var _basicSelect = __webpack_require__(66);
+	var _basicSelect = __webpack_require__(67);
 	
-	var _editBasicSelect = __webpack_require__(67);
+	var _editBasicSelect = __webpack_require__(68);
 	
 	var _editBasicSelect2 = _interopRequireDefault(_editBasicSelect);
 	
-	var _groupedSelect = __webpack_require__(68);
+	var _groupedSelect = __webpack_require__(69);
 	
-	var _editGroupedSelect = __webpack_require__(69);
+	var _editGroupedSelect = __webpack_require__(70);
 	
 	var _editGroupedSelect2 = _interopRequireDefault(_editGroupedSelect);
 	
-	var _header = __webpack_require__(70);
+	var _header = __webpack_require__(71);
 	
-	var _editHeaderControl = __webpack_require__(71);
+	var _editHeaderControl = __webpack_require__(72);
 	
 	var _editHeaderControl2 = _interopRequireDefault(_editHeaderControl);
 	
-	var _password = __webpack_require__(72);
+	var _password = __webpack_require__(73);
 	
-	var _editPassword = __webpack_require__(73);
+	var _editPassword = __webpack_require__(74);
 	
 	var _editPassword2 = _interopRequireDefault(_editPassword);
 	
-	var _radio = __webpack_require__(74);
+	var _radio = __webpack_require__(75);
 	
-	var _editRadio = __webpack_require__(75);
+	var _editRadio = __webpack_require__(76);
 	
 	var _editRadio2 = _interopRequireDefault(_editRadio);
 	
-	var _richTextEditor = __webpack_require__(76);
+	var _richTextEditor = __webpack_require__(77);
 	
-	var _editRichTextEditor = __webpack_require__(77);
+	var _editRichTextEditor = __webpack_require__(78);
 	
 	var _editRichTextEditor2 = _interopRequireDefault(_editRichTextEditor);
 	
-	var _subTitle = __webpack_require__(78);
+	var _subTitle = __webpack_require__(79);
 	
-	var _editSubTitle = __webpack_require__(79);
+	var _editSubTitle = __webpack_require__(80);
 	
 	var _editSubTitle2 = _interopRequireDefault(_editSubTitle);
 	
-	var _textArea = __webpack_require__(80);
+	var _textArea = __webpack_require__(81);
 	
-	var _editTextArea = __webpack_require__(81);
+	var _editTextArea = __webpack_require__(82);
 	
 	var _editTextArea2 = _interopRequireDefault(_editTextArea);
 	
-	var _textInput = __webpack_require__(82);
+	var _textInput = __webpack_require__(83);
 	
-	var _editTextInput = __webpack_require__(83);
+	var _editTextInput = __webpack_require__(84);
 	
 	var _editTextInput2 = _interopRequireDefault(_editTextInput);
 	
@@ -8286,7 +8361,7 @@
 	exports.controls = controls;
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8311,7 +8386,7 @@
 	};
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8340,7 +8415,7 @@
 	exports.default = angular.module(editBlankModuleName, []).component(EDIT_BLANK_CONTROL_COMPONENT, editBlankControlComponent);
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8382,7 +8457,7 @@
 	};
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8412,7 +8487,7 @@
 	exports.default = angular.module(editIpAdressModuleName, []).component(EDIT_IP_ADRESS_COMPONENT, editIpAdressControlComponent);
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8449,7 +8524,7 @@
 	};
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8482,7 +8557,7 @@
 	exports.default = angular.module(editDateControlModuleName, []).component(EDIT_DATE_COMPONENT, editDateControlComponent);
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8515,7 +8590,7 @@
 	};
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8545,7 +8620,7 @@
 	exports.default = angular.module(editCheckBoxModuleName, []).component(EDIT_CHECKBOX_COMPONENT, editCheckBoxControlComponent);
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8587,7 +8662,7 @@
 	};
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8617,7 +8692,7 @@
 	exports.default = angular.module(editEmailControlModuleName, []).component(EDIT_EMAIL_COMPONENT, editEmailControlComponent);
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8654,7 +8729,7 @@
 	};
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8689,7 +8764,7 @@
 	exports.default = angular.module(editBasicSelectModuleName, []).component(EDIT_BASIC_SELECT_COMPONENT, editBasicSelectControlComponent);
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8726,7 +8801,7 @@
 	};
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8768,7 +8843,7 @@
 	exports.default = angular.module(editGroupedSelectModuleName, []).component(EDIT_GROUPED_SELECT_COMPONENT, editGroupedSelectControlComponent);
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8793,7 +8868,7 @@
 	};
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8814,9 +8889,9 @@
 	    nyaSelect: '='
 	  },
 	  controller: (_temp = _class = function editHeaderControlController() {
-	    _classCallCheck(this, editHeaderControlController);
+	    // 
 	
-	    console.log('debug test');
+	    _classCallCheck(this, editHeaderControlController);
 	  }, _class.$inject = [], _temp)
 	};
 	
@@ -8825,7 +8900,7 @@
 	exports.default = angular.module(editHeaderControlModuleName, []).component(EDIT_HEADER_CONTROL_COMPONENT, editHeaderControlComponent);
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8858,7 +8933,7 @@
 	};
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8890,7 +8965,7 @@
 	exports.default = angular.module(editeditPasswordModuleName, []).component(EDIT_PASSWORD_CONTROL_COMPONENT, editPasswordControlComponent);
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8927,7 +9002,7 @@
 	};
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -8965,7 +9040,7 @@
 	exports.default = angular.module(editRadioControlModuleName, []).component(EDIT_RADIO_CONTROL_COMPONENT, editRadioControlComponent);
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9001,7 +9076,7 @@
 	};
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9032,7 +9107,7 @@
 	exports.default = angular.module(editRichTextEditorModuleName, []).component(EDIT_RICH_TEXT_EDITOR_COMPONENT, editRichTextEditorControlComponent);
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9057,7 +9132,7 @@
 	};
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9089,7 +9164,7 @@
 	exports.default = angular.module(editSubTitleModuleName, []).component(EDIT_SUBTITLE_CONTROL_COMPONENT, editSubTitleControlComponent);
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9125,7 +9200,7 @@
 	};
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9157,7 +9232,7 @@
 	exports.default = angular.module(edittextareaControlModuleName, []).component(EDIT_TEXTAREA_CONTROL_COMPONENT, editTextareaControlComponent);
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9194,7 +9269,7 @@
 	};
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9226,7 +9301,7 @@
 	exports.default = angular.module(editTextInputControlModuleName, []).component(EDIT_TEXTINPUT_CONTROL_COMPONENT, editTextInputControlComponent);
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9238,7 +9313,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _modalProxyServiceHelpers = __webpack_require__(85);
+	var _modalProxyServiceHelpers = __webpack_require__(86);
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
@@ -9479,7 +9554,7 @@
 	exports.default = angular.module(MODAL_PROXY_MODULE_NAME, []).service(CONTROLLER_MODAL_PROXY_SERVICE, $modalProxy);
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9491,7 +9566,7 @@
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	var _controls = __webpack_require__(55);
+	var _controls = __webpack_require__(56);
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
@@ -9605,7 +9680,7 @@
 	exports.getResetConfig = getResetConfig;
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9617,7 +9692,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _formlyProxyService = __webpack_require__(87);
+	var _formlyProxyService = __webpack_require__(88);
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
@@ -9685,7 +9760,7 @@
 	exports.default = angular.module(FORMLY_PROXY_MODULE_NAME, []).service(FORMLY_PROXY_SERVICE, $formlyProxy);
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -10115,7 +10190,7 @@
 	exports.addThreeColumnControl = addThreeColumnControl;
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -10348,7 +10423,7 @@
 	exports.default = angular.module(SELECT_OPTION_MANAGE_MODULE_NAME, []).service(SELECT_OPTION_MANAGE_NAME, selectOptionManage);
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

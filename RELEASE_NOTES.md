@@ -2,6 +2,10 @@
 
 ## Notes:
 
+### v2.3.0
+
+- add chinese language (thanks to @alansong :clap:)
+
 ### v2.2.3
 
 - issues fixes
