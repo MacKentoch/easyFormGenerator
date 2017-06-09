@@ -1,4 +1,4 @@
-#Easy form generator (AngularJS)
+# Easy form generator (AngularJS)
 
 [![npm](https://img.shields.io/npm/l/express.svg?maxAge=2592000)](https://github.com/MacKentoch/easyFormGenerator)
 [![GitHub version](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator.svg)](https://badge.fury.io/gh/MacKentoch%2FeasyFormGenerator)
@@ -6,11 +6,11 @@
 [![Bower version](https://badge.fury.io/bo/easy-form-generator.svg)](https://badge.fury.io/bo/easy-form-generator)
 [![npm version](https://badge.fury.io/js/easy-form-generator.svg)](https://badge.fury.io/js/easy-form-generator)
 
->Generate advanced and unique boostrap forms without typing a single line of code!
+> Generate advanced and unique boostrap forms without typing a single line of code!
 
-####[— easy form generator website here —](http://mackentoch.github.io/easyFormGenerator/)
+#### [— easy form generator website here —](http://mackentoch.github.io/easyFormGenerator/)
 
-##What is it?
+## What is it?
 
 *`Easy form generator` (step way or drag and drop way):*
 
@@ -27,7 +27,7 @@
 [Complementary information to better understand easy form generator](https://github.com/MacKentoch/easyFormGenerator/blob/master/README_TOO.md)
 
 
-###Easy Form Generator: **Step way**
+### Easy Form Generator: **Step way**
 
 > **IMPORTANT:** easyFormGenerator v2.1.1 introduced a breaking change to fix angular formly upgrade compatibility issue.
 This breaking change impacts Header control only.
@@ -52,7 +52,7 @@ Have a try here: [Easy for generator **step way** version](https://cdn.rawgit.co
 
 ______
 
-###Easy Form Generator: **drag and drop way** (BETA)
+### Easy Form Generator: **drag and drop way** (BETA)
 
 `Drag and drop way version` (**currently in BETA**) is more fun and faster to design a form
 - drag control then drop control
@@ -70,7 +70,7 @@ have a try here: [Easy for generator **drag and drop way** version](https://cdn.
 
 ______
 
-###Easy form viewer: production ready
+### Easy form viewer: production ready
 
 `Easy form viewer` is a directive which helps you using your created forms
 - when you saved your form you saved `edaFieldsModel`: easy form generator fields model
@@ -80,15 +80,15 @@ ______
 ______
 
 
-##How to use?
+## How to use?
 
 _____
 
-###Using Step way version (production friendly)
+### Using Step way version (production friendly)
 
 > Check demo: [`stepway.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/stepway.html)
 
-####Install
+#### Install
 
 Installing easyFormGenerator will install in a row:
 - step way
@@ -106,7 +106,7 @@ or
 yarn install easy-form-generator
 ```
 
-####dependencies
+#### dependencies
 
 Easy form generator creates amazing bootstrap forms thanks to these dependencies:
 
@@ -133,7 +133,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 - **OR** this [project example](https://github.com/MacKentoch/easy-form-generator-webpack-example) (*ES6+ and webpack based*)
 
 
-####Inject easy form generator in your app
+#### Inject easy form generator in your app
 
 Just inject `eda.easyformGen.stepway` in you application:
 
@@ -146,12 +146,12 @@ angular
 ```
 
 
-####All easy form generator just by this small html:
+#### All easy form generator just by this small html:
 ```html
 <eda-step-way-easy-form-gen></eda-step-way-easy-form-gen>
 ```
 
-####Want to Load/save models?
+#### Want to Load/save models?
 
 Add these attributes to interact with your own controller:
 - `eda-easy-form-generator-model`: attribute to bind your model
@@ -184,7 +184,7 @@ Add these attributes to interact with your own controller:
 saveForm(edaEasyFormGeneratorModel)
 ```
 
-####Customize easyFormGenerator
+#### Customize easyFormGenerator
 
 **Multilanguage support:**
 
@@ -301,11 +301,11 @@ All controls are enabled by default.
 ____
 
 
-###Using Drag and drop way version (BETA)
+### Using Drag and drop way version (BETA)
 
 > Check demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
-####Install
+#### Install
 
 Installing easyFormGenerator will install in a row:
 - step way
@@ -323,7 +323,7 @@ or
 yarn install easy-form-generator
 ```
 
-####dependencies
+#### dependencies
 
 Easy form generator creates amazing bootstrap forms thanks to these dependencies:
 
@@ -348,7 +348,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 > It will be far more talkative be checking demo: [`dragDropWay.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/dragDropWay.html)
 
 
-####Inject easy form generator in your app
+#### Inject easy form generator in your app
 
 Just inject `eda.easyformGen.dragdropway` in you application:
 
@@ -360,12 +360,12 @@ angular
 
 ```
 
-####All easy form generator just by this small html:
+#### All easy form generator just by this small html:
 ```html
 <eda-dragdrop-way-easy-form-gen></eda-dragdrop-way-easy-form-gen>
 ```
 
-####Want to Load/save models?
+#### Want to Load/save models?
 
 Add these attributes to interact with your own controller:
 - `eda-easy-form-generator-model`: attribute to bind your model
@@ -399,12 +399,12 @@ saveForm(edaEasyFormGeneratorModel)
 ```
 ____
 
-###Using Easy form viewer (production friendly)
+### Using Easy form viewer (production friendly)
 
 >demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 
 
-####Install
+#### Install
 
 Installing easyFormGenerator will install in a row:
 - step way
@@ -422,7 +422,7 @@ or
 yarn install easy-form-generator
 ```
 
-####dependencies
+#### dependencies
 
 Easy form generator creates amazing bootstrap forms thanks to these dependencies:
 
@@ -444,7 +444,7 @@ Easy form generator creates amazing bootstrap forms thanks to these dependencies
 > It will be far more talkative be checking demo: [`formviewer.html` in `preview` directory](https://github.com/MacKentoch/easyFormGenerator/blob/master/preview/formviewer.html)
 
 
-####Inject easy form viewer in your app
+#### Inject easy form viewer in your app
 
 Just inject `eda.easyFormViewer` in you application:
 
@@ -488,7 +488,7 @@ Just inject `eda.easyFormViewer` in you application:
 ```
 
 
-####All easy form viewer directive:
+#### All easy form viewer directive:
 
 
 ```html
@@ -647,7 +647,7 @@ ______
  ![email and validations](https://cdn.rawgit.com/MacKentoch/easyFormGenerator/master/images/emailAndValidation.png)    
 
 
-##What is coming next?
+## What is coming next?
 - [ ] developing/fixing browsers compatibility for `drag and drop` version
 - [ ] adding more controls
 - [ ] adding more validations
@@ -655,7 +655,7 @@ ______
 - [ ] adding CI
 - [ ] adding contribution guide
 
-##License
+## License
 
 The MIT License (MIT)
 
