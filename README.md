@@ -5,6 +5,7 @@
 [![Join the chat at https://gitter.im/MacKentoch/easyFormGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MacKentoch/easyFormGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Bower version](https://badge.fury.io/bo/easy-form-generator.svg)](https://badge.fury.io/bo/easy-form-generator)
 [![npm version](https://badge.fury.io/js/easy-form-generator.svg)](https://badge.fury.io/js/easy-form-generator)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMacKentoch%2FeasyFormGenerator.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMacKentoch%2FeasyFormGenerator?ref=badge_shield)
 
 > Generate advanced and unique boostrap forms without typing a single line of code!
 
@@ -681,3 +682,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMacKentoch%2FeasyFormGenerator.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMacKentoch%2FeasyFormGenerator?ref=badge_large)
